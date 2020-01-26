@@ -17,7 +17,7 @@ public class Scenes : MonoBehaviour
 		SceneManager.LoadScene(GetSceneIndex(pScene));
 	}
 
-	public IEnumerator LoadSceneAsync(EScene pScene, Slider  pSlider)
+	public IEnumerator LoadSceneAsync(EScene pScene, Slider pSlider, Action pOnLoaded)
 	{
 		AsyncOperation loading = SceneManager.LoadSceneAsync(
 			GetSceneIndex(pScene), LoadSceneMode.Additive);
@@ -30,6 +30,7 @@ public class Scenes : MonoBehaviour
 			yield return null;
 		}
 
+		pOnLoaded?.Invoke();
 	}
 
 	public void UnloadScene(EScene pScene)

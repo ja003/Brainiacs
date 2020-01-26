@@ -11,14 +11,14 @@ public class MapController : MonoBehaviour
 	[SerializeField]
 	private Map wonderland;
 
-	private Map activeMap = null;
+	public Map ActiveMap = null;
 
 	public void SetMap(EMap pMap)
 	{
 		if(transform.childCount > 0)
 		{
-			activeMap = transform.GetChild(0).GetComponent<Map>();
-			if(activeMap != null)
+			ActiveMap = transform.GetChild(0).GetComponent<Map>();
+			if(ActiveMap != null)
 			{
 				Debug.LogWarning("Map is already present in the scene");
 				if(!Brainiacs.SelfInitGame)
@@ -30,24 +30,24 @@ public class MapController : MonoBehaviour
 		switch(pMap)
 		{
 			case EMap.Steampunk:
-				activeMap = Instantiate(steampunk);
+				ActiveMap = Instantiate(steampunk);
 				break;
 			case EMap.Wonderland:
-				activeMap = Instantiate(wonderland);
+				ActiveMap = Instantiate(wonderland);
 				break;
 		}
-		if(activeMap == null)
+		if(ActiveMap == null)
 		{
 			Debug.LogError("No map selected");
 			return;
 		}
 
-		activeMap.transform.parent = transform;
+		ActiveMap.transform.parent = transform;
 	}
 
 	internal void SetActive(bool pValue)
 	{
 		gameObject.SetActive(pValue);
-		activeMap.SetActive(pValue);
+		ActiveMap.SetActive(pValue);
 	}
 }

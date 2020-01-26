@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameBehaviour : MonoBehaviour
 {
 	protected Brainiacs brainiacs => Brainiacs.Instance;
+	protected Game game=> Game.Instance;
 
 	protected Renderer rend;
 
@@ -16,6 +17,6 @@ public class GameBehaviour : MonoBehaviour
 
 	protected void DoInTime(Action pEvent, float pTime)
 	{
-		//LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
+		LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,10 @@ public class Player : GameBehaviour
 	public EHero Hero;
 	public string Name;
 
-	public Player(int lives, EHero hero, string name)
+	internal void SetInfo(PlayerInitInfo playerInfo)
 	{
-		Lives = lives;
-		Hero = hero;
-		Name = name;
+		Lives = playerInfo.Lives;
+		Hero = playerInfo.Hero;
+		Name = playerInfo.Name;
 	}
 }

@@ -8,9 +8,11 @@ public class Game : CSingleton<Game>
 	Camera mainCamera;
 
 	[SerializeField]
-	MapController map;
+	public MapController MapController;
 
-	private List<Player> players;
+	[SerializeField]
+	private PlayersController playersController;
+
 
 
 	protected override void Awake()
@@ -26,28 +28,26 @@ public class Game : CSingleton<Game>
 	public void OnLoaded()
 	{
 		mainCamera.enabled = false;
-		map.SetMap(brainiacs.GameInitInfo.Map);
+		MapController.SetMap(brainiacs.GameInitInfo.Map);
 
-		players = new List<Player>();
-		foreach(PlayerInitInfo playerInfo in brainiacs.GameInitInfo.players)
-		{
-			players.Add(new Player(playerInfo.Lives, playerInfo.Hero, playerInfo.Name));
-		}
+		MapController.SetActive(false);
 
-		map.SetActive(false);
+		playersController.SpawnPlayers(brainiacs.GameInitInfo.players);
 		//todo: deactivate players
+
+
 	}
 
 	public void Activate()
 	{
 		mainCamera.enabled = true;
-		map.SetActive(true);
+		MapController.SetActive(true);
 		//todo: activate players
 	}
 
 	public void TestEndGame()
 	{
-		brainiacs.SetGameResultInfo(players);
+		brainiacs.SetGameResultInfo(playersController.Players);
 		brainiacs.Scenes.LoadScene(EScene.Results);
 	}
 }
