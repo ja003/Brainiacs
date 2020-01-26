@@ -12,10 +12,20 @@ public class Player : GameBehaviour
 	public EHero Hero;
 	public string Name;
 
-	internal void SetInfo(PlayerInitInfo playerInfo)
+	[SerializeField]
+	private PlayerInput input;
+
+	
+
+	internal void SetInfo(PlayerInitInfo pPlayerInfo)
 	{
-		Lives = playerInfo.Lives;
-		Hero = playerInfo.Hero;
-		Name = playerInfo.Name;
+		Lives = pPlayerInfo.Lives;
+		Hero = pPlayerInfo.Hero;
+		Name = pPlayerInfo.Name;
+		
+		input.Keys = pPlayerInfo.PlayerKeys;
+
 	}
+
+
 }

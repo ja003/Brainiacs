@@ -14,7 +14,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 	public GameInitInfo GameInitInfo;
 	public GameResultInfo GameResultInfo;
-	
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -24,8 +24,19 @@ public class Brainiacs : CSingleton<Brainiacs>
 	public void TestSetGameInitInfo()
 	{
 		GameInitInfo = new GameInitInfo();
-		GameInitInfo.players.Add(new PlayerInitInfo(EHero.Tesla, "Adam"));
-		GameInitInfo.players.Add(new PlayerInitInfo(EHero.Currie, "Téra"));
+		PlayerInitInfo player1 = new PlayerInitInfo(EHero.Tesla, "Adam");
+		player1.PlayerKeys = new PlayerKeys(
+			KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.LeftArrow,
+			KeyCode.RightControl, KeyCode.RightShift);
+		GameInitInfo.players.Add(player1);
+
+
+		PlayerInitInfo player2 = new PlayerInitInfo(EHero.Currie, "Téra");
+
+		player2.PlayerKeys = new PlayerKeys(
+			KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
+			KeyCode.LeftControl, KeyCode.LeftShift);
+		GameInitInfo.players.Add(player2);
 
 		GameInitInfo.Mode = EGameMode.Time;
 		GameInitInfo.Map = EMap.Steampunk;

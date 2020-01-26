@@ -28,6 +28,7 @@ public class PlayerInitInfo
 	public string Name;
 	public EHero Hero;
 	public int Lives;
+	public PlayerKeys PlayerKeys;
 
 	public PlayerInitInfo(EHero pHero, string pName)
 	{
@@ -35,6 +36,27 @@ public class PlayerInitInfo
 		Name = pName;
 	}
 
+}
+
+public struct PlayerKeys
+{
+	public KeyCode moveUp;
+	public KeyCode moveRight;
+	public KeyCode moveDown;
+	public KeyCode moveLeft;
+	
+	public KeyCode useItem;
+	public KeyCode swapItem;
+
+	public PlayerKeys(KeyCode moveUp, KeyCode moveRight, KeyCode moveDown, KeyCode moveLeft, KeyCode useItem, KeyCode swapItem)
+	{
+		this.moveUp = moveUp;
+		this.moveRight = moveRight;
+		this.moveDown = moveDown;
+		this.moveLeft = moveLeft;
+		this.useItem = useItem;
+		this.swapItem = swapItem;
+	}
 }
 
 public enum EGameMode
