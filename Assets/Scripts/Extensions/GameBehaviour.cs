@@ -9,7 +9,7 @@ public class GameBehaviour : MonoBehaviour
 
 	protected Renderer rend;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		rend = GetComponent<Renderer>();
 	}
