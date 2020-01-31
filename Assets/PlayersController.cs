@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersController : GameBehaviour
+public class PlayersController : GameController
 {
 	public List<Player> Players { get; private set; }
 
 	[SerializeField]
 	private Player playerPrefab;
 
-	public void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
+	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
 	{
 		Players = new List<Player>();
 
@@ -24,5 +24,15 @@ public class PlayersController : GameBehaviour
 
 			Players.Add(playerInstance);
 		}
+	}
+
+	protected override void OnGameAwaken()
+	{
+	}
+
+	protected override void OnGameActivated()
+	{
+		//Debug.Log($"{gameObject.name} OnGameActivated");
+		SpawnPlayers(brainiacs.GameInitInfo.players);
 	}
 }

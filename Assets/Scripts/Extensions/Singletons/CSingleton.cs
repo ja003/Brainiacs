@@ -39,7 +39,7 @@ public abstract class CSingleton<T> : GameBehaviour where T : CSingleton<T>
 	// UNITY METHODS
 	//=========================================//
 
-	protected virtual void Awake()
+	protected override void Awake()
 	{
 		CSingletionAttribute attribute = Attribute.GetCustomAttribute(typeof(T), typeof(CSingletionAttribute)) as CSingletionAttribute;
 		bool persistent = false;
@@ -58,6 +58,7 @@ public abstract class CSingleton<T> : GameBehaviour where T : CSingleton<T>
 				DontDestroyOnLoad(this.gameObject);
 			}
 
+			base.Awake();
 			return;
 		}
 		// Is this singleton marked to live forever?
@@ -70,6 +71,7 @@ public abstract class CSingleton<T> : GameBehaviour where T : CSingleton<T>
 		{
 			Destroy(this.gameObject);
 		}
+		base.Awake();
 	}
 
 	protected virtual void OnDestroy()

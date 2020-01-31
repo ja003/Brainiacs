@@ -15,6 +15,9 @@ public class Brainiacs : CSingleton<Brainiacs>
 	public GameInitInfo GameInitInfo;
 	public GameResultInfo GameResultInfo;
 
+	[SerializeField]
+	public ItemManager ItemManager;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -28,6 +31,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 		player1.PlayerKeys = new PlayerKeys(
 			KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.LeftArrow,
 			KeyCode.RightControl, KeyCode.RightShift);
+		
 		GameInitInfo.players.Add(player1);
 
 
@@ -48,7 +52,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 		GameResultInfo = new GameResultInfo();
 		foreach(Player player in pPlayers)
 		{
-			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player));
+			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player.stats));
 		}
 
 	}

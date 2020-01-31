@@ -12,37 +12,27 @@ public class Game : CSingleton<Game>
 
 	[SerializeField]
 	private PlayersController playersController;
-
-
-
+		
 	protected override void Awake()
 	{
 		base.Awake();
-		OnLoaded();
+		OnAwaken();
 		if(Brainiacs.SelfInitGame)
 		{
-			Activate();
+			DoInTime(Activate, 0.5f);
 		}
 	}
 
-	public void OnLoaded()
+	public void OnAwaken()
 	{
 		mainCamera.enabled = false;
-		MapController.SetMap(brainiacs.GameInitInfo.Map);
-
-		MapController.SetActive(false);
-
-		playersController.SpawnPlayers(brainiacs.GameInitInfo.players);
 		//todo: deactivate players
-
-
 	}
 
-	public void Activate()
+	public new void Activate()
 	{
+		base.Activate();
 		mainCamera.enabled = true;
-		MapController.SetActive(true);
-		//todo: activate players
 	}
 
 	public void TestEndGame()

@@ -10,6 +10,11 @@ public class Map : MonoBehaviour
 
 	private List<int> assignedSpawnPoints;
 
+	[SerializeField]
+	public Transform TopLeftCorner;
+	[SerializeField]
+	public Transform BotRightCorner;
+
 	internal void SetActive(bool pValue)
 	{
 		gameObject.SetActive(pValue);
@@ -21,11 +26,12 @@ public class Map : MonoBehaviour
 		int randIndex = UnityEngine.Random.Range(0, spawnPoints.Count);
 		for(int i = randIndex; i < randIndex + spawnPoints.Count; i++)
 		{
-			if(assignedSpawnPoints.Contains(i))
+			int index = i % spawnPoints.Count;
+			if(assignedSpawnPoints.Contains(index))
 				continue;
 
-			assignedSpawnPoints.Add(i);
-			return spawnPoints[i];
+			assignedSpawnPoints.Add(index);
+			return spawnPoints[index];
 		}
 		return null;
 	}

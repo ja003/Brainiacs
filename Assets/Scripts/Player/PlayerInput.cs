@@ -11,9 +11,14 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField]
 	private PlayerMovement movement;
 
+	[SerializeField]
+	private PlayerWeaponController weapon;
+
 	void FixedUpdate()
 	{
 		ProcessMovementInput();
+
+		ProcessActionInput();
 
 		//item use..
 		
@@ -32,6 +37,16 @@ public class PlayerInput : MonoBehaviour
 
 		//HACK
 		movement.SetSpeedMultiplier(Input.GetKey(KeyCode.LeftShift) ? 10 : 1);
+
+	}
+
+	private void ProcessActionInput()
+	{
+		if(Input.GetKeyDown(Keys.swapWeapon))
+			weapon.SwapWeapon();
+
+		if(Input.GetKeyDown(Keys.useWeapon))
+			weapon.UseWeapon();
 
 	}
 

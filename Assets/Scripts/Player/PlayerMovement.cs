@@ -8,12 +8,22 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private Player player;
 
+	[SerializeField]
+	private PlayerWeaponController weapon;
+
 	private const float movementSpeed = 0.05f;
 
 	private float movementSpeedMultiplier = 1;
 
+	EDirection currentDirection;
+
 	internal void Move(EDirection pDirection)
 	{
+		if(currentDirection != pDirection)
+		{
+			weapon.OnChangeDirection(pDirection);
+		}
+		currentDirection = pDirection;
 		transform.position += GetVector(pDirection) * movementSpeed * movementSpeedMultiplier;
 	}
 

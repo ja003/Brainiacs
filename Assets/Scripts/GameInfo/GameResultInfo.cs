@@ -28,12 +28,12 @@ public class PlayerResultInfo
 	public int Kills;
 	public int LivesLeft;
 
-	public PlayerResultInfo(Player pPlayer)
+	public PlayerResultInfo(PlayerStats pStats)
 	{
-		Name = pPlayer.Name;
-		Hero = pPlayer.Hero;
-		Kills = pPlayer.Kills;
-		LivesLeft = pPlayer.Lives;
+		Name = pStats.Name;
+		Hero = pStats.Hero;
+		Kills = pStats.Kills;
+		LivesLeft = pStats.Lives;
 	}
 
 	public int GetScore()

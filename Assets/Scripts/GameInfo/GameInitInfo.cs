@@ -45,17 +45,17 @@ public struct PlayerKeys
 	public KeyCode moveDown;
 	public KeyCode moveLeft;
 	
-	public KeyCode useItem;
-	public KeyCode swapItem;
+	public KeyCode useWeapon;
+	public KeyCode swapWeapon;
 
-	public PlayerKeys(KeyCode moveUp, KeyCode moveRight, KeyCode moveDown, KeyCode moveLeft, KeyCode useItem, KeyCode swapItem)
+	public PlayerKeys(KeyCode moveUp, KeyCode moveRight, KeyCode moveDown, KeyCode moveLeft, KeyCode useWeapon, KeyCode swapWeapon)
 	{
 		this.moveUp = moveUp;
 		this.moveRight = moveRight;
 		this.moveDown = moveDown;
 		this.moveLeft = moveLeft;
-		this.useItem = useItem;
-		this.swapItem = swapItem;
+		this.useWeapon = useWeapon;
+		this.swapWeapon = swapWeapon;
 	}
 }
 

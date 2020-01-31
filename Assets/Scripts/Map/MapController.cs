@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapController : MonoBehaviour
+public class MapController : GameController
 {
 	[SerializeField]
 	private Map steampunk;
@@ -12,6 +12,11 @@ public class MapController : MonoBehaviour
 	private Map wonderland;
 
 	public Map ActiveMap = null;
+
+	protected override void Awake()
+	{
+		base.Awake();
+	}
 
 	public void SetMap(EMap pMap)
 	{
@@ -47,7 +52,19 @@ public class MapController : MonoBehaviour
 
 	internal void SetActive(bool pValue)
 	{
+		//Debug.Log($"{gameObject.name} SetActive {pValue }");
 		gameObject.SetActive(pValue);
 		ActiveMap.SetActive(pValue);
+	}
+
+	protected override void OnGameAwaken()
+	{
+		SetMap(brainiacs.GameInitInfo.Map);
+		SetActive(false);
+	}
+
+	protected override void OnGameActivated()
+	{
+		SetActive(true);
 	}
 }

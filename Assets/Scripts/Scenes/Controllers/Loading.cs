@@ -44,7 +44,7 @@ public class Loading : GameBehaviour
 	{
 		Debug.Log("StartGame");
 
-		Game.Instance.Activate();
+		game.Activate();
 		Brainiacs.Instance.Scenes.UnloadScene(EScene.Loading);
 	}
 

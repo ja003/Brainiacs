@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7279955334952776625}
   - component: {fileID: 7279955334952776626}
   - component: {fileID: 7279955334952776624}
+  - component: {fileID: 1044846638}
   m_Layer: 0
-  m_Name: Brainiacs
+  m_Name: P_Brainiacs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scenes: {fileID: 7279955334952776624}
+  ItemManager: {fileID: 1044846638}
 --- !u!114 &7279955334952776624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,3 +59,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10af46de8f41a0d438b4a028eb6c084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1044846638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279955334952776627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9d657fac06fb447b106c58f8f57673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeapons:
+  - {fileID: 11400000, guid: 186fe1c1cee131d43833e62fa46a3f7a, type: 2}
+  - {fileID: 11400000, guid: 728db0ec36eada34598454f7298fcf91, type: 2}
+  powerUps:
+  - {fileID: 11400000, guid: 64202e1bfda264042839e603a3208c11, type: 2}
+  MapItems: []
