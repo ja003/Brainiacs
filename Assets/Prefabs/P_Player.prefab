@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 267343707}
   - component: {fileID: 267343708}
   m_Layer: 0
-  m_Name: item_down
+  m_Name: weapon_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408874350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -207,14 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22a2a1fdcee82941ba41b52356b29fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUp: {fileID: 233938034378121293}
-  itemRight: {fileID: 1603682625}
-  itemDown: {fileID: 267343708}
-  itemLeft: {fileID: 7213557940792491620}
-  handsUp: {fileID: 3636149322915584526}
-  handsRight: {fileID: 1921905453}
-  handsDown: {fileID: 408874352}
-  handsLeft: {fileID: 3740947923197070338}
+  visual: {fileID: 4773161991021014474}
 --- !u!1 &1099038216
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +253,7 @@ GameObject:
   - component: {fileID: 1603682624}
   - component: {fileID: 1603682625}
   m_Layer: 0
-  m_Name: item_right
+  m_Name: weapon_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +360,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921905451}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -477,7 +470,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c23c71e9a5a160748957d8f1545f2e5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -580,7 +573,7 @@ GameObject:
   - component: {fileID: 2744022929057180439}
   - component: {fileID: 7213557940792491620}
   m_Layer: 0
-  m_Name: item_left
+  m_Name: weapon_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +653,7 @@ GameObject:
   - component: {fileID: 8063168913832197466}
   - component: {fileID: 233938034378121293}
   m_Layer: 0
-  m_Name: item_up
+  m_Name: weapon_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,7 +710,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 79bd593a85f790542a812f4bc96bcbbd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -744,6 +737,10 @@ GameObject:
   - component: {fileID: 7872993416487400291}
   - component: {fileID: 475219872465314036}
   - component: {fileID: 8172034968436022763}
+  - component: {fileID: 4773161991021014474}
+  - component: {fileID: 1489477448}
+  - component: {fileID: 1489477446}
+  - component: {fileID: 1489477447}
   m_Layer: 0
   m_Name: P_Player
   m_TagString: Untagged
@@ -784,7 +781,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1dd6b51c10f748245bbf41120dd81d1b, type: 2}
+  - {fileID: 2100000, guid: 0d702b863212a0542b2440a4ebe9732e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -805,12 +802,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6e63a6ae1316a024eabb447800362fe8, type: 3}
+  m_Sprite: {fileID: 4150992782118261164, guid: 5e15da9c31617204d96ff90e736a40b9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 0.46, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -829,7 +827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 7872993416487400291}
-  weaponController: {fileID: 897093172}
+  WeaponController: {fileID: 897093172}
+  Visual: {fileID: 4773161991021014474}
+  Movement: {fileID: 7872993416487400290}
 --- !u!114 &7872993416487400290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4342295620933284857}
-  weapon: {fileID: 897093172}
 --- !u!114 &7872993416487400291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,8 +874,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1}
-    newSize: {x: 1.5, y: 1}
+    oldSize: {x: 0.43, y: 0.97}
+    newSize: {x: 0.46, y: 0.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -905,3 +904,75 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4773161991021014474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac64fea84d228d4f9450e8f0dd74fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponUp: {fileID: 233938034378121293}
+  weaponRight: {fileID: 1603682625}
+  weaponDown: {fileID: 267343708}
+  weaponLeft: {fileID: 7213557940792491620}
+  handsUp: {fileID: 3636149322915584526}
+  handsRight: {fileID: 1921905453}
+  handsDown: {fileID: 408874352}
+  handsLeft: {fileID: 3740947923197070338}
+  currentSortOrder: 0
+--- !u!95 &1489477448
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c103fe87122652d4ab394293a05d4a33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1489477446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1affe871ea6e747b5c70f2b91d5543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderController: {fileID: 1489477447}
+  nextPaletteButtonInput: NextPalette
+  previousPaletteButtonInput: PreviousPalette
+  originalPaletteButtonInput: OriginalPalette
+--- !u!114 &1489477447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df542241175bf640973e27e711238c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalPalette: {fileID: 2800000, guid: 3ad3027a94fef8b438aad06250ecbc95, type: 3}
+  swapPalettes:
+  - {fileID: 2800000, guid: 3725278c13cb7804a8cf9888e62f612d, type: 3}
+  - {fileID: 2800000, guid: 3ad3027a94fef8b438aad06250ecbc95, type: 3}

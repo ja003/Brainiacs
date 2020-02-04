@@ -18,6 +18,9 @@ public class Brainiacs : CSingleton<Brainiacs>
 	[SerializeField]
 	public ItemManager ItemManager;
 
+	[SerializeField]
+	public HeroManager HeroManager;
+
 	protected override void Awake()
 	{
 		base.Awake();

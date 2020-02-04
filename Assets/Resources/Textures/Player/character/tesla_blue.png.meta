@@ -1,0 +1,3163 @@
+fileFormatVersion: 2
+guid: 5e15da9c31617204d96ff90e736a40b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3209719824035278376
+    second: tesla_blue_0
+  - first:
+      213: -5260279725752303815
+    second: tesla_blue_1
+  - first:
+      213: 7695397696016348843
+    second: tesla_blue_2
+  - first:
+      213: 2560900532086617165
+    second: tesla_blue_3
+  - first:
+      213: -6935086948627930246
+    second: tesla_blue_4
+  - first:
+      213: 8667698074110805811
+    second: tesla_blue_5
+  - first:
+      213: 205653039561246679
+    second: tesla_blue_6
+  - first:
+      213: -5536990028083733107
+    second: tesla_blue_7
+  - first:
+      213: 4743129465365520318
+    second: tesla_blue_8
+  - first:
+      213: 1569841165419950084
+    second: tesla_blue_9
+  - first:
+      213: -2307113884510534927
+    second: tesla_blue_10
+  - first:
+      213: -5447922538073527006
+    second: tesla_blue_11
+  - first:
+      213: -8569376636425824824
+    second: tesla_blue_12
+  - first:
+      213: 3140341787988398999
+    second: tesla_blue_13
+  - first:
+      213: -4947093091850980932
+    second: tesla_blue_14
+  - first:
+      213: -7216051295912642104
+    second: tesla_blue_15
+  - first:
+      213: 8908015627627757553
+    second: tesla_blue_16
+  - first:
+      213: 8806271140374834375
+    second: tesla_blue_17
+  - first:
+      213: 4401091941634996485
+    second: tesla_blue_18
+  - first:
+      213: -8164589263207687235
+    second: tesla_blue_19
+  - first:
+      213: -4312882089346372431
+    second: tesla_blue_20
+  - first:
+      213: -5452728594323605935
+    second: tesla_blue_21
+  - first:
+      213: 7575232174812246017
+    second: tesla_blue_22
+  - first:
+      213: 4727377903813008150
+    second: tesla_blue_23
+  - first:
+      213: -3526649037737788912
+    second: tesla_blue_24
+  - first:
+      213: 40702814899501662
+    second: tesla_blue_25
+  - first:
+      213: 4499730933232580403
+    second: tesla_blue_26
+  - first:
+      213: 4733785941240382589
+    second: tesla_blue_27
+  - first:
+      213: 4539956621308578334
+    second: tesla_blue_28
+  - first:
+      213: 1689367982165348324
+    second: tesla_blue_29
+  - first:
+      213: 7696212872526442842
+    second: tesla_blue_30
+  - first:
+      213: -5036097753603133298
+    second: tesla_blue_31
+  - first:
+      213: 7300873088783393591
+    second: tesla_blue_32
+  - first:
+      213: 7789335033127295707
+    second: tesla_blue_33
+  - first:
+      213: 2137037294494088996
+    second: tesla_blue_34
+  - first:
+      213: 7651065391240111064
+    second: tesla_blue_35
+  - first:
+      213: 8146502396949164379
+    second: tesla_blue_36
+  - first:
+      213: 4150992782118261164
+    second: tesla_blue_37
+  - first:
+      213: -330093047872595247
+    second: tesla_blue_38
+  - first:
+      213: -6925770027695426586
+    second: tesla_blue_39
+  - first:
+      213: 2467380264196263356
+    second: tesla_blue_40
+  - first:
+      213: 5058220847620458801
+    second: tesla_blue_41
+  - first:
+      213: -823085757313607296
+    second: tesla_blue_42
+  - first:
+      213: -4438691923648923007
+    second: tesla_blue_43
+  - first:
+      213: -6879510379172148524
+    second: tesla_blue_44
+  - first:
+      213: -3972535840133054170
+    second: tesla_blue_45
+  - first:
+      213: 8812849261305180454
+    second: tesla_blue_46
+  - first:
+      213: -4674122881544826429
+    second: tesla_blue_47
+  - first:
+      213: 8053294174134070351
+    second: tesla_blue_48
+  - first:
+      213: -7032277859749511925
+    second: tesla_blue_49
+  - first:
+      213: -3378518142287044333
+    second: tesla_blue_50
+  - first:
+      213: 8559189987799554010
+    second: tesla_blue_51
+  - first:
+      213: -7311906469675179223
+    second: tesla_blue_52
+  - first:
+      213: 7347610683810823279
+    second: tesla_blue_53
+  - first:
+      213: 4645619393643066420
+    second: tesla_blue_54
+  - first:
+      213: 4815106460850905719
+    second: tesla_blue_55
+  - first:
+      213: -5051980311256043846
+    second: tesla_blue_56
+  - first:
+      213: -2609994660237338450
+    second: tesla_blue_57
+  - first:
+      213: -314769309269501248
+    second: tesla_blue_58
+  - first:
+      213: 6412742863403364276
+    second: tesla_blue_59
+  - first:
+      213: -3765394509516217339
+    second: tesla_blue_60
+  - first:
+      213: -9223324453821615376
+    second: tesla_blue_61
+  - first:
+      213: -7398907828487424130
+    second: tesla_blue_62
+  - first:
+      213: -3520363502900237315
+    second: tesla_blue_63
+  - first:
+      213: 6382057768589055709
+    second: tesla_blue_64
+  - first:
+      213: -6850700579799259244
+    second: tesla_blue_65
+  - first:
+      213: 7017258581020588133
+    second: tesla_blue_66
+  - first:
+      213: 7695263382607852344
+    second: tesla_blue_67
+  - first:
+      213: -2797474159913220746
+    second: tesla_blue_68
+  - first:
+      213: -5657830752720188603
+    second: tesla_blue_69
+  - first:
+      213: -9146932491588512163
+    second: tesla_blue_70
+  - first:
+      213: 6338997278722943349
+    second: tesla_blue_71
+  - first:
+      213: -4693391464450343381
+    second: tesla_blue_72
+  - first:
+      213: -6414773085860431114
+    second: tesla_blue_73
+  - first:
+      213: -1261764904093250362
+    second: tesla_blue_74
+  - first:
+      213: 3969277579934689255
+    second: tesla_blue_75
+  - first:
+      213: -283422576227804563
+    second: tesla_blue_76
+  - first:
+      213: -6540104069902127071
+    second: tesla_blue_77
+  - first:
+      213: -5016229867386627728
+    second: tesla_blue_78
+  - first:
+      213: 1311888714282424994
+    second: tesla_blue_79
+  - first:
+      213: 9210066738812637561
+    second: tesla_blue_80
+  - first:
+      213: 1064995866533249887
+    second: tesla_blue_81
+  - first:
+      213: -7219920041657167129
+    second: tesla_blue_82
+  - first:
+      213: 7175541776456097097
+    second: tesla_blue_83
+  - first:
+      213: -458958633119580882
+    second: tesla_blue_84
+  - first:
+      213: 7840221355855645667
+    second: tesla_blue_85
+  - first:
+      213: -6152292333994467877
+    second: tesla_blue_86
+  - first:
+      213: -8921264703922866333
+    second: tesla_blue_87
+  - first:
+      213: -5679628501697877758
+    second: tesla_blue_88
+  - first:
+      213: 3337637915696961966
+    second: tesla_blue_89
+  - first:
+      213: 3305169265529696580
+    second: tesla_blue_90
+  - first:
+      213: 2323170277632887784
+    second: tesla_blue_91
+  - first:
+      213: -7107122546186422563
+    second: tesla_blue_92
+  - first:
+      213: 7608939103232803624
+    second: tesla_blue_93
+  - first:
+      213: 5404928240595462898
+    second: tesla_blue_94
+  - first:
+      213: 2970808507943364289
+    second: tesla_blue_95
+  - first:
+      213: 8056831010861343018
+    second: tesla_blue_96
+  - first:
+      213: 1036381318621802511
+    second: tesla_blue_97
+  - first:
+      213: 5253889509970383225
+    second: tesla_blue_98
+  - first:
+      213: 2462567676645594122
+    second: tesla_blue_99
+  - first:
+      213: -1586920968822974573
+    second: tesla_blue_100
+  - first:
+      213: 1775610069535621078
+    second: tesla_blue_101
+  - first:
+      213: -8382174121123208753
+    second: tesla_blue_102
+  - first:
+      213: 4090791111752766353
+    second: tesla_blue_103
+  - first:
+      213: -5004148096374869287
+    second: tesla_blue_104
+  - first:
+      213: 632409784881456373
+    second: tesla_blue_105
+  - first:
+      213: 1389306074581282439
+    second: tesla_blue_106
+  - first:
+      213: -8920609646559735336
+    second: tesla_blue_107
+  - first:
+      213: -6856263265078206913
+    second: tesla_blue_108
+  - first:
+      213: 5563227297199046918
+    second: tesla_blue_109
+  - first:
+      213: -8260530925549038833
+    second: tesla_blue_110
+  - first:
+      213: 1704322586674531314
+    second: tesla_blue_111
+  - first:
+      213: 1200628216025649083
+    second: tesla_blue_112
+  - first:
+      213: -8376911350867403555
+    second: tesla_blue_113
+  - first:
+      213: -1332313379189190762
+    second: tesla_blue_114
+  - first:
+      213: 8877322399755013670
+    second: tesla_blue_115
+  - first:
+      213: -4053018915101281121
+    second: tesla_blue_116
+  - first:
+      213: -8586655913452826506
+    second: tesla_blue_117
+  - first:
+      213: -2568075375622133356
+    second: tesla_blue_118
+  - first:
+      213: 5350135969547331406
+    second: tesla_blue_119
+  - first:
+      213: -7072070026862938516
+    second: tesla_blue_120
+  - first:
+      213: -1176042962477575556
+    second: tesla_blue_121
+  - first:
+      213: 7685830410486388757
+    second: tesla_blue_122
+  - first:
+      213: -4083025818921812268
+    second: tesla_blue_123
+  - first:
+      213: -6924285794935348850
+    second: tesla_blue_124
+  - first:
+      213: 294804203015315057
+    second: tesla_blue_125
+  - first:
+      213: 1640515493340417407
+    second: tesla_blue_126
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tesla_blue_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 913
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396b8c3405ad3d041bcc41e236a8d080
+      internalID: -3209719824035278376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_1
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 913
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d6df08ea715974e8723f8794832c36
+      internalID: -5260279725752303815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_2
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 913
+        width: 47
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79b4bedb9ef41949b92584288af2d5b
+      internalID: 7695397696016348843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_3
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 913
+        width: 48
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f846c81ffe3c049bc4df77faa8b93e
+      internalID: 2560900532086617165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_4
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 913
+        width: 49
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4b3062860d24342817dd3fcb5dfe45
+      internalID: -6935086948627930246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 913
+        width: 48
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3240383ad5d48214e9a8ac6bd8f1b702
+      internalID: 8667698074110805811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 913
+        width: 47
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bd57133c79ef744a2a8f331d70f86e
+      internalID: 205653039561246679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_7
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 913
+        width: 47
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436fd93aaa25c0c45a6a6626bf78ebc9
+      internalID: -5536990028083733107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_8
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 913
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274a469868cd5b94e855ba9f95cdd10d
+      internalID: 4743129465365520318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_9
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 913
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad61da35a51422c42b00595fbe1d70d4
+      internalID: 1569841165419950084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_10
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 913
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4901a6505b120d4596f0220bd559fde
+      internalID: -2307113884510534927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_11
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 913
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3094bb3e813e89041ae5c0f6114b40c5
+      internalID: -5447922538073527006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_12
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 914
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650028e66ed70944da8faec5a94f349b
+      internalID: -8569376636425824824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_13
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 813
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7fda0c999685749ad857664cab6a66
+      internalID: 3140341787988398999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_14
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 813
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3555f4164e7546544976df45bf707af3
+      internalID: -4947093091850980932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_15
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 813
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99c6096b386c8a4d80cc1cb735fb41b
+      internalID: -7216051295912642104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_16
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 813
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e29ba75b321421c4880b6f0eba206abd
+      internalID: 8908015627627757553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_17
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 812
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3117be04f0599f64a9aebe548893817e
+      internalID: 8806271140374834375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_18
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 812
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5fd6d63cb518c84794c360bfe38bedc
+      internalID: 4401091941634996485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_19
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 812
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7479dddcfa052614aba1e2f9f13403e3
+      internalID: -8164589263207687235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_20
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 812
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 669b4f68be75c904cb55dcb4cd163705
+      internalID: -4312882089346372431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_21
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 812
+        width: 52
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3040693cb7b4e944bb38c545e96abe1
+      internalID: -5452728594323605935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_22
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 812
+        width: 62
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc18a2601b0d75940806dbd304fde632
+      internalID: 7575232174812246017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_23
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 812
+        width: 77
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e442d6e6a3b94b445bcfe570c8843251
+      internalID: 4727377903813008150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_24
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 812
+        width: 82
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a02ddfe22ea2041ab972b3c07f3193
+      internalID: -3526649037737788912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_25
+      rect:
+        serializedVersion: 2
+        x: 1854
+        y: 810
+        width: 72
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34189cee0a7586419b89ebc9d514927
+      internalID: 40702814899501662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_26
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 710
+        width: 76
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: debded7a5150a9247b0c5efab188b9ac
+      internalID: 4499730933232580403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_27
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 710
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5170779882b35764e952fdcb045a6abb
+      internalID: 4733785941240382589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_28
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 709
+        width: 84
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd48fdee60d091f44a7e05ddc0b87756
+      internalID: 4539956621308578334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_29
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 709
+        width: 82
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f317de9dff6824d8ec2f27c006cd68
+      internalID: 1689367982165348324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_30
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 710
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df15126653901d41b1150a468e5b704
+      internalID: 7696212872526442842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_31
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 710
+        width: 79
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faff13b4b7a26d74e9f9fb36ee31c196
+      internalID: -5036097753603133298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_32
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 711
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfaea85d83a1133479d550a554d490f4
+      internalID: 7300873088783393591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_33
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 711
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4013e6559c61ac46aaa0ea9ede12dd9
+      internalID: 7789335033127295707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_34
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 710
+        width: 42
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fabc4c0020455340b1eca9062b11ac0
+      internalID: 2137037294494088996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_35
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 710
+        width: 42
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e39f6d1249759b4997ea55cc958b07d
+      internalID: 7651065391240111064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_36
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 710
+        width: 43
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1bae414fdd464d4da5f3c8d13e3c014
+      internalID: 8146502396949164379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_37
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 710
+        width: 43
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277cd313b6041274fba7c63eff401115
+      internalID: 4150992782118261164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_38
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 710
+        width: 42
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d210a799d72b4948aef9b0574ffe46e
+      internalID: -330093047872595247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_39
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50784facf3ae6e44bb5c35e4503df67f
+      internalID: -6925770027695426586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_40
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c60e9f4066c1744281d982e399fc4af
+      internalID: 2467380264196263356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_41
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb95c8deb94bcc24683296be86e6701d
+      internalID: 5058220847620458801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_42
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3fda743d591f14ca6217448e5430b7
+      internalID: -823085757313607296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_43
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50e8175c8dfd504ca778bed74c741e7
+      internalID: -4438691923648923007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_44
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a1eea17cbb94444af8fccd5b9fa8d3
+      internalID: -6879510379172148524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_45
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b346ed75903c48045a8eee2978ec0d4c
+      internalID: -3972535840133054170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_46
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 610
+        width: 42
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e872239ac658c4bb8b0374351fb2b8
+      internalID: 8812849261305180454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_47
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 610
+        width: 42
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14ee425274390b4690f7b881140423e
+      internalID: -4674122881544826429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_48
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35984b9dd2b430c44a061f30f013f5a0
+      internalID: 8053294174134070351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_49
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dedf0329dae2854d89f83a6da62611c
+      internalID: -7032277859749511925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_50
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c9d6c18d7b2694eb3c07c7f73b858a
+      internalID: -3378518142287044333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_51
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 610
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf452e78b929e3f4b984074c41c9961c
+      internalID: 8559189987799554010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_52
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 509
+        width: 42
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55dcc1cd40bef3b459f8079da645626b
+      internalID: -7311906469675179223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_53
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 509
+        width: 46
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544dad66c554da345814f7b97dd25b73
+      internalID: 7347610683810823279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_54
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 509
+        width: 53
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beab297d420465640b7f02af3acd62de
+      internalID: 4645619393643066420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_55
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 509
+        width: 59
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4892ec46a7faf4da16a471925f4c6d
+      internalID: 4815106460850905719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_56
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 509
+        width: 63
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6fbeb828b885d43ab6438e520e0d7f
+      internalID: -5051980311256043846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_57
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 509
+        width: 65
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da9675211742c84e9f8c4ebc1270a69
+      internalID: -2609994660237338450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_58
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 509
+        width: 70
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe693840a3ceef4ab94c8b6c092f1cf
+      internalID: -314769309269501248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_59
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 509
+        width: 74
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dca0bbc6e0f58d34c862f8345628a23f
+      internalID: 6412742863403364276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_60
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 509
+        width: 74
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88abd72a9d7b50b448243f9021c80089
+      internalID: -3765394509516217339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_61
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 508
+        width: 69
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0add8ffcdb89da043bcc02413f9fadb0
+      internalID: -9223324453821615376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_62
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 509
+        width: 72
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b4f93764ca820489a2c0dd79bb8160
+      internalID: -7398907828487424130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_63
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 508
+        width: 79
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0400cc851db814a9905d1b6d6549b7
+      internalID: -3520363502900237315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_64
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 508
+        width: 79
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fabe78a6c6ca60e44b180465069335bc
+      internalID: 6382057768589055709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_65
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 408
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cd0a15bde740943896eb82c4b90175
+      internalID: -6850700579799259244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_66
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ad04e551319784799200eb1bde7b12
+      internalID: 7017258581020588133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_67
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eea23514e0e47f448335751dff31e2c
+      internalID: 7695263382607852344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_68
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abeceec79c49e24994e034dc1868295
+      internalID: -2797474159913220746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_69
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6720a221e2e77349ad3af854f5c1375
+      internalID: -5657830752720188603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_70
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8f44931a0fe0f4386c3e1c973147f6
+      internalID: -9146932491588512163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_71
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929c96c8189705a459073c9fe0153680
+      internalID: 6338997278722943349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_72
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd5fa3509bd03d41a925c3c71fecd34
+      internalID: -4693391464450343381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_73
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8662cd2a584c484f9ca7bbe4dcc2a85
+      internalID: -6414773085860431114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_74
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 408
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dabbd22733aa574f8b1902198b30103
+      internalID: -1261764904093250362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_75
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 408
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9db4a9564de3b248bd298bc5959bb0a
+      internalID: 3969277579934689255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_76
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 408
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1241478fffedcb44b8118c1543521815
+      internalID: -283422576227804563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_77
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 408
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7001cdfa81a5a9f429afbebfb56563a2
+      internalID: -6540104069902127071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_78
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 307
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bb26635951c8c479d1d4f14648a586
+      internalID: -5016229867386627728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_79
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 307
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c6bd737076b784796f69dcd779a8be
+      internalID: 1311888714282424994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_80
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 307
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e50c49634479ab41b45d493f0bd1ce4
+      internalID: 9210066738812637561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_81
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 307
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6491ec1eb02a1ac43acbebd5321cb3e1
+      internalID: 1064995866533249887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_82
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 307
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c851a67808d9544b15e443e8e9a7d5
+      internalID: -7219920041657167129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_83
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 307
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c98c2a2ba6c9f4ebe1fc59ce6445d5
+      internalID: 7175541776456097097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_84
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 307
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05c86baeb551ef41b7dd20d29f21a00
+      internalID: -458958633119580882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_85
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 307
+        width: 46
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d8af072ac6186f4da9a6d8c02dc6d61
+      internalID: 7840221355855645667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_86
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 307
+        width: 51
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867f21aac745d8b4eb00cfde40219472
+      internalID: -6152292333994467877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_87
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 307
+        width: 61
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3079206b9a7dc2a4db82463efcdd5729
+      internalID: -8921264703922866333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_88
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 307
+        width: 69
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbcf4067d44614449adfb5d1dd105c5
+      internalID: -5679628501697877758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_89
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 307
+        width: 82
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd857b9dba1e0884da63ec60aee3cd07
+      internalID: 3337637915696961966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_90
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 307
+        width: 88
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094cbca6a94972d41a5e852db6beecfc
+      internalID: 3305169265529696580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_91
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 206
+        width: 89
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9330a1d74d0deb540865ae1a201b5010
+      internalID: 2323170277632887784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_92
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 205
+        width: 90
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3e307bac54ddd4b93cfea297ac5089
+      internalID: -7107122546186422563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_93
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 204
+        width: 92
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5890eab2d9e9b458e4ef31261c417a
+      internalID: 7608939103232803624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_94
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 204
+        width: 92
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90274806527f92646bbdf00c28f0fdb1
+      internalID: 5404928240595462898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_95
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 204
+        width: 92
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639c844a7f30c3f4a91022a13508434f
+      internalID: 2970808507943364289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_96
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 206
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05829c51f19908f438000127a3e8970d
+      internalID: 8056831010861343018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_97
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2c4c1719dbe4a49b0beca4b7d7d325
+      internalID: 1036381318621802511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_98
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1317a8abf2a6b1f4da824da37ceb3aa7
+      internalID: 5253889509970383225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_99
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a75e3cd1df2697f40945c309eb2edf51
+      internalID: 2462567676645594122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_100
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57eb24b7f7b66b540bcf485c81cc2d5a
+      internalID: -1586920968822974573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_101
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e18ddb02fe026d14eb496c1114becca3
+      internalID: 1775610069535621078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_102
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917c5ab9299a9404b8041618cd52d3f4
+      internalID: -8382174121123208753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_103
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 206
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5894bb119a80d46bc3217806d9ccbd
+      internalID: 4090791111752766353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_104
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 105
+        width: 44
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670fd7f03968a2f48a159b2b58717834
+      internalID: -5004148096374869287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_105
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79b424cd2a9ff247ae0bcd5c604f548
+      internalID: 632409784881456373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_106
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d2349775ab23c498f2051ae2eefe42
+      internalID: 1389306074581282439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_107
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62978c9abeff8264c94e27701988c980
+      internalID: -8920609646559735336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_108
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 105
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b91cf50bf630c44b5153fef2d6b888
+      internalID: -6856263265078206913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_109
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 105
+        width: 44
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7377117411ca734386c9418f277c631
+      internalID: 5563227297199046918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_110
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 105
+        width: 44
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41a8165c18c13b4988004f767528ed0
+      internalID: -8260530925549038833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_111
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 105
+        width: 44
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ed06de294ed14349afce79b7ec50b4e
+      internalID: 1704322586674531314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_112
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 105
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427bb82904695504181c26f76e5035b7
+      internalID: 1200628216025649083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_113
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 105
+        width: 45
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fadc210c7a1960d43a19e00dcae7f67e
+      internalID: -8376911350867403555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_114
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4279ad3d640ce34cb1edd59967f6715
+      internalID: -1332313379189190762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_115
+      rect:
+        serializedVersion: 2
+        x: 1715
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8315fc18c9a221c4e94a5c78dc087fdf
+      internalID: 8877322399755013670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_116
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 105
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b48abc40ff6c794d941c82c3658b08c
+      internalID: -4053018915101281121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_117
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 4
+        width: 50
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f04131865682e24eb60b44bb4a71746
+      internalID: -8586655913452826506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_118
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 4
+        width: 61
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ffcef11f418c64ea83dc15e9e7cd12
+      internalID: -2568075375622133356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_119
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 4
+        width: 69
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637eeb63433ff7b42a2347b57f455510
+      internalID: 5350135969547331406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_120
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 4
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d471106f4ab49354bac07276b850d6a0
+      internalID: -7072070026862938516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_121
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 4
+        width: 88
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d12467217c788545846ed2b2aa15065
+      internalID: -1176042962477575556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_122
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 4
+        width: 89
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d3dbe0f14a8b04a9b6675edd828f59
+      internalID: 7685830410486388757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_123
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 3
+        width: 90
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d994d7bd5f5744495c446bf6eac9b0
+      internalID: -4083025818921812268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_124
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 2
+        width: 91
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86622adac4be0b64796bf03a67088b9f
+      internalID: -6924285794935348850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_125
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 2
+        width: 91
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a1893181e6507c46a7d1ece974c8d54
+      internalID: 294804203015315057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesla_blue_126
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 2
+        width: 91
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eb5facf8199e6441abab3c8ce13dbc6
+      internalID: 1640515493340417407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

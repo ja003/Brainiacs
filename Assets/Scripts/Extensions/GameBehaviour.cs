@@ -23,6 +23,17 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
+	private Animator _animator;
+	protected Animator animator
+	{
+		get
+		{
+			if(_animator == null)
+				_animator = GetComponent<Animator>();
+			return _animator;
+		}
+	}
+
 
 	private bool awaken;
 	private UnityAction onAwake;

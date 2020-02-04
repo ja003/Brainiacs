@@ -27,7 +27,7 @@ public class MapController : GameController
 			{
 				Debug.LogWarning("Map is already present in the scene");
 				if(!Brainiacs.SelfInitGame)
-					Debug.LogError("Map object cant be present in the scene");
+					Debug.LogError("Map object cant be present in the scene [not error if debugging]");
 				return;
 			}
 		}

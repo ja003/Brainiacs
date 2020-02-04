@@ -32,7 +32,7 @@ public class ItemGenerator : GameController
 
 	private void StartGenerating()
 	{
-		float time = Random.Range(1, 2);
+		float time = Random.Range(1, 10);
 		DoInTime(GenerateRandomItem, time);
 	}
 

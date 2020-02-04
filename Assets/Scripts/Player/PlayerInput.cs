@@ -26,14 +26,17 @@ public class PlayerInput : MonoBehaviour
 	
 	private void ProcessMovementInput()
 	{
+		bool movementRequested = false;
 		foreach(EDirection dir in Enum.GetValues(typeof(EDirection)))
 		{
-			if(IsMovementRequested(dir))
+			if(movementRequested = IsMovementRequested(dir))
 			{
 				movement.Move(dir);
 				break;
 			}
 		}
+		if(!movementRequested)
+			movement.Idle();
 
 		//HACK
 		movement.SetSpeedMultiplier(Input.GetKey(KeyCode.LeftShift) ? 10 : 1);

@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : GameBehaviour
 {
 	[SerializeField]
 	private Player player;
 
-	[SerializeField]
-	private PlayerWeaponController weapon;
+	//[SerializeField]
+	//private PlayerWeaponController weapon;
 
 	private const float movementSpeed = 0.05f;
 
@@ -17,14 +17,28 @@ public class PlayerMovement : MonoBehaviour
 
 	EDirection currentDirection;
 
-	internal void Move(EDirection pDirection)
+	internal void Init()
 	{
+		Move(EDirection.Right);
+	}
+
+	public void Move(EDirection pDirection)
+	{
+		//Debug.Log(gameObject.name + " move " + pDirection);
 		if(currentDirection != pDirection)
 		{
-			weapon.OnChangeDirection(pDirection);
+			player.Visual.OnDirectionChange(pDirection);
+			//weapon.OnChangeDirection(pDirection);
 		}
 		currentDirection = pDirection;
 		transform.position += GetVector(pDirection) * movementSpeed * movementSpeedMultiplier;
+		player.Visual.Move();
+	}
+
+	public void Idle()
+	{
+		//Debug.Log(gameObject.name + " idle");
+		player.Visual.Idle();
 	}
 
 	private Vector3 GetVector(EDirection pDirection)
@@ -42,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		return Vector3.zero;
 	}
+
 
 	internal void SetSpeedMultiplier(float pValue)
 	{
