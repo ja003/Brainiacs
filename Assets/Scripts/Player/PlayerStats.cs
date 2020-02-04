@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,9 +21,33 @@ public class PlayerStats
 		Name = pPlayerInfo.Name;
 	}
 
+	internal bool IsDead()
+	{
+		return Health <= 0;
+	}
+
 	public void SetSpeed(float pSpeed, int pDuration)
 	{
 		Speed = pSpeed;
 		//todo: duration
+	}
+
+	public void OnRespawn()
+	{
+		Health = 100;
+	}
+
+
+	/// <summary>
+	/// Decreases health.
+	/// Returns true if dead.
+	/// </summary>
+	public bool DecreseHealth(int pValue)
+	{
+		Debug.Log($"{Name} DecreseHealth by {pValue}");
+		Health -= pValue;
+		if(IsDead())
+			Lives--;
+		return IsDead();
 	}
 }

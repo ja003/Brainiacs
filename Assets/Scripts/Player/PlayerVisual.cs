@@ -24,12 +24,27 @@ public class PlayerVisual : GameBehaviour
 	[SerializeField]
 	private SpriteRenderer handsRight;
 
-	internal void Die()
+	internal void OnDie()
 	{
 		animator.SetBool(AC_KEY_IS_DEAD, true);
 		animator.SetTrigger(AC_KEY_DIE);
 
-		DoInTime(() => animator.SetBool(AC_KEY_IS_DEAD, false), 2);
+		DoInTime(() => SetVisible(false), 1);
+	}
+
+	public void SetVisible(bool pValue)
+	{
+		gameObject.SetActive(pValue);
+		//playerRenderer.enabled = pValue;
+	}
+
+	public void OnSpawn()
+	{
+		//Debug.Log($"{this} Spawn");
+		SetVisible(true);
+
+		animator.SetBool(AC_KEY_IS_DEAD, false);
+		OnDirectionChange(currentDirection); //reset animator value
 	}
 
 	[SerializeField]

@@ -12,6 +12,8 @@ public class PlayerWeaponConfig : PlayerItemConfig
 	public int ammo;
 	public int Cooldown;
 
+	public ProjectileConfig Projectile;
+
 	public override void OnEnterPlayer(Player pPlayer)
 	{
 		pPlayer.ItemHandler.OnEnterWeapon(this);

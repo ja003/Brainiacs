@@ -34,6 +34,8 @@ public class PlayerInitInfo
 	{
 		Hero = pHero;
 		Name = pName;
+
+		Lives = 10;
 	}
 
 }

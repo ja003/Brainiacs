@@ -13,7 +13,8 @@ public class Game : CSingleton<Game>
 	[SerializeField]
 	private PlayersController playersController;
 
-	
+	[SerializeField]
+	public ProjectileManager ProjectileManager;
 
 	protected override void Awake()
 	{

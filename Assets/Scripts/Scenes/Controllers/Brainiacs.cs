@@ -55,7 +55,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 		GameResultInfo = new GameResultInfo();
 		foreach(Player player in pPlayers)
 		{
-			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player.stats));
+			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player.Stats));
 		}
 
 	}

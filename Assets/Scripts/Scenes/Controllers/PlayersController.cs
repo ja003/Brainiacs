@@ -21,10 +21,10 @@ public class PlayersController : GameController
 			Player playerInstance = Instantiate(playerPrefab,
 				transform);
 			playerInstance.gameObject.name = "Player_" + playerInfo.Name;
-			playerInstance.transform.position =
-				game.MapController.ActiveMap.GetSpawnPoint().position;
 
-			playerInstance.SetInfo(playerInfo);
+			Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+			
+			playerInstance.SetInfo(playerInfo, spawnPosition);
 
 			Players.Add(playerInstance);
 		}

@@ -24,7 +24,7 @@ public class PlayerWeapon
 
 	public void Use()
 	{
-		Debug.Log($"Use {Id}, Ammo = {Ammo}");
+		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 	}
 
 	internal void Add(PlayerWeaponConfig pConfig)

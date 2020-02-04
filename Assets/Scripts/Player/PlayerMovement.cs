@@ -8,6 +8,9 @@ public class PlayerMovement : GameBehaviour
 	[SerializeField]
 	private Player player;
 
+	[SerializeField]
+	public Collider2D PlayerCollider;
+
 	//[SerializeField]
 	//private PlayerWeaponController weapon;
 
@@ -15,48 +18,35 @@ public class PlayerMovement : GameBehaviour
 
 	private float movementSpeedMultiplier = 1;
 
-	EDirection currentDirection;
+	public EDirection CurrentDirection { get; private set; }
 
-	internal void Init()
+	internal void SpawnAt(Vector3 pPosition)
 	{
-		Move(EDirection.Right);
+		transform.position = pPosition;
+		Move(EDirection.Right); //set init direction
+		player.Visual.OnSpawn();
 	}
 
 	public void Move(EDirection pDirection)
 	{
 		//Debug.Log(gameObject.name + " move " + pDirection);
-		if(currentDirection != pDirection)
+		if(CurrentDirection != pDirection)
 		{
 			player.Visual.OnDirectionChange(pDirection);
 			//weapon.OnChangeDirection(pDirection);
 		}
-		currentDirection = pDirection;
-		transform.position += GetVector(pDirection) * movementSpeed * movementSpeedMultiplier;
+		CurrentDirection = pDirection;
+		transform.position += Utils.GetVector(pDirection) * movementSpeed * movementSpeedMultiplier;
 		player.Visual.Move();
 	}
+
+	
 
 	public void Idle()
 	{
 		//Debug.Log(gameObject.name + " idle");
 		player.Visual.Idle();
 	}
-
-	private Vector3 GetVector(EDirection pDirection)
-	{
-		switch(pDirection)
-		{
-			case EDirection.Up:
-				return Vector3.up;
-			case EDirection.Right:
-				return Vector3.right;
-			case EDirection.Down:
-				return Vector3.down;
-			case EDirection.Left:
-				return Vector3.left;
-		}
-		return Vector3.zero;
-	}
-
 
 	internal void SetSpeedMultiplier(float pValue)
 	{

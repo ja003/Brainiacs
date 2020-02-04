@@ -22,3 +22,4 @@ MonoBehaviour:
   damage: 5
   ammo: 5
   Cooldown: 5
+  Projectile: {fileID: 11400000, guid: 81bdfffcfe701684c92dbb84ee69e8ee, type: 2}

@@ -18,26 +18,26 @@ public class Player : GameBehaviour
 	[SerializeField]
 	public PlayerMovement Movement;
 
+	[SerializeField]
+	public PlayerHealth Health;
+
 	public PlayerItemHandler ItemHandler;
-	public PlayerStats stats;
+	public PlayerStats Stats { get; private set; }
 
 	private void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.C))
 		{
-			DebugDie();
+			Health.DebugDie();
 		}
 	}
 
-	private void DebugDie()
-	{
-		Visual.Die();
-	}
 
-	internal void SetInfo(PlayerInitInfo pPlayerInfo)
+	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
 	{
-		stats = new PlayerStats(pPlayerInfo);
-		ItemHandler = new PlayerItemHandler(stats, WeaponController);
+		Stats = new PlayerStats(pPlayerInfo);
+		ItemHandler = new PlayerItemHandler(Stats, WeaponController);
+		Health.Init(Stats);
 
 		input.Keys = pPlayerInfo.PlayerKeys;
 
@@ -53,7 +53,7 @@ public class Player : GameBehaviour
 
 		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero));
 
-		Movement.Init();
+		Movement.SpawnAt(pSpawnPosition);
 
 	}
 
