@@ -24,6 +24,14 @@ public class PlayerWeaponController : GameBehaviour
 	private PlayerWeapon activeWeapon;
 	[SerializeField] private int activeWeaponIndex;
 
+	private Action<PlayerWeapon> onWeaponInfoChanged;
+
+	public void SetOnWeaponInfoChanged(Action<PlayerWeapon> pAction)
+	{
+		onWeaponInfoChanged += pAction;
+		onWeaponInfoChanged.Invoke(activeWeapon);
+	}
+
 	public void AddWeapon(PlayerWeaponConfig pConfig)
 	{
 		PlayerWeapon weaponInInventory =
@@ -61,6 +69,7 @@ public class PlayerWeaponController : GameBehaviour
 				movement,
 				activeWeapon.Config.Projectile);
 		}
+		onWeaponInfoChanged.Invoke(activeWeapon);
 	}
 
 	private Vector3 GetProjectileStartPosition(EDirection pDirection)
@@ -88,6 +97,7 @@ public class PlayerWeaponController : GameBehaviour
 		activeWeapon = weapons[pIndex];
 
 		visual.SetActiveWeapon(activeWeapon);
+		onWeaponInfoChanged?.Invoke(activeWeapon);
 	}
 
 

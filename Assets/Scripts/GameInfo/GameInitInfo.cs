@@ -29,11 +29,13 @@ public class PlayerInitInfo
 	public EHero Hero;
 	public int Lives;
 	public PlayerKeys PlayerKeys;
+	public Color Color;
 
-	public PlayerInitInfo(EHero pHero, string pName)
+	public PlayerInitInfo(EHero pHero, string pName, Color pColor)
 	{
 		Hero = pHero;
 		Name = pName;
+		Color = pColor;
 
 		Lives = 10;
 	}

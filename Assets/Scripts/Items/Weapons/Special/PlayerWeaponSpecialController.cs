@@ -15,7 +15,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour
 		owner = pOwner;
 		weaponContoller = pOwner.WeaponController;
 		Physics2D.IgnoreCollision(boxCollider2D, pOwner.Collider);
-		Debug.Log($"Ignore collisions between {boxCollider2D.gameObject.name} and {owner}");
+		//Debug.Log($"Ignore collisions between {boxCollider2D.gameObject.name} and {owner}");
 
 		OnInit();
 	}

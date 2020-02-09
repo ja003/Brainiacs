@@ -33,7 +33,7 @@ public class PlayerResultInfo
 		Name = pStats.Name;
 		Hero = pStats.Hero;
 		Kills = pStats.Kills;
-		LivesLeft = pStats.Lives;
+		LivesLeft = pStats.LivesLeft;
 	}
 
 	public int GetScore()

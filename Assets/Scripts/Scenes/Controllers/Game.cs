@@ -11,7 +11,7 @@ public class Game : CSingleton<Game>
 	public MapController MapController;
 
 	[SerializeField]
-	private PlayersController playersController;
+	public PlayersController playersController;
 
 	[SerializeField]
 	public ProjectileManager ProjectileManager;
@@ -34,6 +34,7 @@ public class Game : CSingleton<Game>
 
 	public new void Activate()
 	{
+		Debug.Log("Game Activate");
 		base.Activate();
 		mainCamera.enabled = true;
 	}

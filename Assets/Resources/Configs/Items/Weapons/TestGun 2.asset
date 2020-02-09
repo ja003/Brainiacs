@@ -23,3 +23,4 @@ MonoBehaviour:
   ammo: 5
   Cooldown: 5
   Projectile: {fileID: 11400000, guid: 81bdfffcfe701684c92dbb84ee69e8ee, type: 2}
+  InfoSprite: {fileID: 21300000, guid: c7df13fc38e183146810582533f7a2f8, type: 3}

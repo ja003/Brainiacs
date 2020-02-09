@@ -28,6 +28,7 @@ public class PlayerWeapon
 	public virtual void Use()
 	{
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
+		Ammo--;
 	}
 
 	internal void Add(PlayerWeaponConfig pConfig)

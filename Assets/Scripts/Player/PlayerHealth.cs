@@ -31,11 +31,11 @@ public class PlayerHealth : GameBehaviour
 
 	private void Die()
 	{
-		Debug.Log($"{this} Die ({stats.Lives} lives left)");
+		Debug.Log($"{this} Die ({stats.LivesLeft} lives left)");
 
 		visual.OnDie();
 
-		if(stats.Lives > 0)
+		if(stats.LivesLeft > 0)
 		{
 			DoInTime(Respawn, 2);
 		}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,13 @@ public abstract class GameController : GameBehaviour
 {
 	protected override void Awake()
 	{
+		//Debug.Log($"{gameObject.name} Awake");
 		base.Awake();
-		game.SetOnAwaken(GameAwaken);
-		game.SetOnActivated(GameActivated);
+		if(game != this)
+		{
+			game.SetOnAwaken(GameAwaken);
+			game.SetOnActivated(GameActivated);
+		}
 	}
 
 	bool onGameAwakenCalled = false;
@@ -44,5 +49,7 @@ public abstract class GameController : GameBehaviour
 	{
 		return transform;
 	}
+
+	//public Action OnActivated;
 
 }

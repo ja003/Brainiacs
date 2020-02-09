@@ -14,6 +14,7 @@ public class PlayerWeaponConfig : PlayerItemConfig
 	public int Cooldown;
 
 	public ProjectileConfig Projectile;
+	public Sprite InfoSprite;
 
 	public override void OnEnterPlayer(Player pPlayer)
 	{

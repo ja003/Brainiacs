@@ -10,4 +10,6 @@ public class HeroConfig : ScriptableObject
 	public EWeaponId defaultWeapon;
 	//todo: special weapon own class?
 	public EWeaponId specialWeapon;
+
+	public Sprite Portrait;
 }

@@ -30,6 +30,9 @@ public class PlayersController : GameController
 		}
 
 		playerSorter.SetPlayers(Players);
+
+		//invoke on activated
+		Activate();
 	}
 
 	protected override void OnGameAwaken()

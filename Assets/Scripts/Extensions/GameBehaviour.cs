@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameBehaviour : MonoBehaviour
 {
@@ -45,12 +46,25 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
+	private Image _image;
+	protected Image image
+	{
+		get
+		{
+			if(_image == null)
+				_image = GetComponent<Image>();
+			return _image;
+		}
+	}
+
 	private bool awaken;
-	private UnityAction onAwake;
-	//private List<UnityAction> onAwake = new List<UnityAction>();
+	//private UnityAction onAwake;
+	private List<Action> onAwaken = new List<Action>();
 
 	private bool activated;
-	private UnityAction onGameActivated;
+	//private UnityAction onActivated;
+	//private Action onActivated;
+	private List<Action> onActivated = new List<Action>();
 	//private List<UnityAction> onGameActivated = new List<UnityAction>();
 
 	protected virtual void Awake()
@@ -66,40 +80,46 @@ public class GameBehaviour : MonoBehaviour
 		SetOnActivated(); //invoke onGameActivated actions
 	}
 
-	public void SetOnAwaken(UnityAction pAction = null)
+	public void SetOnAwaken(Action pAction = null)
 	{
 		if(pAction != null)
-			onAwake += pAction;
+			onAwaken.Add(pAction);
 		//onAwake.Add(pAction);
 
 		if(awaken)
 		{
-			onAwake?.Invoke();
-			onAwake = null;
-			//foreach(UnityAction action in onAwake)
-			//{
-			//	action.Invoke();
-			//}
-			//onAwake.Clear();
+			for(int i = onAwaken.Count - 1; i >= 0; i--)
+			{
+				if(i >= onAwaken.Count)
+					continue;
+				Action action = onAwaken[i];
+				onAwaken.RemoveAt(i);
+				action.Invoke();
+			}
+			onAwaken.Clear();
 		}
 	}
 
-	public void SetOnActivated(UnityAction pAction = null)
+	public void SetOnActivated(Action pAction = null)
 	{
-		//Debug.Log($"{gameObject.name} SetOnActivated {onGameActivated}, {activated}");
+		//Debug.Log($"{gameObject.name} SetOnActivated {activated}");
 		if(pAction != null)
-			onGameActivated += pAction;
+			onActivated.Add(pAction);
 		//onGameActivated.Add(pAction);
 
 		if(activated)
 		{
-			onGameActivated?.Invoke();
-			onGameActivated = null;
-			//foreach(UnityAction action in onGameActivated)
-			//{
-			//	action.Invoke();
-			//}
-			//onGameActivated.Clear();
+			for(int i = onActivated.Count - 1; i >= 0; i--)
+			{
+				//NOTE: onActivated count can be changed within invoked action
+				if(i >= onActivated.Count)
+					continue;
+
+				Action action = onActivated[i];
+				onActivated.RemoveAt(i);
+				action.Invoke();
+			}
+			onActivated.Clear();
 		}
 	}
 
@@ -107,6 +127,4 @@ public class GameBehaviour : MonoBehaviour
 	{
 		LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
 	}
-
-
 }

@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: Tesla
   m_EditorClassIdentifier: 
   hero: 3
-  characterUp: {fileID: 21300000, guid: b8abfdbe983008341bc067c48fa0d1d9, type: 3}
-  characterRight: {fileID: 21300000, guid: 6e63a6ae1316a024eabb447800362fe8, type: 3}
-  characterDown: {fileID: 21300000, guid: a04d3a009395a1d48a8b0170dc39f1c6, type: 3}
-  characterLeft: {fileID: 21300000, guid: e1f0ebfe510d3514aae1008342585741, type: 3}
   defaultWeapon: 1
-  specialWeapon: 0
+  specialWeapon: 100
+  Portrait: {fileID: 21300000, guid: e2985a166c85aeb46a8b3d5b03cbd139, type: 3}
