@@ -123,8 +123,14 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
-	protected void DoInTime(Action pEvent, float pTime)
+	protected void DoInTime(Action pEvent, float pTime, Action<float> pOnUpdate = null)
 	{
-		LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
+		if(pOnUpdate == null)
+			LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
+		else
+		{
+			LeanTween.value(0, 1, pTime)
+				  .setOnComplete(pEvent).setOnUpdate(pOnUpdate);
+		}
 	}
 }

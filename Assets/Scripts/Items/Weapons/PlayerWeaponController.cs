@@ -25,6 +25,20 @@ public class PlayerWeaponController : GameBehaviour
 	[SerializeField] private int activeWeaponIndex;
 
 	private Action<PlayerWeapon> onWeaponInfoChanged;
+	public void InvokeWeaponChange(PlayerWeapon pWeapon)
+	{
+		onWeaponInfoChanged(pWeapon);
+	}
+
+	private void RemoveWeapon(PlayerWeapon pWeapon)
+	{
+		if(activeWeapon == pWeapon)
+		{
+			//we can count on player always having at least 2 weapons (basic + special)
+			SwapWeapon();
+		}
+		weapons.Remove(pWeapon);
+	}
 
 	public void SetOnWeaponInfoChanged(Action<PlayerWeapon> pAction)
 	{
@@ -49,7 +63,7 @@ public class PlayerWeaponController : GameBehaviour
 
 			weapons.Add(weaponInInventory);
 		}
-		
+
 		SetActiveWeapon(weapons.IndexOf(weaponInInventory));
 	}
 
@@ -60,8 +74,15 @@ public class PlayerWeaponController : GameBehaviour
 
 	public void UseWeapon()
 	{
-		Debug.Log("USE");
-		activeWeapon.Use();
+		EWeaponUseResult useResult = activeWeapon.Use();
+		if(useResult == EWeaponUseResult.CantUse)
+		{
+			Debug.Log($"{activeWeapon} cant be used");
+			//TODO: play CANT_USE sound
+			return;
+		}
+		Debug.Log($"{activeWeapon} USE");
+
 		if(activeWeapon.Config.Projectile != null)
 		{
 			game.ProjectileManager.SpawnProjectile(
@@ -70,7 +91,37 @@ public class PlayerWeaponController : GameBehaviour
 				activeWeapon.Config.Projectile);
 		}
 		onWeaponInfoChanged.Invoke(activeWeapon);
+
+		HandleUseResult(useResult);
 	}
+
+	private void HandleUseResult(EWeaponUseResult pUseResult)
+	{
+		switch(pUseResult)
+		{
+			case EWeaponUseResult.Reload:
+				ReloadWeapon(activeWeapon);
+				break;
+			case EWeaponUseResult.Remove:
+				RemoveWeapon(activeWeapon);
+				break;
+		}
+	}
+
+	/// <summary>
+	/// Starts realoding the weapon.
+	/// There can be multiple weapons reloading at the same time.
+	/// </summary>
+	private void ReloadWeapon(PlayerWeapon pWeapon)
+	{
+		pWeapon.IsRealoading = true;
+
+		Action onReloaded = pWeapon.Reload;
+		Action<float> onReloadUpdate = pWeapon.ReportReloadProgress;
+
+		DoInTime(onReloaded, pWeapon.Config.Cooldown, onReloadUpdate);
+	}
+
 
 	private Vector3 GetProjectileStartPosition(EDirection pDirection)
 	{
@@ -94,7 +145,11 @@ public class PlayerWeaponController : GameBehaviour
 		pIndex = pIndex % weapons.Count;
 
 		activeWeaponIndex = pIndex;
+
+		if(activeWeapon != null)
+			activeWeapon.IsActive = false;
 		activeWeapon = weapons[pIndex];
+		activeWeapon.IsActive = true;
 
 		visual.SetActiveWeapon(activeWeapon);
 		onWeaponInfoChanged?.Invoke(activeWeapon);

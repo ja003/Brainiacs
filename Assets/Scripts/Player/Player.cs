@@ -47,18 +47,24 @@ public class Player : GameBehaviour
 			brainiacs.ItemManager.GetHeroWeaponConfig(pPlayerInfo.Hero));
 		
 
-		//todo: delete. test adding weapons
-		WeaponController.AddWeapon(
-			brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
-		//todo: delete. test adding same weapon
-		WeaponController.AddWeapon(
-			brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
+		////todo: delete. test adding weapons
+		//WeaponController.AddWeapon(
+		//	brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
+		////todo: delete. test adding same weapon
+		//WeaponController.AddWeapon(
+		//	brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
 
 
 		//SPECIAL
-		//last one is active
 		WeaponController.AddWeapon(
 			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pPlayerInfo.Hero));
+
+		////todo: delete. 
+		//WeaponController.AddWeapon(
+		//	brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun));
+
+		//last one is active
+
 
 
 		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero));

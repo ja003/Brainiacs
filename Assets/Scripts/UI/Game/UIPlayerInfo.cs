@@ -31,6 +31,7 @@ public class UIPlayerInfo : GameBehaviour
 	private void SetWeaponInfo(PlayerWeapon pWeapon)
 	{
 		weapon.sprite = pWeapon.Config.InfoSprite;
-		ammo.text = pWeapon.Ammo.ToString();
+		weapon.color = pWeapon.IsRealoading ? Color.black : Color.white;
+		ammo.text = pWeapon.GetAmmoText();
 	}
 }

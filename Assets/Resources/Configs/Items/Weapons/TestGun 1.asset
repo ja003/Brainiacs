@@ -20,7 +20,8 @@ MonoBehaviour:
   PlayerSpriteLeft: {fileID: 21300000, guid: fa5d6e5fe2af8a8408989fcbd2bf7cb9, type: 3}
   Id: 1
   damage: 5
-  ammo: 5
+  ammo: 1
+  Magazines: 666
   Cooldown: 5
   Projectile: {fileID: 11400000, guid: 81bdfffcfe701684c92dbb84ee69e8ee, type: 2}
   InfoSprite: {fileID: 21300000, guid: 2dbafe89849424049a9e5c006b73cdda, type: 3}

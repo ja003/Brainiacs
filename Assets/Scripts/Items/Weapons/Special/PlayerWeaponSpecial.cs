@@ -8,7 +8,7 @@ public class PlayerWeaponSpecial : PlayerWeapon
 
 	public PlayerWeaponSpecial(PlayerWeaponSpecialConfig pConfig
 		, Player pOwner
-		): base(pConfig, pOwner)
+		) : base(pConfig, pOwner)
 	{
 		//controller = pController;
 
@@ -20,9 +20,9 @@ public class PlayerWeaponSpecial : PlayerWeapon
 		specialController.Init(pOwner);
 	}
 
-	public override void Use()
+	public override EWeaponUseResult Use()
 	{
-		base.Use();
 		specialController.Use();
+		return base.Use();
 	}
 }

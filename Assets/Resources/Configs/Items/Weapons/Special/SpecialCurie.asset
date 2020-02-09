@@ -24,8 +24,9 @@ MonoBehaviour:
     type: 3}
   Id: 101
   damage: 100
-  ammo: 666
-  Cooldown: 10
+  ammo: 1
+  Magazines: 666
+  Cooldown: 5
   Projectile: {fileID: 0}
   InfoSprite: {fileID: 21300000, guid: a91abba2899250e49ba5081bd6d86861, type: 3}
   controllerPrefab: {fileID: 555363088968685898, guid: 5363eeacacbe08f4dbc33e264e61d3b4,

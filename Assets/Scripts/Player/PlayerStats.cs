@@ -70,8 +70,8 @@ public class PlayerStats
 		if(IsDead())
 		{
 			Deaths++;
-			onStatsChange.Invoke(this);
 		}
+		onStatsChange.Invoke(this);
 		return IsDead();
 	}
 }

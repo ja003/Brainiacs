@@ -11,6 +11,7 @@ public class PlayerWeaponConfig : PlayerItemConfig
 
 	public int damage;
 	public int ammo;
+	public int Magazines;
 	public int Cooldown;
 
 	public ProjectileConfig Projectile;
