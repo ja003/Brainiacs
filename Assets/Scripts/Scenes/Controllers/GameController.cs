@@ -40,4 +40,9 @@ public abstract class GameController : GameBehaviour
 	}
 	protected abstract void OnGameActivated();
 
+	public virtual Transform GetHolder()
+	{
+		return transform;
+	}
+
 }

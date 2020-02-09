@@ -9,8 +9,10 @@ public class PlayerWeaponController : GameBehaviour
 	private PlayerVisual visual;
 
 	[SerializeField]
-	private PlayerMovement movement;
+	public PlayerMovement movement;
 
+	[SerializeField]
+	private Player owner;
 
 
 	[SerializeField] private Transform projectileStartUp;
@@ -20,7 +22,7 @@ public class PlayerWeaponController : GameBehaviour
 
 	private List<PlayerWeapon> weapons = new List<PlayerWeapon>();
 	private PlayerWeapon activeWeapon;
-	private int activeWeaponIndex;
+	[SerializeField] private int activeWeaponIndex;
 
 	public void AddWeapon(PlayerWeaponConfig pConfig)
 	{
@@ -32,10 +34,14 @@ public class PlayerWeaponController : GameBehaviour
 		}
 		else
 		{
-			weaponInInventory = new PlayerWeapon(pConfig);
+			if(pConfig.IsSpecial())
+				weaponInInventory = new PlayerWeaponSpecial((PlayerWeaponSpecialConfig)pConfig, owner);
+			else
+				weaponInInventory = new PlayerWeapon(pConfig, owner);
+
 			weapons.Add(weaponInInventory);
 		}
-
+		
 		SetActiveWeapon(weapons.IndexOf(weaponInInventory));
 	}
 
@@ -46,12 +52,15 @@ public class PlayerWeaponController : GameBehaviour
 
 	public void UseWeapon()
 	{
-		//Debug.Log("USE");
+		Debug.Log("USE");
 		activeWeapon.Use();
-		game.ProjectileManager.SpawnProjectile(
-			GetProjectileStartPosition(movement.CurrentDirection),
-			movement,
-			activeWeapon.Config.Projectile);
+		if(activeWeapon.Config.Projectile != null)
+		{
+			game.ProjectileManager.SpawnProjectile(
+				GetProjectileStartPosition(movement.CurrentDirection),
+				movement,
+				activeWeapon.Config.Projectile);
+		}
 	}
 
 	private Vector3 GetProjectileStartPosition(EDirection pDirection)

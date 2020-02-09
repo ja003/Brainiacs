@@ -10,7 +10,9 @@ public class PlayerWeapon
 	public PlayerWeaponConfig Config;
 	public int Ammo;
 
-	public PlayerWeapon(PlayerWeaponConfig pConfig)
+	protected Player owner;
+
+	public PlayerWeapon(PlayerWeaponConfig pConfig, Player pOwner)
 	{
 		if(pConfig == null)
 		{
@@ -20,9 +22,10 @@ public class PlayerWeapon
 		Id = pConfig.Id;
 		Config = pConfig;
 		Ammo = pConfig.ammo;
+		owner = pOwner;
 	}
 
-	public void Use()
+	public virtual void Use()
 	{
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 	}

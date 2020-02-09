@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f1605c987f38da42a631bb53ff7f7a3, type: 3}
-  m_Name: TestProjectile1
+  m_Name: TestProjectile2
   m_EditorClassIdentifier: 
   sprite: {fileID: -2106307180441500899, guid: eaf3feaa6ad96aa499392b6eaf5cf252, type: 3}
   damage: 30

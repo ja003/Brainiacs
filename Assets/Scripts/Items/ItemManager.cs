@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class ItemManager : GameBehaviour
 {
 	[SerializeField]
 	public List<PlayerWeaponConfig> playerWeapons;
+
+	[SerializeField]
+	public List<PlayerWeaponSpecialConfig> playerSpecialWeapons;
 
 	[SerializeField]
 	private List<PowerUpConfig> powerUps;
@@ -27,6 +31,10 @@ public class ItemManager : GameBehaviour
 				MapItems.Add(config);
 			}
 		}
+		foreach(PlayerWeaponSpecialConfig config in playerSpecialWeapons)
+		{
+			playerWeaponMap.Add(config.Id, config);
+		}
 		foreach(PowerUpConfig config in powerUps)
 		{
 			//do we need to store powerups?
@@ -43,6 +51,14 @@ public class ItemManager : GameBehaviour
 		PlayerWeaponConfig item;
 		playerWeaponMap.TryGetValue(pId, out item);
 		return item;
+	}
+
+	internal PlayerWeaponSpecialConfig GetHeroSpecialWeaponConfig(EHero pHero)
+	{
+		return (PlayerWeaponSpecialConfig)GetPlayerWeaponConfig(
+			//EWeaponId.Special_Einstein
+			EWeaponId.Special_Curie			
+			);
 	}
 
 	public PlayerWeaponConfig GetHeroWeaponConfig(EHero pHero)

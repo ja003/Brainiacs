@@ -9,9 +9,12 @@ public class ItemGenerator : GameController
 
 	[SerializeField]
 	MapItem mapItemPrefab;
+	
+	[SerializeField]
+	private int frequency;
 
 	[SerializeField]
-	Transform mapItemsHolder;
+	private bool isActive;
 
 	protected override void Awake()
 	{
@@ -32,15 +35,18 @@ public class ItemGenerator : GameController
 
 	private void StartGenerating()
 	{
-		float time = Random.Range(1, 10);
+		float time = Random.Range(frequency -1, frequency + 1);
 		DoInTime(GenerateRandomItem, time);
 	}
 
 	public void GenerateRandomItem()
 	{
-		MapItem newItem = Instantiate(mapItemPrefab, mapItemsHolder);
-		int randomIndex = Random.Range(0, brainiacs.ItemManager.MapItems.Count);
-		newItem.Spawn(GetRandomPosition(), brainiacs.ItemManager.MapItems[randomIndex]);
+		if(isActive)
+		{
+			MapItem newItem = Instantiate(mapItemPrefab, GetHolder());
+			int randomIndex = Random.Range(0, brainiacs.ItemManager.MapItems.Count);
+			newItem.Spawn(GetRandomPosition(), brainiacs.ItemManager.MapItems[randomIndex]);
+		}
 		StartGenerating();
 	}
 

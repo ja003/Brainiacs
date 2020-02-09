@@ -34,6 +34,16 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
+	private BoxCollider2D _boxCollider2D;
+	protected BoxCollider2D boxCollider2D
+	{
+		get
+		{
+			if(_boxCollider2D == null)
+				_boxCollider2D = GetComponent<BoxCollider2D>();
+			return _boxCollider2D;
+		}
+	}
 
 	private bool awaken;
 	private UnityAction onAwake;

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Player : GameBehaviour
 {
-
 	[SerializeField]
 	private PlayerInput input;
 
@@ -20,6 +19,8 @@ public class Player : GameBehaviour
 
 	[SerializeField]
 	public PlayerHealth Health;
+
+	public BoxCollider2D Collider => boxCollider2D;
 
 	public PlayerItemHandler ItemHandler;
 	public PlayerStats Stats { get; private set; }
@@ -41,8 +42,10 @@ public class Player : GameBehaviour
 
 		input.Keys = pPlayerInfo.PlayerKeys;
 
+
 		WeaponController.AddWeapon(
 			brainiacs.ItemManager.GetHeroWeaponConfig(pPlayerInfo.Hero));
+		
 
 		//todo: delete. test adding weapons
 		WeaponController.AddWeapon(
@@ -50,6 +53,13 @@ public class Player : GameBehaviour
 		//todo: delete. test adding same weapon
 		WeaponController.AddWeapon(
 			brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
+
+
+		//SPECIAL
+		//last one is active
+		WeaponController.AddWeapon(
+			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pPlayerInfo.Hero));
+
 
 		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero));
 

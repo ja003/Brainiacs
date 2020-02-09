@@ -210,10 +210,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visual: {fileID: 4773161991021014474}
   movement: {fileID: 7872993416487400290}
+  owner: {fileID: 4342295620933284857}
   projectileStartUp: {fileID: 298268065103512773}
   projectileStartRight: {fileID: 2374326329331123520}
   projectileStartDown: {fileID: 5578320376716274107}
   projectileStartLeft: {fileID: 9167952082431498101}
+  activeWeaponIndex: 0
 --- !u!1 &1099038216
 GameObject:
   m_ObjectHideFlags: 0

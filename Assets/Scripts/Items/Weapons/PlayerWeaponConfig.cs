@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,16 @@ public class PlayerWeaponConfig : PlayerItemConfig
 	{
 		return $"Weapon {Id}";
 	}
+
+	public virtual bool IsSpecial()
+	{
+		return false;
+	}
+
+	//public virtual void SpecialInit(PlayerWeaponController pWeaponController)
+	//{
+	//	Debug.LogError($"SpecialInit called on non-special weapon {Id}");
+	//}
 }
 
 
@@ -33,6 +44,11 @@ public enum EWeaponId
 	TestGun,
 	TestGun2,
 	TestGun3,
+
+
+
+	Special_Einstein = 100,
+	Special_Curie = 101,
 }
 
 
