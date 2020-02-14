@@ -14,15 +14,20 @@ public class ItemManager : GameBehaviour
 	[SerializeField]
 	private List<PowerUpConfig> powerUps;
 
-	Dictionary<EWeaponId, PlayerWeaponConfig> playerWeaponMap = 
+	Dictionary<EWeaponId, PlayerWeaponConfig> playerWeaponMap =
 		new Dictionary<EWeaponId, PlayerWeaponConfig>();
 
-	public List<PlayerItemConfig> MapItems = new List<PlayerItemConfig>();
+	public List<MapItemConfig> MapItems = new List<MapItemConfig>();
 
 	protected override void Awake()
 	{
 		base.Awake();
 
+		foreach(PowerUpConfig config in powerUps)
+		{
+			//todo: do we need to store powerup configs?
+			MapItems.Add(config);
+		}
 		foreach(PlayerWeaponConfig config in playerWeapons)
 		{
 			playerWeaponMap.Add(config.Id, config);
@@ -35,15 +40,7 @@ public class ItemManager : GameBehaviour
 		{
 			playerWeaponMap.Add(config.Id, config);
 		}
-		foreach(PowerUpConfig config in powerUps)
-		{
-			//do we need to store powerups?
-			//playerWeaponMap.Add(config.Id, config);
-			if(config.CanDropOnMap)
-			{
-				MapItems.Add(config);
-			}
-		}
+
 	}
 
 	public PlayerWeaponConfig GetPlayerWeaponConfig(EWeaponId pId)
@@ -57,7 +54,7 @@ public class ItemManager : GameBehaviour
 	{
 		return (PlayerWeaponSpecialConfig)GetPlayerWeaponConfig(
 			//EWeaponId.Special_Einstein
-			EWeaponId.Special_Curie			
+			EWeaponId.Special_Curie
 			);
 	}
 

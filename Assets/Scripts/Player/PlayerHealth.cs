@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : GameBehaviour
 {
+	[SerializeField]
 	private PlayerStats stats;
 
 	[SerializeField]
@@ -12,12 +13,7 @@ public class PlayerHealth : GameBehaviour
 
 	[SerializeField]
 	private PlayerMovement movement;
-
-	public void Init(PlayerStats pStats)
-	{
-		stats = pStats;
-	}
-
+	
 	public void OnHitBy(ProjectileConfig pConfig)
 	{
 		if(stats.IsDead())

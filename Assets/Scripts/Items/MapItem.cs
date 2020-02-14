@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MapItem : GameBehaviour
 {
-	PlayerItemConfig config;
+	MapItemConfig config;
 
-	public void Spawn(Vector3 pPosition, PlayerItemConfig pConfig)
+	public void Spawn(Vector3 pPosition, MapItemConfig pConfig)
 	{
 		transform.position = pPosition;
 		config = pConfig;

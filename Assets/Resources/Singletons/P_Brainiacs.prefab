@@ -80,7 +80,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c34a3f1eb4c4e9542ac01250f5284eca, type: 2}
   - {fileID: 11400000, guid: b5845877734781747aa053162cf447cd, type: 2}
   powerUps:
+  - {fileID: 11400000, guid: ba3bfa79b8d12dc46a2eaab84e5ae844, type: 2}
   - {fileID: 11400000, guid: 64202e1bfda264042839e603a3208c11, type: 2}
+  - {fileID: 11400000, guid: 1c02860b8ec175541a479d81f4ce4d6f, type: 2}
+  - {fileID: 11400000, guid: df434f533350dfb45b72a22a7f6423a2, type: 2}
+  - {fileID: 11400000, guid: aa985d5e1a776824dbef3f1729fef102, type: 2}
   MapItems: []
 --- !u!114 &3866699018896989849
 MonoBehaviour:

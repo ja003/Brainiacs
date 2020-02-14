@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIScoreboard : GameController
+public class UIScoreboardController : GameController
 {
 	[SerializeField]
-	private UIPlayerScore scorePlayerPrefab;
+	private UIScoreboardElement scorePlayerPrefab;
 
 	protected override void Awake()
 	{
@@ -33,7 +33,7 @@ public class UIScoreboard : GameController
 
 	private void AddScorePlayer(PlayerStats pPlayerStats)
 	{
-		UIPlayerScore instance = Instantiate(scorePlayerPrefab, transform);
+		UIScoreboardElement instance = Instantiate(scorePlayerPrefab, transform);
 		instance.Init(pPlayerStats);
 	}
 }

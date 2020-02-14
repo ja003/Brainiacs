@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
 	public PlayerKeys Keys;
 
+	[SerializeField]
+	private Player player;
 
 	[SerializeField]
 	private PlayerMovement movement;
@@ -39,8 +41,10 @@ public class PlayerInput : MonoBehaviour
 			movement.Idle();
 
 		//HACK
-		movement.SetSpeedMultiplier(Input.GetKey(KeyCode.LeftShift) ? 10 : 1);
-
+		if(Input.GetKeyDown(KeyCode.Backslash))
+		{
+			player.Stats.SetSpeed(10, 1);
+		}
 	}
 
 	private void ProcessActionInput()

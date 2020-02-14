@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPlayerInfo : GameBehaviour
+public class UIPlayerInfoElement : GameBehaviour
 {
 	[SerializeField] private Image portrait;
 	[SerializeField] private Image weapon;

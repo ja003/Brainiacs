@@ -49,6 +49,14 @@ public class PlayerWeapon
 		return EWeaponUseResult.OK;
 	}
 
+	/// <summary>
+	/// Adds 1 magazine (1 is spent on reload) and instantly reloads
+	/// </summary>
+	internal void OnPowerUpAmmo()
+	{
+		magazines += 2;
+		Reload();
+	}
 
 	internal void Add(PlayerWeaponConfig pConfig)
 	{

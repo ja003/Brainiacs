@@ -22,8 +22,11 @@ public class Player : GameBehaviour
 
 	public BoxCollider2D Collider => boxCollider2D;
 
-	public PlayerItemHandler ItemHandler;
-	public PlayerStats Stats { get; private set; }
+	[SerializeField]
+	public PlayerItemController ItemController;
+
+	[SerializeField]
+	public PlayerStats Stats;
 
 	private void Update()
 	{
@@ -36,9 +39,7 @@ public class Player : GameBehaviour
 
 	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
 	{
-		Stats = new PlayerStats(pPlayerInfo);
-		ItemHandler = new PlayerItemHandler(Stats, WeaponController);
-		Health.Init(Stats);
+		Stats.Init(pPlayerInfo);
 
 		input.Keys = pPlayerInfo.PlayerKeys;
 

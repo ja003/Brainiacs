@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersController : GameController
+public class PlayersManager : GameController
 {
 	public List<Player> Players { get; private set; }
 
@@ -23,7 +23,12 @@ public class PlayersController : GameController
 			playerInstance.gameObject.name = "Player_" + playerInfo.Name;
 
 			Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
-			
+
+			if(playerInfo.Name == "Téra")
+				spawnPosition = Vector3.zero;
+			if(playerInfo.Name == "Adam")
+				spawnPosition = Vector3.left;
+
 			playerInstance.SetInfo(playerInfo, spawnPosition);
 
 			Players.Add(playerInstance);

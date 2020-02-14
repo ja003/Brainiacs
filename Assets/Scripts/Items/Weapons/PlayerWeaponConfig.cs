@@ -19,7 +19,7 @@ public class PlayerWeaponConfig : PlayerItemConfig
 
 	public override void OnEnterPlayer(Player pPlayer)
 	{
-		pPlayer.ItemHandler.OnEnterWeapon(this);
+		pPlayer.ItemController.OnEnterWeapon(this);
 	}
 
 	public override string ToString()

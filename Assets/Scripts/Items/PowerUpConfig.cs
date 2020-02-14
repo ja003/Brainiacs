@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PowerUp", menuName = "ScriptableObjects/PowerUp", order = 2)]
-public class PowerUpConfig : PlayerItemConfig
+public class PowerUpConfig : MapItemConfig
 {
-	public EPowerUp Id;
-	public float Value;
+	[SerializeField]
+	public EPowerUp type;
 
 	public override void OnEnterPlayer(Player pPlayer)
 	{
-		pPlayer.ItemHandler.OnEnterPowerUp(this);
+		PowerupManager.HandlePowerup(this, pPlayer);
 	}
 
 	public override string ToString()
 	{
-		return $"PowerUp {Id}";
+		return $"PowerUp {type}";
 	}
 }
 
 public enum EPowerUp
 {
 	None,
-
-	Random,
 	Health,
-	Speed
+	Ammo,
+	Speed,
+	Mystery,
+	Shield
 }

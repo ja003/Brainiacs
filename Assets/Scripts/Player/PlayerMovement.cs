@@ -14,9 +14,8 @@ public class PlayerMovement : GameBehaviour
 	//[SerializeField]
 	//private PlayerWeaponController weapon;
 
-	private const float movementSpeed = 0.05f;
+	private const float MOVE_SPEED_BASE = 0.05f;
 
-	private float movementSpeedMultiplier = 1;
 
 	public EDirection CurrentDirection { get; private set; }
 
@@ -36,20 +35,14 @@ public class PlayerMovement : GameBehaviour
 			//weapon.OnChangeDirection(pDirection);
 		}
 		CurrentDirection = pDirection;
-		transform.position += Utils.GetVector(pDirection) * movementSpeed * movementSpeedMultiplier;
+		transform.position += Utils.GetVector(pDirection) *
+			MOVE_SPEED_BASE * player.Stats.Speed;
 		player.Visual.Move();
 	}
-
-	
 
 	public void Idle()
 	{
 		//Debug.Log(gameObject.name + " idle");
 		player.Visual.Idle();
-	}
-
-	internal void SetSpeedMultiplier(float pValue)
-	{
-		movementSpeedMultiplier = pValue;
 	}
 }

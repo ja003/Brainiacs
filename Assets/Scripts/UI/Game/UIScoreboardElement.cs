@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPlayerScore : GameBehaviour
+public class UIScoreboardElement : GameBehaviour
 {
 	[SerializeField] private TextMeshProUGUI name;
 	[SerializeField] private Text kills;

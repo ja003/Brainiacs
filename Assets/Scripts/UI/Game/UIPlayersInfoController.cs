@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIPlayersInfoController : GameController
 {
-	[SerializeField] private UIPlayerInfo prefab;
+	[SerializeField] private UIPlayerInfoElement prefab;
 
 	protected override void OnGameAwaken()
 	{
@@ -26,7 +26,7 @@ public class UIPlayersInfoController : GameController
 
 	private void AddPlayerInfo(Player pPlayer)
 	{
-		UIPlayerInfo instance = Instantiate(prefab, transform);
+		UIPlayerInfoElement instance = Instantiate(prefab, transform);
 		instance.Init(pPlayer);
 	}
 	

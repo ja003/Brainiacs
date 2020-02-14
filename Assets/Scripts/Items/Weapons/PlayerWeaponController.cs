@@ -30,6 +30,14 @@ public class PlayerWeaponController : GameBehaviour
 		onWeaponInfoChanged(pWeapon);
 	}
 
+	public void OnPowerUpAmmo()
+	{
+		foreach(var weapon in weapons)
+		{
+			weapon.OnPowerUpAmmo();
+		}
+	}
+
 	private void RemoveWeapon(PlayerWeapon pWeapon)
 	{
 		if(activeWeapon == pWeapon)

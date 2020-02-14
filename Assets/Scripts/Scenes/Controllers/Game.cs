@@ -11,10 +11,13 @@ public class Game : CSingleton<Game>
 	public MapController MapController;
 
 	[SerializeField]
-	public PlayersController playersController;
+	public PlayersManager playersController;
 
 	[SerializeField]
 	public ProjectileManager ProjectileManager;
+
+	[SerializeField]
+	public UIPlayerStatusManager PlayerStatusManager;
 
 	protected override void Awake()
 	{
