@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f1605c987f38da42a631bb53ff7f7a3, type: 3}
-  m_Name: Projectile_MP40
+  m_Name: Projectile_Lasergun
   m_EditorClassIdentifier: 
-  sprite: {fileID: 3161190931517828520, guid: 87e35a452c6ae794eb428f44ca2c9453, type: 3}
-  damage: 5
-  speed: 7
-  Dispersion: 0.1
-  ColliderOffset: {x: 0.015, y: 0}
-  ColliderSize: {x: 0.15, y: 0.05}
+  sprite: {fileID: 9182289326441775481, guid: 87e35a452c6ae794eb428f44ca2c9453, type: 3}
+  damage: 80
+  speed: 20
+  Dispersion: 0.01
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 0.35, y: 0.05}

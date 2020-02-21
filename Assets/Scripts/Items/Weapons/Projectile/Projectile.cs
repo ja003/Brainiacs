@@ -18,6 +18,10 @@ public class Projectile : GameBehaviour
 		direction = GetDirectionVector(pDirection, pConfig.Dispersion);
 		config = pConfig;
 		inited = true;
+
+		boxCollider2D.size = pConfig.ColliderSize;
+		boxCollider2D.offset = pConfig.ColliderOffset;
+
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pPlayerCollider);
 
 		transform.Rotate(Utils.GetRotation(pDirection, 180));

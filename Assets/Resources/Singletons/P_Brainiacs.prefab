@@ -77,7 +77,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 186fe1c1cee131d43833e62fa46a3f7a, type: 2}
   - {fileID: 11400000, guid: 728db0ec36eada34598454f7298fcf91, type: 2}
   - {fileID: 11400000, guid: e464e378dfe7c4f4fa9d7efb3ab1429f, type: 2}
-  - {fileID: 11400000, guid: e1f0df6c282bca54381b05499a03e927, type: 2}
+  - {fileID: 11400000, guid: 3fab8a27f0cec1a4a831c252f43d4bf3, type: 2}
+  - {fileID: 11400000, guid: 3bad14d39a2d3494d96fac04caa29239, type: 2}
   playerSpecialWeapons:
   - {fileID: 11400000, guid: c34a3f1eb4c4e9542ac01250f5284eca, type: 2}
   - {fileID: 11400000, guid: b5845877734781747aa053162cf447cd, type: 2}

@@ -90,7 +90,7 @@ public class PlayerWeaponController : GameBehaviour
 		EWeaponUseResult useResult = activeWeapon.Use();
 		if(useResult == EWeaponUseResult.CantUse)
 		{
-			Debug.Log($"{activeWeapon} cant be used");
+			//Debug.Log($"{activeWeapon} cant be used");
 			//TODO: play CANT_USE sound
 			return;
 		}

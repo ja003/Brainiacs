@@ -47,6 +47,7 @@ public enum EWeaponId
 
 	MP40 = 10,
 	Flamethrower = 11,
+	Lasergun = 12,
 
 
 

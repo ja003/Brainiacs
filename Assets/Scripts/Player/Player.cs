@@ -66,6 +66,8 @@ public class Player : GameBehaviour
 		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.MP40));
 		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.Flamethrower));
 
+		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.Lasergun));
+
 		foreach(var weapon in startupWeapons)
 		{
 			WeaponController.AddWeapon(weapon);

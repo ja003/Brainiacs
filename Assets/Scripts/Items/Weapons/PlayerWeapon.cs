@@ -32,7 +32,18 @@ public class PlayerWeapon
 		owner = pOwner;
 	}
 
-	private float lastUseTime;
+	/// <summary>
+	/// Returns percentage [0,1] of cadency refresh state
+	/// </summary>
+	public float GetCadencyReadyPercentage()
+	{
+		float remains = lastUseTime + Config.Cadency - Time.time;
+		float percentage = 1 - remains / Config.Cadency;
+		return Mathf.Clamp(percentage, 0, 1);
+	}
+
+	//cant be zero or first use might fail
+	private float lastUseTime = int.MinValue; 
 	public virtual EWeaponUseResult Use()
 	{
 		if(IsRealoading)

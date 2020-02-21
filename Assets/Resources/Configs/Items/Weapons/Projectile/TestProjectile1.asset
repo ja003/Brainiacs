@@ -15,3 +15,6 @@ MonoBehaviour:
   sprite: {fileID: -2106307180441500899, guid: eaf3feaa6ad96aa499392b6eaf5cf252, type: 3}
   damage: 30
   speed: 5
+  Dispersion: 0
+  ColliderOffset: {x: 0.02, y: 0}
+  ColliderSize: {x: 0.15, y: 0.15}

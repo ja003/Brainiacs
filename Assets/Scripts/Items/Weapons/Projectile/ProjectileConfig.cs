@@ -9,4 +9,6 @@ public class ProjectileConfig : ScriptableObject
 	public int damage;
 	public float speed;
 	public float Dispersion;
+	public Vector2 ColliderOffset;
+	public Vector2 ColliderSize;
 }
