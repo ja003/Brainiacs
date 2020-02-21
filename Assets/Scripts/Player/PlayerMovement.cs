@@ -35,7 +35,7 @@ public class PlayerMovement : GameBehaviour
 			//weapon.OnChangeDirection(pDirection);
 		}
 		CurrentDirection = pDirection;
-		transform.position += Utils.GetVector(pDirection) *
+		transform.position += Utils.GetVector3(pDirection) *
 			MOVE_SPEED_BASE * player.Stats.Speed;
 		player.Visual.Move();
 	}

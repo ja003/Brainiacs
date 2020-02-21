@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPlayersInfoController : GameController
+public class UIPlayerInfoController : GameController
 {
 	[SerializeField] private UIPlayerInfoElement prefab;
 

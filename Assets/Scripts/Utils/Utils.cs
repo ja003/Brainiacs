@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Utils
 {
-	public static Vector3 GetVector(EDirection pDirection)
+	public static Vector3 GetVector3(EDirection pDirection)
 	{
 		switch(pDirection)
 		{
@@ -18,5 +18,11 @@ public static class Utils
 				return Vector3.left;
 		}
 		return Vector3.zero;
+	}
+
+	public static Vector2 GetVector2(EDirection pDirection)
+	{
+		Vector3 vec = GetVector3(pDirection);
+		return new Vector2(vec.x, vec.y);
 	}
 }

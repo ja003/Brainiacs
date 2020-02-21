@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersManager : GameController
+public class PlayerManager : GameController
 {
 	public List<Player> Players { get; private set; }
 
@@ -27,7 +27,7 @@ public class PlayersManager : GameController
 			if(playerInfo.Name == "Téra")
 				spawnPosition = Vector3.zero;
 			if(playerInfo.Name == "Adam")
-				spawnPosition = Vector3.left;
+				spawnPosition = Vector3.down;
 
 			playerInstance.SetInfo(playerInfo, spawnPosition);
 

@@ -52,8 +52,12 @@ public class PlayerInput : MonoBehaviour
 		if(Input.GetKeyDown(Keys.swapWeapon))
 			weapon.SwapWeapon();
 
-		if(Input.GetKeyDown(Keys.useWeapon))
+		if(Input.GetKey(Keys.useWeapon))
 			weapon.UseWeapon();
+
+		if(Input.GetKeyUp(Keys.useWeapon))
+			weapon.StopUseWeapon();
+
 
 	}
 

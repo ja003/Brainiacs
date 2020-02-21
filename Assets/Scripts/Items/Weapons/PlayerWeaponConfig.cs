@@ -9,10 +9,10 @@ public class PlayerWeaponConfig : PlayerItemConfig
 {
 	public EWeaponId Id;
 
-	public int damage;
 	public int ammo;
 	public int Magazines;
 	public int Cooldown;
+	public float Cadency;
 
 	public ProjectileConfig Projectile;
 	public Sprite InfoSprite;
@@ -43,14 +43,20 @@ public enum EWeaponId
 {
 	None,
 
-	TestGun,
-	TestGun2,
-	TestGun3,
+	
+
+	MP40 = 10,
+	Flamethrower = 11,
 
 
 
 	Special_Einstein = 100,
 	Special_Curie = 101,
+
+
+	TestGun = 666,
+	TestGun2 = 667,
+	TestGun3 = 668,
 }
 
 

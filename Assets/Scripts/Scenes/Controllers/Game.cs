@@ -11,7 +11,7 @@ public class Game : CSingleton<Game>
 	public MapController MapController;
 
 	[SerializeField]
-	public PlayersManager playersController;
+	public PlayerManager playersController;
 
 	[SerializeField]
 	public ProjectileManager ProjectileManager;

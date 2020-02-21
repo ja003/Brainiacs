@@ -32,12 +32,18 @@ public class PlayerWeapon
 		owner = pOwner;
 	}
 
+	private float lastUseTime;
 	public virtual EWeaponUseResult Use()
 	{
 		if(IsRealoading)
 			return EWeaponUseResult.CantUse;
+
+		if(Time.time < lastUseTime + Config.Cadency)
+		{
+			return EWeaponUseResult.CantUse;
+		}
+
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
-		Ammo--;
 		if(Ammo <= 0)
 		{
 			if(magazines <= 0)
@@ -46,7 +52,14 @@ public class PlayerWeapon
 			}
 			return EWeaponUseResult.Reload;
 		}
+		Ammo--;
+		lastUseTime = Time.time;
 		return EWeaponUseResult.OK;
+	}
+
+	public virtual void StopUse()
+	{
+
 	}
 
 	/// <summary>

@@ -12,7 +12,7 @@ public class SpecialCurie : PlayerWeaponSpecialController
 		transform.parent = game.ProjectileManager.GetHolder();
 
 		transform.position = weaponContoller.transform.position;
-		Vector3 dir = Utils.GetVector(weaponContoller.movement.CurrentDirection);
+		Vector3 dir = Utils.GetVector3(weaponContoller.movement.CurrentDirection);
 
 		//BUG?
 		//it seems that IgnoreCollision is reset after deactivation

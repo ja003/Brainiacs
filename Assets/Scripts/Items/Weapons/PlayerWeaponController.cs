@@ -80,6 +80,11 @@ public class PlayerWeaponController : GameBehaviour
 		SetActiveWeapon(activeWeaponIndex + 1);
 	}
 
+	public void StopUseWeapon()
+	{
+		activeWeapon.StopUse();
+	}
+
 	public void UseWeapon()
 	{
 		EWeaponUseResult useResult = activeWeapon.Use();
@@ -89,7 +94,7 @@ public class PlayerWeaponController : GameBehaviour
 			//TODO: play CANT_USE sound
 			return;
 		}
-		Debug.Log($"{activeWeapon} USE");
+		//Debug.Log($"{activeWeapon} USE");
 
 		if(activeWeapon.Config.Projectile != null)
 		{

@@ -9,16 +9,23 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour
 	protected Player owner;
 
 	public abstract void Use();
+	public virtual void StopUse() { }
 
 	public void Init(Player pOwner)
 	{
 		owner = pOwner;
 		weaponContoller = pOwner.WeaponController;
-		Physics2D.IgnoreCollision(boxCollider2D, pOwner.Collider);
+		if(GetCollider() != null)
+			Physics2D.IgnoreCollision(GetCollider(), pOwner.Collider);
 		//Debug.Log($"Ignore collisions between {boxCollider2D.gameObject.name} and {owner}");
 
 		OnInit();
 	}
 
 	protected abstract void OnInit();
+
+	protected virtual Collider2D GetCollider()
+	{
+		return boxCollider2D;
+	}
 }

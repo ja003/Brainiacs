@@ -8,4 +8,5 @@ public class ProjectileConfig : ScriptableObject
 	public Sprite sprite;
 	public int damage;
 	public float speed;
+	public float Dispersion;
 }

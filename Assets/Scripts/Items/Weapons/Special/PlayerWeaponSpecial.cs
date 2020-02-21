@@ -22,7 +22,16 @@ public class PlayerWeaponSpecial : PlayerWeapon
 
 	public override EWeaponUseResult Use()
 	{
-		specialController.Use();
-		return base.Use();
+		EWeaponUseResult useResult = base.Use();
+		if(useResult == EWeaponUseResult.OK)
+			specialController.Use();
+
+		return useResult;
+	}
+
+	public override void StopUse()
+	{
+		specialController.StopUse();
+		base.StopUse();
 	}
 }

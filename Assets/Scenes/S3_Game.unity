@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 1026134742}
   - component: {fileID: 1026134744}
   m_Layer: 0
-  m_Name: PlayersManager
+  m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,11 +1652,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1258672424}
   - component: {fileID: 1258672426}
-  - component: {fileID: 1258672425}
   - component: {fileID: 1258672427}
   - component: {fileID: 1258672428}
   m_Layer: 5
-  m_Name: PlayersInfoController
+  m_Name: PlayerInfoController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1682,34 +1681,6 @@ RectTransform:
   m_AnchoredPosition: {x: -7.9000244, y: -5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1258672425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258672423}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1258672426
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2649,6 +2620,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1044846638, guid: 2248858bbe1473544a0784755c8c7e1c, type: 3}
+      propertyPath: playerWeapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fab8a27f0cec1a4a831c252f43d4bf3,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2248858bbe1473544a0784755c8c7e1c, type: 3}
 --- !u!1 &1944472517
@@ -3278,6 +3254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5300531940459323019, guid: f9b95b1eafc36194c839127ec1aecca6,
+        type: 3}
+      propertyPath: collisionDetector
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b95b1eafc36194c839127ec1aecca6, type: 3}
