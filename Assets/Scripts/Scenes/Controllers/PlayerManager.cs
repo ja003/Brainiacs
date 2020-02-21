@@ -24,9 +24,13 @@ public class PlayerManager : GameController
 
 			Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
 
-			if(playerInfo.Name == "Téra")
+			if(playerInfo.Name == DebugData.GetPlayerName(1))
+				spawnPosition = Vector3.down;
+
+			if(playerInfo.Name == DebugData.GetPlayerName(2))
 				spawnPosition = Vector3.zero;
-			if(playerInfo.Name == "Adam")
+			
+			if(playerInfo.Name == DebugData.GetPlayerName(3))
 				spawnPosition = Vector3.down;
 
 			playerInstance.SetInfo(playerInfo, spawnPosition);

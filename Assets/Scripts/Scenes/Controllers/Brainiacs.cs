@@ -30,22 +30,16 @@ public class Brainiacs : CSingleton<Brainiacs>
 	public void TestSetGameInitInfo()
 	{
 		GameInitInfo = new GameInitInfo();
-		PlayerInitInfo player1 = new PlayerInitInfo(
-			EHero.Tesla, "Adam", Color.yellow);
-		player1.PlayerKeys = new PlayerKeys(
-			KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.LeftArrow,
-			KeyCode.RightControl, KeyCode.RightShift);
-		
+
+		PlayerInitInfo player1 = DebugData.GetPlayerInitInfo(1);		
 		GameInitInfo.players.Add(player1);
 
 
-		PlayerInitInfo player2 = new PlayerInitInfo(
-			EHero.Currie, "Téra", Color.red);
-
-		player2.PlayerKeys = new PlayerKeys(
-			KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
-			KeyCode.LeftControl, KeyCode.LeftShift);
+		PlayerInitInfo player2 = DebugData.GetPlayerInitInfo(2);
 		GameInitInfo.players.Add(player2);
+
+		PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
+		GameInitInfo.players.Add(player3);
 
 		GameInitInfo.Mode = EGameMode.Time;
 		GameInitInfo.Map = EMap.Steampunk;

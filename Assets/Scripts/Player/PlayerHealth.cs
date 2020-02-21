@@ -13,23 +13,40 @@ public class PlayerHealth : GameBehaviour
 
 	[SerializeField]
 	private PlayerMovement movement;
-	
-	public void OnHitBy(ProjectileConfig pConfig)
+
+
+	protected override void Awake()
+	{
+		base.Awake();
+		stats.SetOnStatsChange(OnStatsChange);
+	}
+
+	private void OnStatsChange(PlayerStats pStats)
 	{
 		if(stats.IsDead())
-			return;
-
-		if(stats.DecreseHealth(pConfig.damage))
 		{
 			Die();
 		}
 	}
+
+	//public void OnHitBy(ProjectileConfig pConfig)
+	//{
+	//	if(stats.IsDead())
+	//		return;
+
+	//	if(stats.DecreseHealth(pConfig.damage))
+	//	{
+	//		todo: subscribe on stats change
+	//		Die();
+	//	}
+	//}
 
 	private void Die()
 	{
 		Debug.Log($"{this} Die ({stats.LivesLeft} lives left)");
 
 		visual.OnDie();
+		stats.Deaths++;
 
 		if(stats.LivesLeft > 0)
 		{

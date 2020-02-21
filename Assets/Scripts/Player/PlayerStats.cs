@@ -59,6 +59,7 @@ public class PlayerStats : GameBehaviour
 	public void OnRespawn()
 	{
 		Health = 100;
+		onStatsChange.Invoke(this);
 	}
 
 	public void AddKill()
@@ -67,34 +68,18 @@ public class PlayerStats : GameBehaviour
 		onStatsChange.Invoke(this);
 	}
 
-
-	/// <summary>
-	/// Decreases health.
-	/// Returns true if dead.
-	/// </summary>
-	public bool DecreseHealth(int pValue)
+	public void AddHealth(int pIncrement, bool pRespawn = false)
 	{
-		if(isShielded)
+		if(IsDead() && !pRespawn)
+			return;
+
+		if(pIncrement < 0 && isShielded)
 		{
 			Debug.Log($"{Name} is invurnelable");
-			return false;
+			return;
 		}
 
-		Debug.Log($"{Name} DecreseHealth by {pValue}");
-		Health -= pValue;
-		if(IsDead())
-		{
-			Deaths++;
-		}
-		onStatsChange.Invoke(this);
-		return IsDead();
-	}
-
-	public void IncreseHealth(int pValue)
-	{
-		Debug.Log($"{Name} IncreseHealth by {pValue}");
-		Health += pValue;
-		Health = Math.Min(Health, MAX_HEALTH);
+		Health = Mathf.Clamp(Health + pIncrement, 0, 100);
 		onStatsChange.Invoke(this);
 	}
 
@@ -102,5 +87,5 @@ public class PlayerStats : GameBehaviour
 	{
 		isShielded = true;
 		DoInTime(() => isShielded = false, pDuration);
-	}
+	}	
 }

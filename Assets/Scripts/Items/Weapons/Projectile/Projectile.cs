@@ -20,7 +20,7 @@ public class Projectile : GameBehaviour
 		inited = true;
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pPlayerCollider);
 
-		transform.Rotate(GetRotation(pDirection));
+		transform.Rotate(Utils.GetRotation(pDirection, 180));
 	}
 
 	private Vector2 GetDirectionVector(EDirection pDirection, float pDispersion)
@@ -52,28 +52,11 @@ public class Projectile : GameBehaviour
 
 	private void OnEnter(Player pPlayer)
 	{
-		pPlayer.Health.OnHitBy(config);
+		pPlayer.Stats.AddHealth(-config.damage);
 		//todo: return to pool
 		gameObject.SetActive(false);
 		inited = false;
 	}
 
-	/// <summary>
-	/// Projectile textures are oriented to the left.
-	/// </summary>
-	private static Vector3 GetRotation(EDirection pDirection)
-	{
-		switch(pDirection)
-		{
-			case EDirection.Up:
-				return new Vector3(0, 0, -90);
-			case EDirection.Right:
-				return new Vector3(0, 0, 180);
-			case EDirection.Down:
-				return new Vector3(0, 0, 90);
-			case EDirection.Left:
-				return Vector3.zero;
-		}
-		return Vector3.zero;
-	}
+	
 }

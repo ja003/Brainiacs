@@ -17,7 +17,7 @@ public class PlayerMovement : GameBehaviour
 	private const float MOVE_SPEED_BASE = 0.05f;
 
 
-	public EDirection CurrentDirection { get; private set; }
+	public EDirection CurrentDirection { get; private set; } = EDirection.Right;
 
 	internal void SpawnAt(Vector3 pPosition)
 	{

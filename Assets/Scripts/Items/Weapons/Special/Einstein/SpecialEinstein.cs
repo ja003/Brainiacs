@@ -35,4 +35,5 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 		gameObject.SetActive(false);
 
 	}
+
 }

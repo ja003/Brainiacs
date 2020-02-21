@@ -20,7 +20,7 @@ public static class PowerupManager
 		switch(pType)
 		{
 			case EPowerUp.Health:
-				pPlayer.Stats.IncreseHealth(20);
+				pPlayer.Stats.AddHealth(20);
 				return;
 			case EPowerUp.Ammo:
 				pPlayer.WeaponController.OnPowerUpAmmo();
@@ -77,12 +77,12 @@ public static class PowerupManager
 		}
 		else if(random < chance_damage)
 		{
-			pPlayer.Stats.DecreseHealth(20);
+			pPlayer.Stats.AddHealth(-20);
 			return;
 		}
 		else if(random < chance_double_damage)
 		{
-			pPlayer.Stats.DecreseHealth(40);
+			pPlayer.Stats.AddHealth(-40);
 			return;
 		}
 

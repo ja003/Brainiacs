@@ -34,4 +34,16 @@ public class PlayerWeaponSpecial : PlayerWeapon
 		specialController.StopUse();
 		base.StopUse();
 	}
+
+	public override void OnDirectionChange(EDirection pDirection)
+	{
+		base.OnDirectionChange(pDirection);
+		specialController.OnDirectionChange(pDirection);
+	}
+
+	public override void OnSetActive()
+	{
+		base.OnSetActive();
+		specialController.OnSetActive();
+	}
 }

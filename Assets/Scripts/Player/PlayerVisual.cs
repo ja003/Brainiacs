@@ -24,6 +24,10 @@ public class PlayerVisual : GameBehaviour
 	[SerializeField]
 	private SpriteRenderer handsRight;
 
+	[SerializeField]
+	private PlayerMovement movement;
+
+
 	internal void OnDie()
 	{
 		animator.SetBool(AC_KEY_IS_DEAD, true);
@@ -92,11 +96,9 @@ public class PlayerVisual : GameBehaviour
 		animator.SetBool(AC_KEY_IS_WALKING, false);
 	}
 
-	private EDirection currentDirection;
+	private EDirection currentDirection => movement.CurrentDirection;
 	public void OnDirectionChange(EDirection pDirection)
 	{
-		currentDirection = pDirection;
-
 		handsDown.enabled = false;
 		handsRight.enabled = false;
 		handsUp.enabled = false;
@@ -130,10 +132,14 @@ public class PlayerVisual : GameBehaviour
 		SetSortOrder(currentSortOrder, true);
 
 		animator.SetInteger(AC_KEY_DIRECTION, (int)pDirection);
+
+		activeWeapon.OnDirectionChange(pDirection);
 	}
 
+	PlayerWeapon activeWeapon;
 	public void SetActiveWeapon(PlayerWeapon pWeapon)
 	{
+		activeWeapon = pWeapon;
 		weaponUp.sprite = pWeapon.Config.PlayerSpriteUp;
 		weaponRight.sprite = pWeapon.Config.PlayerSpriteRight;
 		weaponDown.sprite = pWeapon.Config.playerSpriteDown;

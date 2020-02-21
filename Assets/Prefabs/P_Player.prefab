@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 1489477447}
   - component: {fileID: 4244118042715792558}
   - component: {fileID: 8791258408710402016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,6 +1140,7 @@ MonoBehaviour:
   weaponLeft: {fileID: 7213557940792491620}
   handsUp: {fileID: 3636149322915584526}
   handsRight: {fileID: 1921905453}
+  movement: {fileID: 7872993416487400290}
   handsDown: {fileID: 408874352}
   handsLeft: {fileID: 3740947923197070338}
   currentSortOrder: 0

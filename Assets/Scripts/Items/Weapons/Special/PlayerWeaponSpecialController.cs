@@ -11,6 +11,9 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour
 	public abstract void Use();
 	public virtual void StopUse() { }
 
+	protected EDirection currentDirection => owner.Movement.CurrentDirection;
+
+
 	public void Init(Player pOwner)
 	{
 		owner = pOwner;
@@ -27,5 +30,13 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour
 	protected virtual Collider2D GetCollider()
 	{
 		return boxCollider2D;
+	}
+
+	internal virtual void OnDirectionChange(EDirection pDirection)
+	{
+	}
+
+	internal virtual void OnSetActive()
+	{
 	}
 }

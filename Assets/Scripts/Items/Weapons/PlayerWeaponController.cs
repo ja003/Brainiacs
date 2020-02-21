@@ -135,22 +135,26 @@ public class PlayerWeaponController : GameBehaviour
 		DoInTime(onReloaded, pWeapon.Config.Cooldown, onReloadUpdate);
 	}
 
-
-	private Vector3 GetProjectileStartPosition(EDirection pDirection)
+	public Transform GetProjectileStart(EDirection pDirection)
 	{
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				return projectileStartUp.position;
+				return projectileStartUp;
 			case EDirection.Right:
-				return projectileStartRight.position;
+				return projectileStartRight;
 			case EDirection.Down:
-				return projectileStartDown.position;
+				return projectileStartDown;
 			case EDirection.Left:
-				return projectileStartLeft.position;
+				return projectileStartLeft;
 		}
-		Debug.LogError("Cant GetProjectileStartPosition");
-		return projectileStartRight.position;
+		Debug.LogError("Cant GetProjectileStart");
+		return projectileStartRight;
+	}
+
+	private Vector3 GetProjectileStartPosition(EDirection pDirection)
+	{
+		return GetProjectileStart(pDirection).position;
 	}
 
 	private void SetActiveWeapon(int pIndex)
@@ -166,6 +170,7 @@ public class PlayerWeaponController : GameBehaviour
 
 		visual.SetActiveWeapon(activeWeapon);
 		onWeaponInfoChanged?.Invoke(activeWeapon);
+		activeWeapon.OnSetActive();
 	}
 
 

@@ -25,4 +25,29 @@ public static class Utils
 		Vector3 vec = GetVector3(pDirection);
 		return new Vector2(vec.x, vec.y);
 	}
+
+	/// <summary>
+	/// Returns Z rotation vector. Right = 0
+	/// </summary>
+	public static Vector3 GetRotation(EDirection pDirection, float pOffset = 0)
+	{
+		Vector3 result = Vector3.zero;
+		switch(pDirection)
+		{
+			case EDirection.Up:
+				result =  new Vector3(0, 0, 90);
+				break;
+			case EDirection.Right:
+				result = Vector3.zero;
+				break;
+			case EDirection.Down:
+				result = new Vector3(0, 0, -90);
+				break;
+			case EDirection.Left:
+				result =  new Vector3(0, 0, 180);
+				break;
+		}
+		result.z += pOffset;
+		return result;
+	}
 }

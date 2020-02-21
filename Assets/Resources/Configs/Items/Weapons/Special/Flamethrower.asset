@@ -18,9 +18,12 @@ MonoBehaviour:
   CanDropOnMap: 1
   PlayerSpriteUp: {fileID: 2800715737579632502, guid: 95aea05c74211f14492cf338f70015fb,
     type: 3}
-  PlayerSpriteRight: {fileID: 21300000, guid: 5acf742b6743b8948bb75f6cb38638aa, type: 3}
-  playerSpriteDown: {fileID: 21300000, guid: c8a0bbca6f7da5f4a9132180864faa72, type: 3}
-  PlayerSpriteLeft: {fileID: 21300000, guid: c8a0bbca6f7da5f4a9132180864faa72, type: 3}
+  PlayerSpriteRight: {fileID: 2045631647158670248, guid: 95aea05c74211f14492cf338f70015fb,
+    type: 3}
+  playerSpriteDown: {fileID: -5748088590007121344, guid: 95aea05c74211f14492cf338f70015fb,
+    type: 3}
+  PlayerSpriteLeft: {fileID: 7258727947841629698, guid: 95aea05c74211f14492cf338f70015fb,
+    type: 3}
   Id: 11
   ammo: 666
   Magazines: 2

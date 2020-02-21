@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1592433367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592433368}
+  m_Layer: 11
+  m_Name: max_dist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1592433368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592433367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.69, y: -3.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1217923434222555206}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1217923434187672384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +41,7 @@ GameObject:
   - component: {fileID: 1217923434187672385}
   - component: {fileID: 1217923434187672390}
   - component: {fileID: 1107499961995651341}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: collider_flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1217923434222555206}
   - component: {fileID: 3759334240498667119}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: P_Flamethrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1217923435359725166}
+  - {fileID: 1592433368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -121,6 +152,9 @@ MonoBehaviour:
   flameCollider: {fileID: 1217923434187672390}
   animator: {fileID: 1217923435359725167}
   collisionDetector: {fileID: 1107499961995651341}
+  minDamage: 1
+  maxDamage: 10
+  maxDistance: {fileID: 1592433368}
 --- !u!1 &1217923435359725161
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +166,7 @@ GameObject:
   - component: {fileID: 1217923435359725166}
   - component: {fileID: 1217923435359725164}
   - component: {fileID: 1217923435359725167}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: flameHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +225,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 4974655320942412201, guid: 5eca2ffd12711604284cfdf2737f8e3d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

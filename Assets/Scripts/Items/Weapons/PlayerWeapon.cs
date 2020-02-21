@@ -120,6 +120,15 @@ public class PlayerWeapon
 	{
 		return $"Weapon {Id}";
 	}
+
+	public virtual void OnDirectionChange(EDirection pDirection)
+	{
+		
+	}
+
+	public virtual void OnSetActive()
+	{
+	}
 }
 
 public enum EWeaponUseResult

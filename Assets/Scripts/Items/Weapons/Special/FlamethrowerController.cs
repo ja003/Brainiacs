@@ -13,6 +13,11 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 	[SerializeField]
 	private CollisionDetector collisionDetector;
 
+	[SerializeField] private float minDamage;
+	[SerializeField] private float maxDamage;
+
+	[SerializeField] private Transform maxDistance;
+
 	private void Update()
 	{
 		//BUG: fire key-up is sometimes not registered
@@ -36,14 +41,14 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 	public override void Use()
 	{
 		SetUse(true);
-		Debug.Log($"Flamethrower USE");
+		//Debug.Log($"Flamethrower USE");
 		lastTimeUsed = Time.time;
 	}
 
 	public override void StopUse()
 	{
 		SetUse(false);
-		Debug.Log($"Flamethrower STOP-USE");
+		//Debug.Log($"Flamethrower STOP-USE");
 	}
 
 	protected override void OnInit()
@@ -62,5 +67,42 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 		if(!isUsed)
 			return;
 		//Debug.Log($"Flamethrower OnTriggerStay2D " + pCollision.gameObject.name);
+		Player player = pCollision.gameObject.GetComponent<Player>();
+		if(player)
+		{
+			int damage = GetDamage(player.transform.position);
+			player.Stats.AddHealth(-damage);
+		}
+	}
+
+	private int GetDamage(Vector3 pTargetPosition)
+	{
+		float distance = Vector3.Distance(transform.position, pTargetPosition);
+		float maxDist = Vector3.Distance(transform.position, maxDistance.position);
+		float percentage = 1 - distance / maxDist;
+		float damage = Mathf.Lerp(minDamage, maxDamage, percentage);
+
+		//Debug.Log($"distance = {distance}, {percentage}% => {damage} damage");
+		return (int)damage;
+	}
+
+	internal override void OnSetActive()
+	{
+		base.OnSetActive();
+
+		OnDirectionChange(currentDirection);
+	}
+
+	internal override void OnDirectionChange(EDirection pDirection)
+	{
+		base.OnDirectionChange(pDirection);
+
+		transform.parent = weaponContoller.GetProjectileStart(pDirection);
+		transform.localPosition = Vector3.zero;
+		transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+		Vector3 rot = Utils.GetRotation(pDirection, 90);
+		transform.Rotate(rot);
+
 	}
 }
