@@ -39,6 +39,7 @@ public class Player : GameBehaviour
 
 	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
 	{
+		//Debug.Log($"{this} SetInfo");
 		Stats.Init(pPlayerInfo);
 
 		input.Keys = pPlayerInfo.PlayerKeys;
@@ -73,7 +74,7 @@ public class Player : GameBehaviour
 			WeaponController.AddWeapon(weapon);
 		}
 
-		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero));
+		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero), pPlayerInfo);
 
 		Movement.SpawnAt(pSpawnPosition);
 

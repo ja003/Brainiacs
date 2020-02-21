@@ -25,7 +25,7 @@ public class UIScoreboardElement : GameBehaviour
 	public void Init(PlayerStats pStats)
 	{
 		//color and name dont change during game
-		image.color = pStats.Color;
+		image.color = UIColorDB.GetColor(pStats.Color);
 		name.text = pStats.Name;
 
 		//register for stats change

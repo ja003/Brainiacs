@@ -9,16 +9,28 @@ namespace ActionCode.SpriteEffects
     [RequireComponent(typeof(Renderer))]
     public abstract class AbstractShaderSwapController : MonoBehaviour
     {
-        protected Material material;
+        //protected Material material;
 
-        protected virtual void Reset()
+		//ADAM implementation
+		private Material _material;
+		protected Material material
+		{
+			get
+			{
+				if(_material == null)
+					_material = GetComponent<Renderer>().material;
+				return _material;
+			}
+		}
+
+		protected virtual void Reset()
         {
             SetupMaterial();
         }
 
         protected virtual void Start()
         {
-            material = GetComponent<Renderer>().material;
+            //material = GetComponent<Renderer>().material;
         }
 
         /// <summary>

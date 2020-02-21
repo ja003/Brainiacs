@@ -10,7 +10,7 @@ public class PlayerStats : GameBehaviour
 	public int Deaths;
 	public int LivesLeft => lives - Deaths;
 
-	public Color Color { get; internal set; }
+	public EPlayerColor Color { get; internal set; }
 
 	private const float DEFAULT_SPEED = 1;
 	private const int MAX_HEALTH = 100;

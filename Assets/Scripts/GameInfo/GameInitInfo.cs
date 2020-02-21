@@ -29,9 +29,10 @@ public class PlayerInitInfo
 	public EHero Hero;
 	public int Lives;
 	public PlayerKeys PlayerKeys;
-	public Color Color;
+	//public Color Color;
+	public EPlayerColor Color;
 
-	public PlayerInitInfo(EHero pHero, string pName, Color pColor)
+	public PlayerInitInfo(EHero pHero, string pName, EPlayerColor pColor)
 	{
 		Hero = pHero;
 		Name = pName;
@@ -85,4 +86,13 @@ public enum EHero
 	Currie,
 	Tesla,
 	Edison
+}
+
+public enum EPlayerColor
+{
+	Blue = 0,
+	Red = 1,
+	Yellow = 2,
+	Green = 3,
+	Pink = 4,
 }

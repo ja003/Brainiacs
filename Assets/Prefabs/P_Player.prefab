@@ -949,7 +949,6 @@ GameObject:
   - component: {fileID: 8172034968436022763}
   - component: {fileID: 4773161991021014474}
   - component: {fileID: 1489477448}
-  - component: {fileID: 1489477446}
   - component: {fileID: 1489477447}
   - component: {fileID: 4244118042715792558}
   - component: {fileID: 8791258408710402016}
@@ -1138,11 +1137,12 @@ MonoBehaviour:
   weaponRight: {fileID: 1603682625}
   weaponDown: {fileID: 267343708}
   weaponLeft: {fileID: 7213557940792491620}
-  handsUp: {fileID: 3636149322915584526}
-  handsRight: {fileID: 1921905453}
-  movement: {fileID: 7872993416487400290}
   handsDown: {fileID: 408874352}
   handsLeft: {fileID: 3740947923197070338}
+  handsUp: {fileID: 3636149322915584526}
+  handsRight: {fileID: 1921905453}
+  paletteSwap: {fileID: 1489477447}
+  movement: {fileID: 7872993416487400290}
   currentSortOrder: 0
 --- !u!95 &1489477448
 Animator:
@@ -1163,22 +1163,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1489477446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288558609917275097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1affe871ea6e747b5c70f2b91d5543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderController: {fileID: 1489477447}
-  nextPaletteButtonInput: NextPalette
-  previousPaletteButtonInput: PreviousPalette
-  originalPaletteButtonInput: OriginalPalette
 --- !u!114 &1489477447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,10 +1175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df542241175bf640973e27e711238c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalPalette: {fileID: 2800000, guid: 3ad3027a94fef8b438aad06250ecbc95, type: 3}
+  originalPalette: {fileID: 0}
   swapPalettes:
-  - {fileID: 2800000, guid: 3725278c13cb7804a8cf9888e62f612d, type: 3}
   - {fileID: 2800000, guid: 3ad3027a94fef8b438aad06250ecbc95, type: 3}
+  - {fileID: 2800000, guid: 3725278c13cb7804a8cf9888e62f612d, type: 3}
+  - {fileID: 2800000, guid: ecf7104b6f045cb48a9d448970da1c8a, type: 3}
+  - {fileID: 2800000, guid: c09d548642427f5498ca7afb9e4cbbf7, type: 3}
+  - {fileID: 2800000, guid: 7753d55f392cc98479a19215901216c4, type: 3}
 --- !u!114 &4244118042715792558
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class UIScoreboardController : GameController
 		{
 			AddScorePlayer(player.Stats);
 		}
+		scorePlayerPrefab.gameObject.SetActive(false);
 	}
 
 

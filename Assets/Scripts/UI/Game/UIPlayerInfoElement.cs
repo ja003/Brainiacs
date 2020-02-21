@@ -35,7 +35,7 @@ public class UIPlayerInfoElement : GameBehaviour
 	{
 		gameObject.SetActive(true);
 
-		image.color = pPlayer.Stats.Color;
+		image.color = UIColorDB.GetColor(pPlayer.Stats.Color);
 
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.Stats.Hero).Portrait;
 

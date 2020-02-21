@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActionCode.SpriteEffects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,13 +18,18 @@ public class PlayerVisual : GameBehaviour
 	[SerializeField]
 	private SpriteRenderer weaponLeft;
 
-
-
+	[SerializeField]
+	private SpriteRenderer handsDown;
+	[SerializeField]
+	private SpriteRenderer handsLeft;
 	[SerializeField]
 	private SpriteRenderer handsUp;
 	[SerializeField]
 	private SpriteRenderer handsRight;
 
+
+	[SerializeField]
+	private PaletteSwapController paletteSwap;
 	[SerializeField]
 	private PlayerMovement movement;
 
@@ -51,15 +57,20 @@ public class PlayerVisual : GameBehaviour
 		OnDirectionChange(currentDirection); //reset animator value
 	}
 
-	[SerializeField]
-	private SpriteRenderer handsDown;
-	[SerializeField]
-	private SpriteRenderer handsLeft;
 
-	public void Init(SpriteRenderer pPlayerRenderer, HeroConfig pHeroConfig)
+
+	public void Init(SpriteRenderer pPlayerRenderer, HeroConfig pHeroConfig , PlayerInitInfo pPlayerInfo)
 	{
 		playerRenderer = pPlayerRenderer;
 		heroConfig = pHeroConfig;
+
+		int colorIndex = GetColorPaletteIndex(pPlayerInfo.Color);
+		paletteSwap.SetPalette(colorIndex);
+	}
+
+	private static int GetColorPaletteIndex(EPlayerColor pColor)
+	{
+		return (int)pColor;
 	}
 
 	[SerializeField]
