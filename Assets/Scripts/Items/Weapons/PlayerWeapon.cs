@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerWeapon
+public abstract class PlayerWeapon
 {
 	public EWeaponId Id;
-	public PlayerWeaponConfig Config;
-	public int Ammo;
-	public int magazines;
+	//public PlayerWeaponConfig Config;
+	public int AmmoLeft;
+	public int MagazinesLeft;
+
+	public InHandWeaponInfo Info;
+	public InHandWeaponVisualInfo VisualInfo;
 
 	protected Player owner;
 
@@ -18,52 +21,61 @@ public class PlayerWeapon
 
 	public bool IsActive;
 
-	public PlayerWeapon(PlayerWeaponConfig pConfig, Player pOwner)
+	public PlayerWeapon(Player pOwner, EWeaponId pId, InHandWeaponInfo pInHandInfo, InHandWeaponVisualInfo pInHandVisualInfo)
 	{
-		if(pConfig == null)
-		{
-			Debug.LogError("Config is null");
-			return;
-		}
-		Id = pConfig.Id;
-		Config = pConfig;
-		Ammo = pConfig.ammo;
-		magazines = pConfig.Magazines;
+		Id = pId;
 		owner = pOwner;
+		AmmoLeft = pInHandInfo.Ammo;
+		MagazinesLeft = pInHandInfo.Magazines;
+
+		Info = pInHandInfo;
+		VisualInfo = pInHandVisualInfo;
 	}
+
+
+	//public PlayerWeapon(
+	//	Player pOwner,
+	//	InHandWeaponVisualInfo pInHandInfo,
+	//	ProjectileWeaponInfo pProjectileInfo) : this(pOwner, pInHandInfo)
+	//{
+	//	ProjectileInfo = pProjectileInfo;
+	//	Ammo = pProjectileInfo.Ammo;
+	//	magazines = pProjectileInfo.Magazines;
+	//	owner = pOwner;
+	//}
 
 	/// <summary>
 	/// Returns percentage [0,1] of cadency refresh state
 	/// </summary>
 	public float GetCadencyReadyPercentage()
 	{
-		float remains = lastUseTime + Config.Cadency - Time.time;
-		float percentage = 1 - remains / Config.Cadency;
+		float remains = lastUseTime + Info.Cadency - Time.time;
+		float percentage = 1 - remains / Info.Cadency;
 		return Mathf.Clamp(percentage, 0, 1);
 	}
 
 	//cant be zero or first use might fail
-	private float lastUseTime = int.MinValue; 
+	private float lastUseTime = int.MinValue;
 	public virtual EWeaponUseResult Use()
 	{
 		if(IsRealoading)
 			return EWeaponUseResult.CantUse;
 
-		if(Time.time < lastUseTime + Config.Cadency)
+		if(Time.time < lastUseTime + Info.Cadency)
 		{
 			return EWeaponUseResult.CantUse;
 		}
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
-		if(Ammo <= 0)
+		if(AmmoLeft <= 0)
 		{
-			if(magazines <= 0)
+			if(MagazinesLeft <= 0)
 			{
 				return EWeaponUseResult.Remove;
 			}
 			return EWeaponUseResult.Reload;
 		}
-		Ammo--;
+		AmmoLeft--;
 		lastUseTime = Time.time;
 		return EWeaponUseResult.OK;
 	}
@@ -78,14 +90,14 @@ public class PlayerWeapon
 	/// </summary>
 	internal void OnPowerUpAmmo()
 	{
-		magazines += 2;
+		MagazinesLeft += 2;
 		Reload();
 	}
 
-	internal void Add(PlayerWeaponConfig pConfig)
+	internal void OnAddSameWeapon(PlayerWeapon pWeapon)
 	{
 		//Debug.Log($"Add {pConfig.ammo} ammo to {Id}");
-		Ammo += pConfig.ammo;
+		AmmoLeft += pWeapon.Info.Ammo;
 	}
 
 	internal string GetAmmoText()
@@ -93,7 +105,7 @@ public class PlayerWeapon
 		if(IsRealoading)
 			return RealoadTimeLeft.ToString("0.0");
 
-		return Ammo.ToString();
+		return AmmoLeft.ToString();
 	}
 
 	/// <summary>
@@ -103,8 +115,8 @@ public class PlayerWeapon
 	/// </summary>
 	internal void Reload()
 	{
-		magazines--;
-		Ammo = Config.ammo;
+		MagazinesLeft--;
+		AmmoLeft = Info.Ammo;
 		IsRealoading = false;
 		if(IsActive)
 		{
@@ -120,7 +132,7 @@ public class PlayerWeapon
 	/// <param name="pProgress">range: 0 - 1</param>
 	public void ReportReloadProgress(float pProgress)
 	{
-		float timeLeft = Config.Cooldown - (Config.Cooldown * pProgress);
+		float timeLeft = Info.Cooldown - (Info.Cooldown * pProgress);
 		RealoadTimeLeft = timeLeft;
 		//Debug.Log($"{this} time left to reload = {timeLeft} | {IsActive}");
 		if(IsActive)
@@ -134,7 +146,7 @@ public class PlayerWeapon
 
 	public virtual void OnDirectionChange(EDirection pDirection)
 	{
-		
+
 	}
 
 	public virtual void OnSetActive()

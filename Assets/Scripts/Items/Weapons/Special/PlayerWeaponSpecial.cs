@@ -6,15 +6,14 @@ public class PlayerWeaponSpecial : PlayerWeapon
 {
 	PlayerWeaponSpecialController specialController;
 
-	public PlayerWeaponSpecial(PlayerWeaponSpecialConfig pConfig
-		, Player pOwner
-		) : base(pConfig, pOwner)
+	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig) : 
+		base(pOwner, pConfig.Id, pConfig.InHandInfo, pConfig.InHandVisualInfo)
 	{
 		//controller = pController;
 
 		PlayerWeaponSpecialController instance =
 			Game.Instantiate(
-				pConfig.controllerPrefab, pOwner.WeaponController.transform);
+				pConfig.SpecialWeaponInfo.ControllerPrefab, pOwner.WeaponController.transform);
 
 		specialController = instance;
 		specialController.Init(pOwner);

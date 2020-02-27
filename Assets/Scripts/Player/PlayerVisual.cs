@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerVisual : GameBehaviour
 {
-	SpriteRenderer playerRenderer;
 	HeroConfig heroConfig;
 
 	[SerializeField]
@@ -59,10 +58,9 @@ public class PlayerVisual : GameBehaviour
 
 
 
-	public void Init(SpriteRenderer pPlayerRenderer, HeroConfig pHeroConfig , PlayerInitInfo pPlayerInfo)
+	public void Init(PlayerInitInfo pPlayerInfo)
 	{
-		playerRenderer = pPlayerRenderer;
-		heroConfig = pHeroConfig;
+		heroConfig = brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero);
 
 		int colorIndex = GetColorPaletteIndex(pPlayerInfo.Color);
 		paletteSwap.SetPalette(colorIndex);
@@ -74,8 +72,31 @@ public class PlayerVisual : GameBehaviour
 	}
 
 	[SerializeField]
-	private int currentSortOrder = 0;
+	public int CurrentSortOrder { get; private set; } = 0;
 	const int player_sort_index_start = 10;
+
+	/// <summary>
+	/// Returns sort order for projectile which equals
+	/// the weapon sort order + 1
+	/// </summary>
+	public int GetProjectileSortOrder()
+	{
+		switch(currentDirection)
+		{
+			case EDirection.Up:
+				return weaponUp.sortingOrder + 1;
+			//right, down and left should be the same
+			case EDirection.Right:
+				return weaponRight.sortingOrder + 1;
+			case EDirection.Down:
+				return weaponDown.sortingOrder + 1;
+			case EDirection.Left:
+				return weaponLeft.sortingOrder + 1;
+		}
+		Debug.LogError("Error GetProjectileSortOrder");
+		return -1;
+	}
+
 
 	private const string AC_KEY_DIRECTION = "direction";
 	private const string AC_KEY_IS_WALKING = "isWalking";
@@ -84,17 +105,15 @@ public class PlayerVisual : GameBehaviour
 
 	internal void SetSortOrder(int pOrder, bool pForceRefresh = false)
 	{
-		if(currentSortOrder == pOrder && !pForceRefresh)
+		if(CurrentSortOrder == pOrder && !pForceRefresh)
 			return;
 
-		currentSortOrder = pOrder;
+		CurrentSortOrder = pOrder;
 
 
 		UpdatePlayerSortOrder();
 		UpdateWeaponSortOrder();
 		UpdateHandsSortOrder();
-
-
 	}
 
 	public void Move()
@@ -140,7 +159,7 @@ public class PlayerVisual : GameBehaviour
 				break;
 		}
 
-		SetSortOrder(currentSortOrder, true);
+		SetSortOrder(CurrentSortOrder, true);
 
 		animator.SetInteger(AC_KEY_DIRECTION, (int)pDirection);
 
@@ -151,10 +170,10 @@ public class PlayerVisual : GameBehaviour
 	public void SetActiveWeapon(PlayerWeapon pWeapon)
 	{
 		activeWeapon = pWeapon;
-		weaponUp.sprite = pWeapon.Config.PlayerSpriteUp;
-		weaponRight.sprite = pWeapon.Config.PlayerSpriteRight;
-		weaponDown.sprite = pWeapon.Config.playerSpriteDown;
-		weaponLeft.sprite = pWeapon.Config.PlayerSpriteLeft;
+		weaponUp.sprite = pWeapon.VisualInfo.PlayerSpriteUp;
+		weaponRight.sprite = pWeapon.VisualInfo.PlayerSpriteRight;
+		weaponDown.sprite = pWeapon.VisualInfo.playerSpriteDown;
+		weaponLeft.sprite = pWeapon.VisualInfo.PlayerSpriteLeft;
 	}
 
 	private void UpdatePlayerSortOrder()
@@ -163,7 +182,8 @@ public class PlayerVisual : GameBehaviour
 		if(currentDirection == EDirection.Up)
 			order += 2;
 
-		playerRenderer.sortingOrder = order;
+		spriteRend.sortingOrder = order;
+		//Debug.Log("UpdatePlayerSortOrder " + order);
 	}
 
 	private void UpdateHandsSortOrder()
@@ -187,13 +207,14 @@ public class PlayerVisual : GameBehaviour
 	/// </summary>
 	private int GetCurrentOrderIndexStart()
 	{
-		return player_sort_index_start + currentSortOrder * player_sort_index_start;
+		return player_sort_index_start + CurrentSortOrder * player_sort_index_start;
 	}
 
 	private void UpdateWeaponSortOrder()
 	{
 		int order = GetCurrentOrderIndexStart() + 1;
 
+		//todo: merge into 1 sprite
 		weaponUp.sortingOrder = order - 1;
 		weaponRight.sortingOrder = order;
 		weaponDown.sortingOrder = order;

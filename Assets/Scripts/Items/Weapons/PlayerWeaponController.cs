@@ -54,22 +54,19 @@ public class PlayerWeaponController : GameBehaviour
 		onWeaponInfoChanged.Invoke(activeWeapon);
 	}
 
-	public void AddWeapon(PlayerWeaponConfig pConfig)
+	//public void AddWeapon(NewWeaponConfig pConfig)
+	public void AddWeapon(PlayerWeapon pWeapon)
 	{
 		PlayerWeapon weaponInInventory =
-			weapons.Find(a => a.Id.Equals(pConfig.Id));
+			weapons.Find(a => a.Id.Equals(pWeapon.Id));
 		if(weaponInInventory != null)
 		{
-			weaponInInventory.Add(pConfig);
+			weaponInInventory.OnAddSameWeapon(pWeapon);
 		}
 		else
 		{
-			if(pConfig.IsSpecial())
-				weaponInInventory = new PlayerWeaponSpecial((PlayerWeaponSpecialConfig)pConfig, owner);
-			else
-				weaponInInventory = new PlayerWeapon(pConfig, owner);
-
-			weapons.Add(weaponInInventory);
+			weapons.Add(pWeapon);
+			weaponInInventory = pWeapon;
 		}
 
 		SetActiveWeapon(weapons.IndexOf(weaponInInventory));
@@ -96,16 +93,23 @@ public class PlayerWeaponController : GameBehaviour
 		}
 		//Debug.Log($"{activeWeapon} USE");
 
-		if(activeWeapon.Config.Projectile != null)
-		{
-			game.ProjectileManager.SpawnProjectile(
-				GetProjectileStartPosition(movement.CurrentDirection),
-				movement,
-				activeWeapon.Config.Projectile);
-		}
+		//if(activeWeapon.Config.Projectile != null)
+		//{
+		//	game.ProjectileManager.SpawnProjectile(
+		//		GetProjectileStartPosition(movement.CurrentDirection),
+		//		movement,
+		//		activeWeapon.Config.Projectile);
+		//}
 		onWeaponInfoChanged.Invoke(activeWeapon);
 
 		HandleUseResult(useResult);
+	}
+
+	public void ShootProjectile(ProjectileWeaponInfo pProjectile)
+	{
+		game.ProjectileManager.SpawnProjectile(
+				GetProjectileStartPosition(movement.CurrentDirection),
+				owner, pProjectile.Projectile);
 	}
 
 	private void HandleUseResult(EWeaponUseResult pUseResult)
@@ -132,7 +136,7 @@ public class PlayerWeaponController : GameBehaviour
 		Action onReloaded = pWeapon.Reload;
 		Action<float> onReloadUpdate = pWeapon.ReportReloadProgress;
 
-		DoInTime(onReloaded, pWeapon.Config.Cooldown, onReloadUpdate);
+		DoInTime(onReloaded, pWeapon.Info.Cooldown, onReloadUpdate);
 	}
 
 	public Transform GetProjectileStart(EDirection pDirection)

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e584d321fc9074388ea789892cd49a, type: 3}
+  m_Name: Weapon_Hero_Basic_Tesla
+  m_EditorClassIdentifier: 
+  Id: 205
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 9184622159911017541, guid: 6c525a71581e9f5448048b7f7857d0b4,
+      type: 3}
+    PlayerSpriteRight: {fileID: 2785370197116248569, guid: 6c525a71581e9f5448048b7f7857d0b4,
+      type: 3}
+    playerSpriteDown: {fileID: -3923229758757101469, guid: 6c525a71581e9f5448048b7f7857d0b4,
+      type: 3}
+    PlayerSpriteLeft: {fileID: 8484153727409154241, guid: 6c525a71581e9f5448048b7f7857d0b4,
+      type: 3}
+    InfoSprite: {fileID: 21300000, guid: 8bbda45bdf1921840927122d9a5d4b3f, type: 3}
+  ProjectileVisual: {fileID: 1970388535196913028, guid: dcb41f2fd1ad27149bece79a4c142218,
+    type: 3}

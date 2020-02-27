@@ -36,7 +36,6 @@ public class Player : GameBehaviour
 		}
 	}
 
-
 	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
 	{
 		//Debug.Log($"{this} SetInfo");
@@ -45,40 +44,17 @@ public class Player : GameBehaviour
 		input.Keys = pPlayerInfo.PlayerKeys;
 
 
+		HeroSpecialWeaponConfig heroSpecialConfig =
+			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pPlayerInfo.Hero);
+		ItemController.AddHeroSpecialWeapon(pPlayerInfo.Hero);
 
 
+		ItemController.AddMapWeapon(EWeaponId.MP40);
 
-		////todo: delete. test adding weapons
-		//WeaponController.AddWeapon(
-		//	brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
-		////todo: delete. test adding same weapon
-		//WeaponController.AddWeapon(
-		//	brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.TestGun2));
+		ItemController.AddHeroBasicWeapon(pPlayerInfo.Hero);
 
-
-		//note: last one added will be active
-		List<PlayerWeaponConfig> startupWeapons = new List<PlayerWeaponConfig>();
-		//SPECIAL
-		startupWeapons.Add(brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pPlayerInfo.Hero));
-
-		//hero standart weapon
-		startupWeapons.Add(brainiacs.ItemManager.GetHeroWeaponConfig(pPlayerInfo.Hero));
-
-		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.MP40));
-		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.Flamethrower));
-
-		startupWeapons.Add(brainiacs.ItemManager.GetPlayerWeaponConfig(EWeaponId.Lasergun));
-
-		foreach(var weapon in startupWeapons)
-		{
-			WeaponController.AddWeapon(weapon);
-		}
-
-		Visual.Init(spriteRend, brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero), pPlayerInfo);
+		Visual.Init(pPlayerInfo);
 
 		Movement.SpawnAt(pSpawnPosition);
-
 	}
-
-
 }

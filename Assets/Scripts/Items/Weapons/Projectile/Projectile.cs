@@ -12,19 +12,29 @@ public class Projectile : GameBehaviour
 
 	bool inited;
 
-	public void Spawn(EDirection pDirection, ProjectileConfig pConfig, Collider2D pPlayerCollider)
+	public void Spawn(Player pOwner, ProjectileConfig pConfig)
 	{
-		spriteRend.sprite = pConfig.sprite;
-		direction = GetDirectionVector(pDirection, pConfig.Dispersion);
+		spriteRend.sprite = pConfig.Visual.GetSprite();
+		EDirection playerDir = pOwner.Movement.CurrentDirection;
+		direction = GetDirectionVector(playerDir, pConfig.Dispersion);
 		config = pConfig;
 		inited = true;
 
-		boxCollider2D.size = pConfig.ColliderSize;
-		boxCollider2D.offset = pConfig.ColliderOffset;
+		boxCollider2D.size = pConfig.Visual.GetCollider().size;
+		boxCollider2D.offset = pConfig.Visual.GetCollider().offset;
 
-		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pPlayerCollider);
+		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pOwner.Movement.PlayerCollider);
 
-		transform.Rotate(Utils.GetRotation(pDirection, 180));
+		UpdateOrderInLayer(pOwner);
+
+		transform.Rotate(Utils.GetRotation(playerDir, 180));
+	}
+
+	private void UpdateOrderInLayer(Player pOwner)
+	{
+		int order = pOwner.Visual.GetProjectileSortOrder();
+		spriteRend.sortingOrder = order;
+		//Debug.Log("Set projectile order " + order);
 	}
 
 	private Vector2 GetDirectionVector(EDirection pDirection, float pDispersion)
@@ -40,7 +50,7 @@ public class Projectile : GameBehaviour
 			return;
 
 		//transform.position += Utils.GetVector(direction) *
-		transform.position += direction * Time.deltaTime * config.speed;
+		transform.position += direction * Time.deltaTime * config.Speed;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -56,7 +66,7 @@ public class Projectile : GameBehaviour
 
 	private void OnEnter(Player pPlayer)
 	{
-		pPlayer.Stats.AddHealth(-config.damage);
+		pPlayer.Stats.AddHealth(-config.Damage);
 		//todo: return to pool
 		gameObject.SetActive(false);
 		inited = false;

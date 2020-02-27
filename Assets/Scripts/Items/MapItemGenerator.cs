@@ -53,12 +53,20 @@ public class MapItemGenerator : GameController
 	private void GenerateRandomItem()
 	{
 		MapItem newItem = Instantiate(mapItemPrefab, GetHolder());
-		int randomIndex = Random.Range(0, brainiacs.ItemManager.MapItems.Count);
+		int randomIndex = Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 
-		randomIndex = 0; //debug
-		MapItemConfig itemConfig =
-			brainiacs.ItemManager.MapItems[randomIndex];
-		newItem.Spawn(GetRandomPosition(), itemConfig);
+		//todo: pick from powerup, mapWeapon, mapSpecialWeapon
+		//or try tu unify them
+
+		//NewMapWeaponConfig newMapWeaponConfig = brainiacs.ItemManager.MapWeapons[randomIndex];
+		//newItem.Spawn(GetRandomPosition(), newMapWeaponConfig);
+
+		randomIndex = Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
+		PowerUpConfig powerUpConfig = brainiacs.ItemManager.PowerUps[randomIndex];
+		newItem.Spawn(GetRandomPosition(), powerUpConfig);
+
+
+		//TODO: other map items!!!
 	}
 
 	private Vector3 GetRandomPosition()

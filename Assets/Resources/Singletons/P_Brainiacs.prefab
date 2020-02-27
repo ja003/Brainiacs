@@ -73,22 +73,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9d657fac06fb447b106c58f8f57673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeapons:
-  - {fileID: 11400000, guid: 186fe1c1cee131d43833e62fa46a3f7a, type: 2}
-  - {fileID: 11400000, guid: 728db0ec36eada34598454f7298fcf91, type: 2}
-  - {fileID: 11400000, guid: e464e378dfe7c4f4fa9d7efb3ab1429f, type: 2}
-  - {fileID: 11400000, guid: 3fab8a27f0cec1a4a831c252f43d4bf3, type: 2}
-  - {fileID: 11400000, guid: 3bad14d39a2d3494d96fac04caa29239, type: 2}
-  playerSpecialWeapons:
-  - {fileID: 11400000, guid: c34a3f1eb4c4e9542ac01250f5284eca, type: 2}
-  - {fileID: 11400000, guid: b5845877734781747aa053162cf447cd, type: 2}
-  powerUps:
-  - {fileID: 11400000, guid: ba3bfa79b8d12dc46a2eaab84e5ae844, type: 2}
-  - {fileID: 11400000, guid: 64202e1bfda264042839e603a3208c11, type: 2}
-  - {fileID: 11400000, guid: 1c02860b8ec175541a479d81f4ce4d6f, type: 2}
-  - {fileID: 11400000, guid: df434f533350dfb45b72a22a7f6423a2, type: 2}
-  - {fileID: 11400000, guid: aa985d5e1a776824dbef3f1729fef102, type: 2}
-  MapItems: []
+  MapWeapons:
+  - {fileID: 11400000, guid: 22b34606b5c911a4cadf6e20f7eb9a0d, type: 2}
+  MapWeaponsSpecial:
+  - {fileID: 11400000, guid: f4aa2047e2575ba40a8f4856bd863f71, type: 2}
+  PowerUps:
+  - {fileID: 11400000, guid: 4f533f16f3e36ab41bd96b0956bb7a90, type: 2}
 --- !u!114 &3866699018896989849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,4 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroConfigs:
+  - {fileID: 11400000, guid: 1dd21245dbcd45547aa96ca968d2f047, type: 2}
+  - {fileID: 11400000, guid: 05719e900104a114584549c1a6df3fab, type: 2}
+  - {fileID: 11400000, guid: c58d28c1c27fba141921b86a45900ae7, type: 2}
+  - {fileID: 11400000, guid: 80fda5b749203304dade3db9c822ad11, type: 2}
   - {fileID: 11400000, guid: 36cfb23e9706d3242b7725935410bfa4, type: 2}

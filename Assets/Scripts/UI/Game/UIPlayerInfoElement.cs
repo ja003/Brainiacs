@@ -17,7 +17,7 @@ public class UIPlayerInfoElement : GameBehaviour
 			return;
 		if(activeWeapon.IsRealoading)
 			return;		
-		if(activeWeapon.Config.Cadency < 0.1f)
+		if(activeWeapon.Info.Cadency < 0.1f)
 			return;
 
 		//set weapon alpha based on cadency ready state
@@ -52,7 +52,7 @@ public class UIPlayerInfoElement : GameBehaviour
 	private void SetWeaponInfo(PlayerWeapon pWeapon)
 	{
 		activeWeapon = pWeapon;
-		weapon.sprite = pWeapon.Config.InfoSprite;
+		weapon.sprite = pWeapon.VisualInfo.InfoSprite;
 		weapon.color = pWeapon.IsRealoading ? Color.black : Color.white;
 		ammo.text = pWeapon.GetAmmoText();
 	}

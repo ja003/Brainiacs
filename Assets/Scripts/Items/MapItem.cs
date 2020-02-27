@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class MapItem : GameBehaviour
 {
-	MapItemConfig config;
+	MapWeaponConfig weaponConfig; //todo: maybe id is enough?
+	PowerUpConfig powerUpConfig;
 
-	public void Spawn(Vector3 pPosition, MapItemConfig pConfig)
+	private void Spawn(Vector3 pPosition)
 	{
 		transform.position = pPosition;
-		config = pConfig;
-		spriteRend.sprite = config.mapSprite;
 		//Debug.Log($"Item {config} spawned at {pPosition}");
+	}
+
+	public void Spawn(Vector3 pPosition, MapWeaponConfig pConfig)
+	{
+		transform.position = pPosition;
+		weaponConfig = pConfig;
+		spriteRend.sprite = pConfig.MapItemInfo.MapSprite;
+		Spawn(pPosition);
+	}
+
+	public void Spawn(Vector3 pPosition, PowerUpConfig pConfig)
+	{
+		transform.position = pPosition;
+		powerUpConfig = pConfig;
+		spriteRend.sprite = pConfig.MapItemInfo.MapSprite;
+		Spawn(pPosition);
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -25,7 +40,16 @@ public class MapItem : GameBehaviour
 
 	private void OnEnter(Player pPlayer)
 	{
-		config.OnEnterPlayer(pPlayer);
+		if(powerUpConfig != null)
+		{
+			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
+		}
+		else if(weaponConfig != null)
+		{
+			pPlayer.ItemController.AddMapWeapon(weaponConfig.Id);
+		}
+		//TODO: special weapon + handle error
+
 		gameObject.SetActive(false);
 	}
 

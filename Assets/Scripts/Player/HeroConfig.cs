@@ -5,11 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Hero", menuName = "ScriptableObjects/Hero")]
 public class HeroConfig : ScriptableObject
 {
-	public EHero hero;
+	public EHero Hero;
 
-	public EWeaponId defaultWeapon;
-	//todo: special weapon own class?
-	public EWeaponId specialWeapon;
+	public HeroBasicWeaponConfig BasicWeapon;
+	public HeroSpecialWeaponConfig SpecialWeapon;
 
 	public Sprite Portrait;
 }

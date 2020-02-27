@@ -2,64 +2,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ItemManager : GameBehaviour
 {
 	[SerializeField]
-	public List<PlayerWeaponConfig> playerWeapons;
+	public List<MapWeaponConfig> MapWeapons;
 
 	[SerializeField]
-	public List<PlayerWeaponSpecialConfig> playerSpecialWeapons;
+	public List<MapSpecialWeapon> MapWeaponsSpecial;
+
 
 	[SerializeField]
-	private List<PowerUpConfig> powerUps;
+	public List<PowerUpConfig> PowerUps;
 
-	Dictionary<EWeaponId, PlayerWeaponConfig> playerWeaponMap =
-		new Dictionary<EWeaponId, PlayerWeaponConfig>();
-
-	public List<MapItemConfig> MapItems = new List<MapItemConfig>();
-
-	protected override void Awake()
+	public MapSpecialWeapon GetMapSpecialWeaponConfig(EWeaponId pId)
 	{
-		base.Awake();
-
-		foreach(PowerUpConfig config in powerUps)
-		{
-			//todo: do we need to store powerup configs?
-			MapItems.Add(config);
-		}
-		foreach(PlayerWeaponConfig config in playerWeapons)
-		{
-			playerWeaponMap.Add(config.Id, config);
-			if(config.CanDropOnMap)
-			{
-				MapItems.Add(config);
-			}
-		}
-		foreach(PlayerWeaponSpecialConfig config in playerSpecialWeapons)
-		{
-			playerWeaponMap.Add(config.Id, config);
-		}
-
+		return MapWeaponsSpecial.Find(a => a.Id == pId);
 	}
 
-	public PlayerWeaponConfig GetPlayerWeaponConfig(EWeaponId pId)
+	public MapWeaponConfig GetMapWeaponConfig(EWeaponId pId)
 	{
-		PlayerWeaponConfig item;
-		playerWeaponMap.TryGetValue(pId, out item);
-		return item;
+		return MapWeapons.Find(a => a.Id == pId);
 	}
 
-	internal PlayerWeaponSpecialConfig GetHeroSpecialWeaponConfig(EHero pHero)
+	public HeroSpecialWeaponConfig GetHeroSpecialWeaponConfig(EHero pHero)
 	{
-		return (PlayerWeaponSpecialConfig)GetPlayerWeaponConfig(
-			//EWeaponId.Special_Einstein
-			EWeaponId.Special_Curie
-			);
+		HeroConfig heroConfig = brainiacs.HeroManager.GetHeroConfig(pHero);
+		return heroConfig.SpecialWeapon;
 	}
 
-	public PlayerWeaponConfig GetHeroWeaponConfig(EHero pHero)
+	public HeroBasicWeaponConfig GetHeroBasicWeaponConfig(EHero pHero)
 	{
-		return GetPlayerWeaponConfig(EWeaponId.TestGun);
+		HeroConfig heroConfig = brainiacs.HeroManager.GetHeroConfig(pHero);
+		return heroConfig.BasicWeapon;
 	}
 }

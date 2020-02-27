@@ -12,7 +12,7 @@ public class HeroManager : MonoBehaviour
 	{
 		foreach(HeroConfig config in heroConfigs)
 		{
-			heroConfigMap.Add(config.hero, config);
+			heroConfigMap.Add(config.Hero, config);
 		}
 	}
 

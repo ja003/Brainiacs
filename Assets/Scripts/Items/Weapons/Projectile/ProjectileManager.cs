@@ -7,11 +7,11 @@ public class ProjectileManager : GameController
 	[SerializeField]
 	private Projectile prefab;
 	
-	public void SpawnProjectile(Vector3 pPosition, PlayerMovement pPlayerMovement, ProjectileConfig pConfig)
+	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig)
 	{
 		Projectile newProjectile = Instantiate(prefab, pPosition, Quaternion.identity, GetHolder());
 
-		newProjectile.Spawn(pPlayerMovement.CurrentDirection, pConfig, pPlayerMovement.PlayerCollider);
+		newProjectile.Spawn(pOwner, pConfig);
 	}
 
 	protected override void OnGameActivated()

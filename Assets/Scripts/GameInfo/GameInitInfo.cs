@@ -81,11 +81,12 @@ public enum EMap
 
 public enum EHero
 {
-	None,
-	Einstein,
-	Currie,
-	Tesla,
-	Edison
+	None = 0,
+	Currie = 1,
+	DaVinci = 2,
+	Einstein = 3,
+	Nobel = 4,
+	Tesla = 5,
 }
 
 public enum EPlayerColor

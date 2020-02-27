@@ -31,8 +31,8 @@ public class PlayerMovement : GameBehaviour
 		//Debug.Log(gameObject.name + " move " + pDirection);
 		if(CurrentDirection != pDirection)
 		{
+			CurrentDirection = pDirection;
 			player.Visual.OnDirectionChange(pDirection);
-			//weapon.OnChangeDirection(pDirection);
 		}
 		CurrentDirection = pDirection;
 		transform.position += Utils.GetVector3(pDirection) *
