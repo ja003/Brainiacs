@@ -11,4 +11,6 @@ public class HeroConfig : ScriptableObject
 	public HeroSpecialWeaponConfig SpecialWeapon;
 
 	public Sprite Portrait;
+
+	public AnimatorOverrideController Animator;
 }

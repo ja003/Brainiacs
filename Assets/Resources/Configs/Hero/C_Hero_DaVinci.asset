@@ -16,3 +16,4 @@ MonoBehaviour:
   BasicWeapon: {fileID: 11400000, guid: 8e4cd8319b87c6345a5065d9ec6b0e04, type: 2}
   SpecialWeapon: {fileID: 11400000, guid: 7865cd7839ea68f4eb251986c0984ca5, type: 2}
   Portrait: {fileID: 21300000, guid: e2985a166c85aeb46a8b3d5b03cbd139, type: 3}
+  Animator: {fileID: 22100000, guid: e024a0743e354d94fb98d0480c5de2d1, type: 2}

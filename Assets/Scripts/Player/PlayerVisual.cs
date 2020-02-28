@@ -62,6 +62,11 @@ public class PlayerVisual : GameBehaviour
 	{
 		heroConfig = brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero);
 
+		if(heroConfig.Animator)
+			animator.runtimeAnimatorController = heroConfig.Animator;
+		else
+			Debug.LogError($"{heroConfig.Hero} doesnt have animator configured");
+
 		int colorIndex = GetColorPaletteIndex(pPlayerInfo.Color);
 		paletteSwap.SetPalette(colorIndex);
 	}
@@ -99,9 +104,15 @@ public class PlayerVisual : GameBehaviour
 
 
 	private const string AC_KEY_DIRECTION = "direction";
-	private const string AC_KEY_IS_WALKING = "isWalking";
+	//private const string AC_KEY_IS_WALKING = "isWalking";
 	private const string AC_KEY_IS_DEAD = "isDead";
 	private const string AC_KEY_DIE = "die";
+	private const string AC_KEY_WALK_SPEED = "walkSpeed";
+
+	//idle is just slowed walk animation
+	private const float WALK_ANIM_SPEED = 1;
+	//maybe idle speed shoudl be 0 - TEST
+	private const float IDLE_ANIM_SPEED = 0.1f;
 
 	internal void SetSortOrder(int pOrder, bool pForceRefresh = false)
 	{
@@ -118,12 +129,15 @@ public class PlayerVisual : GameBehaviour
 
 	public void Move()
 	{
-		animator.SetBool(AC_KEY_IS_WALKING, true);
+		//animator.SetBool(AC_KEY_IS_WALKING, true);
+		animator.SetFloat(AC_KEY_WALK_SPEED, WALK_ANIM_SPEED);
+
 	}
 
 	public void Idle()
 	{
-		animator.SetBool(AC_KEY_IS_WALKING, false);
+		//animator.SetBool(AC_KEY_IS_WALKING, false);
+		animator.SetFloat(AC_KEY_WALK_SPEED, IDLE_ANIM_SPEED);
 	}
 
 	private EDirection currentDirection => movement.CurrentDirection;

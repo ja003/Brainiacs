@@ -1,0 +1,3211 @@
+fileFormatVersion: 2
+guid: 4e38c57835883c946a4fe1f10579174f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3636354667662587365
+    second: davinci_blue_32b_0
+  - first:
+      213: 4618179144447505091
+    second: davinci_blue_32b_1
+  - first:
+      213: -928266777501591570
+    second: davinci_blue_32b_2
+  - first:
+      213: -241906172934298070
+    second: davinci_blue_32b_3
+  - first:
+      213: 7655465290509993689
+    second: davinci_blue_32b_4
+  - first:
+      213: -1476782789164278522
+    second: davinci_blue_32b_5
+  - first:
+      213: -7949667489276590675
+    second: davinci_blue_32b_6
+  - first:
+      213: -8264653837513711096
+    second: davinci_blue_32b_7
+  - first:
+      213: 1196369466586394879
+    second: davinci_blue_32b_8
+  - first:
+      213: -6307352658238937717
+    second: davinci_blue_32b_9
+  - first:
+      213: -6493459403536442683
+    second: davinci_blue_32b_10
+  - first:
+      213: -7803154522088337693
+    second: davinci_blue_32b_11
+  - first:
+      213: 4771022544261166304
+    second: davinci_blue_32b_12
+  - first:
+      213: -6054127773537829813
+    second: davinci_blue_32b_13
+  - first:
+      213: -3988075190410043244
+    second: davinci_blue_32b_14
+  - first:
+      213: -5235647284033704755
+    second: davinci_blue_32b_15
+  - first:
+      213: -5552349852902980179
+    second: davinci_blue_32b_16
+  - first:
+      213: 345679855909084140
+    second: davinci_blue_32b_17
+  - first:
+      213: 388018168254862959
+    second: davinci_blue_32b_18
+  - first:
+      213: 6672367102866610959
+    second: davinci_blue_32b_19
+  - first:
+      213: -5213570284086803910
+    second: davinci_blue_32b_20
+  - first:
+      213: -1206904150163469910
+    second: davinci_blue_32b_21
+  - first:
+      213: 1279637706692306978
+    second: davinci_blue_32b_22
+  - first:
+      213: 8320518771042465690
+    second: davinci_blue_32b_23
+  - first:
+      213: 9208400036933097563
+    second: davinci_blue_32b_24
+  - first:
+      213: -5640598485407024962
+    second: davinci_blue_32b_25
+  - first:
+      213: -41465232610312018
+    second: davinci_blue_32b_26
+  - first:
+      213: 5180367626928978975
+    second: davinci_blue_32b_27
+  - first:
+      213: 6469730828044658498
+    second: davinci_blue_32b_28
+  - first:
+      213: -6111024928349907107
+    second: davinci_blue_32b_29
+  - first:
+      213: -3307941287873810106
+    second: davinci_blue_32b_30
+  - first:
+      213: -5483963135607098659
+    second: davinci_blue_32b_31
+  - first:
+      213: -6001549414147279107
+    second: davinci_blue_32b_32
+  - first:
+      213: 3632620507979307737
+    second: davinci_blue_32b_33
+  - first:
+      213: -7935781389576203583
+    second: davinci_blue_32b_34
+  - first:
+      213: -7879791861787625471
+    second: davinci_blue_32b_35
+  - first:
+      213: 1164156151225030481
+    second: davinci_blue_32b_36
+  - first:
+      213: -2617541634982998334
+    second: davinci_blue_32b_37
+  - first:
+      213: 7926249899677416528
+    second: davinci_blue_32b_38
+  - first:
+      213: 100800271560974828
+    second: davinci_blue_32b_39
+  - first:
+      213: -7592742722950207944
+    second: davinci_blue_32b_40
+  - first:
+      213: 5922458127879095878
+    second: davinci_blue_32b_41
+  - first:
+      213: -762054024643300641
+    second: davinci_blue_32b_42
+  - first:
+      213: 7668252552641032553
+    second: davinci_blue_32b_43
+  - first:
+      213: 1397286015103715184
+    second: davinci_blue_32b_44
+  - first:
+      213: -5901187670834825999
+    second: davinci_blue_32b_45
+  - first:
+      213: 2878141371388190010
+    second: davinci_blue_32b_46
+  - first:
+      213: -7184237262676991456
+    second: davinci_blue_32b_47
+  - first:
+      213: -7363215760559131384
+    second: davinci_blue_32b_48
+  - first:
+      213: 1008817872363455130
+    second: davinci_blue_32b_49
+  - first:
+      213: -5880446764640704583
+    second: davinci_blue_32b_50
+  - first:
+      213: -166642889313575065
+    second: davinci_blue_32b_51
+  - first:
+      213: -7500927863867632797
+    second: davinci_blue_32b_52
+  - first:
+      213: 6633000358410751193
+    second: davinci_blue_32b_53
+  - first:
+      213: -3207003328942929476
+    second: davinci_blue_32b_54
+  - first:
+      213: -5410226528495445605
+    second: davinci_blue_32b_55
+  - first:
+      213: 7139048622382505573
+    second: davinci_blue_32b_56
+  - first:
+      213: -8386056919594231483
+    second: davinci_blue_32b_57
+  - first:
+      213: 7713924446963171215
+    second: davinci_blue_32b_58
+  - first:
+      213: -6062910340062675955
+    second: davinci_blue_32b_59
+  - first:
+      213: -3778767491435724937
+    second: davinci_blue_32b_60
+  - first:
+      213: 3443030639147410296
+    second: davinci_blue_32b_61
+  - first:
+      213: 5064292739127662706
+    second: davinci_blue_32b_62
+  - first:
+      213: -489268309284468518
+    second: davinci_blue_32b_63
+  - first:
+      213: 2065892127473325124
+    second: davinci_blue_32b_64
+  - first:
+      213: 6236169490904017032
+    second: davinci_blue_32b_65
+  - first:
+      213: -8722444226321723078
+    second: davinci_blue_32b_66
+  - first:
+      213: 4469167083474010046
+    second: davinci_blue_32b_67
+  - first:
+      213: -763128508506722431
+    second: davinci_blue_32b_68
+  - first:
+      213: -1057337839636671451
+    second: davinci_blue_32b_69
+  - first:
+      213: 3944271078621262884
+    second: davinci_blue_32b_70
+  - first:
+      213: -6800890575566776274
+    second: davinci_blue_32b_71
+  - first:
+      213: 4356759571459437311
+    second: davinci_blue_32b_72
+  - first:
+      213: -5525436438396358266
+    second: davinci_blue_32b_73
+  - first:
+      213: -1583606849733646542
+    second: davinci_blue_32b_74
+  - first:
+      213: 2704301706233629240
+    second: davinci_blue_32b_75
+  - first:
+      213: -360071111282287352
+    second: davinci_blue_32b_76
+  - first:
+      213: 237738241003024071
+    second: davinci_blue_32b_77
+  - first:
+      213: 3188892667037664373
+    second: davinci_blue_32b_78
+  - first:
+      213: 1146147409387259415
+    second: davinci_blue_32b_79
+  - first:
+      213: 4703424192838985227
+    second: davinci_blue_32b_80
+  - first:
+      213: 4401740035065635793
+    second: davinci_blue_32b_81
+  - first:
+      213: 6755742550895653536
+    second: davinci_blue_32b_82
+  - first:
+      213: -8047535970225159557
+    second: davinci_blue_32b_83
+  - first:
+      213: 1290331147014132914
+    second: davinci_blue_32b_84
+  - first:
+      213: -305912524739302781
+    second: davinci_blue_32b_85
+  - first:
+      213: -6750906802789122296
+    second: davinci_blue_32b_86
+  - first:
+      213: 6616327801711623622
+    second: davinci_blue_32b_87
+  - first:
+      213: 3408254902380101442
+    second: davinci_blue_32b_88
+  - first:
+      213: -2361512161477733555
+    second: davinci_blue_32b_89
+  - first:
+      213: -5154685609954575128
+    second: davinci_blue_32b_90
+  - first:
+      213: -778533925635996396
+    second: davinci_blue_32b_91
+  - first:
+      213: 3871167685170972124
+    second: davinci_blue_32b_92
+  - first:
+      213: -601243291984348628
+    second: davinci_blue_32b_93
+  - first:
+      213: -8479843087575675311
+    second: davinci_blue_32b_94
+  - first:
+      213: -485707752666507331
+    second: davinci_blue_32b_95
+  - first:
+      213: -5737186605669026464
+    second: davinci_blue_32b_96
+  - first:
+      213: 1926372769875882450
+    second: davinci_blue_32b_97
+  - first:
+      213: -7101600554664107176
+    second: davinci_blue_32b_98
+  - first:
+      213: -8650682997540955024
+    second: davinci_blue_32b_99
+  - first:
+      213: -961671087993123077
+    second: davinci_blue_32b_100
+  - first:
+      213: 5250151345861196548
+    second: davinci_blue_32b_101
+  - first:
+      213: -5845931538997164518
+    second: davinci_blue_32b_102
+  - first:
+      213: -8019579817848601763
+    second: davinci_blue_32b_103
+  - first:
+      213: 2621241928425692930
+    second: davinci_blue_32b_104
+  - first:
+      213: -5387912467043921687
+    second: davinci_blue_32b_105
+  - first:
+      213: -1597156874977420958
+    second: davinci_blue_32b_106
+  - first:
+      213: 1357335725168114563
+    second: davinci_blue_32b_107
+  - first:
+      213: -6137222261915443320
+    second: davinci_blue_32b_108
+  - first:
+      213: 6641610208753700381
+    second: davinci_blue_32b_109
+  - first:
+      213: -9024982454602785670
+    second: davinci_blue_32b_110
+  - first:
+      213: -8602804838176622128
+    second: davinci_blue_32b_111
+  - first:
+      213: -3451467715479897644
+    second: davinci_blue_32b_112
+  - first:
+      213: 4055430235526541060
+    second: davinci_blue_32b_113
+  - first:
+      213: 551487405797358645
+    second: davinci_blue_32b_114
+  - first:
+      213: 2399162555022456475
+    second: davinci_blue_32b_115
+  - first:
+      213: -8555283448541777762
+    second: davinci_blue_32b_116
+  - first:
+      213: -8148410871554568275
+    second: davinci_blue_32b_117
+  - first:
+      213: 579303878457954237
+    second: davinci_blue_32b_118
+  - first:
+      213: -9054322144111294591
+    second: davinci_blue_32b_119
+  - first:
+      213: 8279423866486805197
+    second: davinci_blue_32b_120
+  - first:
+      213: -1288886740935605020
+    second: davinci_blue_32b_121
+  - first:
+      213: -9144620627164055100
+    second: davinci_blue_32b_122
+  - first:
+      213: 2547747895701173768
+    second: davinci_blue_32b_123
+  - first:
+      213: 4437826724214793657
+    second: davinci_blue_32b_124
+  - first:
+      213: -5192408847465255512
+    second: davinci_blue_32b_125
+  - first:
+      213: -4332898392534139555
+    second: davinci_blue_32b_126
+  - first:
+      213: 370895351641906375
+    second: davinci_blue_32b_127
+  - first:
+      213: -7384184226282613521
+    second: davinci_blue_32b_128
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: davinci_blue_32b_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d991fdbd61ddd49b3e0effd31dfe38
+      internalID: 3636354667662587365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db879605bbf57ff4da142112fa838aa5
+      internalID: 4618179144447505091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de11720568b143f41981b0621702eac1
+      internalID: -928266777501591570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4074a67138aabd34b98f792bd14c6c5c
+      internalID: -241906172934298070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba822163045aa34991e8ffba51790a0
+      internalID: 7655465290509993689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_5
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac595c02b3841648ae6b1045dc8012b
+      internalID: -1476782789164278522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_6
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d32fadcc537cd845ac25a00dc73fc13
+      internalID: -7949667489276590675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada5781b3ca681b44af89db9bb1b89bc
+      internalID: -8264653837513711096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_8
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9034e04e7bd15b24cbb5438abe0bf673
+      internalID: 1196369466586394879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_9
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b15a4699b6a5740b9473691f59573f
+      internalID: -6307352658238937717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_10
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250d7a6704c762e4293f995627571490
+      internalID: -6493459403536442683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_11
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be88ae7e400987c409e0bcd33be068b2
+      internalID: -7803154522088337693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_12
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ff52b125820674ab47a2c6a29bfc8f
+      internalID: 4771022544261166304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fe7c9fbec38c4419cb6cc025421aa5
+      internalID: -6054127773537829813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2603ae797acec394ba2d3a80d33b253d
+      internalID: -3988075190410043244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_15
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e05165cbd9c504983ed78ab092bb5d
+      internalID: -5235647284033704755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_16
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35687834e0b35564abdd5b1368cedf44
+      internalID: -5552349852902980179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_17
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f317eca6c19ba4a44accc2d5696eda78
+      internalID: 345679855909084140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_18
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af4b3a61a2d7374fb85e7d416898ced
+      internalID: 388018168254862959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_19
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff9c4870880bfc49b466a1dbd458906
+      internalID: 6672367102866610959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_20
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bc6d4f7ed309f4ba7efb0935914526
+      internalID: -5213570284086803910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_21
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce83b91933c90845ba125b595162886
+      internalID: -1206904150163469910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_22
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f50be9d300f1948af29bfaede59bea
+      internalID: 1279637706692306978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_23
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da229faa2c32f4478d6ab0a4754bd79
+      internalID: 8320518771042465690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_24
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8f87223062baa47b80a52a281b7410
+      internalID: 9208400036933097563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_25
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2cb05677e597f846891a65de7a6d43d
+      internalID: -5640598485407024962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17dd38c1b97f0704a886eaedfc2c1ab1
+      internalID: -41465232610312018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7948c248bb1e20147a23facc422676ee
+      internalID: 5180367626928978975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_28
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d645b040cc4bc459fb04c635273dce
+      internalID: 6469730828044658498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_29
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594ada4752ced5f4586e00f1fe58cf85
+      internalID: -6111024928349907107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_30
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d10bda0ea08f1449711cb42a9bc290
+      internalID: -3307941287873810106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_31
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41c8435c227d5b498fc65a2852273db
+      internalID: -5483963135607098659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_32
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de2686a48658824d8704657e36a597a
+      internalID: -6001549414147279107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_33
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f36ca549a533941a88136365800994
+      internalID: 3632620507979307737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_34
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dff69c8f015ab4eb39022f516d75d4
+      internalID: -7935781389576203583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_35
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbef2fc34159bf4c9883b1f3b5faf48
+      internalID: -7879791861787625471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_36
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126f6cfa8ff0ad34685477f624e0613e
+      internalID: 1164156151225030481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_37
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83dc27cc7b10ca4aaab76688f181809
+      internalID: -2617541634982998334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_38
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9533070c59952b42b3f88e64bcb2781
+      internalID: 7926249899677416528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0918c096b4f9e274fa79cbf77acbea03
+      internalID: 100800271560974828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_40
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419124eb8ba977b4e986bfa5a61d14a2
+      internalID: -7592742722950207944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_41
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ece55bf3363c9148bafbb0cda15052e
+      internalID: 5922458127879095878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_42
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ea31af161ca9c54b98587e0f568a634
+      internalID: -762054024643300641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_43
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0d1c662521d6f48afd3ebe77fa8fe1
+      internalID: 7668252552641032553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_44
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06d268314a0bfc48bfc4d41029f70a5
+      internalID: 1397286015103715184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_45
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e95738bb1430864ca145c974bd42f71
+      internalID: -5901187670834825999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_46
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d6b16be777f5c49829ae3af8aaa114
+      internalID: 2878141371388190010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_47
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60c5bdc07d3ed94d837748ce20d19b7
+      internalID: -7184237262676991456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_48
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5924d448ddc3403458db8dff12ef1035
+      internalID: -7363215760559131384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_49
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f6c0b888ae60448a953a5f13831967
+      internalID: 1008817872363455130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_50
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93dfb57bd788802488b9e0bf0ee7fa5f
+      internalID: -5880446764640704583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_51
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a116e02bcaadc4a8f8df510cb8be6c
+      internalID: -166642889313575065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee30435c2b433f4b8c2acd7a4b90e6d
+      internalID: -7500927863867632797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 119b61bc096225643a008fc182e9b8cc
+      internalID: 6633000358410751193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_54
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469bd731f76bfbb49a1237eabfe38b04
+      internalID: -3207003328942929476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_55
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dcbaee11544dff47a88637d8b34cecf
+      internalID: -5410226528495445605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_56
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4702e24ea995a34438c3a08da0971524
+      internalID: 7139048622382505573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_57
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b334e5f412b8ee747a9034b859dcc36c
+      internalID: -8386056919594231483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_58
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ab3a58580c5464c895dc7f7f20257a
+      internalID: 7713924446963171215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_59
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba591f148d4ae87478f6036c0280a2c6
+      internalID: -6062910340062675955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_60
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01285de0c3df099458b5cc24b8711a82
+      internalID: -3778767491435724937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_61
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d5f36957f82e7468446f9fac5bb9f0
+      internalID: 3443030639147410296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_62
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca461d7cf2589d47aaaae525fb69995
+      internalID: 5064292739127662706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_63
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bb27e6798a92c44825ddf82be8c2ec
+      internalID: -489268309284468518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_64
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b485891229c9240b626e273fc793ef
+      internalID: 2065892127473325124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ffbfdfc17daca47af4a48d7e76bc62
+      internalID: 6236169490904017032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_66
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6e93ad5b5151840a99af1e3a04bf06
+      internalID: -8722444226321723078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_67
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7464cb3e2a65a6b488e0b93e20e24cb9
+      internalID: 4469167083474010046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_68
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294a21c2bd414cd47949e684ede841b9
+      internalID: -763128508506722431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_69
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a91408fd2341c49b97c9566858aadc
+      internalID: -1057337839636671451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_70
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00db1bf3a73f2947b6b9a576d14864d
+      internalID: 3944271078621262884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_71
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568781750ebf14848b95f3e996b3cdf9
+      internalID: -6800890575566776274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_72
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63791eeb8cfa036439bb4350353e27fa
+      internalID: 4356759571459437311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_73
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5de727dea690274a913643d90513fe3
+      internalID: -5525436438396358266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_74
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da8e74f5e744a946b9452eb9952ce84
+      internalID: -1583606849733646542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_75
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2887c2a5813f6c7459a19b02a453204e
+      internalID: 2704301706233629240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_76
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c96befe82356f747853fcb80e1b2cc0
+      internalID: -360071111282287352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_77
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f82661b3c907542b72923700df8e90
+      internalID: 237738241003024071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6452db6a8172d7e46b97bb96ed1e6bec
+      internalID: 3188892667037664373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_79
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab0dc8ccb8038743b1a6dae2586f212
+      internalID: 1146147409387259415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_80
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb1fda6f84cdc74ea3dcbe4ed79cec9
+      internalID: 4703424192838985227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_81
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a229c77c8fd080c4888a27c87df36850
+      internalID: 4401740035065635793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_82
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0bdb861083b664da343ab1d7a2abd7
+      internalID: 6755742550895653536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_83
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ae64dc01f046344a9d4fe4b4fe9e3a
+      internalID: -8047535970225159557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_84
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5a3f493a2ccef40a0e6d34e95ee590
+      internalID: 1290331147014132914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_85
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b79acdfb7434204aaa358579dee3b29
+      internalID: -305912524739302781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_86
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3974013de448842a54437debcb81a5
+      internalID: -6750906802789122296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_87
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523686fb90776af48b651f48c2469e25
+      internalID: 6616327801711623622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_88
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7235d4a41b445f4dadf937184d191f5
+      internalID: 3408254902380101442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_89
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0078ac61480f044aea7ccbbc499d8c
+      internalID: -2361512161477733555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_90
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4677b645184aa141b3d704786c8ec2a
+      internalID: -5154685609954575128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7281febbfd3c01849ad05963c4262d35
+      internalID: -778533925635996396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_92
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318e568424243ab489485b54843f1008
+      internalID: 3871167685170972124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_93
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b1ce4eb1b3184d4dbfceaa7503600c2
+      internalID: -601243291984348628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_94
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3546f5089e19f44e9094bd7b4789427
+      internalID: -8479843087575675311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_95
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a344b86e109ffd2499e5db898fbd7251
+      internalID: -485707752666507331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_96
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817127cb7ca6df34195e27ddb502ced9
+      internalID: -5737186605669026464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_97
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bcb3a277d3d904ea5e253e7b2b6cd4
+      internalID: 1926372769875882450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_98
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de48c5ff0a9d164ab1647925384728e
+      internalID: -7101600554664107176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_99
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd654ac64a13fdc448158a149321f6e8
+      internalID: -8650682997540955024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_100
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee68d15e6b3cdb409fa253671e9d08e
+      internalID: -961671087993123077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_101
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbf0141156e42043a7943af22ae48b9
+      internalID: 5250151345861196548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_102
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de9774d9b6e613449dccddda134aa12
+      internalID: -5845931538997164518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_103
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e5306b2313fc947b4df525e217f03a
+      internalID: -8019579817848601763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7686d6d8359d07d459e95e9da57b0a11
+      internalID: 2621241928425692930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_105
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee73a8c93b780bb46bebf5d1582d0ee6
+      internalID: -5387912467043921687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_106
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ccb50d63759ee4f98701d1b311b8a7
+      internalID: -1597156874977420958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_107
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c0be1bb86c01c499febb6d6cd862b2
+      internalID: 1357335725168114563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_108
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c327e8d024d3849aa91e2ecfb6467b
+      internalID: -6137222261915443320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_109
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ee7d1f213deac44975562160b63586
+      internalID: 6641610208753700381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_110
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3ee76db01ca60479cab61eec12a5f5
+      internalID: -9024982454602785670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_111
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369ab91307976104ea88a3f7447903b9
+      internalID: -8602804838176622128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_112
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1d781d0652cc1449b6d996ae979d15
+      internalID: -3451467715479897644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_113
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5646d3bdad0104799d011245e07391
+      internalID: 4055430235526541060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_114
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c2b79661475e841b1ea68219e6903e
+      internalID: 551487405797358645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_115
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafe8853edec7914db3152fc9e97a781
+      internalID: 2399162555022456475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_116
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8b20834274b75428b5cb4d326195e9
+      internalID: -8555283448541777762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892be1ec943ce4847bd7ef3deeb243ab
+      internalID: -8148410871554568275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_118
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3f68774fb371443aa4a63956d5f58c
+      internalID: 579303878457954237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_119
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1c891202e3127458240d5a5ed90ce8
+      internalID: -9054322144111294591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_120
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81c5a77cf6c1f94eae8d4c11a861a51
+      internalID: 8279423866486805197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_121
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5decab2bfc1255848a859f140ab2b6a3
+      internalID: -1288886740935605020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_122
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b757339c352459468c49d0e4a3b4cec
+      internalID: -9144620627164055100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_123
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ae057bb13c2b44bbfc2df0fe749cca
+      internalID: 2547747895701173768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_124
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d81d1476c42c843a19148fb4edf99e
+      internalID: 4437826724214793657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_125
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a727f358970024f86f7a47bb130764
+      internalID: -5192408847465255512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_126
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ce392bb23a96548bf5e1aea432b786
+      internalID: -4332898392534139555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_127
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211ee48ce71f2c94f8deb5d327e5ef47
+      internalID: 370895351641906375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: davinci_blue_32b_128
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4dde6a39bde67942bbf7c3022588d37
+      internalID: -7384184226282613521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

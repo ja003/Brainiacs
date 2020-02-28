@@ -1,0 +1,3211 @@
+fileFormatVersion: 2
+guid: d9d9c0022f9705c43a723e3a590451f9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3349572480145364565
+    second: nobel_blue_32b_0
+  - first:
+      213: 1216505632762404324
+    second: nobel_blue_32b_1
+  - first:
+      213: 1589601747751542134
+    second: nobel_blue_32b_2
+  - first:
+      213: 8484663595719397793
+    second: nobel_blue_32b_3
+  - first:
+      213: 5210177669551918134
+    second: nobel_blue_32b_4
+  - first:
+      213: -2322588576763250925
+    second: nobel_blue_32b_5
+  - first:
+      213: 2893418832379375771
+    second: nobel_blue_32b_6
+  - first:
+      213: -9156427042657560205
+    second: nobel_blue_32b_7
+  - first:
+      213: -8043766708157017108
+    second: nobel_blue_32b_8
+  - first:
+      213: -8578936188594887445
+    second: nobel_blue_32b_9
+  - first:
+      213: -6387125304356873705
+    second: nobel_blue_32b_10
+  - first:
+      213: 2934346255668723559
+    second: nobel_blue_32b_11
+  - first:
+      213: -7317570453341973300
+    second: nobel_blue_32b_12
+  - first:
+      213: -2968577101356662866
+    second: nobel_blue_32b_13
+  - first:
+      213: -4416856876883552844
+    second: nobel_blue_32b_14
+  - first:
+      213: 1975372831461714491
+    second: nobel_blue_32b_15
+  - first:
+      213: -775728508419682530
+    second: nobel_blue_32b_16
+  - first:
+      213: 3673297659030064355
+    second: nobel_blue_32b_17
+  - first:
+      213: 6014298655466149503
+    second: nobel_blue_32b_18
+  - first:
+      213: -2630887345853072574
+    second: nobel_blue_32b_19
+  - first:
+      213: 3207575599259680441
+    second: nobel_blue_32b_20
+  - first:
+      213: 3755586834730604220
+    second: nobel_blue_32b_21
+  - first:
+      213: 1789598559738906601
+    second: nobel_blue_32b_22
+  - first:
+      213: -5885266276845710868
+    second: nobel_blue_32b_23
+  - first:
+      213: 6487642248853485473
+    second: nobel_blue_32b_24
+  - first:
+      213: -951250372155627576
+    second: nobel_blue_32b_25
+  - first:
+      213: -5295603665113679328
+    second: nobel_blue_32b_26
+  - first:
+      213: -7891032387779214662
+    second: nobel_blue_32b_27
+  - first:
+      213: 7032724852642884020
+    second: nobel_blue_32b_28
+  - first:
+      213: -3322982908846499250
+    second: nobel_blue_32b_29
+  - first:
+      213: -562951516492966170
+    second: nobel_blue_32b_30
+  - first:
+      213: -3128157440408024012
+    second: nobel_blue_32b_31
+  - first:
+      213: 1618824240507967389
+    second: nobel_blue_32b_32
+  - first:
+      213: -1883608019912221852
+    second: nobel_blue_32b_33
+  - first:
+      213: -880192775839734147
+    second: nobel_blue_32b_34
+  - first:
+      213: -4802805731371960205
+    second: nobel_blue_32b_35
+  - first:
+      213: -8566960045621154294
+    second: nobel_blue_32b_36
+  - first:
+      213: 3053367215953040552
+    second: nobel_blue_32b_37
+  - first:
+      213: 1952332533622494096
+    second: nobel_blue_32b_38
+  - first:
+      213: 6128410355477146471
+    second: nobel_blue_32b_39
+  - first:
+      213: 5490929097649434994
+    second: nobel_blue_32b_40
+  - first:
+      213: 4130540154728538317
+    second: nobel_blue_32b_41
+  - first:
+      213: -5577819784609611141
+    second: nobel_blue_32b_42
+  - first:
+      213: 452177232982881865
+    second: nobel_blue_32b_43
+  - first:
+      213: -8867571285180436101
+    second: nobel_blue_32b_44
+  - first:
+      213: -886340533007077279
+    second: nobel_blue_32b_45
+  - first:
+      213: -1778182066208885262
+    second: nobel_blue_32b_46
+  - first:
+      213: 4138771130291970293
+    second: nobel_blue_32b_47
+  - first:
+      213: -5772943262593773571
+    second: nobel_blue_32b_48
+  - first:
+      213: -5943179952584193283
+    second: nobel_blue_32b_49
+  - first:
+      213: -1320318145447228789
+    second: nobel_blue_32b_50
+  - first:
+      213: -2406560722767110297
+    second: nobel_blue_32b_51
+  - first:
+      213: 3667538119521206819
+    second: nobel_blue_32b_52
+  - first:
+      213: 6590052271901020075
+    second: nobel_blue_32b_53
+  - first:
+      213: 2551051490431251656
+    second: nobel_blue_32b_54
+  - first:
+      213: -445077114998480202
+    second: nobel_blue_32b_55
+  - first:
+      213: 2064709351027562161
+    second: nobel_blue_32b_56
+  - first:
+      213: -4380163337234364144
+    second: nobel_blue_32b_57
+  - first:
+      213: -862300697943071371
+    second: nobel_blue_32b_58
+  - first:
+      213: -7059759768028590402
+    second: nobel_blue_32b_59
+  - first:
+      213: 233942289317002739
+    second: nobel_blue_32b_60
+  - first:
+      213: -4469595149287245331
+    second: nobel_blue_32b_61
+  - first:
+      213: -4718430498128167428
+    second: nobel_blue_32b_62
+  - first:
+      213: -5729050911223604209
+    second: nobel_blue_32b_63
+  - first:
+      213: -9016448700993698581
+    second: nobel_blue_32b_64
+  - first:
+      213: 3190012433429187694
+    second: nobel_blue_32b_65
+  - first:
+      213: -2012477679134107491
+    second: nobel_blue_32b_66
+  - first:
+      213: -4101446108511866652
+    second: nobel_blue_32b_67
+  - first:
+      213: -1100955842475916832
+    second: nobel_blue_32b_68
+  - first:
+      213: -2376165686030409353
+    second: nobel_blue_32b_69
+  - first:
+      213: -5964984975000894748
+    second: nobel_blue_32b_70
+  - first:
+      213: 7624408799842809691
+    second: nobel_blue_32b_71
+  - first:
+      213: 4240700745381958021
+    second: nobel_blue_32b_72
+  - first:
+      213: 631858332668620368
+    second: nobel_blue_32b_73
+  - first:
+      213: -3445853346051196936
+    second: nobel_blue_32b_74
+  - first:
+      213: 8027480770511502191
+    second: nobel_blue_32b_75
+  - first:
+      213: 6852369268257599056
+    second: nobel_blue_32b_76
+  - first:
+      213: 7806498466381963616
+    second: nobel_blue_32b_77
+  - first:
+      213: 2961506160116465399
+    second: nobel_blue_32b_78
+  - first:
+      213: -420283068370473640
+    second: nobel_blue_32b_79
+  - first:
+      213: 5162089533231220908
+    second: nobel_blue_32b_80
+  - first:
+      213: 1456349083332263626
+    second: nobel_blue_32b_81
+  - first:
+      213: 2771091346378927523
+    second: nobel_blue_32b_82
+  - first:
+      213: 7160253022472371285
+    second: nobel_blue_32b_83
+  - first:
+      213: 8676390344754908898
+    second: nobel_blue_32b_84
+  - first:
+      213: 3569541081410228787
+    second: nobel_blue_32b_85
+  - first:
+      213: -3861924822191808698
+    second: nobel_blue_32b_86
+  - first:
+      213: 1807455453561907288
+    second: nobel_blue_32b_87
+  - first:
+      213: -7055513189416766140
+    second: nobel_blue_32b_88
+  - first:
+      213: 8102534682716491430
+    second: nobel_blue_32b_89
+  - first:
+      213: -7797926662023397993
+    second: nobel_blue_32b_90
+  - first:
+      213: -7419233508959706494
+    second: nobel_blue_32b_91
+  - first:
+      213: 9128615568769554092
+    second: nobel_blue_32b_92
+  - first:
+      213: -2177590619504273153
+    second: nobel_blue_32b_93
+  - first:
+      213: -2674552708158190258
+    second: nobel_blue_32b_94
+  - first:
+      213: -1554836326121798788
+    second: nobel_blue_32b_95
+  - first:
+      213: -4885713403397709041
+    second: nobel_blue_32b_96
+  - first:
+      213: 3326655984832399981
+    second: nobel_blue_32b_97
+  - first:
+      213: -2583435463188829429
+    second: nobel_blue_32b_98
+  - first:
+      213: -3593397127734355364
+    second: nobel_blue_32b_99
+  - first:
+      213: 1900389940967239535
+    second: nobel_blue_32b_100
+  - first:
+      213: 2160293048909072302
+    second: nobel_blue_32b_101
+  - first:
+      213: -8600004654244295514
+    second: nobel_blue_32b_102
+  - first:
+      213: -470155665855933223
+    second: nobel_blue_32b_103
+  - first:
+      213: -7010090685142341193
+    second: nobel_blue_32b_104
+  - first:
+      213: -2020744290334831040
+    second: nobel_blue_32b_105
+  - first:
+      213: 963143624688907725
+    second: nobel_blue_32b_106
+  - first:
+      213: -3102122181392777029
+    second: nobel_blue_32b_107
+  - first:
+      213: 1898892247431780815
+    second: nobel_blue_32b_108
+  - first:
+      213: -349789239468395559
+    second: nobel_blue_32b_109
+  - first:
+      213: -635812511313648406
+    second: nobel_blue_32b_110
+  - first:
+      213: 9181504945786770322
+    second: nobel_blue_32b_111
+  - first:
+      213: -2710986061290979851
+    second: nobel_blue_32b_112
+  - first:
+      213: 5789218746764314953
+    second: nobel_blue_32b_113
+  - first:
+      213: -3717437848742628833
+    second: nobel_blue_32b_114
+  - first:
+      213: 145947253573878581
+    second: nobel_blue_32b_115
+  - first:
+      213: 3289436633515462277
+    second: nobel_blue_32b_116
+  - first:
+      213: -6566565923602598317
+    second: nobel_blue_32b_117
+  - first:
+      213: -2620845149151888155
+    second: nobel_blue_32b_118
+  - first:
+      213: 651374327924671328
+    second: nobel_blue_32b_119
+  - first:
+      213: -2710043816562608741
+    second: nobel_blue_32b_120
+  - first:
+      213: 6758473866586589202
+    second: nobel_blue_32b_121
+  - first:
+      213: 7893744314962010482
+    second: nobel_blue_32b_122
+  - first:
+      213: -5787581287677792142
+    second: nobel_blue_32b_123
+  - first:
+      213: -3650052647817754869
+    second: nobel_blue_32b_124
+  - first:
+      213: 9194646047555253975
+    second: nobel_blue_32b_125
+  - first:
+      213: 4908826390718998918
+    second: nobel_blue_32b_126
+  - first:
+      213: 4085839358296082622
+    second: nobel_blue_32b_127
+  - first:
+      213: -5449532548003540620
+    second: nobel_blue_32b_128
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nobel_blue_32b_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683590465d0275a488f5a9773b6af870
+      internalID: -3349572480145364565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9cceedb2affa8459b37b88da9e0054
+      internalID: 1216505632762404324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ca7a413c0e2d24db64e320e18503c8
+      internalID: 1589601747751542134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e8fed8ee829334cb4722e168cb4e57
+      internalID: 8484663595719397793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298057fd3adeada4cabafe5034dec65e
+      internalID: 5210177669551918134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_5
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7472a85f084f904e9559eb3acc0cc11
+      internalID: -2322588576763250925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_6
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811bd0d0e7d007043b98133fecfec3f0
+      internalID: 2893418832379375771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6865e425aa6c6ee4f8eb5db8052660fb
+      internalID: -9156427042657560205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_8
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7bb05bacbc3a646adef454799d6d31
+      internalID: -8043766708157017108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_9
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5050ed3b0fc1fc84891f21060d52b606
+      internalID: -8578936188594887445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_10
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d90fa0179edd74c95f364162d801f6
+      internalID: -6387125304356873705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_11
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d07b20552b20ff42aadb7706fe8eeb7
+      internalID: 2934346255668723559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_12
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be622529a06f5547b7a6b4912c2cf22
+      internalID: -7317570453341973300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d69a060fd1cbc4dbbab749b0506f7a
+      internalID: -2968577101356662866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d23feb714c6f18428f531cee4f82dd1
+      internalID: -4416856876883552844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_15
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cb081d00ed6f4468b43386f4d35d1f
+      internalID: 1975372831461714491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_16
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7916a30b9add9d42b75a7df75618d8a
+      internalID: -775728508419682530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_17
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a50f658ba5b4fa47bb0fea5564c7cb2
+      internalID: 3673297659030064355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_18
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d3315e1cb890d4e99e006371ef4262
+      internalID: 6014298655466149503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_19
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60464ee017fb284ba070e4f297de2bc
+      internalID: -2630887345853072574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_20
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebf7583f841a3e47bb2282b2a12929d
+      internalID: 3207575599259680441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_21
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40724d32fa5ea394281844f6489a0c2a
+      internalID: 3755586834730604220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_22
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1fde485ccd3c44fa375b78e59b3464
+      internalID: 1789598559738906601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_23
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb884649e1319d4ba94798642954500
+      internalID: -5885266276845710868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_24
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ec3ad9d33abb5418dbc216285446c5
+      internalID: 6487642248853485473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_25
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ba56ce07369a341be386a30a765baf
+      internalID: -951250372155627576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6822d55accf6543a9990876fd50486
+      internalID: -5295603665113679328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b806835b6c5e7e49ae8cac0fbecec8b
+      internalID: -7891032387779214662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_28
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e660b4c14a41d894292894249eba7435
+      internalID: 7032724852642884020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_29
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f0a1707bdead0c43bad31b91e014a4f
+      internalID: -3322982908846499250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_30
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5385238a73eddbf4d90bb68d277ca2f1
+      internalID: -562951516492966170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_31
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff09c49f8036d7a489f155fa52e8fec7
+      internalID: -3128157440408024012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_32
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c7ed20a63278a4b9dc9a52593c8af5
+      internalID: 1618824240507967389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_33
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd2200145865d6d49a972b03cca40239
+      internalID: -1883608019912221852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_34
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6afb39b98537344b50984e37858f78
+      internalID: -880192775839734147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_35
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53c4b6c7bfbb824ea86e246a24e52d8
+      internalID: -4802805731371960205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_36
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ed23ffcd1b0e544b4c2cec73e7a4d2
+      internalID: -8566960045621154294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_37
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42006ff78fe3b474ba170d336ce5df77
+      internalID: 3053367215953040552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_38
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945020aa5b31dfd499e7454ef3ea132f
+      internalID: 1952332533622494096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb7ca42dc0cb804dba004d90f536826
+      internalID: 6128410355477146471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_40
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be798f90c96739b4a9fd67a9eeff5eff
+      internalID: 5490929097649434994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_41
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aaecff1e68f2da47a4996c6125ae8ce
+      internalID: 4130540154728538317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_42
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd7caa8dd7b7a945a52012b129eb5f1
+      internalID: -5577819784609611141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_43
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c669711277c84a84d95973c33aa0236b
+      internalID: 452177232982881865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_44
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13564aaeee56e6447b36026d672c7d91
+      internalID: -8867571285180436101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_45
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf879211d5ea61b48b5ec4ce043272eb
+      internalID: -886340533007077279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_46
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2330ce37273414c4b9e6767c98901866
+      internalID: -1778182066208885262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_47
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607c2c2128b30ad4b92353de827dd24c
+      internalID: 4138771130291970293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_48
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94a64a1fcb65d44291dcd6280705b78
+      internalID: -5772943262593773571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_49
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be96010da4c8ab49ae3964a307be29b
+      internalID: -5943179952584193283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_50
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47990de2d8042a46a0a02c59ac7720b
+      internalID: -1320318145447228789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_51
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6d4866a627adf46ae303aa3befa32f
+      internalID: -2406560722767110297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31163817468abf241bb332fd59110cf0
+      internalID: 3667538119521206819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e69ad3bc4951fb4782e928be68a3064
+      internalID: 6590052271901020075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_54
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5068ee0160a56e46bc592a67e59be83
+      internalID: 2551051490431251656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_55
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f3514ad30f7d14d888bcf4b6cd9a0a
+      internalID: -445077114998480202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_56
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79309cab5342fb847a5e035741859b6e
+      internalID: 2064709351027562161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_57
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef0091bbe6030cd4c90d984bbceaf3fd
+      internalID: -4380163337234364144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_58
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23db4d13403e9504cbcf18b28efb8627
+      internalID: -862300697943071371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_59
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c275c53c42af4143a4598df56310b65
+      internalID: -7059759768028590402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_60
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e93a89041814b741aed7e1750020d02
+      internalID: 233942289317002739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_61
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e4d180df9236848887378dfb68c061
+      internalID: -4469595149287245331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_62
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90136d60d443a7142b50626a0de89916
+      internalID: -4718430498128167428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_63
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 170d94c19744c8142830f722750af206
+      internalID: -5729050911223604209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_64
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d350a85de18ed8e42913091706fb4083
+      internalID: -9016448700993698581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ce1f3fe0374a84b8e21d87f7114b99
+      internalID: 3190012433429187694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_66
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c547d11ee7b4bf24ea5eec5a18761765
+      internalID: -2012477679134107491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_67
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2276c4612ce7df34e9471e788f890c61
+      internalID: -4101446108511866652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_68
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fb050f9fc4d844ea8f8eeb9ea2dfbf
+      internalID: -1100955842475916832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_69
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28a203811c3f6ea4280c4d189aaae571
+      internalID: -2376165686030409353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_70
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be161d9a19e4d454aaf4add728341ea6
+      internalID: -5964984975000894748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_71
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115cd2f51f718e143a216dad8e709bc9
+      internalID: 7624408799842809691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_72
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3799e483f01c99a4497755c7f537a1c8
+      internalID: 4240700745381958021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_73
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2240a51ca91fbc408a97a592e7300e7
+      internalID: 631858332668620368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_74
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b39a77101fd19248b8537552bcc5246
+      internalID: -3445853346051196936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_75
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfdd25a6302f4c249b75708b8524ff56
+      internalID: 8027480770511502191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_76
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9400492dc71085942a3115b5519cc2ac
+      internalID: 6852369268257599056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_77
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc489ef4335e844098e433ca45cee94
+      internalID: 7806498466381963616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569146aa7b4aeb743827739a6834ad27
+      internalID: 2961506160116465399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_79
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43907be991e68945b0b0e8128f92037
+      internalID: -420283068370473640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_80
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a61b4ffe177b4b468a0dd72756507f9
+      internalID: 5162089533231220908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_81
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c13b77b7610c743a228dbcd0143077
+      internalID: 1456349083332263626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_82
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343a0e6c8accbe24a87d4444a90e0bcc
+      internalID: 2771091346378927523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_83
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b98fc3b3ddab5498f014ac7bd363d1
+      internalID: 7160253022472371285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_84
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094b4944896bd40478024b7f119620eb
+      internalID: 8676390344754908898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_85
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c0cb080f5ad124c9cd1fe2ea7d59b2
+      internalID: 3569541081410228787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_86
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f89ce1b3d6b5a4699af31b33bcf465
+      internalID: -3861924822191808698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_87
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34bc46a574ceea04f9cb198d096d97f3
+      internalID: 1807455453561907288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_88
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a797e93209d0848baf54acb78badd3
+      internalID: -7055513189416766140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_89
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc789cb96c3247247a7d78ae024a221f
+      internalID: 8102534682716491430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_90
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c8617d68fc48447b67c8db3137ab1b
+      internalID: -7797926662023397993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e13acc831ea0a409313b60af73c518
+      internalID: -7419233508959706494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_92
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc25c580f5ab7e46a405ddb1a377b90
+      internalID: 9128615568769554092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_93
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e5c1d6e91dda7468574095f74532a7
+      internalID: -2177590619504273153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_94
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ef2f7300e00f94ebc713f3b68530e7
+      internalID: -2674552708158190258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_95
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3665d242414a6478cc73bfce83c4e4
+      internalID: -1554836326121798788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_96
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699295566f8ca134c9c9490d0b0ddc65
+      internalID: -4885713403397709041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_97
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3b438fc6c4cef4aa0d8c2d277b6212
+      internalID: 3326655984832399981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_98
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5475fb4a52c7e8249961d4cdd1038db7
+      internalID: -2583435463188829429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_99
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db102580b18d4fb4d96d2aa8d8205e68
+      internalID: -3593397127734355364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_100
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c14c88be83a1ba459b2506ba5103d96
+      internalID: 1900389940967239535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_101
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7f32972274809408e6ea6b42aba1d0
+      internalID: 2160293048909072302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_102
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a1271343ca6be4690158110e8c54ce
+      internalID: -8600004654244295514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_103
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a120b113a4cfb3541b1deb1c4d714946
+      internalID: -470155665855933223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d2327045f171994ba1e611255ade19a
+      internalID: -7010090685142341193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_105
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54c6c9811641de41bfe04c7ddc303e5
+      internalID: -2020744290334831040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_106
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9022b1d4eb6624ca1cf61550fadc31
+      internalID: 963143624688907725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_107
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008f6123c7ccf6c4d832d554f17b85a6
+      internalID: -3102122181392777029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_108
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156e8e0cb4d486e4f96615334cf67cd9
+      internalID: 1898892247431780815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_109
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a906a1d8068c04182f9fe3d68ce42e
+      internalID: -349789239468395559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_110
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a4d1f126331b44c8b66bc5221bca54
+      internalID: -635812511313648406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_111
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c933e22b7a968084aa4e6463c9e9a6d6
+      internalID: 9181504945786770322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_112
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9c8231045aff240834be477dbafcc5
+      internalID: -2710986061290979851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_113
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f794538b01df5974d8fd3e2201cb2588
+      internalID: 5789218746764314953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_114
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc0e2891eb74df4eb83c92d2afd8076
+      internalID: -3717437848742628833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_115
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9513b3d2fb20674ab4d9942e2077013
+      internalID: 145947253573878581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_116
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425c5e4dca112ba419c5ab0d297775fe
+      internalID: 3289436633515462277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68925e53e3f379246923a248b7e731c7
+      internalID: -6566565923602598317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_118
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13b30b268f1ed74bab4824b7bcc13c2
+      internalID: -2620845149151888155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_119
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5851c349c2958745b66380b879b215a
+      internalID: 651374327924671328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_120
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c757242a0a1c37b4b913666103119df8
+      internalID: -2710043816562608741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_121
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d134e42beb5da842b6a7ac446ab73e0
+      internalID: 6758473866586589202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_122
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c249acd3cc1c4a94499ec0ee0e83b6e1
+      internalID: 7893744314962010482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_123
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb1ef748768cef4ebf66d5aee8256de
+      internalID: -5787581287677792142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_124
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6bbec2ce91f41a4d85958122f2bce28
+      internalID: -3650052647817754869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_125
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ea1f5c962a07240b204c160dead964
+      internalID: 9194646047555253975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_126
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c6cab67783496418e2dee0b2e16a99
+      internalID: 4908826390718998918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_127
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7048cbf45be79c43acc15cb86ab6754
+      internalID: 4085839358296082622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nobel_blue_32b_128
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b263612f5168a4ca5503d3c663ddf5
+      internalID: -5449532548003540620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

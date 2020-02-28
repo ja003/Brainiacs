@@ -1,0 +1,3211 @@
+fileFormatVersion: 2
+guid: 6339b3774a02fb5488d747f90099c6a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2088514385063999341
+    second: einstein_blue_32b_0
+  - first:
+      213: -898492238399624960
+    second: einstein_blue_32b_1
+  - first:
+      213: 220560743180539834
+    second: einstein_blue_32b_2
+  - first:
+      213: -6423429809763953986
+    second: einstein_blue_32b_3
+  - first:
+      213: -2501339587378744144
+    second: einstein_blue_32b_4
+  - first:
+      213: 6879861711236052288
+    second: einstein_blue_32b_5
+  - first:
+      213: -3493816680816615444
+    second: einstein_blue_32b_6
+  - first:
+      213: -7662196316795489573
+    second: einstein_blue_32b_7
+  - first:
+      213: 7332440511633210941
+    second: einstein_blue_32b_8
+  - first:
+      213: 3039530361020648063
+    second: einstein_blue_32b_9
+  - first:
+      213: 6715994026759507138
+    second: einstein_blue_32b_10
+  - first:
+      213: 4214900222615219204
+    second: einstein_blue_32b_11
+  - first:
+      213: 7115890932430694354
+    second: einstein_blue_32b_12
+  - first:
+      213: 2755815262921339267
+    second: einstein_blue_32b_13
+  - first:
+      213: 6787277639268832371
+    second: einstein_blue_32b_14
+  - first:
+      213: 8533784483164723534
+    second: einstein_blue_32b_15
+  - first:
+      213: -299238971479376873
+    second: einstein_blue_32b_16
+  - first:
+      213: 8428292649741903517
+    second: einstein_blue_32b_17
+  - first:
+      213: -5774741594331331174
+    second: einstein_blue_32b_18
+  - first:
+      213: -2686565652176650059
+    second: einstein_blue_32b_19
+  - first:
+      213: 1573029293527689125
+    second: einstein_blue_32b_20
+  - first:
+      213: -1329841231800716229
+    second: einstein_blue_32b_21
+  - first:
+      213: -6071059177842585880
+    second: einstein_blue_32b_22
+  - first:
+      213: 8730999914007571696
+    second: einstein_blue_32b_23
+  - first:
+      213: -6012393672177381379
+    second: einstein_blue_32b_24
+  - first:
+      213: 3478779781136155252
+    second: einstein_blue_32b_25
+  - first:
+      213: -5754610866063843803
+    second: einstein_blue_32b_26
+  - first:
+      213: 5092837602670387521
+    second: einstein_blue_32b_27
+  - first:
+      213: 8485557313172426624
+    second: einstein_blue_32b_28
+  - first:
+      213: -1107850516851888341
+    second: einstein_blue_32b_29
+  - first:
+      213: 3294493961826635201
+    second: einstein_blue_32b_30
+  - first:
+      213: 1383811302175056785
+    second: einstein_blue_32b_31
+  - first:
+      213: 8861449704759084119
+    second: einstein_blue_32b_32
+  - first:
+      213: 2956637977577769337
+    second: einstein_blue_32b_33
+  - first:
+      213: 2446029523876356769
+    second: einstein_blue_32b_34
+  - first:
+      213: -4929059793938079440
+    second: einstein_blue_32b_35
+  - first:
+      213: 2864557337507106436
+    second: einstein_blue_32b_36
+  - first:
+      213: 365612077216740902
+    second: einstein_blue_32b_37
+  - first:
+      213: -7064812731106259281
+    second: einstein_blue_32b_38
+  - first:
+      213: -344149898770514168
+    second: einstein_blue_32b_39
+  - first:
+      213: 4569073198675047659
+    second: einstein_blue_32b_40
+  - first:
+      213: 654373403181549935
+    second: einstein_blue_32b_41
+  - first:
+      213: -568806845547625216
+    second: einstein_blue_32b_42
+  - first:
+      213: -2846651780957153442
+    second: einstein_blue_32b_43
+  - first:
+      213: -6439701027255915349
+    second: einstein_blue_32b_44
+  - first:
+      213: -8225434146355594879
+    second: einstein_blue_32b_45
+  - first:
+      213: 8430332153665901342
+    second: einstein_blue_32b_46
+  - first:
+      213: 5828554962917445267
+    second: einstein_blue_32b_47
+  - first:
+      213: 3606527798580969132
+    second: einstein_blue_32b_48
+  - first:
+      213: 2310416028912821509
+    second: einstein_blue_32b_49
+  - first:
+      213: 8279132243952357976
+    second: einstein_blue_32b_50
+  - first:
+      213: -2682872165734440414
+    second: einstein_blue_32b_51
+  - first:
+      213: -2689920519663022779
+    second: einstein_blue_32b_52
+  - first:
+      213: 4443085553503752701
+    second: einstein_blue_32b_53
+  - first:
+      213: 4833280882485354282
+    second: einstein_blue_32b_54
+  - first:
+      213: 6285682109573740635
+    second: einstein_blue_32b_55
+  - first:
+      213: -7307151827858006005
+    second: einstein_blue_32b_56
+  - first:
+      213: 4489134829973058490
+    second: einstein_blue_32b_57
+  - first:
+      213: -6960608640296526877
+    second: einstein_blue_32b_58
+  - first:
+      213: 9069156446804823012
+    second: einstein_blue_32b_59
+  - first:
+      213: 1506513809816560312
+    second: einstein_blue_32b_60
+  - first:
+      213: -6297733337638874580
+    second: einstein_blue_32b_61
+  - first:
+      213: 4428447975947250485
+    second: einstein_blue_32b_62
+  - first:
+      213: -9020056603889019823
+    second: einstein_blue_32b_63
+  - first:
+      213: -8951675159506281847
+    second: einstein_blue_32b_64
+  - first:
+      213: -3963979309804833971
+    second: einstein_blue_32b_65
+  - first:
+      213: 3637196635028626304
+    second: einstein_blue_32b_66
+  - first:
+      213: -7313307837007334710
+    second: einstein_blue_32b_67
+  - first:
+      213: -3775789837395735322
+    second: einstein_blue_32b_68
+  - first:
+      213: 7377316031493014355
+    second: einstein_blue_32b_69
+  - first:
+      213: 4404081551726600087
+    second: einstein_blue_32b_70
+  - first:
+      213: 6117322705445913301
+    second: einstein_blue_32b_71
+  - first:
+      213: -597565144565019229
+    second: einstein_blue_32b_72
+  - first:
+      213: 5450682633184275572
+    second: einstein_blue_32b_73
+  - first:
+      213: 5990977854180462023
+    second: einstein_blue_32b_74
+  - first:
+      213: -7039328190024631900
+    second: einstein_blue_32b_75
+  - first:
+      213: -1613009804294877454
+    second: einstein_blue_32b_76
+  - first:
+      213: 7746890446819964557
+    second: einstein_blue_32b_77
+  - first:
+      213: 4348552536874914218
+    second: einstein_blue_32b_78
+  - first:
+      213: -1667707767851604845
+    second: einstein_blue_32b_79
+  - first:
+      213: 4901612454982373753
+    second: einstein_blue_32b_80
+  - first:
+      213: 5432918731230509439
+    second: einstein_blue_32b_81
+  - first:
+      213: -4114221585255465756
+    second: einstein_blue_32b_82
+  - first:
+      213: 1152511063034425233
+    second: einstein_blue_32b_83
+  - first:
+      213: 8798838464275752568
+    second: einstein_blue_32b_84
+  - first:
+      213: -9197414760921418943
+    second: einstein_blue_32b_85
+  - first:
+      213: 5878162579401966209
+    second: einstein_blue_32b_86
+  - first:
+      213: -1501118415033830727
+    second: einstein_blue_32b_87
+  - first:
+      213: 3320362491745177175
+    second: einstein_blue_32b_88
+  - first:
+      213: -7238671281760511329
+    second: einstein_blue_32b_89
+  - first:
+      213: -3215927559341059522
+    second: einstein_blue_32b_90
+  - first:
+      213: 87836836280264056
+    second: einstein_blue_32b_91
+  - first:
+      213: 2445175411790801081
+    second: einstein_blue_32b_92
+  - first:
+      213: 3566852449698590819
+    second: einstein_blue_32b_93
+  - first:
+      213: -20936363325297308
+    second: einstein_blue_32b_94
+  - first:
+      213: -7431066364678281687
+    second: einstein_blue_32b_95
+  - first:
+      213: -3287909227625927911
+    second: einstein_blue_32b_96
+  - first:
+      213: -3849354324046346928
+    second: einstein_blue_32b_97
+  - first:
+      213: -7758046619169296895
+    second: einstein_blue_32b_98
+  - first:
+      213: -2524718359833634051
+    second: einstein_blue_32b_99
+  - first:
+      213: 8773108295191628845
+    second: einstein_blue_32b_100
+  - first:
+      213: 4012716928097125739
+    second: einstein_blue_32b_101
+  - first:
+      213: 4154793133502175084
+    second: einstein_blue_32b_102
+  - first:
+      213: -4495724962126951306
+    second: einstein_blue_32b_103
+  - first:
+      213: -5402838778005553744
+    second: einstein_blue_32b_104
+  - first:
+      213: -3223446633334252526
+    second: einstein_blue_32b_105
+  - first:
+      213: -3240996083304037953
+    second: einstein_blue_32b_106
+  - first:
+      213: -8362454948760189591
+    second: einstein_blue_32b_107
+  - first:
+      213: -8068196425695380629
+    second: einstein_blue_32b_108
+  - first:
+      213: -6830908020635097935
+    second: einstein_blue_32b_109
+  - first:
+      213: -6856232438851229407
+    second: einstein_blue_32b_110
+  - first:
+      213: -2824362685735506179
+    second: einstein_blue_32b_111
+  - first:
+      213: -4237765525771524660
+    second: einstein_blue_32b_112
+  - first:
+      213: -8467963987198786209
+    second: einstein_blue_32b_113
+  - first:
+      213: 7942498918916969045
+    second: einstein_blue_32b_114
+  - first:
+      213: -651203830733384995
+    second: einstein_blue_32b_115
+  - first:
+      213: -2134041946815429636
+    second: einstein_blue_32b_116
+  - first:
+      213: -5932532534124416273
+    second: einstein_blue_32b_117
+  - first:
+      213: -8483674886329378182
+    second: einstein_blue_32b_118
+  - first:
+      213: -3314606820740795903
+    second: einstein_blue_32b_119
+  - first:
+      213: 4034817616308043090
+    second: einstein_blue_32b_120
+  - first:
+      213: 1735966843509113094
+    second: einstein_blue_32b_121
+  - first:
+      213: -9068532778485967704
+    second: einstein_blue_32b_122
+  - first:
+      213: 8881598728476649161
+    second: einstein_blue_32b_123
+  - first:
+      213: 2858733410711450684
+    second: einstein_blue_32b_124
+  - first:
+      213: 1537186320075503398
+    second: einstein_blue_32b_125
+  - first:
+      213: 5943014675612501770
+    second: einstein_blue_32b_126
+  - first:
+      213: 1886655656836104573
+    second: einstein_blue_32b_127
+  - first:
+      213: 4187388472141422711
+    second: einstein_blue_32b_128
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: einstein_blue_32b_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655df35c77eadeb4b81d918d4c04528f
+      internalID: -2088514385063999341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399cd9356d2e35c47ad938c41a369d7c
+      internalID: -898492238399624960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69193a2b7bd469848b4ed0f35e3462f9
+      internalID: 220560743180539834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49da73f3fd076f2428ce4a2c1a4bb5c4
+      internalID: -6423429809763953986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5703db4c3eff7cc46a849b8d4d4c6420
+      internalID: -2501339587378744144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_5
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd533eea8c2a77341ba67970c1c92d40
+      internalID: 6879861711236052288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_6
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276ab0a7b2f5b884eb3d221329f58c8e
+      internalID: -3493816680816615444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da034d1689aab714f86bd8848377a505
+      internalID: -7662196316795489573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_8
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e18307ef36ce44397a33e4b123f845
+      internalID: 7332440511633210941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_9
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469575e062c6fd6458dcd90b0da49e1f
+      internalID: 3039530361020648063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_10
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2cb28babf4c60e45a1d1e25f00f388f
+      internalID: 6715994026759507138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_11
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f1d887e806622b479ac4809853c17b6
+      internalID: 4214900222615219204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_12
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a7d481ccefe88499e3bb3d69dc6bd4
+      internalID: 7115890932430694354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41e379a52d7f764a9bd77c0539e8056
+      internalID: 2755815262921339267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8def9a287cbdee4409e643f959c6a7ff
+      internalID: 6787277639268832371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_15
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f475179a6f1bd6f4a8a6078fb2288ce9
+      internalID: 8533784483164723534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_16
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21fe9f8dde2ba34d954372662f718af
+      internalID: -299238971479376873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_17
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d9713e6ff4a2d47946080e3675d711
+      internalID: 8428292649741903517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_18
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae7d2df133d23f4eaa059bc8108af9a
+      internalID: -5774741594331331174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_19
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b8e6482712ef3d4dbe2d49fa16add7f
+      internalID: -2686565652176650059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_20
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c41fd36e64ac244af41676cfce6da5
+      internalID: 1573029293527689125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_21
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be91628ad6d11a04dbfda610bf97e180
+      internalID: -1329841231800716229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_22
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45f4ea9e119c45c40819755309d8fe37
+      internalID: -6071059177842585880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_23
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd099a7b6178a44b9ada6f89130786a
+      internalID: 8730999914007571696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_24
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b4a798911e2014bab4416c619022e5
+      internalID: -6012393672177381379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_25
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ab0185e85fce944b784d4f4b48a0c2
+      internalID: 3478779781136155252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1b4a8a727ee7e4da839dfc7449269b
+      internalID: -5754610866063843803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d294a91e5143054a85c0dca746b1a89
+      internalID: 5092837602670387521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_28
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e30ed9771364a46896b78c9a0303ed
+      internalID: 8485557313172426624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_29
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafacf40c564e4141b2a9e8ffcd0d375
+      internalID: -1107850516851888341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_30
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14e186a33f454e441a0c69872d21ff68
+      internalID: 3294493961826635201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_31
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c04e3502f9816c448cfd551911dd3ff
+      internalID: 1383811302175056785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_32
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e3b4c001a87d042a95671e13ecd2cb
+      internalID: 8861449704759084119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_33
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023d689e749be0b4789444fdfd641785
+      internalID: 2956637977577769337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_34
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a555c9aa5ce3d946b672c59cf84d3c9
+      internalID: 2446029523876356769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_35
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02133f01fb6229042a36c9f0061104d9
+      internalID: -4929059793938079440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_36
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813c54972f6a37a439cdd3e77a3d509e
+      internalID: 2864557337507106436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_37
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee5d35f12ee3b847825b1c3b214dfb2
+      internalID: 365612077216740902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_38
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdbd714f1d879348bf9685a43eb7db3
+      internalID: -7064812731106259281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01b123b269a64e438cb31a95a0b327e
+      internalID: -344149898770514168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_40
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c64d5d64497f947a6e9632c77b1979
+      internalID: 4569073198675047659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_41
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f30ee56367b350045929fec304148c6f
+      internalID: 654373403181549935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_42
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19090d2700890a4086834cfc73d2bb7
+      internalID: -568806845547625216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_43
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5afd190ff30658344bb12baf2342a165
+      internalID: -2846651780957153442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_44
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ede3ffff476c5641b831b0fe1f4f591
+      internalID: -6439701027255915349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_45
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59119ddf18cfd6c40a30b555c03aca09
+      internalID: -8225434146355594879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_46
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408a2ea55822e2843b746698539f09b1
+      internalID: 8430332153665901342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_47
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63972cdf9e341094d80e8517ace7a489
+      internalID: 5828554962917445267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_48
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a1cb1fe8690f64ab6f0fa5e2cec1b5
+      internalID: 3606527798580969132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_49
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 401aedd3c86edc745b713af286620fc3
+      internalID: 2310416028912821509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_50
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aefec826ee3a4c441a33695be22d1dbe
+      internalID: 8279132243952357976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_51
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4f77bfc0e28a4469109a7392e68287
+      internalID: -2682872165734440414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08a009e783ddba42ae656f4fe6f3675
+      internalID: -2689920519663022779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42307f0b1c2704e4b858ff5353104fd8
+      internalID: 4443085553503752701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_54
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f709f9aec6266408812d6627d9942c
+      internalID: 4833280882485354282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_55
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd0feb9f67b8df46a2b6dfdefa8b3f8
+      internalID: 6285682109573740635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_56
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19817e0ccd53a5e42954984fb46ccf3b
+      internalID: -7307151827858006005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_57
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427802fee70234c4fac5d65f98b4a728
+      internalID: 4489134829973058490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_58
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cba0cb681571834192bbbe5b89274db
+      internalID: -6960608640296526877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_59
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5a3f0aeed5b1c4fb21ba9a329e2ef3
+      internalID: 9069156446804823012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_60
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 379dee2b133e4ae489e199f2db5ddc3a
+      internalID: 1506513809816560312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_61
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf84a46dd6530f64989688134d0c7f91
+      internalID: -6297733337638874580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_62
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569eed20c8a9e0a40915c3df0cdc8286
+      internalID: 4428447975947250485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_63
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb90b092008fe245a5c01df81451c57
+      internalID: -9020056603889019823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_64
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3ac45e99ce1bc4bb51be6edeb53c91
+      internalID: -8951675159506281847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017aab1421d1a7146916ba9d53f98548
+      internalID: -3963979309804833971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_66
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 080e8e409e1744f4c849492bebccfd03
+      internalID: 3637196635028626304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_67
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c31a445a9203346bfe3cfddadb7684
+      internalID: -7313307837007334710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_68
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b08eb9c00e317419128927c51082df
+      internalID: -3775789837395735322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_69
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e54ed112355414995f7e497c2d7f9b
+      internalID: 7377316031493014355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_70
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e9120bdd0977d45bb84b003514c5ee
+      internalID: 4404081551726600087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_71
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e5a6058356eba42aff153c54984a03
+      internalID: 6117322705445913301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_72
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dddf9fcbc4aecd34fa41767bdaa1cfce
+      internalID: -597565144565019229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_73
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b304b16353ab154ba2091bd989f017e
+      internalID: 5450682633184275572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_74
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ead50ce4770cc4e80db6d06d2f7c39
+      internalID: 5990977854180462023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_75
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255819f6f58538a4da7cb39dc41f27f6
+      internalID: -7039328190024631900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_76
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f95396eb77882e4478d4c6be76e98648
+      internalID: -1613009804294877454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_77
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699d6f261ca94704f835276aa2772180
+      internalID: 7746890446819964557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b421199dc58ae5a4ab91b4c464739efe
+      internalID: 4348552536874914218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_79
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fd2efa120a6f74e82131eb3db8e4bb
+      internalID: -1667707767851604845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_80
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64641af2181656a46a8700a8049de7f5
+      internalID: 4901612454982373753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_81
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2339c7b3ef463dc4b89c7705f265bc47
+      internalID: 5432918731230509439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_82
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435f3ed7e1b6fa84eb719823347d6fea
+      internalID: -4114221585255465756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_83
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d14911dbc8e2545bbfa5ffdf4d7de1
+      internalID: 1152511063034425233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_84
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 604435a8ea78c354abc73c57f35c0dfb
+      internalID: 8798838464275752568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_85
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038f0f51a8b4a9b4a9ff9ec934b807a8
+      internalID: -9197414760921418943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_86
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcec023f21cdd747b986751bf844714
+      internalID: 5878162579401966209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_87
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48bac43a2d432d74596f10d7b8ca7fec
+      internalID: -1501118415033830727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_88
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec2c0d9249f1f44e9b001d36237fb70
+      internalID: 3320362491745177175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_89
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a7f2cef4191794a95bac92cfe0ea60
+      internalID: -7238671281760511329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_90
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f0a35f8fff5704db73eba6725d7d1e
+      internalID: -3215927559341059522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1671aaaa7e145ce4aa31ee6eb11554b4
+      internalID: 87836836280264056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_92
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5feb83b5b2e4ae540ab4e48fcdc84423
+      internalID: 2445175411790801081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_93
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd5942a41849b242bdb81993c0e4281
+      internalID: 3566852449698590819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_94
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea62a9cec38b88a4ea28717a78c4c12b
+      internalID: -20936363325297308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_95
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9806b34782ea6564ea3750cc68f9f790
+      internalID: -7431066364678281687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_96
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac69b970b0251374d84f12afba4f66db
+      internalID: -3287909227625927911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_97
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94087c0bdc383e4b8a308913e664f48
+      internalID: -3849354324046346928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_98
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a82589bc24b4242bb400c1bea0eca1
+      internalID: -7758046619169296895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_99
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01618a32b1e85984b9bf9f72cbceda84
+      internalID: -2524718359833634051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_100
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d071bf372869304485816cb5a11deb4
+      internalID: 8773108295191628845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_101
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b7be68cbfe3ea4f8eb2cffc1c94322
+      internalID: 4012716928097125739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_102
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aca78e5f4e0d5f843b14108c7907207c
+      internalID: 4154793133502175084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_103
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb6a0616c4b8e04cbfd974bf54367ef
+      internalID: -4495724962126951306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4661bd275cbf5f84081e646c9122291a
+      internalID: -5402838778005553744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_105
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e982dcec43a8d304f8597c4ccbc85b87
+      internalID: -3223446633334252526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_106
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c929bd9922008a40b34e4e331220cec
+      internalID: -3240996083304037953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_107
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fd87825b6e93641bbfc46dd97c505e
+      internalID: -8362454948760189591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_108
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c6d9b1c2766c943872fe3e891ca969
+      internalID: -8068196425695380629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_109
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc47344415278ee43bbc8b3cf715340b
+      internalID: -6830908020635097935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_110
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565b3042ff516024682db93a04b56ff6
+      internalID: -6856232438851229407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_111
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dbb88e2f28908f4db9b5cdb557240ba
+      internalID: -2824362685735506179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_112
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1edb7a4c5934744b62c710e4a25915
+      internalID: -4237765525771524660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_113
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e02e17768f1aa44831243994c4162b
+      internalID: -8467963987198786209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_114
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6496d89bcaa369e42999cfc70fcc30af
+      internalID: 7942498918916969045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_115
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1581499c6f1ea3439f9c1997f23cc58
+      internalID: -651203830733384995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_116
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493e7c650efbd98439b7d0da52262bd8
+      internalID: -2134041946815429636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b7422a0746ed84580a2473d173bbd6
+      internalID: -5932532534124416273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_118
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3991f04216962fa4db548bb4742e708c
+      internalID: -8483674886329378182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_119
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f741fe7caa32a24b81108052431f9bd
+      internalID: -3314606820740795903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_120
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2b72a8ca0e14ca4fae9e8a5f86ff42c
+      internalID: 4034817616308043090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_121
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06742ece9d7dce549b9e2d9839d721a7
+      internalID: 1735966843509113094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_122
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047913fb827af5843ad1c7598cf7ca3e
+      internalID: -9068532778485967704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_123
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854730fc2019f3142ace588750531812
+      internalID: 8881598728476649161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_124
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11adc673ef0f6d4488c10e532152065b
+      internalID: 2858733410711450684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_125
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75428362a83458c48bf17c25e8623d60
+      internalID: 1537186320075503398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_126
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db7b2cb01872e941b2af41b760d7512
+      internalID: 5943014675612501770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_127
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1882998bab3ec458d77cf80cba2841
+      internalID: 1886655656836104573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: einstein_blue_32b_128
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6ab99d5732cf9428dc02c3de4deec8
+      internalID: 4187388472141422711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
