@@ -28,7 +28,7 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(
-			EHero.Tesla, GetPlayerName(pIndex), EPlayerColor.Green);
+			EHero.Nobel, GetPlayerName(pIndex), EPlayerColor.Green);
 				player.PlayerKeys = new PlayerKeys(
 					KeyCode.UpArrow, KeyCode.RightArrow,
 					KeyCode.DownArrow, KeyCode.LeftArrow,
@@ -36,7 +36,7 @@ public static class DebugData
 				break;
 			case 2:
 				player = new PlayerInitInfo(
-			EHero.Nobel, GetPlayerName(pIndex), EPlayerColor.Pink);
+			EHero.Tesla, GetPlayerName(pIndex), EPlayerColor.Pink);
 				player.PlayerKeys = new PlayerKeys(
 					KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
 					KeyCode.LeftControl, KeyCode.LeftShift);
