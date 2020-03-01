@@ -63,12 +63,9 @@ public class PlayerItemController : GameController
 			return;
 		}
 		MapWeaponConfig config =
-			brainiacs.ItemManager.GetMapWeaponConfig(EWeaponId.MP40);
+			brainiacs.ItemManager.GetMapWeaponConfig(pWeapon);
 		if(config == null)
-		{
-			Debug.LogError($"Added weapon was null");
 			return;
-		}
 
 		PlayerWeaponProjectile weapon =
 			new PlayerWeaponProjectile(player, config);

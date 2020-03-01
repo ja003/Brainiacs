@@ -8,5 +8,6 @@ using UnityEngine;
 public class ProjectileVisual : GameBehaviour
 {
 	public BoxCollider2D GetCollider() { return boxCollider2D; }
-	public Sprite GetSprite() { return spriteRend.sprite; }
+	//todo: not used, remove
+	//public Sprite GetSprite() { return spriteRend.sprite; }
 }

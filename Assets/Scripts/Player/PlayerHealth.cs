@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : GameBehaviour
+public class PlayerHealth : GameBehaviour, IProjectileCollisionHandler
 {
 	[SerializeField]
 	private PlayerStats stats;
@@ -64,5 +64,11 @@ public class PlayerHealth : GameBehaviour
 	internal void DebugDie()
 	{
 		Die();
+	}
+
+	public bool OnCollision(Projectile pProjectile)
+	{
+		stats.AddHealth(-pProjectile.config.Damage);
+		return true;
 	}
 }

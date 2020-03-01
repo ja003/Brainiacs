@@ -75,6 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapWeapons:
   - {fileID: 11400000, guid: 22b34606b5c911a4cadf6e20f7eb9a0d, type: 2}
+  - {fileID: 11400000, guid: 1e584145f2930504aac471cd29ac723b, type: 2}
+  - {fileID: 11400000, guid: 49f46412e7db7aa4a91872a03834641e, type: 2}
   MapWeaponsSpecial:
   - {fileID: 11400000, guid: f4aa2047e2575ba40a8f4856bd863f71, type: 2}
   PowerUps:

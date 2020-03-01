@@ -6,15 +6,19 @@ using Random = UnityEngine.Random;
 
 public class Projectile : GameBehaviour
 {
-	//private EDirection direction;
+
 	private Vector3 direction;
-	private ProjectileConfig config;
+	public ProjectileConfig config;
 
 	bool inited;
 
 	public void Spawn(Player pOwner, ProjectileConfig pConfig)
 	{
-		spriteRend.sprite = pConfig.Visual.GetSprite();
+		//projectile type is based on weapon
+		//their condition in animator must match the weapon id
+		const string ANIM_KEY_WEAPON = "weapon";
+		animator.SetFloat(ANIM_KEY_WEAPON, (int)pConfig.WeaponId);
+
 		EDirection playerDir = pOwner.Movement.CurrentDirection;
 		direction = GetDirectionVector(playerDir, pConfig.Dispersion);
 		config = pConfig;
@@ -55,22 +59,23 @@ public class Projectile : GameBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		//todo: make general class DamageHandler
-		//for players, map objects...
-		Player player = collision.collider.GetComponent<Player>();
-		if(player)
-		{
-			OnEnter(player);
-		}
+		IProjectileCollisionHandler handler =
+			collision.collider.GetComponent<IProjectileCollisionHandler>();
+
+		bool result = false;
+		if(handler != null)
+			result = handler.OnCollision(this);
+
+		if(result)
+			ReturnToPool();
 	}
 
-	private void OnEnter(Player pPlayer)
+	//TODO: pooling
+	private void ReturnToPool()
 	{
-		pPlayer.Stats.AddHealth(-config.Damage);
-		//todo: return to pool
 		gameObject.SetActive(false);
 		inited = false;
 	}
 
-	
+
 }

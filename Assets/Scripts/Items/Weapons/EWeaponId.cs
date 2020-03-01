@@ -4,15 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// NOTE: projectile animations are binded to weapon id. 
+/// If id changes, change value in AC_Projectile
+/// </summary>
 public enum EWeaponId
 {
 	None,
 
-	
-
+	//map projectile
 	MP40 = 10,
-	Flamethrower = 11,
-	Lasergun = 12,
+	Lasergun = 11,
+	//todo: biogun spawns AOE DOT field
+	Biogun = 12,
+
+	//map special
+	Flamethrower = 50,
+	Mine = 51,
 
 
 

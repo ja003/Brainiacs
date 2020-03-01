@@ -23,7 +23,12 @@ public class ItemManager : GameBehaviour
 
 	public MapWeaponConfig GetMapWeaponConfig(EWeaponId pId)
 	{
-		return MapWeapons.Find(a => a.Id == pId);
+
+		MapWeaponConfig config = MapWeapons.Find(a => a.Id == pId);
+		if(config == null)
+			Debug.LogError($"Config for weapon {pId} not found");
+
+		return config;
 	}
 
 	public HeroSpecialWeaponConfig GetHeroSpecialWeaponConfig(EHero pHero)

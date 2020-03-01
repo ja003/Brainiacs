@@ -57,6 +57,17 @@ public class GameBehaviour : MonoBehaviour
 		}
 	}
 
+	private Animation _anim;
+	protected Animation anim
+	{
+		get
+		{
+			if(_anim == null)
+				_anim = GetComponent<Animation>();
+			return _anim;
+		}
+	}
+
 	private bool awaken;
 	//private UnityAction onAwake;
 	private List<Action> onAwaken = new List<Action>();

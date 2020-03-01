@@ -50,6 +50,8 @@ public class Player : GameBehaviour
 
 
 		ItemController.AddMapWeapon(EWeaponId.MP40);
+		ItemController.AddMapWeapon(EWeaponId.Lasergun);
+		ItemController.AddMapWeapon(EWeaponId.Biogun);
 
 		ItemController.AddHeroBasicWeapon(pPlayerInfo.Hero);
 

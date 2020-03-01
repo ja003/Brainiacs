@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapItem : GameBehaviour
+public class MapItem : MapObject
 {
 	MapWeaponConfig weaponConfig; //todo: maybe id is enough?
 	PowerUpConfig powerUpConfig;
@@ -50,7 +50,20 @@ public class MapItem : GameBehaviour
 		}
 		//TODO: special weapon + handle error
 
+		ReturnToPool();
+	}
+
+	private void ReturnToPool()
+	{
 		gameObject.SetActive(false);
 	}
 
+	protected override void OnCollisionEffect(Projectile pProjectile)
+	{
+		if(weaponConfig != null)
+		{
+			Debug.Log("todo: weapon explode");
+		}
+		ReturnToPool();
+	}
 }

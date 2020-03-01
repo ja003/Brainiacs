@@ -22,7 +22,7 @@ public class PlayerWeaponProjectile : PlayerWeapon
 			new InHandWeaponInfo(true),
 			pConfig.VisualInfo)
 	{
-		ProjectileInfo = new ProjectileWeaponInfo(pConfig.ProjectileVisual);
+		ProjectileInfo = new ProjectileWeaponInfo(pConfig);
 	}
 
 	public override EWeaponUseResult Use()
