@@ -16,4 +16,4 @@ MonoBehaviour:
   MapItemInfo:
     MapSprite: {fileID: 21300000, guid: 136bafcf338919748afed3a140ff161d, type: 3}
     StatusSprite: {fileID: 21300000, guid: 136bafcf338919748afed3a140ff161d, type: 3}
-    StatusText: amo
+    StatusText: ammo

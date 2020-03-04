@@ -11,6 +11,8 @@ public class UIPlayerStatus : UiBehaviour
 
 	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText)
 	{
+		gameObject.SetActive(true);
+
 		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPosition);
 		float x = viewportPos.x * Screen.width - Screen.width / 2;
 		float y = viewportPos.y * Screen.height - Screen.height / 2;

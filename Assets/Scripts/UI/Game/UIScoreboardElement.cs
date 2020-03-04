@@ -10,6 +10,7 @@ public class UIScoreboardElement : GameBehaviour
 	[SerializeField] private TextMeshProUGUI name;
 	[SerializeField] private Text kills;
 	[SerializeField] private Text deaths;
+	[SerializeField] private Image background;
 
 	//public void Init(PlayerInitInfo pPlayerInfo)
 	//{
@@ -25,7 +26,9 @@ public class UIScoreboardElement : GameBehaviour
 	public void Init(PlayerStats pStats)
 	{
 		//color and name dont change during game
-		image.color = UIColorDB.GetColor(pStats.Color);
+		background.color = UIColorDB.GetColor(pStats.Color);
+		//todo: sortingOrder is not applied -> set it manually
+		background.GetComponent<Canvas>().sortingOrder = -1;
 		name.text = pStats.Name;
 
 		//register for stats change
