@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : GameBehaviour
+public class Player : BrainiacsBehaviour
 {
 	[SerializeField]
 	private PlayerInput input;
@@ -41,7 +41,7 @@ public class Player : GameBehaviour
 		//Debug.Log($"{this} SetInfo");
 		Stats.Init(pPlayerInfo);
 
-		input.Keys = pPlayerInfo.PlayerKeys;
+		input.Init(pPlayerInfo);
 
 
 		HeroSpecialWeaponConfig heroSpecialConfig =

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,47 +10,47 @@ public class GameInitInfo
 		players = new List<PlayerInitInfo>();
 		Mode = EGameMode.None;
 		Map = EMap.None;
-		Time = -1;
-		Lives = -1;
-		DeathMatchGoal = -1;
+		GameModeValue = -1;
 	}
 
 	public List<PlayerInitInfo> players;
 	public EGameMode Mode;
 	public EMap Map;
-	public int Time;
-	public int Lives;
-	public int DeathMatchGoal;
+	public int GameModeValue;
+
 }
 
 
 public class PlayerInitInfo
 {
+	public int Number;
 	public string Name;
 	public EHero Hero;
 	public int Lives;
-	public PlayerKeys PlayerKeys;
-	//public Color Color;
+	//public PlayerKeys PlayerKeys;
 	public EPlayerColor Color;
+	public EPlayerType PlayerType;
 
-	public PlayerInitInfo(EHero pHero, string pName, EPlayerColor pColor)
+	public PlayerInitInfo(int pNumber, EHero pHero, string pName, EPlayerColor pColor, EPlayerType pPlayerType)
 	{
+		Number = pNumber;
 		Hero = pHero;
 		Name = pName;
 		Color = pColor;
-
+		PlayerType = pPlayerType;
 		Lives = 10;
 	}
 
 }
 
+[Serializable]
 public struct PlayerKeys
 {
 	public KeyCode moveUp;
 	public KeyCode moveRight;
 	public KeyCode moveDown;
 	public KeyCode moveLeft;
-	
+
 	public KeyCode useWeapon;
 	public KeyCode swapWeapon;
 
@@ -91,9 +92,10 @@ public enum EHero
 
 public enum EPlayerColor
 {
-	Blue = 0,
-	Red = 1,
-	Yellow = 2,
-	Green = 3,
-	Pink = 4,
+	None = 0,
+	Blue = 1,
+	Red = 2,
+	Yellow = 3,
+	Green = 4,
+	Pink = 5,
 }

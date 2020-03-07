@@ -5,14 +5,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class GameBehaviour : MonoBehaviour
+public class BrainiacsBehaviour : MonoBehaviour
 {
 	protected Brainiacs brainiacs => Brainiacs.Instance;
-	protected Game game => Game.Instance;
 
-	protected Renderer rend;
+	private Renderer _rend;
+	protected Renderer rend
+	{
+		get
+		{
+			if(_rend == null)
+				_rend = GetComponent<Renderer>();
+			return _rend;
+		}
+	}
 
-	//TODO: implement other getters
 	private SpriteRenderer _spriteRend;
 	protected SpriteRenderer spriteRend
 	{
@@ -69,26 +76,22 @@ public class GameBehaviour : MonoBehaviour
 	}
 
 	private bool awaken;
-	//private UnityAction onAwake;
 	private List<Action> onAwaken = new List<Action>();
 
 	private bool activated;
-	//private UnityAction onActivated;
-	//private Action onActivated;
 	private List<Action> onActivated = new List<Action>();
-	//private List<UnityAction> onGameActivated = new List<UnityAction>();
 
 	protected virtual void Awake()
 	{
-		rend = GetComponent<Renderer>();
 		awaken = true;
+		Brainiacs.InstantiateSingleton();
 		SetOnAwaken();
 	}
 
 	protected void Activate()
 	{
 		activated = true;
-		SetOnActivated(); //invoke onGameActivated actions
+		SetOnActivated(); //invoke OnMainControllerActivated actions
 	}
 
 	public void SetOnAwaken(Action pAction = null)
@@ -116,7 +119,7 @@ public class GameBehaviour : MonoBehaviour
 		//Debug.Log($"{gameObject.name} SetOnActivated {activated}");
 		if(pAction != null)
 			onActivated.Add(pAction);
-		//onGameActivated.Add(pAction);
+		//OnMainControllerActivated.Add(pAction);
 
 		if(activated)
 		{
@@ -137,11 +140,21 @@ public class GameBehaviour : MonoBehaviour
 	protected void DoInTime(Action pEvent, float pTime, Action<float> pOnUpdate = null)
 	{
 		if(pOnUpdate == null)
-			LeanTween.value(0, 1, pTime).setOnComplete(pEvent);
+			LeanTween.value(gameObject, 0, 1, pTime).setOnComplete(pEvent);
 		else
 		{
-			LeanTween.value(0, 1, pTime)
+			LeanTween.value(gameObject, 0, 1, pTime)
 				  .setOnComplete(pEvent).setOnUpdate(pOnUpdate);
 		}
+	}
+
+	protected void UpdateValue(float pForm, float pTo, float pTime, Action<float> pOnUpdate)
+	{
+		LeanTween.value(gameObject, pForm, pTo, pTime).setOnUpdate(pOnUpdate);
+	}
+
+	private void OnDestroy()
+	{
+		LeanTween.cancel(gameObject);
 	}
 }

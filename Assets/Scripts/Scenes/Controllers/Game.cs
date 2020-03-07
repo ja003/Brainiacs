@@ -20,16 +20,17 @@ public class Game : CSingleton<Game>
 	public UIPlayerStatusManager PlayerStatusManager;
 
 	protected override void Awake()
-	{
-		base.Awake();
-		OnAwaken();
+	{		
 		if(Brainiacs.SelfInitGame)
 		{
 			DoInTime(Activate, 0.5f);
 		}
+
+		base.Awake(); //always call base.event() at the end
+		OnAwaken();
 	}
 
-	public void OnAwaken()
+	private void OnAwaken()
 	{
 		mainCamera.enabled = false;
 		//todo: deactivate players

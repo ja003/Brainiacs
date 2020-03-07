@@ -9,7 +9,7 @@ FUNCTION:
 using System;
 using UnityEngine;
 
-public abstract class CSingleton<T> : GameBehaviour where T : CSingleton<T>
+public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 {
 	//=========================================//
 	// VARIABLES

@@ -9,7 +9,7 @@ public class SpecialCurie : PlayerWeaponSpecialController
 	public override void Use()
 	{
 		gameObject.SetActive(true);
-		transform.parent = game.ProjectileManager.GetHolder();
+		transform.parent = game.ProjectileManager.transform;
 
 		transform.position = weaponContoller.transform.position;
 		Vector3 dir = Utils.GetVector3(currentDirection);

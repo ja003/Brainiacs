@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSorter : GameBehaviour
+public class PlayerSorter : BrainiacsBehaviour
 {
 	private List<Player> players = new List<Player>();
 

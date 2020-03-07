@@ -6,12 +6,12 @@ public class UIPlayerInfoController : GameController
 {
 	[SerializeField] private UIPlayerInfoElement prefab;
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 		game.playersController.SetOnActivated(InitPlayersInfo);
 	}
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 	}
 

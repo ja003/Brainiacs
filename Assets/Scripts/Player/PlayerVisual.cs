@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisual : GameBehaviour
+public class PlayerVisual : BrainiacsBehaviour
 {
 	HeroConfig heroConfig;
 

@@ -10,7 +10,7 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 	{
 		gameObject.SetActive(true);
 
-		transform.parent = game.ProjectileManager.GetHolder();
+		transform.parent = game.ProjectileManager.transform;
 
 		Vector3 target = GetTargetPosition();
 		transform.position = target + Vector3.up * 10;

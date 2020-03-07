@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class GameCamera : GameBehaviour
+public class GameCamera : BrainiacsBehaviour
 {
 	const float coef = 0.01f; //not sure why this is needed
 	//game has a fixed resolution

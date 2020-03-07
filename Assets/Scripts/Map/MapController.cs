@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class MapController : GameController
 {
-	[SerializeField]
-	private Map steampunk;
-
-	[SerializeField]
-	private Map wonderland;
-
 	public Map ActiveMap = null;
 
 	protected override void Awake()
@@ -32,15 +26,7 @@ public class MapController : GameController
 			}
 		}
 
-		switch(pMap)
-		{
-			case EMap.Steampunk:
-				ActiveMap = Instantiate(steampunk);
-				break;
-			case EMap.Wonderland:
-				ActiveMap = Instantiate(wonderland);
-				break;
-		}
+		ActiveMap = Instantiate(brainiacs.MapManager.GetMapConfig(pMap).Prefab);
 		if(ActiveMap == null)
 		{
 			Debug.LogError("No map selected");
@@ -50,20 +36,21 @@ public class MapController : GameController
 		ActiveMap.transform.parent = transform;
 	}
 
-	internal void SetActive(bool pValue)
+	public void SetActive(bool pValue)
 	{
 		//Debug.Log($"{gameObject.name} SetActive {pValue }");
 		gameObject.SetActive(pValue);
 		ActiveMap.SetActive(pValue);
+		Activate();
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 		SetMap(brainiacs.GameInitInfo.Map);
 		SetActive(false);
 	}
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 		SetActive(true);
 	}

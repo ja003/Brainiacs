@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerStats : GameBehaviour
+public class PlayerStats : BrainiacsBehaviour
 {
 	private int lives;
 	public int Deaths;

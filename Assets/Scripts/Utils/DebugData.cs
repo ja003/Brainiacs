@@ -21,33 +21,36 @@ public static class DebugData
 		return "DEBUG_NAME";
 	}
 
-	public static PlayerInitInfo GetPlayerInitInfo(int pIndex)
+	public static PlayerInitInfo GetPlayerInitInfo(int pPlayerNumber)
 	{
 		PlayerInitInfo player = null;
-		switch(pIndex)
+		switch(pPlayerNumber)
 		{
 			case 1:
-				player = new PlayerInitInfo(
-			EHero.Nobel, GetPlayerName(pIndex), EPlayerColor.Green);
-				player.PlayerKeys = new PlayerKeys(
-					KeyCode.UpArrow, KeyCode.RightArrow,
-					KeyCode.DownArrow, KeyCode.LeftArrow,
-					KeyCode.RightControl, KeyCode.RightShift);
+				player = new PlayerInitInfo(pPlayerNumber,
+			EHero.Nobel, GetPlayerName(pPlayerNumber),
+			EPlayerColor.Green, EPlayerType.LocalPlayer);
+				//player.PlayerKeys = new PlayerKeys(
+				//	KeyCode.UpArrow, KeyCode.RightArrow,
+				//	KeyCode.DownArrow, KeyCode.LeftArrow,
+				//	KeyCode.RightControl, KeyCode.RightShift);
 				break;
 			case 2:
-				player = new PlayerInitInfo(
-			EHero.Einstein, GetPlayerName(pIndex), EPlayerColor.Pink);
-				player.PlayerKeys = new PlayerKeys(
-					KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
-					KeyCode.LeftControl, KeyCode.LeftShift);
+				player = new PlayerInitInfo(pPlayerNumber,
+			EHero.Einstein, GetPlayerName(pPlayerNumber),
+			EPlayerColor.Pink, EPlayerType.LocalPlayer);
+				//player.PlayerKeys = new PlayerKeys(
+				//	KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
+				//	KeyCode.LeftControl, KeyCode.LeftShift);
 				break;
 			case 3:
-				player = new PlayerInitInfo(
-			EHero.Currie, GetPlayerName(pIndex), EPlayerColor.Yellow);
+				player = new PlayerInitInfo(pPlayerNumber,
+			EHero.Currie, GetPlayerName(pPlayerNumber),
+			EPlayerColor.Yellow, EPlayerType.LocalPlayer);
 
-				player.PlayerKeys = new PlayerKeys(
-					KeyCode.Alpha8, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha4,
-					KeyCode.Alpha1, KeyCode.Alpha3);
+				//player.PlayerKeys = new PlayerKeys(
+				//	KeyCode.Alpha8, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha4,
+				//	KeyCode.Alpha1, KeyCode.Alpha3);
 				break;
 		}
 

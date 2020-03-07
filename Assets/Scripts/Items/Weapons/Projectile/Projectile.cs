@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Projectile : GameBehaviour
+public class Projectile : BrainiacsBehaviour
 {
 
 	private Vector3 direction;

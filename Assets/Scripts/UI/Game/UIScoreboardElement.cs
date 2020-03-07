@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIScoreboardElement : GameBehaviour
+public class UIScoreboardElement : BrainiacsBehaviour
 {
 	[SerializeField] private TextMeshProUGUI name;
 	[SerializeField] private Text kills;

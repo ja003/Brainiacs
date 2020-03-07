@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Results : GameBehaviour
+public class Results : BrainiacsBehaviour
 {
 	[SerializeField] private ResultScore scoreFirst;
 	[SerializeField] private ResultScore scoreSecond;

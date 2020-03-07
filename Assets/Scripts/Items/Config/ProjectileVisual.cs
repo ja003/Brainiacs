@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 //todo: Animator
-public class ProjectileVisual : GameBehaviour
+public class ProjectileVisual : BrainiacsBehaviour
 {
 	public BoxCollider2D GetCollider() { return boxCollider2D; }
 	//todo: not used, remove

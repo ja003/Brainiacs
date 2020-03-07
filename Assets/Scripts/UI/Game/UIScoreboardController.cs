@@ -13,12 +13,12 @@ public class UIScoreboardController : GameController
 		base.Awake();
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 		game.playersController.SetOnActivated(InitPlayersScore);
 	}
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 	}
 

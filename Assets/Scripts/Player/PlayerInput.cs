@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : GameBehaviour
 {
-	public PlayerKeys Keys;
+	PlayerKeys keys;
 
 	[SerializeField]
 	private Player player;
@@ -26,6 +26,16 @@ public class PlayerInput : MonoBehaviour
 		
 	}
 	
+	public void Init(PlayerInitInfo pPlayerInfo)
+	{
+		if(pPlayerInfo.PlayerType != EPlayerType.LocalPlayer)
+		{
+			//todo: send message to remote player
+			return;
+		}
+		keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
+	}
+
 	private void ProcessMovementInput()
 	{
 		bool movementRequested = false;
@@ -47,15 +57,16 @@ public class PlayerInput : MonoBehaviour
 		}
 	}
 
+
 	private void ProcessActionInput()
 	{
-		if(Input.GetKeyDown(Keys.swapWeapon))
+		if(Input.GetKeyDown(keys.swapWeapon))
 			weapon.SwapWeapon();
 
-		if(Input.GetKey(Keys.useWeapon))
+		if(Input.GetKey(keys.useWeapon))
 			weapon.UseWeapon();
 
-		if(Input.GetKeyUp(Keys.useWeapon))
+		if(Input.GetKeyUp(keys.useWeapon))
 			weapon.StopUseWeapon();
 
 
@@ -66,13 +77,13 @@ public class PlayerInput : MonoBehaviour
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				return Input.GetKey(Keys.moveUp); //todo: movement wheel on mobile
+				return Input.GetKey(keys.moveUp); //todo: movement wheel on mobile
 			case EDirection.Right:
-				return Input.GetKey(Keys.moveRight);
+				return Input.GetKey(keys.moveRight);
 			case EDirection.Down:
-				return Input.GetKey(Keys.moveDown);
+				return Input.GetKey(keys.moveDown);
 			case EDirection.Left:
-				return Input.GetKey(Keys.moveLeft);
+				return Input.GetKey(keys.moveLeft);
 		}
 		return false;
 	}

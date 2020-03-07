@@ -5,19 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Loading : GameBehaviour
+public class Loading : BrainiacsBehaviour
 {
 	[SerializeField]
 	private Slider slider;
 
 	protected override void Awake()
-	{
-		base.Awake();
-		Brainiacs.InstantiateSingleton();
-
+	{	
 		Brainiacs.SelfInitGame = false;
 
 		DoInTime(LoadGame, 1);
+
+		base.Awake(); //always call base.event() at the end
 	}
 	
 	private void LoadGame()
@@ -44,7 +43,7 @@ public class Loading : GameBehaviour
 	{
 		Debug.Log("StartGame");
 
-		game.Activate();
+		Game.Instance.Activate();
 		Brainiacs.Instance.Scenes.UnloadScene(EScene.Loading);
 	}
 

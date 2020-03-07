@@ -21,6 +21,12 @@ public class Brainiacs : CSingleton<Brainiacs>
 	[SerializeField]
 	public HeroManager HeroManager;
 
+	[SerializeField]
+	public MapManager MapManager;
+
+	[SerializeField]
+	public PlayerKeysManager PlayerKeysManager;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -43,7 +49,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 		GameInitInfo.Mode = EGameMode.Time;
 		GameInitInfo.Map = EMap.Steampunk;
-		GameInitInfo.Time = 5;
+		GameInitInfo.GameModeValue = 5;
 	}
 
 	public void SetGameResultInfo(List<Player> pPlayers)

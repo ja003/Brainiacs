@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public static class Utils
 {
@@ -49,5 +51,15 @@ public static class Utils
 		}
 		result.z += pOffset;
 		return result;
+	}
+
+	public static List<string> GetStrings(Type pType, int pExclude = -1)
+	{
+		List<string> values = Enum.GetNames(pType).OfType<string>().ToList();
+		if(pExclude > -1)
+		{
+			values.RemoveAt(pExclude);
+		}
+		return values;
 	}
 }

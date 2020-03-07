@@ -15,11 +15,11 @@ public class PlayerItemController : GameController
 	private Player player;
 
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 	}
 

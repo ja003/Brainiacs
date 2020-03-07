@@ -9,16 +9,16 @@ public class ProjectileManager : GameController
 	
 	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig)
 	{
-		Projectile newProjectile = Instantiate(prefab, pPosition, Quaternion.identity, GetHolder());
+		Projectile newProjectile = Instantiate(prefab, pPosition, Quaternion.identity, transform);
 
 		newProjectile.Spawn(pOwner, pConfig);
 	}
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 	}
 }

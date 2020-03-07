@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : GameBehaviour, IProjectileCollisionHandler
+public class PlayerHealth : BrainiacsBehaviour, IProjectileCollisionHandler
 {
 	[SerializeField]
 	private PlayerStats stats;

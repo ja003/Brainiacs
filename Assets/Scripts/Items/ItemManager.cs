@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ItemManager : GameBehaviour
+public class ItemManager : BrainiacsBehaviour
 {
 	[SerializeField]
 	public List<MapWeaponConfig> MapWeapons;

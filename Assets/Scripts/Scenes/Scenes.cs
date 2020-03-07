@@ -26,7 +26,7 @@ public class Scenes : MonoBehaviour
 		{
 			float progress = Mathf.Clamp01(loading.progress / 0.9f);
 			pSlider.value = progress;
-			Debug.Log(progress);
+			Debug.Log("LoadSceneAsync: " + progress);
 			yield return null;
 		}
 

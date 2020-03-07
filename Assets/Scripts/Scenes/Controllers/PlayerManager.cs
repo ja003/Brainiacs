@@ -29,7 +29,7 @@ public class PlayerManager : GameController
 
 			if(playerInfo.Name == DebugData.GetPlayerName(2))
 				spawnPosition = Vector3.zero;
-			
+
 			if(playerInfo.Name == DebugData.GetPlayerName(3))
 				spawnPosition = Vector3.down;
 
@@ -44,13 +44,12 @@ public class PlayerManager : GameController
 		Activate();
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
-	}
+		//map has to be activated first
+		game.MapController.SetOnActivated(() => 
+			SpawnPlayers(brainiacs.GameInitInfo.players));
 
-	protected override void OnGameActivated()
-	{
-		//Debug.Log($"{gameObject.name} OnGameActivated");
-		SpawnPlayers(brainiacs.GameInitInfo.players);
+		//SpawnPlayers(brainiacs.GameInitInfo.players);
 	}
 }

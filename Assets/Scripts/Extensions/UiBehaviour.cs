@@ -57,7 +57,7 @@ public class UiBehaviour : MonoBehaviour
 	protected void Activate()
 	{
 		activated = true;
-		SetOnActivated(); //invoke onGameActivated actions
+		SetOnActivated(); //invoke OnMainControllerActivated actions
 	}
 
 	public void SetOnAwaken(Action pAction = null)
@@ -85,7 +85,7 @@ public class UiBehaviour : MonoBehaviour
 		//Debug.Log($"{gameObject.name} SetOnActivated {activated}");
 		if(pAction != null)
 			onActivated.Add(pAction);
-		//onGameActivated.Add(pAction);
+		//OnMainControllerActivated.Add(pAction);
 
 		if(activated)
 		{

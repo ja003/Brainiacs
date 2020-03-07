@@ -21,11 +21,11 @@ public class MapItemGenerator : GameController
 		base.Awake();
 	}
 
-	protected override void OnGameAwaken()
+	protected override void OnMainControllerAwaken()
 	{
 	}
 
-	protected override void OnGameActivated()
+	protected override void OnMainControllerActivated()
 	{
 		topLeftCorner = game.MapController.ActiveMap.TopLeftCorner.position;
 		botRightCorner = game.MapController.ActiveMap.BotRightCorner.position;
@@ -52,7 +52,7 @@ public class MapItemGenerator : GameController
 
 	private void GenerateRandomItem()
 	{
-		MapItem newItem = Instantiate(mapItemPrefab, GetHolder());
+		MapItem newItem = Instantiate(mapItemPrefab, transform);
 		int randomIndex = Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 
 		//todo: pick from powerup, mapWeapon, mapSpecialWeapon
