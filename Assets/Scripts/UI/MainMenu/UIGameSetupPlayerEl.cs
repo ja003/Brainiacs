@@ -18,7 +18,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 
 	EPlayerColor assignedColor;
-	EPlayerType playerType;
+	public EPlayerType PlayerType { get; private set; }
 	EHero hero;
 	int number;
 
@@ -30,7 +30,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	private void OnBtnRemove()
 	{
-		if(playerType == EPlayerType.RemotePlayer)
+		if(PlayerType == EPlayerType.RemotePlayer)
 		{
 			Debug.LogError("TODO: are you sure dialog");
 		}
@@ -67,7 +67,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	public bool IsValid()
 	{
 		bool remoteOK = remoteConnected && remoteReady;
-		if(playerType == EPlayerType.RemotePlayer && !remoteOK)
+		if(PlayerType == EPlayerType.RemotePlayer && !remoteOK)
 			return false;
 
 		return gameObject.activeSelf;
@@ -77,7 +77,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		remoteConnected = false;
 		remoteReady = false;
-		playerType = pPlayerType;
+		PlayerType = pPlayerType;
 		playerTypeText.text = pPlayerType.ToString();
 		//todo: handle remote
 		bool isRemote = pPlayerType == EPlayerType.RemotePlayer;
@@ -117,7 +117,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	internal PlayerInitInfo GetInitInfo()
 	{
-		PlayerInitInfo info = new PlayerInitInfo(number, hero, playerNameText.text, assignedColor, playerType);
+		PlayerInitInfo info = new PlayerInitInfo(number, hero, playerNameText.text, assignedColor, PlayerType);
 		return info;
 	}
 }

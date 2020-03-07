@@ -48,6 +48,12 @@ public class UIGameSetupMain : MainMenuController
 	private void OnBtnPlay()
 	{
 		gameInitInfo = new GameInitInfo();
+		if(GetLocalPlayer() == null)
+		{
+			Debug.LogError("Cant start game with no local player");
+			return;
+		}
+
 		foreach(var p in GetValidPlayers())
 		{
 			gameInitInfo.players.Add(p.GetInitInfo());
@@ -66,11 +72,21 @@ public class UIGameSetupMain : MainMenuController
 		brainiacs.Scenes.LoadScene(EScene.Loading);
 	}
 
+	private List<UIGameSetupPlayerEl> GetActivatedPlayers()
+	{
+		return players.FindAll(a => a.gameObject.activeSelf);
+	}
+
 	private List<UIGameSetupPlayerEl> GetValidPlayers()
 	{
 		return players.FindAll(a => a.IsValid());
 	}
-	
+
+	private UIGameSetupPlayerEl GetLocalPlayer()
+	{
+		return GetValidPlayers().Find(a => a.PlayerType == EPlayerType.LocalPlayer);
+	}
+
 	public void SetActive(bool pValue)
 	{
 		foreach(var p in players)
@@ -176,7 +192,17 @@ public class UIGameSetupMain : MainMenuController
 
 	public void OnPlayersChanged()
 	{
-		bool isMaxPlayersCount = GetValidPlayers().Count == 4;
+		int activatedPlayersCount = GetActivatedPlayers().Count;
+		bool isMaxPlayersCount = activatedPlayersCount == 4;
 		btnGroupAddPlayer.SetActive(!isMaxPlayersCount);
+
+		if(activatedPlayersCount > 4)
+		{
+			Debug.LogError("There are more than 4 players");
+		}
+
+		bool alreadyHasLocalPlayer = 
+			PlatformManager.IsMobile() && GetLocalPlayer() != null;
+		btnAddPlayerLocal.gameObject.SetActive(!alreadyHasLocalPlayer);
 	}
 }

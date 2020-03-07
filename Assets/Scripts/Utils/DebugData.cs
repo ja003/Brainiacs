@@ -38,7 +38,7 @@ public static class DebugData
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Einstein, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Pink, EPlayerType.LocalPlayer);
+			EPlayerColor.Pink, EPlayerType.RemotePlayer);
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
 				//	KeyCode.LeftControl, KeyCode.LeftShift);
@@ -46,7 +46,7 @@ public static class DebugData
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Currie, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Yellow, EPlayerType.LocalPlayer);
+			EPlayerColor.Yellow, EPlayerType.RemotePlayer);
 
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.Alpha8, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha4,

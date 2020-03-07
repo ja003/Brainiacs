@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : CSingleton<Game>
 {
@@ -19,12 +20,17 @@ public class Game : CSingleton<Game>
 	[SerializeField]
 	public UIPlayerStatusManager PlayerStatusManager;
 
+	[SerializeField] public MobileInput MobileInput;
+
+	[SerializeField] Button btnEnd;
+
 	protected override void Awake()
 	{		
 		if(Brainiacs.SelfInitGame)
 		{
 			DoInTime(Activate, 0.5f);
 		}
+		btnEnd.onClick.AddListener(TestEndGame);
 
 		base.Awake(); //always call base.event() at the end
 		OnAwaken();

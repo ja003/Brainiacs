@@ -17,10 +17,12 @@ public class MainMenu : CSingleton<MainMenu>
 
 	[SerializeField] public UIGameSetup GameSetup;
 
-
+	[SerializeField] int debug_InitBgAnim;
 
 	protected override void Awake()
 	{
+		SetMenuAnimPosition(debug_InitBgAnim);
+
 		btnStartGame.onClick.AddListener(OnBtnStartGame);
 		//btnBack.onClick.AddListener(OnBtnBack);
 
@@ -36,37 +38,23 @@ public class MainMenu : CSingleton<MainMenu>
 	float currentMenuAnimPosition = 0;
 	private void OnBtnStartGame()
 	{
-		Debug.Log("OnBtnStartGame");
-		UpdateValue(currentMenuAnimPosition, MENU_ANIM_POSITION_SETUP, ANIM_TIME, SetMenuAnimPosition);
+		StartMenuAnim(MENU_ANIM_POSITION_SETUP);
 	}
-
+	
 	public void OnBtnBack()
 	{
-		Debug.Log("OnBtnBack");
-		UpdateValue(currentMenuAnimPosition, MENU_ANIM_POSITION_MAIN, ANIM_TIME, SetMenuAnimPosition);
+		StartMenuAnim(MENU_ANIM_POSITION_MAIN);
+	}
+
+	private void StartMenuAnim(int pTargetMenuAnimPosition)
+	{
+		LeanTween.cancel(gameObject);
+		UpdateValue(currentMenuAnimPosition, pTargetMenuAnimPosition, ANIM_TIME, SetMenuAnimPosition);
 	}
 
 	private void SetMenuAnimPosition(float pValue)
 	{
 		currentMenuAnimPosition = pValue;
 		animator.SetFloat("position", pValue);
-	}
-
-
-	//private void OnBtnStartGame()
-	//{
-	//	brainiacs.TestSetGameInitInfo();
-	//	Brainiacs.Instance.Scenes.LoadScene(EScene.Loading);
-	//}
-
-	//private void TestSetGameInitInfo()
-	//{
-	//	GameInitInfo = new GameInitInfo();
-	//	GameInitInfo.players.Add(new PlayerInitInfo(EHero.Tesla));
-	//	GameInitInfo.players.Add(new PlayerInitInfo(EHero.Currie));
-
-	//	GameInitInfo.Mode = EGameMode.Time;
-	//	GameInitInfo.Time = 5;
-	//}
-
+	}	
 }

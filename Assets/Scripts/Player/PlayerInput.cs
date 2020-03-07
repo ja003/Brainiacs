@@ -23,9 +23,9 @@ public class PlayerInput : GameBehaviour
 		ProcessActionInput();
 
 		//item use..
-		
+
 	}
-	
+
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
 		if(pPlayerInfo.PlayerType != EPlayerType.LocalPlayer)
@@ -33,7 +33,52 @@ public class PlayerInput : GameBehaviour
 			//todo: send message to remote player
 			return;
 		}
-		keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
+		if(PlatformManager.GetPlatform() == EPlatform.PC)
+		{
+			keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
+		}
+		else
+		{
+			game.MobileInput.btnShoot.OnPressedAction =
+				() => weapon.UseWeapon();
+			game.MobileInput.btnShoot.OnPointerUpAction =
+				() => weapon.StopUseWeapon();
+
+			game.MobileInput.btnSwap.OnPointerDownAction =
+				() => weapon.SwapWeapon();
+
+			game.MobileInput.moveJoystick.OnUpdateDirection += HandleMoveJoystick;
+		}
+
+	}
+
+	private void HandleMoveJoystick(Vector2 pInput)
+	{
+		const float move_threshold = 0.5f;
+
+		EDirection direction = EDirection.None;
+
+		//if both direction (X,Y) are requested, handle
+		//the one with higher value
+		if(Math.Abs(pInput.y) > Math.Abs(pInput.x))
+		{
+			if(pInput.y > move_threshold)
+				direction = EDirection.Up;
+			else if(pInput.y < -move_threshold)
+				direction = EDirection.Down;
+		}
+		else
+		{
+			if(pInput.x > move_threshold)
+				direction = EDirection.Right;
+			else if(pInput.x < -move_threshold)
+				direction = EDirection.Left;
+		}
+
+		if(direction == EDirection.None)
+			return;
+
+		movement.Move(direction);
 	}
 
 	private void ProcessMovementInput()

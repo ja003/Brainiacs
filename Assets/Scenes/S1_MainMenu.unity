@@ -5691,7 +5691,7 @@ GameObject:
   - component: {fileID: 1939122606}
   - component: {fileID: 1939122611}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5812,6 +5812,7 @@ MonoBehaviour:
   btnSettings: {fileID: 0}
   btnQuit: {fileID: 0}
   GameSetup: {fileID: 44279631}
+  debug_InitBgAnim: 1
 --- !u!1 &1998728883
 GameObject:
   m_ObjectHideFlags: 0

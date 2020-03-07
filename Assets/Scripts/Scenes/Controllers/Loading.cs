@@ -10,6 +10,9 @@ public class Loading : BrainiacsBehaviour
 	[SerializeField]
 	private Slider slider;
 
+	[SerializeField] int countdown;
+
+
 	protected override void Awake()
 	{	
 		Brainiacs.SelfInitGame = false;
@@ -31,7 +34,7 @@ public class Loading : BrainiacsBehaviour
 	{
 		Debug.Log("Countdown");
 
-		for(int i = 1; i < 4; i++)
+		for(int i = 1; i <= countdown; i++)
 		{
 			Debug.Log("Countdown: " + i);
 			yield return new WaitForSeconds(1); 

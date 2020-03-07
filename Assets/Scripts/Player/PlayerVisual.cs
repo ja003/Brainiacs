@@ -73,7 +73,7 @@ public class PlayerVisual : BrainiacsBehaviour
 
 	private static int GetColorPaletteIndex(EPlayerColor pColor)
 	{
-		return (int)pColor;
+		return (int)pColor - 1;
 	}
 
 	[SerializeField]
