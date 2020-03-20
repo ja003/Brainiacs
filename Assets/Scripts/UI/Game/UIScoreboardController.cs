@@ -15,7 +15,7 @@ public class UIScoreboardController : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
-		game.playersController.SetOnActivated(InitPlayersScore);
+		game.PlayerManager.SetOnActivated(InitPlayersScore);
 	}
 
 	protected override void OnMainControllerActivated()
@@ -24,7 +24,7 @@ public class UIScoreboardController : GameController
 
 	private void InitPlayersScore()
 	{
-		foreach(var player in game.playersController.Players)
+		foreach(var player in game.PlayerManager.Players)
 		{
 			AddScorePlayer(player.Stats);
 		}

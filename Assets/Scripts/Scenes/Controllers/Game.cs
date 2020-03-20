@@ -12,7 +12,7 @@ public class Game : CSingleton<Game>
 	public MapController MapController;
 
 	[SerializeField]
-	public PlayerManager playersController;
+	public PlayerManager PlayerManager;
 
 	[SerializeField]
 	public ProjectileManager ProjectileManager;
@@ -51,7 +51,7 @@ public class Game : CSingleton<Game>
 
 	public void TestEndGame()
 	{
-		brainiacs.SetGameResultInfo(playersController.Players);
+		brainiacs.SetGameResultInfo(PlayerManager.Players);
 		brainiacs.Scenes.LoadScene(EScene.Results);
 	}
 }

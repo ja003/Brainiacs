@@ -75,7 +75,7 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
-	private bool awaken;
+	protected bool awaken;
 	private List<Action> onAwaken = new List<Action>();
 
 	private bool activated;
@@ -93,6 +93,7 @@ public class BrainiacsBehaviour : MonoBehaviour
 		activated = true;
 		SetOnActivated(); //invoke OnMainControllerActivated actions
 	}
+
 
 	public void SetOnAwaken(Action pAction = null)
 	{

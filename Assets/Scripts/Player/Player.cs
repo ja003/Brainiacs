@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PhotonPlayer = Photon.Realtime.Player;
 
 public class Player : BrainiacsBehaviour
 {
@@ -28,6 +30,11 @@ public class Player : BrainiacsBehaviour
 	[SerializeField]
 	public PlayerStats Stats;
 
+	[SerializeField] PhotonView view;
+	public PhotonPlayer photonPlayer;
+
+	PlayerInitInfo initInfo;
+
 	private void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.C))
@@ -38,6 +45,18 @@ public class Player : BrainiacsBehaviour
 
 	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
 	{
+		initInfo = pPlayerInfo;
+
+		photonPlayer = pPlayerInfo.PhotonPlayer;
+		if(photonPlayer != null)
+		{
+			view.TransferOwnership(photonPlayer);
+			Debug.Log("Transfer ownership to " + photonPlayer.NickName);
+		}		
+		const int player_photon_id_start = 10;
+		view.ViewID = player_photon_id_start + pPlayerInfo.Number;
+		Debug.Log(this + " IsMine: " + view.IsMine);
+
 		//Debug.Log($"{this} SetInfo");
 		Stats.Init(pPlayerInfo);
 
@@ -58,5 +77,10 @@ public class Player : BrainiacsBehaviour
 		Visual.Init(pPlayerInfo);
 
 		Movement.SpawnAt(pSpawnPosition);
+	}
+
+	public override string ToString()
+	{
+		return $"{initInfo.Number}_{gameObject.name} [{view.ViewID}]";
 	}
 }

@@ -17,6 +17,7 @@ public class UiTextSwapper : MonoBehaviour
 	List<string> values;
 	public int CurrentIndex { get; private set; }
 	public Action OnValueChanged { get; private set; }
+	public object SetIntValuebrainiacs { get; internal set; }
 
 	private void Awake()
 	{
@@ -24,11 +25,19 @@ public class UiTextSwapper : MonoBehaviour
 		btnPrevious.onClick.AddListener(OnBtnPrevious);
 	}
 
+	int min;
+	int max;
+	bool isNumber; //todo: implement UiNumberSwapper
+
 	/// <summary>
 	/// Geneartes text values from number sequence
 	/// </summary>
 	public void InitNumberSwapper(int pMin, int pMax, Action pOnValueChanged = null)
 	{
+		isNumber = true;
+		min = pMin;
+		max = pMax;
+
 		values = new List<string>();
 		for(int i = pMin; i <= pMax; i++)
 		{
@@ -43,11 +52,11 @@ public class UiTextSwapper : MonoBehaviour
 		values = pValues;
 		OnValueChanged = pOnValueChanged;
 		SetValue(0);
-		SetEnabled(true);
+		SetInteractable(true);
 	}
 
 
-	internal void SetEnabled(bool pValue)
+	internal void SetInteractable(bool pValue)
 	{
 		btnNext.interactable = pValue;
 		btnPrevious.interactable = pValue;
@@ -55,11 +64,30 @@ public class UiTextSwapper : MonoBehaviour
 
 	int skippedIndex = -1;
 
-	private void SetValue(int pIndex)
+	public void SetNumberValue(int pValue)
+	{
+		if(!isNumber)
+		{
+			Debug.LogError("Setting number value to non-number swapper");
+			return;
+		}
+		pValue = Mathf.Clamp(pValue, min, max);
+
+		int index = pValue - min;
+		SetValue(index);
+	}
+
+
+	public void SetValue(int pIndex)
 	{
 		if(pIndex >= values.Count)
 		{
 			pIndex %= values.Count;
+		}
+		else if(pIndex < 0)
+		{
+			Debug.LogError("Index is < 0");
+			pIndex = 0;
 		}
 
 		if(pIndex == skippedIndex)
@@ -68,6 +96,7 @@ public class UiTextSwapper : MonoBehaviour
 			SetValue(pIndex + 1);
 			return;
 		}
+
 
 		CurrentIndex = pIndex;
 		text.text = values[pIndex];

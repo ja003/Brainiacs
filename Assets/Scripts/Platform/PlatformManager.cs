@@ -5,14 +5,11 @@ using UnityEngine;
 
 public static class PlatformManager
 {
-	static bool debugMobile = true;
+	static bool debugMobile = false;
 	
 	public static EPlatform GetPlatform()
-	{
-		RuntimePlatform platform = Application.platform;
-		if(platform == RuntimePlatform.Android ||
-			platform == RuntimePlatform.IPhonePlayer ||
-			debugMobile)
+	{		
+		if(Application.isMobilePlatform || debugMobile)
 		{
 			return EPlatform.Mobile;
 		}

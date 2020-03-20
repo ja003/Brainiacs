@@ -35,7 +35,9 @@ public class PlayerStats : BrainiacsBehaviour
 	
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
-		lives = pPlayerInfo.Lives;
+		GameInitInfo gameInitInfo = brainiacs.GameInitInfo;
+		lives = gameInitInfo.Mode == EGameMode.Deathmatch ? 
+			gameInitInfo.GameModeValue : -1;
 		Hero = pPlayerInfo.Hero;
 		Name = pPlayerInfo.Name;
 		Color = pPlayerInfo.Color;

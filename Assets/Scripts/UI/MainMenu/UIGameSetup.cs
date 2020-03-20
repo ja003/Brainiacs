@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,19 +13,20 @@ public class UIGameSetup : MainMenuBehaviour
 	[SerializeField] private Button btnJoinSearchBack;
 
 	[SerializeField] private GameObject setupInit;
-	[SerializeField] private GameObject joinGameSearch;
+	[SerializeField] private UIGameSetupSearch setupSearch;
 	[SerializeField] public UIGameSetupMain SetupMain;
 
 
 	protected override void Awake()
 	{
 		setupInit.SetActive(true);
-		joinGameSearch.SetActive(false);
+		setupSearch.SetActive(false);
 		SetupMain.SetActive(false);
 
 		//DEBUG
-		setupInit.SetActive(false);
-		SetupMain.SetActive(true);
+		//Debug.LogError("DEBUG - remove before build");
+		//setupInit.SetActive(false);
+		//setupSearch.SetActive(true);
 
 
 		btnJoin.onClick.AddListener(OnBtnJoin);
@@ -37,25 +39,45 @@ public class UIGameSetup : MainMenuBehaviour
 	private void OnBtnJoinSearchBack()
 	{
 		setupInit.SetActive(true);
-		joinGameSearch.SetActive(false);
+		setupSearch.SetActive(false);
 	}
+
+	
 
 	private void OnBtnJoin()
 	{
 		setupInit.SetActive(false);
-		joinGameSearch.SetActive(true);
+		setupSearch.SetActive(true);
 	}
 
 	private void OnBtnHost()
 	{
+		brainiacs.GameInitInfo = new GameInitInfo();
+		OpenMain(true);
+	}
+
+	//todo: is pIsMaster neccessary? maybe PhotonNetwork.isMaster is enough
+	public void OpenMain(bool pIsMaster)
+	{
 		setupInit.SetActive(false);
-		SetupMain.SetActive(true);
+		setupSearch.SetActive(false);
+		SetupMain.SetActive(true, pIsMaster);
+	}
+
+	internal void OpenMain(GameInitInfo pGameInfo)
+	{
+		OpenMain(false);
+		SetupMain.SetGameInfo(pGameInfo);
 	}
 
 	public void OnSubMenuBtnBack()
 	{
+		brainiacs.PhotonManager.LeaveRoom();
+		Debug.LogError("todo: reset game info more generally");
+		brainiacs.GameInitInfo = null;
+
 		setupInit.SetActive(true);
-		joinGameSearch.SetActive(false);
+		setupSearch.SetActive(false);
 		SetupMain.SetActive(false);
 	}
  }

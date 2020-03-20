@@ -12,7 +12,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 	public static bool SelfInitGame = true;
 
-	public GameInitInfo GameInitInfo;
+	public GameInitInfo GameInitInfo;// = new GameInitInfo();
 	public GameResultInfo GameResultInfo;
 
 	[SerializeField]
@@ -27,25 +27,37 @@ public class Brainiacs : CSingleton<Brainiacs>
 	[SerializeField]
 	public PlayerKeysManager PlayerKeysManager;
 
+	[SerializeField]
+	public PhotonManager PhotonManager;
+
+	[SerializeField] GameObject debugLogConsole;
+
 	protected override void Awake()
 	{
 		base.Awake();
-		TestSetGameInitInfo();
+
+		GameInitInfo = new GameInitInfo();
+		
+		//TestSetGameInitInfo();
+
+
+		debugLogConsole.SetActive(!Application.isEditor);
+
+		DebugData.OnBrainiacsAwake();
 	}
 
 	public void TestSetGameInitInfo()
 	{
-		GameInitInfo = new GameInitInfo();
-
-		PlayerInitInfo player1 = DebugData.GetPlayerInitInfo(1);		
-		GameInitInfo.players.Add(player1);
+		Debug.LogError("TestSetGameInitInfo");
+		PlayerInitInfo player1 = DebugData.GetPlayerInitInfo(1);
+		GameInitInfo.AddPlayer(player1);
 
 
 		PlayerInitInfo player2 = DebugData.GetPlayerInitInfo(2);
-		GameInitInfo.players.Add(player2);
+		GameInitInfo.AddPlayer(player2);
 
 		PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
-		GameInitInfo.players.Add(player3);
+		GameInitInfo.AddPlayer(player3);
 
 		GameInitInfo.Mode = EGameMode.Time;
 		GameInitInfo.Map = EMap.Steampunk;
@@ -60,6 +72,12 @@ public class Brainiacs : CSingleton<Brainiacs>
 			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player.Stats));
 		}
 
+	}
+
+	public void SyncGameInitInfo()
+	{
+		var gameInfoBytes = GameInitInfo.Serialize();
+		MainMenu.Instance.Photon.Send(EPhotonMsg_MainMenu.SyncGameInfo, gameInfoBytes);
 	}
 
 }

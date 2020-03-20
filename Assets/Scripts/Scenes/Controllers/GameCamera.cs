@@ -53,9 +53,9 @@ public class GameCamera : BrainiacsBehaviour
 		}
 		mainCamera.orthographicSize = newSize;
 
-		Debug.Log(
-			$"orto:{mainCamera.orthographicSize}, " +
-				$"{ Screen.width} x { Screen.height}, " +
-				$"ratio: {currentRatio} | {ideal_ratio}");
+		//Debug.Log(
+		//	$"orto:{mainCamera.orthographicSize}, " +
+		//		$"{ Screen.width} x { Screen.height}, " +
+		//		$"ratio: {currentRatio} | {ideal_ratio}");
 	}
 }

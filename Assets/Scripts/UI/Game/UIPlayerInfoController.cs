@@ -8,7 +8,7 @@ public class UIPlayerInfoController : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
-		game.playersController.SetOnActivated(InitPlayersInfo);
+		game.PlayerManager.SetOnActivated(InitPlayersInfo);
 	}
 
 	protected override void OnMainControllerActivated()
@@ -17,7 +17,7 @@ public class UIPlayerInfoController : GameController
 
 	private void InitPlayersInfo()
 	{
-		foreach(var player in game.playersController.Players)
+		foreach(var player in game.PlayerManager.Players)
 		{
 			AddPlayerInfo(player);
 		}

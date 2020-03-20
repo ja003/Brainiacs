@@ -7,6 +7,22 @@ using UnityEngine;
 
 public static class DebugData
 {
+	public static bool TestRemote = false;
+
+	public static bool TestMP = false;
+
+	public static void OnBrainiacsAwake()
+	{
+		if(TestRemote)
+		{
+			Debug.LogError("Testing remote");
+		}
+		if(TestMP)
+		{
+			Debug.LogError("DebugMP");
+		}
+	}
+
 	public static string GetPlayerName(int pIndex)
 	{
 		switch(pIndex)
@@ -30,6 +46,8 @@ public static class DebugData
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Nobel, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
+				//todo: implement debug data for PC and Unity platform
+			//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.UpArrow, KeyCode.RightArrow,
 				//	KeyCode.DownArrow, KeyCode.LeftArrow,
@@ -38,7 +56,7 @@ public static class DebugData
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Einstein, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Pink, EPlayerType.RemotePlayer);
+			EPlayerColor.Pink, EPlayerType.LocalPlayer);
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
 				//	KeyCode.LeftControl, KeyCode.LeftShift);
@@ -46,7 +64,7 @@ public static class DebugData
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Currie, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Yellow, EPlayerType.RemotePlayer);
+			EPlayerColor.Yellow, EPlayerType.LocalPlayer);
 
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.Alpha8, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha4,

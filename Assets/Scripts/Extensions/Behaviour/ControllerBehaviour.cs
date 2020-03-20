@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public abstract class ControllerBehaviour : BrainiacsBehaviour
 {
+	[Header("Controller")]
+	[SerializeField] GameObject holder;
+	
 	/// <summary>
 	/// Scenes:
 	/// - MainMenu
@@ -25,6 +29,14 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 			GetMainController().SetOnActivated(MainControllerActivated);
 		}
 	}
+
+	public void SetActive(bool pValue)
+	{
+		holder.SetActive(pValue);
+		OnSetActive(pValue);
+	}
+
+	protected virtual void OnSetActive(bool pValue) { }
 
 	bool onMainControllerAwakenCalled = false;
 	private void MainControllerAwaken()

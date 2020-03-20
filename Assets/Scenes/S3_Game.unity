@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
   MapController: {fileID: 1262861876}
-  playersController: {fileID: 1026134742}
+  PlayerManager: {fileID: 1026134742}
   ProjectileManager: {fileID: 1571397962}
   PlayerStatusManager: {fileID: 133961112}
   MobileInput: {fileID: 429695743}
@@ -1799,6 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d47bce08369544e86ea563c1b80565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   prefab: {fileID: 963478570}
 --- !u!222 &857492057
 CanvasRenderer:
@@ -1852,6 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c23ae69686a04940a7fe9144d2c5118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   mapItemPrefab: {fileID: 8232935776833295363, guid: 42b597faf28da6d41941dba705989b28,
     type: 3}
   frequency: 10
@@ -2114,6 +2116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51622bf9f00b63749a50486c703e42ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   playerPrefab: {fileID: 4342295620933284857, guid: f9b95b1eafc36194c839127ec1aecca6,
     type: 3}
   playerSorter: {fileID: 1026134744}
@@ -2623,6 +2626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32417b9e0237ee145809b8472e4277ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   ActiveMap: {fileID: 0}
 --- !u!4 &1386019986 stripped
 Transform:
@@ -2835,6 +2839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58af3630ac6ee0946b14d5bb569a6f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   prefab: {fileID: 7316528294675931891, guid: 4557b6e1f0114eb42907edddb183341f, type: 3}
 --- !u!1 &1614195364
 GameObject:
@@ -3192,6 +3197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e9a4684b3b157419576af10be81cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   scorePlayerPrefab: {fileID: 509937246}
 --- !u!223 &1930213572
 Canvas:
@@ -3844,15 +3850,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2135778857266490234, guid: a6c65785bcf4a7f4e98ce3a60caac37f,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.49019608
-      objectReference: {fileID: 0}
     - target: {fileID: 8291025075131799989, guid: a6c65785bcf4a7f4e98ce3a60caac37f,
         type: 3}
       propertyPath: deadZone
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135778857266490234, guid: a6c65785bcf4a7f4e98ce3a60caac37f,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.49019608
       objectReference: {fileID: 0}
     - target: {fileID: 2135778859127697276, guid: a6c65785bcf4a7f4e98ce3a60caac37f,
         type: 3}
@@ -3928,6 +3934,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 699375688, guid: f9b95b1eafc36194c839127ec1aecca6, type: 3}
+      propertyPath: viewIdField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b95b1eafc36194c839127ec1aecca6, type: 3}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class MainMenu : CSingleton<MainMenu>
 	[SerializeField] public UIGameSetup GameSetup;
 
 	[SerializeField] int debug_InitBgAnim;
+
+	[SerializeField] public MainMenuPhoton Photon;
 
 	protected override void Awake()
 	{
@@ -56,5 +59,6 @@ public class MainMenu : CSingleton<MainMenu>
 	{
 		currentMenuAnimPosition = pValue;
 		animator.SetFloat("position", pValue);
-	}	
+	}
+
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,30 +13,14 @@ public class PlayerManager : GameController
 	[SerializeField]
 	private PlayerSorter playerSorter;
 
+
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
 	{
 		Players = new List<Player>();
 
 		foreach(PlayerInitInfo playerInfo in pPlayersInfo)
 		{
-			Player playerInstance = Instantiate(playerPrefab,
-				transform);
-			playerInstance.gameObject.name = "Player_" + playerInfo.Name;
-
-			Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
-
-			if(playerInfo.Name == DebugData.GetPlayerName(1))
-				spawnPosition = Vector3.down;
-
-			if(playerInfo.Name == DebugData.GetPlayerName(2))
-				spawnPosition = Vector3.zero;
-
-			if(playerInfo.Name == DebugData.GetPlayerName(3))
-				spawnPosition = Vector3.down;
-
-			playerInstance.SetInfo(playerInfo, spawnPosition);
-
-			Players.Add(playerInstance);
+			SpawnPlayer(playerInfo);
 		}
 
 		playerSorter.SetPlayers(Players);
@@ -44,12 +29,44 @@ public class PlayerManager : GameController
 		Activate();
 	}
 
+	private void SpawnPlayer(PlayerInitInfo pPlayerInfo)
+	{
+		//Player playerInstance = Instantiate(playerPrefab, transform);
+		Player playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+		playerInstance.transform.parent = transform;
+
+
+		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name;
+
+		Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+
+		if(pPlayerInfo.Name == DebugData.GetPlayerName(1))
+			spawnPosition = Vector3.down;
+
+		if(pPlayerInfo.Name == DebugData.GetPlayerName(2))
+			spawnPosition = Vector3.zero;
+
+		if(pPlayerInfo.Name == DebugData.GetPlayerName(3))
+			spawnPosition = Vector3.down;
+
+		playerInstance.SetInfo(pPlayerInfo, spawnPosition);
+
+		Players.Add(playerInstance);
+	}
+
 	protected override void OnMainControllerAwaken()
 	{
 		//map has to be activated first
-		game.MapController.SetOnActivated(() => 
-			SpawnPlayers(brainiacs.GameInitInfo.players));
 
-		//SpawnPlayers(brainiacs.GameInitInfo.players);
+		//if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		//{
+		//	Debug.Log("Not MasterClient => dont spawn");
+		//	return;
+		//}
+
+		game.MapController.SetOnActivated(() =>
+				SpawnPlayers(brainiacs.GameInitInfo.Players));
+
+		//SpawnPlayers(brainiacs.GameInitInfo.Players);
 	}
 }

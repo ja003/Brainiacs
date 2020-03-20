@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupPlayerEl : MainMenuBehaviour
 {
-	[SerializeField] Image colorBg;
+	[SerializeField] Image color;
+	[SerializeField] Image state; //ready = green, waiting = red
 	[SerializeField] Animator portraitAnimator;
 	[SerializeField] Image portrait;
 	[SerializeField] Text playerNameText;
@@ -17,109 +20,255 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	[SerializeField] Button btnRemove;
 
 
-	EPlayerColor assignedColor;
-	public EPlayerType PlayerType { get; private set; }
-	EHero hero;
-	int number;
+	public PlayerInitInfo Info;
+	//public EPlayerColor AssignedColor;
+	//public EPlayerType PlayerType { get; private set; }
+	//public EHero Hero;
+	//public int Number;
 
-	protected override void Awake()
+	//public PhotonPlayer PhotonPlayer;
+	//public bool IsReady; //master is always considered ready
+	public bool IsItMe;
+
+	bool preInited;
+
+	/// <summary>
+	/// Called just once
+	/// </summary>
+	private void PreInit()
 	{
+		if(preInited)
+			return;
+
+		preInited = true;
 		btnRemove.onClick.AddListener(OnBtnRemove);
-		base.Awake();
+
+		Info = new PlayerInitInfo();
+
+		//List<string> playerTypes = Utils.GetStrings(typeof(EPlayerType));
+		//playerTypeSwapper.Init(playerTypes, OnPlayerTypeChanged, 0);
+		List<string> heroes = Utils.GetStrings(typeof(EHero));
+		heroSwapper.Init(heroes, OnHeroChanged, 0);
 	}
 
 	private void OnBtnRemove()
 	{
-		if(PlayerType == EPlayerType.RemotePlayer)
+		if(Info.PlayerType == EPlayerType.RemotePlayer)
 		{
 			Debug.LogError("TODO: are you sure dialog");
 		}
 		gameObject.SetActive(false);
+		brainiacs.GameInitInfo.Players.Remove(Info);
 		mainMenu.GameSetup.SetupMain.OnPlayersChanged();
+		//OnElementChanged(true);
 	}
 
 	/// <summary>
 	/// Each player has number as ID <1,4>
+	/// if pPhotonPlayer is null it will be determined in SetType
 	/// </summary>
-	public void Init(int pPlayerNumber, EPlayerType pPlayerType)
+	public void Init(int pPlayerNumber, EPlayerType pPlayerType, PhotonPlayer pPhotonPlayer)
 	{
-		number = pPlayerNumber;
-		List<string> playerTypes = Utils.GetStrings(typeof(EPlayerType));
-		//playerTypeSwapper.Init(playerTypes, OnPlayerTypeChanged, 0);
+		PreInit();
+		gameObject.SetActive(true);
 
-		List<string> heroes = Utils.GetStrings(typeof(EHero));
-		heroSwapper.Init(heroes, OnHeroChanged, 0);
+		brainiacs.GameInitInfo.AddPlayer(Info);
 
-		assignedColor = (EPlayerColor)pPlayerNumber;
-		colorBg.color = UIColorDB.GetColor(assignedColor);
+		Info.PhotonPlayer = pPhotonPlayer;
 
-		playerNameText.text = "player " + pPlayerNumber;
+		Info.Number = pPlayerNumber;
+
+		AssignColor((EPlayerColor)pPlayerNumber);
+
+		SetName("player " + pPlayerNumber);
 
 		SetType(pPlayerType);
 
-		gameObject.SetActive(true);
+		//if photon player is set then element is being
+		//initialized at client
+		bool elementCreated = pPhotonPlayer == null;
+		//OnElementChanged(elementCreated);
 	}
+
+	bool isClientInitializing;
+
+	/// <summary>
+	/// Init only for client
+	/// </summary>
+	public void Init(PlayerInitInfo pPlayer)
+	{
+		isClientInitializing = true;
+		//if(IsItMe)
+		//{
+		//	Debug.Log("This is me, no need to reinit");
+		//	return;
+		//}
+
+		//this Init need to be called before any other changes
+		Init(pPlayer.Number, pPlayer.PlayerType, pPlayer.PhotonPlayer);
+		IsItMe = Info.PlayerType == EPlayerType.RemotePlayer &&
+			pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
+		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
+
+		if(Info.Color != pPlayer.Color)
+		{
+			Debug.LogError("Assigned color doesnt match");
+		}
+		AssignColor(pPlayer.Color);
+		SetName(pPlayer.Name);
+		heroSwapper.SetValue((int)pPlayer.Hero);
+
+		if(IsItMe)
+		{
+			Debug.Log("this is me");
+			OnRemoteConnected(Info.PhotonPlayer);
+		}
+		heroSwapper.SetInteractable(IsItMe);
+		btnRemove.gameObject.SetActive(false);
+		isClientInitializing = false;
+	}
+
+
+	public void UpdateInfo(PlayerInitInfo pPlayerInfo)
+	{
+		Info = pPlayerInfo;
+		Init(pPlayerInfo);
+	}
+
+	private void SetName(string pName)
+	{
+		Info.Name = pName;
+		playerNameText.text = pName;
+	}
+
+	private void SetType(EPlayerType pPlayerType)
+	{
+		btnRemove.gameObject.SetActive(true);
+		Info.PlayerType = pPlayerType;
+		bool isRemote = pPlayerType == EPlayerType.RemotePlayer;
+		if(isRemote)
+		{
+			if(Info.PhotonPlayer == null)
+				playerNameText.text = "WAITING...";
+		}
+		//todo: even AI needs to have assigned photon player?
+		else if(pPlayerType == EPlayerType.LocalPlayer ||
+			pPlayerType == EPlayerType.AI)
+		{
+			//local player = master
+			if(PhotonNetwork.InRoom && !PhotonNetwork.IsMasterClient)
+			{
+				//client doesnt change local player
+			}
+			else
+			{
+				Info.PhotonPlayer = PhotonNetwork.LocalPlayer;
+			}
+		}
+
+		playerTypeText.text = pPlayerType.ToString();
+
+		//start animation if player is remote and not connected yet
+		portraitAnimator.enabled = isRemote && Info.PhotonPlayer == null;
+		heroSwapper.SetInteractable(!isRemote);
+
+		//master is always considered ready
+		//client ready state is set in Init
+		if(!isRemote)
+			SetReady(true); 
+	}
+
+
+	public void SetReady(bool pValue)
+	{
+		Info.IsReady = pValue;
+		state.color = pValue ? Color.green : Color.red;
+
+		bool interactable = !pValue;
+		if(Info.PlayerType == EPlayerType.LocalPlayer ||
+			Info.PlayerType == EPlayerType.AI)
+		{
+			//creating game
+			if(!PhotonNetwork.InRoom)
+			{
+				interactable = true;
+			}
+		}
+		else
+		{
+			interactable &= IsItMe;
+		}
+
+		heroSwapper.SetInteractable(interactable);
+		SyncInfo();
+	}
+
+	private void AssignColor(EPlayerColor pColor)
+	{
+		Info.Color = pColor;
+		color.color = UIColorDB.GetColor(Info.Color);
+	}
+
 
 	/// <summary>
 	/// Remote player has to be connected and ready.
 	/// Disabled element is not valid.
 	/// </summary>
-	public bool IsValid()
-	{
-		bool remoteOK = remoteConnected && remoteReady;
-		if(PlayerType == EPlayerType.RemotePlayer && !remoteOK)
-			return false;
+	//public bool IsValidAndReady()
+	//{
+	//	bool remoteOK = remoteConnected && remoteReady;
+	//	if(PlayerType == EPlayerType.RemotePlayer && !remoteOK)
+	//		return false;
 
-		return gameObject.activeSelf;
+	//	return gameObject.activeSelf;
+	//}
+
+	/// <summary>
+	/// If this element is activated, set as a remote player
+	/// and no photon player is connected to it
+	/// </summary>
+	public bool IsRemoteFree()
+	{
+		return gameObject.activeSelf &&
+			Info.PlayerType == EPlayerType.RemotePlayer &&
+			Info.PhotonPlayer == null;
 	}
 
-	private void SetType(EPlayerType pPlayerType)
-	{
-		remoteConnected = false;
-		remoteReady = false;
-		PlayerType = pPlayerType;
-		playerTypeText.text = pPlayerType.ToString();
-		//todo: handle remote
-		bool isRemote = pPlayerType == EPlayerType.RemotePlayer;
-		portraitAnimator.enabled = isRemote;
-		heroSwapper.SetEnabled(!isRemote);
-		if(isRemote)
-		{
-			Debug.LogError($"TODO: wait for remote player");
-			playerNameText.text = "WAITING...";
-			DoInTime(() => OnRemoteConnected("AdamRemote"), 2);
-		}
 
-	}
-
-	bool remoteConnected;
-	bool remoteReady;
-	private void OnRemoteConnected(string pName)
+	//bool remoteConnected;
+	//bool remoteReady;
+	public void OnRemoteConnected(PhotonPlayer pPlayer)
 	{
-		remoteConnected = true;
-		remoteReady = true;
-		Debug.Log($"Remote player {pName} connected");
-		playerNameText.text = pName;
+		Info.PhotonPlayer = pPlayer;
+		//remoteConnected = true;
+		//remoteReady = true;
+		Debug.Log($"Remote player {pPlayer.UserId} connected");
+		playerNameText.text = pPlayer.NickName;
 		portraitAnimator.enabled = false;
+		//OnElementChanged(true);
 	}
 
 	private void OnHeroChanged()
 	{
-		hero = (EHero)heroSwapper.CurrentIndex;
-		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(hero).Portrait;
+		Info.Hero = (EHero)heroSwapper.CurrentIndex;
+		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(Info.Hero).Portrait;
+		SyncInfo();
 	}
 
-	//private void OnPlayerTypeChanged()
-	//{
-	//	playerType = (EPlayerType)playerTypeSwapper.CurrentIndex;
-	//	Debug.Log("Set to type: " + playerType);
-	//}
-
-	internal PlayerInitInfo GetInitInfo()
+	private void SyncInfo()
 	{
-		PlayerInitInfo info = new PlayerInitInfo(number, hero, playerNameText.text, assignedColor, PlayerType);
-		return info;
+		if(isClientInitializing)
+			return;
+
+		//no reason to sync
+		//should happen only on master
+		if(!PhotonNetwork.InRoom)
+			return;
+
+		byte[] infoS = Info.Serizalize();
+		mainMenu.Photon.Send(EPhotonMsg_MainMenu.SyncPlayerInfo, infoS);
 	}
+
 }
 
 
