@@ -13,15 +13,24 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 
 	private void Update()
 	{
-		if(activeWeapon == null)
+		if(activeWeapon == EWeaponId.None)
 			return;
-		if(activeWeapon.IsRealoading)
-			return;		
-		if(activeWeapon.Info.Cadency < 0.1f)
+
+		// Reloading
+		weapon.color = isRealoading ? Color.black : Color.white;
+		if(isRealoading)
+		{
+			float reloadTimeLeft = (reloadTimeStarted + reloadTimeTotal) - Time.time;
+			ammo.text = reloadTimeLeft.ToString("0.0");
+			return;
+		}
+
+		// Cadency
+		if(activeWeaponCadency < 0.1f)
 			return;
 
 		//set weapon alpha based on cadency ready state
-		float rdyPercentage = activeWeapon.GetCadencyReadyPercentage();
+		float rdyPercentage = GetCadencyReadyPercentage();
 		//Debug.Log($"{activeWeapon} rdy: {rdyPercentage*100}%");
 		weapon.color = new Color(
 			weapon.color.r,
@@ -31,8 +40,17 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 			);
 	}
 
+	private float GetCadencyReadyPercentage()
+	{
+		float remains = activeWeaponLastUsedTime + activeWeaponCadency - Time.time;
+		float percentage = 1 - remains / activeWeaponCadency;
+		return Mathf.Clamp(percentage, 0, 1);
+	}
+
+	Player player;
 	internal void Init(Player pPlayer)
 	{
+		player = pPlayer;
 		gameObject.SetActive(true);
 
 		image.color = UIColorDB.GetColor(pPlayer.Stats.Color);
@@ -40,20 +58,85 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.Stats.Hero).Portrait;
 
 		pPlayer.WeaponController.SetOnWeaponInfoChanged(SetWeaponInfo);
-		pPlayer.Stats.SetOnStatsChange(SetHealth);
+		pPlayer.Stats.SetOnStatsChange(OnPlayerStatsChange);
+
+		pPlayer.Visual.PlayerInfo = this;
 	}
 
-	private void SetHealth(PlayerStats pStats)
+	private void OnPlayerStatsChange(PlayerStats pStats)
 	{
-		health.text = pStats.Health.ToString();
+		SetHealth(pStats.Health);		
 	}
 
-	PlayerWeapon activeWeapon;
+	public void SetHealth(int pHealth)
+	{
+		if(health.text == pHealth.ToString())
+			return;
+		health.text = pHealth.ToString();
+
+		player.Network.Send(
+			EPhotonMsg.Player_UI_PlayerInfo_SetHealth, pHealth);
+	}
+
+	/// <summary>
+	/// Called only on local player.
+	/// Only visual data is shared across network.
+	/// </summary>
 	private void SetWeaponInfo(PlayerWeapon pWeapon)
 	{
-		activeWeapon = pWeapon;
-		weapon.sprite = pWeapon.VisualInfo.InfoSprite;
-		weapon.color = pWeapon.IsRealoading ? Color.black : Color.white;
-		ammo.text = pWeapon.GetAmmoText();
+		SetActiveWeapon(pWeapon.Id, pWeapon.Info.Cadency);
+
+		SetReloading(pWeapon.IsRealoading, pWeapon.RealoadTimeLeft);
+
+		if(!pWeapon.IsRealoading)
+		{
+			SetAmmo(pWeapon.AmmoLeft);
+		}
+	}
+
+
+	//-- NETWORK METHODS --//
+
+	EWeaponId activeWeapon;
+	float activeWeaponCadency;
+	float activeWeaponLastUsedTime;
+	public void SetActiveWeapon(EWeaponId pId, float pCadency)
+	{
+		if(activeWeapon == pId)
+			return;
+		activeWeapon = pId;
+		activeWeaponCadency = pCadency;
+
+		//weapon sprite
+		InHandWeaponVisualInfo info = brainiacs.ItemManager.GetWeaponConfig(pId).VisualInfo;
+		weapon.sprite = info.InfoSprite;
+
+		player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency);
+	}
+
+	public void SetAmmo(int pAmmoLeft)
+	{
+		if(ammo.text == pAmmoLeft.ToString())
+			return;
+		ammo.text = pAmmoLeft.ToString();
+		activeWeaponLastUsedTime = Time.time;
+		player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetAmmo, pAmmoLeft);
+	}
+
+	bool isRealoading;
+	float reloadTimeTotal;
+	float reloadTimeStarted;
+	public void SetReloading(bool pIsReloading, float pRealoadTimeTotal)
+	{
+		if(isRealoading != pIsReloading)
+		{
+			player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetReloading,
+				pIsReloading, pRealoadTimeTotal);
+		}
+
+		isRealoading = pIsReloading;
+		reloadTimeTotal = pRealoadTimeTotal;
+		if(isRealoading)
+			reloadTimeStarted = Time.time;
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisual : BrainiacsBehaviour
+public class PlayerVisual : GameBehaviour
 {
 	HeroConfig heroConfig;
 
@@ -31,6 +31,8 @@ public class PlayerVisual : BrainiacsBehaviour
 	private PaletteSwapController paletteSwap;
 	[SerializeField]
 	private PlayerMovement movement;
+
+	[SerializeField] PlayerNetworkController network;
 
 
 	internal void OnDie()
@@ -141,6 +143,10 @@ public class PlayerVisual : BrainiacsBehaviour
 	}
 
 	private EDirection currentDirection => movement.CurrentDirection;
+
+	public UIPlayerInfoElement PlayerInfo;
+	public UIScoreboardElement Scoreboard;
+
 	public void OnDirectionChange(EDirection pDirection)
 	{
 		handsDown.enabled = false;
@@ -175,19 +181,30 @@ public class PlayerVisual : BrainiacsBehaviour
 
 		SetSortOrder(CurrentSortOrder, true);
 
-		animator.SetInteger(AC_KEY_DIRECTION, (int)pDirection);
+		//direction has to be float to be used in blend tree
+		animator.SetFloat(AC_KEY_DIRECTION, (int)pDirection);
 
 		activeWeapon.OnDirectionChange(pDirection);
+
+		network.Send(EPhotonMsg.Player_ChangeDirection, pDirection);
 	}
 
+	//todo: PlayerWeapon ref shouldnt be stored in Visual
 	PlayerWeapon activeWeapon;
 	public void SetActiveWeapon(PlayerWeapon pWeapon)
 	{
 		activeWeapon = pWeapon;
-		weaponUp.sprite = pWeapon.VisualInfo.PlayerSpriteUp;
-		weaponRight.sprite = pWeapon.VisualInfo.PlayerSpriteRight;
-		weaponDown.sprite = pWeapon.VisualInfo.playerSpriteDown;
-		weaponLeft.sprite = pWeapon.VisualInfo.PlayerSpriteLeft;
+		ShowWeapon(pWeapon.Id);
+		network.Send(EPhotonMsg.Player_ShowWeapon, pWeapon.Id);
+	}
+	public void ShowWeapon(EWeaponId pWeapon)
+	{
+		WeaponConfig config = 
+			brainiacs.ItemManager.GetWeaponConfig(pWeapon);
+		weaponUp.sprite = config.VisualInfo.PlayerSpriteUp;
+		weaponRight.sprite = config.VisualInfo.PlayerSpriteRight;
+		weaponDown.sprite = config.VisualInfo.playerSpriteDown;
+		weaponLeft.sprite = config.VisualInfo.PlayerSpriteLeft;
 	}
 
 	private void UpdatePlayerSortOrder()

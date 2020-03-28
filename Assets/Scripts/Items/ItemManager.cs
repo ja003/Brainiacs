@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ItemManager : BrainiacsBehaviour
+public class ItemManager : BrainiacsController
 {
 	[SerializeField]
 	public List<MapWeaponConfig> MapWeapons;
@@ -15,6 +15,50 @@ public class ItemManager : BrainiacsBehaviour
 
 	[SerializeField]
 	public List<PowerUpConfig> PowerUps;
+
+	private Dictionary<EWeaponId, WeaponConfig> allWeapons = 
+		new Dictionary<EWeaponId, WeaponConfig>();
+
+	private Dictionary<EWeaponId, ProjectileConfig> allProjectiles 
+		= new Dictionary<EWeaponId, ProjectileConfig>();
+
+	private void Init()
+	{
+		//Map weapons
+		foreach(var w in MapWeapons)
+		{
+			allWeapons.Add(w.Id, w);
+			allProjectiles.Add(w.Id, w.ProjectileInfo.Projectile);
+		}
+
+		//Map weapons special
+		foreach(var w in MapWeaponsSpecial)
+		{
+			allWeapons.Add(w.Id, w);
+		}
+
+		//hero basic + special weapons
+		foreach(var h in brainiacs.HeroManager.heroConfigs)
+		{
+			WeaponConfig heroBasic = h.BasicWeapon;
+			WeaponConfig heroSpecial = h.SpecialWeapon;
+
+			allWeapons.Add(heroBasic.Id, heroBasic);
+			allProjectiles.Add(heroBasic.Id, new ProjectileWeaponInfo(h.BasicWeapon).Projectile);
+
+			//todo: not all special weapons are configured
+			if(allWeapons.ContainsKey(heroSpecial.Id) || heroSpecial == null)
+				continue;
+			allWeapons.Add(heroSpecial.Id, heroSpecial);
+		}
+	}
+
+
+	protected override void OnMainControllerAwaken()
+	{
+		//hero configs need to be inited first
+		brainiacs.HeroManager.SetOnAwaken(Init);
+	}
 
 	public MapSpecialWeapon GetMapSpecialWeaponConfig(EWeaponId pId)
 	{
@@ -42,4 +86,25 @@ public class ItemManager : BrainiacsBehaviour
 		HeroConfig heroConfig = brainiacs.HeroManager.GetHeroConfig(pHero);
 		return heroConfig.BasicWeapon;
 	}
+
+	public WeaponConfig GetWeaponConfig(EWeaponId pWeapon)
+	{
+		WeaponConfig weapon;
+		allWeapons.TryGetValue(pWeapon, out weapon);
+		if(weapon == null)
+			Debug.LogError("Missing config for weapon: " + pWeapon);
+
+		return weapon;
+	}
+
+	public ProjectileConfig GetProjectileConfig(EWeaponId pWeapon)
+	{
+		ProjectileConfig projectile;
+		allProjectiles.TryGetValue(pWeapon, out projectile);
+		if(projectile == null)
+			Debug.LogError("Missing config for projectile: " + pWeapon);
+
+		return projectile;
+	}
+
 }

@@ -37,7 +37,7 @@ public class PlayerStats : BrainiacsBehaviour
 	{
 		GameInitInfo gameInitInfo = brainiacs.GameInitInfo;
 		lives = gameInitInfo.Mode == EGameMode.Deathmatch ? 
-			gameInitInfo.GameModeValue : -1;
+			gameInitInfo.GameModeValue : 666;
 		Hero = pPlayerInfo.Hero;
 		Name = pPlayerInfo.Name;
 		Color = pPlayerInfo.Color;
@@ -64,6 +64,9 @@ public class PlayerStats : BrainiacsBehaviour
 		onStatsChange.Invoke(this);
 	}
 
+	/// <summary>
+	/// todo: NOT IMPLEMENTED YET
+	/// </summary>
 	public void AddKill()
 	{
 		Kills++;
@@ -81,7 +84,12 @@ public class PlayerStats : BrainiacsBehaviour
 			return;
 		}
 
-		Health = Mathf.Clamp(Health + pIncrement, 0, 100);
+		SetHealth(Health + pIncrement);
+	}
+
+	private void SetHealth(int pHealth)
+	{
+		Health = Mathf.Clamp(pHealth, 0, 100);
 		onStatsChange.Invoke(this);
 	}
 

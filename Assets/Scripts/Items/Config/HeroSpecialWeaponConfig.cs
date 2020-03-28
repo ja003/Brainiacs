@@ -7,7 +7,6 @@ using UnityEngine;
 public class HeroSpecialWeaponConfig : WeaponConfig
 {
 	public InHandWeaponInfo InHandInfo;
-	public InHandWeaponVisualInfo InHandVisualInfo;
 	public SpecialWeaponInfo SpecialWeaponInfo;
 }
 

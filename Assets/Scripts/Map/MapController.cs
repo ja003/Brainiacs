@@ -36,12 +36,15 @@ public class MapController : GameController
 		ActiveMap.transform.parent = transform;
 	}
 
-	public void SetActive(bool pValue)
+	public new void SetActive(bool pValue)
 	{
+		base.SetActive(pValue);
 		//Debug.Log($"{gameObject.name} SetActive {pValue }");
-		gameObject.SetActive(pValue);
+		//gameObject.SetActive(pValue);
 		ActiveMap.SetActive(pValue);
-		Activate();
+
+		if(pValue)
+			Activate();
 	}
 
 	protected override void OnMainControllerAwaken()

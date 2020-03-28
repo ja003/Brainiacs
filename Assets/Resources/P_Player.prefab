@@ -954,13 +954,15 @@ GameObject:
   - component: {fileID: 8791258408710402016}
   - component: {fileID: 699375687}
   - component: {fileID: 699375688}
+  - component: {fileID: 1812185347105052305}
+  - component: {fileID: 2338090529042073309}
   m_Layer: 8
   m_Name: P_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2969651486375344628
 Transform:
   m_ObjectHideFlags: 0
@@ -1047,7 +1049,8 @@ MonoBehaviour:
   Health: {fileID: 4244118042715792558}
   ItemController: {fileID: 8791258408710402016}
   Stats: {fileID: 2092177015604258632}
-  view: {fileID: 699375688}
+  Network: {fileID: 1812185347105052305}
+  LocalRemote: {fileID: 0}
 --- !u!114 &7872993416487400290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1149,9 @@ MonoBehaviour:
   handsRight: {fileID: 1921905453}
   paletteSwap: {fileID: 1489477447}
   movement: {fileID: 7872993416487400290}
+  network: {fileID: 1812185347105052305}
+  PlayerInfo: {fileID: 0}
+  Scoreboard: {fileID: 0}
 --- !u!95 &1489477448
 Animator:
   serializedVersion: 3
@@ -1249,6 +1255,53 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 699375687}
+  - {fileID: 2338090529042073309}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1812185347105052305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd53f6ff33300974ab7e6772f7b1af6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG_LOG: 0
+--- !u!114 &2338090529042073309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 1
+    Name: direction
+  - Type: 4
+    SynchronizeType: 1
+    Name: isWalking
+  - Type: 4
+    SynchronizeType: 1
+    Name: isDead
+  - Type: 9
+    SynchronizeType: 1
+    Name: die
+  - Type: 1
+    SynchronizeType: 1
+    Name: walkSpeed
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0

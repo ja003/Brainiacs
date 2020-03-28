@@ -15,7 +15,7 @@ public class UIScoreboardController : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
-		game.PlayerManager.SetOnActivated(InitPlayersScore);
+		game.PlayerManager.OnAllPlayersAdded += InitPlayersScore;
 	}
 
 	protected override void OnMainControllerActivated()
@@ -26,15 +26,15 @@ public class UIScoreboardController : GameController
 	{
 		foreach(var player in game.PlayerManager.Players)
 		{
-			AddScorePlayer(player.Stats);
+			AddScorePlayer(player);
 		}
 		scorePlayerPrefab.gameObject.SetActive(false);
 	}
 
 
-	private void AddScorePlayer(PlayerStats pPlayerStats)
+	private void AddScorePlayer(Player pPlayer)
 	{
 		UIScoreboardElement instance = Instantiate(scorePlayerPrefab, transform);
-		instance.Init(pPlayerStats);
+		instance.Init(pPlayer);
 	}
 }

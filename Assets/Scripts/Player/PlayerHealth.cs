@@ -14,10 +14,12 @@ public class PlayerHealth : BrainiacsBehaviour, IProjectileCollisionHandler
 	[SerializeField]
 	private PlayerMovement movement;
 
+	Player player;
 
 	protected override void Awake()
 	{
 		base.Awake();
+		player = GetComponent<Player>();
 		stats.SetOnStatsChange(OnStatsChange);
 	}
 
@@ -68,7 +70,20 @@ public class PlayerHealth : BrainiacsBehaviour, IProjectileCollisionHandler
 
 	public bool OnCollision(Projectile pProjectile)
 	{
-		stats.AddHealth(-pProjectile.config.Damage);
+		HitByProjectile(pProjectile.config.Damage);
 		return true;
+	}
+
+	public void HitByProjectile(int pDamage)
+	{
+		//todo animation
+		if(!player.IsItMe)
+		{
+			player.Network.Send(EPhotonMsg.Player_HitByProjectile, pDamage);
+		}
+		else
+		{
+			stats.AddHealth(-pDamage);
+		}
 	}
 }

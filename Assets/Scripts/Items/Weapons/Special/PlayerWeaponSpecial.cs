@@ -7,7 +7,7 @@ public class PlayerWeaponSpecial : PlayerWeapon
 	PlayerWeaponSpecialController specialController;
 
 	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig) : 
-		base(pOwner, pConfig.Id, pConfig.InHandInfo, pConfig.InHandVisualInfo)
+		base(pOwner, pConfig.Id, pConfig.InHandInfo, pConfig.VisualInfo)
 	{
 		//controller = pController;
 

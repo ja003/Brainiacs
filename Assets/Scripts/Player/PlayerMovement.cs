@@ -22,7 +22,7 @@ public class PlayerMovement : BrainiacsBehaviour
 	internal void SpawnAt(Vector3 pPosition)
 	{
 		transform.position = pPosition;
-		Move(EDirection.Right); //set init direction
+		//Move(EDirection.Right); //set init direction
 		player.Visual.OnSpawn();
 	}
 

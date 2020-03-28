@@ -13,16 +13,7 @@ MonoBehaviour:
   m_Name: C_Weapon_Map_Projectile_MP40
   m_EditorClassIdentifier: 
   Id: 10
-  MapItemInfo:
-    MapSprite: {fileID: 21300000, guid: 9415bf01f85b7cd4bac59e3d136222db, type: 3}
-    StatusSprite: {fileID: 21300000, guid: 68b2885b053742944b34f4ba04bffb04, type: 3}
-    StatusText: mp40
-  InHandWeaponInfo:
-    Ammo: 20
-    Magazines: 3
-    Cooldown: 3
-    Cadency: 0.1
-  InHandWeaponVisualInfo:
+  VisualInfo:
     PlayerSpriteUp: {fileID: -7047832712935350232, guid: 7e17260ffdf040e4385863aa116adf27,
       type: 3}
     PlayerSpriteRight: {fileID: 2127539748764650631, guid: 7e17260ffdf040e4385863aa116adf27,
@@ -32,5 +23,14 @@ MonoBehaviour:
     PlayerSpriteLeft: {fileID: 7855039108877997611, guid: 7e17260ffdf040e4385863aa116adf27,
       type: 3}
     InfoSprite: {fileID: 21300000, guid: 63326e3a50b31e54587832ac227c6a8e, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 9415bf01f85b7cd4bac59e3d136222db, type: 3}
+    StatusSprite: {fileID: 21300000, guid: 68b2885b053742944b34f4ba04bffb04, type: 3}
+    StatusText: mp40
+  InHandWeaponInfo:
+    Ammo: 20
+    Magazines: 3
+    Cooldown: 3
+    Cadency: 0.1
   ProjectileInfo:
     Projectile: {fileID: 11400000, guid: 740499658b122594ab3b31f2cc93e744, type: 2}

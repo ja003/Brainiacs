@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroManager : MonoBehaviour
+public class HeroManager : BrainiacsController
 {
 	[SerializeField]
-	private List<HeroConfig> heroConfigs;
+	public List<HeroConfig> heroConfigs;
 	private Dictionary<EHero, HeroConfig> heroConfigMap = new Dictionary<EHero, HeroConfig>();
 
-	private void Awake()
+	protected override void OnMainControllerAwaken()
 	{
 		foreach(HeroConfig config in heroConfigs)
 		{
@@ -28,4 +28,17 @@ public class HeroManager : MonoBehaviour
 		return config;
 	}
 
+	//not neccessary?
+	//public List<EHero> GetAllHeroes()
+	//{
+
+	//	foreach(EHero dir in Enum.GetValues(typeof(EHero)))
+	//	{
+	//		if(movementRequested = IsMovementRequested(dir))
+	//		{
+	//			movement.Move(dir);
+	//			break;
+	//		}
+	//	}
+	//}
 }

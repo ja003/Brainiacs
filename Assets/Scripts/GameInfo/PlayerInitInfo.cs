@@ -87,23 +87,21 @@ public class PlayerInitInfo
 		IsReady = pNewInfo.IsReady;
 	}
 
-	
+	/// <summary>
+	/// Checks if assigned photon player is local player.
+	/// If single player => always true.
+	/// </summary>
+	public bool IsItMe()
+	{
+		//single player => all players are ME
+		if(!Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+		{
+			return true;
+		}
 
-	///// <summary>
-	///// NOT USED - if needed => reimplement
-	///// </summary>
-	//internal Offset<PlayerInitInfoS> Serialize(ref FlatBufferBuilder fbb)
-	//{
-	//	//StringOffset nameS = fbb.CreateString(Name);
+		if(PhotonPlayer == null || !PhotonNetwork.IsConnected)
+			return false;
 
-	//	PlayerInitInfoS.StartPlayerInitInfoS(fbb);
-	//	PlayerInitInfoS.AddName(fbb, fbb.CreateString(Name));
-	//	PlayerInitInfoS.AddNumber(fbb, Number);
-	//	PlayerInitInfoS.AddHero(fbb, (int)Hero);
-	//	PlayerInitInfoS.AddPlayerType(fbb, (int)PlayerType);
-	//	PlayerInitInfoS.AddPhotonPlayerNumber(fbb,
-	//		PhotonPlayer != null ? PhotonPlayer.ActorNumber : -1);
-	//	Offset<PlayerInitInfoS> result = PlayerInitInfoS.EndPlayerInitInfoS(fbb);
-	//	return result;
-	//}
+		return PhotonPlayer == PhotonNetwork.LocalPlayer;
+	}
 }

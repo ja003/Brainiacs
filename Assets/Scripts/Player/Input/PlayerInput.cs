@@ -18,6 +18,9 @@ public class PlayerInput : GameBehaviour
 
 	void FixedUpdate()
 	{
+		if(player.IsLocalRemote)
+			return;
+
 		ProcessMovementInput();
 
 		ProcessActionInput();
@@ -28,7 +31,9 @@ public class PlayerInput : GameBehaviour
 
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
-		if(pPlayerInfo.PlayerType != EPlayerType.LocalPlayer)
+		//AIs dont use input
+		//assign keys to my players
+		if(pPlayerInfo.PlayerType == EPlayerType.AI || !pPlayerInfo.IsItMe())
 		{
 			//todo: send message to remote player
 			return;

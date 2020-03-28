@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,26 +13,51 @@ public class Projectile : BrainiacsBehaviour
 
 	bool inited;
 
+	[SerializeField] public ProjectileNetworkController Network;
+
+	public Projectile LocalRemote;
+
 	public void Spawn(Player pOwner, ProjectileConfig pConfig)
 	{
+		//Network.Init(this);
+
 		//projectile type is based on weapon
 		//their condition in animator must match the weapon id
-		const string ANIM_KEY_WEAPON = "weapon";
-		animator.SetFloat(ANIM_KEY_WEAPON, (int)pConfig.WeaponId);
+		//animator.SetFloat(ANIM_KEY_WEAPON, (int)pConfig.WeaponId);
 
 		EDirection playerDir = pOwner.Movement.CurrentDirection;
-		direction = GetDirectionVector(playerDir, pConfig.Dispersion);
-		config = pConfig;
-		inited = true;
+		Vector2 projectileDirection = GetDirectionVector(playerDir, pConfig.Dispersion);
+		SetSpawn(projectileDirection, pConfig.WeaponId, playerDir);
 
-		boxCollider2D.size = pConfig.Visual.GetCollider().size;
-		boxCollider2D.offset = pConfig.Visual.GetCollider().offset;
+		//config = pConfig;
 
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pOwner.Movement.PlayerCollider);
 
 		UpdateOrderInLayer(pOwner);
 
-		transform.Rotate(Utils.GetRotation(playerDir, 180));
+		boxCollider2D.enabled = true;
+	}
+
+	public void SetSpawn(Vector3 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
+	{
+		//projectile type is based on weapon
+		//their condition in animator must match the weapon id
+		const string ANIM_KEY_WEAPON = "weapon";
+		animator.SetFloat(ANIM_KEY_WEAPON, (int)pId);
+
+		config = brainiacs.ItemManager.GetProjectileConfig(pId);
+
+		boxCollider2D.size = config.Visual.GetCollider().size;
+		boxCollider2D.offset = config.Visual.GetCollider().offset;
+		boxCollider2D.enabled = false;
+
+		direction = pProjectileDirection;
+
+		transform.Rotate(Utils.GetRotation(pPlayerDirection, 180));
+
+		inited = true;
+
+		Network.Send(EPhotonMsg.Projectile_Spawn, pProjectileDirection, pId, pPlayerDirection);
 	}
 
 	private void UpdateOrderInLayer(Player pOwner)
@@ -67,15 +93,18 @@ public class Projectile : BrainiacsBehaviour
 			result = handler.OnCollision(this);
 
 		if(result)
-			ReturnToPool();
+			Network.Destroy();
+			//ReturnToPool();
 	}
 
 	//TODO: pooling
-	private void ReturnToPool()
-	{
-		gameObject.SetActive(false);
-		inited = false;
-	}
+	//private void ReturnToPool()
+	//{
+	//	PhotonNetwork.Destroy(Network.view);
+
+	//	//gameObject.SetActive(false);
+	//	//inited = false;
+	//}
 
 
 }

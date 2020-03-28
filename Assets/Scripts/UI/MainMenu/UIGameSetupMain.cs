@@ -341,9 +341,9 @@ public class UIGameSetupMain : MainMenuController
 			return;
 		}
 
-
-		mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
-		//brainiacs.Scenes.LoadScene(EScene.Loading);
+		//no need to send msg => use photon scene loading
+		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
+		brainiacs.Scenes.LoadScene(EScene.Game);
 	}
 
 	private bool ArePlayersReady()

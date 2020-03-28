@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hero: 5
   BasicWeapon: {fileID: 11400000, guid: d3a5cbff76e089049b490c476eea08b4, type: 2}
-  SpecialWeapon: {fileID: 0}
+  SpecialWeapon: {fileID: 11400000, guid: 7865cd7839ea68f4eb251986c0984ca5, type: 2}
   Portrait: {fileID: 21300000, guid: bab52fafd7589a94da833e2df84e2760, type: 3}
   Animator: {fileID: 22100000, guid: 6a7e261f01cbc0346b78b62084271278, type: 2}

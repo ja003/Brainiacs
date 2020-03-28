@@ -17,11 +17,14 @@ public class Loading : BrainiacsBehaviour
 	{	
 		Brainiacs.SelfInitGame = false;
 
-		DoInTime(LoadGame, 1);
+		//DoInTime(LoadGame, 1);
 
 		base.Awake(); //always call base.event() at the end
 	}
-	
+
+
+	//TODO: implement photon scene loading
+	/*
 	private void LoadGame()
 	{
 		Debug.Log("LoadGame");
@@ -48,8 +51,9 @@ public class Loading : BrainiacsBehaviour
 
 		Game.Instance.Activate();
 		Brainiacs.Instance.Scenes.UnloadScene(EScene.Loading);
-	}
+	}*/
 
+	/*
 	public void TestLoad()
 	{
 		LoadGame();
@@ -59,5 +63,5 @@ public class Loading : BrainiacsBehaviour
 	{
 		StartGame();
 
-	}
+	}*/
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class Player : BrainiacsBehaviour
+public class Player : GameBehaviour
 {
 	[SerializeField]
 	private PlayerInput input;
@@ -30,10 +30,16 @@ public class Player : BrainiacsBehaviour
 	[SerializeField]
 	public PlayerStats Stats;
 
-	[SerializeField] PhotonView view;
-	public PhotonPlayer photonPlayer;
+	[SerializeField]
+	public PlayerNetworkController Network;
 
-	PlayerInitInfo initInfo;
+	public PlayerInitInfo InitInfo;
+
+	//DEBUG
+	public Player LocalRemote;
+	public bool IsLocalRemote => DebugData.LocalRemote && LocalRemote == null;
+
+	public bool IsItMe => InitInfo.IsItMe();
 
 	private void Update()
 	{
@@ -42,20 +48,16 @@ public class Player : BrainiacsBehaviour
 			Health.DebugDie();
 		}
 	}
-
-	internal void SetInfo(PlayerInitInfo pPlayerInfo, Vector3 pSpawnPosition)
+	public void OnReceivedInitInfo(PlayerInitInfo pInfo)
 	{
-		initInfo = pPlayerInfo;
+		SetInfo(pInfo);
+		game.PlayerManager.AddPlayer(this);
+	}
 
-		photonPlayer = pPlayerInfo.PhotonPlayer;
-		if(photonPlayer != null)
-		{
-			view.TransferOwnership(photonPlayer);
-			Debug.Log("Transfer ownership to " + photonPlayer.NickName);
-		}		
-		const int player_photon_id_start = 10;
-		view.ViewID = player_photon_id_start + pPlayerInfo.Number;
-		Debug.Log(this + " IsMine: " + view.IsMine);
+	public void SetInfo(PlayerInitInfo pPlayerInfo, Vector3? pSpawnPosition = null)
+	{
+		InitInfo = pPlayerInfo;
+		Network.Init(pPlayerInfo);		
 
 		//Debug.Log($"{this} SetInfo");
 		Stats.Init(pPlayerInfo);
@@ -76,11 +78,14 @@ public class Player : BrainiacsBehaviour
 
 		Visual.Init(pPlayerInfo);
 
-		Movement.SpawnAt(pSpawnPosition);
+		if(pSpawnPosition != null)
+			Movement.SpawnAt((Vector3)pSpawnPosition);
 	}
 
 	public override string ToString()
 	{
-		return $"{initInfo.Number}_{gameObject.name} [{view.ViewID}]";
+		int number = InitInfo == null ? -1 : InitInfo.Number;
+		return $"{number}_{gameObject.name} {Network}";
 	}
+
 }

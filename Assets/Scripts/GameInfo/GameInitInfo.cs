@@ -128,7 +128,7 @@ public class GameInitInfo
 	//	end: OnInfoChanged();
 	//}
 
-	private PlayerInitInfo GetPlayer(int pPlayerNumber)
+	public PlayerInitInfo GetPlayer(int pPlayerNumber)
 	{
 		return Players.Find(a => a.Number == pPlayerNumber);
 	}

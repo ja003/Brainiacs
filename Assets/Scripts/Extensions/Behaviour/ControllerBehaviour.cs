@@ -23,10 +23,11 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 	{
 		//Debug.Log($"{gameObject.name} Awake");
 		base.Awake();
-		if(GetMainController() != this)
+		BrainiacsBehaviour mainController = GetMainController();
+		if(mainController != null && mainController != this)
 		{
-			GetMainController().SetOnAwaken(MainControllerAwaken);
-			GetMainController().SetOnActivated(MainControllerActivated);
+			mainController.SetOnAwaken(MainControllerAwaken);
+			mainController.SetOnActivated(MainControllerActivated);
 		}
 	}
 

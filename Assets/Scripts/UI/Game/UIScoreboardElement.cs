@@ -12,34 +12,35 @@ public class UIScoreboardElement : BrainiacsBehaviour
 	[SerializeField] private Text deaths;
 	[SerializeField] private Image background;
 
-	//public void Init(PlayerInitInfo pPlayerInfo)
-	//{
-	//	name.text = pPlayerInfo.Name;
-	//	kills.text = "0";
-	//	deaths.text = "0";
-
-	//	image.color = pPlayerInfo.Color;
-
-	//	gameObject.SetActive(true);
-	//}
-
-	public void Init(PlayerStats pStats)
+	Player player;
+	public void Init(Player pPlayer)
 	{
+		player = pPlayer;
+
 		//color and name dont change during game
-		background.color = UIColorDB.GetColor(pStats.Color);
+		background.color = UIColorDB.GetColor(pPlayer.Stats.Color);
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;
-		name.text = pStats.Name;
+		name.text = pPlayer.Stats.Name;
 
 		//register for stats change
-		pStats.SetOnStatsChange(OnStatsChanged);
+		pPlayer.Stats.SetOnStatsChange(OnStatsChanged);
 		//invoke first change manually
-		OnStatsChanged(pStats);
+		OnStatsChanged(pPlayer.Stats);
+
+		pPlayer.Visual.Scoreboard = this;
 	}
 
 	private void OnStatsChanged(PlayerStats pStats)
 	{
-		kills.text = pStats.Kills.ToString();
-		deaths.text = pStats.Deaths.ToString();
+		SetStats(pStats.Kills, pStats.Deaths);
+	}
+
+	public void SetStats(int pKills, int pDeaths)
+	{
+		kills.text = pKills.ToString();
+		deaths.text = pDeaths.ToString();
+		player.Network.Send(EPhotonMsg.Player_UI_Scoreboard_SetStats, pKills, pDeaths);
+
 	}
 }

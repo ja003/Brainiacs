@@ -13,16 +13,7 @@ MonoBehaviour:
   m_Name: C_Weapon_Map_Projectile_Lasergun
   m_EditorClassIdentifier: 
   Id: 11
-  MapItemInfo:
-    MapSprite: {fileID: 21300000, guid: 15e91c4879707ec49a5d50ce06db721a, type: 3}
-    StatusSprite: {fileID: 21300000, guid: 58273261d5f79a44db07cf6cf24c7730, type: 3}
-    StatusText: lasergun
-  InHandWeaponInfo:
-    Ammo: 20
-    Magazines: 3
-    Cooldown: 3
-    Cadency: 0.5
-  InHandWeaponVisualInfo:
+  VisualInfo:
     PlayerSpriteUp: {fileID: -1469762801655804447, guid: 23dc37e2781ec7d4d9b3a027d74fd77f,
       type: 3}
     PlayerSpriteRight: {fileID: 1666884633767043721, guid: 23dc37e2781ec7d4d9b3a027d74fd77f,
@@ -32,5 +23,14 @@ MonoBehaviour:
     PlayerSpriteLeft: {fileID: 1666754041476791598, guid: 23dc37e2781ec7d4d9b3a027d74fd77f,
       type: 3}
     InfoSprite: {fileID: 21300000, guid: 090454e28572ebf438614ac261dc8b64, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 15e91c4879707ec49a5d50ce06db721a, type: 3}
+    StatusSprite: {fileID: 21300000, guid: 58273261d5f79a44db07cf6cf24c7730, type: 3}
+    StatusText: lasergun
+  InHandWeaponInfo:
+    Ammo: 20
+    Magazines: 3
+    Cooldown: 3
+    Cadency: 0.5
   ProjectileInfo:
     Projectile: {fileID: 11400000, guid: eb0fb3becfdc4e04ca06957e72552e82, type: 2}

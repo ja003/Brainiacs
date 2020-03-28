@@ -10,7 +10,7 @@ public class PlayerWeaponProjectile : PlayerWeapon
 		Player pOwner,
 		MapWeaponConfig pConfig) : 
 		base(pOwner, pConfig.Id, pConfig.InHandWeaponInfo,
-			pConfig.InHandWeaponVisualInfo)
+			pConfig.VisualInfo)
 	{
 		ProjectileInfo = pConfig.ProjectileInfo;
 	}

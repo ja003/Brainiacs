@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,22 +25,30 @@ public class Game : CSingleton<Game>
 
 	[SerializeField] Button btnEnd;
 
+	[SerializeField] GamePhoton Photon;
+
 	protected override void Awake()
-	{		
+	{
 		if(Brainiacs.SelfInitGame)
 		{
 			DoInTime(Activate, 0.5f);
 		}
 		btnEnd.onClick.AddListener(TestEndGame);
 
-		base.Awake(); //always call base.event() at the end
 		OnAwaken();
+		base.Awake(); //always call base.event() at the end
 	}
+
 
 	private void OnAwaken()
 	{
 		mainCamera.enabled = false;
 		//todo: deactivate players
+
+		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		{
+			Photon.Send(EPhotonMsg_Game.PlayerLoadedScene, PhotonNetwork.LocalPlayer.ActorNumber);
+		}
 	}
 
 	public new void Activate()

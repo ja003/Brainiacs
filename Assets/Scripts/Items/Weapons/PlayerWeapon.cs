@@ -30,28 +30,7 @@ public abstract class PlayerWeapon
 
 		Info = pInHandInfo;
 		VisualInfo = pInHandVisualInfo;
-	}
-
-
-	//public PlayerWeapon(
-	//	Player pOwner,
-	//	InHandWeaponVisualInfo pInHandInfo,
-	//	ProjectileWeaponInfo pProjectileInfo) : this(pOwner, pInHandInfo)
-	//{
-	//	ProjectileInfo = pProjectileInfo;
-	//	Ammo = pProjectileInfo.Ammo;
-	//	magazines = pProjectileInfo.Magazines;
-	//	owner = pOwner;
-	//}
-
-	/// <summary>
-	/// Returns percentage [0,1] of cadency refresh state
-	/// </summary>
-	public float GetCadencyReadyPercentage()
-	{
-		float remains = lastUseTime + Info.Cadency - Time.time;
-		float percentage = 1 - remains / Info.Cadency;
-		return Mathf.Clamp(percentage, 0, 1);
+		RealoadTimeLeft = pInHandInfo.Cooldown; //has to be (re)set for UI reloading
 	}
 
 	//cant be zero or first use might fail
@@ -118,6 +97,7 @@ public abstract class PlayerWeapon
 		MagazinesLeft--;
 		AmmoLeft = Info.Ammo;
 		IsRealoading = false;
+		RealoadTimeLeft = Info.Cooldown;
 		if(IsActive)
 		{
 			//to update ammo text
@@ -126,17 +106,14 @@ public abstract class PlayerWeapon
 	}
 
 	/// <summary>
-	/// Calculates reload time left, sets it to active weapon and
-	/// invokes info change (UI)
+	/// Calculates reload time left, sets it to active weapon,
+	/// RealoadTimeLeft value is used to display reload progress.
 	/// </summary>
-	/// <param name="pProgress">range: 0 - 1</param>
 	public void ReportReloadProgress(float pProgress)
 	{
 		float timeLeft = Info.Cooldown - (Info.Cooldown * pProgress);
 		RealoadTimeLeft = timeLeft;
 		//Debug.Log($"{this} time left to reload = {timeLeft} | {IsActive}");
-		if(IsActive)
-			owner.WeaponController.InvokeWeaponChange(this);
 	}
 
 	public override string ToString()

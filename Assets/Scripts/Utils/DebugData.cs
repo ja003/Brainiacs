@@ -11,6 +11,11 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
+	public static bool TestPlayers = false;
+
+	public static bool LocalRemote = false;
+
+
 	public static void OnBrainiacsAwake()
 	{
 		if(TestRemote)
@@ -20,6 +25,14 @@ public static class DebugData
 		if(TestMP)
 		{
 			Debug.LogError("DebugMP");
+		}
+		if(TestPlayers)
+		{
+			Debug.LogError("TestPlayers");
+		}
+		if(LocalRemote)
+		{
+			Debug.LogError("LocalRemote");
 		}
 	}
 
@@ -35,6 +48,23 @@ public static class DebugData
 				return "Johanka";
 		}
 		return "DEBUG_NAME";
+	}
+
+	public static void TestSetGameInitInfo()
+	{
+		PlayerInitInfo player1 = GetPlayerInitInfo(1);
+		Brainiacs.Instance.GameInitInfo.AddPlayer(player1);
+
+
+		PlayerInitInfo player2 = GetPlayerInitInfo(2);
+		Brainiacs.Instance.GameInitInfo.AddPlayer(player2);
+
+		//PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
+		//GameInitInfo.AddPlayer(player3);
+
+		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Time;
+		Brainiacs.Instance.GameInitInfo.Map = EMap.Steampunk;
+		Brainiacs.Instance.GameInitInfo.GameModeValue = 5;
 	}
 
 	public static PlayerInitInfo GetPlayerInitInfo(int pPlayerNumber)

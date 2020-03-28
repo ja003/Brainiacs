@@ -266,7 +266,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			return;
 
 		byte[] infoS = Info.Serizalize();
-		mainMenu.Photon.Send(EPhotonMsg_MainMenu.SyncPlayerInfo, infoS);
+		mainMenu.Photon.Send(EPhotonMsg.MainMenu_SyncPlayerInfo, infoS);
 	}
 
 }

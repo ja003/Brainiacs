@@ -93,14 +93,7 @@ public class PlayerWeaponController : GameBehaviour
 		}
 		//Debug.Log($"{activeWeapon} USE");
 
-		//if(activeWeapon.Config.Projectile != null)
-		//{
-		//	game.ProjectileManager.SpawnProjectile(
-		//		GetProjectileStartPosition(movement.CurrentDirection),
-		//		movement,
-		//		activeWeapon.Config.Projectile);
-		//}
-		onWeaponInfoChanged.Invoke(activeWeapon);
+		InvokeWeaponChange(activeWeapon);
 
 		HandleUseResult(useResult);
 	}
@@ -137,6 +130,7 @@ public class PlayerWeaponController : GameBehaviour
 		Action<float> onReloadUpdate = pWeapon.ReportReloadProgress;
 
 		DoInTime(onReloaded, pWeapon.Info.Cooldown, onReloadUpdate);
+		InvokeWeaponChange(pWeapon);
 	}
 
 	public Transform GetProjectileStart(EDirection pDirection)
@@ -173,9 +167,8 @@ public class PlayerWeaponController : GameBehaviour
 		activeWeapon.IsActive = true;
 
 		visual.SetActiveWeapon(activeWeapon);
+
 		onWeaponInfoChanged?.Invoke(activeWeapon);
 		activeWeapon.OnSetActive();
 	}
-
-
 }

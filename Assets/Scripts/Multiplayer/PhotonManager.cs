@@ -6,6 +6,7 @@ using Photon.Realtime;
 using System;
 
 using PhotonPlayer = Photon.Realtime.Player;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages connection to photon server, creating and joining room.
@@ -18,7 +19,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	// Start is called before the first frame update
 	void Start()
 	{
+		if(SceneManager.GetActiveScene().name == "S3_Game")
+			return;
+
+		PhotonNetwork.AutomaticallySyncScene = true;
+
 		string suffix = Application.isMobilePlatform ? "mobile" : "pc";
+#if UNITY_EDITOR
+		suffix = "editor";
+#endif
+
 		PhotonNetwork.LocalPlayer.NickName = "ADAM_" + suffix;
 
 		Debug.Log("Connecting..");

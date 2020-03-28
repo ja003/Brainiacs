@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class MainMenuController : ControllerBehaviour
 {
+
 	protected MainMenu mainMenu => MainMenu.Instance;
 
 	protected override BrainiacsBehaviour GetMainController()

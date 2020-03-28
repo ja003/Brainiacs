@@ -124,8 +124,10 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 
 			return;
 		}
+
+		//NOTE: moved IsInstantiated to the end
 		// Set as inited
-		IsInstantiated = true;
+		//IsInstantiated = true;
 		IsDestroyed = false;
 		// Create singleton gameobject into scene
 		GameObject go;
@@ -144,6 +146,7 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 				Debug.LogError("Couldn't find singleton prefab in Resources dir. Name: " + prefabName + " | Type: " + type);
 			}
 		}
+
 		// Set name 
 		if(attribute == null)
 		{
@@ -158,6 +161,8 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 		{
 			_instance = go.GetComponent<T>() ?? go.AddComponent<T>();
 		}
+		//NOTE: IsInstantiated has been moved here
+		IsInstantiated = true;
 
 		_instance.Init();
 	}

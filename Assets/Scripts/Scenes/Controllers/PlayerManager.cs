@@ -1,11 +1,13 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PhotonPlayer = Photon.Realtime.Player;
 
 public class PlayerManager : GameController
 {
-	public List<Player> Players { get; private set; }
+	public List<Player> Players { get; private set; } = new List<Player>();
 
 	[SerializeField]
 	private Player playerPrefab;
@@ -14,27 +16,85 @@ public class PlayerManager : GameController
 	private PlayerSorter playerSorter;
 
 
+	protected override void OnMainControllerAwaken()
+	{
+		if(PhotonNetwork.IsMasterClient)
+		{
+			loadedPlayers.Add(PhotonNetwork.LocalPlayer);
+		}
+	}
+
+	protected override void OnMainControllerActivated()
+	{
+		
+
+		//single player => spawn here
+		//MP => spawn in OnRemotePlayerLoadedScene
+		if(!brainiacs.GameInitInfo.IsMultiplayer())
+		{
+			//Debug.Log("Spawn players SP");
+			game.MapController.SetOnActivated(() =>
+					SpawnPlayers(brainiacs.GameInitInfo.Players));
+		}
+	}
+
+	public void btn_debugSpawnPlayer()
+	{
+		SpawnPlayer(brainiacs.GameInitInfo.Players[0]);
+	}
+
+	public void btn_debugSyncPLayersInfo()
+	{
+		foreach(var p in Players)
+		{
+			p.Network.debug_SendInitInfo();
+		}
+	}
+
+	bool arePlayersSpawned;
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
 	{
-		Players = new List<Player>();
+		if(arePlayersSpawned)
+		{
+			//todo: for some reason the PC instance (not in unity)
+			//sends LoadedScene 2x
+			Debug.LogError("Players already spawned");
+			return;
+		}
+
+		//Debug.Log("Spawn players");
 
 		foreach(PlayerInitInfo playerInfo in pPlayersInfo)
 		{
-			SpawnPlayer(playerInfo);
+			Player spawnedPlayer = SpawnPlayer(playerInfo);
+
+			if(DebugData.LocalRemote && spawnedPlayer.LocalRemote == null)
+			{
+				spawnedPlayer.LocalRemote = SpawnPlayer(playerInfo);
+				spawnedPlayer.LocalRemote.gameObject.name += "_remote";
+
+				AddPlayer(spawnedPlayer.LocalRemote);
+			}
+
+			AddPlayer(spawnedPlayer);
 		}
 
 		playerSorter.SetPlayers(Players);
 
 		//invoke on activated
 		Activate();
+		arePlayersSpawned = true;
 	}
 
-	private void SpawnPlayer(PlayerInitInfo pPlayerInfo)
+	/// <summary>
+	/// Only master spawn players
+	/// </summary>
+	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo)
 	{
-		//Player playerInstance = Instantiate(playerPrefab, transform);
-		Player playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity).GetComponent<Player>();
-		playerInstance.transform.parent = transform;
+		GameObject instance = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+		Player playerInstance = instance.GetComponent<Player>();
 
+		playerInstance.transform.parent = transform;
 
 		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name;
 
@@ -51,22 +111,59 @@ public class PlayerManager : GameController
 
 		playerInstance.SetInfo(pPlayerInfo, spawnPosition);
 
-		Players.Add(playerInstance);
+		//AddPlayer(playerInstance);
+		
+		return playerInstance;
 	}
 
-	protected override void OnMainControllerAwaken()
+	public Action OnAllPlayersAdded;
+
+	/// <summary>
+	/// Use this instead of: Players.Add()
+	/// </summary>
+	public void AddPlayer(Player pPlayer)
 	{
+		Players.Add(pPlayer);
+		int playersCount = Players.FindAll(a=>!a.IsLocalRemote).Count;
+
+		if(playersCount == brainiacs.GameInitInfo.Players.Count)
+		{
+			if(pPlayer.IsLocalRemote)
+				return;
+
+			//Debug.Log("All players added");
+			OnAllPlayersAdded?.Invoke();
+			OnAllPlayersAdded = null;
+		}
+	}
+
+	List<PhotonPlayer> loadedPlayers = new List<PhotonPlayer>();
+	internal void OnRemotePlayerLoadedScene(PhotonPlayer pPlayer)
+	{
+		loadedPlayers.Add(pPlayer);
+
+		foreach(var player in brainiacs.GameInitInfo.Players)
+		{
+			var foundPlayer = loadedPlayers.Find(a => a.ActorNumber == player.PhotonPlayer.ActorNumber);
+			if(foundPlayer == null)
+			{
+				Debug.Log("Not all players loaded yet");
+				return;
+			}
+		}
+		Debug.Log("All players loaded");
+
 		//map has to be activated first
 
-		//if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
-		//{
-		//	Debug.Log("Not MasterClient => dont spawn");
-		//	return;
-		//}
+		//player objects spawn only on master
+		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		{
+			Debug.Log("Not MasterClient => dont spawn");
+			return;
+		}
 
 		game.MapController.SetOnActivated(() =>
 				SpawnPlayers(brainiacs.GameInitInfo.Players));
-
-		//SpawnPlayers(brainiacs.GameInitInfo.Players);
 	}
+
 }

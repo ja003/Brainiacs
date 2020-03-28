@@ -9,7 +9,6 @@ public class MapWeaponConfig : WeaponConfig
 	public MapItemInfo MapItemInfo;
 
 	public InHandWeaponInfo InHandWeaponInfo;
-	public InHandWeaponVisualInfo InHandWeaponVisualInfo;
 
 	public ProjectileWeaponInfo ProjectileInfo;
 }

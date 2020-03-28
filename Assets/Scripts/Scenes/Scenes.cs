@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,29 +15,43 @@ public class Scenes : MonoBehaviour
 
 	public void LoadScene(EScene pScene)
 	{
-		SceneManager.LoadScene(GetSceneIndex(pScene));
+		//SceneManager.LoadScene(GetSceneIndex(pScene));
+		PhotonNetwork.LoadLevel(GetSceneIndex(pScene));
 	}
 
-	public IEnumerator LoadSceneAsync(EScene pScene, Slider pSlider, Action pOnLoaded)
-	{
-		AsyncOperation loading = SceneManager.LoadSceneAsync(
-			GetSceneIndex(pScene), LoadSceneMode.Additive);
+	//public IEnumerator LoadSceneAsync(EScene pScene, Slider pSlider, Action pOnLoaded)
+	//{
+	//	AsyncOperation loading = SceneManager.LoadSceneAsync(
+	//		GetSceneIndex(pScene), LoadSceneMode.Additive);
 
-		while(!loading.isDone)
-		{
-			float progress = Mathf.Clamp01(loading.progress / 0.9f);
-			pSlider.value = progress;
-			Debug.Log("LoadSceneAsync: " + progress);
-			yield return null;
-		}
+	//	while(!loading.isDone)
+	//	{
+	//		float progress = Mathf.Clamp01(loading.progress / 0.9f);
+	//		pSlider.value = progress;
+	//		Debug.Log("LoadSceneAsync: " + progress);
+	//		yield return null;
+	//	}
 
-		pOnLoaded?.Invoke();
-	}
+	//	pOnLoaded?.Invoke();
+	//}
 
-	public void UnloadScene(EScene pScene)
-	{
-		SceneManager.UnloadSceneAsync(GetSceneIndex(pScene));
-	}
+	//IEnumerator LoadLevelAsync()
+	//{
+	//	PhotonNetwork.LoadLevel("Network Test");
+
+	//	while(PhotonNetwork.LevelLoadingProgress < 1)
+	//	{
+	//		loadAmountText.text = "Loading: %" + (int)(PhotonNetwork.LevelLoadingProgress * 100);
+	//		//loadAmount = async.progress;
+	//		progressBar.fillAmount = PhotonNetwork.LevelLoadingProgress;
+	//		yield return new WaitForEndOfFrame();
+	//	}
+	//}
+
+	//public void UnloadScene(EScene pScene)
+	//{
+	//	SceneManager.UnloadSceneAsync(GetSceneIndex(pScene));
+	//}
 }
 
 public enum EScene

@@ -56,6 +56,6 @@ public class UIGameSetupSearch : MainMenuController
 		info.AddPlayer(player);
 
 		var gameInfoBytes = info.Serialize();
-		MainMenu.Instance.Photon.debug_HandleMsg(EPhotonMsg_MainMenu.SyncGameInfo, gameInfoBytes);
+		MainMenu.Instance.Photon.debug_HandleMsg(EPhotonMsg.MainMenu_SyncGameInfo, gameInfoBytes);
 	}
 }

@@ -8,5 +8,4 @@ public class MapSpecialWeapon : WeaponConfig
 	public MapItemInfo MapItemInfo;
 	public SpecialWeaponInfo SpecialWeaponInfo;
 	public InHandWeaponInfo InHandInfo;
-	public InHandWeaponVisualInfo InHandVisualInfo;
 }

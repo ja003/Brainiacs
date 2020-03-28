@@ -13,16 +13,7 @@ MonoBehaviour:
   m_Name: C_Weapon_Map_Projectile_Biogun
   m_EditorClassIdentifier: 
   Id: 12
-  MapItemInfo:
-    MapSprite: {fileID: 21300000, guid: 6f74264871613bd4e8a2e789dd36a6e0, type: 3}
-    StatusSprite: {fileID: 21300000, guid: 53fc75feb5e44ac4ba0bac9861a0574a, type: 3}
-    StatusText: biogun
-  InHandWeaponInfo:
-    Ammo: 20
-    Magazines: 3
-    Cooldown: 3
-    Cadency: 0.2
-  InHandWeaponVisualInfo:
+  VisualInfo:
     PlayerSpriteUp: {fileID: 7358522245313549249, guid: 0af2568836fb9ed429aba9225892ecb6,
       type: 3}
     PlayerSpriteRight: {fileID: 7403081047173714228, guid: 0af2568836fb9ed429aba9225892ecb6,
@@ -32,5 +23,14 @@ MonoBehaviour:
     PlayerSpriteLeft: {fileID: -6472043869732963004, guid: 0af2568836fb9ed429aba9225892ecb6,
       type: 3}
     InfoSprite: {fileID: 21300000, guid: 2dbafe89849424049a9e5c006b73cdda, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 6f74264871613bd4e8a2e789dd36a6e0, type: 3}
+    StatusSprite: {fileID: 21300000, guid: 53fc75feb5e44ac4ba0bac9861a0574a, type: 3}
+    StatusText: biogun
+  InHandWeaponInfo:
+    Ammo: 20
+    Magazines: 3
+    Cooldown: 3
+    Cadency: 0.2
   ProjectileInfo:
     Projectile: {fileID: 11400000, guid: 1565afca7d6fea749bd40e6c9d0bef86, type: 2}
