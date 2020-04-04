@@ -37,9 +37,10 @@ public class Player : GameBehaviour
 
 	//DEBUG
 	public Player LocalRemote;
-	public bool IsLocalRemote => DebugData.LocalRemote && LocalRemote == null;
+	//public bool IsLocalRemote => DebugData.LocalRemote && LocalRemote == null;
+	public bool IsLocalRemote;
 
-	public bool IsItMe => InitInfo.IsItMe();
+	public bool IsItMe => InitInfo.IsItMe() && !IsLocalRemote;
 
 	private void Update()
 	{
@@ -48,38 +49,52 @@ public class Player : GameBehaviour
 			Health.DebugDie();
 		}
 	}
-	public void OnReceivedInitInfo(PlayerInitInfo pInfo)
+	
+	public void SetInfo(PlayerInitInfo pPlayerInfo, bool pIsLocalRemote, Vector3? pSpawnPosition = null)
 	{
-		SetInfo(pInfo);
-		game.PlayerManager.AddPlayer(this);
-	}
-
-	public void SetInfo(PlayerInitInfo pPlayerInfo, Vector3? pSpawnPosition = null)
-	{
-		InitInfo = pPlayerInfo;
-		Network.Init(pPlayerInfo);		
-
 		//Debug.Log($"{this} SetInfo");
-		Stats.Init(pPlayerInfo);
-
-		input.Init(pPlayerInfo);
-
-
-		HeroSpecialWeaponConfig heroSpecialConfig =
-			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pPlayerInfo.Hero);
-		ItemController.AddHeroSpecialWeapon(pPlayerInfo.Hero);
-
-
-		ItemController.AddMapWeapon(EWeaponId.MP40);
-		ItemController.AddMapWeapon(EWeaponId.Lasergun);
-		ItemController.AddMapWeapon(EWeaponId.Biogun);
-
-		ItemController.AddHeroBasicWeapon(pPlayerInfo.Hero);
-
+		IsLocalRemote = pIsLocalRemote;
+		//Debug.Log($"{this} SetInfo");
+		InitInfo = pPlayerInfo;
 		Visual.Init(pPlayerInfo);
+
+		if(!pIsLocalRemote)
+			Init();
 
 		if(pSpawnPosition != null)
 			Movement.SpawnAt((Vector3)pSpawnPosition);
+
+		Network.Init(pPlayerInfo);
+	}
+
+	public void OnReceivedInitInfo(PlayerInitInfo pInfo)
+	{
+		//Debug.Log($"{this} OnReceivedInitInfo");
+		SetInfo(pInfo, false);
+		game.PlayerManager.AddPlayer(this);
+		//Init();
+	}
+
+	private void Init()
+	{
+		//Debug.Log($"{this} Init {IsItMe}");
+		if(!IsItMe)
+			return;
+
+		Stats.Init();
+		input.Init(InitInfo);
+
+
+		ItemController.AddMapWeapon(EWeaponId.Lasergun);
+		ItemController.AddMapWeapon(EWeaponId.Biogun);
+
+		ItemController.AddHeroBasicWeapon(InitInfo.Hero);
+		ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
+
+		ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
+		ItemController.AddMapWeapon(EWeaponId.MP40);
+		ItemController.AddHeroSpecialWeapon(EHero.Einstein);
+		ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
 	}
 
 	public override string ToString()

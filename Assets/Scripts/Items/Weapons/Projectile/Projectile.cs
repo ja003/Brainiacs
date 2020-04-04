@@ -17,7 +17,7 @@ public class Projectile : BrainiacsBehaviour
 
 	public Projectile LocalRemote;
 
-	public void Spawn(Player pOwner, ProjectileConfig pConfig)
+	public void Spawn(Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
 		//Network.Init(this);
 
@@ -25,15 +25,34 @@ public class Projectile : BrainiacsBehaviour
 		//their condition in animator must match the weapon id
 		//animator.SetFloat(ANIM_KEY_WEAPON, (int)pConfig.WeaponId);
 
-		EDirection playerDir = pOwner.Movement.CurrentDirection;
-		Vector2 projectileDirection = GetDirectionVector(playerDir, pConfig.Dispersion);
-		SetSpawn(projectileDirection, pConfig.WeaponId, playerDir);
+		//owner == null => it is remote projectile and has to have direction set
+		if(pDirection == EDirection.None && !pOwner)
+		{
+			Debug.LogError("Projectile doesnt have owner or direction set");
+		}
+
+		//if direction is not specified, use players current direction
+		EDirection direction = pDirection == EDirection.None ?
+			pOwner.Movement.CurrentDirection : pDirection;
+
+		Vector2 projectileDirection = GetDirectionVector(direction, pConfig.Dispersion);
+		SetSpawn(projectileDirection, pConfig.WeaponId, direction);
 
 		//config = pConfig;
+		boxCollider2D.enabled = true;
 
-		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pOwner.Movement.PlayerCollider);
+		//pOwner => local projectile, else => remote -> dont detect collisions
+		if(pOwner)
+		{
+			Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pOwner.Movement.PlayerCollider);
+			//todo: call UpdateOrderInLayer after network message is received?
+			UpdateOrderInLayer(pOwner);
+		}
+		else
+		{
+			boxCollider2D.enabled = false;
+		}
 
-		UpdateOrderInLayer(pOwner);
 
 		boxCollider2D.enabled = true;
 	}
@@ -85,12 +104,12 @@ public class Projectile : BrainiacsBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		IProjectileCollisionHandler handler =
-			collision.collider.GetComponent<IProjectileCollisionHandler>();
+		ICollisionHandler handler =
+			collision.collider.GetComponent<ICollisionHandler>();
 
 		bool result = false;
 		if(handler != null)
-			result = handler.OnCollision(this);
+			result = handler.OnCollision(config.Damage);
 
 		if(result)
 			Network.Destroy();

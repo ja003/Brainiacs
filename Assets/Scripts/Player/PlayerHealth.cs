@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : BrainiacsBehaviour, IProjectileCollisionHandler
+public class PlayerHealth : BrainiacsBehaviour, ICollisionHandler
 {
 	[SerializeField]
 	private PlayerStats stats;
@@ -68,18 +68,18 @@ public class PlayerHealth : BrainiacsBehaviour, IProjectileCollisionHandler
 		Die();
 	}
 
-	public bool OnCollision(Projectile pProjectile)
+	public bool OnCollision(int pDamage)
 	{
-		HitByProjectile(pProjectile.config.Damage);
+		ApplyDamage(pDamage);
 		return true;
 	}
 
-	public void HitByProjectile(int pDamage)
+	public void ApplyDamage(int pDamage)
 	{
 		//todo animation
 		if(!player.IsItMe)
 		{
-			player.Network.Send(EPhotonMsg.Player_HitByProjectile, pDamage);
+			player.Network.Send(EPhotonMsg.Player_ApplyDamage, pDamage);
 		}
 		else
 		{

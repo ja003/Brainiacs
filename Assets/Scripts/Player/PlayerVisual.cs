@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisual : GameBehaviour
+public class PlayerVisual : PlayerBehaviour
 {
 	HeroConfig heroConfig;
 
@@ -37,11 +37,13 @@ public class PlayerVisual : GameBehaviour
 
 	internal void OnDie()
 	{
-		animator.SetBool(AC_KEY_IS_DEAD, true);
-		animator.SetTrigger(AC_KEY_DIE);
+		SetAnimBool(AC_KEY_IS_DEAD, true);
+		SetAnimTrigger(AC_KEY_DIE);
 
 		DoInTime(() => SetVisible(false), 1);
 	}
+
+	
 
 	public void SetVisible(bool pValue)
 	{
@@ -54,7 +56,7 @@ public class PlayerVisual : GameBehaviour
 		//Debug.Log($"{this} Spawn");
 		SetVisible(true);
 
-		animator.SetBool(AC_KEY_IS_DEAD, false);
+		SetAnimBool(AC_KEY_IS_DEAD, false);
 		OnDirectionChange(currentDirection); //reset animator value
 	}
 
@@ -104,6 +106,14 @@ public class PlayerVisual : GameBehaviour
 		return -1;
 	}
 
+	/// <summary>
+	/// Returns current player's sort order + 2 (to display over hands)
+	/// </summary>
+	public int GetPlayerOverlaySortOrder()
+	{
+		return spriteRend.sortingOrder + 2;
+	}
+
 
 	private const string AC_KEY_DIRECTION = "direction";
 	//private const string AC_KEY_IS_WALKING = "isWalking";
@@ -123,23 +133,40 @@ public class PlayerVisual : GameBehaviour
 
 		CurrentSortOrder = pOrder;
 
-
 		UpdatePlayerSortOrder();
 		UpdateWeaponSortOrder();
 		UpdateHandsSortOrder();
+
+		OnSortOrderChanged?.Invoke();
 	}
+	public Action OnSortOrderChanged;
 
 	public void Move()
 	{
-		//animator.SetBool(AC_KEY_IS_WALKING, true);
-		animator.SetFloat(AC_KEY_WALK_SPEED, WALK_ANIM_SPEED);
-
+		SetAnimFloat(AC_KEY_WALK_SPEED, WALK_ANIM_SPEED);
 	}
 
 	public void Idle()
 	{
-		//animator.SetBool(AC_KEY_IS_WALKING, false);
-		animator.SetFloat(AC_KEY_WALK_SPEED, IDLE_ANIM_SPEED);
+		SetAnimFloat(AC_KEY_WALK_SPEED, IDLE_ANIM_SPEED);
+	}
+
+	private void SetAnimFloat(string pKey, float pValue)
+	{
+		animator.SetFloat(pKey, pValue);
+		player.LocalRemote?.Visual.SetAnimFloat(pKey, pValue);
+	}
+
+	private void SetAnimBool(string pKey, bool pValue)
+	{
+		animator.SetBool(pKey, pValue);
+		player.LocalRemote?.Visual.SetAnimBool(pKey, pValue);
+	}
+
+	private void SetAnimTrigger(string pKey)
+	{
+		animator.SetTrigger(pKey);
+		player.LocalRemote?.Visual.SetAnimTrigger(pKey);
 	}
 
 	private EDirection currentDirection => movement.CurrentDirection;
@@ -182,9 +209,9 @@ public class PlayerVisual : GameBehaviour
 		SetSortOrder(CurrentSortOrder, true);
 
 		//direction has to be float to be used in blend tree
-		animator.SetFloat(AC_KEY_DIRECTION, (int)pDirection);
+		SetAnimFloat(AC_KEY_DIRECTION, (int)pDirection);
 
-		activeWeapon.OnDirectionChange(pDirection);
+		//activeWeapon.OnDirectionChange(pDirection);
 
 		network.Send(EPhotonMsg.Player_ChangeDirection, pDirection);
 	}

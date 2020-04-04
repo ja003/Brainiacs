@@ -14,7 +14,7 @@ public abstract class PlayerWeapon
 	public InHandWeaponInfo Info;
 	public InHandWeaponVisualInfo VisualInfo;
 
-	protected Player owner;
+	public Player Owner { get; private set; }
 
 	public bool IsRealoading;
 	public float RealoadTimeLeft;
@@ -24,7 +24,7 @@ public abstract class PlayerWeapon
 	public PlayerWeapon(Player pOwner, EWeaponId pId, InHandWeaponInfo pInHandInfo, InHandWeaponVisualInfo pInHandVisualInfo)
 	{
 		Id = pId;
-		owner = pOwner;
+		Owner = pOwner;
 		AmmoLeft = pInHandInfo.Ammo;
 		MagazinesLeft = pInHandInfo.Magazines;
 
@@ -35,9 +35,17 @@ public abstract class PlayerWeapon
 
 	//cant be zero or first use might fail
 	private float lastUseTime = int.MinValue;
+
+	/// <summary>
+	/// Tries to use the weapon and reports about the result.
+	/// - CantUse: weapon is realoading or is disabled (?)
+	/// - Remove: after this use there are no magazines left => weapon should be removed
+	/// - Reload: after this use there is no ammo left => weapon should be reloaded
+	/// - OK: weapon can be used
+	/// </summary>
 	public virtual EWeaponUseResult Use()
 	{
-		if(IsRealoading)
+		if(IsRealoading || !CanUse())
 			return EWeaponUseResult.CantUse;
 
 		if(Time.time < lastUseTime + Info.Cadency)
@@ -46,6 +54,8 @@ public abstract class PlayerWeapon
 		}
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
+		AmmoLeft--;
+		lastUseTime = Time.time;
 		if(AmmoLeft <= 0)
 		{
 			if(MagazinesLeft <= 0)
@@ -54,9 +64,12 @@ public abstract class PlayerWeapon
 			}
 			return EWeaponUseResult.Reload;
 		}
-		AmmoLeft--;
-		lastUseTime = Time.time;
 		return EWeaponUseResult.OK;
+	}
+
+	protected virtual bool CanUse()
+	{
+		return true;
 	}
 
 	public virtual void StopUse()
@@ -87,6 +100,10 @@ public abstract class PlayerWeapon
 		return AmmoLeft.ToString();
 	}
 
+	internal virtual void OnStartReloadWeapon()
+	{
+	}
+
 	/// <summary>
 	/// Instantly reloads the weapon.
 	/// It is expected to have enough magazines.
@@ -101,9 +118,9 @@ public abstract class PlayerWeapon
 		if(IsActive)
 		{
 			//to update ammo text
-			owner.WeaponController.InvokeWeaponChange(this);
+			Owner.WeaponController.InvokeWeaponChange(this);
 		}
-	}
+	}	
 
 	/// <summary>
 	/// Calculates reload time left, sets it to active weapon,
@@ -129,6 +146,8 @@ public abstract class PlayerWeapon
 	public virtual void OnSetActive()
 	{
 	}
+
+	
 }
 
 public enum EWeaponUseResult

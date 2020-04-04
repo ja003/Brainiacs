@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MapTeleport : MapObstackle
 {
-	protected override void OnCollisionEffect(Projectile pProjectile)
+	protected override void OnCollisionEffect(int pDamage)
 	{
-		base.OnCollisionEffect(pProjectile);
-		Debug.Log("todo: teleport projectile");
+		base.OnCollisionEffect(pDamage);
+		//Debug.Log("todo: teleport projectile");
 	}
 }

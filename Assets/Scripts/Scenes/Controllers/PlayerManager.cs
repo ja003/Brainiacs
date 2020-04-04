@@ -26,7 +26,7 @@ public class PlayerManager : GameController
 
 	protected override void OnMainControllerActivated()
 	{
-		
+
 
 		//single player => spawn here
 		//MP => spawn in OnRemotePlayerLoadedScene
@@ -40,7 +40,7 @@ public class PlayerManager : GameController
 
 	public void btn_debugSpawnPlayer()
 	{
-		SpawnPlayer(brainiacs.GameInitInfo.Players[0]);
+		SpawnPlayer(brainiacs.GameInitInfo.Players[0], false);
 	}
 
 	public void btn_debugSyncPLayersInfo()
@@ -50,6 +50,8 @@ public class PlayerManager : GameController
 			p.Network.debug_SendInitInfo();
 		}
 	}
+
+
 
 	bool arePlayersSpawned;
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
@@ -66,12 +68,14 @@ public class PlayerManager : GameController
 
 		foreach(PlayerInitInfo playerInfo in pPlayersInfo)
 		{
-			Player spawnedPlayer = SpawnPlayer(playerInfo);
+			Player spawnedPlayer = SpawnPlayer(playerInfo, false);
 
 			if(DebugData.LocalRemote && spawnedPlayer.LocalRemote == null)
 			{
-				spawnedPlayer.LocalRemote = SpawnPlayer(playerInfo);
-				spawnedPlayer.LocalRemote.gameObject.name += "_remote";
+				spawnedPlayer.LocalRemote = SpawnPlayer(playerInfo, true);
+				//spawnedPlayer.LocalRemote.gameObject.name += "_remote";
+				//spawnedPlayer.LocalRemote.transform.position =
+				//	spawnedPlayer.transform.position + Vector3.down;
 
 				AddPlayer(spawnedPlayer.LocalRemote);
 			}
@@ -89,34 +93,47 @@ public class PlayerManager : GameController
 	/// <summary>
 	/// Only master spawn players
 	/// </summary>
-	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo)
+	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalRemote)
 	{
 		GameObject instance = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
 		Player playerInstance = instance.GetComponent<Player>();
 
 		playerInstance.transform.parent = transform;
 
-		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name;
+		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalRemote ? "_LR" : "");
 
-		Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+		Vector3 spawnPosition = game.MapController.ActiveMap.
+			GetSpawnPoint(pPlayerInfo.Number).position;
+		if(pIsLocalRemote)
+			spawnPosition += Vector3.down;
 
-		if(pPlayerInfo.Name == DebugData.GetPlayerName(1))
-			spawnPosition = Vector3.down;
+		bool debug_spwan = false;
+		if(debug_spwan)
+		{
+			if(pPlayerInfo.Name == DebugData.GetPlayerName(1))
+				spawnPosition = new Vector3(-3.3f, 3, 0);
+			//spawnPosition = Vector3.down;
 
-		if(pPlayerInfo.Name == DebugData.GetPlayerName(2))
-			spawnPosition = Vector3.zero;
+			if(pPlayerInfo.Name == DebugData.GetPlayerName(2))
+				spawnPosition = new Vector3(-1.8f, 2.3f, 0);
+			//spawnPosition = Vector3.zero;
 
-		if(pPlayerInfo.Name == DebugData.GetPlayerName(3))
-			spawnPosition = Vector3.down;
+			if(pPlayerInfo.Name == DebugData.GetPlayerName(3))
+				spawnPosition = Vector3.down;
+		}
 
-		playerInstance.SetInfo(pPlayerInfo, spawnPosition);
+		//OnAllPlayersAdded += () => playerInstance.SetInfo(pPlayerInfo, spawnPosition);
+		playerInstance.SetInfo(pPlayerInfo, pIsLocalRemote, spawnPosition);
 
 		//AddPlayer(playerInstance);
-		
+
 		return playerInstance;
 	}
 
-	public Action OnAllPlayersAdded;
+	//public Action OnAllPlayersAdded;
+
+	public ActionControl OnAllPlayersAdded = new ActionControl();
 
 	/// <summary>
 	/// Use this instead of: Players.Add()
@@ -124,22 +141,36 @@ public class PlayerManager : GameController
 	public void AddPlayer(Player pPlayer)
 	{
 		Players.Add(pPlayer);
-		int playersCount = Players.FindAll(a=>!a.IsLocalRemote).Count;
+		//Debug.Log("Add player " + pPlayer);
+		int playersCount = Players.FindAll(a => !a.IsLocalRemote).Count;
 
 		if(playersCount == brainiacs.GameInitInfo.Players.Count)
 		{
 			if(pPlayer.IsLocalRemote)
 				return;
 
+			if(allPlayersAdded)
+			{
+				Debug.LogError("OnAllPlayersAdded already called");
+				return;
+			}
+
+			//foreach(var player in Players)
+			//{
+			//	player.Init();
+			//}
 			//Debug.Log("All players added");
-			OnAllPlayersAdded?.Invoke();
-			OnAllPlayersAdded = null;
+			OnAllPlayersAdded.Invoke();
+			//OnAllPlayersAdded = null;
+			allPlayersAdded = true;
 		}
 	}
+	bool allPlayersAdded;
 
 	List<PhotonPlayer> loadedPlayers = new List<PhotonPlayer>();
 	internal void OnRemotePlayerLoadedScene(PhotonPlayer pPlayer)
 	{
+		Debug.Log("OnRemotePlayerLoadedScene" + pPlayer);
 		loadedPlayers.Add(pPlayer);
 
 		foreach(var player in brainiacs.GameInitInfo.Players)
@@ -164,6 +195,16 @@ public class PlayerManager : GameController
 
 		game.MapController.SetOnActivated(() =>
 				SpawnPlayers(brainiacs.GameInitInfo.Players));
+	}
+
+	public Player GetPlayer(PhotonPlayer pPhotonPlayer)
+	{
+		return Players.Find(a => a.Network.PhotonPlayer == pPhotonPlayer);
+	}
+
+	internal Player GetPlayer(int pPlayerNumber)
+	{
+		return Players.Find(a => a.InitInfo.Number == pPlayerNumber);
 	}
 
 }

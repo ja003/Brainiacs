@@ -14,7 +14,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -70,6 +70,14 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 95bdd9ed52d69c6418f37a91733e414a, type: 2}
+    m_Threshold: 101
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: weapon
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 95bdd9ed52d69c6418f37a91733e414a, type: 2}
     m_Threshold: 201
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -108,18 +116,10 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: weaponF
     m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 0}
-    m_Threshold: 208
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: weapon
-    m_Mirror: 0
   m_BlendParameter: weapon
   m_BlendParameterY: Blend
   m_MinThreshold: 10
-  m_MaxThreshold: 208
+  m_MaxThreshold: 205
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -152,7 +152,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: BT_Projectile
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

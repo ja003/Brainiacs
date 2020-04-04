@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf3ec5f835350e4f9d928ca01f37763, type: 3}
+  m_Name: C_Weapon_Map_Special_Flamethrower
+  m_EditorClassIdentifier: 
+  Id: 50
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 2800715737579632502, guid: c5453cbe07362d54599ec8a3bd1d4762,
+      type: 3}
+    PlayerSpriteRight: {fileID: 2045631647158670248, guid: c5453cbe07362d54599ec8a3bd1d4762,
+      type: 3}
+    playerSpriteDown: {fileID: -5748088590007121344, guid: c5453cbe07362d54599ec8a3bd1d4762,
+      type: 3}
+    PlayerSpriteLeft: {fileID: 7258727947841629698, guid: c5453cbe07362d54599ec8a3bd1d4762,
+      type: 3}
+    InfoSprite: {fileID: 21300000, guid: 228b1abb5afe4f048bdc6d3f2bd8c3d4, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 93ab3657518cd5541ba8911d9f6471cb, type: 3}
+    StatusSprite: {fileID: 21300000, guid: d6bbaa2d60f921a469077371e811eab6, type: 3}
+    StatusText: flame
+  SpecialWeaponInfo:
+    InHandWeaponVisualInfo:
+      Ammo: 0
+      Magazines: 0
+      Cooldown: 0
+      Cadency: 0
+    ControllerPrefab: {fileID: 3759334240498667119, guid: 0f9cbc6669e22fd46a8008da9e8b62dc,
+      type: 3}
+  InHandInfo:
+    Ammo: 50
+    Magazines: 2
+    Cooldown: 2
+    Cadency: 0

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7a3eada3490e6469893d01b8d2e1be, type: 3}
+  m_Name: C_Weapon_Hero_Special_Einstein
+  m_EditorClassIdentifier: 
+  Id: 103
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 6545748678537406207, guid: 93c2eb22263fe514b84284ac93226e00,
+      type: 3}
+    PlayerSpriteRight: {fileID: -1111964528512549786, guid: 93c2eb22263fe514b84284ac93226e00,
+      type: 3}
+    playerSpriteDown: {fileID: -2862908635026704301, guid: 93c2eb22263fe514b84284ac93226e00,
+      type: 3}
+    PlayerSpriteLeft: {fileID: -494023722289185070, guid: 93c2eb22263fe514b84284ac93226e00,
+      type: 3}
+    InfoSprite: {fileID: 21300000, guid: 9a625047b0fca2a4b8005472bcef3f9d, type: 3}
+  SpecialWeaponInfo:
+    InHandInfo:
+      Ammo: 1
+      Magazines: 11
+      Cooldown: 1
+      Cadency: 1
+    ControllerPrefab: {fileID: 4272039520474725651, guid: 66ea8dfb25d09854085a73edffe57c67,
+      type: 3}

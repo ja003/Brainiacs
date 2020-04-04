@@ -47,13 +47,13 @@ public class Game : CSingleton<Game>
 
 		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
 		{
-			Photon.Send(EPhotonMsg_Game.PlayerLoadedScene, PhotonNetwork.LocalPlayer.ActorNumber);
+			Photon.Send(EPhotonMsg.Game_PlayerLoadedScene, PhotonNetwork.LocalPlayer.ActorNumber);
 		}
 	}
 
 	public new void Activate()
 	{
-		Debug.Log("Game Activate");
+		//Debug.Log("Game Activate");
 		base.Activate();
 		mainCamera.enabled = true;
 	}

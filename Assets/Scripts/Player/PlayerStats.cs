@@ -10,7 +10,7 @@ public class PlayerStats : BrainiacsBehaviour
 	public int Deaths;
 	public int LivesLeft => lives - Deaths;
 
-	public EPlayerColor Color { get; internal set; }
+	//public EPlayerColor Color { get; internal set; }
 
 	private const float DEFAULT_SPEED = 1;
 	private const int MAX_HEALTH = 100;
@@ -20,12 +20,12 @@ public class PlayerStats : BrainiacsBehaviour
 
 	private bool isShielded;
 
-	public EHero Hero;
-	public string Name;
+	public PlayerInitInfo Info => owner.InitInfo;
 
 	private Action<PlayerStats> onStatsChange;
 
 	[SerializeField] public Transform StatusUiPosition;
+	[SerializeField] Player owner;
 
 	public void SetOnStatsChange(Action<PlayerStats> pAction)
 	{
@@ -33,14 +33,16 @@ public class PlayerStats : BrainiacsBehaviour
 		onStatsChange.Invoke(this);
 	}
 	
-	public void Init(PlayerInitInfo pPlayerInfo)
+	public void Init()
 	{
+		//Info = pPlayerInfo;
 		GameInitInfo gameInitInfo = brainiacs.GameInitInfo;
 		lives = gameInitInfo.Mode == EGameMode.Deathmatch ? 
 			gameInitInfo.GameModeValue : 666;
-		Hero = pPlayerInfo.Hero;
-		Name = pPlayerInfo.Name;
-		Color = pPlayerInfo.Color;
+		//Hero = pPlayerInfo.Hero;
+		//Name = pPlayerInfo.Name;
+		//Color = pPlayerInfo.Color;
+		OnRespawn(); //to update health etc
 	}
 
 	internal bool IsDead()
@@ -53,7 +55,7 @@ public class PlayerStats : BrainiacsBehaviour
 	//of the second one
 	public void SetSpeed(float pSpeed, float pDuration)
 	{
-		Debug.Log($"{Name} set speed {pSpeed}");
+		Debug.Log($"{owner.InitInfo.Name} set speed {pSpeed}");
 		Speed = pSpeed; 
 		DoInTime(() => Speed = DEFAULT_SPEED, pDuration);
 	}
@@ -80,7 +82,7 @@ public class PlayerStats : BrainiacsBehaviour
 
 		if(pIncrement < 0 && isShielded)
 		{
-			Debug.Log($"{Name} is invurnelable");
+			Debug.Log($"{owner.InitInfo.Name} is invurnelable");
 			return;
 		}
 

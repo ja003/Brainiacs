@@ -617,9 +617,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Deaths: 0
   Kills: 0
-  Hero: 0
-  Name: 
   StatusUiPosition: {fileID: 2198272451733234112}
+  owner: {fileID: 4342295620933284857}
 --- !u!1 &4664655632609788085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1050,7 @@ MonoBehaviour:
   Stats: {fileID: 2092177015604258632}
   Network: {fileID: 1812185347105052305}
   LocalRemote: {fileID: 0}
+  IsLocalRemote: 0
 --- !u!114 &7872993416487400290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,9 +1290,6 @@ MonoBehaviour:
   - Type: 3
     SynchronizeType: 1
     Name: direction
-  - Type: 4
-    SynchronizeType: 1
-    Name: isWalking
   - Type: 4
     SynchronizeType: 1
     Name: isDead

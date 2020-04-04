@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Serialization;
 
 [Serializable]
 public struct InHandWeaponInfo
@@ -48,7 +47,8 @@ public struct MapItemInfo
 [Serializable]
 public struct SpecialWeaponInfo
 {
-	public InHandWeaponInfo InHandWeaponVisualInfo;
+	[FormerlySerializedAs("InHandWeaponlInfo")]
+	public InHandWeaponInfo InHandInfo;
 	public PlayerWeaponSpecialController ControllerPrefab;
 }
 

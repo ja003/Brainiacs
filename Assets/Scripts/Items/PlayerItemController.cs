@@ -71,4 +71,21 @@ public class PlayerItemController : GameController
 			new PlayerWeaponProjectile(player, config);
 		weaponController.AddWeapon(weapon);
 	}
+
+	internal void AddMapWeaponSpecial(EWeaponId pWeapon)
+	{
+		if(pWeapon == EWeaponId.None)
+		{
+			Debug.LogError($"Added weapon was null");
+			return;
+		}
+		MapSpecialWeaponConfig config =
+			brainiacs.ItemManager.GetMapSpecialWeaponConfig(pWeapon);
+		if(config == null)
+			return;
+
+		PlayerWeaponSpecial weapon =
+			new PlayerWeaponSpecial(player, config);
+		weaponController.AddWeapon(weapon);
+	}
 }

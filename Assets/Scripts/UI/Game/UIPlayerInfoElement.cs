@@ -53,13 +53,15 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 		player = pPlayer;
 		gameObject.SetActive(true);
 
-		image.color = UIColorDB.GetColor(pPlayer.Stats.Color);
+		image.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
 
-		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.Stats.Hero).Portrait;
+		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.InitInfo.Hero).Portrait;
 
-		pPlayer.WeaponController.SetOnWeaponInfoChanged(SetWeaponInfo);
-		pPlayer.Stats.SetOnStatsChange(OnPlayerStatsChange);
-
+		if(pPlayer.IsItMe)
+		{
+			pPlayer.WeaponController.SetOnWeaponInfoChanged(SetWeaponInfo);
+			pPlayer.Stats.SetOnStatsChange(OnPlayerStatsChange);
+		}
 		pPlayer.Visual.PlayerInfo = this;
 	}
 

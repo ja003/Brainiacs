@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e584d321fc9074388ea789892cd49a, type: 3}
+  m_Name: C_Weapon_Hero_Basic_Einstein
+  m_EditorClassIdentifier: 
+  Id: 203
+  VisualInfo:
+    PlayerSpriteUp: {fileID: -3041030413782428115, guid: b6671129714996e4392c013647e146e3,
+      type: 3}
+    PlayerSpriteRight: {fileID: 4355670128123954830, guid: b6671129714996e4392c013647e146e3,
+      type: 3}
+    playerSpriteDown: {fileID: 6302073683994250983, guid: b6671129714996e4392c013647e146e3,
+      type: 3}
+    PlayerSpriteLeft: {fileID: 6218918206322077743, guid: b6671129714996e4392c013647e146e3,
+      type: 3}
+    InfoSprite: {fileID: 21300000, guid: 16c9bd358409384438c028eaae772730, type: 3}
+  ProjectileVisual: {fileID: 4078532044920050858, guid: c3d8337d96f40b248b8368d88e324971,
+    type: 3}

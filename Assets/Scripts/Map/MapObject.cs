@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MapObject : BrainiacsBehaviour, IProjectileCollisionHandler
+public abstract class MapObject : BrainiacsBehaviour, ICollisionHandler
 {
-	public bool OnCollision(Projectile pProjectile)
+	public bool OnCollision(int pDamage)
 	{
-		OnCollisionEffect(pProjectile);
+		OnCollisionEffect(pDamage);
+		//if(pDamage > 0)
+		//	gameObject.SetActive(false);
+		//todo: implement powerup class -> might explode on collision?
+
 		return true;
 	}
 
-	protected abstract void OnCollisionEffect(Projectile pProjectile);
+	protected abstract void OnCollisionEffect(int pDamage);
 }

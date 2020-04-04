@@ -53,6 +53,41 @@ public static class Utils
 		return result;
 	}
 
+	public static EDirection GetOppositeDirection(EDirection pDirection)
+	{
+		switch(pDirection)
+		{
+			case EDirection.Up:
+				return EDirection.Down;
+			case EDirection.Right:
+				return EDirection.Left;
+			case EDirection.Down:
+				return EDirection.Up;
+			case EDirection.Left:
+				return EDirection.Right;
+		}
+		return EDirection.None;
+	}
+
+	/// <summary>
+	/// Return direction rotated by 90 clockwise
+	/// </summary>
+	public static EDirection GetOrthogonalDirection(EDirection pDirection)
+	{
+		switch(pDirection)
+		{
+			case EDirection.Up:
+				return EDirection.Right;
+			case EDirection.Right:
+				return EDirection.Down;
+			case EDirection.Down:
+				return EDirection.Left;
+			case EDirection.Left:
+				return EDirection.Up;
+		}
+		return EDirection.None;
+	}
+
 	public static List<string> GetStrings(Type pType, int pExclude = -1)
 	{
 		List<string> values = Enum.GetNames(pType).OfType<string>().ToList();

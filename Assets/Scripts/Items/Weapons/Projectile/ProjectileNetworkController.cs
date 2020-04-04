@@ -52,9 +52,3 @@ public class ProjectileNetworkController : PhotonMessenger
 		return view.IsMine || projectile.LocalRemote;
 	}
 }
-
-public enum EPhotonMsg_Projectile
-{
-	None = 0,
-	Spawn
-}

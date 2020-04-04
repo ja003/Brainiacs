@@ -12,7 +12,7 @@ public class PlayerWeaponController : GameBehaviour
 	public PlayerMovement movement;
 
 	[SerializeField]
-	private Player owner;
+	public Player owner;
 
 
 	[SerializeField] private Transform projectileStartUp;
@@ -21,10 +21,12 @@ public class PlayerWeaponController : GameBehaviour
 	[SerializeField] private Transform projectileStartLeft;
 
 	private List<PlayerWeapon> weapons = new List<PlayerWeapon>();
-	private PlayerWeapon activeWeapon;
+	public PlayerWeapon ActiveWeapon { get; private set; }
 	[SerializeField] private int activeWeaponIndex;
 
 	private Action<PlayerWeapon> onWeaponInfoChanged;
+
+
 	public void InvokeWeaponChange(PlayerWeapon pWeapon)
 	{
 		onWeaponInfoChanged(pWeapon);
@@ -38,9 +40,19 @@ public class PlayerWeaponController : GameBehaviour
 		}
 	}
 
+	internal void OnDirectionChange(EDirection pDirection)
+	{
+		if(ActiveWeapon == null && !owner.IsLocalRemote)
+		{
+			Debug.LogError("Active weapon is null");
+		}
+
+		ActiveWeapon?.OnDirectionChange(pDirection);
+	}
+
 	private void RemoveWeapon(PlayerWeapon pWeapon)
 	{
-		if(activeWeapon == pWeapon)
+		if(ActiveWeapon == pWeapon)
 		{
 			//we can count on player always having at least 2 weapons (basic + special)
 			SwapWeapon();
@@ -51,7 +63,8 @@ public class PlayerWeaponController : GameBehaviour
 	public void SetOnWeaponInfoChanged(Action<PlayerWeapon> pAction)
 	{
 		onWeaponInfoChanged += pAction;
-		onWeaponInfoChanged.Invoke(activeWeapon);
+		if(ActiveWeapon != null)
+			onWeaponInfoChanged.Invoke(ActiveWeapon);
 	}
 
 	//public void AddWeapon(NewWeaponConfig pConfig)
@@ -72,19 +85,25 @@ public class PlayerWeaponController : GameBehaviour
 		SetActiveWeapon(weapons.IndexOf(weaponInInventory));
 	}
 
+	public bool CanSwapWeapon = true;
 	public void SwapWeapon()
 	{
+		if(!CanSwapWeapon)
+		{
+			Debug.Log("Cant swap");
+			return;
+		}
 		SetActiveWeapon(activeWeaponIndex + 1);
 	}
 
 	public void StopUseWeapon()
 	{
-		activeWeapon.StopUse();
+		ActiveWeapon.StopUse();
 	}
 
 	public void UseWeapon()
 	{
-		EWeaponUseResult useResult = activeWeapon.Use();
+		EWeaponUseResult useResult = ActiveWeapon.Use();
 		if(useResult == EWeaponUseResult.CantUse)
 		{
 			//Debug.Log($"{activeWeapon} cant be used");
@@ -93,7 +112,7 @@ public class PlayerWeaponController : GameBehaviour
 		}
 		//Debug.Log($"{activeWeapon} USE");
 
-		InvokeWeaponChange(activeWeapon);
+		InvokeWeaponChange(ActiveWeapon);
 
 		HandleUseResult(useResult);
 	}
@@ -103,6 +122,8 @@ public class PlayerWeaponController : GameBehaviour
 		game.ProjectileManager.SpawnProjectile(
 				GetProjectileStartPosition(movement.CurrentDirection),
 				owner, pProjectile.Projectile);
+
+		owner.LocalRemote?.WeaponController.ShootProjectile(pProjectile);
 	}
 
 	private void HandleUseResult(EWeaponUseResult pUseResult)
@@ -110,10 +131,12 @@ public class PlayerWeaponController : GameBehaviour
 		switch(pUseResult)
 		{
 			case EWeaponUseResult.Reload:
-				ReloadWeapon(activeWeapon);
+				StopUseWeapon();
+				StartReloadWeapon(ActiveWeapon);
 				break;
 			case EWeaponUseResult.Remove:
-				RemoveWeapon(activeWeapon);
+				StopUseWeapon();
+				RemoveWeapon(ActiveWeapon);
 				break;
 		}
 	}
@@ -122,9 +145,10 @@ public class PlayerWeaponController : GameBehaviour
 	/// Starts realoding the weapon.
 	/// There can be multiple weapons reloading at the same time.
 	/// </summary>
-	private void ReloadWeapon(PlayerWeapon pWeapon)
+	private void StartReloadWeapon(PlayerWeapon pWeapon)
 	{
 		pWeapon.IsRealoading = true;
+		ActiveWeapon.OnStartReloadWeapon();
 
 		Action onReloaded = pWeapon.Reload;
 		Action<float> onReloadUpdate = pWeapon.ReportReloadProgress;
@@ -161,14 +185,17 @@ public class PlayerWeaponController : GameBehaviour
 
 		activeWeaponIndex = pIndex;
 
-		if(activeWeapon != null)
-			activeWeapon.IsActive = false;
-		activeWeapon = weapons[pIndex];
-		activeWeapon.IsActive = true;
+		if(ActiveWeapon != null)
+			ActiveWeapon.IsActive = false;
+		ActiveWeapon = weapons[pIndex];
+		ActiveWeapon.IsActive = true;
+		//Debug.Log("SetActiveWeapon " + ActiveWeapon);
 
-		visual.SetActiveWeapon(activeWeapon);
+		visual.SetActiveWeapon(ActiveWeapon);
 
-		onWeaponInfoChanged?.Invoke(activeWeapon);
-		activeWeapon.OnSetActive();
+		onWeaponInfoChanged?.Invoke(ActiveWeapon);
+		ActiveWeapon.OnSetActive();
 	}
+
+
 }

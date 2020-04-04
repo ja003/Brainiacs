@@ -9,6 +9,7 @@ public class MapItem : MapObject
 
 	private void Spawn(Vector3 pPosition)
 	{
+		gameObject.SetActive(true);
 		transform.position = pPosition;
 		//Debug.Log($"Item {config} spawned at {pPosition}");
 	}
@@ -58,7 +59,7 @@ public class MapItem : MapObject
 		gameObject.SetActive(false);
 	}
 
-	protected override void OnCollisionEffect(Projectile pProjectile)
+	protected override void OnCollisionEffect(int pDamage)
 	{
 		if(weaponConfig != null)
 		{

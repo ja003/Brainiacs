@@ -93,12 +93,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		Debug.Log("OnJoinedRoom");
 		base.OnJoinedRoom();
 		//IsMultiplayer = true;
-		if(!PhotonNetwork.IsMasterClient)
-		{
-			Debug.Log("Opening main game setup");
-			Debug.Log("...maybe after fisrt game info msg?");
-			//MainMenu.Instance.GameSetup.OpenMain(false);
-		}
+		//if(!PhotonNetwork.IsMasterClient)
+		//{
+		//	Debug.Log("Opening main game setup");
+		//	Debug.Log("...maybe after fisrt game info msg?");
+		//	//MainMenu.Instance.GameSetup.OpenMain(false);
+		//}
 
 	}
 

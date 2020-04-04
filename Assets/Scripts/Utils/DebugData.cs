@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,7 @@ public static class DebugData
 	public static bool TestMP = false;
 
 	public static bool TestPlayers = false;
-
-	public static bool LocalRemote = false;
-
+	public static bool LocalRemote = TestPlayers;
 
 	public static void OnBrainiacsAwake()
 	{
@@ -74,7 +73,7 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.Nobel, GetPlayerName(pPlayerNumber),
+			EHero.DaVinci, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
 				//todo: implement debug data for PC and Unity platform
 			//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);
@@ -101,6 +100,7 @@ public static class DebugData
 				//	KeyCode.Alpha1, KeyCode.Alpha3);
 				break;
 		}
+		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
 		return player;
 

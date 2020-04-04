@@ -15,7 +15,7 @@ public class UIScoreboardController : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
-		game.PlayerManager.OnAllPlayersAdded += InitPlayersScore;
+		game.PlayerManager.OnAllPlayersAdded.AddAction(InitPlayersScore);
 	}
 
 	protected override void OnMainControllerActivated()

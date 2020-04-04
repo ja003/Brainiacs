@@ -9,7 +9,7 @@ public class UIPlayerInfoController : GameController
 	protected override void OnMainControllerAwaken()
 	{
 		//client has to init after all players are added
-		game.PlayerManager.OnAllPlayersAdded += InitPlayersInfo;
+		game.PlayerManager.OnAllPlayersAdded.AddAction(InitPlayersInfo);
 	}
 
 	protected override void OnMainControllerActivated()

@@ -4,21 +4,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PhotonPlayer = Photon.Realtime.Player;
 
 /// <summary>
 /// Handles RPC messanging of one photon view
 /// </summary>
 public abstract class PhotonMessenger : BrainiacsBehaviour
 {
-	protected PhotonView view { get; private set; }
+	//protected PhotonView view { get; private set; }
 
-	[SerializeField] bool DEBUG_LOG = false;
-
-	protected override void Awake()
+	private PhotonView _view;
+	protected PhotonView view
 	{
-		view = GetComponent<PhotonView>();
-		base.Awake();
+		get
+		{
+			if(_view == null)
+				_view = GetComponent<PhotonView>();
+			return _view;
+		}
 	}
+
+	public bool IsMine => view ? view.IsMine : true;
+	public PhotonPlayer PhotonController => view.Controller;
+
+	[SerializeField] protected bool DEBUG_LOG = false;
+
+	//protected override void Awake()
+	//{
+	//	view = GetComponent<PhotonView>();
+	//	base.Awake();
+	//}
 
 	public void debug_HandleMsg(EPhotonMsg pReceivedMsg, object pParam)
 	{
@@ -73,7 +88,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		bool isException =
 			//info that client need to init his player
 			pMsgType == EPhotonMsg.Player_InitPlayer ||
-			pMsgType == EPhotonMsg.Player_HitByProjectile;
+			pMsgType == EPhotonMsg.Player_ApplyDamage;
 
 		if(!CanSend() && !isException)
 		{
@@ -110,6 +125,8 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	{
 		switch(pMsgType)
 		{
+			case EPhotonMsg.Game_PlayerLoadedScene:
+				return RpcTarget.MasterClient;
 			//case EPhotonMsg_MainMenu.Play:
 			//	return RpcTarget.All;
 			case EPhotonMsg.MainMenu_SyncGameInfo:
@@ -129,6 +146,9 @@ public enum EPhotonMsg
 {
 	None,
 
+	//Game
+	Game_PlayerLoadedScene,
+
 	//Main menu
 	MainMenu_SyncGameInfo,
 	MainMenu_SyncPlayerInfo,
@@ -138,7 +158,7 @@ public enum EPhotonMsg
 	Player_ChangeDirection,
 	Player_InitPlayer,
 	Player_ShowWeapon,
-	Player_HitByProjectile,
+	Player_ApplyDamage,
 
 	Player_UI_PlayerInfo_SetHealth,
 	Player_UI_PlayerInfo_SetReloading,
@@ -148,8 +168,21 @@ public enum EPhotonMsg
 	Player_UI_Scoreboard_SetStats,
 
 	//Projectile
-	Projectile_Spawn
+	Projectile_Spawn,
+	// - projectile is Destroyed using PhotonNetwork.Destroy => no need for message
 
+	//Special
+	Special_Init,
+	Special_Use,
+	Special_StopUse,
 
+	//- Flamethrower
+	Special_Flamethrower_OnDirectionChange,
 
+	//- Curie
+	//Special_Curie_StartTruck,
+	Special_Curie_Collide,
+
+	//- Einstein
+	Special_Einstein_FallOn,
 }

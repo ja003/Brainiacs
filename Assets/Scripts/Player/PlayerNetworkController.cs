@@ -8,7 +8,7 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class PlayerNetworkController : PhotonMessenger
 {
-	public PhotonPlayer photonPlayer;
+	public PhotonPlayer PhotonPlayer;
 
 	Player player;
 	PlayerInitInfo playerInfo;
@@ -26,10 +26,16 @@ public class PlayerNetworkController : PhotonMessenger
 	internal void Init(PlayerInitInfo pInfo)
 	{
 		playerInfo = pInfo;
-		photonPlayer = playerInfo.PhotonPlayer;
+		PhotonPlayer = playerInfo.PhotonPlayer;
 		inited = true;
 
-		Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
+		//Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
+
+		if(!isItMe && PhotonPlayer != null)
+		{
+			view.TransferOwnership(PhotonPlayer);
+			//Debug.Log("Transfer ownership to " + PhotonPlayer.NickName);
+		}
 
 		if(PhotonNetwork.IsMasterClient)
 		{
@@ -39,12 +45,7 @@ public class PlayerNetworkController : PhotonMessenger
 			//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
 			Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
 		}
-
-		if(!isItMe && photonPlayer != null)
-		{
-			view.TransferOwnership(photonPlayer);
-			Debug.Log("Transfer ownership to " + photonPlayer.NickName);
-		}
+		
 	}
 
 	public void debug_SendInitInfo()
@@ -58,7 +59,7 @@ public class PlayerNetworkController : PhotonMessenger
 	{
 		if(!inited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
 		{
-			Debug.Log("not inited yet");
+			//Debug.Log("not inited yet. " + pReceivedMsg);
 			return;
 		}
 
@@ -79,9 +80,9 @@ public class PlayerNetworkController : PhotonMessenger
 				EWeaponId weapon = (EWeaponId)pParams[0];
 				player.Visual.ShowWeapon(weapon);
 				break;
-			case EPhotonMsg.Player_HitByProjectile:
+			case EPhotonMsg.Player_ApplyDamage:
 				int damage = (int)pParams[0];
-				player.Health.HitByProjectile(damage);
+				player.Health.ApplyDamage(damage);
 				break;
 
 			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
@@ -132,18 +133,18 @@ public class PlayerNetworkController : PhotonMessenger
 	}
 }
 
-public enum EPhotonMsg_Player
-{
-	None = 0,
-	ChangeDirection,
-	InitPlayer,
-	ShowWeapon,
-	HitByProjectile,
+//public enum EPhotonMsg_Player
+//{
+//	None = 0,
+//	ChangeDirection,
+//	InitPlayer,
+//	ShowWeapon,
+//	HitByProjectile,
 
-	UI_PlayerInfo_SetHealth,
-	UI_PlayerInfo_SetReloading,
-	UI_PlayerInfo_SetAmmo,
-	UI_PlayerInfo_SetActiveWeapon,
+//	UI_PlayerInfo_SetHealth,
+//	UI_PlayerInfo_SetReloading,
+//	UI_PlayerInfo_SetAmmo,
+//	UI_PlayerInfo_SetActiveWeapon,
 
-	UI_Scoreboard_SetStats,
-}
+//	UI_Scoreboard_SetStats,
+//}

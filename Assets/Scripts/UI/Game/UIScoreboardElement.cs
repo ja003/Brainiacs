@@ -18,10 +18,10 @@ public class UIScoreboardElement : BrainiacsBehaviour
 		player = pPlayer;
 
 		//color and name dont change during game
-		background.color = UIColorDB.GetColor(pPlayer.Stats.Color);
+		background.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;
-		name.text = pPlayer.Stats.Name;
+		name.text = pPlayer.InitInfo.Name;
 
 		//register for stats change
 		pPlayer.Stats.SetOnStatsChange(OnStatsChanged);

@@ -35,4 +35,9 @@ public class Map : MonoBehaviour
 		}
 		return null;
 	}
+
+	public Transform GetSpawnPoint(int pIndex)
+	{
+		return spawnPoints[pIndex];
+	}
 }

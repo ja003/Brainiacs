@@ -42,6 +42,18 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
+	private Rigidbody2D _rigidBody2D;
+	protected Rigidbody2D rigidBody2D
+	{
+		get
+		{
+			if(_rigidBody2D == null)
+				_rigidBody2D = GetComponent<Rigidbody2D>();
+			return _rigidBody2D;
+		}
+	}
+
+
 	private BoxCollider2D _boxCollider2D;
 	protected BoxCollider2D boxCollider2D
 	{
@@ -50,6 +62,17 @@ public class BrainiacsBehaviour : MonoBehaviour
 			if(_boxCollider2D == null)
 				_boxCollider2D = GetComponent<BoxCollider2D>();
 			return _boxCollider2D;
+		}
+	}
+
+	private CircleCollider2D _circleCollider2D;
+	protected CircleCollider2D circleCollider2D
+	{
+		get
+		{
+			if(_circleCollider2D == null)
+				_circleCollider2D = GetComponent<CircleCollider2D>();
+			return _circleCollider2D;
 		}
 	}
 

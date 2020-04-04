@@ -33,11 +33,14 @@ public class PlayerMovement : BrainiacsBehaviour
 		{
 			CurrentDirection = pDirection;
 			player.Visual.OnDirectionChange(pDirection);
+			player.WeaponController.OnDirectionChange(pDirection);
 		}
 		CurrentDirection = pDirection;
 		transform.position += Utils.GetVector3(pDirection) *
 			MOVE_SPEED_BASE * player.Stats.Speed;
 		player.Visual.Move();
+
+		player.LocalRemote?.Movement.Move(pDirection);
 	}
 
 	public void Idle()

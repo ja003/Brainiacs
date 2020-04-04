@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapObstackle : MapObject
 {
-	protected override void OnCollisionEffect(Projectile pProjectile)
+	protected override void OnCollisionEffect(int pDamage)
 	{
 		//Debug.Log("todo: play collision sound, make effect...");
 	}

@@ -8,19 +8,26 @@ public class ProjectileManager : GameController
 	[SerializeField]
 	private Projectile prefab;
 
-	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig)
+	public int LayerProjectile => prefab.gameObject.layer;
+
+	public void SpawnProjectile(Vector3 pPosition, Player pOwner, EWeaponId pWeapon, EDirection pDirection = EDirection.None)
+	{
+		SpawnProjectile(pPosition, pOwner, brainiacs.ItemManager.GetProjectileConfig(pWeapon), pDirection);
+	}
+
+	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
 		Projectile newProjectile = PhotonNetwork.Instantiate(
 			prefab.name, pPosition, Quaternion.identity).GetComponent<Projectile>();
 
-		if(DebugData.LocalRemote)
-		{
-			Projectile localRemoteProjectile = PhotonNetwork.Instantiate(
-				prefab.name, pPosition + Vector3.up, Quaternion.identity).GetComponent<Projectile>();
-			newProjectile.LocalRemote = localRemoteProjectile;
-		}
+		//if(DebugData.LocalRemote)
+		//{
+		//	Projectile localRemoteProjectile = PhotonNetwork.Instantiate(
+		//		prefab.name, pPosition + Vector3.up, Quaternion.identity).GetComponent<Projectile>();
+		//	newProjectile.LocalRemote = localRemoteProjectile;
+		//}
 
-		newProjectile.Spawn(pOwner, pConfig);
+		newProjectile.Spawn(pOwner, pConfig, pDirection);
 	}
 
 	protected override void OnMainControllerActivated()
@@ -29,5 +36,6 @@ public class ProjectileManager : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
+			
 	}
 }

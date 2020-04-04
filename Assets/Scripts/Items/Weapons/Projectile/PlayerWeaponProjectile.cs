@@ -28,8 +28,8 @@ public class PlayerWeaponProjectile : PlayerWeapon
 	public override EWeaponUseResult Use()
 	{
 		EWeaponUseResult useResult = base.Use();
-		if(useResult == EWeaponUseResult.OK)
-			owner.WeaponController.ShootProjectile(ProjectileInfo);
+		if(useResult != EWeaponUseResult.CantUse)
+			Owner.WeaponController.ShootProjectile(ProjectileInfo);
 		return useResult;
 	}
 

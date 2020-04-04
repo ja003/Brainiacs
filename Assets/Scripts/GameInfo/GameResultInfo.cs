@@ -30,8 +30,8 @@ public class PlayerResultInfo
 
 	public PlayerResultInfo(PlayerStats pStats)
 	{
-		Name = pStats.Name;
-		Hero = pStats.Hero;
+		Name = pStats.Info.Name;
+		Hero = pStats.Info.Hero;
 		Kills = pStats.Kills;
 		LivesLeft = pStats.LivesLeft;
 	}

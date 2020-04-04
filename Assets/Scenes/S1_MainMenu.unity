@@ -2065,10 +2065,6 @@ MonoBehaviour:
   heroSwapper: {fileID: 1648734164}
   playerTypeText: {fileID: 906801647}
   btnRemove: {fileID: 1425056026}
-  AssignedColor: 0
-  Hero: 0
-  Number: 0
-  IsReady: 0
   IsItMe: 0
 --- !u!1 &479368711
 GameObject:
@@ -7006,8 +7002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ad17e11f1598d49848f2f807060bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 0}
-  view: {fileID: 1939122612}
+  DEBUG_LOG: 0
 --- !u!1 &1948139596
 GameObject:
   m_ObjectHideFlags: 0

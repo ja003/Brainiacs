@@ -10,7 +10,7 @@ public class ItemManager : BrainiacsController
 	public List<MapWeaponConfig> MapWeapons;
 
 	[SerializeField]
-	public List<MapSpecialWeapon> MapWeaponsSpecial;
+	public List<MapSpecialWeaponConfig> MapWeaponsSpecial;
 
 
 	[SerializeField]
@@ -21,6 +21,13 @@ public class ItemManager : BrainiacsController
 
 	private Dictionary<EWeaponId, ProjectileConfig> allProjectiles 
 		= new Dictionary<EWeaponId, ProjectileConfig>();
+
+	public void AddProjectile(EWeaponId pWeapon, ProjectileConfig pConfig)
+	{
+		if(allProjectiles.ContainsKey(pWeapon))
+			return;
+		allProjectiles.Add(pWeapon, pConfig);
+	}
 
 	private void Init()
 	{
@@ -60,7 +67,7 @@ public class ItemManager : BrainiacsController
 		brainiacs.HeroManager.SetOnAwaken(Init);
 	}
 
-	public MapSpecialWeapon GetMapSpecialWeaponConfig(EWeaponId pId)
+	public MapSpecialWeaponConfig GetMapSpecialWeaponConfig(EWeaponId pId)
 	{
 		return MapWeaponsSpecial.Find(a => a.Id == pId);
 	}
