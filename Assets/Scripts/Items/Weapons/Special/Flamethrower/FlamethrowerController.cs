@@ -73,11 +73,11 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 	{
 		if(!isUsed)
 			return;
-		//Debug.Log($"Flamethrower OnTriggerStay2D " + pCollision.gameObject.name);
 		Player player = pCollision.gameObject.GetComponent<Player>();
 		if(player)
 		{
 			int damage = GetDamage(player.transform.position);
+			Debug.Log($"Flamethrower  " + damage);
 			player.Stats.AddHealth(-damage);
 		}
 	}

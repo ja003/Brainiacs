@@ -156,7 +156,7 @@ MonoBehaviour:
   animator: {fileID: 1217923435359725167}
   collisionDetector: {fileID: 1107499961995651341}
   minDamage: 1
-  maxDamage: 10
+  maxDamage: 5
   maxDistance: {fileID: 1592433368}
 --- !u!114 &-1293533251116011119
 MonoBehaviour:

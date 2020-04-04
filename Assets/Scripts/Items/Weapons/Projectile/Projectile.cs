@@ -102,10 +102,24 @@ public class Projectile : BrainiacsBehaviour
 		transform.position += direction * Time.deltaTime * config.Speed;
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	//private void OnCollisionEnter2D(Collision2D collision)
+	//{
+	//	ICollisionHandler handler =
+	//		collision.collider.GetComponent<ICollisionHandler>();
+
+	//	bool result = false;
+	//	if(handler != null)
+	//		result = handler.OnCollision(config.Damage);
+
+	//	if(result)
+	//		Network.Destroy();
+	//		//ReturnToPool();
+	//}
+
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		ICollisionHandler handler =
-			collision.collider.GetComponent<ICollisionHandler>();
+			collision.gameObject.GetComponent<ICollisionHandler>();
 
 		bool result = false;
 		if(handler != null)
@@ -113,7 +127,7 @@ public class Projectile : BrainiacsBehaviour
 
 		if(result)
 			Network.Destroy();
-			//ReturnToPool();
+		//ReturnToPool();
 	}
 
 	//TODO: pooling

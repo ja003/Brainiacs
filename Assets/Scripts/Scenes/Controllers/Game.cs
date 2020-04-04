@@ -35,10 +35,10 @@ public class Game : CSingleton<Game>
 		}
 		btnEnd.onClick.AddListener(TestEndGame);
 
-		OnAwaken();
+		brainiacs.SetOnAwaken(OnAwaken);
+		//OnAwaken();
 		base.Awake(); //always call base.event() at the end
 	}
-
 
 	private void OnAwaken()
 	{

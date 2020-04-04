@@ -90,11 +90,11 @@ public class Player : GameBehaviour
 
 		ItemController.AddHeroBasicWeapon(InitInfo.Hero);
 		ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
-
-		ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
 		ItemController.AddMapWeapon(EWeaponId.MP40);
-		ItemController.AddHeroSpecialWeapon(EHero.Einstein);
+
 		ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
+		ItemController.AddHeroSpecialWeapon(EHero.Einstein);
+		ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
 	}
 
 	public override string ToString()

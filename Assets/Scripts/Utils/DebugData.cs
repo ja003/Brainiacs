@@ -12,7 +12,7 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = false;
+	public static bool TestPlayers = true;
 	public static bool LocalRemote = TestPlayers;
 
 	public static void OnBrainiacsAwake()

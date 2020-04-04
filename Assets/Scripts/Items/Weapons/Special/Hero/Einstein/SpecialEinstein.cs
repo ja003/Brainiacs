@@ -46,12 +46,9 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 
 	private void Explode()
 	{
-		Debug.Log("BOOOM");
+		//Debug.Log("BOOOM");
 		spriteRend.enabled = false;
 		explosion.SetEnabled(true);
-
-
-		//todo: damage
 	}
 
 	internal void OnExplosionStateExit()

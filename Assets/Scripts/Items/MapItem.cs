@@ -30,9 +30,18 @@ public class MapItem : MapObject
 		Spawn(pPosition);
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	//private void OnCollisionEnter2D(Collision2D collision)
+	//{
+	//	Player player = collision.collider.GetComponent<Player>();
+	//	if(player)
+	//	{
+	//		OnEnter(player);
+	//	}
+	//}
+
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Player player = collision.collider.GetComponent<Player>();
+		Player player = collision.gameObject.GetComponent<Player>();
 		if(player)
 		{
 			OnEnter(player);

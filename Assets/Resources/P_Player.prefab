@@ -216,6 +216,7 @@ MonoBehaviour:
   projectileStartDown: {fileID: 5578320376716274107}
   projectileStartLeft: {fileID: 9167952082431498101}
   activeWeaponIndex: 0
+  CanSwapWeapon: 1
 --- !u!1 &1099038216
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +946,6 @@ GameObject:
   - component: {fileID: 7872993416487400290}
   - component: {fileID: 7872993416487400291}
   - component: {fileID: 475219872465314036}
-  - component: {fileID: 8172034968436022763}
   - component: {fileID: 4773161991021014474}
   - component: {fileID: 1489477448}
   - component: {fileID: 1489477447}
@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 699375688}
   - component: {fileID: 1812185347105052305}
   - component: {fileID: 2338090529042073309}
+  - component: {fileID: 5158018583329352097}
   m_Layer: 8
   m_Name: P_Player
   m_TagString: Untagged
@@ -1106,27 +1107,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39253673, y: 0.49668077}
   m_EdgeRadius: 0
---- !u!50 &8172034968436022763
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288558609917275097}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &4773161991021014474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,3 +1282,24 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
+--- !u!50 &5158018583329352097
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

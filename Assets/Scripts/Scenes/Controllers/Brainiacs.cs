@@ -34,7 +34,6 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 	protected override void Awake()
 	{
-		base.Awake();
 
 		GameInitInfo = new GameInitInfo();
 		
@@ -45,9 +44,10 @@ public class Brainiacs : CSingleton<Brainiacs>
 		debugLogConsole.SetActive(!Application.isEditor);
 
 		DebugData.OnBrainiacsAwake();
+		base.Awake();
 	}
 
-	
+
 
 	public void SetGameResultInfo(List<Player> pPlayers)
 	{

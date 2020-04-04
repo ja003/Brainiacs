@@ -49,6 +49,8 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 		//prevent weapon change
 		weaponContoller.CanSwapWeapon = false;
 
+		//todo: make player invulnerable (he can be hit by bomb etc..)
+
 		SetEnabled(true);
 
 	}
@@ -66,6 +68,7 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 		currentHealth = maxHealth;
 	}
 
+	//private void OnTriggerEnter2D(Collider2D collision)
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		//Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
@@ -82,7 +85,6 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 
 		Debug.Log("Hit " + collision.gameObject.name);
 		handler.OnCollision(damage);
-
 	}
 
 	public bool OnCollision(int pDamage)
