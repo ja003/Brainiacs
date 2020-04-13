@@ -616,10 +616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d6e00c986bdac439619d4d5a02895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Deaths: 0
-  Kills: 0
-  StatusUiPosition: {fileID: 2198272451733234112}
-  owner: {fileID: 4342295620933284857}
+  _player: {fileID: 4342295620933284857}
+  StatusUiPosition: {fileID: 2969651486375344628}
 --- !u!1 &4664655632609788085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,9 +1047,11 @@ MonoBehaviour:
   Health: {fileID: 4244118042715792558}
   ItemController: {fileID: 8791258408710402016}
   Stats: {fileID: 2092177015604258632}
-  Network: {fileID: 1812185347105052305}
-  LocalRemote: {fileID: 0}
-  IsLocalRemote: 0
+  Photon: {fileID: 1812185347105052305}
+  LocalImage: {fileID: 0}
+  LocalImageOwner: {fileID: 0}
+  IsLocalImage: 0
+  IsInited: 0
 --- !u!114 &7872993416487400290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac64fea84d228d4f9450e8f0dd74fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   weaponUp: {fileID: 233938034378121293}
   weaponRight: {fileID: 1603682625}
   weaponDown: {fileID: 267343708}
@@ -1129,7 +1130,6 @@ MonoBehaviour:
   handsRight: {fileID: 1921905453}
   paletteSwap: {fileID: 1489477447}
   movement: {fileID: 7872993416487400290}
-  network: {fileID: 1812185347105052305}
   PlayerInfo: {fileID: 0}
   Scoreboard: {fileID: 0}
 --- !u!95 &1489477448
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8288558609917275097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd53f6ff33300974ab7e6772f7b1af6d, type: 3}
+  m_Script: {fileID: 11500000, guid: dfd30f586c788814bbb980728556bca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0

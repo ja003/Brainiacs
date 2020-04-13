@@ -40,7 +40,7 @@ public class PlayerMovement : BrainiacsBehaviour
 			MOVE_SPEED_BASE * player.Stats.Speed;
 		player.Visual.Move();
 
-		player.LocalRemote?.Movement.Move(pDirection);
+		player.LocalImage?.Movement.Move(pDirection);
 	}
 
 	public void Idle()

@@ -11,7 +11,7 @@ public class MainMenuPhoton : PhotonMessenger
 	//	HandleMsg(receivedMsg, new object[] { pParam });
 	//}
 
-	protected override bool CanSend()
+	protected override bool CanSend(EPhotonMsg pMsgType)
 	{
 		return true;
 	}

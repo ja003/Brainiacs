@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlamethrowerNetwork : SpecialWeaponNetwork
+public class FlamethrowerPhoton : SpecialWeaponPhoton
 {
 
 	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)

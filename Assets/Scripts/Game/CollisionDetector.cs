@@ -38,5 +38,7 @@ public class CollisionDetector : MonoBehaviour
 public interface IOnCollision
 {
 	//void OnTriggerExit(Collider pOther);
+
+	
 	void OnTriggerStay2D(Collider2D pCollision);
 }

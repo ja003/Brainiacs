@@ -42,7 +42,7 @@ public class PlayerWeaponController : GameBehaviour
 
 	internal void OnDirectionChange(EDirection pDirection)
 	{
-		if(ActiveWeapon == null && !owner.IsLocalRemote)
+		if(ActiveWeapon == null && !owner.IsLocalImage)
 		{
 			Debug.LogError("Active weapon is null");
 		}
@@ -123,7 +123,7 @@ public class PlayerWeaponController : GameBehaviour
 				GetProjectileStartPosition(movement.CurrentDirection),
 				owner, pProjectile.Projectile);
 
-		owner.LocalRemote?.WeaponController.ShootProjectile(pProjectile);
+		owner.LocalImage?.WeaponController.ShootProjectile(pProjectile);
 	}
 
 	private void HandleUseResult(EWeaponUseResult pUseResult)
@@ -177,6 +177,13 @@ public class PlayerWeaponController : GameBehaviour
 	private Vector3 GetProjectileStartPosition(EDirection pDirection)
 	{
 		return GetProjectileStart(pDirection).position;
+	}
+
+	public void SetDefaultWeaponActive()
+	{
+		//todo: might not be valid
+		//will use for debug for now
+		SetActiveWeapon(0);
 	}
 
 	private void SetActiveWeapon(int pIndex)

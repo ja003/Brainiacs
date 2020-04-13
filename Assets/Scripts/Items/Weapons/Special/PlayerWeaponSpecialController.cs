@@ -3,9 +3,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnershipCallbacks
 {
+	private SpecialWeaponPhoton _photon;
+	public SpecialWeaponPhoton Photon
+	{
+		get
+		{
+			if(_photon == null)
+				_photon = GetComponent<SpecialWeaponPhoton>();
+			return _photon;
+		}
+	}
+
 	protected PlayerWeaponController weaponContoller;
 	public Player Owner { get; private set; }
 	public void debug_AssignOwner(Player pOwner)
@@ -27,7 +39,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 		OnInit();
 		gameObject.SetActive(false);
 
-		Network.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
+		Photon.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
 	}
 
 	//TODO: dont know how to use
@@ -51,7 +63,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 	/// </summary>
 	public void Use()
 	{
-		Network.Send(EPhotonMsg.Special_Use);
+		Photon.Send(EPhotonMsg.Special_Use);
 		gameObject.SetActive(true);
 		OnUse();
 	}
@@ -61,7 +73,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 	/// Weapon key released
 	/// </summary>
 	public void StopUse() {
-		Network.Send(EPhotonMsg.Special_StopUse);
+		Photon.Send(EPhotonMsg.Special_StopUse);
 		OnStopUse();
 	}
 	protected abstract void OnStopUse();
@@ -73,17 +85,15 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 
 	//DEBUG
 	//local remote assigned to this object
-	public PlayerWeaponSpecialController _LocalRemote { get; internal set; }
+	public PlayerWeaponSpecialController _LocalImage { get; internal set; }
 	//the object this object is assigned to
 	public PlayerWeaponSpecialController _RemoteOwner { get; internal set; }
-
-	[SerializeField] public SpecialWeaponNetwork Network;
 
 	internal virtual void OnStartReloadWeapon()
 	{
 	}
 
-	//public abstract PhotonMessenger GetLocalRemoteNetwork();
+	//public abstract PhotonMessenger GetLocalImageNetwork();
 
 
 

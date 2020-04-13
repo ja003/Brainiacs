@@ -18,7 +18,10 @@ public class PlayerInput : GameBehaviour
 
 	void FixedUpdate()
 	{
-		if(player.IsLocalRemote)
+		if(player.IsLocalImage)
+			return;
+
+		if(!game.GameStarted)
 			return;
 
 		ProcessMovementInput();

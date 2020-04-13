@@ -9,7 +9,7 @@ public static class PowerupManager
 	public static void HandlePowerup(PowerUpConfig pConfig, Player pPlayer)
 	{
 		EPowerUp type = pConfig.Type;
-		Debug.Log($"HandlePowerup {type} for {pPlayer}");
+		//Debug.Log($"HandlePowerup {type} for {pPlayer}");
 
 		ApplyPowerup(pConfig.Type, pPlayer);
 		ShowStatus(pPlayer.Stats.StatusUiPosition.position, pConfig);		

@@ -116,4 +116,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 		OnPlayerEntered.Invoke(newPlayer);
 	}
+
+	/// <summary>
+	/// Am I master client?
+	/// If single player => true
+	/// </summary>
+	public bool IsMaster()
+	{
+		if(!Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+			return true;
+
+		return PhotonNetwork.IsMasterClient;
+	}
 }

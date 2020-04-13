@@ -27,7 +27,7 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 		transform.parent = game.ProjectileManager.transform;
 
 		Vector3 target = GetTargetPosition();
-		if(!Owner.IsLocalRemote)
+		if(!Owner.IsLocalImage)
 		{
 			FallOn(target);
 		}
@@ -40,7 +40,7 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 	{
 		transform.position = pTarget + Vector3.up * 10;
 		LeanTween.moveY(gameObject, pTarget.y, 2).setOnComplete(Explode);
-		Network.Send(EPhotonMsg.Special_Einstein_FallOn, pTarget);
+		Photon.Send(EPhotonMsg.Special_Einstein_FallOn, pTarget);
 
 	}
 

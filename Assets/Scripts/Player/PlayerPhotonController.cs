@@ -6,53 +6,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class PlayerNetworkController : PhotonMessenger
+public class PlayerPhotonController : PhotonMessenger
 {
 	public PhotonPlayer PhotonPlayer;
 
-	Player player;
+	private Player _player;
+	protected Player player
+	{
+		get
+		{
+			if(_player == null)
+				_player = GetComponent<Player>();
+			return _player;
+		}
+	}
 	PlayerInitInfo playerInfo;
 
 	bool isItMe => player.IsItMe;
 	bool inited;
 
-	protected override void Awake()
-	{
-		//has to be assigned for remote players
-		player = GetComponent<Player>();
-		base.Awake();
-	}
+	Game game => Game.Instance;
 
 	internal void Init(PlayerInitInfo pInfo)
 	{
+		if(inited)
+			return;
 		playerInfo = pInfo;
 		PhotonPlayer = playerInfo.PhotonPlayer;
-		inited = true;
 
 		//Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
 
-		if(!isItMe && PhotonPlayer != null)
+		if(PhotonNetwork.IsMasterClient && !isItMe && PhotonPlayer != null)
 		{
 			view.TransferOwnership(PhotonPlayer);
-			//Debug.Log("Transfer ownership to " + PhotonPlayer.NickName);
+			Debug.Log("Transfer ownership to " + PhotonPlayer.NickName);
 		}
 
-		if(PhotonNetwork.IsMasterClient)
-		{
-			Debug.Log(this + " send init Info");
+		//Debug.Log(this + " send init Info");
+		//DoInTime(() => Send(
+		//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
+		Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
 
-			//DoInTime(() => Send(
-			//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
-			Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
-		}
-		
+		inited = true;
 	}
 
-	public void debug_SendInitInfo()
+	/// <summary>
+	/// Player can send data only if it is mine player and is inited.
+	/// There are execeptions.
+	/// </summary>
+	protected override bool CanSend(EPhotonMsg pMsgType)
 	{
-		if(PhotonNetwork.IsMasterClient)
-			Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
+		switch(pMsgType)
+		{
+			case EPhotonMsg.Player_InitPlayer:
+			case EPhotonMsg.Player_ShowWeapon:
+				return true;
+			case EPhotonMsg.Player_AddKill:
+			case EPhotonMsg.Player_ApplyDamage:
+				return player.IsInited;
+		}
 
+		return isItMe && player.IsInited;
 	}
 
 	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
@@ -73,7 +87,7 @@ public class PlayerNetworkController : PhotonMessenger
 			case EPhotonMsg.Player_InitPlayer:
 				int playerNumber = (int)pParams[0];
 				PlayerInitInfo info = brainiacs.GameInitInfo.GetPlayer(playerNumber);
-				player.OnReceivedInitInfo(info);
+				player.OnReceivedInitInfo(info, false);
 				break;
 
 			case EPhotonMsg.Player_ShowWeapon:
@@ -82,8 +96,19 @@ public class PlayerNetworkController : PhotonMessenger
 				break;
 			case EPhotonMsg.Player_ApplyDamage:
 				int damage = (int)pParams[0];
-				player.Health.ApplyDamage(damage);
+				playerNumber = (int)pParams[1];
+				Player originOfDamage = game.PlayerManager.GetPlayer(playerNumber);
+				player.Health.ApplyDamage(damage, originOfDamage);
 				break;
+
+			case EPhotonMsg.Player_AddKill:
+				//EPlayerStats stat = (EPlayerStats)pParams[0];
+				//int value = (int)pParams[1];
+				//bool force = (bool)pParams[2];
+				bool force = (bool)pParams[0];
+				player.Stats.AddKill(force);
+				break;
+
 
 			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
 				int health = (int)pParams[0];
@@ -106,10 +131,10 @@ public class PlayerNetworkController : PhotonMessenger
 				break;
 
 
-			case EPhotonMsg.Player_UI_Scoreboard_SetStats:
+			case EPhotonMsg.Player_UI_Scoreboard_SetScore:
 				int kills = (int)pParams[0];
 				int deaths = (int)pParams[1];
-				player.Visual.Scoreboard.SetStats(kills, deaths);
+				player.Visual.Scoreboard.SetScore(kills, deaths);
 				break;
 
 
@@ -121,30 +146,20 @@ public class PlayerNetworkController : PhotonMessenger
 
 	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
-		if(player.LocalRemote)
+		if(player.LocalImage)
 		{
-			player.LocalRemote.Network.HandleMsg(pMsgType, pParams);
+			player.LocalImage.Photon.HandleMsg(pMsgType, pParams);
+		}
+		else if(player.LocalImageOwner)
+		{
+			player.LocalImageOwner.Photon.HandleMsg(pMsgType, pParams);
 		}
 	}
 
-	protected override bool CanSend()
+	public void debug_SendInitInfo()
 	{
-		return isItMe;
+		if(PhotonNetwork.IsMasterClient)
+			Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
+
 	}
 }
-
-//public enum EPhotonMsg_Player
-//{
-//	None = 0,
-//	ChangeDirection,
-//	InitPlayer,
-//	ShowWeapon,
-//	HitByProjectile,
-
-//	UI_PlayerInfo_SetHealth,
-//	UI_PlayerInfo_SetReloading,
-//	UI_PlayerInfo_SetAmmo,
-//	UI_PlayerInfo_SetActiveWeapon,
-
-//	UI_Scoreboard_SetStats,
-//}

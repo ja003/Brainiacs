@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac057d3b97a50ec46a207a6ccb9ccb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Network: {fileID: 4354943168369474066}
   flameCollider: {fileID: 1217923434187672390}
   animator: {fileID: 1217923435359725167}
   collisionDetector: {fileID: 1107499961995651341}
@@ -193,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
-  controller: {fileID: 3759334240498667119}
 --- !u!1 &1217923435359725161
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +239,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

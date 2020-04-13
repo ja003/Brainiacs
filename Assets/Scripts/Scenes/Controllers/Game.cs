@@ -23,20 +23,23 @@ public class Game : CSingleton<Game>
 
 	[SerializeField] public MobileInput MobileInput;
 
-	[SerializeField] Button btnEnd;
+	[SerializeField] public GamePhoton Photon;
 
-	[SerializeField] GamePhoton Photon;
+	[SerializeField] public GameEndController GameEnd;
+
+	[SerializeField] public UICurtain uiCurtain;
+
+	[SerializeField] public GameTimeController GameTime;
+	[SerializeField] public UIGameTime UIGameTime;
+
+	[SerializeField] public PlayersResultManager Results;
 
 	protected override void Awake()
 	{
-		if(Brainiacs.SelfInitGame)
-		{
-			DoInTime(Activate, 0.5f);
-		}
-		btnEnd.onClick.AddListener(TestEndGame);
-
 		brainiacs.SetOnAwaken(OnAwaken);
-		//OnAwaken();
+
+		Activate();
+
 		base.Awake(); //always call base.event() at the end
 	}
 
@@ -51,16 +54,26 @@ public class Game : CSingleton<Game>
 		}
 	}
 
+	[SerializeField] bool debug_forceCurtain;
+
 	public new void Activate()
 	{
 		//Debug.Log("Game Activate");
-		base.Activate();
 		mainCamera.enabled = true;
+
+		//if(Brainiacs.SelfInitGame && !debug_forceCurtain)
+		if(Time.time < 1 && !debug_forceCurtain) //debug: start from game scene
+			StartGame();
+		else
+			uiCurtain.SetFade(false, StartGame);
+
+		base.Activate();
 	}
 
-	public void TestEndGame()
+	public bool GameStarted { get; private set; }
+	private void StartGame()
 	{
-		brainiacs.SetGameResultInfo(PlayerManager.Players);
-		brainiacs.Scenes.LoadScene(EScene.Results);
+		//Debug.Log("StartGame");
+		GameStarted = true;
 	}
 }

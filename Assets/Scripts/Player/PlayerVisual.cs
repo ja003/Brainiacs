@@ -32,9 +32,6 @@ public class PlayerVisual : PlayerBehaviour
 	[SerializeField]
 	private PlayerMovement movement;
 
-	[SerializeField] PlayerNetworkController network;
-
-
 	internal void OnDie()
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, true);
@@ -154,19 +151,19 @@ public class PlayerVisual : PlayerBehaviour
 	private void SetAnimFloat(string pKey, float pValue)
 	{
 		animator.SetFloat(pKey, pValue);
-		player.LocalRemote?.Visual.SetAnimFloat(pKey, pValue);
+		player.LocalImage?.Visual.SetAnimFloat(pKey, pValue);
 	}
 
 	private void SetAnimBool(string pKey, bool pValue)
 	{
 		animator.SetBool(pKey, pValue);
-		player.LocalRemote?.Visual.SetAnimBool(pKey, pValue);
+		player.LocalImage?.Visual.SetAnimBool(pKey, pValue);
 	}
 
 	private void SetAnimTrigger(string pKey)
 	{
 		animator.SetTrigger(pKey);
-		player.LocalRemote?.Visual.SetAnimTrigger(pKey);
+		player.LocalImage?.Visual.SetAnimTrigger(pKey);
 	}
 
 	private EDirection currentDirection => movement.CurrentDirection;
@@ -213,7 +210,7 @@ public class PlayerVisual : PlayerBehaviour
 
 		//activeWeapon.OnDirectionChange(pDirection);
 
-		network.Send(EPhotonMsg.Player_ChangeDirection, pDirection);
+		player.Photon.Send(EPhotonMsg.Player_ChangeDirection, pDirection);
 	}
 
 	//todo: PlayerWeapon ref shouldnt be stored in Visual
@@ -222,8 +219,9 @@ public class PlayerVisual : PlayerBehaviour
 	{
 		activeWeapon = pWeapon;
 		ShowWeapon(pWeapon.Id);
-		network.Send(EPhotonMsg.Player_ShowWeapon, pWeapon.Id);
+		player.Photon.Send(EPhotonMsg.Player_ShowWeapon, pWeapon.Id);
 	}
+
 	public void ShowWeapon(EWeaponId pWeapon)
 	{
 		WeaponConfig config = 

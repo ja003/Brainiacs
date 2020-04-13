@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : BrainiacsBehaviour, ICollisionHandler
+public class PlayerHealth : GameBehaviour, ICollisionHandler
 {
 	[SerializeField]
 	private PlayerStats stats;
@@ -23,32 +23,30 @@ public class PlayerHealth : BrainiacsBehaviour, ICollisionHandler
 		stats.SetOnStatsChange(OnStatsChange);
 	}
 
+	bool isDying; //flag to prevent deadlock
 	private void OnStatsChange(PlayerStats pStats)
 	{
-		if(stats.IsDead())
+		if(!player.IsInited || !player.IsItMe)
+			return;
+
+		if(stats.IsDead)
 		{
 			Die();
 		}
 	}
 
-	//public void OnHitBy(ProjectileConfig pConfig)
-	//{
-	//	if(stats.IsDead())
-	//		return;
-
-	//	if(stats.DecreseHealth(pConfig.damage))
-	//	{
-	//		todo: subscribe on stats change
-	//		Die();
-	//	}
-	//}
 
 	private void Die()
 	{
+		if(isDying)
+			return;
+
+		isDying = true;
+
 		Debug.Log($"{this} Die ({stats.LivesLeft} lives left)");
 
 		visual.OnDie();
-		stats.Deaths++;
+		stats.OnDie();
 
 		if(stats.LivesLeft > 0)
 		{
@@ -59,6 +57,7 @@ public class PlayerHealth : BrainiacsBehaviour, ICollisionHandler
 	private void Respawn()
 	{
 		//todo: generate random position
+		isDying = false;
 		movement.SpawnAt(transform.position + Vector3.up);
 		stats.OnRespawn();
 	}
@@ -68,22 +67,38 @@ public class PlayerHealth : BrainiacsBehaviour, ICollisionHandler
 		Die();
 	}
 
-	public bool OnCollision(int pDamage)
+	/// <summary>
+	/// Damage from the collision and origin-player of the damage
+	/// </summary>
+	public bool OnCollision(int pDamage, Player pOrigin)
 	{
-		ApplyDamage(pDamage);
+		if(isDying)
+		{
+			Debug.Log("No kill for shooting dying player");
+			return true;
+		}
+
+		ApplyDamage(pDamage, pOrigin);
+
 		return true;
 	}
 
-	public void ApplyDamage(int pDamage)
+	public void ApplyDamage(int pDamage, Player pOrigin)
 	{
 		//todo animation
 		if(!player.IsItMe)
 		{
-			player.Network.Send(EPhotonMsg.Player_ApplyDamage, pDamage);
+			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, pOrigin.InitInfo.Number);
 		}
 		else
 		{
+			bool wasGameEnded = game.GameEnd.GameEnded;
 			stats.AddHealth(-pDamage);
+			bool gameEndedAfterThis = game.GameEnd.GameEnded;
+			bool forceAddKill = wasGameEnded != gameEndedAfterThis;
+
+			if(stats.IsDead)
+				pOrigin.Stats.AddKill(forceAddKill);
 		}
 	}
 }

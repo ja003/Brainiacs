@@ -13,7 +13,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 	public static bool SelfInitGame = true;
 
 	public GameInitInfo GameInitInfo;// = new GameInitInfo();
-	public GameResultInfo GameResultInfo;
+	public GameResultInfo GameResultInfo = new GameResultInfo();
 
 	[SerializeField]
 	public ItemManager ItemManager;
@@ -49,14 +49,13 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 
 
-	public void SetGameResultInfo(List<Player> pPlayers)
+	public void SetGameResultInfo(List<PlayerScoreInfo> pResults, int pTimePassed)
 	{
-		GameResultInfo = new GameResultInfo();
-		foreach(Player player in pPlayers)
+		GameResultInfo = new GameResultInfo
 		{
-			GameResultInfo.PlayerResults.Add(new PlayerResultInfo(player.Stats));
-		}
-
+			PlayerResults = pResults,
+			PlayTime = pTimePassed
+		};
 	}
 
 	public void SyncGameInitInfo()

@@ -80,15 +80,7 @@ public class UiTextSwapper : MonoBehaviour
 
 	public void SetValue(int pIndex)
 	{
-		if(pIndex >= values.Count)
-		{
-			pIndex %= values.Count;
-		}
-		else if(pIndex < 0)
-		{
-			Debug.LogError("Index is < 0");
-			pIndex = 0;
-		}
+		pIndex = Mathf.Clamp(pIndex, 0, pIndex %= values.Count);
 
 		if(pIndex == skippedIndex)
 		{

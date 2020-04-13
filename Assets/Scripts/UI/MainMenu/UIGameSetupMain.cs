@@ -114,6 +114,12 @@ public class UIGameSetupMain : MainMenuController
 			if(pIsMaster)
 			{
 				AddPlayer(EPlayerType.LocalPlayer);
+
+				//set default vlaues
+				OnTimeToggled(true);
+				OnScoreToggled(true);
+				OnMapChanged();
+				OnGameModeValueChanged();
 			}
 			//else
 			//{
@@ -153,11 +159,16 @@ public class UIGameSetupMain : MainMenuController
 
 		gameModeValueSwapper.InitNumberSwapper(GAME_VALUE_MIN, GAME_VALUE_MAX, OnGameModeValueChanged);
 		gameModeToggleTime.onValueChanged.AddListener(OnTimeToggled);
-		gameModeToggleTime.isOn = true;
+		//gameModeToggleTime.isOn = true;
+		gameModeValueSwapper.SetNumberValue(2); //debug
 		OnTimeToggled(true);
 
 		gameModeToggleScore.onValueChanged.AddListener(OnScoreToggled);
 		gameModeToggleDeathmatch.onValueChanged.AddListener(OnDeathmatchToggled);
+
+		//DEBUG game mode
+		//gameModeToggleScore.isOn = true;
+		//OnGameModeToggled(true, EGameMode.Score);
 
 		mapSwapper.Init(Utils.GetStrings(typeof(EMap)), OnMapChanged, 0);
 	}
@@ -220,6 +231,7 @@ public class UIGameSetupMain : MainMenuController
 
 	private void OnScoreToggled(bool pValue)
 	{
+		Debug.Log("OnScoreToggled " + pValue);
 		OnGameModeToggled(pValue, EGameMode.Score);
 	}
 

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dce1baf1933acf4f8d00c0f8d8d49aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Network: {fileID: -6093814475511380504}
+  Photon: {fileID: -6093814475511380504}
   projectile: {fileID: 11400000, guid: 922177887c0359749926d543d6171bd7, type: 2}
   speed: 50.7
   cadency: 0.1
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 192045784105945646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb0591fe5d4f0a4896a0b19ad1ee016, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b4f645fa5e8bc4bb3b7cb3faeb04d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0

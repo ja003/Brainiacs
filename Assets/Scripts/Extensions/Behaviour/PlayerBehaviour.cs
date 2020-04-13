@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerBehaviour : GameBehaviour
 {
+	[SerializeField]
 	private Player _player;
 	protected Player player
 	{

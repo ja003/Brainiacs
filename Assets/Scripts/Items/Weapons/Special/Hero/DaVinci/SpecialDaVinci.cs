@@ -84,10 +84,10 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 		}
 
 		Debug.Log("Hit " + collision.gameObject.name);
-		handler.OnCollision(damage);
+		handler.OnCollision(damage, Owner);
 	}
 
-	public bool OnCollision(int pDamage)
+	public bool OnCollision(int pDamage, Player pOrigin)
 	{
 		if(!Owner.IsItMe)
 			return false;

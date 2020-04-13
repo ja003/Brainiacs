@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Projectile : BrainiacsBehaviour
@@ -13,12 +14,16 @@ public class Projectile : BrainiacsBehaviour
 
 	bool inited;
 
-	[SerializeField] public ProjectileNetworkController Network;
+	[FormerlySerializedAs("Network")]
+	[SerializeField] public ProjectilePhoton Photon;
 
-	public Projectile LocalRemote;
+	public Projectile LocalImage;
+
+	Player owner;
 
 	public void Spawn(Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
+		owner = pOwner;
 		//Network.Init(this);
 
 		//projectile type is based on weapon
@@ -76,7 +81,7 @@ public class Projectile : BrainiacsBehaviour
 
 		inited = true;
 
-		Network.Send(EPhotonMsg.Projectile_Spawn, pProjectileDirection, pId, pPlayerDirection);
+		Photon.Send(EPhotonMsg.Projectile_Spawn, pProjectileDirection, pId, pPlayerDirection);
 	}
 
 	private void UpdateOrderInLayer(Player pOwner)
@@ -123,10 +128,10 @@ public class Projectile : BrainiacsBehaviour
 
 		bool result = false;
 		if(handler != null)
-			result = handler.OnCollision(config.Damage);
+			result = handler.OnCollision(config.Damage, owner);
 
 		if(result)
-			Network.Destroy();
+			Photon.Destroy();
 		//ReturnToPool();
 	}
 

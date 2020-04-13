@@ -51,6 +51,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 0}
-  Network: {fileID: 4681881258408394416}
-  LocalRemote: {fileID: 0}
+  Photon: {fileID: 4681881258408394416}
+  LocalImage: {fileID: 0}
 --- !u!50 &5544410765107709605
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5409615048864318336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c999e4ceddd60d46a54f6b8d92bd841, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ff5881bcc5a8cc45a0a9f457fe103d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0

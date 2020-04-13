@@ -47,6 +47,6 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		float damage = Mathf.Lerp(maxDamage / 10f, maxDamage, factor);
 
 		//Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
-		handler.OnCollision((int)damage);
+		handler.OnCollision((int)damage, controller.Owner);
 	}
 }

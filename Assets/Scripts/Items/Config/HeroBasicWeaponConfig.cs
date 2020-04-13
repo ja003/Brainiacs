@@ -7,6 +7,8 @@ using UnityEngine;
 public class HeroBasicWeaponConfig : WeaponConfig
 {
 	//hero basic weapons only differ in visual
-	public ProjectileVisual ProjectileVisual;
+	//public ProjectileVisual ProjectileVisual;
+
+	public ProjectileConfig Projectile;
 }
 

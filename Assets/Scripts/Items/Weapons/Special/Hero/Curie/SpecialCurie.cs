@@ -20,15 +20,12 @@ public class SpecialCurie : PlayerWeaponSpecialController
 	[SerializeField] Transform projectileSpawnDown;
 	[SerializeField] Transform projectileSpawnLeft;
 
-	//public SpecialCurieNetwork Network;
-
 	protected override void Awake()
 	{
 		//projectile has to be registered so we know its config.
 		//it is the same as Curie basic (but can be changed in P_Projectile animator and config)
 		brainiacs.ItemManager.AddProjectile(EWeaponId.Special_Curie, projectile);
 
-		Network = GetComponent<SpecialCurieNetwork>();
 		//if(!Network.IsMine)
 		//{
 		//	Player owner = game.PlayerManager.GetPlayer(Network.PhotonController);
@@ -81,7 +78,7 @@ public class SpecialCurie : PlayerWeaponSpecialController
 
 		if(_RemoteOwner && !Owner)
 		{
-			debug_AssignOwner(_RemoteOwner.Owner.LocalRemote);
+			debug_AssignOwner(_RemoteOwner.Owner.LocalImage);
 		}
 
 		if(Owner)
@@ -92,7 +89,7 @@ public class SpecialCurie : PlayerWeaponSpecialController
 		}
 		else
 		{
-			if(Network.IsMine)
+			if(Photon.IsMine)
 			{
 				Debug.LogError(gameObject.name + "Owner not set");
 			}
@@ -115,8 +112,8 @@ public class SpecialCurie : PlayerWeaponSpecialController
 		DoInTime(Shoot, cadency);
 
 		//Owner is not set for remote
-		Vector3 sendSpawnPos = Owner && Owner.LocalRemote ? 
-			Owner.LocalRemote.WeaponController.GetProjectileStart(direction).position : 
+		Vector3 sendSpawnPos = Owner && Owner.LocalImage ? 
+			Owner.LocalImage.WeaponController.GetProjectileStart(direction).position : 
 			pSpawnPosition;
 
 		//todo no need to send?
@@ -191,6 +188,6 @@ public class SpecialCurie : PlayerWeaponSpecialController
 		LeanTween.cancel(gameObject);
 		rigidBody2D.bodyType = RigidbodyType2D.Static;
 		//gameObject.SetActive(false);
-		Network.Send(EPhotonMsg.Special_Curie_Collide);
+		Photon.Send(EPhotonMsg.Special_Curie_Collide);
 	}
 }

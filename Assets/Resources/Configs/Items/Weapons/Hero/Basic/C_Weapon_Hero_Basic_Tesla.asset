@@ -23,5 +23,4 @@ MonoBehaviour:
     PlayerSpriteLeft: {fileID: 8484153727409154241, guid: 6c525a71581e9f5448048b7f7857d0b4,
       type: 3}
     InfoSprite: {fileID: 21300000, guid: 8bbda45bdf1921840927122d9a5d4b3f, type: 3}
-  ProjectileVisual: {fileID: 1970388535196913028, guid: dcb41f2fd1ad27149bece79a4c142218,
-    type: 3}
+  Projectile: {fileID: 11400000, guid: 78c5da1706190924cabd812e89704ad5, type: 2}

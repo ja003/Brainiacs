@@ -59,19 +59,20 @@ public struct ProjectileWeaponInfo
 	public ProjectileConfig Projectile;
 
 	/// <summary>
-	/// Unified init for hero basic weapon.
-	/// Each have same stats, only visual is different;
+	/// Hero basic projectile info is in hero weapon config
 	/// </summary>
-	/// <param name="pConfig"></param>
 	public ProjectileWeaponInfo(HeroBasicWeaponConfig pConfig) : this()
 	{
-		Projectile = new ProjectileConfig();
-		Projectile.Visual = pConfig.ProjectileVisual;
+		Projectile = pConfig.Projectile;
 
-		Projectile.Damage = 5;
-		Projectile.Dispersion = 0.5f;
-		Projectile.Speed = 2;
+		//CHANGE: hero projectiles may differ
 
-		Projectile.WeaponId = pConfig.Id;
+		//Projectile.Visual = pConfig.ProjectileVisual;
+
+		//Projectile.Damage = 5;
+		//Projectile.Dispersion = 0.5f;
+		//Projectile.Speed = 2;
+
+		//Projectile.WeaponId = pConfig.Id;
 	}
 }

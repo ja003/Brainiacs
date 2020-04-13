@@ -47,11 +47,9 @@ public class PlayerManager : GameController
 	{
 		foreach(var p in Players)
 		{
-			p.Network.debug_SendInitInfo();
+			p.Photon.debug_SendInitInfo();
 		}
 	}
-
-
 
 	bool arePlayersSpawned;
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
@@ -70,17 +68,19 @@ public class PlayerManager : GameController
 		{
 			Player spawnedPlayer = SpawnPlayer(playerInfo, false);
 
-			if(DebugData.LocalRemote && spawnedPlayer.LocalRemote == null)
+			if(DebugData.LocalImage && spawnedPlayer.LocalImage == null)
 			{
-				spawnedPlayer.LocalRemote = SpawnPlayer(playerInfo, true);
-				//spawnedPlayer.LocalRemote.gameObject.name += "_remote";
-				//spawnedPlayer.LocalRemote.transform.position =
+				spawnedPlayer.LocalImage = SpawnPlayer(playerInfo, true);
+				spawnedPlayer.LocalImage.LocalImageOwner = spawnedPlayer;
+				//spawnedPlayer.LocalImage.gameObject.name += "_remote";
+				//spawnedPlayer.LocalImage.transform.position =
 				//	spawnedPlayer.transform.position + Vector3.down;
 
-				AddPlayer(spawnedPlayer.LocalRemote);
+				AddPlayer(spawnedPlayer.LocalImage);
 			}
 
 			AddPlayer(spawnedPlayer);
+			spawnedPlayer.LocalImage?.OnReceivedInitInfo(playerInfo, true);
 		}
 
 		playerSorter.SetPlayers(Players);
@@ -93,19 +93,20 @@ public class PlayerManager : GameController
 	/// <summary>
 	/// Only master spawn players
 	/// </summary>
-	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalRemote)
+	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalImage)
 	{
-		GameObject instance = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+		GameObject instance = InstanceFactory.Instantiate(playerPrefab.gameObject);
+
 		Player playerInstance = instance.GetComponent<Player>();
 
 		playerInstance.transform.parent = transform;
 
-		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalRemote ? "_LR" : "");
+		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LR" : "");
 
 		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
 		Vector3 spawnPosition = game.MapController.ActiveMap.
 			GetSpawnPoint(pPlayerInfo.Number).position;
-		if(pIsLocalRemote)
+		if(pIsLocalImage)
 			spawnPosition += Vector3.down;
 
 		bool debug_spwan = false;
@@ -124,15 +125,14 @@ public class PlayerManager : GameController
 		}
 
 		//OnAllPlayersAdded += () => playerInstance.SetInfo(pPlayerInfo, spawnPosition);
-		playerInstance.SetInfo(pPlayerInfo, pIsLocalRemote, spawnPosition);
+		playerInstance.SetInfo(pPlayerInfo, pIsLocalImage, spawnPosition);
 
 		//AddPlayer(playerInstance);
 
 		return playerInstance;
 	}
 
-	//public Action OnAllPlayersAdded;
-
+	//1 - spawn, 2 - add player
 	public ActionControl OnAllPlayersAdded = new ActionControl();
 
 	/// <summary>
@@ -142,11 +142,11 @@ public class PlayerManager : GameController
 	{
 		Players.Add(pPlayer);
 		//Debug.Log("Add player " + pPlayer);
-		int playersCount = Players.FindAll(a => !a.IsLocalRemote).Count;
+		int playersCount = Players.FindAll(a => !a.IsLocalImage).Count;
 
 		if(playersCount == brainiacs.GameInitInfo.Players.Count)
 		{
-			if(pPlayer.IsLocalRemote)
+			if(pPlayer.IsLocalImage)
 				return;
 
 			if(allPlayersAdded)
@@ -199,7 +199,7 @@ public class PlayerManager : GameController
 
 	public Player GetPlayer(PhotonPlayer pPhotonPlayer)
 	{
-		return Players.Find(a => a.Network.PhotonPlayer == pPhotonPlayer);
+		return Players.Find(a => a.Photon.PhotonPlayer == pPhotonPlayer);
 	}
 
 	internal Player GetPlayer(int pPlayerNumber)

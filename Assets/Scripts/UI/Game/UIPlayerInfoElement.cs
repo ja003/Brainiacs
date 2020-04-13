@@ -76,7 +76,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 			return;
 		health.text = pHealth.ToString();
 
-		player.Network.Send(
+		player.Photon.Send(
 			EPhotonMsg.Player_UI_PlayerInfo_SetHealth, pHealth);
 	}
 
@@ -113,7 +113,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 		InHandWeaponVisualInfo info = brainiacs.ItemManager.GetWeaponConfig(pId).VisualInfo;
 		weapon.sprite = info.InfoSprite;
 
-		player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency);
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency);
 	}
 
 	public void SetAmmo(int pAmmoLeft)
@@ -122,7 +122,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 			return;
 		ammo.text = pAmmoLeft.ToString();
 		activeWeaponLastUsedTime = Time.time;
-		player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetAmmo, pAmmoLeft);
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetAmmo, pAmmoLeft);
 	}
 
 	bool isRealoading;
@@ -132,7 +132,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 	{
 		if(isRealoading != pIsReloading)
 		{
-			player.Network.Send(EPhotonMsg.Player_UI_PlayerInfo_SetReloading,
+			player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetReloading,
 				pIsReloading, pRealoadTimeTotal);
 		}
 

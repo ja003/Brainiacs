@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class ProjectileNetworkController : PhotonMessenger
+public class ProjectilePhoton : PhotonMessenger
 {
 	private Projectile projectile;
 
@@ -35,20 +35,20 @@ public class ProjectileNetworkController : PhotonMessenger
 
 	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
-		if(projectile.LocalRemote)
+		if(projectile.LocalImage)
 		{
-			projectile.LocalRemote.Network.HandleMsg(pMsgType, pParams);
+			projectile.LocalImage.Photon.HandleMsg(pMsgType, pParams);
 		}
 	}
 
 	internal void Destroy()
 	{
 		PhotonNetwork.Destroy(view);
-		projectile.LocalRemote?.Network.Destroy();
+		projectile.LocalImage?.Photon.Destroy();
 	}
 
-	protected override bool CanSend()
+	protected override bool CanSend(EPhotonMsg pMsgType)
 	{
-		return view.IsMine || projectile.LocalRemote;
+		return view.IsMine || projectile.LocalImage;
 	}
 }

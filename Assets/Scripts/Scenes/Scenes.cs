@@ -15,8 +15,29 @@ public class Scenes : MonoBehaviour
 
 	public void LoadScene(EScene pScene)
 	{
-		//SceneManager.LoadScene(GetSceneIndex(pScene));
-		PhotonNetwork.LoadLevel(GetSceneIndex(pScene));
+		if(IsPhotonLoad(pScene))
+			PhotonNetwork.LoadLevel(GetSceneIndex(pScene));
+		else
+			SceneManager.LoadScene(GetSceneIndex(pScene));
+
+	}
+
+	private bool IsPhotonLoad(EScene pScene)
+	{
+		switch(pScene)
+		{
+			case EScene.Init:
+				return false;
+			case EScene.MainMenu:
+				return false;
+			case EScene.Loading:
+				return true;
+			case EScene.Game:
+				return true;
+			case EScene.Results:
+				return false;
+		}
+		return true;
 	}
 
 	//public IEnumerator LoadSceneAsync(EScene pScene, Slider pSlider, Action pOnLoaded)

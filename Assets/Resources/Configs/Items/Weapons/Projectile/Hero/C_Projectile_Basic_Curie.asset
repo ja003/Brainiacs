@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1605c987f38da42a631bb53ff7f7a3, type: 3}
+  m_Name: C_Projectile_Basic_Curie
+  m_EditorClassIdentifier: 
+  WeaponId: 201
+  Visual: {fileID: 5395878093968645310, guid: c520bd520262b90438928e2489e10b9b, type: 3}
+  Damage: 5
+  Speed: 2
+  Dispersion: 0.5

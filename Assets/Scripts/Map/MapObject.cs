@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class MapObject : BrainiacsBehaviour, ICollisionHandler
 {
-	public bool OnCollision(int pDamage)
+	public bool OnCollision(int pDamage, Player pOrigin)
 	{
 		OnCollisionEffect(pDamage);
 		//if(pDamage > 0)

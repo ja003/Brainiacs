@@ -44,7 +44,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	public void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams)
 	{
 		//var receivedMsg = (EPhotonMsg_MainMenu)objectArray[0];
-		if(DEBUG_LOG)
+		if(DEBUG_LOG && !IsLogMsgIgnored(pReceivedMsg))
 			Debug.Log("HandleMsg " + pReceivedMsg);
 
 		byte[] bytes = IsFlafbuffer(pReceivedMsg) && pParams != null ? (byte[])pParams[0] : null;
@@ -59,6 +59,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		{
 			case EPhotonMsg.MainMenu_SyncGameInfo:
 			case EPhotonMsg.MainMenu_SyncPlayerInfo:
+			case EPhotonMsg.Game_EndGame:
 				return true;
 		}
 
@@ -83,15 +84,11 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		//todo: add timestamp to all messages?
 		//eg. neede for setting health
 
-		//only MINE player can send messages to others
-		//exceptions:
-		bool isException =
-			//info that client need to init his player
-			pMsgType == EPhotonMsg.Player_InitPlayer ||
-			pMsgType == EPhotonMsg.Player_ApplyDamage;
 
-		if(!CanSend() && !isException)
+		if(!CanSend(pMsgType))
 		{
+			if(DEBUG_LOG && !IsLogMsgIgnored(pMsgType))
+				Debug.Log("Cant send message: " + pMsgType);
 			return;
 		}
 
@@ -102,7 +99,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 				Debug.Log("Not connected - cant send message");
 				return;
 			}
-			if(DEBUG_LOG)
+			if(DEBUG_LOG && !IsLogMsgIgnored(pMsgType))
 				Debug.Log("Send " + pMsgType);
 
 			RpcTarget target = GetMsgTarget(pMsgType);
@@ -110,23 +107,45 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		}
 		else
 		{
-			if(DEBUG_LOG)
+			if(DEBUG_LOG && !IsLogMsgIgnored(pMsgType))
 				Debug.Log("SendNotMP " + pMsgType);
 
 			SendNotMP(pMsgType, pParams);
 		}
 	}
 
+	/// <summary>
+	/// Debug for clearer output. 
+	/// Skip too frequent and unnecessary messages
+	/// </summary>
+	private bool IsLogMsgIgnored(EPhotonMsg pMsgType)
+	{
+		switch(pMsgType)
+		{
+			case EPhotonMsg.Player_ShowWeapon:
+			case EPhotonMsg.Player_ChangeDirection:
+			case EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon:
+			case EPhotonMsg.Player_UI_PlayerInfo_SetAmmo:
+			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
+			case EPhotonMsg.Player_UI_Scoreboard_SetScore:
+				return true;
+		}
+
+		return false;
+	}
+
 	protected abstract void SendNotMP(EPhotonMsg pMsgType, object[] pParams);
 
-	protected abstract bool CanSend();
+	protected abstract bool CanSend(EPhotonMsg pMsgType);
 
 	private RpcTarget GetMsgTarget(EPhotonMsg pMsgType)
 	{
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Game_PlayerLoadedScene:
+			case EPhotonMsg.Game_UpdatePlayerScore: //only master keeps all player scores
 				return RpcTarget.MasterClient;
+
 			//case EPhotonMsg_MainMenu.Play:
 			//	return RpcTarget.All;
 			case EPhotonMsg.MainMenu_SyncGameInfo:
@@ -148,6 +167,11 @@ public enum EPhotonMsg
 
 	//Game
 	Game_PlayerLoadedScene,
+	//Game_Activate, //no need, activate is called autimatically on all sides
+	Game_UpdatePlayerScore,
+	Game_EndGame,
+
+	Game_Ui_ShowTimeValue,
 
 	//Main menu
 	MainMenu_SyncGameInfo,
@@ -159,13 +183,14 @@ public enum EPhotonMsg
 	Player_InitPlayer,
 	Player_ShowWeapon,
 	Player_ApplyDamage,
+	Player_AddKill,
 
 	Player_UI_PlayerInfo_SetHealth,
 	Player_UI_PlayerInfo_SetReloading,
 	Player_UI_PlayerInfo_SetAmmo,
 	Player_UI_PlayerInfo_SetActiveWeapon,
 
-	Player_UI_Scoreboard_SetStats,
+	Player_UI_Scoreboard_SetScore,
 
 	//Projectile
 	Projectile_Spawn,

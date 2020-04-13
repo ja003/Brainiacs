@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialCurieNetwork : SpecialWeaponNetwork
+public class SpecialCuriePhoton : SpecialWeaponPhoton
 {
 	//[SerializeField] SpecialCurie truck;
 

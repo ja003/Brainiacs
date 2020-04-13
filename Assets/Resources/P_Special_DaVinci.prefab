@@ -49,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e60695c3b7fb44295d86eebd5b0f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Network: {fileID: 3242957856059116594}
   damage: 30
   maxHealth: 3
 --- !u!114 &3242957856059116594
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
-  controller: {fileID: 193673593605947489}
 --- !u!61 &8452591425097721694
 BoxCollider2D:
   m_ObjectHideFlags: 0

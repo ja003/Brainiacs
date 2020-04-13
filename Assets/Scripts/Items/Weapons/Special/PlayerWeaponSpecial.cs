@@ -10,37 +10,37 @@ public class PlayerWeaponSpecial : PlayerWeapon
 	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig) :
 		base(pOwner, pConfig.Id, pConfig.SpecialWeaponInfo.InHandInfo, pConfig.VisualInfo)
 	{
-		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.name);
+		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.gameObject);
 
 	}
 
 	public PlayerWeaponSpecial(Player pOwner, MapSpecialWeaponConfig pConfig) :
 		base(pOwner, pConfig.Id, pConfig.InHandInfo, pConfig.VisualInfo)
 	{
-		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.name);
+		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.gameObject);
 	}
 
-	private void InstantiateWeaponController(Player pOwner,string pPrefabName)
+	private void InstantiateWeaponController(Player pOwner,GameObject pPrefab)
 	{
-		var instance = PhotonNetwork.Instantiate(pPrefabName, Vector3.zero, Quaternion.identity)
+		var instance = InstanceFactory.Instantiate(pPrefab)
 					.GetComponent<PlayerWeaponSpecialController>();
 		//Debug.Log("Instantiate: " + instance.name);
 
-		//instance.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
-		instance.GetComponent<PhotonView>().TransferOwnership(pOwner.InitInfo.PhotonPlayer);
+		if(PhotonNetwork.IsConnected)
+			instance.GetComponent<PhotonView>().TransferOwnership(pOwner.InitInfo.PhotonPlayer);
 
-		if(DebugData.LocalRemote)
+		if(DebugData.LocalImage)
 		{
-			var localRemote = PhotonNetwork.Instantiate(pPrefabName, Vector3.zero, Quaternion.identity)
+			var localImage = InstanceFactory.Instantiate(pPrefab)
 			   .GetComponent<PlayerWeaponSpecialController>();
-			instance._LocalRemote = localRemote;
+			instance._LocalImage = localImage;
 
-			localRemote._RemoteOwner = instance;
-			//instance.IsLocalRemote = true;
-			//instance.debug_AssignOwner(pOwner.LocalRemote);
-			localRemote.gameObject.SetActive(false);
-			localRemote.name += "_LR";
-			//Debug.Log("Instantiate: " + localRemote.name);
+			localImage._RemoteOwner = instance;
+			//instance.IsLocalImage = true;
+			//instance.debug_AssignOwner(pOwner.LocalImage);
+			localImage.gameObject.SetActive(false);
+			localImage.name += "_LR";
+			//Debug.Log("Instantiate: " + localImage.name);
 		}
 
 		specialController = instance;

@@ -18,9 +18,6 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 
 	[SerializeField] private Transform maxDistance;
 
-	//[SerializeField]
-	//public FlamethrowerNetwork Network;
-
 	private void Update()
 	{
 		//BUG: fire key-up is sometimes not registered
@@ -77,8 +74,8 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 		if(player)
 		{
 			int damage = GetDamage(player.transform.position);
-			Debug.Log($"Flamethrower  " + damage);
-			player.Stats.AddHealth(-damage);
+			//Debug.Log($"Flamethrower  " + damage);
+			player.Health.ApplyDamage(damage, Owner);
 		}
 	}
 
@@ -119,6 +116,6 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 		Vector3 rot = Utils.GetRotation(pDirection, 90);
 		transform.Rotate(rot);
 
-		Network.Send(EPhotonMsg.Special_Flamethrower_OnDirectionChange, pDirection);
+		Photon.Send(EPhotonMsg.Special_Flamethrower_OnDirectionChange, pDirection);
 	}
 }

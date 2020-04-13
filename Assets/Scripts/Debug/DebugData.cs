@@ -12,26 +12,52 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = true;
-	public static bool LocalRemote = TestPlayers;
+	public static bool TestPlayers = false;
+	public static bool LocalImage = TestPlayers;
+
+	private static int playerCount = 3;
+
+	public static bool TestResult = false;
+
+	internal static void TestSetResults()
+	{
+		Brainiacs.Instance.GameResultInfo = new GameResultInfo();
+
+		PlayerScoreInfo result = PlayerScoreInfo.debug_PlayerResultInfo();
+		if(playerCount >= 1)
+		{
+			result.Name = "test davinci player";
+			result.Hero = EHero.DaVinci;
+			result.Kills = 2;
+			result.Deaths = 5;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+		if(playerCount >= 2)
+		{
+			result = PlayerScoreInfo.debug_PlayerResultInfo();
+			result.Name = "test tesla player";
+			result.Hero = EHero.Tesla;
+			result.Kills = 0;
+			result.Deaths = 0;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+		if(playerCount >= 3)
+		{
+			result = PlayerScoreInfo.debug_PlayerResultInfo();
+			result.Name = "t Nobel";
+			result.Hero = EHero.Nobel;
+			result.Kills = 0;
+			result.Deaths = 0;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+	}
+
 
 	public static void OnBrainiacsAwake()
 	{
-		if(TestRemote)
+		if(TestRemote || TestResult || TestMP || TestPlayers || LocalImage)
 		{
-			Debug.LogError("Testing remote");
-		}
-		if(TestMP)
-		{
-			Debug.LogError("DebugMP");
-		}
-		if(TestPlayers)
-		{
-			Debug.LogError("TestPlayers");
-		}
-		if(LocalRemote)
-		{
-			Debug.LogError("LocalRemote");
+			Debug.LogError("Testing data is ON - turn off when testing build");
 		}
 	}
 
@@ -51,19 +77,24 @@ public static class DebugData
 
 	public static void TestSetGameInitInfo()
 	{
-		PlayerInitInfo player1 = GetPlayerInitInfo(1);
-		Brainiacs.Instance.GameInitInfo.AddPlayer(player1);
+		if(playerCount >= 1)
+		{
+			PlayerInitInfo player1 = GetPlayerInitInfo(1);
+			Brainiacs.Instance.GameInitInfo.AddPlayer(player1);
+		}
 
-
-		PlayerInitInfo player2 = GetPlayerInitInfo(2);
-		Brainiacs.Instance.GameInitInfo.AddPlayer(player2);
+		if(playerCount >= 2)
+		{
+			PlayerInitInfo player2 = GetPlayerInitInfo(2);
+			Brainiacs.Instance.GameInitInfo.AddPlayer(player2);
+		}
 
 		//PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
 		//GameInitInfo.AddPlayer(player3);
 
-		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Time;
+		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Score;
 		Brainiacs.Instance.GameInitInfo.Map = EMap.Steampunk;
-		Brainiacs.Instance.GameInitInfo.GameModeValue = 5;
+		Brainiacs.Instance.GameInitInfo.GameModeValue = 2;
 	}
 
 	public static PlayerInitInfo GetPlayerInitInfo(int pPlayerNumber)
@@ -76,7 +107,7 @@ public static class DebugData
 			EHero.DaVinci, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
 				//todo: implement debug data for PC and Unity platform
-			//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);
+				//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);
 				//player.PlayerKeys = new PlayerKeys(
 				//	KeyCode.UpArrow, KeyCode.RightArrow,
 				//	KeyCode.DownArrow, KeyCode.LeftArrow,

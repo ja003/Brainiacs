@@ -20,11 +20,11 @@ public class ProjectileManager : GameController
 		Projectile newProjectile = PhotonNetwork.Instantiate(
 			prefab.name, pPosition, Quaternion.identity).GetComponent<Projectile>();
 
-		//if(DebugData.LocalRemote)
+		//if(DebugData.LocalImage)
 		//{
-		//	Projectile localRemoteProjectile = PhotonNetwork.Instantiate(
+		//	Projectile localImageProjectile = PhotonNetwork.Instantiate(
 		//		prefab.name, pPosition + Vector3.up, Quaternion.identity).GetComponent<Projectile>();
-		//	newProjectile.LocalRemote = localRemoteProjectile;
+		//	newProjectile.LocalImage = localImageProjectile;
 		//}
 
 		newProjectile.Spawn(pOwner, pConfig, pDirection);

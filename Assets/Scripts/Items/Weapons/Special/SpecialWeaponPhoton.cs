@@ -7,13 +7,32 @@ using UnityEngine;
 
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class SpecialWeaponNetwork : PhotonMessenger
+public class SpecialWeaponPhoton : PhotonMessenger
 {
-	[SerializeField] protected PlayerWeaponSpecialController controller;
+	//[SerializeField] protected PlayerWeaponSpecialController controller;
 
-	protected override bool CanSend()
+	private PlayerWeaponSpecialController _controller;
+	protected PlayerWeaponSpecialController controller
 	{
-		return view.IsMine || controller._LocalRemote;
+		get
+		{
+			if(_controller == null)
+				_controller = GetComponent<PlayerWeaponSpecialController>();
+			return _controller;
+		}
+	}
+
+	//protected override void Awake()
+	//{
+	//	if(controller == null)
+	//		controller = GetComponent<PlayerWeaponSpecialController>();
+
+	//	base.Awake();
+	//}
+
+	protected override bool CanSend(EPhotonMsg pMsgType)
+	{
+		return view.IsMine || controller._LocalImage;
 	}
 
 	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
@@ -57,11 +76,11 @@ public class SpecialWeaponNetwork : PhotonMessenger
 
 	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
-		if(controller._LocalRemote)
+		if(controller._LocalImage)
 		{
-			controller._LocalRemote.Network.HandleMsg(pMsgType, pParams);
+			controller._LocalImage.Photon.HandleMsg(pMsgType, pParams);
 		}
 	}
 
-	//protected abstract PhotonMessenger GetLocalRemoteNetwork();
+	//protected abstract PhotonMessenger GetLocalImageNetwork();
 }

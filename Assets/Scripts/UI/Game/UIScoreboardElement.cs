@@ -5,6 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Player score UI.
+/// Changes on mine player stats change and sends data to others
+/// </summary>
 public class UIScoreboardElement : BrainiacsBehaviour
 {
 	[SerializeField] private TextMeshProUGUI name;
@@ -23,24 +27,26 @@ public class UIScoreboardElement : BrainiacsBehaviour
 		background.GetComponent<Canvas>().sortingOrder = -1;
 		name.text = pPlayer.InitInfo.Name;
 
-		//register for stats change
-		pPlayer.Stats.SetOnStatsChange(OnStatsChanged);
-		//invoke first change manually
-		OnStatsChanged(pPlayer.Stats);
+		if(pPlayer.IsItMe)
+		{
+			//register for stats change
+			pPlayer.Stats.SetOnStatsChange(OnStatsChanged);
+			//invoke first change manually
+			OnStatsChanged(pPlayer.Stats);
+		}
 
 		pPlayer.Visual.Scoreboard = this;
 	}
 
 	private void OnStatsChanged(PlayerStats pStats)
 	{
-		SetStats(pStats.Kills, pStats.Deaths);
+		SetScore(pStats.Kills, pStats.Deaths);
 	}
 
-	public void SetStats(int pKills, int pDeaths)
+	public void SetScore(int pKills, int pDeaths)
 	{
 		kills.text = pKills.ToString();
 		deaths.text = pDeaths.ToString();
-		player.Network.Send(EPhotonMsg.Player_UI_Scoreboard_SetStats, pKills, pDeaths);
-
+		player.Photon.Send(EPhotonMsg.Player_UI_Scoreboard_SetScore, pKills, pDeaths);
 	}
 }

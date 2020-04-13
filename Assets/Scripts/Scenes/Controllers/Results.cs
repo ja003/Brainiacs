@@ -1,28 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Results : BrainiacsBehaviour
+/// <summary>
+/// Main controller of the result scene
+/// </summary>
+public class Results : CSingleton<Results>
 {
-	[SerializeField] private ResultScore scoreFirst;
-	[SerializeField] private ResultScore scoreSecond;
-	[SerializeField] private ResultScore scoreThird;
+	[SerializeField] Button btnClose;
 
 	protected override void Awake()
 	{
+		btnClose.onClick.AddListener(Close);
+
 		base.Awake();
-
-		SetScore();
 	}
 
-	private void SetScore()
-	{
-		scoreFirst.SetResult(brainiacs.GameResultInfo.GetResultInfo(1));
-		scoreSecond.SetResult(brainiacs.GameResultInfo.GetResultInfo(2));
-		scoreThird.SetResult(brainiacs.GameResultInfo.GetResultInfo(3));
-	}
-
-	public void TestClose()
+	public void Close()
 	{
 		brainiacs.Scenes.LoadScene(EScene.MainMenu);
 	}

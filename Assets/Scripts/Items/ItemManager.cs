@@ -51,7 +51,7 @@ public class ItemManager : BrainiacsController
 			WeaponConfig heroSpecial = h.SpecialWeapon;
 
 			allWeapons.Add(heroBasic.Id, heroBasic);
-			allProjectiles.Add(heroBasic.Id, new ProjectileWeaponInfo(h.BasicWeapon).Projectile);
+			allProjectiles.Add(heroBasic.Id, h.BasicWeapon.Projectile);
 
 			//todo: not all special weapons are configured
 			if(allWeapons.ContainsKey(heroSpecial.Id) || heroSpecial == null)
