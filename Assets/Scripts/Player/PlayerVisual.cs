@@ -8,29 +8,18 @@ public class PlayerVisual : PlayerBehaviour
 {
 	HeroConfig heroConfig;
 
-	[SerializeField]
-	private SpriteRenderer weaponUp;
-	[SerializeField]
-	private SpriteRenderer weaponRight;
-	[SerializeField]
-	private SpriteRenderer weaponDown;
-	[SerializeField]
-	private SpriteRenderer weaponLeft;
+	[SerializeField] private SpriteRenderer weaponUp = null;
+	[SerializeField] private SpriteRenderer weaponRight = null;
+	[SerializeField] private SpriteRenderer weaponDown = null;
+	[SerializeField] private SpriteRenderer weaponLeft = null;
 
-	[SerializeField]
-	private SpriteRenderer handsDown;
-	[SerializeField]
-	private SpriteRenderer handsLeft;
-	[SerializeField]
-	private SpriteRenderer handsUp;
-	[SerializeField]
-	private SpriteRenderer handsRight;
+	[SerializeField] private SpriteRenderer handsDown = null;
+	[SerializeField] private SpriteRenderer handsLeft = null;
+	[SerializeField] private SpriteRenderer handsUp = null;
+	[SerializeField] private SpriteRenderer handsRight = null;
 
 
-	[SerializeField]
-	private PaletteSwapController paletteSwap;
-	[SerializeField]
-	private PlayerMovement movement;
+	[SerializeField] private PaletteSwapController paletteSwap = null;
 
 	internal void OnDie()
 	{
@@ -40,7 +29,7 @@ public class PlayerVisual : PlayerBehaviour
 		DoInTime(() => SetVisible(false), 1);
 	}
 
-	
+
 
 	public void SetVisible(bool pValue)
 	{
@@ -224,7 +213,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void ShowWeapon(EWeaponId pWeapon)
 	{
-		WeaponConfig config = 
+		WeaponConfig config =
 			brainiacs.ItemManager.GetWeaponConfig(pWeapon);
 		weaponUp.sprite = config.VisualInfo.PlayerSpriteUp;
 		weaponRight.sprite = config.VisualInfo.PlayerSpriteRight;
@@ -234,7 +223,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void UpdatePlayerSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart();
+		int order = GetCurrentOrderIndexStart(ESortLayer.Player);
 		if(currentDirection == EDirection.Up)
 			order += 2;
 
@@ -244,31 +233,53 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void UpdateHandsSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart() + 2;
+		int order = GetCurrentOrderIndexStart(ESortLayer.Hands);
 
 		handsUp.sortingOrder = order - 1;
 		handsRight.sortingOrder = order;
 		handsDown.sortingOrder = order;
 		handsLeft.sortingOrder = order;
 	}
-	
+
 	/// <summary>
 	/// Standart order:
 	/// - Player, Weapon, Hands
-	/// Direction up:
+	/// Direction up: (handled separately in other methods)
 	/// - Weapon, Hands, Player
 	/// 
 	/// Players are sorted based on their Y position.
 	/// Each player has reserved layer indexes based on their order.
 	/// </summary>
-	private int GetCurrentOrderIndexStart()
+	private int GetCurrentOrderIndexStart(ESortLayer pLayer)
 	{
-		return player_sort_index_start + CurrentSortOrder * player_sort_index_start;
+		int index = player_sort_index_start + CurrentSortOrder * player_sort_index_start;
+		switch(pLayer)
+		{
+			case ESortLayer.Player:
+				break;
+			case ESortLayer.Weapon:
+				index += 1;
+				break;
+			case ESortLayer.Hands:
+				index += 2;
+				break;
+		}
+		//Debug.Log(pLayer + " order = " + index);
+
+		return index;
+	}
+
+	private enum ESortLayer
+	{
+		None,
+		Player,
+		Weapon,
+		Hands
 	}
 
 	private void UpdateWeaponSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart() + 1;
+		int order = GetCurrentOrderIndexStart(ESortLayer.Weapon);
 
 		//todo: merge into 1 sprite
 		weaponUp.sortingOrder = order - 1;

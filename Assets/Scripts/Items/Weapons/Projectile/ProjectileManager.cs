@@ -5,27 +5,19 @@ using UnityEngine;
 
 public class ProjectileManager : GameController
 {
-	[SerializeField]
-	private Projectile prefab;
+	[SerializeField] private Projectile prefab = null;
 
 	public int LayerProjectile => prefab.gameObject.layer;
 
-	public void SpawnProjectile(Vector3 pPosition, Player pOwner, EWeaponId pWeapon, EDirection pDirection = EDirection.None)
-	{
-		SpawnProjectile(pPosition, pOwner, brainiacs.ItemManager.GetProjectileConfig(pWeapon), pDirection);
-	}
+	//todo: is needed?
+	//public void SpawnProjectile(Vector3 pPosition, Player pOwner, EWeaponId pWeapon, EDirection pDirection = EDirection.None)
+	//{
+	//	SpawnProjectile(pPosition, pOwner, brainiacs.ItemManager.GetProjectileConfig(pWeapon), pDirection);
+	//}
 
 	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
-		Projectile newProjectile = PhotonNetwork.Instantiate(
-			prefab.name, pPosition, Quaternion.identity).GetComponent<Projectile>();
-
-		//if(DebugData.LocalImage)
-		//{
-		//	Projectile localImageProjectile = PhotonNetwork.Instantiate(
-		//		prefab.name, pPosition + Vector3.up, Quaternion.identity).GetComponent<Projectile>();
-		//	newProjectile.LocalImage = localImageProjectile;
-		//}
+		Projectile newProjectile = InstanceFactory.Instantiate(prefab.gameObject, pPosition).GetComponent<Projectile>();
 
 		newProjectile.Spawn(pOwner, pConfig, pDirection);
 	}
@@ -36,6 +28,6 @@ public class ProjectileManager : GameController
 
 	protected override void OnMainControllerAwaken()
 	{
-			
+
 	}
 }

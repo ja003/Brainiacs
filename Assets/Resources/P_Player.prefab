@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -126,6 +127,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,9 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22a2a1fdcee82941ba41b52356b29fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visual: {fileID: 4773161991021014474}
-  movement: {fileID: 7872993416487400290}
-  owner: {fileID: 4342295620933284857}
+  _player: {fileID: 4342295620933284857}
   projectileStartUp: {fileID: 298268065103512773}
   projectileStartRight: {fileID: 2374326329331123520}
   projectileStartDown: {fileID: 5578320376716274107}
@@ -297,6 +297,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -377,6 +378,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -457,6 +459,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -537,6 +540,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -664,6 +668,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -895,6 +900,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -992,6 +998,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1043,14 +1050,11 @@ MonoBehaviour:
   input: {fileID: 7872993416487400291}
   WeaponController: {fileID: 897093172}
   Visual: {fileID: 4773161991021014474}
-  Movement: {fileID: 7872993416487400290}
   Health: {fileID: 4244118042715792558}
   ItemController: {fileID: 8791258408710402016}
   Stats: {fileID: 2092177015604258632}
   Photon: {fileID: 1812185347105052305}
-  LocalImage: {fileID: 0}
-  LocalImageOwner: {fileID: 0}
-  IsLocalImage: 0
+  Movement: {fileID: 7872993416487400290}
   IsInited: 0
 --- !u!114 &7872993416487400290
 MonoBehaviour:
@@ -1064,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e3e288824442f43b1dbcd67a568b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4342295620933284857}
+  _player: {fileID: 0}
   PlayerCollider: {fileID: 475219872465314036}
 --- !u!114 &7872993416487400291
 MonoBehaviour:
@@ -1078,9 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d3bec0e6fa2c2458e16b468d8d83f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4342295620933284857}
-  movement: {fileID: 7872993416487400290}
-  weapon: {fileID: 897093172}
+  _player: {fileID: 0}
 --- !u!61 &475219872465314036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1129,7 +1131,6 @@ MonoBehaviour:
   handsUp: {fileID: 3636149322915584526}
   handsRight: {fileID: 1921905453}
   paletteSwap: {fileID: 1489477447}
-  movement: {fileID: 7872993416487400290}
   PlayerInfo: {fileID: 0}
   Scoreboard: {fileID: 0}
 --- !u!95 &1489477448
@@ -1182,9 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26751757d35b41542945453c2f552914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 2092177015604258632}
-  visual: {fileID: 4773161991021014474}
-  movement: {fileID: 7872993416487400290}
+  _player: {fileID: 0}
 --- !u!114 &8791258408710402016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,10 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d29c66b631efcc498e2ccad9bda9d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 0}
-  stats: {fileID: 2092177015604258632}
-  weaponController: {fileID: 897093172}
-  player: {fileID: 4342295620933284857}
+  _player: {fileID: 0}
 --- !u!114 &699375687
 MonoBehaviour:
   m_ObjectHideFlags: 0

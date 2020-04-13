@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIGameTime : GameBehaviour
 {
-    [SerializeField] Text textTime;
+    [SerializeField] private Text textTime = null;
 
     EGameMode mode => brainiacs.GameInitInfo.Mode;
 

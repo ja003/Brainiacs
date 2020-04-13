@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class SpecialEinstein : PlayerWeaponSpecialController
 {
-
-	//[SerializeField] Animator explosionAnimator;
-	//[SerializeField] SpriteRenderer explosionSprite;
-	//[SerializeField] CircleCollider2D explosionCollider;
-
-	[SerializeField] SpecialEinsteinExplosion explosion;
+	[SerializeField] SpecialEinsteinExplosion explosion = null;
 	[SerializeField] public int MaxDamage = 100;
 
 	protected override void OnInit()

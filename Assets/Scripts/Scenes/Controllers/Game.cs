@@ -6,32 +6,18 @@ using UnityEngine.UI;
 
 public class Game : CSingleton<Game>
 {
-	[SerializeField]
-	Camera mainCamera;
+	[SerializeField] Camera mainCamera = null;
 
-	[SerializeField]
-	public MapController MapController;
-
-	[SerializeField]
-	public PlayerManager PlayerManager;
-
-	[SerializeField]
-	public ProjectileManager ProjectileManager;
-
-	[SerializeField]
-	public UIPlayerStatusManager PlayerStatusManager;
-
+	[SerializeField] public MapController MapController;
+	[SerializeField] public PlayerManager PlayerManager;
+	[SerializeField] public ProjectileManager ProjectileManager;
+	[SerializeField] public UIPlayerStatusManager PlayerStatusManager;
 	[SerializeField] public MobileInput MobileInput;
-
 	[SerializeField] public GamePhoton Photon;
-
 	[SerializeField] public GameEndController GameEnd;
-
 	[SerializeField] public UICurtain uiCurtain;
-
 	[SerializeField] public GameTimeController GameTime;
 	[SerializeField] public UIGameTime UIGameTime;
-
 	[SerializeField] public PlayersResultManager Results;
 
 	protected override void Awake()
@@ -54,7 +40,7 @@ public class Game : CSingleton<Game>
 		}
 	}
 
-	[SerializeField] bool debug_forceCurtain;
+	[SerializeField] bool debug_forceCurtain = false;
 
 	public new void Activate()
 	{

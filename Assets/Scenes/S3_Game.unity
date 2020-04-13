@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7430e90a9eb34d975bc2be981698a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 1473945637}
+  playerName: {fileID: 1473945637}
   kills: {fileID: 738565405}
   deaths: {fileID: 638540760}
   background: {fileID: 146144205}
@@ -4670,11 +4670,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8288558609917275097, guid: f9b95b1eafc36194c839127ec1aecca6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b95b1eafc36194c839127ec1aecca6, type: 3}

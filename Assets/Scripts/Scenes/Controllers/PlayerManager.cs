@@ -9,12 +9,8 @@ public class PlayerManager : GameController
 {
 	public List<Player> Players { get; private set; } = new List<Player>();
 
-	[SerializeField]
-	private Player playerPrefab;
-
-	[SerializeField]
-	private PlayerSorter playerSorter;
-
+	[SerializeField] private Player playerPrefab = null;
+	[SerializeField] private PlayerSorter playerSorter = null;
 
 	protected override void OnMainControllerAwaken()
 	{

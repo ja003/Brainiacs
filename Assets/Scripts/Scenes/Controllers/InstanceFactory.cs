@@ -9,17 +9,22 @@ using UnityEngine;
 /// </summary>
 public class InstanceFactory
 {
-    public static GameObject Instantiate(GameObject pPrefab)
+    public static GameObject Instantiate(GameObject pPrefab, Vector3 pPosition)
     {
 		GameObject instance;
 		if(PhotonNetwork.IsConnected)
-			instance = PhotonNetwork.Instantiate(pPrefab.name, Vector3.zero, Quaternion.identity);
+			instance = PhotonNetwork.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		else
 		{
 			if(Brainiacs.Instance.GameInitInfo.IsMultiplayer())
 				Debug.LogError("Not conected to server");
-			instance = Brainiacs.Instantiate(pPrefab, Vector3.zero, Quaternion.identity);
+			instance = Brainiacs.Instantiate(pPrefab, pPosition, Quaternion.identity);
 		}
 		return instance;
+	}
+
+	public static GameObject Instantiate(GameObject pPrefab)
+	{
+		return Instantiate(pPrefab, Vector3.zero);
 	}
 }

@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UiResultElement : BrainiacsBehaviour
 {
-	[SerializeField]
-	private TextMeshProUGUI score;
-
-	[SerializeField]
-	private Image heroPortrait;
-
-	[SerializeField]
-	private TextMeshProUGUI name;
+	[SerializeField] private TextMeshProUGUI score = null;
+	[SerializeField] private Image heroPortrait = null;
+	[SerializeField] private TextMeshProUGUI playerName = null;
 
 	public void SetResult(PlayerScoreInfo pInfo)
 	{
@@ -24,6 +20,6 @@ public class UiResultElement : BrainiacsBehaviour
 		}
 		score.text = $"{pInfo.Kills} / {pInfo.Deaths}";
 		heroPortrait.sprite = brainiacs.HeroManager.GetHeroConfig(pInfo.Hero).Portrait;
-		name.text = pInfo.Name;
+		playerName.text = pInfo.Name;
 	}
 }

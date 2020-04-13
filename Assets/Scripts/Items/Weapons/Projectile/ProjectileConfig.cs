@@ -8,9 +8,9 @@ public class ProjectileConfig : ScriptableObject
 {
 	public EWeaponId WeaponId;
 	public ProjectileVisual Visual;
-	public new int Damage;
-	public new float Speed;
-	public new float Dispersion;
+	public int Damage; //public new int Damage;
+	public float Speed;
+	public float Dispersion;
 }
 
 

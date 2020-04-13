@@ -3,24 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : GameBehaviour, ICollisionHandler
+public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 {
-	[SerializeField]
-	private PlayerStats stats;
-
-	[SerializeField]
-	private PlayerVisual visual;
-
-	[SerializeField]
-	private PlayerMovement movement;
-
-	Player player;
-
 	protected override void Awake()
 	{
-		base.Awake();
-		player = GetComponent<Player>();
 		stats.SetOnStatsChange(OnStatsChange);
+		base.Awake();
 	}
 
 	bool isDying; //flag to prevent deadlock

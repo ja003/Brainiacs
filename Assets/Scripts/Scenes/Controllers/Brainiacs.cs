@@ -7,36 +7,25 @@ using UnityEngine;
 [CSingletion("Singletons/P_Brainiacs", true)]
 public class Brainiacs : CSingleton<Brainiacs>
 {
-	[SerializeField]
-	public Scenes Scenes;
-
 	public static bool SelfInitGame = true;
 
 	public GameInitInfo GameInitInfo;// = new GameInitInfo();
 	public GameResultInfo GameResultInfo = new GameResultInfo();
 
-	[SerializeField]
-	public ItemManager ItemManager;
+	[SerializeField] public Scenes Scenes;
+	[SerializeField] public ItemManager ItemManager;
+	[SerializeField] public HeroManager HeroManager;
+	[SerializeField] public MapManager MapManager;
+	[SerializeField] public PlayerKeysManager PlayerKeysManager;
+	[SerializeField] public PhotonManager PhotonManager;
 
-	[SerializeField]
-	public HeroManager HeroManager;
-
-	[SerializeField]
-	public MapManager MapManager;
-
-	[SerializeField]
-	public PlayerKeysManager PlayerKeysManager;
-
-	[SerializeField]
-	public PhotonManager PhotonManager;
-
-	[SerializeField] GameObject debugLogConsole;
+	[SerializeField] GameObject debugLogConsole = null;
 
 	protected override void Awake()
 	{
 
 		GameInitInfo = new GameInitInfo();
-		
+
 		if(DebugData.TestPlayers)
 			DebugData.TestSetGameInitInfo();
 

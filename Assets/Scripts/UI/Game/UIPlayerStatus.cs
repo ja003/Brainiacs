@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIPlayerStatus : UiBehaviour
 {
-	[SerializeField] private Image icon;
-	[SerializeField] private Text text;
+	[SerializeField] private Image icon = null;
+	[SerializeField] private Text text = null;
 
 	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText)
 	{

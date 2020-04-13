@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -11,10 +12,10 @@ using UnityEngine.UI;
 /// </summary>
 public class UIScoreboardElement : BrainiacsBehaviour
 {
-	[SerializeField] private TextMeshProUGUI name;
-	[SerializeField] private Text kills;
-	[SerializeField] private Text deaths;
-	[SerializeField] private Image background;
+	[SerializeField] private TextMeshProUGUI playerName = null;
+	[SerializeField] private Text kills = null;
+	[SerializeField] private Text deaths = null;
+	[SerializeField] private Image background = null;
 
 	Player player;
 	public void Init(Player pPlayer)
@@ -25,7 +26,7 @@ public class UIScoreboardElement : BrainiacsBehaviour
 		background.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;
-		name.text = pPlayer.InitInfo.Name;
+		playerName.text = pPlayer.InitInfo.Name;
 
 		if(pPlayer.IsItMe)
 		{

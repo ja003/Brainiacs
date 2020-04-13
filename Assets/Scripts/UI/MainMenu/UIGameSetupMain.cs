@@ -15,33 +15,33 @@ using PhotonPlayer = Photon.Realtime.Player;
 public class UIGameSetupMain : MainMenuController
 {
 	[Header("Players")]
-	[SerializeField] GameObject btnGroupAddPlayer;
-	[SerializeField] Button btnAddPlayerAi;
-	[SerializeField] Button btnAddPlayerLocal;
-	[SerializeField] Button btnAddPlayerRemote;
-	[SerializeField] Transform playersHolder;
-	[SerializeField] UIGameSetupPlayerEl playerPrefab;
+	[SerializeField] GameObject btnGroupAddPlayer = null;
+	[SerializeField] Button btnAddPlayerAi = null;
+	[SerializeField] Button btnAddPlayerLocal = null;
+	[SerializeField] Button btnAddPlayerRemote = null;
+	[SerializeField] Transform playersHolder = null;
+	[SerializeField] UIGameSetupPlayerEl playerPrefab = null;
 	List<UIGameSetupPlayerEl> players = new List<UIGameSetupPlayerEl>();
 
 	[Header("Game mode")]
-	[SerializeField] Toggle gameModeToggleTime;
-	[SerializeField] Toggle gameModeToggleScore;
-	[SerializeField] Toggle gameModeToggleDeathmatch;
-	[SerializeField] UiTextSwapper gameModeValueSwapper;
+	[SerializeField] Toggle gameModeToggleTime = null;
+	[SerializeField] Toggle gameModeToggleScore = null;
+	[SerializeField] Toggle gameModeToggleDeathmatch = null;
+	[SerializeField] UiTextSwapper gameModeValueSwapper = null;
 
 	[Header("Map")]
-	[SerializeField] Image mapPreview;
-	[SerializeField] UiTextSwapper mapSwapper;
+	[SerializeField] Image mapPreview = null;
+	[SerializeField] UiTextSwapper mapSwapper = null;
 
 	[Header("Buttons")]
-	[SerializeField] Button btnBack;
-	[SerializeField] Button btnPlay; //master
-	[SerializeField] Button btnReady; //client
-	[SerializeField] Text btnReadyText;
-	[SerializeField] Button btnAllowJoin;
+	[SerializeField] Button btnBack = null;
+	[SerializeField] Button btnPlay = null; //master
+	[SerializeField] Button btnReady = null; //client
+	[SerializeField] Text btnReadyText = null;
+	[SerializeField] Button btnAllowJoin = null;
 
 	[Header("DEBUG")]
-	[SerializeField] Button debug_btnSyncInfo;
+	[SerializeField] Button debug_btnSyncInfo = null;
 
 	GameInitInfo gameInitInfo => brainiacs.GameInitInfo;
 

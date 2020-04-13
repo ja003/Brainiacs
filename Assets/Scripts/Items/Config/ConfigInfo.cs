@@ -47,7 +47,6 @@ public struct MapItemInfo
 [Serializable]
 public struct SpecialWeaponInfo
 {
-	[FormerlySerializedAs("InHandWeaponlInfo")]
 	public InHandWeaponInfo InHandInfo;
 	public PlayerWeaponSpecialController ControllerPrefab;
 }

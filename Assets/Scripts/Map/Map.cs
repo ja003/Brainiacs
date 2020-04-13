@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-	[SerializeField]
-	private List<Transform> spawnPoints;
+	[SerializeField] private List<Transform> spawnPoints = null;
 
 	private List<int> assignedSpawnPoints;
 
-	[SerializeField]
-	public Transform TopLeftCorner;
-	[SerializeField]
-	public Transform BotRightCorner;
+	[SerializeField] public Transform TopLeftCorner;
+	[SerializeField] public Transform BotRightCorner;
 
 	internal void SetActive(bool pValue)
 	{

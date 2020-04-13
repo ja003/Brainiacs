@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class GameTimeController : GameController
 {
-	[SerializeField] UIGameTime uiGameTime;
+	[SerializeField] UIGameTime uiGameTime = null;
 
 	protected override void OnMainControllerAwaken()
 	{

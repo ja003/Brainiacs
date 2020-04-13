@@ -12,14 +12,13 @@ public class MainMenu : CSingleton<MainMenu>
 	private const int MENU_ANIM_POSITION_MAIN = 0;
 	private const int MENU_ANIM_POSITION_SETTINGS = -1;
 
-	[SerializeField] private Button btnStartGame;
-	[SerializeField] private Button btnSettings;
-	[SerializeField] private Button btnQuit;
+	[SerializeField] private Button btnStartGame = null;
+	[SerializeField] private Button btnSettings = null;
+	[SerializeField] private Button btnQuit = null;
+
+	[SerializeField] int debug_InitBgAnim = -1;
 
 	[SerializeField] public UIGameSetup GameSetup;
-
-	[SerializeField] int debug_InitBgAnim;
-
 	[SerializeField] public MainMenuPhoton Photon;
 
 	protected override void Awake()
@@ -34,7 +33,7 @@ public class MainMenu : CSingleton<MainMenu>
 			//todo: Activate from scene loading?
 			DoInTime(Activate, 0.5f);
 		}
-		
+
 		base.Awake(); //always call base.event() at the end
 	}
 
@@ -43,7 +42,7 @@ public class MainMenu : CSingleton<MainMenu>
 	{
 		StartMenuAnim(MENU_ANIM_POSITION_SETUP);
 	}
-	
+
 	public void OnBtnBack()
 	{
 		StartMenuAnim(MENU_ANIM_POSITION_MAIN);

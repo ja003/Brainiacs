@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-	[SerializeField]
-	private List<MapConfig> mapConfigs;
+	[SerializeField] private List<MapConfig> mapConfigs = null;
 	private Dictionary<EMap, MapConfig> mapConfigMap = new Dictionary<EMap, MapConfig>();
 
 	private void Awake()

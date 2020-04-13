@@ -9,25 +9,17 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupPlayerEl : MainMenuBehaviour
 {
-	[SerializeField] Image color;
-	[SerializeField] Image state; //ready = green, waiting = red
-	[SerializeField] Animator portraitAnimator;
-	[SerializeField] Image portrait;
-	[SerializeField] Text playerNameText;
+	[SerializeField] Image color = null;
+	[SerializeField] Image state = null; //ready = green, waiting = red
+	[SerializeField] Animator portraitAnimator = null;
+	[SerializeField] Image portrait = null;
+	[SerializeField] Text playerNameText = null;
 	//[SerializeField] UiTextSwapper playerTypeSwapper;
-	[SerializeField] UiTextSwapper heroSwapper;
-	[SerializeField] Text playerTypeText;
-	[SerializeField] Button btnRemove;
-
+	[SerializeField] UiTextSwapper heroSwapper = null;
+	[SerializeField] Text playerTypeText = null;
+	[SerializeField] Button btnRemove = null;
 
 	public PlayerInitInfo Info;
-	//public EPlayerColor AssignedColor;
-	//public EPlayerType PlayerType { get; private set; }
-	//public EHero Hero;
-	//public int Number;
-
-	//public PhotonPlayer PhotonPlayer;
-	//public bool IsReady; //master is always considered ready
 	public bool IsItMe;
 
 	bool preInited;

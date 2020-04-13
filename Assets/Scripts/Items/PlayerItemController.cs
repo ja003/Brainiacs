@@ -3,26 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerItemController : GameController
+public class PlayerItemController : PlayerBehaviour
 {
-	[SerializeField]
-	private PlayerStats stats;
-
-	[SerializeField]
-	private PlayerWeaponController weaponController;
-
-	[SerializeField]
-	private Player player;
-
-
-	protected override void OnMainControllerActivated()
-	{
-	}
-
-	protected override void OnMainControllerAwaken()
-	{
-	}
-
 	internal void AddHeroSpecialWeapon(EHero pHero)
 	{		
 		HeroSpecialWeaponConfig config =
@@ -34,10 +16,10 @@ public class PlayerItemController : GameController
 			return;
 		}
 
-		PlayerWeaponSpecial weapon = new PlayerWeaponSpecial(
+		PlayerWeaponSpecial weaponSpecial = new PlayerWeaponSpecial(
 			player, config);
 
-		weaponController.AddWeapon(weapon);
+		weapon.AddWeapon(weaponSpecial);
 	}
 
 	internal void AddHeroBasicWeapon(EHero pHero)
@@ -49,9 +31,9 @@ public class PlayerItemController : GameController
 			Debug.LogError($"Added weapon was null");
 			return;
 		}
-		PlayerWeaponProjectile weapon =
+		PlayerWeaponProjectile weaponProjectile =
 			new PlayerWeaponProjectile(player, config);
-		weaponController.AddWeapon(weapon);
+		weapon.AddWeapon(weaponProjectile);
 	}
 
 	//TODO: create system to check weapon cathegory
@@ -67,9 +49,9 @@ public class PlayerItemController : GameController
 		if(config == null)
 			return;
 
-		PlayerWeaponProjectile weapon =
+		PlayerWeaponProjectile weaponProjectile =
 			new PlayerWeaponProjectile(player, config);
-		weaponController.AddWeapon(weapon);
+		weapon.AddWeapon(weaponProjectile);
 	}
 
 	internal void AddMapWeaponSpecial(EWeaponId pWeapon)
@@ -84,8 +66,8 @@ public class PlayerItemController : GameController
 		if(config == null)
 			return;
 
-		PlayerWeaponSpecial weapon =
+		PlayerWeaponSpecial weaponSpecial =
 			new PlayerWeaponSpecial(player, config);
-		weaponController.AddWeapon(weapon);
+		weapon.AddWeapon(weaponSpecial);
 	}
 }

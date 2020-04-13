@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIPlayerStatusManager : MonoBehaviour
 {
-	[SerializeField] private UIPlayerStatus prefab;
+	[SerializeField] private UIPlayerStatus prefab = null;
 
 	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText)
 	{

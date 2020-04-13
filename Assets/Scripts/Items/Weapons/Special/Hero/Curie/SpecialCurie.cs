@@ -8,17 +8,17 @@ using PhotonPlayer = Photon.Realtime.Player;
 public class SpecialCurie : PlayerWeaponSpecialController
 {
 	EDirection direction;
-	[SerializeField] ProjectileConfig projectile;
-	[SerializeField] [Range(10, 100)]float speed;
+	[SerializeField] ProjectileConfig projectile = null;
+	[SerializeField] [Range(10, 100)]float speed = -1;
 	[SerializeField] [Range(0.01f, 1)] float cadency = 0.1f;
 
-	[SerializeField] BoxCollider2D colliderUpDown;
-	[SerializeField] BoxCollider2D colliderRightLeft;
+	[SerializeField] BoxCollider2D colliderUpDown = null;
+	[SerializeField] BoxCollider2D colliderRightLeft = null;
 
-	[SerializeField] Transform projectileSpawnUp;
-	[SerializeField] Transform projectileSpawnRight;
-	[SerializeField] Transform projectileSpawnDown;
-	[SerializeField] Transform projectileSpawnLeft;
+	[SerializeField] Transform projectileSpawnUp = null;
+	[SerializeField] Transform projectileSpawnRight = null;
+	[SerializeField] Transform projectileSpawnDown = null;
+	[SerializeField] Transform projectileSpawnLeft = null;
 
 	protected override void Awake()
 	{
@@ -111,7 +111,7 @@ public class SpecialCurie : PlayerWeaponSpecialController
 		canCollide = false;
 		DoInTime(Shoot, cadency);
 
-		//Owner is not set for remote
+		//Owner is not set for local image
 		Vector3 sendSpawnPos = Owner && Owner.LocalImage ? 
 			Owner.LocalImage.WeaponController.GetProjectileStart(direction).position : 
 			pSpawnPosition;

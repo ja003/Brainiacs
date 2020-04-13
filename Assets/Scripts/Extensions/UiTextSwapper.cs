@@ -10,9 +10,9 @@ using UnityEngine.UI;
 /// </summary>
 public class UiTextSwapper : MonoBehaviour
 {
-	[SerializeField] Text text;
-	[SerializeField] Button btnNext;
-	[SerializeField] Button btnPrevious;
+	[SerializeField] Text text = null;
+	[SerializeField] Button btnNext = null;
+	[SerializeField] Button btnPrevious = null;
 
 	List<string> values;
 	public int CurrentIndex { get; private set; }

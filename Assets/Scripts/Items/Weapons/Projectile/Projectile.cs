@@ -14,7 +14,6 @@ public class Projectile : BrainiacsBehaviour
 
 	bool inited;
 
-	[FormerlySerializedAs("Network")]
 	[SerializeField] public ProjectilePhoton Photon;
 
 	public Projectile LocalImage;

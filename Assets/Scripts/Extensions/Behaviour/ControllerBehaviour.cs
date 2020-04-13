@@ -10,7 +10,7 @@ using UnityEngine;
 public abstract class ControllerBehaviour : BrainiacsBehaviour
 {
 	[Header("Controller")]
-	[SerializeField] GameObject holder;
+	[SerializeField] GameObject holder = null;
 	
 	/// <summary>
 	/// Scenes:

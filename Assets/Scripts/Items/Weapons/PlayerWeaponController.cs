@@ -3,22 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponController : GameBehaviour
+public class PlayerWeaponController : PlayerBehaviour
 {
-	[SerializeField]
-	private PlayerVisual visual;
-
-	[SerializeField]
-	public PlayerMovement movement;
-
-	[SerializeField]
-	public Player owner;
-
-
-	[SerializeField] private Transform projectileStartUp;
-	[SerializeField] private Transform projectileStartRight;
-	[SerializeField] private Transform projectileStartDown;
-	[SerializeField] private Transform projectileStartLeft;
+	[SerializeField] private Transform projectileStartUp = null;
+	[SerializeField] private Transform projectileStartRight = null;
+	[SerializeField] private Transform projectileStartDown = null;
+	[SerializeField] private Transform projectileStartLeft = null;
 
 	private List<PlayerWeapon> weapons = new List<PlayerWeapon>();
 	public PlayerWeapon ActiveWeapon { get; private set; }
@@ -42,7 +32,7 @@ public class PlayerWeaponController : GameBehaviour
 
 	internal void OnDirectionChange(EDirection pDirection)
 	{
-		if(ActiveWeapon == null && !owner.IsLocalImage)
+		if(ActiveWeapon == null && !player.IsLocalImage)
 		{
 			Debug.LogError("Active weapon is null");
 		}
@@ -121,9 +111,9 @@ public class PlayerWeaponController : GameBehaviour
 	{
 		game.ProjectileManager.SpawnProjectile(
 				GetProjectileStartPosition(movement.CurrentDirection),
-				owner, pProjectile.Projectile);
+				player, pProjectile.Projectile);
 
-		owner.LocalImage?.WeaponController.ShootProjectile(pProjectile);
+		player.LocalImage?.WeaponController.ShootProjectile(pProjectile);
 	}
 
 	private void HandleUseResult(EWeaponUseResult pUseResult)

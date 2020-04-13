@@ -7,23 +7,11 @@ public class MapItemGenerator : GameController
 	Vector3 topLeftCorner;
 	Vector3 botRightCorner;
 
-	[SerializeField]
-	MapItem mapItemPrefab;
-	
-	[SerializeField]
-	private int frequency;
+	[SerializeField] MapItem mapItemPrefab = null;
+	[SerializeField] private int frequency = -1;
+	[SerializeField] private bool isActive = false;
 
-	[SerializeField]
-	private bool isActive;
-
-	protected override void Awake()
-	{
-		base.Awake();
-	}
-
-	protected override void OnMainControllerAwaken()
-	{
-	}
+	protected override void OnMainControllerAwaken() { }
 
 	protected override void OnMainControllerActivated()
 	{
@@ -37,7 +25,7 @@ public class MapItemGenerator : GameController
 
 	private void StartGenerating()
 	{
-		float time = Random.Range(frequency -1, frequency + 1);
+		float time = Random.Range(frequency - 1, frequency + 1);
 		DoInTime(OnGenerateCountdownFinished, time);
 	}
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UiResults : ResultsController
 {
-	[SerializeField] private UiResultElement scoreFirst;
-	[SerializeField] private UiResultElement scoreSecond;
-	[SerializeField] private UiResultElement scoreThird;
+	[SerializeField] private UiResultElement scoreFirst = null;
+	[SerializeField] private UiResultElement scoreSecond = null;
+	[SerializeField] private UiResultElement scoreThird = null;
 
 	protected override void OnMainControllerAwaken()
 	{

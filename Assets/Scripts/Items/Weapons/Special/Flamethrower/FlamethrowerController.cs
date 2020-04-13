@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollision
 {
-	[SerializeField]
-	private PolygonCollider2D flameCollider;
+	[SerializeField] private PolygonCollider2D flameCollider = null;
+	[SerializeField] private new Animator animator = null;
+	[SerializeField] private CollisionDetector collisionDetector = null;
+	[SerializeField] private Transform maxDistance = null;
 
-	[SerializeField]
-	private new Animator animator;
-
-	[SerializeField]
-	private CollisionDetector collisionDetector;
-
-	[SerializeField] private float minDamage;
-	[SerializeField] private float maxDamage;
-
-	[SerializeField] private Transform maxDistance;
+	[SerializeField] private float minDamage = -1;
+	[SerializeField] private float maxDamage = -1;
 
 	private void Update()
 	{

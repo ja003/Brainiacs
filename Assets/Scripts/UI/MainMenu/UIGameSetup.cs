@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class UIGameSetup : MainMenuBehaviour
 {
-	[SerializeField] private Button btnJoin;
-	[SerializeField] private Button btnHost;
-	[SerializeField] private Button btnBack;
-	[SerializeField] private Button btnJoinSearchBack;
+	[SerializeField] private Button btnJoin = null;
+	[SerializeField] private Button btnHost = null;
+	[SerializeField] private Button btnBack = null;
+	[SerializeField] private Button btnJoinSearchBack = null;
 
-	[SerializeField] private GameObject setupInit;
-	[SerializeField] private UIGameSetupSearch setupSearch;
-	[SerializeField] public UIGameSetupMain SetupMain;
+	[SerializeField] private GameObject setupInit = null;
+	[SerializeField] private UIGameSetupSearch setupSearch = null;
+	[SerializeField] public UIGameSetupMain SetupMain = null;
 
 
 	protected override void Awake()
@@ -22,12 +22,6 @@ public class UIGameSetup : MainMenuBehaviour
 		setupInit.SetActive(true);
 		setupSearch.SetActive(false);
 		SetupMain.SetActive(false);
-
-		//DEBUG
-		//Debug.LogError("DEBUG - remove before build");
-		//setupInit.SetActive(false);
-		//setupSearch.SetActive(true);
-
 
 		btnJoin.onClick.AddListener(OnBtnJoin);
 		btnHost.onClick.AddListener(OnBtnHost);
@@ -41,8 +35,6 @@ public class UIGameSetup : MainMenuBehaviour
 		setupInit.SetActive(true);
 		setupSearch.SetActive(false);
 	}
-
-	
 
 	private void OnBtnJoin()
 	{
@@ -80,4 +72,4 @@ public class UIGameSetup : MainMenuBehaviour
 		setupSearch.SetActive(false);
 		SetupMain.SetActive(false);
 	}
- }
+}

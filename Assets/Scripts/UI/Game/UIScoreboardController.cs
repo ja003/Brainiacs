@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class UIScoreboardController : GameController
 {
-	[SerializeField]
-	private UIScoreboardElement scorePlayerPrefab;
+	[SerializeField] private UIScoreboardElement scorePlayerPrefab = null;
 
 	protected override void Awake()
 	{

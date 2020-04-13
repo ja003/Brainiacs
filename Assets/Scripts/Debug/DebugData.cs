@@ -12,10 +12,10 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = false;
+	public static bool TestPlayers = true;
 	public static bool LocalImage = TestPlayers;
 
-	private static int playerCount = 3;
+	private static int playerCount = 2;
 
 	public static bool TestResult = false;
 

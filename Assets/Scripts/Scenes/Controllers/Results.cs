@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Results : CSingleton<Results>
 {
-	[SerializeField] Button btnClose;
+	[SerializeField] Button btnClose = null;
 
 	protected override void Awake()
 	{

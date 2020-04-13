@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class UIPlayerInfoElement : BrainiacsBehaviour
 {
-	[SerializeField] private Image portrait;
-	[SerializeField] private Image weapon;
-	[SerializeField] private Text health;
-	[SerializeField] private Text ammo;
+	[SerializeField] private Image portrait = null;
+	[SerializeField] private Image weapon = null;
+	[SerializeField] private Text health = null;
+	[SerializeField] private Text ammo = null;
 
 	private void Update()
 	{

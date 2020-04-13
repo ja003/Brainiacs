@@ -3,22 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : GameBehaviour
+public class PlayerInput : PlayerBehaviour
 {
 	PlayerKeys keys;
 
-	[SerializeField]
-	private Player player;
-
-	[SerializeField]
-	private PlayerMovement movement;
-
-	[SerializeField]
-	private PlayerWeaponController weapon;
-
-	void FixedUpdate()
+	void Update()
 	{
-		if(player.IsLocalImage)
+		if(!player.IsItMe)
 			return;
 
 		if(!game.GameStarted)
@@ -83,10 +74,10 @@ public class PlayerInput : GameBehaviour
 				direction = EDirection.Left;
 		}
 
-		if(direction == EDirection.None)
-			return;
+		//if(direction == EDirection.None)
+		//	return;
 
-		movement.Move(direction);
+		movement.SetMove(direction);
 	}
 
 	private void ProcessMovementInput()
@@ -96,12 +87,12 @@ public class PlayerInput : GameBehaviour
 		{
 			if(movementRequested = IsMovementRequested(dir))
 			{
-				movement.Move(dir);
+				movement.SetMove(dir);
 				break;
 			}
 		}
 		if(!movementRequested)
-			movement.Idle();
+			movement.SetMove(EDirection.None);
 
 		//HACK
 		if(Input.GetKeyDown(KeyCode.Backslash))

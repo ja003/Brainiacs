@@ -8,41 +8,25 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class Player : GameBehaviour
 {
-	[SerializeField]
-	private PlayerInput input;
+	[SerializeField] private PlayerInput input = null;
 
-	[SerializeField]
-	public PlayerWeaponController WeaponController;
-
-	[SerializeField]
-	public PlayerVisual Visual;
-
-	[SerializeField]
-	public PlayerMovement Movement;
-
-	[SerializeField]
-	public PlayerHealth Health;
+	[SerializeField] public PlayerWeaponController WeaponController;
+	[SerializeField] public PlayerVisual Visual;
+	[SerializeField] public PlayerHealth Health;
+	[SerializeField] public PlayerItemController ItemController;
+	[SerializeField] public PlayerStats Stats;
+	[SerializeField] public PlayerPhotonController Photon;
+	[SerializeField] public PlayerMovement Movement;
 
 	public BoxCollider2D Collider => boxCollider2D;
-
-	[SerializeField]
-	public PlayerItemController ItemController;
-
-	[SerializeField]
-	public PlayerStats Stats;
-
-	[SerializeField]
-	[FormerlySerializedAs("Network")]
-	public PlayerPhotonController Photon;
-
 	public PlayerInitInfo InitInfo;
+	public bool IsItMe => InitInfo.IsItMe() && !IsLocalImage;
+	public bool IsInited;
 
 	//DEBUG
-	public Player LocalImage;
-	public Player LocalImageOwner;
-	public bool IsLocalImage;
-
-	public bool IsItMe => InitInfo.IsItMe() && !IsLocalImage;
+	[NonSerialized] public Player LocalImage;
+	[NonSerialized] public Player LocalImageOwner;
+	[NonSerialized] public bool IsLocalImage;
 
 	private void Update()
 	{
@@ -51,7 +35,7 @@ public class Player : GameBehaviour
 			Health.DebugDie();
 		}
 	}
-	
+
 	public void SetInfo(PlayerInitInfo pPlayerInfo, bool pIsLocalImage, Vector3? pSpawnPosition = null)
 	{
 		//Debug.Log($"{this} SetInfo");
@@ -82,7 +66,6 @@ public class Player : GameBehaviour
 		//Debug.Log("X_Inited_OnReceivedInitInfo");
 	}
 
-	public bool IsInited;
 
 	/// <summary>
 	/// This init is called only for local player
@@ -98,6 +81,7 @@ public class Player : GameBehaviour
 
 
 		//NOTE: first added weapon will be active (PlayerWeaponController::SetDefaultWeaponActive)
+		ItemController.AddHeroSpecialWeapon(EHero.Currie);
 		ItemController.AddMapWeapon(EWeaponId.Lasergun);
 
 		ItemController.AddMapWeapon(EWeaponId.Biogun);
@@ -106,7 +90,6 @@ public class Player : GameBehaviour
 		ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
 		ItemController.AddMapWeapon(EWeaponId.MP40);
 
-		ItemController.AddHeroSpecialWeapon(EHero.Currie);
 		ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
 		ItemController.AddHeroSpecialWeapon(EHero.Einstein);
 		ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
@@ -130,5 +113,5 @@ public class Player : GameBehaviour
 		return $"{number}_{gameObject.name} {Photon}";
 	}
 
-	
+
 }
