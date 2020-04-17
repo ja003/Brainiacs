@@ -14,7 +14,7 @@ public class PlayerMovement : PlayerBehaviour
 
 	private void FixedUpdate()
 	{
-		if(!player.IsItMe || !IsMoving)
+		if(!player.IsInitedAndMe || !IsMoving || player.Stats.IsDead)
 			return;
 
 		Move(CurrentDirection);
@@ -25,7 +25,9 @@ public class PlayerMovement : PlayerBehaviour
 		transform.position = pPosition;
 		//Move(EDirection.Right); //set init direction
 		player.Visual.OnSpawn();
-		SetMove(CurrentDirection);
+
+		SetMove(CurrentDirection); //refresh visual
+		SetMove(EDirection.None); //stop
 	}
 
 	public void SetMove(EDirection pDirection)

@@ -44,7 +44,9 @@ public class PlayerStats : PlayerBehaviour
 		//Hero = pPlayerInfo.Hero;
 		//Name = pPlayerInfo.Name;
 		//Color = pPlayerInfo.Color;
-		OnRespawn(); //to update health etc
+
+		player.OnPlayerInited.AddAction(OnRespawn); //stats can be set only after player is inited
+		//OnRespawn(); //to update health etc
 	}
 
 	public void OnDie()
@@ -54,6 +56,12 @@ public class PlayerStats : PlayerBehaviour
 
 	public void AddKill(bool pForce)
 	{
+		if(!player.IsInited)
+		{
+			Debug.LogError($"AddKill called before player is inited. {player}");
+			return;
+		}
+
 		//stats set only at local player
 		if(player.IsItMe)
 		{
@@ -111,12 +119,19 @@ public class PlayerStats : PlayerBehaviour
 			Debug.Log("Set stat even after game end");
 		}
 
+		if(!player.IsInited)
+		{
+			Debug.LogError($"SetStat called before player is inited. {player}");
+			return;
+		}
+
 		if(player.IsItMe)
 		{
 			switch(pType)
 			{
 				case EPlayerStats.Kills:
 					Kills = pValue;
+					//Debug.Log(player + " Kills = " + Kills);
 					break;
 				case EPlayerStats.Health:
 					Health = Mathf.Clamp(pValue, 0, MAX_HEALTH);

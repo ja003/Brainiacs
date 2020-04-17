@@ -11,7 +11,9 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 	{
 		controller = pController;
 		maxDamage = pController.MaxDamage;
-		SetEnabled(false);
+
+		controller.Owner.OnPlayerInited.AddAction(() => SetEnabled(false));
+		//SetEnabled(false);
 	}
 
 	public void SetEnabled(bool pValue)
@@ -23,11 +25,6 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 
 		circleCollider2D.enabled = pValue && controller.Owner.IsItMe;
 	}
-
-	//private void OnCollisionEnter2D(Collision2D collision)
-	//{
-	//	Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
-	//}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

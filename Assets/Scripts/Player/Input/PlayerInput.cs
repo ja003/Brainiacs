@@ -9,7 +9,7 @@ public class PlayerInput : PlayerBehaviour
 
 	void Update()
 	{
-		if(!player.IsItMe)
+		if(!player.IsInitedAndMe)
 			return;
 
 		if(!game.GameStarted)

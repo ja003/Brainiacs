@@ -16,6 +16,9 @@ public class PlayersResultManager : GameController
 		game.PlayerManager.OnAllPlayersAdded.AddAction(Init);
 	}
 
+	/// <summary>
+	/// Called after all players are added (and inited)
+	/// </summary>
 	private void Init()
 	{
 		PlayersScore = new List<PlayerScoreInfo>();

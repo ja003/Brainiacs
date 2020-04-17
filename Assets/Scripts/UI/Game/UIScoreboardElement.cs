@@ -18,6 +18,10 @@ public class UIScoreboardElement : BrainiacsBehaviour
 	[SerializeField] private Image background = null;
 
 	Player player;
+
+	/// <summary>
+	/// Called after all players are added
+	/// </summary>
 	public void Init(Player pPlayer)
 	{
 		player = pPlayer;

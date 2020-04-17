@@ -22,7 +22,7 @@ public class PlayerPhotonController : PhotonMessenger
 	}
 	PlayerInitInfo playerInfo;
 
-	bool isItMe => player.IsItMe;
+	//bool isItMe => player.IsItMe;
 	bool inited;
 
 	Game game => Game.Instance;
@@ -36,7 +36,7 @@ public class PlayerPhotonController : PhotonMessenger
 
 		//Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
 
-		if(PhotonNetwork.IsMasterClient && !isItMe && PhotonPlayer != null)
+		if(PhotonNetwork.IsMasterClient && !player.IsItMe && PhotonPlayer != null)
 		{
 			view.TransferOwnership(PhotonPlayer);
 			Debug.Log("Transfer ownership to " + PhotonPlayer.NickName);
@@ -66,7 +66,7 @@ public class PlayerPhotonController : PhotonMessenger
 				return player.IsInited;
 		}
 
-		return isItMe && player.IsInited;
+		return player.IsInitedAndMe;
 	}
 
 	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)

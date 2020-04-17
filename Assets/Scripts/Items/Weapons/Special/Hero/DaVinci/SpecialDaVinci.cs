@@ -89,7 +89,7 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 
 	public bool OnCollision(int pDamage, Player pOrigin)
 	{
-		if(!Owner.IsItMe)
+		if(!Owner.IsInitedAndMe)
 			return false;
 
 		if(pDamage > 0)

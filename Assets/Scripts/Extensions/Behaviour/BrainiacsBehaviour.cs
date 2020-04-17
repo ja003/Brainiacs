@@ -9,6 +9,8 @@ public class BrainiacsBehaviour : MonoBehaviour
 {
 	protected Brainiacs brainiacs => Brainiacs.Instance;
 
+	protected bool isMultiplayer => brainiacs.GameInitInfo.IsMultiplayer();
+
 	private Renderer _rend;
 	protected Renderer rend
 	{

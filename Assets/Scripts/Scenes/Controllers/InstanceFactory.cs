@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,5 +27,17 @@ public class InstanceFactory
 	public static GameObject Instantiate(GameObject pPrefab)
 	{
 		return Instantiate(pPrefab, Vector3.zero);
+	}
+
+	internal static void Destroy(GameObject pGameObject)
+	{
+		if(PhotonNetwork.IsConnected)
+			PhotonNetwork.Destroy(pGameObject);
+		else
+		{
+			if(Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+				Debug.LogError("Not conected to server");
+			Brainiacs.Destroy(pGameObject);
+		}
 	}
 }

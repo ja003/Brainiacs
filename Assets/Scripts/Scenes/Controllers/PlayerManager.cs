@@ -91,7 +91,13 @@ public class PlayerManager : GameController
 	/// </summary>
 	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalImage)
 	{
-		GameObject instance = InstanceFactory.Instantiate(playerPrefab.gameObject);
+		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+		Vector3 spawnPosition = game.MapController.ActiveMap.
+			GetSpawnPoint(pPlayerInfo.Number).position;
+		if(pIsLocalImage)
+			spawnPosition += Vector3.down;
+
+		GameObject instance = InstanceFactory.Instantiate(playerPrefab.gameObject, spawnPosition);
 
 		Player playerInstance = instance.GetComponent<Player>();
 
@@ -99,11 +105,7 @@ public class PlayerManager : GameController
 
 		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LR" : "");
 
-		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
-		Vector3 spawnPosition = game.MapController.ActiveMap.
-			GetSpawnPoint(pPlayerInfo.Number).position;
-		if(pIsLocalImage)
-			spawnPosition += Vector3.down;
+		
 
 		bool debug_spwan = false;
 		if(debug_spwan)

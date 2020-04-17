@@ -21,6 +21,8 @@ public class PlayerVisual : PlayerBehaviour
 
 	[SerializeField] private PaletteSwapController paletteSwap = null;
 
+	[SerializeField] public int CurrentSortOrder { get; private set; } = 0;
+
 	internal void OnDie()
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, true);
@@ -28,8 +30,6 @@ public class PlayerVisual : PlayerBehaviour
 
 		DoInTime(() => SetVisible(false), 1);
 	}
-
-
 
 	public void SetVisible(bool pValue)
 	{
@@ -45,8 +45,6 @@ public class PlayerVisual : PlayerBehaviour
 		SetAnimBool(AC_KEY_IS_DEAD, false);
 		OnDirectionChange(currentDirection); //reset animator value
 	}
-
-
 
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
@@ -65,10 +63,6 @@ public class PlayerVisual : PlayerBehaviour
 	{
 		return (int)pColor - 1;
 	}
-
-	[SerializeField]
-	public int CurrentSortOrder { get; private set; } = 0;
-	const int player_sort_index_start = 10;
 
 	/// <summary>
 	/// Returns sort order for projectile which equals
@@ -99,7 +93,6 @@ public class PlayerVisual : PlayerBehaviour
 	{
 		return spriteRend.sortingOrder + 2;
 	}
-
 
 	private const string AC_KEY_DIRECTION = "direction";
 	//private const string AC_KEY_IS_WALKING = "isWalking";
@@ -223,7 +216,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void UpdatePlayerSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart(ESortLayer.Player);
+		int order = SortLayerManager.GetPlayerSortIndexStart(ESortLayer.Player, CurrentSortOrder);
 		if(currentDirection == EDirection.Up)
 			order += 2;
 
@@ -233,7 +226,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void UpdateHandsSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart(ESortLayer.Hands);
+		int order = SortLayerManager.GetPlayerSortIndexStart(ESortLayer.Hands, CurrentSortOrder);
 
 		handsUp.sortingOrder = order - 1;
 		handsRight.sortingOrder = order;
@@ -241,35 +234,7 @@ public class PlayerVisual : PlayerBehaviour
 		handsLeft.sortingOrder = order;
 	}
 
-	/// <summary>
-	/// Standart order:
-	/// - Player, Weapon, Hands
-	/// Direction up: (handled separately in other methods)
-	/// - Weapon, Hands, Player
-	/// 
-	/// Players are sorted based on their Y position.
-	/// Each player has reserved layer indexes based on their order.
-	/// </summary>
-	private int GetCurrentOrderIndexStart(ESortLayer pLayer)
-	{
-		int index = player_sort_index_start + CurrentSortOrder * player_sort_index_start;
-		switch(pLayer)
-		{
-			case ESortLayer.Player:
-				break;
-			case ESortLayer.Weapon:
-				index += 1;
-				break;
-			case ESortLayer.Hands:
-				index += 2;
-				break;
-		}
-		//Debug.Log(pLayer + " order = " + index);
-
-		return index;
-	}
-
-	private enum ESortLayer
+	public enum ESortLayer
 	{
 		None,
 		Player,
@@ -279,7 +244,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void UpdateWeaponSortOrder()
 	{
-		int order = GetCurrentOrderIndexStart(ESortLayer.Weapon);
+		int order = SortLayerManager.GetPlayerSortIndexStart(ESortLayer.Weapon, CurrentSortOrder);
 
 		//todo: merge into 1 sprite
 		weaponUp.sortingOrder = order - 1;

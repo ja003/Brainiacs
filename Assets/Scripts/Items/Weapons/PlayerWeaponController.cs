@@ -147,6 +147,14 @@ public class PlayerWeaponController : PlayerBehaviour
 		InvokeWeaponChange(pWeapon);
 	}
 
+	/// <summary>
+	/// Returns projectile start in current direction
+	/// </summary>
+	public Transform GetProjectileStart()
+	{
+		return GetProjectileStart(movement.CurrentDirection);
+	}
+
 	public Transform GetProjectileStart(EDirection pDirection)
 	{
 		switch(pDirection)

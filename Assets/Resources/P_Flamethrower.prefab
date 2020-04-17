@@ -154,9 +154,9 @@ MonoBehaviour:
   flameCollider: {fileID: 1217923434187672390}
   animator: {fileID: 1217923435359725167}
   collisionDetector: {fileID: 1107499961995651341}
+  maxDistance: {fileID: 1592433368}
   minDamage: 1
   maxDamage: 5
-  maxDistance: {fileID: 1592433368}
 --- !u!114 &-1293533251116011119
 MonoBehaviour:
   m_ObjectHideFlags: 0

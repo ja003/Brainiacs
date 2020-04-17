@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: bcfa6b3d27d69bd41a9d806dad03c1bf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7721469914247329224
+    second: special_nobel_explosion_0
+  - first:
+      213: 328167271670225923
+    second: special_nobel_explosion_1
+  - first:
+      213: -2985414068471968165
+    second: special_nobel_explosion_2
+  - first:
+      213: 1769407799537067435
+    second: special_nobel_explosion_3
+  - first:
+      213: 9008988546539476559
+    second: special_nobel_explosion_4
+  - first:
+      213: 3776465631201024152
+    second: special_nobel_explosion_5
+  - first:
+      213: -2334134600611949627
+    second: special_nobel_explosion_6
+  - first:
+      213: 8506232957552944538
+    second: special_nobel_explosion_7
+  - first:
+      213: 1331291025324640487
+    second: special_nobel_explosion_8
+  - first:
+      213: 8557194167031214408
+    second: special_nobel_explosion_9
+  - first:
+      213: 5943927145672928502
+    second: special_nobel_explosion_10
+  - first:
+      213: 4951891634257434777
+    second: special_nobel_explosion_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: special_nobel_explosion_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5f3961afb282b60800000000000000
+      internalID: 7721469914247329224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c10d61562ed8400800000000000000
+      internalID: 328167271670225923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_2
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e464dd8bda196d0800000000000000
+      internalID: -2985414068471968165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_3
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5663ad4033e8810800000000000000
+      internalID: 1769407799537067435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_4
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f465c06f95b560d70800000000000000
+      internalID: 9008988546539476559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_5
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 101.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8985536ab73b86430800000000000000
+      internalID: 3776465631201024152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3939092fc7b9fd0800000000000000
+      internalID: -2334134600611949627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95e9a39ec53c0670800000000000000
+      internalID: 8506232957552944538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_8
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e804215222b97210800000000000000
+      internalID: 1331291025324640487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_9
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841b0f7c1c241c670800000000000000
+      internalID: 8557194167031214408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_10
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fce2a82f321d7250800000000000000
+      internalID: 5943927145672928502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0.5
+        width: 126.166664
+        height: 101.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99894228437a8b440800000000000000
+      internalID: 4951891634257434777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

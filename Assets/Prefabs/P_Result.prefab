@@ -474,4 +474,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 6250414654371918187}
   heroPortrait: {fileID: 7935924704934519907}
-  name: {fileID: 2315882499607589683}
+  playerName: {fileID: 2315882499607589683}

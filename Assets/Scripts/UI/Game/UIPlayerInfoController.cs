@@ -16,6 +16,9 @@ public class UIPlayerInfoController : GameController
 	{
 	}
 
+	/// <summary>
+	/// Called after all players are added
+	/// </summary>
 	private void InitPlayersInfo()
 	{
 		foreach(var player in game.PlayerManager.Players)

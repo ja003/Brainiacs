@@ -14,7 +14,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	bool isDying; //flag to prevent deadlock
 	private void OnStatsChange(PlayerStats pStats)
 	{
-		if(!player.IsInited || !player.IsItMe)
+		if(!player.IsInitedAndMe)
 			return;
 
 		if(stats.IsDead)
@@ -73,6 +73,12 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	public void ApplyDamage(int pDamage, Player pOrigin)
 	{
+		if(!player.IsInited || !pOrigin.IsInited)
+		{
+			Debug.LogError($"Damage applied before player is inited. {player} | {pOrigin}");
+			return;
+		}
+
 		//todo animation
 		if(!player.IsItMe)
 		{
@@ -83,10 +89,15 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			bool wasGameEnded = game.GameEnd.GameEnded;
 			stats.AddHealth(-pDamage);
 			bool gameEndedAfterThis = game.GameEnd.GameEnded;
+
+			//if this damage ended the game it has to be counted even after game ended
 			bool forceAddKill = wasGameEnded != gameEndedAfterThis;
 
 			if(stats.IsDead)
+			{
+				//Debug.Log("Add kill to " + pOrigin);
 				pOrigin.Stats.AddKill(forceAddKill);
+			}
 		}
 	}
 }

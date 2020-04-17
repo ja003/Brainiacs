@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TODO: rename dmaage handler?
+/// </summary>
 public interface ICollisionHandler 
 {
 	//TRUE = destroy projectile

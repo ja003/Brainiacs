@@ -48,7 +48,11 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 	}
 
 	Player player;
-	internal void Init(Player pPlayer)
+
+	/// <summary>
+	/// Called after all players are added
+	/// </summary>
+	public void Init(Player pPlayer)
 	{
 		player = pPlayer;
 		gameObject.SetActive(true);

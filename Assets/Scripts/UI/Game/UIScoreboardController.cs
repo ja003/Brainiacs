@@ -21,6 +21,9 @@ public class UIScoreboardController : GameController
 	{
 	}
 
+	/// <summary>
+	/// Called after all players are added
+	/// </summary>
 	private void InitPlayersScore()
 	{
 		foreach(var player in game.PlayerManager.Players)

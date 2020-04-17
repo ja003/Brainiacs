@@ -26,8 +26,8 @@ public static class DebugData
 		PlayerScoreInfo result = PlayerScoreInfo.debug_PlayerResultInfo();
 		if(playerCount >= 1)
 		{
-			result.Name = "test davinci player";
-			result.Hero = EHero.DaVinci;
+			result.Hero = EHero.Nobel;
+			result.Name = $"test {result.Hero} player";
 			result.Kills = 2;
 			result.Deaths = 5;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -35,8 +35,8 @@ public static class DebugData
 		if(playerCount >= 2)
 		{
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
-			result.Name = "test tesla player";
 			result.Hero = EHero.Tesla;
+			result.Name = $"test {result.Hero} player";
 			result.Kills = 0;
 			result.Deaths = 0;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -94,7 +94,7 @@ public static class DebugData
 
 		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Score;
 		Brainiacs.Instance.GameInitInfo.Map = EMap.Steampunk;
-		Brainiacs.Instance.GameInitInfo.GameModeValue = 2;
+		Brainiacs.Instance.GameInitInfo.GameModeValue = 5;
 	}
 
 	public static PlayerInitInfo GetPlayerInitInfo(int pPlayerNumber)
@@ -104,7 +104,7 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.DaVinci, GetPlayerName(pPlayerNumber),
+			EHero.Nobel, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
 				//todo: implement debug data for PC and Unity platform
 				//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);

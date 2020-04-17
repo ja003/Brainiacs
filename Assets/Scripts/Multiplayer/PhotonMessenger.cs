@@ -11,9 +11,8 @@ using PhotonPlayer = Photon.Realtime.Player;
 /// </summary>
 public abstract class PhotonMessenger : BrainiacsBehaviour
 {
-	//protected PhotonView view { get; private set; }
-
-	private PhotonView _view;
+	//[SerializeField] 
+	private PhotonView _view = null;
 	protected PhotonView view
 	{
 		get
@@ -24,7 +23,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		}
 	}
 
-	public bool IsMine => view ? view.IsMine : true;
+	public bool IsMine => view && isMultiplayer ? view.IsMine : true;
 	public PhotonPlayer PhotonController => view.Controller;
 
 	[SerializeField] protected bool DEBUG_LOG = false;
@@ -210,4 +209,7 @@ public enum EPhotonMsg
 
 	//- Einstein
 	Special_Einstein_FallOn,
+
+	//- Nobel
+	Special_Nobel_Spawn,
 }

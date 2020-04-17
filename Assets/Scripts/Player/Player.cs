@@ -20,8 +20,13 @@ public class Player : GameBehaviour
 
 	public BoxCollider2D Collider => boxCollider2D;
 	public PlayerInitInfo InitInfo;
+
+	//should be called only after player is inited
 	public bool IsItMe => InitInfo.IsItMe() && !IsLocalImage;
 	public bool IsInited;
+
+	//should be called only on update checks, not during an initializing method.
+	public bool IsInitedAndMe => IsInited && IsItMe;
 
 	//DEBUG
 	[NonSerialized] public Player LocalImage;
@@ -63,9 +68,11 @@ public class Player : GameBehaviour
 			game.PlayerManager.AddPlayer(this);
 		//Init(); 
 		IsInited = true;
+		OnPlayerInited.Invoke();
 		//Debug.Log("X_Inited_OnReceivedInitInfo");
 	}
 
+	public ActionControl OnPlayerInited = new ActionControl();
 
 	/// <summary>
 	/// This init is called only for local player
@@ -81,6 +88,7 @@ public class Player : GameBehaviour
 
 
 		//NOTE: first added weapon will be active (PlayerWeaponController::SetDefaultWeaponActive)
+		ItemController.AddHeroSpecialWeapon(EHero.Nobel);
 		ItemController.AddHeroSpecialWeapon(EHero.Currie);
 		ItemController.AddMapWeapon(EWeaponId.Lasergun);
 
@@ -97,7 +105,7 @@ public class Player : GameBehaviour
 		//Debug.Log("X_Inited_Init");
 
 		game.PlayerManager.OnAllPlayersAdded.AddAction(OnAllPlayersAdded);
-
+		OnPlayerInited.Invoke();
 	}
 
 	internal void OnAllPlayersAdded()
@@ -113,5 +121,17 @@ public class Player : GameBehaviour
 		return $"{number}_{gameObject.name} {Photon}";
 	}
 
-
+	public override bool Equals(object obj)
+	{
+		//Check for null and compare run-time types.
+		if((obj == null) || !this.GetType().Equals(obj.GetType()))
+		{
+			return false;
+		}
+		else
+		{
+			Player p = (Player)obj;
+			return InitInfo.Number == p.InitInfo.Number;
+		}
+	}
 }
