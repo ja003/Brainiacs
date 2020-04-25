@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapItemGenerator : GameController
+/// <summary>
+/// Generates items (powerUp, weapons, ..) on random locations evry X second.
+/// Active only on master
+/// </summary>
+public class MapItemGenerator : GameBehaviour
 {
 	Vector3 topLeftCorner;
 	Vector3 botRightCorner;
@@ -11,12 +15,11 @@ public class MapItemGenerator : GameController
 	[SerializeField] private int frequency = -1;
 	[SerializeField] private bool isActive = false;
 
-	protected override void OnMainControllerAwaken() { }
 
-	protected override void OnMainControllerActivated()
+	public void Init()
 	{
-		topLeftCorner = game.MapController.ActiveMap.TopLeftCorner.position;
-		botRightCorner = game.MapController.ActiveMap.BotRightCorner.position;
+		topLeftCorner = game.Map.ActiveMap.TopLeftCorner.position;
+		botRightCorner = game.Map.ActiveMap.BotRightCorner.position;
 
 		StartGenerating();
 
@@ -40,7 +43,7 @@ public class MapItemGenerator : GameController
 
 	private void GenerateRandomItem()
 	{
-		MapItem newItem = Instantiate(mapItemPrefab, transform);
+		MapItem newItem = InstanceFactory.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
 		int randomIndex = Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 
 		//todo: pick from powerup, mapWeapon, mapSpecialWeapon
@@ -59,7 +62,7 @@ public class MapItemGenerator : GameController
 
 	private Vector3 GetRandomPosition()
 	{
-		return Vector3.up; //DEBUG
+		//return Vector3.up; //DEBUG
 
 		float x = Random.Range(topLeftCorner.x, botRightCorner.x);
 		float y = Random.Range(topLeftCorner.y, botRightCorner.y);

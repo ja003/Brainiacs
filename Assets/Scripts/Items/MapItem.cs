@@ -12,6 +12,8 @@ public class MapItem : MapObject
 		gameObject.SetActive(true);
 		transform.position = pPosition;
 		//Debug.Log($"Item {config} spawned at {pPosition}");
+
+		game.Map.Items.RegisterItem(this);
 	}
 
 	public void Spawn(Vector3 pPosition, MapWeaponConfig pConfig)
@@ -29,6 +31,8 @@ public class MapItem : MapObject
 		spriteRend.sprite = pConfig.MapItemInfo.MapSprite;
 		Spawn(pPosition);
 	}
+
+	//TODO: map item photon - sync visual
 
 	//private void OnCollisionEnter2D(Collision2D collision)
 	//{
@@ -65,7 +69,12 @@ public class MapItem : MapObject
 
 	private void ReturnToPool()
 	{
-		gameObject.SetActive(false);
+		InstanceFactory.Destroy(gameObject);
+	}
+
+	private void OnDestroy()
+	{
+		game.Map.Items.OnDestroyItem(this);
 	}
 
 	protected override void OnCollisionEffect(int pDamage)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FlatBuffers;
 using Photon.Pun;
 using PhotonPlayer = Photon.Realtime.Player;
@@ -15,6 +16,8 @@ public class PlayerInitInfo
 	public PhotonPlayer PhotonPlayer;
 	//NOTE: if new attribute added -> update Update() and 
 	//PlayerInitInfo(UIGameSetupPlayerEl pElement)
+
+	public List<EWeaponId> debug_StartupWeapon = new List<EWeaponId>();
 
 	//TODO: add PlayerInitInfo to UIGameSetupPlayerEl as parameter to hold data
 	public PlayerInitInfo() { }

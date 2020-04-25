@@ -960,6 +960,7 @@ GameObject:
   - component: {fileID: 1812185347105052305}
   - component: {fileID: 2338090529042073309}
   - component: {fileID: 5158018583329352097}
+  - component: {fileID: 1820979888799123582}
   m_Layer: 8
   m_Name: P_Player
   m_TagString: Untagged
@@ -1055,6 +1056,7 @@ MonoBehaviour:
   Stats: {fileID: 2092177015604258632}
   Photon: {fileID: 1812185347105052305}
   Movement: {fileID: 7872993416487400290}
+  ai: {fileID: 1820979888799123582}
   IsInited: 0
 --- !u!114 &7872993416487400290
 MonoBehaviour:
@@ -1296,6 +1298,19 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1820979888799123582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0ec2a6bcc3044459e99e605a02bdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}

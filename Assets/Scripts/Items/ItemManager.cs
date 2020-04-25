@@ -74,10 +74,9 @@ public class ItemManager : BrainiacsController
 
 	public MapWeaponConfig GetMapWeaponConfig(EWeaponId pId)
 	{
-
 		MapWeaponConfig config = MapWeapons.Find(a => a.Id == pId);
-		if(config == null)
-			Debug.LogError($"Config for weapon {pId} not found");
+		//if(config == null) //not error?ge
+		//	Debug.LogError($"Config for weapon {pId} not found");
 
 		return config;
 	}
@@ -114,4 +113,32 @@ public class ItemManager : BrainiacsController
 		return projectile;
 	}
 
+	/// <summary>
+	/// Not sure if neccessary
+	/// </summary>
+	public EWeaponCathegory GetWeaponCathegory(EWeaponId pWeapon)
+	{
+		if(pWeapon.ToString().Contains("Basic_"))
+			return EWeaponCathegory.HeroBasic;
+		if(pWeapon.ToString().Contains("Special_"))
+			return EWeaponCathegory.HeroSpecial;
+
+		if(GetMapWeaponConfig(pWeapon) != null)
+			return EWeaponCathegory.MapBasic;
+		if(GetMapSpecialWeaponConfig(pWeapon) != null)
+			return EWeaponCathegory.MapSpecial;
+
+		Debug.LogError("No cathegory for weapon " + pWeapon);
+		return EWeaponCathegory.None;
+	}
+
+}
+
+public enum EWeaponCathegory
+{
+	None,
+	HeroBasic,
+	HeroSpecial,
+	MapBasic,
+	MapSpecial
 }

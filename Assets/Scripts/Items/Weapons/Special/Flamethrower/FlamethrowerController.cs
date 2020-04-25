@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollision
 {
-	[SerializeField] private PolygonCollider2D flameCollider = null;
+	//[SerializeField] private PolygonCollider2D flameCollider = null;
 	[SerializeField] private new Animator animator = null;
 	[SerializeField] private CollisionDetector collisionDetector = null;
 	[SerializeField] private Transform maxDistance = null;
@@ -36,7 +36,7 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 	{
 		isUsed = pValue;
 		animator.SetBool("isUsed", isUsed);
-		flameCollider.enabled = isUsed;
+		collisionDetector.Collider2D.enabled = isUsed;
 
 		if(pValue)
 			lastTimeUsed = Time.time;
@@ -57,10 +57,15 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 
 	protected override Collider2D GetCollider()
 	{
-		return flameCollider;
+		return collisionDetector.Collider2D;
 	}
 
-	public void OnTriggerStay2D(Collider2D pCollision)
+	/// <summary>
+	/// Called from collision detector.
+	/// Note: player rigidbody sleepmode has to be set to: Never sleep.
+	/// Otherwise collision is sometimes ignored when other player is idle.
+	/// </summary>
+	public void Event_OnTriggerStay2D(Collider2D pCollision)
 	{
 		if(!isUsed)
 			return;

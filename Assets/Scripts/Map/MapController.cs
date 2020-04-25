@@ -7,6 +7,8 @@ public class MapController : GameController
 {
 	public Map ActiveMap = null;
 
+	[SerializeField] public MapItemManager Items;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -51,6 +53,7 @@ public class MapController : GameController
 	{
 		SetMap(brainiacs.GameInitInfo.Map);
 		SetActive(false);
+		Items.Init();
 	}
 
 	protected override void OnMainControllerActivated()

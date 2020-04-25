@@ -26,7 +26,7 @@ MonoBehaviour:
   SpecialWeaponInfo:
     InHandInfo:
       Ammo: 100
-      Magazines: 11
+      Magazines: 666
       Cooldown: 2
       Cadency: 0
     ControllerPrefab: {fileID: 193673593605947489, guid: 79d177f5b20e4e048b34a8a66a721f70,

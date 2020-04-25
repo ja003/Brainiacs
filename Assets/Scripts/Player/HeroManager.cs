@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,36 @@ public class HeroManager : BrainiacsController
 		}
 
 		return config;
+	}
+
+	internal EHero GetHeroOfWeapon(EWeaponId pWeapon)
+	{
+		switch(pWeapon)
+		{
+			case EWeaponId.Special_Curie:
+				return EHero.Currie;
+			case EWeaponId.Special_DaVinci:
+				return EHero.DaVinci;
+			case EWeaponId.Special_Einstein:
+				return EHero.Einstein;
+			case EWeaponId.Special_Nobel:
+				return EHero.Nobel;
+			case EWeaponId.Special_Tesla:
+				return EHero.Tesla;
+			case EWeaponId.Basic_Curie:
+				return EHero.Currie;
+			case EWeaponId.Basic_DaVinci:
+				return EHero.DaVinci;
+			case EWeaponId.Basic_Einstein:
+				return EHero.Einstein;
+			case EWeaponId.Basic_Nobel:
+				return EHero.Nobel;
+			case EWeaponId.Basic_Tesla:
+				return EHero.Tesla;
+		}
+
+		Debug.LogError(pWeapon + " has no hero assigned");
+		return EHero.None;
 	}
 
 	//not neccessary?

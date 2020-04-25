@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MapObject : BrainiacsBehaviour, ICollisionHandler
+public abstract class MapObject : GameBehaviour, ICollisionHandler
 {
 	public bool OnCollision(int pDamage, Player pOrigin)
 	{

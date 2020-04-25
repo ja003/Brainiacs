@@ -47,7 +47,7 @@ public class PlayerWeaponSpecial : PlayerWeapon
 		specialController.Init(pOwner);
 	}
 
-	protected override bool CanUse()
+	public override bool CanUse()
 	{
 		return base.CanUse() && specialController.CanUse();
 	}

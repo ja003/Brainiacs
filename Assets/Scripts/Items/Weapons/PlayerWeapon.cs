@@ -45,13 +45,8 @@ public abstract class PlayerWeapon
 	/// </summary>
 	public virtual EWeaponUseResult Use()
 	{
-		if(IsRealoading || !CanUse())
+		if(!CanUse())
 			return EWeaponUseResult.CantUse;
-
-		if(Time.time < lastUseTime + Info.Cadency)
-		{
-			return EWeaponUseResult.CantUse;
-		}
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 		AmmoLeft--;
@@ -67,9 +62,12 @@ public abstract class PlayerWeapon
 		return EWeaponUseResult.OK;
 	}
 
-	protected virtual bool CanUse()
+	public virtual bool CanUse()
 	{
-		return true;
+		bool isCadencyReady = Time.time > lastUseTime + Info.Cadency;
+		return !Owner.Stats.IsDead && 
+			!IsRealoading &&
+			isCadencyReady;
 	}
 
 	public virtual void StopUse()
@@ -111,7 +109,10 @@ public abstract class PlayerWeapon
 	/// </summary>
 	internal void Reload()
 	{
-		MagazinesLeft--;
+		//HACK: 666 = infinite magazines. eg. all hero weapons
+		if(MagazinesLeft != 666)
+			MagazinesLeft--;
+
 		AmmoLeft = Info.Ammo;
 		IsRealoading = false;
 		RealoadTimeLeft = Info.Cooldown;

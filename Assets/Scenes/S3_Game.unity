@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 429695746}
   - component: {fileID: 429695747}
   - component: {fileID: 429695748}
+  - component: {fileID: 429695749}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -969,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
-  MapController: {fileID: 1262861876}
+  Map: {fileID: 1262861876}
   PlayerManager: {fileID: 1026134742}
   ProjectileManager: {fileID: 1571397962}
   PlayerStatusManager: {fileID: 133961112}
@@ -980,6 +981,7 @@ MonoBehaviour:
   GameTime: {fileID: 429695747}
   UIGameTime: {fileID: 1044857409}
   Results: {fileID: 429695748}
+  Layers: {fileID: 429695749}
   debug_forceCurtain: 0
 --- !u!114 &429695743
 MonoBehaviour:
@@ -1071,6 +1073,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
+--- !u!114 &429695749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429695740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8f62f041778f6489fb7a0a095b4476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player:
+    serializedVersion: 2
+    m_Bits: 256
+  MapObject:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &509937244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902280633}
   - component: {fileID: 902280634}
+  - component: {fileID: 902280635}
   m_Layer: 0
   m_Name: mapItems
   m_TagString: Untagged
@@ -2264,11 +2285,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c23ae69686a04940a7fe9144d2c5118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 0}
   mapItemPrefab: {fileID: 8232935776833295363, guid: 42b597faf28da6d41941dba705989b28,
     type: 3}
-  frequency: 10
+  frequency: 2
   isActive: 1
+--- !u!114 &902280635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902280632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f31ede361ea6c448fc9013a0934772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 902280634}
+  ActiveItems: []
 --- !u!1 &942165211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3011,6 +3045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 1262861874}
   ActiveMap: {fileID: 1765532808}
+  Items: {fileID: 902280635}
 --- !u!1 &1299051882
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,6 +3443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
   prefab: {fileID: 7316528294675931891, guid: 4557b6e1f0114eb42907edddb183341f, type: 3}
+  ActiveProjectiles: []
 --- !u!1 &1614195364
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,12 +4863,12 @@ PrefabInstance:
     - target: {fileID: 8826602045979233348, guid: 25bc84a38d91fcd4bbb43960748211ca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.16
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8826602045979233348, guid: 25bc84a38d91fcd4bbb43960748211ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.51
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 8826602046221799674, guid: 25bc84a38d91fcd4bbb43960748211ca,
         type: 3}

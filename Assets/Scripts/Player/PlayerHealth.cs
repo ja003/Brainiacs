@@ -86,6 +86,12 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		}
 		else
 		{
+			if(isDying)
+			{
+				//Cant apply damage to dying player;
+				return;
+			}
+
 			bool wasGameEnded = game.GameEnd.GameEnded;
 			stats.AddHealth(-pDamage);
 			bool gameEndedAfterThis = game.GameEnd.GameEnded;

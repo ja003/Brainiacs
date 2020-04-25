@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Projectile : BrainiacsBehaviour
+public class Projectile : GameBehaviour
 {
 
-	private Vector3 direction;
+	public Vector3 Direction { get; private set; }
 	public ProjectileConfig config;
 
 	bool inited;
@@ -18,11 +18,14 @@ public class Projectile : BrainiacsBehaviour
 
 	public Projectile LocalImage;
 
-	Player owner;
+	public Player Owner { get; private set; }
 
+	/// <summary>
+	/// Called only at owner side
+	/// </summary>
 	public void Spawn(Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
-		owner = pOwner;
+		Owner = pOwner;
 		//Network.Init(this);
 
 		//projectile type is based on weapon
@@ -61,6 +64,9 @@ public class Projectile : BrainiacsBehaviour
 		boxCollider2D.enabled = true;
 	}
 
+	/// <summary>
+	/// Called on owner and image side
+	/// </summary>
 	public void SetSpawn(Vector3 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
 	{
 		//projectile type is based on weapon
@@ -74,11 +80,13 @@ public class Projectile : BrainiacsBehaviour
 		boxCollider2D.offset = config.Visual.GetCollider().offset;
 		boxCollider2D.enabled = false;
 
-		direction = pProjectileDirection;
+		Direction = pProjectileDirection;
 
 		transform.Rotate(Utils.GetRotation(pPlayerDirection, 180));
 
 		inited = true;
+
+		game.ProjectileManager.RegisterProjectile(this);
 
 		Photon.Send(EPhotonMsg.Projectile_Spawn, pProjectileDirection, pId, pPlayerDirection);
 	}
@@ -103,7 +111,7 @@ public class Projectile : BrainiacsBehaviour
 			return;
 
 		//transform.position += Utils.GetVector(direction) *
-		transform.position += direction * Time.deltaTime * config.Speed;
+		transform.position += Direction * Time.deltaTime * config.Speed;
 	}
 
 	//private void OnCollisionEnter2D(Collision2D collision)
@@ -127,11 +135,21 @@ public class Projectile : BrainiacsBehaviour
 
 		bool result = false;
 		if(handler != null)
-			result = handler.OnCollision(config.Damage, owner);
+			result = handler.OnCollision(config.Damage, Owner);
 
 		if(result)
 			Photon.Destroy();
 		//ReturnToPool();
+	}
+
+	private void OnDestroy()
+	{
+		game.ProjectileManager.OnDestroyProjectile(this);
+	}
+
+	public override string ToString()
+	{
+		return $"Projectile {config.WeaponId}, of {Owner}";
 	}
 
 	//TODO: pooling

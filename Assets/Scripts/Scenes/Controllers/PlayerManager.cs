@@ -29,7 +29,7 @@ public class PlayerManager : GameController
 		if(!brainiacs.GameInitInfo.IsMultiplayer())
 		{
 			//Debug.Log("Spawn players SP");
-			game.MapController.SetOnActivated(() =>
+			game.Map.SetOnActivated(() =>
 					SpawnPlayers(brainiacs.GameInitInfo.Players));
 		}
 	}
@@ -92,7 +92,7 @@ public class PlayerManager : GameController
 	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalImage)
 	{
 		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
-		Vector3 spawnPosition = game.MapController.ActiveMap.
+		Vector3 spawnPosition = game.Map.ActiveMap.
 			GetSpawnPoint(pPlayerInfo.Number).position;
 		if(pIsLocalImage)
 			spawnPosition += Vector3.down;
@@ -191,7 +191,7 @@ public class PlayerManager : GameController
 			return;
 		}
 
-		game.MapController.SetOnActivated(() =>
+		game.Map.SetOnActivated(() =>
 				SpawnPlayers(brainiacs.GameInitInfo.Players));
 	}
 

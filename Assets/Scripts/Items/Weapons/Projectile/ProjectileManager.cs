@@ -15,12 +15,34 @@ public class ProjectileManager : GameController
 	//	SpawnProjectile(pPosition, pOwner, brainiacs.ItemManager.GetProjectileConfig(pWeapon), pDirection);
 	//}
 
+	//TODO: implement efficient storage of projectiles.
+	//NOTE: in MP all sides generate projectiles!
+	public List<Projectile> ActiveProjectiles = new List<Projectile>();
+
+	public void RegisterProjectile(Projectile pProjectile)
+	{
+		//Debug.Log("Add projectile " + pProjectile);
+		ActiveProjectiles.Add(pProjectile);
+	}
+	public void OnDestroyProjectile(Projectile pProjectile)
+	{
+		//Debug.Log("Remove projectile " + pProjectile);
+		ActiveProjectiles.Remove(pProjectile);
+	}
+
 	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
 		Projectile newProjectile = InstanceFactory.Instantiate(prefab.gameObject, pPosition).GetComponent<Projectile>();
 
 		newProjectile.Spawn(pOwner, pConfig, pDirection);
 	}
+
+	//int lastProjectileId;
+	//public int GetNextProjectileId()
+	//{
+	//	lastProjectileId++;
+	//	return lastProjectileId;
+	//}
 
 	protected override void OnMainControllerActivated()
 	{

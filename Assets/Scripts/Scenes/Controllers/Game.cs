@@ -8,7 +8,7 @@ public class Game : CSingleton<Game>
 {
 	[SerializeField] Camera mainCamera = null;
 
-	[SerializeField] public MapController MapController;
+	[SerializeField] public MapController Map;
 	[SerializeField] public PlayerManager PlayerManager;
 	[SerializeField] public ProjectileManager ProjectileManager;
 	[SerializeField] public UIPlayerStatusManager PlayerStatusManager;
@@ -19,6 +19,9 @@ public class Game : CSingleton<Game>
 	[SerializeField] public GameTimeController GameTime;
 	[SerializeField] public UIGameTime UIGameTime;
 	[SerializeField] public PlayersResultManager Results;
+
+	[SerializeField] public Layers Layers;
+	
 
 	protected override void Awake()
 	{

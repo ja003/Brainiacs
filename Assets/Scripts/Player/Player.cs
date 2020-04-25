@@ -18,6 +18,8 @@ public class Player : GameBehaviour
 	[SerializeField] public PlayerPhotonController Photon;
 	[SerializeField] public PlayerMovement Movement;
 
+	[SerializeField] public PlayerAiBrain ai;
+
 	public BoxCollider2D Collider => boxCollider2D;
 	public PlayerInitInfo InitInfo;
 
@@ -88,19 +90,27 @@ public class Player : GameBehaviour
 
 
 		//NOTE: first added weapon will be active (PlayerWeaponController::SetDefaultWeaponActive)
-		ItemController.AddHeroSpecialWeapon(EHero.Nobel);
-		ItemController.AddHeroSpecialWeapon(EHero.Currie);
-		ItemController.AddMapWeapon(EWeaponId.Lasergun);
 
-		ItemController.AddMapWeapon(EWeaponId.Biogun);
+		ItemController.Init(InitInfo.Hero);
 
-		ItemController.AddHeroBasicWeapon(InitInfo.Hero);
-		ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
-		ItemController.AddMapWeapon(EWeaponId.MP40);
+		//ItemController.AddHeroBasicWeapon(InitInfo.Hero);
 
-		ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
-		ItemController.AddHeroSpecialWeapon(EHero.Einstein);
-		ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
+		//ItemController.AddHeroSpecialWeapon(EHero.Nobel);
+		//ItemController.AddHeroSpecialWeapon(EHero.Currie);
+		//ItemController.AddMapWeapon(EWeaponId.Lasergun);
+
+		//ItemController.AddMapWeapon(EWeaponId.Biogun);
+
+		//ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
+		//ItemController.AddMapWeapon(EWeaponId.MP40);
+
+		//ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
+		//ItemController.AddHeroSpecialWeapon(EHero.Einstein);
+		//ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
+
+		if(InitInfo.PlayerType == EPlayerType.AI)
+			ai.Init();
+
 		IsInited = true;
 		//Debug.Log("X_Inited_Init");
 
@@ -112,7 +122,8 @@ public class Player : GameBehaviour
 	{
 		if(!IsItMe)
 			return;
-		WeaponController.SetDefaultWeaponActive();
+
+		//WeaponController.SetDefaultWeaponActive(); //handle in playerItemController
 	}
 
 	public override string ToString()

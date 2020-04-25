@@ -15,7 +15,13 @@ public class PlayerMovement : PlayerBehaviour
 	private void FixedUpdate()
 	{
 		if(!player.IsInitedAndMe || !IsMoving || player.Stats.IsDead)
+		{
+			if(player.InitInfo.PlayerType == EPlayerType.AI)
+			{
+				//Debug.Log("skip Move");
+			}
 			return;
+		}
 
 		Move(CurrentDirection);
 	}
@@ -30,27 +36,48 @@ public class PlayerMovement : PlayerBehaviour
 		SetMove(EDirection.None); //stop
 	}
 
+	public void Stop()
+	{
+		IsMoving = false;
+		player.Visual.Idle();
+	}
+
+	/// <summary>
+	/// Move player object and set direction
+	/// </summary>
 	public void SetMove(EDirection pDirection)
 	{
 		if(pDirection == EDirection.None)
 		{
-			player.Visual.Idle();
-			IsMoving = false;
+			if(player.InitInfo.PlayerType == EPlayerType.AI)
+			{
+				//Debug.Log("Idle");
+			}
+
+			Stop();
 			return;
 		}
 
-		bool isDirectionChanged = CurrentDirection != pDirection;
-		CurrentDirection = pDirection; //has to be set before OnDirectionChange call
 		IsMoving = true;
-		if(isDirectionChanged)
-		{
-			visual.OnDirectionChange(pDirection);
-			weapon.OnDirectionChange(pDirection);
-		}
+		SetDirection(pDirection);
 
 		player.LocalImage?.Movement.SetMove(pDirection);
 	}
 
+	/// <summary>
+	/// Set direction and update visual
+	/// </summary>
+	public void SetDirection(EDirection pDirection)
+	{
+		bool isDirectionChanged = CurrentDirection != pDirection;
+		CurrentDirection = pDirection; //has to be set before OnDirectionChange call
+		if(isDirectionChanged)
+		{
+			visual.OnDirectionChange(pDirection);
+			weapon.OnDirectionChange(pDirection);
+			aiBrain.OnDirectionChange(pDirection);
+		}
+	}
 
 	private void Move(EDirection pDirection)
 	{

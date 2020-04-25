@@ -70,6 +70,14 @@ public static class Utils
 	}
 
 	/// <summary>
+	/// 50/50 coin toss
+	/// </summary>
+	internal static bool TossCoin()
+	{
+		return UnityEngine.Random.Range(0, 2) == 1;
+	}
+
+	/// <summary>
 	/// Return direction rotated by 90 clockwise
 	/// </summary>
 	public static EDirection GetOrthogonalDirection(EDirection pDirection)
@@ -96,5 +104,26 @@ public static class Utils
 			values.RemoveAt(pExclude);
 		}
 		return values;
+	}
+
+	internal static void DebugDrawCross(Vector3 pPosition, Color pColor)
+	{
+		const float length = 0.1f;
+		const float duration = 0.5f;
+		Debug.DrawLine(pPosition + Vector3.left * length, pPosition + Vector3.right * length, pColor, duration);
+		Debug.DrawLine(pPosition + Vector3.down * length, pPosition + Vector3.up * length, pColor, duration);
+	}
+
+	internal static bool IsSameSign(float pNum1, float pNum2, bool pIgnoreZero)
+	{
+		if(pIgnoreZero && (IsNumEqual(pNum1, 0) || IsNumEqual(pNum2, 0)))
+			return true;
+
+		return Mathf.Sign(pNum1) == Mathf.Sign(pNum2);
+	}
+
+	internal static bool IsNumEqual(float pNumber, int pValue)
+	{
+		return Mathf.Abs(pNumber - pValue) < float.Epsilon;
 	}
 }

@@ -13,11 +13,16 @@ public static class DebugData
 	public static bool TestMP = false;
 
 	public static bool TestPlayers = true;
-	public static bool LocalImage = TestPlayers;
+	public static bool LocalImage = false;
 
 	private static int playerCount = 2;
 
 	public static bool TestResult = false;
+
+	public static bool TestMobileInput = false;
+
+	public static bool TestNonAggressiveAi = true;
+
 
 	internal static void TestSetResults()
 	{
@@ -52,29 +57,6 @@ public static class DebugData
 		}
 	}
 
-
-	public static void OnBrainiacsAwake()
-	{
-		if(TestRemote || TestResult || TestMP || TestPlayers || LocalImage)
-		{
-			Debug.LogError("Testing data is ON - turn off when testing build");
-		}
-	}
-
-	public static string GetPlayerName(int pIndex)
-	{
-		switch(pIndex)
-		{
-			case 1:
-				return "Adam";
-			case 2:
-				return "Téra";
-			case 3:
-				return "Johanka";
-		}
-		return "DEBUG_NAME";
-	}
-
 	public static void TestSetGameInitInfo()
 	{
 		if(playerCount >= 1)
@@ -106,29 +88,19 @@ public static class DebugData
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Nobel, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
-				//todo: implement debug data for PC and Unity platform
-				//DebugData.TestMP ? EPlayerType.LocalPlayer : EPlayerType.);
-				//player.PlayerKeys = new PlayerKeys(
-				//	KeyCode.UpArrow, KeyCode.RightArrow,
-				//	KeyCode.DownArrow, KeyCode.LeftArrow,
-				//	KeyCode.RightControl, KeyCode.RightShift);
+				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Einstein, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Pink, EPlayerType.LocalPlayer);
-				//player.PlayerKeys = new PlayerKeys(
-				//	KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.A,
-				//	KeyCode.LeftControl, KeyCode.LeftShift);
+			EPlayerColor.Pink, EPlayerType.AI);
+				//player.debug_StartupWeapon.Add(EWeaponId.MP40);
+				player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
 				break;
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Currie, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Yellow, EPlayerType.LocalPlayer);
-
-				//player.PlayerKeys = new PlayerKeys(
-				//	KeyCode.Alpha8, KeyCode.Alpha6, KeyCode.Alpha5, KeyCode.Alpha4,
-				//	KeyCode.Alpha1, KeyCode.Alpha3);
 				break;
 		}
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
@@ -137,5 +109,31 @@ public static class DebugData
 
 
 	}
+
+	public static void OnBrainiacsAwake()
+	{
+		if(TestRemote || TestResult || TestMP || TestPlayers || LocalImage)
+		{
+			Debug.LogError("Testing data is ON - turn off when testing build");
+		}
+	}
+
+	public static string GetPlayerName(int pIndex)
+	{
+		switch(pIndex)
+		{
+			case 1:
+				return "Adam";
+			case 2:
+				return "Téra";
+			case 3:
+				return "Johanka";
+		}
+		return "DEBUG_NAME";
+	}
+
+	
+
+	
 }
 

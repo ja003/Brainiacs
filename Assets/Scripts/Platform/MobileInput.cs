@@ -16,6 +16,7 @@ public class MobileInput : GameBehaviour
 		bool isMobile = PlatformManager.GetPlatform() == EPlatform.Mobile;
 		btnShoot.gameObject.SetActive(isMobile);
 		btnSwap.gameObject.SetActive(isMobile);
-		moveJoystick.gameObject.SetActive(isMobile);
+
+		moveJoystick.gameObject.SetActive(isMobile || DebugData.TestMobileInput);
 	}
 }

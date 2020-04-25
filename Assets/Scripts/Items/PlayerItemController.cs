@@ -5,8 +5,45 @@ using UnityEngine;
 
 public class PlayerItemController : PlayerBehaviour
 {
+	internal void Init(EHero pHero)
+	{
+		AddHeroBasicWeapon(pHero);
+		AddHeroSpecialWeapon(pHero);
+
+		weapon.SetDefaultWeaponActive();
+
+		foreach(var weapon in player.InitInfo.debug_StartupWeapon)
+		{
+			AddWeapon(weapon);
+		}
+	}
+
+	private void AddWeapon(EWeaponId pWeapon)
+	{
+		switch(brainiacs.ItemManager.GetWeaponCathegory(pWeapon))
+		{
+			case EWeaponCathegory.None:
+				return;
+			case EWeaponCathegory.HeroBasic:
+				EHero hero = brainiacs.HeroManager.GetHeroOfWeapon(pWeapon);
+				AddHeroBasicWeapon(hero);
+				return;
+			case EWeaponCathegory.HeroSpecial:
+				hero = brainiacs.HeroManager.GetHeroOfWeapon(pWeapon);
+				AddHeroSpecialWeapon(hero);
+				return;
+			case EWeaponCathegory.MapBasic:
+				AddMapWeapon(pWeapon);
+				return;
+			case EWeaponCathegory.MapSpecial:
+				AddMapWeaponSpecial(pWeapon);
+				return;
+		}
+		Debug.LogError("Couldnt add weapon " + pWeapon);
+	}
+
 	internal void AddHeroSpecialWeapon(EHero pHero)
-	{		
+	{
 		HeroSpecialWeaponConfig config =
 			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pHero);
 

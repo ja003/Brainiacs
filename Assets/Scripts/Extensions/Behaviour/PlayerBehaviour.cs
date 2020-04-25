@@ -25,4 +25,5 @@ public abstract class PlayerBehaviour : GameBehaviour
 	protected PlayerWeaponController weapon => player.WeaponController;
 	protected PlayerStats stats => player.Stats;
 	protected PlayerVisual visual => player.Visual;
+	protected PlayerAiBrain aiBrain => player.ai;
 }

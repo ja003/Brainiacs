@@ -9,6 +9,10 @@ public class PlayerInput : PlayerBehaviour
 
 	void Update()
 	{
+		//Ai doesnt have input inited
+		if(!isInited)
+			return;
+
 		if(!player.IsInitedAndMe)
 			return;
 
@@ -23,6 +27,7 @@ public class PlayerInput : PlayerBehaviour
 
 	}
 
+	bool isInited;
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
 		//AIs dont use input
@@ -32,7 +37,7 @@ public class PlayerInput : PlayerBehaviour
 			//todo: send message to remote player
 			return;
 		}
-		if(PlatformManager.GetPlatform() == EPlatform.PC)
+		if(PlatformManager.GetPlatform() == EPlatform.PC && !DebugData.TestMobileInput)
 		{
 			keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
 		}
@@ -48,7 +53,7 @@ public class PlayerInput : PlayerBehaviour
 
 			game.MobileInput.moveJoystick.OnUpdateDirection += HandleMoveJoystick;
 		}
-
+		isInited = true;
 	}
 
 	private void HandleMoveJoystick(Vector2 pInput)

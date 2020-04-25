@@ -10,7 +10,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	[SerializeField] private Transform projectileStartDown = null;
 	[SerializeField] private Transform projectileStartLeft = null;
 
-	private List<PlayerWeapon> weapons = new List<PlayerWeapon>();
+	public List<PlayerWeapon> weapons = new List<PlayerWeapon>();
 	public PlayerWeapon ActiveWeapon { get; private set; }
 	[SerializeField] private int activeWeaponIndex;
 
@@ -91,6 +91,11 @@ public class PlayerWeaponController : PlayerBehaviour
 		ActiveWeapon.StopUse();
 	}
 
+	internal PlayerWeapon GetWeapon(EWeaponId pWeaponId)
+	{
+		return weapons.Find(a => a.Id == pWeaponId);
+	}
+
 	public void UseWeapon()
 	{
 		EWeaponUseResult useResult = ActiveWeapon.Use();
@@ -130,6 +135,8 @@ public class PlayerWeaponController : PlayerBehaviour
 				break;
 		}
 	}
+
+
 
 	/// <summary>
 	/// Starts realoding the weapon.
@@ -182,6 +189,38 @@ public class PlayerWeaponController : PlayerBehaviour
 		//todo: might not be valid
 		//will use for debug for now
 		SetActiveWeapon(0);
+	}
+
+	public void SetActiveWeapon(EWeaponId pWeapon)
+	{
+		if(!HasWeapon(pWeapon))
+		{
+			Debug.LogError("Player doesnt have a weapon " + pWeapon);
+			return;
+		}
+		int weaponIndex = GetWeaponIndex(pWeapon);
+		SetActiveWeapon(weaponIndex);
+	}
+
+	private int GetWeaponIndex(EWeaponId pWeapon)
+	{
+		if(!HasWeapon(pWeapon))
+		{
+			Debug.LogError("Player doesnt have a weapon " + pWeapon);
+			return -1;
+		}
+		for(int i = 0; i < weapons.Count; i++)
+		{
+			if(weapons[i].Id == pWeapon)
+				return i;
+		}
+		Debug.LogError("Weapon not found " + pWeapon);
+		return -1;
+	}
+
+	private bool HasWeapon(EWeaponId pWeapon)
+	{
+		return GetWeapon(pWeapon) != null;
 	}
 
 	private void SetActiveWeapon(int pIndex)

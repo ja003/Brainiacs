@@ -23,6 +23,10 @@ public class PlayerVisual : PlayerBehaviour
 
 	[SerializeField] public int CurrentSortOrder { get; private set; } = 0;
 
+	//Cca player model size. Not precise!
+	public static float PlayerBodySize { get; } = 1f;
+
+
 	internal void OnDie()
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, true);
@@ -149,6 +153,7 @@ public class PlayerVisual : PlayerBehaviour
 	}
 
 	private EDirection currentDirection => movement.CurrentDirection;
+
 
 	public UIPlayerInfoElement PlayerInfo;
 	public UIScoreboardElement Scoreboard;
