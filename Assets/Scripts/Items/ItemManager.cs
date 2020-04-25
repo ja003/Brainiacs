@@ -22,6 +22,8 @@ public class ItemManager : BrainiacsController
 	private Dictionary<EWeaponId, ProjectileConfig> allProjectiles 
 		= new Dictionary<EWeaponId, ProjectileConfig>();
 
+
+
 	public void AddProjectile(EWeaponId pWeapon, ProjectileConfig pConfig)
 	{
 		if(allProjectiles.ContainsKey(pWeapon))
@@ -65,6 +67,11 @@ public class ItemManager : BrainiacsController
 	{
 		//hero configs need to be inited first
 		brainiacs.HeroManager.SetOnAwaken(Init);
+	}
+
+	internal PowerUpConfig GetPowerupConfig(EPowerUp pPowerUp)
+	{
+		return PowerUps.Find(a => a.Type == pPowerUp);
 	}
 
 	public MapSpecialWeaponConfig GetMapSpecialWeaponConfig(EWeaponId pId)

@@ -86,6 +86,8 @@ public class PlayerItemController : PlayerBehaviour
 		if(config == null)
 			return;
 
+		game.PlayerStatusManager.Show(player, config.MapItemInfo);
+
 		PlayerWeaponProjectile weaponProjectile =
 			new PlayerWeaponProjectile(player, config);
 		weapon.AddWeapon(weaponProjectile);
@@ -98,10 +100,13 @@ public class PlayerItemController : PlayerBehaviour
 			Debug.LogError($"Added weapon was null");
 			return;
 		}
+
 		MapSpecialWeaponConfig config =
 			brainiacs.ItemManager.GetMapSpecialWeaponConfig(pWeapon);
 		if(config == null)
 			return;
+
+		game.PlayerStatusManager.Show(player, config.MapItemInfo);
 
 		PlayerWeaponSpecial weaponSpecial =
 			new PlayerWeaponSpecial(player, config);

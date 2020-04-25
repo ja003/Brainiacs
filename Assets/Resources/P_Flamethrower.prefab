@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac057d3b97a50ec46a207a6ccb9ccb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flameCollider: {fileID: 1217923434187672390}
   animator: {fileID: 1217923435359725167}
   collisionDetector: {fileID: 1107499961995651341}
   maxDistance: {fileID: 1592433368}

@@ -13,10 +13,7 @@ public class UIPlayerStatus : UiBehaviour
 	{
 		gameObject.SetActive(true);
 
-		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPosition);
-		float x = viewportPos.x * Screen.width - Screen.width / 2;
-		float y = viewportPos.y * Screen.height - Screen.height / 2;
-		Vector2 screenPosition = new Vector2(x, y);
+		Vector2 screenPosition = GetScreenPosition(pWorldPosition);
 
 		rectTransform.anchoredPosition = screenPosition;
 
@@ -34,6 +31,32 @@ public class UIPlayerStatus : UiBehaviour
 		//- moves in other direction (no matter the value)
 		//- doesnt work correctly with non-ONE canvas scale
 		//LeanTween.moveY(gameObject, -1, 1).setOnComplete(Deactivate);
+	}
+
+	internal void debug_SpawnAt(Vector3 pPos)
+	{
+		Debug.Log("debug_SpawnAt " + pPos);
+		gameObject.SetActive(true);
+		Vector2 screenPosition = GetScreenPosition(pPos);
+
+		icon.color = Color.red;
+		rectTransform.anchoredPosition = screenPosition;
+	}
+
+	private Vector2 GetScreenPosition(Vector3 pWorldPos)
+	{
+		Utils.DebugDrawCross(pWorldPos, Color.red);
+
+		Vector3 canvasScale = game.UiCanvas.transform.localScale;
+		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPos);
+
+		float x = viewportPos.x * Screen.width - Screen.width / 2;
+		float y = viewportPos.y * Screen.height - Screen.height / 2;
+		x /= canvasScale.x;
+		y /= canvasScale.y;
+
+		Vector2 screenPosition = new Vector2(x, y);
+		return screenPosition;
 	}
 
 	public void anim_OnAnimFinished()

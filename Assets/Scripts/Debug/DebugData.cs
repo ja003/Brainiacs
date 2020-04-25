@@ -12,16 +12,19 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = true;
+	public static bool TestPlayers = false;
 	public static bool LocalImage = false;
 
-	private static int playerCount = 2;
+	private static int playerCount = 1;
 
 	public static bool TestResult = false;
 
 	public static bool TestMobileInput = false;
 
 	public static bool TestNonAggressiveAi = true;
+
+	public static bool TestGenerateItems = true;
+
 
 
 	internal static void TestSetResults()

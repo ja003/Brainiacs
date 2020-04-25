@@ -74,6 +74,19 @@ public class Player : GameBehaviour
 		//Debug.Log("X_Inited_OnReceivedInitInfo");
 	}
 
+	/// <summary>
+	/// True if pPosition is inside of players collider
+	/// </summary>
+	public bool CollidesWith(Vector3 pPosition)
+	{
+		return boxCollider2D.OverlapPoint(pPosition);
+	}
+
+	public float GetDistance(Vector3 pPosition)
+	{
+		return Vector3.Distance(transform.position, pPosition);
+	}
+
 	public ActionControl OnPlayerInited = new ActionControl();
 
 	/// <summary>

@@ -20,6 +20,8 @@ public class Game : CSingleton<Game>
 	[SerializeField] public UIGameTime UIGameTime;
 	[SerializeField] public PlayersResultManager Results;
 
+	[SerializeField] public Canvas UiCanvas;
+
 	[SerializeField] public Layers Layers;
 	
 

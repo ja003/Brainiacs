@@ -12,7 +12,8 @@ public static class PowerupManager
 		//Debug.Log($"HandlePowerup {type} for {pPlayer}");
 
 		ApplyPowerup(pConfig.Type, pPlayer);
-		ShowStatus(pPlayer.Stats.StatusUiPosition.position, pConfig);		
+		//show status
+		Game.Instance.PlayerStatusManager.Show(pPlayer, pConfig.MapItemInfo);
 	}
 
 	private static void ApplyPowerup(EPowerUp pType, Player pPlayer)
@@ -36,14 +37,6 @@ public static class PowerupManager
 				return;
 		}
 		Debug.LogError($"Powerup {pType} not handled!");
-	}
-
-	private static void ShowStatus(Vector3 position, PowerUpConfig pConfig)
-	{
-		Game.Instance.PlayerStatusManager.SpawnAt(
-			position,
-			pConfig.MapItemInfo.StatusSprite,
-			pConfig.MapItemInfo.StatusText);
 	}
 
 	private static void HandleMystery(Player pPlayer)

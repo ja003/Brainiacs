@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UiBehaviour : MonoBehaviour
 {
 	protected Brainiacs brainiacs => Brainiacs.Instance;
+	protected Game game => Game.Instance;
 	
 	private RectTransform _rectTransform;
 	protected RectTransform rectTransform

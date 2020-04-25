@@ -13,7 +13,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 {
 	//[SerializeField] 
 	private PhotonView _view = null;
-	protected PhotonView view
+	public PhotonView view
 	{
 		get
 		{
@@ -212,4 +212,11 @@ public enum EPhotonMsg
 
 	//- Nobel
 	Special_Nobel_Spawn,
+
+
+	//Map items
+	MapItem_InitMapSpecial,
+	MapItem_InitMapBasic,
+	MapItem_InitPowerUp,
+	MapItem_ReturnToPool,
 }
