@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FlatBuffers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +9,21 @@ public class MapItem : MapObject
 	MapSpecialWeaponConfig weaponSpecialConfig;
 	PowerUpConfig powerUpConfig;
 
-	[SerializeField] MapItemPhoton photon;
+	//[SerializeField] MapItemPhoton photon;
+
+	protected override void OnSetActive(bool pValue)
+	{
+		spriteRend.enabled = pValue;
+		boxCollider2D.enabled = pValue;
+	}
 
 	bool isSpawned;
 	bool isMine;
 	private void Spawn(Vector3 pPosition)
 	{
-		gameObject.SetActive(true);
+		SetActive(true);
 		transform.position = pPosition;
-		Debug.Log($"Item spawned at {pPosition}");
+		//Debug.Log($"Item spawned at {pPosition}");
 
 		game.Map.Items.RegisterItem(this);
 		isSpawned = true;
@@ -30,7 +37,7 @@ public class MapItem : MapObject
 		spriteRend.sprite = pPowerUp.MapItemInfo.MapSprite;
 		Spawn(pPosition);
 
-		photon.Send(EPhotonMsg.MapItem_InitPowerUp, pPosition, pPowerUp.Type);
+		Photon.Send(EPhotonMsg.MapItem_InitPowerUp, pPosition, pPowerUp.Type);
 	}
 
 	public void Init(Vector3 pPosition, MapWeaponConfig pWeapon)
@@ -39,7 +46,7 @@ public class MapItem : MapObject
 		spriteRend.sprite = pWeapon.MapItemInfo.MapSprite;
 		Spawn(pPosition);
 
-		photon.Send(EPhotonMsg.MapItem_InitMapBasic, pPosition, pWeapon.Id);
+		Photon.Send(EPhotonMsg.MapItem_InitMapBasic, pPosition, pWeapon.Id);
 
 	}
 
@@ -49,7 +56,7 @@ public class MapItem : MapObject
 		spriteRend.sprite = pSpecialWeapon.MapItemInfo.MapSprite;
 		Spawn(pPosition);
 
-		photon.Send(EPhotonMsg.MapItem_InitMapSpecial, pPosition, pSpecialWeapon.Id);
+		Photon.Send(EPhotonMsg.MapItem_InitMapSpecial, pPosition, pSpecialWeapon.Id);
 	}
 
 
@@ -80,17 +87,17 @@ public class MapItem : MapObject
 	{
 		if(powerUpConfig != null)
 		{
-			Debug.Log("OnEnter powerup");
+			//Debug.Log("OnEnter powerup");
 			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
 		}
 		else if(weaponConfig != null)
 		{
-			Debug.Log("OnEnter weapon");
+			//Debug.Log("OnEnter weapon");
 			pPlayer.ItemController.AddMapWeapon(weaponConfig.Id);
 		}
 		else if(weaponSpecialConfig != null)
 		{
-			Debug.Log("OnEnter weapon special");
+			//Debug.Log("OnEnter weapon special");
 			pPlayer.ItemController.AddMapWeaponSpecial(weaponSpecialConfig.Id);
 		}
 		//TODO: special weapon + handle error
@@ -103,7 +110,7 @@ public class MapItem : MapObject
 		if(isMine)
 			InstanceFactory.Destroy(gameObject);
 		else
-			photon.Send(EPhotonMsg.MapItem_ReturnToPool);
+			Photon.Send(EPhotonMsg.MapItem_ReturnToPool);
 	}
 
 	private void OnDestroy()
@@ -128,4 +135,55 @@ public class MapItem : MapObject
 
 		ReturnToPool();
 	}
+
+	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	//{
+	//	switch(pMsgType)
+	//	{
+	//		//master initiates
+	//		case EPhotonMsg.MapItem_InitMapSpecial:
+	//		case EPhotonMsg.MapItem_InitMapBasic:
+	//		case EPhotonMsg.MapItem_InitPowerUp:
+	//			return view.IsMine;
+
+	//		//only master can return items to pool (master owns all map items)
+	//		case EPhotonMsg.MapItem_ReturnToPool:
+	//			return !view.IsMine;
+	//	}
+
+	//	return false;
+	//}
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	base.HandleMsg(pReceivedMsg, pParams, bb);
+	//	switch(pReceivedMsg)
+	//	{
+	//		case EPhotonMsg.MapItem_InitMapBasic:
+	//			Vector3 pos = (Vector3)pParams[0];
+	//			EWeaponId id = (EWeaponId)pParams[1];
+
+	//			Init(pos, brainiacs.ItemManager.GetMapWeaponConfig(id));
+	//			break;
+
+	//		case EPhotonMsg.MapItem_InitMapSpecial:
+	//			pos = (Vector3)pParams[0];
+	//			id = (EWeaponId)pParams[1];
+
+	//			Init(pos, brainiacs.ItemManager.GetMapSpecialWeaponConfig(id));
+	//			break;
+
+	//		case EPhotonMsg.MapItem_InitPowerUp:
+	//			pos = (Vector3)pParams[0];
+	//			EPowerUp type = (EPowerUp)pParams[1];
+
+	//			Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));
+	//			break;
+
+	//		case EPhotonMsg.MapItem_ReturnToPool:
+	//			ReturnToPool();
+	//			break;
+	//	}
+	//}
+
 }

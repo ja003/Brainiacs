@@ -957,10 +957,10 @@ GameObject:
   - component: {fileID: 8791258408710402016}
   - component: {fileID: 699375687}
   - component: {fileID: 699375688}
-  - component: {fileID: 1812185347105052305}
   - component: {fileID: 2338090529042073309}
   - component: {fileID: 5158018583329352097}
   - component: {fileID: 1820979888799123582}
+  - component: {fileID: -4499410442952435621}
   m_Layer: 8
   m_Name: P_Player
   m_TagString: Untagged
@@ -992,7 +992,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8288558609917275097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1048,13 +1048,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6a0e2ffa2a1604ab5c9dd1bfc5cef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolName: 
+  isPooled: 0
+  Photon: {fileID: -4499410442952435621}
+  IsPhotonInstantiated: 0
   input: {fileID: 7872993416487400291}
   WeaponController: {fileID: 897093172}
   Visual: {fileID: 4773161991021014474}
   Health: {fileID: 4244118042715792558}
   ItemController: {fileID: 8791258408710402016}
   Stats: {fileID: 2092177015604258632}
-  Photon: {fileID: 1812185347105052305}
   Movement: {fileID: 7872993416487400290}
   ai: {fileID: 1820979888799123582}
   IsInited: 0
@@ -1092,7 +1095,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8288558609917275097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1237,19 +1240,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1812185347105052305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288558609917275097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfd30f586c788814bbb980728556bca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DEBUG_LOG: 0
 --- !u!114 &2338090529042073309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,3 +1304,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+--- !u!114 &-4499410442952435621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288558609917275097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd30f586c788814bbb980728556bca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG_LOG: 0

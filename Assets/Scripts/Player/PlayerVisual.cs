@@ -27,6 +27,24 @@ public class PlayerVisual : PlayerBehaviour
 	public static float PlayerBodySize { get; } = 1f;
 
 
+	internal void OnSetActive(bool pValue)
+	{
+		spriteRend.enabled = pValue;
+
+		//if(!pValue)
+		//{
+		//	handsDown.enabled = pValue;
+		//	handsRight.enabled = pValue;
+		//	handsUp.enabled = pValue;
+		//	handsLeft.enabled = pValue;
+
+		//	weaponRight.enabled = pValue;
+		//	weaponDown.enabled = pValue;
+		//	weaponLeft.enabled = pValue;
+		//	weaponUp.enabled = pValue;
+		//}
+	}
+
 	internal void OnDie()
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, true);
@@ -37,7 +55,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void SetVisible(bool pValue)
 	{
-		gameObject.SetActive(pValue);
+		player.SetActive(pValue);
 		//playerRenderer.enabled = pValue;
 	}
 
@@ -62,6 +80,7 @@ public class PlayerVisual : PlayerBehaviour
 		int colorIndex = GetColorPaletteIndex(pPlayerInfo.Color);
 		paletteSwap.SetPalette(colorIndex);
 	}
+
 
 	private static int GetColorPaletteIndex(EPlayerColor pColor)
 	{

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class ProjectilePhoton : PhotonMessenger
+public class ProjectilePhoton : PoolObjectPhoton
 {
 	private Projectile projectile;
 
@@ -16,7 +16,7 @@ public class ProjectilePhoton : PhotonMessenger
 		base.Awake();
 	}
 
-	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
 		switch(pReceivedMsg)
 		{
@@ -28,7 +28,7 @@ public class ProjectilePhoton : PhotonMessenger
 
 				break;
 			default:
-				Debug.LogError("Message not handled");
+				Debug.LogError(this.gameObject.name + " message not handled " + pReceivedMsg);
 				break;
 		}
 	}
@@ -41,13 +41,13 @@ public class ProjectilePhoton : PhotonMessenger
 		}
 	}
 
-	internal void Destroy()
-	{
-		PhotonNetwork.Destroy(view);
-		projectile.LocalImage?.Photon.Destroy();
-	}
+	//internal void Destroy()
+	//{
+	//	PhotonNetwork.Destroy(view);
+	//	projectile.LocalImage?.Photon.Destroy();
+	//}
 
-	protected override bool CanSend(EPhotonMsg pMsgType)
+	protected override bool CanSendMsg(EPhotonMsg pMsgType)
 	{
 		return view.IsMine || projectile.LocalImage;
 	}

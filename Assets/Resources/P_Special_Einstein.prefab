@@ -49,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -164,8 +165,8 @@ GameObject:
   - component: {fileID: 7712865769024037615}
   - component: {fileID: 7657944305057884582}
   - component: {fileID: 4272039520474725651}
-  - component: {fileID: 7703333917776995215}
   - component: {fileID: -8721625295561513363}
+  - component: {fileID: -992534956430770059}
   m_Layer: 0
   m_Name: P_Special_Einstein
   m_TagString: Untagged
@@ -195,13 +196,14 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157696992483914919}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -249,23 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4abec6f2e0d7fe439c0d13f6a22f24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Network: {fileID: 7703333917776995215}
+  poolName: 
+  isPooled: 0
+  Photon: {fileID: -992534956430770059}
   explosion: {fileID: 5746342963303992962}
   MaxDamage: 100
---- !u!114 &7703333917776995215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157696992483914919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6165665285bb249884fe4c98fb058a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DEBUG_LOG: 0
-  controller: {fileID: 4272039520474725651}
 --- !u!114 &-8721625295561513363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,3 +278,16 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-992534956430770059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157696992483914919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6165665285bb249884fe4c98fb058a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG_LOG: 0

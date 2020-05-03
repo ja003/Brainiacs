@@ -11,6 +11,7 @@ using PhotonPlayer = Photon.Realtime.Player;
 /// </summary>
 public abstract class PhotonMessenger : BrainiacsBehaviour
 {
+	[Header("Photon")]
 	//[SerializeField] 
 	private PhotonView _view = null;
 	public PhotonView view
@@ -39,6 +40,11 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		HandleMsg(pReceivedMsg, new object[] { pParam });
 	}
 
+	/// <summary>
+	/// Handles network message - implementation in subclasses.
+	/// Note: right now all messages has to have some pParams.
+	/// If needed implement other method with no pParams.
+	/// </summary>
 	[PunRPC]
 	public void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams)
 	{
@@ -66,6 +72,11 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	}
 
 	protected abstract void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb);
+
+	protected void OnMsgUnhandled(EPhotonMsg pReceivedMsg)
+	{
+		Debug.LogError(this.gameObject.name + " message not handled " + pReceivedMsg);
+	}
 
 	/// <summary>
 	/// Send data to {target} (based on message type).
@@ -164,6 +175,9 @@ public enum EPhotonMsg
 {
 	None,
 
+	//Pool
+	Pool_SetActive,
+
 	//Game
 	Game_PlayerLoadedScene,
 	//Game_Activate, //no need, activate is called autimatically on all sides
@@ -204,7 +218,7 @@ public enum EPhotonMsg
 	Special_Flamethrower_OnDirectionChange,
 
 	//- Curie
-	//Special_Curie_StartTruck,
+	Special_Curie_StartTruck,
 	Special_Curie_Collide,
 
 	//- Einstein

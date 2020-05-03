@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapItemPhoton : PhotonMessenger
+public class MapItemPhoton : PoolObjectPhoton
 {
-    [SerializeField] MapItem item;
+    [SerializeField] MapItem item = null;
 
-    protected override bool CanSend(EPhotonMsg pMsgType)
+    protected override bool CanSendMsg(EPhotonMsg pMsgType)
     {
         switch(pMsgType)
         {
@@ -25,7 +25,7 @@ public class MapItemPhoton : PhotonMessenger
         return false;
     }
 
-    protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+    protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
     {
         switch(pReceivedMsg)
         {
@@ -52,6 +52,10 @@ public class MapItemPhoton : PhotonMessenger
 
             case EPhotonMsg.MapItem_ReturnToPool:
                 item.ReturnToPool();
+                break;
+
+            default:
+                OnMsgUnhandled(pReceivedMsg);
                 break;
         }
     }

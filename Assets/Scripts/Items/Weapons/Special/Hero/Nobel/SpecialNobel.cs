@@ -13,6 +13,9 @@ public class SpecialNobel : PlayerWeaponSpecialController
 	{
 	}
 
+	protected override void OnSetActive(bool pValue)
+	{
+	}
 
 	protected override void OnUse()
 	{

@@ -28,6 +28,12 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 		currentHealth = maxHealth;
 	}
 
+	protected override void OnSetActive(bool pValue)
+	{
+		spriteRend.enabled = pValue;
+		boxCollider2D.enabled = pValue;
+	}
+
 	private void UpdateSortOrder()
 	{
 		if(!spriteRend.enabled)

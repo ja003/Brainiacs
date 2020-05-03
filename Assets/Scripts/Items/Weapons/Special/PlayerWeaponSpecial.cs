@@ -20,10 +20,11 @@ public class PlayerWeaponSpecial : PlayerWeapon
 		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.gameObject);
 	}
 
-	private void InstantiateWeaponController(Player pOwner,GameObject pPrefab)
+	private void InstantiateWeaponController(Player pOwner, GameObject pPrefab)
 	{
-		var instance = InstanceFactory.Instantiate(pPrefab)
-					.GetComponent<PlayerWeaponSpecialController>();
+		var instance = InstanceFactory.Instantiate(pPrefab).GetComponent<PlayerWeaponSpecialController>();
+		//var instance = Game.Instance.Pool.Instantiate(pPrefab)
+		//			.GetComponent<PlayerWeaponSpecialController>();
 		//Debug.Log("Instantiate: " + instance.name);
 
 		if(PhotonNetwork.IsConnected)
@@ -31,14 +32,13 @@ public class PlayerWeaponSpecial : PlayerWeapon
 
 		if(DebugData.LocalImage)
 		{
-			var localImage = InstanceFactory.Instantiate(pPrefab)
-			   .GetComponent<PlayerWeaponSpecialController>();
+			var localImage = InstanceFactory.Instantiate(pPrefab).GetComponent<PlayerWeaponSpecialController>();
 			instance._LocalImage = localImage;
 
 			localImage._RemoteOwner = instance;
 			//instance.IsLocalImage = true;
 			//instance.debug_AssignOwner(pOwner.LocalImage);
-			localImage.gameObject.SetActive(false);
+			localImage.SetActive(false);
 			localImage.name += "_LR";
 			//Debug.Log("Instantiate: " + localImage.name);
 		}

@@ -16,7 +16,7 @@ public class PlayerMovement : PlayerBehaviour
 	{
 		if(!player.IsInitedAndMe || !IsMoving || player.Stats.IsDead)
 		{
-			if(player.InitInfo.PlayerType == EPlayerType.AI)
+			if(player.InitInfo != null && player.InitInfo.PlayerType == EPlayerType.AI)
 			{
 				//Debug.Log("skip Move");
 			}

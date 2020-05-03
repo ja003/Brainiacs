@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FlatBuffers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +7,18 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 {
 	//[SerializeField] private PolygonCollider2D flameCollider = null;
 	[SerializeField] private new Animator animator = null;
+	[SerializeField] private new SpriteRenderer spriteRend = null;
 	[SerializeField] private CollisionDetector collisionDetector = null;
 	[SerializeField] private Transform maxDistance = null;
 
 	[SerializeField] private float minDamage = -1;
 	[SerializeField] private float maxDamage = -1;
+
+	protected override void OnSetActive(bool pValue)
+	{
+		spriteRend.enabled = pValue;
+		collisionDetector.SetEnabled(pValue);
+	}
 
 	private void Update()
 	{
@@ -27,7 +35,7 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 	{
 		StopUse();
 		collisionDetector.Init(this);
-		gameObject.SetActive(true);
+		//SetActive(true);
 	}
 
 	float lastTimeUsed;
@@ -117,4 +125,28 @@ public class FlamethrowerController : PlayerWeaponSpecialController, IOnCollisio
 
 		Photon.Send(EPhotonMsg.Special_Flamethrower_OnDirectionChange, pDirection);
 	}
+
+	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	//{
+	//	if(pMsgType != EPhotonMsg.Special_Flamethrower_OnDirectionChange)
+	//	{
+	//		Debug.LogError("Cant send another message");
+	//		return false;
+	//	}
+
+	//	return view.IsMine;
+	//}
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	base.HandleMsg(pReceivedMsg, pParams, bb);
+
+	//	switch(pReceivedMsg)
+	//	{
+	//		case EPhotonMsg.Special_Flamethrower_OnDirectionChange:
+	//			EDirection dir = (EDirection)pParams[0];
+	//			OnDirectionChange(dir);
+	//			break;
+	//	}
+	//}
 }

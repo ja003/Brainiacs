@@ -34,7 +34,7 @@ public abstract class PlayerWeapon
 	}
 
 	//cant be zero or first use might fail
-	private float lastUseTime = int.MinValue;
+	public float LastUseTime { get; private set; } = int.MinValue;
 
 	/// <summary>
 	/// Tries to use the weapon and reports about the result.
@@ -50,7 +50,7 @@ public abstract class PlayerWeapon
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 		AmmoLeft--;
-		lastUseTime = Time.time;
+		LastUseTime = Time.time;
 		if(AmmoLeft <= 0)
 		{
 			if(MagazinesLeft <= 0)
@@ -64,7 +64,7 @@ public abstract class PlayerWeapon
 
 	public virtual bool CanUse()
 	{
-		bool isCadencyReady = Time.time > lastUseTime + Info.Cadency;
+		bool isCadencyReady = Time.time > LastUseTime + Info.Cadency;
 		return !Owner.Stats.IsDead && 
 			!IsRealoading &&
 			isCadencyReady;

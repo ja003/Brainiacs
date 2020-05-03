@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 
 	private void Update()
 	{
+		if(Time.time < 0.1f)
+			return;
+
 		if(activeWeapon == EWeaponId.None)
 			return;
 
@@ -71,7 +75,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 
 	private void OnPlayerStatsChange(PlayerStats pStats)
 	{
-		SetHealth(pStats.Health);		
+		SetHealth(pStats.Health);
 	}
 
 	public void SetHealth(int pHealth)
@@ -80,8 +84,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 			return;
 		health.text = pHealth.ToString();
 
-		player.Photon.Send(
-			EPhotonMsg.Player_UI_PlayerInfo_SetHealth, pHealth);
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetHealth, pHealth);
 	}
 
 	/// <summary>
@@ -96,7 +99,11 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 
 		if(!pWeapon.IsRealoading)
 		{
-			SetAmmo(pWeapon.AmmoLeft);
+			//we cant simply set the time when weapon was used, because 
+			//Time.time is different on all clients
+			//todo: use PhotonNetwork.Time ? !!! returns 0 in single player
+			bool weaponUsed = Time.time - pWeapon.LastUseTime < 0.1f;
+			SetAmmo(pWeapon.AmmoLeft, weaponUsed);
 		}
 	}
 
@@ -105,7 +112,7 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 
 	EWeaponId activeWeapon;
 	float activeWeaponCadency;
-	float activeWeaponLastUsedTime;
+	float activeWeaponLastUsedTime = int.MinValue;
 	public void SetActiveWeapon(EWeaponId pId, float pCadency)
 	{
 		if(activeWeapon == pId)
@@ -120,13 +127,16 @@ public class UIPlayerInfoElement : BrainiacsBehaviour
 		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency);
 	}
 
-	public void SetAmmo(int pAmmoLeft)
+	public void SetAmmo(int pAmmoLeft, bool pWeaponUsed)
 	{
 		if(ammo.text == pAmmoLeft.ToString())
 			return;
 		ammo.text = pAmmoLeft.ToString();
-		activeWeaponLastUsedTime = Time.time;
-		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetAmmo, pAmmoLeft);
+
+		if(pWeaponUsed)
+			activeWeaponLastUsedTime = Time.time;
+
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetAmmo, pAmmoLeft, pWeaponUsed);
 	}
 
 	bool isRealoading;

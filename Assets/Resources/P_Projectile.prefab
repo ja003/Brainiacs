@@ -15,14 +15,14 @@ GameObject:
   - component: {fileID: 3892577623686778352}
   - component: {fileID: 8615036512719737902}
   - component: {fileID: 4433885164732986610}
-  - component: {fileID: 4681881258408394416}
+  - component: {fileID: -331916469388694459}
   m_Layer: 11
   m_Name: P_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6690650256891268230
 Transform:
   m_ObjectHideFlags: 0
@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d868509f5d64074ea2ce3fdbbe2f05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolName: 
+  isPooled: 0
+  Photon: {fileID: -331916469388694459}
   config: {fileID: 0}
-  Photon: {fileID: 4681881258408394416}
   LocalImage: {fileID: 0}
 --- !u!50 &5544410765107709605
 Rigidbody2D:
@@ -130,7 +132,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5409615048864318336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -190,7 +192,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4681881258408394416
+--- !u!114 &-331916469388694459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

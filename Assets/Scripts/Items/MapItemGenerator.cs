@@ -25,7 +25,8 @@ public class MapItemGenerator : GameBehaviour
 
 		StartGenerating();
 
-		GenerateRandomItem(); //DEBUG
+		if(!DebugData.StopGenerateItems)
+			GenerateRandomItem(); //DEBUG 
 	}
 
 	private void StartGenerating()
@@ -36,7 +37,7 @@ public class MapItemGenerator : GameBehaviour
 
 	private void OnGenerateCountdownFinished()
 	{
-		if(isActive)
+		if(isActive && !DebugData.StopGenerateItems)
 		{
 			GenerateRandomItem();
 		}
@@ -46,6 +47,7 @@ public class MapItemGenerator : GameBehaviour
 	private void GenerateRandomItem()
 	{
 		MapItem newItem = InstanceFactory.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
+		//MapItem newItem = game.Pool.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
 
 		EMapItem nextItemType = GetNextMapItemType();
 		int randomIndex = GetRandomItemIndex(nextItemType);

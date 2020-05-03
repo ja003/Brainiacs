@@ -28,6 +28,6 @@ MonoBehaviour:
       Ammo: 1
       Magazines: 666
       Cooldown: 1
-      Cadency: 0
+      Cadency: 1
     ControllerPrefab: {fileID: 555363088968685898, guid: 5363eeacacbe08f4dbc33e264e61d3b4,
       type: 3}

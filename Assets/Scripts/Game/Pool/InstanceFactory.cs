@@ -6,21 +6,25 @@ using UnityEngine;
 
 /// <summary>
 /// Handles instantiating of game objects.
-/// Might be extended for transform parent
+/// Might be extended for transform parent => no need, handled by PoolManager
 /// </summary>
 public class InstanceFactory
 {
-    public static GameObject Instantiate(GameObject pPrefab, Vector3 pPosition)
-    {
+	public static GameObject Instantiate(GameObject pPrefab, Vector3 pPosition)
+	{
 		GameObject instance;
-		if(PhotonNetwork.IsConnected)
+		//NOTE: we could use PhotonNetwork.Instantiate always but a lot of warnings are thrown
+		//=> call PoolManager.Instantiate / PoolManager.Destroy directly
+
+		if(PhotonNetwork.IsConnected)// || DebugData.TestPlayers)
 			instance = PhotonNetwork.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		else
 		{
 			if(Brainiacs.Instance.GameInitInfo.IsMultiplayer())
 				Debug.LogError("Not conected to server");
-			instance = Brainiacs.Instantiate(pPrefab, pPosition, Quaternion.identity);
+			instance = Game.Instance.Pool.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		}
+
 		return instance;
 	}
 
@@ -37,7 +41,7 @@ public class InstanceFactory
 		{
 			if(Brainiacs.Instance.GameInitInfo.IsMultiplayer())
 				Debug.LogError("Not conected to server");
-			Brainiacs.Destroy(pGameObject);
+			Game.Instance.Pool.Destroy(pGameObject);
 		}
 	}
 }

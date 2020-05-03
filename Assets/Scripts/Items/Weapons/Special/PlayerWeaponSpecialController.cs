@@ -1,22 +1,23 @@
-﻿using Photon.Pun;
+﻿using FlatBuffers;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnershipCallbacks
+public abstract class PlayerWeaponSpecialController : PoolObject, IPunOwnershipCallbacks
 {
-	private SpecialWeaponPhoton _photon;
-	public SpecialWeaponPhoton Photon
-	{
-		get
-		{
-			if(_photon == null)
-				_photon = GetComponent<SpecialWeaponPhoton>();
-			return _photon;
-		}
-	}
+	//private SpecialWeaponPhoton _photon;
+	//public SpecialWeaponPhoton Photon
+	//{
+	//	get
+	//	{
+	//		if(_photon == null)
+	//			_photon = GetComponent<SpecialWeaponPhoton>();
+	//		return _photon;
+	//	}
+	//}
 
 	protected PlayerWeaponController weaponContoller;
 	public Player Owner { get; private set; }
@@ -37,7 +38,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 		isInited = true;
 
 		OnInit();
-		gameObject.SetActive(false);
+		//SetActive(false);
 
 		Photon.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
 	}
@@ -64,7 +65,7 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 	public void Use()
 	{
 		Photon.Send(EPhotonMsg.Special_Use);
-		gameObject.SetActive(true);
+		SetActive(true); //todo: check is it needed?
 		OnUse();
 	}
 	protected abstract void OnUse();
@@ -112,5 +113,48 @@ public abstract class PlayerWeaponSpecialController : GameBehaviour, IPunOwnersh
 	{
 	}
 
-	
+
+	/// PHOTON
+
+	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	//{
+	//	return view.IsMine || _LocalImage;
+	//}
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	base.HandleMsg(pReceivedMsg, pParams, bb);
+	//	switch(pReceivedMsg)
+	//	{
+	//		case EPhotonMsg.Special_Init:
+	//			int playerNumber = (int)pParams[0];
+	//			Game.Instance.PlayerManager.OnAllPlayersAdded.AddAction(() => InitController(playerNumber));
+	//			break;
+
+	//		case EPhotonMsg.Special_Use:
+	//			Use();
+	//			break;
+	//		case EPhotonMsg.Special_StopUse:
+	//			StopUse();
+	//			break;
+	//	}
+	//}
+
+	//private void InitController(int pPlayerNumber)
+	//{
+	//	if(DEBUG_LOG)
+	//		Debug.Log($"P({pPlayerNumber}) InitController {name}");
+	//	Player player = Game.Instance.PlayerManager.GetPlayer(pPlayerNumber);
+	//	Init(player);
+	//}
+
+	//protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	//{
+	//	if(_LocalImage)
+	//	{
+	//		_LocalImage.HandleMsg(pMsgType, pParams);
+	//	}
+	//}
+
+
 }

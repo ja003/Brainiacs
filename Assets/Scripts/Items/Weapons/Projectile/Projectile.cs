@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using FlatBuffers;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,19 +7,27 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Projectile : GameBehaviour
+public class Projectile : PoolObject
 {
 
 	public Vector3 Direction { get; private set; }
 	public ProjectileConfig config;
 
-	bool inited;
+	bool isInited;
 
-	[SerializeField] public ProjectilePhoton Photon;
+	//[SerializeField] public ProjectilePhoton Photon;
 
 	public Projectile LocalImage;
 
 	public Player Owner { get; private set; }
+
+	protected override void OnSetActive(bool pValue)
+	{
+		//Debug.Log("projectile OnSetActive " + pValue);
+		spriteRend.enabled = pValue;
+		animator.enabled = pValue;
+		boxCollider2D.enabled = pValue;
+	}
 
 	/// <summary>
 	/// Called only at owner side
@@ -69,6 +78,8 @@ public class Projectile : GameBehaviour
 	/// </summary>
 	public void SetSpawn(Vector3 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
 	{
+		SetActive(true); //need to be called before animator.SetFloat
+
 		//projectile type is based on weapon
 		//their condition in animator must match the weapon id
 		const string ANIM_KEY_WEAPON = "weapon";
@@ -84,7 +95,7 @@ public class Projectile : GameBehaviour
 
 		transform.Rotate(Utils.GetRotation(pPlayerDirection, 180));
 
-		inited = true;
+		isInited = true;
 
 		game.ProjectileManager.RegisterProjectile(this);
 
@@ -107,29 +118,23 @@ public class Projectile : GameBehaviour
 
 	public void FixedUpdate()
 	{
-		if(!inited)
+		if(!isInited)
 			return;
 
 		//transform.position += Utils.GetVector(direction) *
 		transform.position += Direction * Time.deltaTime * config.Speed;
 	}
 
-	//private void OnCollisionEnter2D(Collision2D collision)
-	//{
-	//	ICollisionHandler handler =
-	//		collision.collider.GetComponent<ICollisionHandler>();
-
-	//	bool result = false;
-	//	if(handler != null)
-	//		result = handler.OnCollision(config.Damage);
-
-	//	if(result)
-	//		Network.Destroy();
-	//		//ReturnToPool();
-	//}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if(!isInited)
+		{
+			Debug.LogError("OnTriggerEnter2D shouldn be called before init");
+			return;
+		}
+
+		//Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
+
 		ICollisionHandler handler =
 			collision.gameObject.GetComponent<ICollisionHandler>();
 
@@ -138,13 +143,9 @@ public class Projectile : GameBehaviour
 			result = handler.OnCollision(config.Damage, Owner);
 
 		if(result)
-			Photon.Destroy();
+			ReturnToPool();
+		//Photon.Destroy();
 		//ReturnToPool();
-	}
-
-	private void OnDestroy()
-	{
-		game.ProjectileManager.OnDestroyProjectile(this);
 	}
 
 	public override string ToString()
@@ -153,12 +154,50 @@ public class Projectile : GameBehaviour
 	}
 
 	//TODO: pooling
-	//private void ReturnToPool()
-	//{
-	//	PhotonNetwork.Destroy(Network.view);
+	private void ReturnToPool()
+	{
+		game.ProjectileManager.OnDestroyProjectile(this);
+		InstanceFactory.Destroy(gameObject);
+		//SetActive(false);
 
-	//	//gameObject.SetActive(false);
-	//	//inited = false;
+		//InstanceFactory.Destroy(gameObject); //NO - we need to pool
+	}
+
+
+	// PHOTON
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	base.HandleMsg(pReceivedMsg, pParams, bb);
+	//	switch(pReceivedMsg)
+	//	{
+	//		case EPhotonMsg.Projectile_Spawn:
+	//			Vector3 projectileDirection = (Vector3)pParams[0];
+	//			EWeaponId weapon = (EWeaponId)pParams[1];
+	//			EDirection playerDirection = (EDirection)pParams[2];
+	//			SetSpawn(projectileDirection, weapon, playerDirection);
+
+	//			break;
+	//	}
+	//}
+
+	//protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	//{
+	//	if(LocalImage)
+	//	{
+	//		LocalImage.HandleMsg(pMsgType, pParams);
+	//	}
+	//}
+
+	////internal void Destroy()
+	////{
+	////	PhotonNetwork.Destroy(view);
+	////	projectile.LocalImage?.Photon.Destroy();
+	////}
+
+	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	//{
+	//	return view.IsMine || LocalImage;
 	//}
 
 

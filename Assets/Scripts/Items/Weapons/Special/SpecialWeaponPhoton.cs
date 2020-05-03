@@ -7,7 +7,7 @@ using UnityEngine;
 
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class SpecialWeaponPhoton : PhotonMessenger
+public class SpecialWeaponPhoton : PoolObjectPhoton
 {
 	//[SerializeField] protected PlayerWeaponSpecialController controller;
 
@@ -30,31 +30,18 @@ public class SpecialWeaponPhoton : PhotonMessenger
 	//	base.Awake();
 	//}
 
-	protected override bool CanSend(EPhotonMsg pMsgType)
+	protected override bool CanSendMsg(EPhotonMsg pMsgType)
 	{
 		return view.IsMine || controller._LocalImage;
 	}
 
-	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	sealed protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
 		switch(pReceivedMsg)
 		{
 			case EPhotonMsg.Special_Init:
 				int playerNumber = (int)pParams[0];
-				//PhotonPlayer photonPlayer = null;
-				//for(int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-				//{
-				//	if(PhotonNetwork.PlayerList[i].ActorNumber == photonPlayerNumber)
-				//		photonPlayer = PhotonNetwork.PlayerList[i];
-				//}
-				//if(photonPlayer ==null)
-				//{
-				//	Debug.LogError($"Photon player {photonPlayerNumber} not found");
-				//	return;
-				//}
-
-				//TODO: implement event trigger controller
-				Game.Instance.PlayerManager.OnAllPlayersAdded.AddAction(() => InitController(playerNumber));				
+				Game.Instance.PlayerManager.OnAllPlayersAdded.AddAction(() => InitController(playerNumber));
 				break;
 
 			case EPhotonMsg.Special_Use:
@@ -63,13 +50,21 @@ public class SpecialWeaponPhoton : PhotonMessenger
 			case EPhotonMsg.Special_StopUse:
 				controller.StopUse();
 				break;
+			default:
+				HandleMsg3(pReceivedMsg, pParams, bb);
+				break;
 		}
+	}
+
+	protected virtual void HandleMsg3(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	{
+		OnMsgUnhandled(pReceivedMsg);
 	}
 
 	private void InitController(int pPlayerNumber)
 	{
 		if(DEBUG_LOG)
-			Debug.Log($"P({pPlayerNumber}) InitController {controller.name}" );
+			Debug.Log($"P({pPlayerNumber}) InitController {controller.name}");
 		Player player = Game.Instance.PlayerManager.GetPlayer(pPlayerNumber);
 		controller.Init(player);
 	}

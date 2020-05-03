@@ -12,7 +12,7 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = false;
+	public static bool TestPlayers = true;
 	public static bool LocalImage = false;
 
 	private static int playerCount = 1;
@@ -23,7 +23,8 @@ public static class DebugData
 
 	public static bool TestNonAggressiveAi = true;
 
-	public static bool TestGenerateItems = true;
+	public static bool TestGenerateItems = false;
+	public static bool StopGenerateItems = true;
 
 
 
@@ -89,9 +90,11 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.Nobel, GetPlayerName(pPlayerNumber),
+			EHero.Currie, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
 				player.debug_StartupWeapon.Add(EWeaponId.MP40);
+				player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+				player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,

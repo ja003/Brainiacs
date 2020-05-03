@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Map : GameBehaviour
 {
-	[SerializeField] Transform spawnPointsHolder;
-	[SerializeField] Transform mapItemGenPosHolder; 
+	[SerializeField] Transform spawnPointsHolder = null;
+	[SerializeField] Transform mapItemGenPosHolder = null; 
 
 	private List<Transform> spawnPoints = new List<Transform>();
 	//positions where map items can be generated

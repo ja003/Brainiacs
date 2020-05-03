@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,13 @@ public class CollisionDetector : MonoBehaviour
 	public void Init(IOnCollision pOnCollision)
 	{
 		onCollision = pOnCollision;
+	}
+
+
+
+	internal void SetEnabled(bool pValue)
+	{
+		Collider2D.enabled = pValue;
 	}
 
 	private Collider2D _collider2D;

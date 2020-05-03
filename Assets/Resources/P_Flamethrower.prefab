@@ -69,7 +69,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217923434187672384}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -115,14 +115,14 @@ GameObject:
   - component: {fileID: 1217923434222555206}
   - component: {fileID: 3759334240498667119}
   - component: {fileID: -1293533251116011119}
-  - component: {fileID: 4354943168369474066}
+  - component: {fileID: 2342946905816927956}
   m_Layer: 11
   m_Name: P_Flamethrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1217923434222555206
 Transform:
   m_ObjectHideFlags: 0
@@ -151,7 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac057d3b97a50ec46a207a6ccb9ccb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolName: 
+  isPooled: 0
+  Photon: {fileID: 2342946905816927956}
   animator: {fileID: 1217923435359725167}
+  spriteRend: {fileID: 1217923435359725164}
   collisionDetector: {fileID: 1107499961995651341}
   maxDistance: {fileID: 1592433368}
   minDamage: 1
@@ -178,7 +182,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4354943168369474066
+--- !u!114 &2342946905816927956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +235,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217923435359725161}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

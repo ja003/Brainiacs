@@ -1,27 +1,35 @@
-﻿using System;
+﻿using FlatBuffers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialNobelMine : GameBehaviour
+public class SpecialNobelMine : PoolObject
 {
 	[SerializeField] int damage = 100;
 	//[SerializeField] Animator mineAnimator = null;
 	[SerializeField] SpriteRenderer mineSprite = null;
-	[SerializeField] SpecialNobelMinePhoton photon = null;
+	//[SerializeField] SpecialNobelMinePhoton photon = null;
 
 	Player owner;
 	bool isExploded;
+
+	protected override void OnSetActive(bool pValue)
+	{
+		mineSprite.enabled = pValue;
+		boxCollider2D.enabled = pValue;
+		animator.enabled = pValue;
+	}
 
 	public void Spawn(Player pOwner)
     {
 		Debug.Log(gameObject.name + " spawn");
 		owner = pOwner;
 		//spriteRend.enabled = false; //this is just holder, anmator is in child
-		gameObject.SetActive(true);
+		SetActive(true);
 		mineSprite.sortingOrder = pOwner.Visual.GetProjectileSortOrder();
 
-		photon.Send(EPhotonMsg.Special_Nobel_Spawn, pOwner.InitInfo.Number);
+		Photon.Send(EPhotonMsg.Special_Nobel_Spawn, pOwner.InitInfo.Number);
 
 		//mine is simulated only on its owner side
 		boxCollider2D.enabled = pOwner.IsItMe;
@@ -74,7 +82,32 @@ public class SpecialNobelMine : GameBehaviour
 	internal void OnExplosionStateExit()
 	{
 		//Debug.Log("OnExplosionStateExit");
-		if(photon.IsMine)
+		if(Photon.IsMine)
 			InstanceFactory.Destroy(gameObject);
 	}
+
+	//PHOTON
+
+	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	//{
+	//	if(pMsgType != EPhotonMsg.Special_Nobel_Spawn)
+	//	{
+	//		Debug.LogError("Cant send another message");
+	//		return false;
+	//	}
+
+	//	return view.IsMine;
+	//}
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	switch(pReceivedMsg)
+	//	{
+	//		case EPhotonMsg.Special_Nobel_Spawn:
+	//			int playerNumber = (int)pParams[0];
+	//			Player player = Game.Instance.PlayerManager.GetPlayer(playerNumber);
+	//			Spawn(player);
+	//			break;
+	//	}
+	//}
 }

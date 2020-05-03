@@ -41,10 +41,10 @@ public class PlayerManager : GameController
 
 	public void btn_debugSyncPLayersInfo()
 	{
-		foreach(var p in Players)
-		{
-			p.Photon.debug_SendInitInfo();
-		}
+		//foreach(var p in Players)
+		//{
+		//	p.debug_SendInitInfo();
+		//}
 	}
 
 	bool arePlayersSpawned;
@@ -101,7 +101,7 @@ public class PlayerManager : GameController
 
 		Player playerInstance = instance.GetComponent<Player>();
 
-		playerInstance.transform.parent = transform;
+		//playerInstance.transform.parent = transform; //handled in Pool
 
 		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LR" : "");
 
@@ -197,7 +197,7 @@ public class PlayerManager : GameController
 
 	public Player GetPlayer(PhotonPlayer pPhotonPlayer)
 	{
-		return Players.Find(a => a.Photon.PhotonPlayer == pPhotonPlayer);
+		return Players.Find(a => ((PlayerPhotonController)a.Photon).PhotonPlayer == pPhotonPlayer);
 	}
 
 	internal Player GetPlayer(int pPlayerNumber)

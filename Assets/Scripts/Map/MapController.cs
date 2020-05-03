@@ -42,7 +42,6 @@ public class MapController : GameController
 	{
 		base.SetActive(pValue);
 		//Debug.Log($"{gameObject.name} SetActive {pValue }");
-		//gameObject.SetActive(pValue);
 		ActiveMap.SetActive(pValue);
 
 		if(pValue)
@@ -53,11 +52,11 @@ public class MapController : GameController
 	{
 		SetMap(brainiacs.GameInitInfo.Map);
 		SetActive(false);
-		Items.Init();
 	}
 
 	protected override void OnMainControllerActivated()
 	{
+		Items.Init();
 		SetActive(true);
 	}
 }

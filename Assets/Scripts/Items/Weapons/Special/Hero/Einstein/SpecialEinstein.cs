@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlatBuffers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,15 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 
 	protected override void OnInit()
 	{
-		gameObject.SetActive(true);
+		//SetActive(true);
 		spriteRend.enabled = false;
 		explosion.Init(this);
+	}
+
+	protected override void OnSetActive(bool pValue)
+	{
+		spriteRend.enabled = pValue;
+		//explosion.OnSetActive(pValue);
 	}
 
 	protected override void OnUse()
@@ -57,6 +64,23 @@ public class SpecialEinstein : PlayerWeaponSpecialController
 		return Vector3.zero;
 	}
 
-	
+
+	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	//{
+	//	base.HandleMsg(pReceivedMsg, pParams, bb);
+
+	//	switch(pReceivedMsg)
+	//	{
+	//		//case EPhotonMsg.Special_Curie_StartTruck:
+	//		//	EDirection dir = (EDirection)pParams[0];
+	//		//	Vector3 pos = (Vector3)pParams[1];
+	//		//	truck.StartTruck(dir, pos);
+	//		//	break;
+	//		case EPhotonMsg.Special_Einstein_FallOn:
+	//			Vector3 target = (Vector3)pParams[0];
+	//			FallOn(target);
+	//			break;
+	//	}
+	//}
 
 }
