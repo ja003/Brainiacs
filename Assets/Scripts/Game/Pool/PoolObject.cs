@@ -7,6 +7,7 @@ using UnityEngine;
 using System.Collections;
 using Photon.Pun;
 using FlatBuffers;
+using System;
 
 //todo: some classes (MapObstackle, ..) shouldnt need view
 //[RequireComponent(typeof(PhotonView))]
@@ -29,8 +30,23 @@ public abstract class PoolObject : GameBehaviour, IPunInstantiateMagicCallback
 	{
 		IsPhotonInstantiated = true;
 		//Debug.Log("OnPhotonInstantiate " + gameObject.name);
-		SetActive(false);
+		//SetActive(false);
+		OnPhotonInstantiated();
 	}
+
+	protected abstract void OnPhotonInstantiated();
+
+	/// <summary>
+	/// Called when instance is created
+	/// </summary>
+	public virtual void OnInstantiated()
+	{
+		//...will see if needed
+	}
+
+	//{
+	//	Debug.Log("OnInstantiated " + gameObject.name);
+	//}
 
 	//TODO: implement OnEnable/OnDisable and call SetActive?
 
@@ -51,34 +67,17 @@ public abstract class PoolObject : GameBehaviour, IPunInstantiateMagicCallback
 
 	protected abstract void OnSetActive(bool pValue);
 
-	//sealed protected override bool CanSend(EPhotonMsg pMsgType)
-	//{
-	//	switch(pMsgType)
-	//	{
-	//		case EPhotonMsg.Pool_SetActive:
-	//			return view.IsMine;
-	//	}
+	public void ReturnToPool()
+	{
+		if(Photon.IsMine)
+			InstanceFactory.Destroy(gameObject);
+	}
 
-	//	//return true;
-	//	return CanSendMsg(pMsgType);
-	//}
+	public void OnReturnToPool()
+	{
+		Photon.OnReturnToPool();
+		OnReturnToPool2();
+	}
 
-	//protected abstract bool CanSendMsg(EPhotonMsg pMsgType);
-
-	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-	//{
-	//	switch(pReceivedMsg)
-	//	{
-	//		case EPhotonMsg.Pool_SetActive:
-	//			bool value = (bool)pParams[0];
-	//			SetActive(value);
-	//			return;
-	//	}
-	//}
-
-	//protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
-	//{
-		
-	//}
-
+	protected abstract void OnReturnToPool2();
 }

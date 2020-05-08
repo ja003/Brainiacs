@@ -15,5 +15,16 @@ public abstract class MapObject : PoolObject, ICollisionHandler
 		return true;
 	}
 
+	protected override void OnPhotonInstantiated()
+	{
+
+	}
+
 	protected abstract void OnCollisionEffect(int pDamage);
+
+	protected override void OnReturnToPool2()
+	{
+		throw new NotImplementedException();
+	}
+
 }

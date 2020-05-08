@@ -128,7 +128,7 @@ public class PlayerVisual : PlayerBehaviour
 	//maybe idle speed shoudl be 0 - TEST
 	private const float IDLE_ANIM_SPEED = 0.1f;
 
-	internal void SetSortOrder(int pOrder, bool pForceRefresh = false)
+	internal void UpdateSortOrder(int pOrder, bool pForceRefresh = false)
 	{
 		if(CurrentSortOrder == pOrder && !pForceRefresh)
 			return;
@@ -209,7 +209,7 @@ public class PlayerVisual : PlayerBehaviour
 				break;
 		}
 
-		SetSortOrder(CurrentSortOrder, true);
+		UpdateSortOrder(CurrentSortOrder, true);
 
 		//direction has to be float to be used in blend tree
 		SetAnimFloat(AC_KEY_DIRECTION, (int)pDirection);

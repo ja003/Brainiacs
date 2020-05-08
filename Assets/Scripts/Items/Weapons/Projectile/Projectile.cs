@@ -29,6 +29,10 @@ public class Projectile : PoolObject
 		boxCollider2D.enabled = pValue;
 	}
 
+	protected override void OnPhotonInstantiated()
+	{
+	}
+
 	/// <summary>
 	/// Called only at owner side
 	/// </summary>
@@ -78,7 +82,7 @@ public class Projectile : PoolObject
 	/// </summary>
 	public void SetSpawn(Vector3 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
 	{
-		SetActive(true); //need to be called before animator.SetFloat
+		SetActive(true); //has to be called before animator.SetFloat
 
 		//projectile type is based on weapon
 		//their condition in animator must match the weapon id
@@ -153,16 +157,10 @@ public class Projectile : PoolObject
 		return $"Projectile {config.WeaponId}, of {Owner}";
 	}
 
-	//TODO: pooling
-	private void ReturnToPool()
+	protected override void OnReturnToPool2()
 	{
 		game.ProjectileManager.OnDestroyProjectile(this);
-		InstanceFactory.Destroy(gameObject);
-		//SetActive(false);
-
-		//InstanceFactory.Destroy(gameObject); //NO - we need to pool
 	}
-
 
 	// PHOTON
 

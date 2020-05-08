@@ -28,7 +28,7 @@ public class Player : PoolObject
 
 	//should be called only after player is inited
 	public bool IsItMe => InitInfo.IsItMe() && !IsLocalImage;
-	public bool IsInited;
+	public bool IsInited; //initialized only once (see OnReturnToPool2)
 
 	//should be called only on update checks, not during an initializing method.
 	public bool IsInitedAndMe => IsInited && IsItMe;
@@ -43,6 +43,11 @@ public class Player : PoolObject
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
 		Visual.OnSetActive(pValue);
+	}
+
+	protected override void OnPhotonInstantiated()
+	{
+
 	}
 
 	private void Update()
@@ -108,28 +113,13 @@ public class Player : PoolObject
 		if(!IsItMe) //player image controllers dont need initializing
 			return;
 
+		if(IsInited)
+			return;
+
 		Stats.Init();
 		input.Init(InitInfo);
 
-
-		//NOTE: first added weapon will be active (PlayerWeaponController::SetDefaultWeaponActive)
-
 		ItemController.Init(InitInfo.Hero);
-
-		//ItemController.AddHeroBasicWeapon(InitInfo.Hero);
-
-		//ItemController.AddHeroSpecialWeapon(EHero.Nobel);
-		//ItemController.AddHeroSpecialWeapon(EHero.Currie);
-		//ItemController.AddMapWeapon(EWeaponId.Lasergun);
-
-		//ItemController.AddMapWeapon(EWeaponId.Biogun);
-
-		//ItemController.AddHeroSpecialWeapon(InitInfo.Hero);
-		//ItemController.AddMapWeapon(EWeaponId.MP40);
-
-		//ItemController.AddHeroSpecialWeapon(EHero.DaVinci);
-		//ItemController.AddHeroSpecialWeapon(EHero.Einstein);
-		//ItemController.AddMapWeaponSpecial(EWeaponId.Flamethrower);
 
 		if(InitInfo.PlayerType == EPlayerType.AI)
 			ai.Init();
@@ -173,6 +163,14 @@ public class Player : PoolObject
 	public override int GetHashCode()
 	{
 		return InitInfo.Number;
+	}
+
+	protected override void OnReturnToPool2()
+	{
+		//todo: maybe it is ok to init player just once and not again
+		//when reinstanced (eg. Tesla clone). All event listeners would have to be 
+		//unregistered. For now only visual changes (in SetInfo)
+		//IsInited = false;
 	}
 
 	//PHOTON

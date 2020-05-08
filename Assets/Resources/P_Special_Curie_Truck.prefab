@@ -236,6 +236,7 @@ MonoBehaviour:
   isPooled: 0
   Photon: {fileID: 7978257476093442939}
   IsPhotonInstantiated: 0
+  InstanceOnEveryUse: 1
   speed: 36.6
   cadency: 0.1
   colliderUpDown: {fileID: 2362432123046370667}

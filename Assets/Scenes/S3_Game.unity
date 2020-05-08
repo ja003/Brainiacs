@@ -2256,7 +2256,7 @@ MonoBehaviour:
   - poolName: P_Projectile
     prefab: {fileID: 5409615048864318336, guid: 4557b6e1f0114eb42907edddb183341f,
       type: 3}
-    poolSize: 10
+    poolSize: 2
     fixedSize: 0
     holder: {fileID: 1525571888}
   - poolName: P_Player
@@ -2265,50 +2265,46 @@ MonoBehaviour:
     poolSize: 4
     fixedSize: 0
     holder: {fileID: 586756577}
-  - poolName: P_Special_Nobel_Mine
-    prefab: {fileID: 4240401200153885600, guid: 00b3b3353e41d1a4c98db900152f6887,
-      type: 3}
-    poolSize: 4
-    fixedSize: 0
-    holder: {fileID: 435818220}
   - poolName: P_MapItem
     prefab: {fileID: 8232935776833295367, guid: 42b597faf28da6d41941dba705989b28,
       type: 3}
     poolSize: 5
     fixedSize: 0
     holder: {fileID: 974639564}
-  - poolName: P_Flamethrower
-    prefab: {fileID: 1217923434222555201, guid: 0f9cbc6669e22fd46a8008da9e8b62dc,
-      type: 3}
-    poolSize: 2
-    fixedSize: 0
-    holder: {fileID: 1833157303}
-  - poolName: P_Special_Curie
-    prefab: {fileID: 192045784105945646, guid: 5363eeacacbe08f4dbc33e264e61d3b4, type: 3}
-    poolSize: 2
-    fixedSize: 0
-    holder: {fileID: 1833157303}
-  - poolName: P_Special_DaVinci
-    prefab: {fileID: 6249827414074462552, guid: 79d177f5b20e4e048b34a8a66a721f70,
-      type: 3}
-    poolSize: 2
-    fixedSize: 0
-    holder: {fileID: 1833157303}
-  - poolName: P_Special_Einstein
-    prefab: {fileID: 157696992483914919, guid: 66ea8dfb25d09854085a73edffe57c67, type: 3}
-    poolSize: 2
-    fixedSize: 0
-    holder: {fileID: 1833157303}
-  - poolName: P_Special_Nobel
-    prefab: {fileID: 7641141385149810440, guid: 9f9b2db5ff8e2df4782eaf0555beb5e6,
-      type: 3}
-    poolSize: 2
-    fixedSize: 0
-    holder: {fileID: 1833157303}
   - poolName: P_Special_Curie_Truck
     prefab: {fileID: 1482933761565291229, guid: 9ae51a09f325b28429d48c15da8f1cae,
       type: 3}
     poolSize: 2
+    fixedSize: 0
+    holder: {fileID: 435818220}
+  - poolName: P_Special_Einstein_Bomb
+    prefab: {fileID: 3174136892521202004, guid: e1c56ad4f975f0843acb6446f05f251b,
+      type: 3}
+    poolSize: 2
+    fixedSize: 0
+    holder: {fileID: 435818220}
+  - poolName: P_Flamethrower_Flame
+    prefab: {fileID: 1217923434222555201, guid: 0f9cbc6669e22fd46a8008da9e8b62dc,
+      type: 3}
+    poolSize: 2
+    fixedSize: 0
+    holder: {fileID: 435818220}
+  - poolName: P_Special_Nobel_Mine
+    prefab: {fileID: 4240401200153885600, guid: 00b3b3353e41d1a4c98db900152f6887,
+      type: 3}
+    poolSize: 4
+    fixedSize: 0
+    holder: {fileID: 435818220}
+  - poolName: P_Special_DaVinci_Tank
+    prefab: {fileID: 8788445517099868567, guid: c72245319d133f8489ed4543b3197fe3,
+      type: 3}
+    poolSize: 1
+    fixedSize: 0
+    holder: {fileID: 435818220}
+  - poolName: P_Special_Tesla_Clone
+    prefab: {fileID: 1530575201945875746, guid: 8e67b97f372b9b64fb90bc717e96d51c,
+      type: 3}
+    poolSize: 1
     fixedSize: 0
     holder: {fileID: 435818220}
 --- !u!114 &753337936

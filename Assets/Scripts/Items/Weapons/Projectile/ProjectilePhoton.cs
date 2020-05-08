@@ -47,7 +47,7 @@ public class ProjectilePhoton : PoolObjectPhoton
 	//	projectile.LocalImage?.Photon.Destroy();
 	//}
 
-	protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	protected override bool CanSend2(EPhotonMsg pMsgType)
 	{
 		return view.IsMine || projectile.LocalImage;
 	}

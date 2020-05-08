@@ -98,7 +98,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		if(!CanSend(pMsgType))
 		{
 			if(DEBUG_LOG && !IsLogMsgIgnored(pMsgType))
-				Debug.Log("Cant send message: " + pMsgType);
+				Debug.Log(gameObject.name + " - cant send message: " + pMsgType);
 			return;
 		}
 
@@ -132,6 +132,9 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	{
 		switch(pMsgType)
 		{
+			case EPhotonMsg.Pool_SetActive:
+				return !view.IsMine;
+
 			case EPhotonMsg.Player_ShowWeapon:
 			case EPhotonMsg.Player_ChangeDirection:
 			case EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon:
@@ -211,8 +214,8 @@ public enum EPhotonMsg
 
 	//Special
 	Special_Init,
-	Special_Use,
-	Special_StopUse,
+	//Special_Use,
+	//Special_StopUse,
 
 	//- Flamethrower
 	Special_Flamethrower_OnDirectionChange,
@@ -232,5 +235,5 @@ public enum EPhotonMsg
 	MapItem_InitMapSpecial,
 	MapItem_InitMapBasic,
 	MapItem_InitPowerUp,
-	MapItem_ReturnToPool,
+	//MapItem_ReturnToPool,
 }

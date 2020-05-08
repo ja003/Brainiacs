@@ -3,86 +3,101 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls special weapons.
+/// - instancing prefabs
+/// - using
+/// - sending other info to prefabs
+/// </summary>
 public class PlayerWeaponSpecial : PlayerWeapon
 {
-	PlayerWeaponSpecialController specialController;
+	//PlayerWeaponSpecialController specialController;
+	private PlayerWeaponSpecialPrefab prefab;
+	protected PlayerWeaponSpecialPrefab prefabInstance;
+	private EHero hero;
 
-	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig) :
+	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig, EHero pHero) :
 		base(pOwner, pConfig.Id, pConfig.SpecialWeaponInfo.InHandInfo, pConfig.VisualInfo)
 	{
-		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.gameObject);
+		hero = pHero;
+		prefab = pConfig.SpecialWeaponInfo.Prefab;
+
+		//Game.Instance.PlayerManager.OnAllPlayersAdded.AddAction(InstantiatePrefab);
+		InstantiatePrefab();
 
 	}
+
+	
 
 	public PlayerWeaponSpecial(Player pOwner, MapSpecialWeaponConfig pConfig) :
 		base(pOwner, pConfig.Id, pConfig.InHandInfo, pConfig.VisualInfo)
 	{
-		InstantiateWeaponController(pOwner, pConfig.SpecialWeaponInfo.ControllerPrefab.gameObject);
+		prefab = pConfig.SpecialWeaponInfo.Prefab;
+		//Game.Instance.PlayerManager.OnAllPlayersAdded.AddAction(InstantiatePrefab);
+		InstantiatePrefab();
 	}
 
-	private void InstantiateWeaponController(Player pOwner, GameObject pPrefab)
+	protected void InstantiatePrefab()
 	{
-		var instance = InstanceFactory.Instantiate(pPrefab).GetComponent<PlayerWeaponSpecialController>();
-		//var instance = Game.Instance.Pool.Instantiate(pPrefab)
-		//			.GetComponent<PlayerWeaponSpecialController>();
-		//Debug.Log("Instantiate: " + instance.name);
-
-		if(PhotonNetwork.IsConnected)
-			instance.GetComponent<PhotonView>().TransferOwnership(pOwner.InitInfo.PhotonPlayer);
-
-		if(DebugData.LocalImage)
+		if(prefab == null)
 		{
-			var localImage = InstanceFactory.Instantiate(pPrefab).GetComponent<PlayerWeaponSpecialController>();
-			instance._LocalImage = localImage;
+			Debug.LogError("Prefab not defined");
+			return;
+		}
+		Vector3 spawnPos = Owner.WeaponController.GetProjectileStart().position;
+		prefabInstance = InstanceFactory.Instantiate(prefab.gameObject, spawnPos)
+			.GetComponent<PlayerWeaponSpecialPrefab>();
 
-			localImage._RemoteOwner = instance;
-			//instance.IsLocalImage = true;
-			//instance.debug_AssignOwner(pOwner.LocalImage);
-			localImage.SetActive(false);
-			localImage.name += "_LR";
-			//Debug.Log("Instantiate: " + localImage.name);
+		if(!prefabInstance.Photon.IsMine)
+		{
+			Debug.LogError("Instance is not mine " + prefabInstance.name);
+			prefabInstance.Photon.view.TransferOwnership(PhotonNetwork.LocalPlayer);
 		}
 
-		specialController = instance;
-		specialController.Init(pOwner);
+		prefabInstance.Init(Owner);
 	}
-
-	public override bool CanUse()
-	{
-		return base.CanUse() && specialController.CanUse();
-	}
-
 
 	public override EWeaponUseResult Use()
 	{
 		EWeaponUseResult useResult = base.Use();
 		if(useResult != EWeaponUseResult.CantUse)
-			specialController.Use();
+		{		
+			if(prefab.InstanceOnEveryUse)
+				InstantiatePrefab();
+
+			prefabInstance.Use();
+			//OnUse();
+			//specialController.Use();
+		}
 
 		return useResult;
 	}
 
+	protected virtual void OnUse() { }
+
 	public override void StopUse()
 	{
-		specialController.StopUse();
+		prefabInstance.StopUse();
+		//specialController.StopUse();
 		base.StopUse();
 	}
 
 	internal override void OnStartReloadWeapon()
 	{
+		prefabInstance.OnStartReloadWeapon();
 		base.OnStartReloadWeapon();
-		specialController.OnStartReloadWeapon();
+		//specialController.OnStartReloadWeapon();
 	}
 
 	public override void OnDirectionChange(EDirection pDirection)
 	{
 		base.OnDirectionChange(pDirection);
-		specialController.OnDirectionChange(pDirection);
+		//specialController.OnDirectionChange(pDirection);
 	}
 
 	public override void OnSetActive()
 	{
 		base.OnSetActive();
-		specialController.OnSetActive();
+		//specialController.OnSetActive();
 	}
 }

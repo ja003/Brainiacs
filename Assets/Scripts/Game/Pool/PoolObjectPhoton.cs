@@ -1,9 +1,10 @@
 ﻿using FlatBuffers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PoolObject))]
+//[RequireComponent(typeof(PoolObject))]
 public abstract class PoolObjectPhoton : PhotonMessenger
 {
 	private PoolObject _poolObject = null;
@@ -22,17 +23,27 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 		if(!poolObject.IsPhotonInstantiated)
 			return false;
 
+		if(view.ViewID == 0)
+		{
+			if(pMsgType == EPhotonMsg.Pool_SetActive)
+				Debug.LogWarning("Cant send message yet. " + pMsgType);
+			else
+				Debug.LogError("Cant send message yet. " + pMsgType);
+
+			return false;
+		}
+
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Pool_SetActive:
 				return view.IsMine;
 		}
 
-		return CanSendMsg(pMsgType);
+		return CanSend2(pMsgType);
 		//return true;
 	}
 
-	protected abstract bool CanSendMsg(EPhotonMsg pMsgType);
+	protected abstract bool CanSend2(EPhotonMsg pMsgType);
 
 	sealed protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
@@ -58,4 +69,6 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 	{
 
 	}
+
+	public virtual void OnReturnToPool() { }
 }

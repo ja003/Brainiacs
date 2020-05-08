@@ -48,7 +48,8 @@ public struct MapItemInfo
 public struct SpecialWeaponInfo
 {
 	public InHandWeaponInfo InHandInfo;
-	public PlayerWeaponSpecialController ControllerPrefab;
+	//public PlayerWeaponSpecialController ControllerPrefab;
+	public PlayerWeaponSpecialPrefab Prefab;
 }
 
 

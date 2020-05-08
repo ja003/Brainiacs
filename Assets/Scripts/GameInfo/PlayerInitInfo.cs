@@ -23,15 +23,20 @@ public class PlayerInitInfo
 	public PlayerInitInfo() { }
 
 	//DEBUG INIT
-	public PlayerInitInfo(int pNumber, EHero pHero, string pName, EPlayerColor pColor, EPlayerType pPlayerType)
+	public PlayerInitInfo(int pNumber, EHero pHero, string pName, EPlayerColor pColor, EPlayerType pPlayerType, PhotonPlayer pPhotonPlayer = null)
 	{
 		Number = pNumber;
 		Hero = pHero;
 		Name = pName;
 		Color = pColor;
 		PlayerType = pPlayerType;
+		PhotonPlayer = pPhotonPlayer;
 	}
 
+	public PlayerInitInfo Clone()
+	{
+		return new PlayerInitInfo(Number, Hero, Name, Color, PlayerType, PhotonPlayer);
+	}
 
 	internal Offset<PlayerInitInfoS> Create(ref FlatBufferBuilder fbb)
 	{

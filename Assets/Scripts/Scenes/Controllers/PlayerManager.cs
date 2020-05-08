@@ -138,6 +138,13 @@ public class PlayerManager : GameController
 	/// </summary>
 	public void AddPlayer(Player pPlayer)
 	{
+		if(pPlayer.ai.IsTmp)
+		{
+			//Debug.Log("Skip tmp ai");
+			//tmp AIs (Tesla clone) are not registered as active players
+			return;
+		}
+
 		Players.Add(pPlayer);
 		//Debug.Log("Add player " + pPlayer);
 		int playersCount = Players.FindAll(a => !a.IsLocalImage).Count;

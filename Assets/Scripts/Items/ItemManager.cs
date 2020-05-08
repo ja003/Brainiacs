@@ -22,7 +22,7 @@ public class ItemManager : BrainiacsController
 	private Dictionary<EWeaponId, ProjectileConfig> allProjectiles 
 		= new Dictionary<EWeaponId, ProjectileConfig>();
 
-
+	[SerializeField] List<ProjectileConfig> extraProjectiles = null;
 
 	public void AddProjectile(EWeaponId pWeapon, ProjectileConfig pConfig)
 	{
@@ -37,7 +37,12 @@ public class ItemManager : BrainiacsController
 		foreach(var w in MapWeapons)
 		{
 			allWeapons.Add(w.Id, w);
-			allProjectiles.Add(w.Id, w.ProjectileInfo.Projectile);
+			AddProjectile(w.Id, w.ProjectileInfo.Projectile);
+		}
+
+		foreach(ProjectileConfig projectile in extraProjectiles)
+		{
+			AddProjectile(projectile.WeaponId, projectile);
 		}
 
 		//Map weapons special

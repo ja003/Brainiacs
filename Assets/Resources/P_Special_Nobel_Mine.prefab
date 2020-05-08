@@ -97,6 +97,8 @@ MonoBehaviour:
   poolName: 
   isPooled: 0
   Photon: {fileID: 8300263889120918218}
+  IsPhotonInstantiated: 1
+  InstanceOnEveryUse: 1
   damage: 100
   mineSprite: {fileID: 1651846596320159259}
 --- !u!114 &1093813226932518741

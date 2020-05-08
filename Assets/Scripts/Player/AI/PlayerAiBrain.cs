@@ -7,6 +7,9 @@ public class PlayerAiBrain : PlayerBehaviour
 {
 	bool isInited;
 
+	//Tesla clone is temporary
+	public bool IsTmp { get; internal set; }
+
 	AiMovement aiMovement;
 	public AiShoot shoot;
 	public AiEvade evade;
@@ -46,6 +49,8 @@ public class PlayerAiBrain : PlayerBehaviour
 	}
 
 	float lastEvaluateTime;
+
+
 	public void EvaluateGoals()
 	{
 		//EvaluateGoals can be called from other places.

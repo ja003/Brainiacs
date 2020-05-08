@@ -1,29 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialEinsteinExplosion : BrainiacsBehaviour
 {
-	SpecialEinstein controller;
+	//SpecialEinstein controller;
 	int maxDamage;
+	Player owner;
 
-	public void Init(SpecialEinstein pController)
+	public void OnInit(Player pOwner, int pMaxDamage)
 	{
-		controller = pController;
-		maxDamage = pController.MaxDamage;
+		owner = pOwner;
+		maxDamage = pMaxDamage;
+		SetEnabled(false);
 
-		controller.Owner.OnPlayerInited.AddAction(() => SetEnabled(false));
+		//owner.OnPlayerInited.AddAction(() => SetEnabled(false));
 		//SetEnabled(false);
+	}
+
+	internal void Explode()
+	{
+		SetEnabled(true);
+		animator.Rebind();
 	}
 
 	public void SetEnabled(bool pValue)
 	{
 		animator.enabled = pValue;
-		if(pValue)
-			animator.Rebind();
 		spriteRend.enabled = pValue;
-
-		circleCollider2D.enabled = pValue && controller.Owner.IsItMe;
+		circleCollider2D.enabled = pValue && owner.IsItMe;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +38,7 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		if(handler == null)
 			return;
 
-		if(collision.gameObject == controller.Owner.gameObject)
+		if(collision.gameObject == owner.gameObject)
 		{
 			//Debug.Log("thats me ");
 			return;
@@ -44,6 +50,8 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		float damage = Mathf.Lerp(maxDamage / 10f, maxDamage, factor);
 
 		//Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
-		handler.OnCollision((int)damage, controller.Owner);
+		handler.OnCollision((int)damage, owner);
 	}
+
+
 }

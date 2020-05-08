@@ -23,13 +23,13 @@ public class PlayerPhotonController : PoolObjectPhoton
 	PlayerInitInfo playerInfo;
 
 	//bool isItMe => player.IsItMe;
-	bool inited;
+	bool isInited;
 
 	Game game => Game.Instance;
 
 	internal void Init2(PlayerInitInfo pInfo)
 	{
-		if(inited)
+		if(isInited)
 			return;
 		playerInfo = pInfo;
 		PhotonPlayer = playerInfo.PhotonPlayer;
@@ -47,14 +47,20 @@ public class PlayerPhotonController : PoolObjectPhoton
 		//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
 		Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
 
-		inited = true;
+		isInited = true;
+	}
+
+	public override void OnReturnToPool()
+	{
+		isInited = false;
+		base.OnReturnToPool();
 	}
 
 	/// <summary>
 	/// Player can send data only if it is mine player and is inited.
 	/// There are execeptions.
 	/// </summary>
-	protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	protected override bool CanSend2(EPhotonMsg pMsgType)
 	{
 		switch(pMsgType)
 		{
@@ -71,7 +77,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 
 	protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
-		if(!inited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
+		if(!isInited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
 		{
 			//Debug.Log("not inited yet. " + pReceivedMsg);
 			return;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7641141385149810440
+--- !u!1 &1530575201945875746
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,70 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6535637552891519736}
-  - component: {fileID: 2069185650229191099}
-  - component: {fileID: 2958026617109491999}
-  - component: {fileID: 5169139469952492065}
+  - component: {fileID: 7999154881772309072}
+  - component: {fileID: 4002438142149156862}
+  - component: {fileID: 2889494709584842552}
+  - component: {fileID: 8822165265135937933}
   m_Layer: 0
-  m_Name: P_Special_Nobel
+  m_Name: P_Special_Tesla_Clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &6535637552891519736
+--- !u!4 &7999154881772309072
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641141385149810440}
+  m_GameObject: {fileID: 1530575201945875746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.55565876, y: -0.071674906, z: -0.3801442}
+  m_LocalPosition: {x: -0.3155951, y: -0.3547526, z: -0.65011644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069185650229191099
+--- !u!114 &4002438142149156862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641141385149810440}
+  m_GameObject: {fileID: 1530575201945875746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8e16be248e12be4788d57754ee159e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 683295ccbad630f459569c895bbb661d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolName: 
   isPooled: 0
-  Photon: {fileID: 5169139469952492065}
-  minePrefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887,
+  Photon: {fileID: 2889494709584842552}
+  IsPhotonInstantiated: 0
+  InstanceOnEveryUse: 0
+  playerPrefab: {fileID: 4342295620933284857, guid: f9b95b1eafc36194c839127ec1aecca6,
     type: 3}
---- !u!114 &2958026617109491999
+--- !u!114 &2889494709584842552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641141385149810440}
+  m_GameObject: {fileID: 1530575201945875746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958d8bee43a25f14695a802aa26dd690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG_LOG: 0
+--- !u!114 &8822165265135937933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530575201945875746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -72,16 +87,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5169139469952492065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641141385149810440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2cf1cbb1d2810a45b54b428414cc416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DEBUG_LOG: 0

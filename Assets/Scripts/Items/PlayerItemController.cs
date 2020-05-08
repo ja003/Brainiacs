@@ -16,6 +16,14 @@ public class PlayerItemController : PlayerBehaviour
 		{
 			AddWeapon(weapon);
 		}
+
+		if(DebugData.TestExtraPlayerItem)
+		{
+			AddWeapon(EWeaponId.Flamethrower);
+			AddWeapon(EWeaponId.Special_Curie);
+			AddWeapon(EWeaponId.Special_Nobel);
+			AddWeapon(EWeaponId.Special_Einstein);
+		}
 	}
 
 	private void AddWeapon(EWeaponId pWeapon)
@@ -44,6 +52,8 @@ public class PlayerItemController : PlayerBehaviour
 
 	internal void AddHeroSpecialWeapon(EHero pHero)
 	{
+		//Debug.Log("AddHeroSpecialWeapon " + pHero);
+
 		HeroSpecialWeaponConfig config =
 			brainiacs.ItemManager.GetHeroSpecialWeaponConfig(pHero);
 
@@ -53,8 +63,7 @@ public class PlayerItemController : PlayerBehaviour
 			return;
 		}
 
-		PlayerWeaponSpecial weaponSpecial = new PlayerWeaponSpecial(
-			player, config);
+		PlayerWeaponSpecial weaponSpecial = new PlayerWeaponSpecial(player, config, pHero);
 
 		weapon.AddWeapon(weaponSpecial);
 	}
@@ -108,8 +117,22 @@ public class PlayerItemController : PlayerBehaviour
 
 		game.PlayerStatusManager.Show(player, config.MapItemInfo);
 
-		PlayerWeaponSpecial weaponSpecial =
-			new PlayerWeaponSpecial(player, config);
+
+		PlayerWeaponSpecial weaponSpecial = null;
+		switch(pWeapon)
+		{
+			case EWeaponId.Flamethrower:
+				weaponSpecial = new SpecialFlamethrowerNew(player, config);
+				break;
+		}
+
+		if(weaponSpecial == null)
+		{
+			Debug.LogError("MapWeaponSpecial not defined for " + pWeapon);
+			weaponSpecial = new PlayerWeaponSpecial(player, config);
+		}
+
+
 		weapon.AddWeapon(weaponSpecial);
 	}
 }

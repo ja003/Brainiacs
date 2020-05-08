@@ -160,7 +160,8 @@ public class UIGameSetupMain : MainMenuController
 		gameModeValueSwapper.InitNumberSwapper(GAME_VALUE_MIN, GAME_VALUE_MAX, OnGameModeValueChanged);
 		gameModeToggleTime.onValueChanged.AddListener(OnTimeToggled);
 		//gameModeToggleTime.isOn = true;
-		gameModeValueSwapper.SetNumberValue(2); //debug
+		if(DebugData.TestGameValue > 0)
+			gameModeValueSwapper.SetNumberValue(DebugData.TestGameValue); //debug
 		OnTimeToggled(true);
 
 		gameModeToggleScore.onValueChanged.AddListener(OnScoreToggled);

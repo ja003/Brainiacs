@@ -8,69 +8,74 @@ using UnityEngine;
 /// Activated while use button is pressed.
 /// It block X hits from projectile then it is destroyed => triggers reload
 /// </summary>
-public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
+public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 {
 	[SerializeField] int damage = 30;
 	[SerializeField] int maxHealth = 3;
 
 	int currentHealth;
 
+	protected override void OnPhotonInstantiated()
+	{
+
+	}
+
 	protected override void OnInit()
 	{
-		SetEnabled(false);
-		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), Owner.Movement.PlayerCollider);
+		//Debug.Log(gameObject.name + " OnInit");
+		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), owner.Movement.PlayerCollider);
 
-		transform.parent = weaponContoller.transform;
+		transform.parent = owner.WeaponController.transform;
 		transform.localPosition = Vector3.zero;
 
-		Owner.Visual.OnSortOrderChanged += UpdateSortOrder;
-
+		owner.Visual.OnSortOrderChanged += UpdateSortOrder;
 		currentHealth = maxHealth;
 	}
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnReturnToPool3()
 	{
-		spriteRend.enabled = pValue;
-		boxCollider2D.enabled = pValue;
 	}
 
-	private void UpdateSortOrder()
+	protected override void OnSetActive2(bool pValue)
 	{
-		if(!spriteRend.enabled)
-			return;
-		spriteRend.sortingOrder = Owner.Visual.GetPlayerOverlaySortOrder();
-		//Debug.Log("sortingOrder = " + spriteRend.sortingOrder);
+		SetEnabled(pValue);
 	}
 
 	private void SetEnabled(bool pValue)
 	{
 		spriteRend.enabled = pValue;
-		boxCollider2D.enabled = pValue;
+		boxCollider2D.enabled = pValue && Photon.IsMine;
 	}
 
+	private void UpdateSortOrder()
+	{
+		//if(!spriteRend.enabled)
+		//	return;
+		spriteRend.sortingOrder = owner.Visual.GetPlayerOverlaySortOrder();
+		//Debug.Log("sortingOrder = " + spriteRend.sortingOrder);
+	}
 
 	protected override void OnUse()
 	{
 		UpdateSortOrder();
 		//prevent weapon change
-		weaponContoller.CanSwapWeapon = false;
+		owner.WeaponController.CanSwapWeapon = false;
 
 		//todo: make player invulnerable (he can be hit by bomb etc..)
 
-		SetEnabled(true);
+		SetActive(true);
 
 	}
 
 	protected override void OnStopUse()
 	{
-		weaponContoller.CanSwapWeapon = true;
-		SetEnabled(false);
 		//allow weapon change
+		owner.WeaponController.CanSwapWeapon = true;
+		SetActive(false);
 	}
 
-	internal override void OnStartReloadWeapon()
+	public override void OnStartReloadWeapon()
 	{
-		base.OnStartReloadWeapon();
 		currentHealth = maxHealth;
 	}
 
@@ -83,19 +88,19 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 		if(handler == null)
 			return;
 
-		if(collision.gameObject == Owner.gameObject)
+		if(collision.gameObject == owner.gameObject)
 		{
 			//Debug.Log("thats me ");
 			return;
 		}
 
-		Debug.Log("Hit " + collision.gameObject.name);
-		handler.OnCollision(damage, Owner);
+		//Debug.Log("Hit " + collision.gameObject.name);
+		handler.OnCollision(damage, owner);
 	}
 
 	public bool OnCollision(int pDamage, Player pOrigin)
 	{
-		if(!Owner.IsInitedAndMe)
+		if(!owner.IsInitedAndMe)
 			return false;
 
 		if(pDamage > 0)
@@ -104,7 +109,7 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 			if(currentHealth <= 0)
 			{
 				//Debug.Log("Destroyed");
-				weaponContoller.ActiveWeapon.AmmoLeft = 0;
+				owner.WeaponController.ActiveWeapon.AmmoLeft = 0;
 			}
 
 			//Debug.Log("remains: " + currentHealth);
@@ -113,4 +118,5 @@ public class SpecialDaVinci : PlayerWeaponSpecialController, ICollisionHandler
 
 		return false;
 	}
+
 }

@@ -4,36 +4,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialNobelMine : PoolObject
+public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 {
 	[SerializeField] int damage = 100;
 	//[SerializeField] Animator mineAnimator = null;
 	[SerializeField] SpriteRenderer mineSprite = null;
 	//[SerializeField] SpecialNobelMinePhoton photon = null;
 
-	Player owner;
 	bool isExploded;
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnUse()
 	{
-		mineSprite.enabled = pValue;
-		boxCollider2D.enabled = pValue;
-		animator.enabled = pValue;
-	}
-
-	public void Spawn(Player pOwner)
-    {
-		Debug.Log(gameObject.name + " spawn");
-		owner = pOwner;
+		Debug.Log(gameObject.name + " OnUse");
 		//spriteRend.enabled = false; //this is just holder, anmator is in child
 		SetActive(true);
-		mineSprite.sortingOrder = pOwner.Visual.GetProjectileSortOrder();
+		mineSprite.sortingOrder = owner.Visual.GetProjectileSortOrder();
 
-		Photon.Send(EPhotonMsg.Special_Nobel_Spawn, pOwner.InitInfo.Number);
-
-		//mine is simulated only on its owner side
-		boxCollider2D.enabled = pOwner.IsItMe;
+		transform.position = owner.WeaponController.GetProjectileStart().position;
+		//Photon.Send(EPhotonMsg.Special_Nobel_Spawn, owner.InitInfo.Number);		
+		isExploded = false;
 	}
+
+	protected override void OnStopUse()
+	{
+	}
+
+	protected override void OnInit()
+	{
+	}
+
+	protected override void OnSetActive2(bool pValue)
+	{
+		mineSprite.enabled = pValue;
+		animator.enabled = pValue;
+		//mine is simulated only on its owner side
+		boxCollider2D.enabled = pValue && owner.IsItMe;
+	}
+
+	//public void Spawn(Player pOwner)
+	//   {
+	//	Debug.Log(gameObject.name + " spawn");
+	//	owner = pOwner;
+	//	//spriteRend.enabled = false; //this is just holder, anmator is in child
+	//	SetActive(true);
+	//	mineSprite.sortingOrder = pOwner.Visual.GetProjectileSortOrder();
+
+	//	Photon.Send(EPhotonMsg.Special_Nobel_Spawn, pOwner.InitInfo.Number);
+
+	//	//mine is simulated only on its owner side
+	//	boxCollider2D.enabled = pOwner.IsItMe;
+	//}
 
 	private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,7 +63,7 @@ public class SpecialNobelMine : PoolObject
 			return;
 		}
 
-		if(isExploded)
+		if(isExploded || !isInited)
 			return;
 
 		ICollisionHandler handler = collision.GetComponent<ICollisionHandler>();
@@ -69,7 +89,7 @@ public class SpecialNobelMine : PoolObject
 
 	private void Explode()
 	{
-		//Debug.Log("Explode");
+		Debug.Log("Explode");
 		isExploded = true;
 		animator.SetBool("explode", true);
 	}
@@ -83,31 +103,12 @@ public class SpecialNobelMine : PoolObject
 	{
 		//Debug.Log("OnExplosionStateExit");
 		if(Photon.IsMine)
-			InstanceFactory.Destroy(gameObject);
+			ReturnToPool();
 	}
 
-	//PHOTON
+	protected override void OnReturnToPool3()
+	{
+		isExploded = false;
+	}
 
-	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
-	//{
-	//	if(pMsgType != EPhotonMsg.Special_Nobel_Spawn)
-	//	{
-	//		Debug.LogError("Cant send another message");
-	//		return false;
-	//	}
-
-	//	return view.IsMine;
-	//}
-
-	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-	//{
-	//	switch(pReceivedMsg)
-	//	{
-	//		case EPhotonMsg.Special_Nobel_Spawn:
-	//			int playerNumber = (int)pParams[0];
-	//			Player player = Game.Instance.PlayerManager.GetPlayer(playerNumber);
-	//			Spawn(player);
-	//			break;
-	//	}
-	//}
 }

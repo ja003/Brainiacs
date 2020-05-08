@@ -17,6 +17,11 @@ public class MapItem : MapObject
 		boxCollider2D.enabled = pValue;
 	}
 
+	protected override void OnPhotonInstantiated()
+	{
+		
+	}
+
 	bool isSpawned;
 	bool isMine;
 	private void Spawn(Vector3 pPosition)
@@ -105,13 +110,13 @@ public class MapItem : MapObject
 		ReturnToPool();
 	}
 
-	public void ReturnToPool()
-	{
-		if(isMine)
-			InstanceFactory.Destroy(gameObject);
-		else
-			Photon.Send(EPhotonMsg.MapItem_ReturnToPool);
-	}
+	//public void ReturnToPool()
+	//{
+	//	if(isMine)
+	//		InstanceFactory.Destroy(gameObject);
+	//	else
+	//		Photon.Send(EPhotonMsg.MapItem_ReturnToPool);
+	//}
 
 	private void OnDestroy()
 	{

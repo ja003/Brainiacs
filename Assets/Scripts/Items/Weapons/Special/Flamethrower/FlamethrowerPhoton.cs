@@ -3,12 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlamethrowerPhoton : SpecialWeaponPhoton
+public class FlamethrowerPhoton : PlayerWeaponSpecialPrefabPhoton
 {
+	[SerializeField] SpecialFlamethrowerFlame flamethrower = null;
+
+	protected override bool CanSend3(EPhotonMsg pMsgType)
+	{
+		switch(pMsgType)
+		{
+			case EPhotonMsg.Special_Flamethrower_OnDirectionChange:
+				return view.IsMine;
+		}
+		return false;
+	}
 
 	protected override void HandleMsg3(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
-		FlamethrowerController flamethrower = (FlamethrowerController)controller;
+		//FlamethrowerController flamethrower = (FlamethrowerController)controller;
 
 		switch(pReceivedMsg)
 		{

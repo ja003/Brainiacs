@@ -15,7 +15,7 @@ public static class DebugData
 	public static bool TestPlayers = true;
 	public static bool LocalImage = false;
 
-	private static int playerCount = 1;
+	private static int playerCount = 2;
 
 	public static bool TestResult = false;
 
@@ -26,7 +26,11 @@ public static class DebugData
 	public static bool TestGenerateItems = false;
 	public static bool StopGenerateItems = true;
 
+	public static bool TestExtraPlayerItem = false;
 
+	public static EHero TestHero = EHero.Tesla;
+
+	public static int TestGameValue = 10;
 
 	internal static void TestSetResults()
 	{
@@ -90,16 +94,16 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.Currie, GetPlayerName(pPlayerNumber),
+			EHero.DaVinci, GetPlayerName(pPlayerNumber),
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
-				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
-				player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
+				//player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
+				player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 			EHero.Einstein, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Pink, EPlayerType.AI);
+			EPlayerColor.Pink, EPlayerType.LocalPlayer);
 				//player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
 				break;

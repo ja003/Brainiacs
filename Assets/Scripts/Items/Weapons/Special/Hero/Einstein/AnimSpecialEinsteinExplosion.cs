@@ -22,7 +22,7 @@ public class AnimSpecialEinsteinExplosion : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.parent.GetComponent<SpecialEinstein>().OnExplosionStateExit();
+        animator.transform.parent.GetComponent<SpecialEinsteinBomb>().OnExplosionStateExit();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

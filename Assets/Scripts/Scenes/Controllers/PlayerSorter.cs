@@ -19,7 +19,7 @@ public class PlayerSorter : BrainiacsBehaviour
 
 		for(int i = 0; i < players.Count; i++)
 		{
-			players[i].Visual.SetSortOrder(i);
+			players[i].Visual.UpdateSortOrder(i);
 		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class SpecialCurieTruck : PoolObject
+public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 {
 	EDirection direction;
 	[SerializeField] [Range(10, 100)]float speed = -1;
@@ -32,31 +32,32 @@ public class SpecialCurieTruck : PoolObject
 
 	//}
 
-	Player owner;
-	public void Spawn(Player pOwner, ProjectileConfig pProjectile)
+	protected override void OnInit()
 	{
-		projectile = pProjectile;
-		owner = pOwner;
-
-		Debug.Log("Spawn");
-		SetActive(true);
-		
-		Physics2D.IgnoreCollision(boxCollider2D, pOwner.Collider);
-
-		EDirection playerDir = pOwner.Movement.CurrentDirection;
-		StartTruck(playerDir, pOwner.WeaponController.GetProjectileStart(playerDir).position);
+		projectile = brainiacs.ItemManager.GetProjectileConfig(EWeaponId.Special_Curie);
+		if(projectile == null)
+		{
+			Debug.LogError("SpecialCurieTruck projectile not found");
+		}
+		Physics2D.IgnoreCollision(boxCollider2D, owner.Collider);
 	}
 
-	//private void OnEnable()
-	//{
-	//	if(!Owner)
-	//		return;
-	//	//Debug.Log("OnEnable ");
+	protected override void OnUse()
+	{
+		SetActive(true);
+		StartTruck(playerDirection, owner.WeaponController.GetProjectileStart(playerDirection).position);
+	}
 
-	//	Physics2D.IgnoreCollision(boxCollider2D, Owner.Collider);
-	//}
+	protected override void OnStopUse()
+	{
+	}
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnReturnToPool3()
+	{
+		
+	}
+
+	protected override void OnSetActive2(bool pValue)
 	{
 		animator.enabled = pValue;
 		spriteRend.enabled = pValue;

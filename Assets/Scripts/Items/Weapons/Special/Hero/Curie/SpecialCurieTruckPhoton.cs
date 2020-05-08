@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialCurieTruckPhoton : PoolObjectPhoton
+public class SpecialCurieTruckPhoton : PlayerWeaponSpecialPrefabPhoton
 {
-	protected override bool CanSendMsg(EPhotonMsg pMsgType)
+	protected override bool CanSend3(EPhotonMsg pMsgType)
 	{
 		switch(pMsgType)
 		{
@@ -19,7 +19,7 @@ public class SpecialCurieTruckPhoton : PoolObjectPhoton
 
 	[SerializeField] SpecialCurieTruck truck = null;
 
-	protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	protected override void HandleMsg3(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
 		//SpecialCurieTruck truck = GetComponent<SpecialCurieTruck>();
 		switch(pReceivedMsg)

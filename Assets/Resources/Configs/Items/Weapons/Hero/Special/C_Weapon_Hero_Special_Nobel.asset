@@ -29,5 +29,4 @@ MonoBehaviour:
       Magazines: 666
       Cooldown: 1
       Cadency: 1
-    ControllerPrefab: {fileID: 2069185650229191099, guid: 9f9b2db5ff8e2df4782eaf0555beb5e6,
-      type: 3}
+    Prefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887, type: 3}

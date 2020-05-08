@@ -2488,7 +2488,9 @@ namespace Photon.Pun
                 SendInstantiate(parameters, sceneObject);
             }
 
-            go.SetActive(true);
+            //TODO: I removed this - check if nothing broken
+            //I think objects should start deactivated?
+            //go.SetActive(true);
 
             // if IPunInstantiateMagicCallback is implemented on any script of the instantiated GO, let's call it directly:
             if (!PrefabsWithoutMagicCallback.Contains(parameters.prefabName))

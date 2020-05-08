@@ -12,7 +12,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class PoolInfo
 {
-	public string poolName;
+	//public string poolName //change by me - no reason to specify name => use prefab name
+	public string poolName => prefab.name;
 	public GameObject prefab;
 	public int poolSize;
 	public bool fixedSize;
@@ -23,7 +24,10 @@ public class PoolInfo
 
 class Pool
 {
-	private Stack<PoolObject> availableObjStack = new Stack<PoolObject>();
+	//private Stack<PoolObject> availableObjStack = new Stack<PoolObject>();
+	//MINE
+	//we need to check more elements than just the top one - for mine photon
+	private List<PoolObject> availableObjs = new List<PoolObject>();
 
 	private bool fixedSize;
 	private GameObject poolObjectPrefab;
@@ -49,9 +53,12 @@ class Pool
 	//o(1)
 	private void AddObjectToPool(PoolObject po)
 	{
+		//Debug.Log("AddObjectToPool " + po.name);
+
 		//add to pool
 		po.SetActive(false);
-		availableObjStack.Push(po);
+		//availableObjStack.Push(po);
+		availableObjs.Add(po);
 		po.isPooled = true;
 		if(holder)
 			po.transform.parent = holder;
@@ -66,6 +73,12 @@ class Pool
 		{
 			po = go.AddComponent<PoolObject>();
 		}
+		if(po == null)
+		{
+			Debug.LogError(go.name + " doesnt have PoolObject");
+		}
+		po.OnInstantiated();
+
 		//set name
 		po.poolName = poolName;
 		return po;
@@ -76,9 +89,35 @@ class Pool
 	{
 		//Debug.Log("NextAvailableObject");
 		PoolObject po = null;
-		if(availableObjStack.Count > 0)
+		//if(availableObjStack.Count > 0)
+		//TODO: changed by me
+		//always pool object with photon mine.
+		//todo: change structure from stack, not effective right now
+		//if(availableObjStack.Count > 0 && availableObjStack.Peek().Photon.IsMine)
+		//{
+		//	po = availableObjStack.Pop();
+		//}
+
+		//find available obj that is mine
+		for(int i = availableObjs.Count - 1; i >= 0 ; i--)
 		{
-			po = availableObjStack.Pop();
+			if(availableObjs[i].Photon.IsMine)
+			{
+				po = availableObjs[i];
+				availableObjs.RemoveAt(i);
+				break;
+			}
+		}
+
+		//PoolObject availableObj = availableObjs.Find(a => a.Photon.IsMine);
+		//if(availableObj)
+		//{
+		//	po = availableObj;
+		//	availableObjs.Remove(po);
+		//}
+		if(po)
+		{
+			//available obj found
 		}
 		else if(fixedSize == false)
 		{
@@ -89,7 +128,8 @@ class Pool
 			po = NewObjectInstance();
 			AddObjectToPool(po);
 			//bug: po is added to availableObjStack, but not popped
-			po = availableObjStack.Pop();
+			//po = availableObjStack.Pop();
+			availableObjs.RemoveAt(availableObjs.Count - 1);
 		}
 		else
 		{
@@ -99,6 +139,7 @@ class Pool
 		GameObject result = null;
 		if(po != null)
 		{
+			//Debug.Log("NextAvailableObject " + po.name);
 			po.isPooled = false;
 			result = po.gameObject;
 			//result.SetActive(true);
@@ -246,6 +287,7 @@ public class EasyObjectPool : MonoBehaviour
 			{
 				Pool pool = poolDictionary[po.poolName];
 				pool.ReturnObjectToPool(po);
+				po.OnReturnToPool();
 			}
 			else
 			{

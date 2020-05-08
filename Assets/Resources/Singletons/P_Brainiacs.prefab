@@ -95,6 +95,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88245c6e4a644fc41a3ebcc853f6f671, type: 2}
   - {fileID: 11400000, guid: e328cfa6570e9474cb0d3d99a435128e, type: 2}
   - {fileID: 11400000, guid: f3a7731173dc03648add91e723f5e3da, type: 2}
+  extraProjectiles:
+  - {fileID: 11400000, guid: 922177887c0359749926d543d6171bd7, type: 2}
 --- !u!114 &3866699018896989849
 MonoBehaviour:
   m_ObjectHideFlags: 0

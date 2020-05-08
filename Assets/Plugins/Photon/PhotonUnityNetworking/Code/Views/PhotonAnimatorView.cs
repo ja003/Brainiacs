@@ -408,7 +408,17 @@ namespace Photon.Pun
                             stream.SendNext(this.m_Animator.GetFloat(parameter.Name));
                             break;
                         case ParameterType.Int:
-                            stream.SendNext(this.m_Animator.GetInteger(parameter.Name));
+
+                            //HACK: 'direction' has to be set as float (used in blend tree) but
+                            //photon animator sends it as an integer
+                            if(parameter.Name == "direction")
+                            {
+                                stream.SendNext(this.m_Animator.GetFloat(parameter.Name));
+                            }
+                            else
+                            {
+                                stream.SendNext(this.m_Animator.GetInteger(parameter.Name));
+                            }
                             break;
                         case ParameterType.Trigger:
                             // here we can't rely on the current real state of the trigger, we might have missed its raise
@@ -460,8 +470,18 @@ namespace Photon.Pun
                             {
                                 return;
                             }
+                            //HACK: 'direction' has to be set as float (used in blend tree) but
+                            //photon animator sends it as an integer
+                            if(parameter.Name == "direction")
+                            {
+                                this.m_Animator.SetFloat(parameter.Name, (float)stream.ReceiveNext());
+                            }
+                            else
+                            {
+                                this.m_Animator.SetInteger(parameter.Name, (int)stream.ReceiveNext());
 
-                            this.m_Animator.SetInteger(parameter.Name, (int) stream.ReceiveNext());
+                            }
+
                             break;
                         case ParameterType.Trigger:
                             if (stream.PeekNext() is bool == false)

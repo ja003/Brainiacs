@@ -12,15 +12,22 @@ public class InstanceFactory
 {
 	public static GameObject Instantiate(GameObject pPrefab, Vector3 pPosition)
 	{
+		if(pPrefab == null)
+		{
+			Debug.LogError("Instantiate null");
+			return null;
+		}
+		bool isMultiplayer = Brainiacs.Instance.GameInitInfo.IsMultiplayer();
+
 		GameObject instance;
 		//NOTE: we could use PhotonNetwork.Instantiate always but a lot of warnings are thrown
 		//=> call PoolManager.Instantiate / PoolManager.Destroy directly
 
-		if(PhotonNetwork.IsConnected)// || DebugData.TestPlayers)
+		if(PhotonNetwork.IsConnected && isMultiplayer)// || DebugData.TestPlayers)
 			instance = PhotonNetwork.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		else
 		{
-			if(Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+			if(isMultiplayer)
 				Debug.LogError("Not conected to server");
 			instance = Game.Instance.Pool.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		}

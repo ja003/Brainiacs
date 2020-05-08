@@ -80,6 +80,11 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//initialized at client
 		bool elementCreated = pPhotonPlayer == null;
 		//OnElementChanged(elementCreated);
+
+		if(DebugData.TestHero != EHero.None)
+		{
+			heroSwapper.SetValue((int)DebugData.TestHero);
+		}
 	}
 
 	bool isClientInitializing;
@@ -112,7 +117,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		if(IsItMe)
 		{
-			Debug.Log("this is me");
+			//Debug.Log("this is me");
 			OnRemoteConnected(Info.PhotonPlayer);
 		}
 		heroSwapper.SetInteractable(IsItMe);
@@ -269,5 +274,5 @@ public enum EPlayerType
 	None = 0,
 	LocalPlayer = 1,
 	RemotePlayer = 2,
-	AI = 3,
+	AI = 3
 }

@@ -7,7 +7,12 @@ public class MapItemPhoton : PoolObjectPhoton
 {
     [SerializeField] MapItem item = null;
 
-    protected override bool CanSendMsg(EPhotonMsg pMsgType)
+    public override void OnReturnToPool()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override bool CanSend2(EPhotonMsg pMsgType)
     {
         switch(pMsgType)
         {
@@ -18,8 +23,8 @@ public class MapItemPhoton : PoolObjectPhoton
                 return view.IsMine;
 
             //only master can return items to pool (master owns all map items)
-            case EPhotonMsg.MapItem_ReturnToPool:
-                return !view.IsMine;
+            //case EPhotonMsg.MapItem_ReturnToPool:
+            //    return !view.IsMine;
         }
 
         return false;
@@ -50,9 +55,9 @@ public class MapItemPhoton : PoolObjectPhoton
                 item.Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));
                 break;
 
-            case EPhotonMsg.MapItem_ReturnToPool:
-                item.ReturnToPool();
-                break;
+            //case EPhotonMsg.MapItem_ReturnToPool:
+            //    item.ReturnToPool();
+            //    break;
 
             default:
                 OnMsgUnhandled(pReceivedMsg);

@@ -3,11 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEinsteinPhoton : SpecialWeaponPhoton
+public class SpecialEinsteinPhoton : PlayerWeaponSpecialPrefabPhoton
 {
+	[SerializeField] SpecialEinsteinBomb bomb = null;
+
+	protected override bool CanSend3(EPhotonMsg pMsgType)
+	{
+		switch(pMsgType)
+		{
+			case EPhotonMsg.Special_Einstein_FallOn:
+				return view.IsMine;
+		}
+		return false;
+	}
+
 	protected override void HandleMsg3(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
-		SpecialEinstein bomb = (SpecialEinstein)controller;
 		switch(pReceivedMsg)
 		{
 			case EPhotonMsg.Special_Einstein_FallOn:
