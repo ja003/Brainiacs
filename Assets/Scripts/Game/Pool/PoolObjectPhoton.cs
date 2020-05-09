@@ -35,6 +35,9 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 
 		switch(pMsgType)
 		{
+			//both sides can request return object to pool
+			case EPhotonMsg.Pool_ReturnToPool:
+				return true;
 			case EPhotonMsg.Pool_SetActive:
 				return view.IsMine;
 		}
@@ -52,6 +55,10 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 			case EPhotonMsg.Pool_SetActive:
 				bool value = (bool)pParams[0];
 				poolObject.SetActive(value);
+				return;
+
+			case EPhotonMsg.Pool_ReturnToPool:
+				poolObject.ReturnToPool();
 				return;
 
 			//default:

@@ -11,16 +11,12 @@ public class MapItem : MapObject
 
 	//[SerializeField] MapItemPhoton photon;
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnSetActive0(bool pValue)
 	{
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
 	}
 
-	protected override void OnPhotonInstantiated()
-	{
-		
-	}
 
 	bool isSpawned;
 	bool isMine;

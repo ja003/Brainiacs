@@ -24,7 +24,7 @@ public static class DebugData
 	public static bool TestNonAggressiveAi = true;
 
 	public static bool TestGenerateItems = false;
-	public static bool StopGenerateItems = true;
+	public static bool StopGenerateItems = !TestGenerateItems;
 
 	public static bool TestExtraPlayerItem = false;
 
@@ -98,7 +98,7 @@ public static class DebugData
 			EPlayerColor.Green, EPlayerType.LocalPlayer);
 				player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
 				//player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
-				player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
+				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,

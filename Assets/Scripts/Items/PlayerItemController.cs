@@ -95,7 +95,7 @@ public class PlayerItemController : PlayerBehaviour
 		if(config == null)
 			return;
 
-		game.PlayerStatusManager.Show(player, config.MapItemInfo);
+		game.PlayerStatusManager.ShowMapItem(player.Stats.MapItemUiPosition.position, config.MapItemInfo);
 
 		PlayerWeaponProjectile weaponProjectile =
 			new PlayerWeaponProjectile(player, config);
@@ -115,7 +115,7 @@ public class PlayerItemController : PlayerBehaviour
 		if(config == null)
 			return;
 
-		game.PlayerStatusManager.Show(player, config.MapItemInfo);
+		game.PlayerStatusManager.ShowMapItem(player.Stats.MapItemUiPosition.position, config.MapItemInfo);
 
 
 		PlayerWeaponSpecial weaponSpecial = null;

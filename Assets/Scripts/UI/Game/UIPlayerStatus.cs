@@ -9,20 +9,24 @@ public class UIPlayerStatus : UiBehaviour
 	[SerializeField] private Image icon = null;
 	[SerializeField] private Text text = null;
 
-	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText)
+	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText, Color? pTextColor = null)
 	{
 		gameObject.SetActive(true);
 
 		Vector2 screenPosition = GetScreenPosition(pWorldPosition);
 
+		transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
 		rectTransform.anchoredPosition = screenPosition;
 
 		//Debug.Log($"Screen {Screen.width} x {Screen.height}");
 		//Debug.Log($"SpawnAt {viewportPos} => {screenPosition.x} ; {screenPosition.y}");
 
-		if(pSprite != null)
-			icon.sprite = pSprite;
+		//if(pSprite != null)
+		icon.sprite = pSprite;
+		icon.enabled = pSprite != null;
+
 		text.text = pText;
+		text.color = pTextColor == null ? Color.red : (Color)pTextColor;
 
 		//TODO: make general for UI behaviour?
 		animator.SetTrigger("play");
@@ -67,6 +71,7 @@ public class UIPlayerStatus : UiBehaviour
 
 	private void Deactivate()
 	{
-		gameObject.SetActive(false);
+		InstanceFactory.Destroy(gameObject, false);
+		//gameObject.SetActive(false);
 	}
 }

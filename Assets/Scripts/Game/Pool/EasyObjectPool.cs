@@ -101,7 +101,7 @@ class Pool
 		//find available obj that is mine
 		for(int i = availableObjs.Count - 1; i >= 0 ; i--)
 		{
-			if(availableObjs[i].Photon.IsMine)
+			if(!availableObjs[i].IsNetworkObject() || availableObjs[i].IsMine())
 			{
 				po = availableObjs[i];
 				availableObjs.RemoveAt(i);

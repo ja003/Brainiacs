@@ -27,7 +27,10 @@ public class PlayerStats : PlayerBehaviour
 
 	private Action<PlayerStats> onStatsChange;
 
-	[SerializeField] public Transform StatusUiPosition;
+	//position where info about picked up item will show
+	[SerializeField] public Transform MapItemUiPosition;
+	//change of health info
+	[SerializeField] public Transform HealthUiPosition;
 
 	public void SetOnStatsChange(Action<PlayerStats> pAction)
 	{
@@ -46,7 +49,7 @@ public class PlayerStats : PlayerBehaviour
 		//Color = pPlayerInfo.Color;
 
 		player.OnPlayerInited.AddAction(OnRespawn); //stats can be set only after player is inited
-		//OnRespawn(); //to update health etc
+													//OnRespawn(); //to update health etc
 	}
 
 	public void OnDie()
@@ -103,6 +106,8 @@ public class PlayerStats : PlayerBehaviour
 		}
 
 		SetStat(EPlayerStats.Health, Health + pIncrement);
+		if(!pRespawn)
+			game.PlayerStatusManager.ShowHealth(player.Stats.HealthUiPosition.position, pIncrement);
 	}
 
 

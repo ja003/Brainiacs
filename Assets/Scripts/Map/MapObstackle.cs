@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapObstackle : MapObject
 {
-	protected override void OnSetActive(bool pValue)
+	protected override void OnSetActive0(bool pValue)
 	{
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
@@ -20,4 +20,6 @@ public class MapObstackle : MapObject
 	{
 		//Debug.Log("todo: play collision sound, make effect...");
 	}
+
+	
 }

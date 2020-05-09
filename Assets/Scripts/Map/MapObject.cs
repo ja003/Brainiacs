@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MapObject : PoolObject, ICollisionHandler
+public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 {
 	public bool OnCollision(int pDamage, Player pOrigin)
 	{
@@ -15,16 +15,15 @@ public abstract class MapObject : PoolObject, ICollisionHandler
 		return true;
 	}
 
-	protected override void OnPhotonInstantiated()
+	protected override void OnSetActive0(bool pValue)
 	{
-
 	}
 
 	protected abstract void OnCollisionEffect(int pDamage);
 
 	protected override void OnReturnToPool2()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 }

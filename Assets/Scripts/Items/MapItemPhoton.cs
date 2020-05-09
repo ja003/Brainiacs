@@ -9,7 +9,7 @@ public class MapItemPhoton : PoolObjectPhoton
 
     public override void OnReturnToPool()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     protected override bool CanSend2(EPhotonMsg pMsgType)

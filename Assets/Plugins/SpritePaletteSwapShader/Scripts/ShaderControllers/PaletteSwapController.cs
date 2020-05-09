@@ -11,6 +11,7 @@ namespace ActionCode.SpriteEffects
         public Texture2D[] swapPalettes;
 
         protected int currentSwapPaletteIndex = -1;
+        //public int CurrentPaletteIndex => currentSwapPaletteIndex;
 
         private readonly int PALETTE_TEX_ID = Shader.PropertyToID("_PaletteTex");
         private readonly int SWAP_TEX_ID = Shader.PropertyToID("_SwapTex");
@@ -58,6 +59,8 @@ namespace ActionCode.SpriteEffects
         /// <param name="index">The index of <see cref="swapPalettes"/> to swap in.</param>
         public override void SetPalette(int index)
         {
+            index = index % swapPalettes.Length;
+
             if (index < 0 || index >= swapPalettes.Length) return;
 
             currentSwapPaletteIndex = index;

@@ -13,7 +13,7 @@ public static class PowerupManager
 
 		ApplyPowerup(pConfig.Type, pPlayer);
 		//show status
-		Game.Instance.PlayerStatusManager.Show(pPlayer, pConfig.MapItemInfo);
+		Game.Instance.PlayerStatusManager.ShowMapItem(pPlayer.Stats.MapItemUiPosition.position, pConfig.MapItemInfo);
 	}
 
 	private static void ApplyPowerup(EPowerUp pType, Player pPlayer)

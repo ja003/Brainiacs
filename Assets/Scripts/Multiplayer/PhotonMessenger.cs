@@ -180,6 +180,7 @@ public enum EPhotonMsg
 
 	//Pool
 	Pool_SetActive,
+	Pool_ReturnToPool,
 
 	//Game
 	Game_PlayerLoadedScene,

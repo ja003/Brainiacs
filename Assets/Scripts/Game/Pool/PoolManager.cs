@@ -1,5 +1,6 @@
 ﻿//using MarchingBytes;
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,16 @@ using UnityEngine;
 public class PoolManager : GameController, IPunPrefabPool
 {
     [SerializeField] EasyObjectPool pool = null;
-
-    //[SerializeField] PoolManagerPhoton photon;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    internal void Init()
     {
+        //PrefabPool has to be assigned before any instantiation
         PhotonNetwork.PrefabPool = this;
     }
 
     protected override void OnMainControllerAwaken()
     {
+        Init();
         pool.Init();
     }
 

@@ -186,7 +186,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		//Debug.Log("BOOM " + collision.gameObject.name);
 		LeanTween.cancel(gameObject);
 		rigidBody2D.bodyType = RigidbodyType2D.Static;
-		
+
 		Photon.Send(EPhotonMsg.Special_Curie_Collide);
 	}
 

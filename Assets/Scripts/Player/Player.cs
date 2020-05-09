@@ -8,7 +8,7 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.Serialization;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class Player : PoolObject
+public class Player : PoolObjectNetwork
 {
 	[Header("Player")]
 	[SerializeField] private PlayerInput input = null;
@@ -38,17 +38,13 @@ public class Player : PoolObject
 	[NonSerialized] public Player LocalImageOwner;
 	[NonSerialized] public bool IsLocalImage;
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnSetActive0(bool pValue)
 	{
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
 		Visual.OnSetActive(pValue);
 	}
 
-	protected override void OnPhotonInstantiated()
-	{
-
-	}
 
 	private void Update()
 	{
@@ -173,137 +169,4 @@ public class Player : PoolObject
 		//IsInited = false;
 	}
 
-	//PHOTON
-	//bool photonInited;
-	//public PhotonPlayer PhotonPlayer;
-
-	//internal void InitPhoton(PlayerInitInfo pInfo)
-	//{
-	//	if(photonInited)
-	//		return;
-	//	PhotonPlayer = pInfo.PhotonPlayer;
-
-	//	//Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
-
-	//	if(PhotonNetwork.IsMasterClient && !IsItMe && PhotonPlayer != null)
-	//	{
-	//		view.TransferOwnership(PhotonPlayer);
-	//		Debug.Log("Transfer ownership to " + PhotonPlayer.NickName);
-	//	}
-
-	//	//Debug.Log(this + " send init Info");
-	//	//DoInTime(() => Send(
-	//	//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
-	//	Photon.Send(EPhotonMsg.Player_InitPlayer, pInfo.Number);
-
-	//	photonInited = true;
-	//}
-
-	/// <summary>
-	///// Player can send data only if it is mine player and is inited.
-	///// There are execeptions.
-	///// </summary>
-	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
-	//{
-	//	switch(pMsgType)
-	//	{
-	//		case EPhotonMsg.Player_InitPlayer:
-	//		case EPhotonMsg.Player_ShowWeapon:
-	//			return true;
-	//		case EPhotonMsg.Player_AddKill:
-	//		case EPhotonMsg.Player_ApplyDamage:
-	//			return IsInited;
-	//	}
-
-	//	return IsInitedAndMe;
-	//}
-
-	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-	//{
-	//	base.HandleMsg(pReceivedMsg, pParams, bb);
-
-	//	if(!IsInited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
-	//	{
-	//		//Debug.Log("not inited yet. " + pReceivedMsg);
-	//		return;
-	//	}
-
-	//	switch(pReceivedMsg)
-	//	{
-	//		case EPhotonMsg.Player_ChangeDirection:
-	//			EDirection dir = (EDirection)pParams[0];
-	//			Visual.OnDirectionChange(dir);
-	//			break;
-
-	//		case EPhotonMsg.Player_InitPlayer:
-	//			int playerNumber = (int)pParams[0];
-	//			PlayerInitInfo info = brainiacs.GameInitInfo.GetPlayer(playerNumber);
-	//			OnReceivedInitInfo(info, false);
-	//			break;
-
-	//		case EPhotonMsg.Player_ShowWeapon:
-	//			EWeaponId weapon = (EWeaponId)pParams[0];
-	//			Visual.ShowWeapon(weapon);
-	//			break;
-	//		case EPhotonMsg.Player_ApplyDamage:
-	//			int damage = (int)pParams[0];
-	//			playerNumber = (int)pParams[1];
-	//			Player originOfDamage = game.PlayerManager.GetPlayer(playerNumber);
-	//			Health.ApplyDamage(damage, originOfDamage);
-	//			break;
-
-	//		case EPhotonMsg.Player_AddKill:
-	//			//EPlayerStats stat = (EPlayerStats)pParams[0];
-	//			//int value = (int)pParams[1];
-	//			//bool force = (bool)pParams[2];
-	//			bool force = (bool)pParams[0];
-	//			Stats.AddKill(force);
-	//			break;
-
-
-	//		case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
-	//			int health = (int)pParams[0];
-	//			Visual.PlayerInfo.SetHealth(health);
-	//			break;
-
-	//		case EPhotonMsg.Player_UI_PlayerInfo_SetReloading:
-	//			bool isReloading = (bool)pParams[0];
-	//			float reloadTime = (float)pParams[1];
-	//			Visual.PlayerInfo.SetReloading(isReloading, reloadTime);
-	//			break;
-	//		case EPhotonMsg.Player_UI_PlayerInfo_SetAmmo:
-	//			int ammo = (int)pParams[0];
-	//			Visual.PlayerInfo.SetAmmo(ammo);
-	//			break;
-	//		case EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon:
-	//			weapon = (EWeaponId)pParams[0];
-	//			float cadency = (float)pParams[1];
-	//			Visual.PlayerInfo.SetActiveWeapon(weapon, cadency);
-	//			break;
-
-
-	//		case EPhotonMsg.Player_UI_Scoreboard_SetScore:
-	//			int kills = (int)pParams[0];
-	//			int deaths = (int)pParams[1];
-	//			Visual.Scoreboard.SetScore(kills, deaths);
-	//			break;
-
-
-	//		//default:
-	//		//	Debug.LogError("Message not handled");
-	//		//	break;
-	//	}
-	//}
-
-	//protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
-	//{
-	//	if(LocalImage)
-	//	{
-	//		LocalImage.HandleMsg(pMsgType, pParams);
-	//	}
-	//	else if(LocalImageOwner)
-	//	{
-	//		LocalImageOwner.HandleMsg(pMsgType, pParams);
-	//	}
-	//}
 }

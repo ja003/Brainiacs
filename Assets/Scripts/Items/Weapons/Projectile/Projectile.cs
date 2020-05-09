@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Projectile : PoolObject
+public class Projectile : PoolObjectNetwork
 {
 
 	public Vector3 Direction { get; private set; }
@@ -21,16 +21,12 @@ public class Projectile : PoolObject
 
 	public Player Owner { get; private set; }
 
-	protected override void OnSetActive(bool pValue)
+	protected override void OnSetActive0(bool pValue)
 	{
 		//Debug.Log("projectile OnSetActive " + pValue);
 		spriteRend.enabled = pValue;
 		animator.enabled = pValue;
 		boxCollider2D.enabled = pValue;
-	}
-
-	protected override void OnPhotonInstantiated()
-	{
 	}
 
 	/// <summary>

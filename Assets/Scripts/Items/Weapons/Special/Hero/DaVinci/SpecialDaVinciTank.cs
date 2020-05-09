@@ -14,12 +14,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 	[SerializeField] int maxHealth = 3;
 
 	int currentHealth;
-
-	protected override void OnPhotonInstantiated()
-	{
-
-	}
-
+		
 	protected override void OnInit()
 	{
 		//Debug.Log(gameObject.name + " OnInit");

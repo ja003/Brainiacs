@@ -26,6 +26,7 @@ public class PlayerVisual : PlayerBehaviour
 	//Cca player model size. Not precise!
 	public static float PlayerBodySize { get; } = 1f;
 
+	EPlayerColor playerColor; //has to be stored for color change on hit
 
 	internal void OnSetActive(bool pValue)
 	{
@@ -77,14 +78,33 @@ public class PlayerVisual : PlayerBehaviour
 		else
 			Debug.LogError($"{heroConfig.Hero} doesnt have animator configured");
 
-		int colorIndex = GetColorPaletteIndex(pPlayerInfo.Color);
-		paletteSwap.SetPalette(colorIndex);
+		playerColor = pPlayerInfo.Color;
+		int paletteIndex = GetColorPaletteIndex(pPlayerInfo.Color);
+		paletteSwap.SetPalette(paletteIndex);
 	}
 
-
-	private static int GetColorPaletteIndex(EPlayerColor pColor)
+	/// <summary>
+	/// Color flicker on any damage
+	/// </summary>
+	public void OnDamage()
 	{
-		return (int)pColor - 1;
+		StartCoroutine(FlickColor());
+	}
+
+	/// <summary>
+	/// Swap player color palette for small amount of time then change it back
+	/// </summary>
+	private IEnumerator FlickColor()
+	{
+		const float flicker_length = 0.1f;
+		paletteSwap.SetPalette(GetColorPaletteIndex(playerColor, 1));
+		yield return new WaitForSeconds(flicker_length);
+		paletteSwap.SetPalette(GetColorPaletteIndex(playerColor));
+	}
+
+	private static int GetColorPaletteIndex(EPlayerColor pColor, int pOffset = 0)
+	{
+		return (int)pColor - 1 + pOffset;
 	}
 
 	/// <summary>

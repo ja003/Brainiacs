@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,31 +12,39 @@ public class UIPlayerStatusManager : MonoBehaviour
 	[SerializeField] private UIPlayerStatus prefab = null;
 
 	/// <summary>
-	/// Shows status at player status position
+	/// Insatntiates the status at given position and sets the info (sprite, text).
+	/// For now only used for player. If needed alse, make this method public.
 	/// </summary>
-	public void Show(Player pPlayer, MapItemInfo pInfo)
+	public void ShowMapItem(Vector3 pWorldPosition, MapItemInfo pInfo)
+	{
+		//Debug.Log("ShowStatus " + pWorldPosition);
+
+		//TODO: pooling
+		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.MapSprite);
+	}
+
+
+
+	public void ShowHealth(Vector3 pWorldPosition, int pIncrement)
+	{
+		bool isAdd = pIncrement > 0;
+		string prefix = isAdd ? "+" : "-";
+		Color textColor = isAdd ? Color.green : Color.red;
+		ShowStatus(pWorldPosition, prefix + pIncrement, null, textColor);
+	}
+
+	private void ShowStatus(Vector3 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
 	{
 		//HACK: to hide adding debug weapons
 		if(Time.time < 1)
 			return;
 
-		Show(pPlayer.Stats.StatusUiPosition.position, pInfo);
+		//UIPlayerStatus instance = Instantiate(prefab, transform);
+		GameObject instance = InstanceFactory.Instantiate(prefab.gameObject, false);
+		//instance.transform.parent = transform;
+
+		instance.GetComponent<UIPlayerStatus>().SpawnAt(pWorldPosition, pSprite, pText, pTextColor);
 	}
-
-	/// <summary>
-	/// Insatntiates the status at given position and sets the info (sprite, text).
-	/// For now only used for player. If needed alse, make this method public.
-	/// </summary>
-	private void Show(Vector3 pWorldPosition, MapItemInfo pInfo)
-	{
-		//Debug.Log("ShowStatus " + pWorldPosition);
-
-		//TODO: pooling
-		UIPlayerStatus instance = Instantiate(prefab, transform);
-
-		instance.SpawnAt(pWorldPosition, pInfo.StatusSprite, pInfo.StatusText);
-	}
-
 
 	/// <summary>
 	/// DEBUG

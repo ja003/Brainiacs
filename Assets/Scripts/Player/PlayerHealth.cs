@@ -104,6 +104,8 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 				//Debug.Log("Add kill to " + pOrigin);
 				pOrigin.Stats.AddKill(forceAddKill);
 			}
+
+			visual.OnDamage();
 		}
 	}
 }

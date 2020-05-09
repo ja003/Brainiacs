@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public abstract class PlayerWeaponSpecialPrefab : PoolObject
+public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 {
 
 	protected Player owner { get; private set; }
@@ -15,12 +15,38 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObject
 		owner = pOwner;
 	}
 
+	public new PlayerWeaponSpecialPrefabPhoton Photon => (PlayerWeaponSpecialPrefabPhoton)base.Photon;
+
 	protected bool isInited;
 
 	//new instance of prefab will be pooled on every use
 	//TRUE - bomb, truck, mine, ...
 	//FALSE - flame, daVinci, ...
 	[SerializeField] public bool InstanceOnEveryUse;
+
+	/// <summary>
+	/// Used as self init for remote object
+	/// </summary>
+	protected override void OnSetActive0(bool pValue)
+	{
+		if(pValue && !isInited && isMultiplayer)
+		{
+			//Debug.Log(gameObject.name + " OnPhotonInstantiated " + Photon.view.Owner);
+			//all players has to be added
+			game.PlayerManager.OnAllPlayersAdded.AddAction(() =>
+			{
+				Player owner = game.PlayerManager.GetPlayer(Photon.view.Owner);
+				if(owner == null)
+				{
+					Debug.LogError(gameObject.name + " Owner not found");
+					return;
+				}
+				Init(owner);
+			});
+		}
+		OnSetActive2(pValue);
+	}
+
 
 	/// <summary>
 	/// Called after each pool.
@@ -47,66 +73,17 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObject
 		//Photon.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
 	}
 
-	/// <summary>
-	/// Used as self init for remote object
-	/// </summary>
-	protected sealed override void OnSetActive(bool pValue)
-	{
-		if(pValue && !isInited && isMultiplayer)
-		{
-			//Debug.Log(gameObject.name + " OnPhotonInstantiated " + Photon.view.Owner);
-			//all players has to be added
-			game.PlayerManager.OnAllPlayersAdded.AddAction(() =>
-			{
-				Player owner = game.PlayerManager.GetPlayer(Photon.view.Owner);
-				if(owner == null)
-				{
-					Debug.LogError(gameObject.name + " Owner not found");
-					return;
-				}
-				Init(owner);
-			});
-		}
-		OnSetActive2(pValue);
-	}
+	
 
 	protected abstract void OnSetActive2(bool pValue);
 
-	protected override void OnPhotonInstantiated() { }
+	//protected override void OnPhotonInstantiated() { }
 
 	public virtual void OnStartReloadWeapon()
 	{
 	}
 
-	/// <summary>
-	/// Used as self init for remote object
-	/// </summary>
-	//protected override void OnPhotonInstantiated()
-	//{
-	//	if(!isInited && isMultiplayer)
-	//	{
-	//		//Debug.Log(gameObject.name + " OnPhotonInstantiated " + Photon.view.Owner);
-	//		//all players has to be added
-	//		game.PlayerManager.OnAllPlayersAdded.AddAction(() =>
-	//		{
-	//			Player owner = game.PlayerManager.GetPlayer(Photon.view.Owner);
-	//			if(owner == null)
-	//			{
-	//				Debug.LogError(gameObject.name + " Owner not found");
-	//				return;
-	//			}
-	//			Init(owner);
-	//		});			
-	//	}
-	//}
-
-	//public override void OnInstantiated()
-	//{
-	//	Debug.Log(gameObject.name + " OnInstantiated ");
-	//	base.OnInstantiated();
-	//}
-
-	protected sealed override void OnReturnToPool2()
+	protected override void OnReturnToPool2()
 	{
 		//Debug.Log(gameObject.name + " OnReturnToPool");
 		//prefab has to be initialized after each pool
@@ -172,7 +149,6 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObject
 	{
 		return boxCollider2D;
 	}
-
 
 
 }
