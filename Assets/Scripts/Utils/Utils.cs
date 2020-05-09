@@ -106,12 +106,12 @@ public static class Utils
 		return values;
 	}
 
-	internal static void DebugDrawCross(Vector3 pPosition, Color pColor)
+	internal static void DebugDrawCross(Vector3 pPosition, Color pColor, float pDuration = 0.5f)
 	{
 		const float length = 0.1f;
-		const float duration = 0.5f;
-		Debug.DrawLine(pPosition + Vector3.left * length, pPosition + Vector3.right * length, pColor, duration);
-		Debug.DrawLine(pPosition + Vector3.down * length, pPosition + Vector3.up * length, pColor, duration);
+		//const float duration = 0.5f;
+		Debug.DrawLine(pPosition + Vector3.left * length, pPosition + Vector3.right * length, pColor, pDuration);
+		Debug.DrawLine(pPosition + Vector3.down * length, pPosition + Vector3.up * length, pColor, pDuration);
 	}
 
 	internal static bool IsSameSign(float pNum1, float pNum2, bool pIgnoreZero)

@@ -103,7 +103,7 @@ public class PlayerManager : GameController
 
 		//playerInstance.transform.parent = transform; //handled in Pool
 
-		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LR" : "");
+		playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LI" : "");
 
 		
 

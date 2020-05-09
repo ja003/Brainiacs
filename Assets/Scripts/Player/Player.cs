@@ -58,7 +58,14 @@ public class Player : PoolObjectNetwork
 	{
 		//Debug.Log($"{this} SetInfo");
 
-		IsLocalImage = pIsLocalImage;
+		//if already set as local image, keep it
+		IsLocalImage = pIsLocalImage || IsLocalImage;
+		if(IsLocalImage)
+		{
+			rigidBody2D.bodyType = RigidbodyType2D.Static;
+			rigidBody2D.simulated = false;
+		}
+
 		InitInfo = pPlayerInfo;
 		Visual.Init(pPlayerInfo);
 

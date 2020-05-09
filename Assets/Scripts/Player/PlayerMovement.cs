@@ -10,11 +10,21 @@ public class PlayerMovement : PlayerBehaviour
 	private const float MOVE_SPEED_BASE = 0.05f;
 
 	public EDirection CurrentDirection { get; private set; } = EDirection.Right;
+	//move is requested - move key is pressed
 	public bool IsMoving { get; private set; }
+	//did player physically moved since last update
+	// - move might be requested, but there might be obstackle in the way
+	private bool isActualyMoving;
+
+	const float SYNC_POS_INTERVAL = 0.1f;
+	float lastTimeSync;
+
+	Vector3 lastPosition;
 
 	private void FixedUpdate()
 	{
-		if(!player.IsInitedAndMe || !IsMoving || player.Stats.IsDead)
+		//dont update if it is not me,player is dead or is AI
+		if(!player.IsInitedAndMe || player.Stats.IsDead)
 		{
 			if(player.InitInfo != null && player.InitInfo.PlayerType == EPlayerType.AI)
 			{
@@ -23,7 +33,35 @@ public class PlayerMovement : PlayerBehaviour
 			return;
 		}
 
-		Move(CurrentDirection);
+
+		//sync position
+		if(lastTimeSync + SYNC_POS_INTERVAL / 2 < Time.time)
+		{
+			SyncPosition();
+		}
+
+		lastPosition = transform.position; //has to be called before ApplyMove
+
+		//apply movement
+		ApplyMove(CurrentDirection);
+
+	}
+
+	private void SyncPosition()
+	{
+		if(player.LocalImageOwner)
+			return;
+
+		isActualyMoving = Vector3.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
+		//Debug.Log(isActualyMoving);
+
+		lastTimeSync = Time.time;
+		Vector3 position = transform.position;
+		if(player.LocalImage)
+			position += Vector3.down;
+
+		player.Photon.Send(EPhotonMsg.Player_SetSyncPosition, position,
+			CurrentDirection, isActualyMoving, player.Stats.Speed);
 	}
 
 	internal void SpawnAt(Vector3 pPosition)
@@ -79,32 +117,148 @@ public class PlayerMovement : PlayerBehaviour
 		}
 	}
 
-	private void Move(EDirection pDirection)
+	/// <summary>
+	/// Moves player in given direction but only if move is requested
+	/// </summary>
+	private void ApplyMove(EDirection pDirection)
 	{
+		if(!IsMoving)
+			return;
+
 		if(pDirection == EDirection.None)
 		{
 			//player.Visual.Idle();
 			return;
 		}
 
-		//Debug.Log(gameObject.name + " move " + pDirection);
-		//if(CurrentDirection != pDirection)
-		//{
-		//	CurrentDirection = pDirection;
-		//	player.Visual.OnDirectionChange(pDirection);
-		//	player.WeaponController.OnDirectionChange(pDirection);
-		//}
-		//CurrentDirection = pDirection;
 		transform.position += Utils.GetVector3(pDirection) *
 			MOVE_SPEED_BASE * player.Stats.Speed;
+
 		player.Visual.Move();
 
-		player.LocalImage?.Movement.Move(pDirection);
+		//player.LocalImage?.Movement.Move(pDirection);
 	}
 
-	//public void Idle()
+	//Debug try leanTween cancel
+	//int id = -1;
+	//private void Update()
 	//{
-	//	//Debug.Log(gameObject.name + " idle");
-	//	player.Visual.Idle();
+	//	//debug_useEaseIn = Input.GetKey(KeyCode.Q);
+	//	if(Input.GetKeyDown(KeyCode.Q))
+	//	{
+	//		//stats.Speed = 10;
+	//		//DoInTime(() => stats.Speed = 1, 1);
+
+	//		id = LeanTween.moveLocalX(testGo, testGo.transform.localPosition.x + 1, 1).id;
+	//		Debug.Log("moveLocalX");
+	//	}
+
+	//	if(Input.GetKeyDown(KeyCode.R))
+	//	{
+	//		//LeanTween.cancel(stats.gameObject);
+	//		LeanTween.cancel(id);
+	//		//LeanTween.cancel(gameObject);
+	//		Debug.Log("cancel");
+	//	}
 	//}
+
+	[SerializeField] GameObject testGo;
+
+	float actualMovementDuration;
+	float lastSyncPosTime;
+	EDirection lastSyncedDirection; //for direction change detection
+
+	public float debug_moveMulti = 1.3f;
+
+	//the longer player moves the higher move multiply
+	// - 0s - 1s => 1f - 1.5f
+	// - 1s - 5s => 1.5f - 2f
+	//idea: when player starts to move, image doesnt have to follow that tightly => smaller multiply.
+	// if player moves for a long time in the same direction, image expects the direction to remain.
+	// multiply is reset to 1 on direction change
+	[SerializeField] AnimationCurve moveSyncMultiply;
+
+	int moveFunctionId;
+
+	/// <summary>
+	/// Called only on image.
+	/// Calculates target position based on the owner position and his current direction.
+	/// If the owner is moving => target position will be moved by given direction.
+	/// Smoothly moves player towards the calculated position.
+	/// </summary>
+	public void SetSyncPosition(Vector3 pPosition, EDirection pDirection, bool pIsActualyMoving, float pSpeed)
+	{
+		if(player.IsItMe)
+		{
+			Debug.LogError("SetSyncPosition called on owner");
+			return;
+		}
+
+		float moveCalls = SYNC_POS_INTERVAL / Time.fixedDeltaTime;
+		Vector3 targetPos = pPosition;
+		if(pIsActualyMoving)
+		{
+			actualMovementDuration += Time.time - lastSyncPosTime;
+
+			float moveMultiply = moveSyncMultiply.Evaluate(actualMovementDuration);
+			if(pDirection != lastSyncedDirection)
+			{
+				actualMovementDuration = 0;
+				moveMultiply = 1;
+			}
+
+			if(moveMultiply < 0 || moveMultiply > 2)
+			{
+				Debug.LogError("Invalid move multiply");
+				moveMultiply = 1;
+			}
+			//Debug.Log(moveMultiply);
+
+			//Debug.Log(isMoveStarting);
+			//todo: send speed info?
+			targetPos += moveMultiply * moveCalls * Utils.GetVector3(pDirection) *
+				MOVE_SPEED_BASE * pSpeed;
+		}
+		else
+		{
+			actualMovementDuration = 0;
+		}
+		lastSyncPosTime = Time.time;
+		lastSyncedDirection = pDirection;
+
+		//Debug.Log(pIsActualyMoving);
+
+		float xDiffAbs = Mathf.Abs(Mathf.Abs(targetPos.x - transform.position.x));
+		float yDiffAbs = Mathf.Abs(Mathf.Abs(targetPos.y - transform.position.y));
+		float totalDiff = xDiffAbs + yDiffAbs;
+		float xPercentage = xDiffAbs / totalDiff; //0-1
+		float yPercentage = yDiffAbs / totalDiff; //0-1
+
+		if(totalDiff < Mathf.Epsilon)
+			return;
+
+		//Utils.DebugDrawCross(targetPos, Color.green, SYNC_POS_INTERVAL);
+
+		LeanTween.cancel(moveFunctionId);
+		const bool debug_useEaseIn = false;
+		if(debug_useEaseIn)
+		{
+			//first move by X-axis in time proportional to x-diff from total dif		
+			moveFunctionId = LeanTween.moveX(gameObject, targetPos.x, SYNC_POS_INTERVAL * xPercentage)
+				.setEaseOutSine() //not much different than no ease
+				.setOnComplete(() => //then by Y-axis
+					LeanTween.moveY(gameObject, targetPos.y, SYNC_POS_INTERVAL * yPercentage)
+						.setEaseOutSine()).id;
+			//todo: image is either too far behind or jumps too much at small move
+			// - find better ease function
+			// - rework logic
+			// - but for now its kinda OK
+		}
+		else //seems better without ease
+		{
+			moveFunctionId = LeanTween.moveX(gameObject, targetPos.x, SYNC_POS_INTERVAL * xPercentage)
+				.setOnComplete(() => 
+					LeanTween.moveY(gameObject, targetPos.y, SYNC_POS_INTERVAL * yPercentage)).id;
+		}
+	}
 }

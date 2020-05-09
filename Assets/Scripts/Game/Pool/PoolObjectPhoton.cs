@@ -20,10 +20,10 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 
 	sealed protected override bool CanSend(EPhotonMsg pMsgType)
 	{
-		if(!poolObject.IsPhotonInstantiated)
+		if(!poolObject.IsPhotonInstantiated && isMultiplayer)
 			return false;
 
-		if(view.ViewID == 0)
+		if(view.ViewID == 0 && isMultiplayer)
 		{
 			if(pMsgType == EPhotonMsg.Pool_SetActive)
 				Debug.LogWarning("Cant send message yet. " + pMsgType);

@@ -163,20 +163,20 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
-	protected void DoInTime(Action pEvent, float pTime, Action<float> pOnUpdate = null)
+	protected int DoInTime(Action pEvent, float pTime, Action<float> pOnUpdate = null)
 	{
 		if(pOnUpdate == null)
-			LeanTween.value(gameObject, 0, 1, pTime).setOnComplete(pEvent);
+			return LeanTween.value(gameObject, 0, 1, pTime).setOnComplete(pEvent).id;
 		else
 		{
-			LeanTween.value(gameObject, 0, 1, pTime)
-				  .setOnComplete(pEvent).setOnUpdate(pOnUpdate);
+			return LeanTween.value(gameObject, 0, 1, pTime)
+				  .setOnComplete(pEvent).setOnUpdate(pOnUpdate).id;
 		}
 	}
 
-	protected void UpdateValue(float pForm, float pTo, float pTime, Action<float> pOnUpdate)
+	protected int UpdateValue(float pForm, float pTo, float pTime, Action<float> pOnUpdate)
 	{
-		LeanTween.value(gameObject, pForm, pTo, pTime).setOnUpdate(pOnUpdate);
+		return LeanTween.value(gameObject, pForm, pTo, pTime).setOnUpdate(pOnUpdate).id;
 	}
 
 	private void OnDestroy()

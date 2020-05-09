@@ -115,6 +115,13 @@ public class PlayerPhotonController : PoolObjectPhoton
 				player.Stats.AddKill(force);
 				return;
 
+			case EPhotonMsg.Player_SetSyncPosition:
+				Vector3 pos = (Vector3)pParams[0];
+				dir = (EDirection)pParams[1];
+				bool isActuallyMoving = (bool)pParams[2];
+				float speed = (float)pParams[3];
+				player.Movement.SetSyncPosition(pos, dir, isActuallyMoving, speed);
+				return;
 
 			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
 				int health = (int)pParams[0];

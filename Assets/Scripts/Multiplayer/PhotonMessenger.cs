@@ -120,9 +120,14 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 			if(DEBUG_LOG && !IsLogMsgIgnored(pMsgType))
 				Debug.Log("SendNotMP " + pMsgType);
 
-			SendNotMP(pMsgType, pParams);
+			if(debug_notMpMsgDelay > 0)
+				DoInTime(() => SendNotMP(pMsgType, pParams), debug_notMpMsgDelay);
+			else
+				SendNotMP(pMsgType, pParams);
 		}
 	}
+
+	[SerializeField] float debug_notMpMsgDelay = 0.1f;
 
 	/// <summary>
 	/// Debug for clearer output. 
@@ -201,6 +206,8 @@ public enum EPhotonMsg
 	Player_ShowWeapon,
 	Player_ApplyDamage,
 	Player_AddKill,
+
+	Player_SetSyncPosition,
 
 	Player_UI_PlayerInfo_SetHealth,
 	Player_UI_PlayerInfo_SetReloading,

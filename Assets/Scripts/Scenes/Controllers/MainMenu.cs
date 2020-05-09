@@ -48,10 +48,12 @@ public class MainMenu : CSingleton<MainMenu>
 		StartMenuAnim(MENU_ANIM_POSITION_MAIN);
 	}
 
+	int menuAnimId;
+
 	private void StartMenuAnim(int pTargetMenuAnimPosition)
 	{
-		LeanTween.cancel(gameObject);
-		UpdateValue(currentMenuAnimPosition, pTargetMenuAnimPosition, ANIM_TIME, SetMenuAnimPosition);
+		LeanTween.cancel(menuAnimId);
+		menuAnimId = UpdateValue(currentMenuAnimPosition, pTargetMenuAnimPosition, ANIM_TIME, SetMenuAnimPosition);
 	}
 
 	private void SetMenuAnimPosition(float pValue)

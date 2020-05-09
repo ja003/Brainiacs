@@ -1073,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
+  debug_notMpMsgDelay: 0.1
 --- !u!114 &429695745
 MonoBehaviour:
   m_ObjectHideFlags: 0
