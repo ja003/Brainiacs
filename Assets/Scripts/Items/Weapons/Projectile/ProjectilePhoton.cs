@@ -49,6 +49,6 @@ public class ProjectilePhoton : PoolObjectPhoton
 
 	protected override bool CanSend2(EPhotonMsg pMsgType)
 	{
-		return view.IsMine || projectile.LocalImage;
+		return IsMine || projectile.LocalImage;
 	}
 }

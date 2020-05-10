@@ -12,7 +12,7 @@ public class SpecialEinsteinPhoton : PlayerWeaponSpecialPrefabPhoton
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Special_Einstein_FallOn:
-				return view.IsMine;
+				return IsMine;
 		}
 		return false;
 	}

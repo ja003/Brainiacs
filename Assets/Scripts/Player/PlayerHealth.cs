@@ -11,7 +11,8 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		base.Awake();
 	}
 
-	bool isDying; //flag to prevent deadlock
+	public bool IsDying { get; private set; } //flag to prevent deadlock
+
 	private void OnStatsChange(PlayerStats pStats)
 	{
 		if(!player.IsInitedAndMe)
@@ -26,27 +27,33 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	private void Die()
 	{
-		if(isDying)
+		if(IsDying)
 			return;
 
-		isDying = true;
+		IsDying = true;
 
 		Debug.Log($"{this} Die ({stats.LivesLeft} lives left)");
 
 		visual.OnDie();
 		stats.OnDie();
 
-		if(stats.LivesLeft > 0)
-		{
-			DoInTime(Respawn, 2);
-		}
+		//controlled by animation now
+		//if(stats.LivesLeft > 0)
+		//{
+		//	DoInTime(Respawn, 2);
+		//}
+	}
+
+	public void OnDeadAnimFinished()
+	{
+		DoInTime(Respawn, 0.5f);
 	}
 
 	private void Respawn()
 	{
 		//todo: generate random position
-		isDying = false;
-		movement.SpawnAt(transform.position + Vector3.up);
+		IsDying = false;
+		movement.SpawnAt(Vector3.up);
 		stats.OnRespawn();
 	}
 
@@ -60,7 +67,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	/// </summary>
 	public bool OnCollision(int pDamage, Player pOrigin)
 	{
-		if(isDying)
+		if(IsDying)
 		{
 			Debug.Log("No kill for shooting dying player");
 			return true;
@@ -71,9 +78,13 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		return true;
 	}
 
+	/// <summary>
+	/// Apply damage caused by pOrigin player.
+	/// MAYBE: origin can be null (map explosion, turret, ...) => TODO: test
+	/// </summary>
 	public void ApplyDamage(int pDamage, Player pOrigin)
 	{
-		if(!player.IsInited || !pOrigin.IsInited)
+		if(!player.IsInited || (pOrigin != null && !pOrigin.IsInited))
 		{
 			Debug.LogError($"Damage applied before player is inited. {player} | {pOrigin}");
 			return;
@@ -82,11 +93,12 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		//todo animation
 		if(!player.IsItMe)
 		{
-			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, pOrigin.InitInfo.Number);
+			int playerNumber = pOrigin != null ? pOrigin.InitInfo.Number : -1;
+			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, playerNumber);
 		}
 		else
 		{
-			if(isDying)
+			if(IsDying)
 			{
 				//Cant apply damage to dying player;
 				return;
@@ -102,10 +114,12 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			if(stats.IsDead)
 			{
 				//Debug.Log("Add kill to " + pOrigin);
-				pOrigin.Stats.AddKill(forceAddKill);
+				pOrigin?.Stats.AddKill(forceAddKill);
 			}
-
-			visual.OnDamage();
+			//visual.OnDamage(); //visual effect first on owner then on image
 		}
+		//when image is hit => show visual effect => send info to owner => 
+		// => apply damage => show visual effect on both sides
+		visual.OnDamage();
 	}
 }

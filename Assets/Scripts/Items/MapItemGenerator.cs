@@ -50,6 +50,9 @@ public class MapItemGenerator : GameBehaviour
 		//MapItem newItem = game.Pool.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
 
 		EMapItem nextItemType = GetNextMapItemType();
+		if(DebugData.TestPowerUp != EPowerUp.None)
+			nextItemType = EMapItem.PowerUp;
+
 		int randomIndex = GetRandomItemIndex(nextItemType);
 		Vector3 randomPosition = GetRandomPosition();
 		switch(nextItemType)
@@ -58,6 +61,9 @@ public class MapItemGenerator : GameBehaviour
 			case EMapItem.PowerUp2:
 			case EMapItem.PowerUp3:
 				PowerUpConfig powerUpConfig = brainiacs.ItemManager.PowerUps[randomIndex];
+				if(DebugData.TestPowerUp != EPowerUp.None)
+					powerUpConfig = brainiacs.ItemManager.PowerUps.Find(a => a.Type == DebugData.TestPowerUp);
+
 				newItem.Init(randomPosition, powerUpConfig);
 				break;
 			case EMapItem.Weapon:
@@ -130,12 +136,23 @@ public class MapItemGenerator : GameBehaviour
 		int iter = 0;
 		while(!CanGenerateOn(pos))
 		{
+			if(CanGenerateOn(pos + Vector3.up))
+				return pos + Vector3.up;
+			if(CanGenerateOn(pos + Vector3.right))
+				return pos + Vector3.right;
+			if(CanGenerateOn(pos + Vector3.down))
+				return pos + Vector3.down;
+			if(CanGenerateOn(pos + Vector3.left))
+				return pos + Vector3.left;
+
+			Utils.DebugDrawCross(pos, Color.red, 1);
+
 			const float step = 0.5f;
 			pos += dirToCenter * step;
 			const int maxSteps = 10;
 			if(iter++ > maxSteps)
 			{
-				Debug.LogError("Couldnt find good pos");
+				Debug.Log("Couldnt find good position to generate item");
 				break;
 			}
 		}
@@ -152,7 +169,12 @@ public class MapItemGenerator : GameBehaviour
 	private Vector3 debug_GetRandomPosition()
 	{
 		//generate items in straight line
-		debug_RandomPosition += Vector3.right * 0.5f;
+		if(!CanGenerateOn(debug_RandomPosition))
+		{
+			debug_RandomPosition += Vector3.right * 0.5f;
+			//Debug.Log("another pos");
+		}
+
 		if(debug_RandomPosition.x > 5)
 			debug_RandomPosition = Vector3.left * 3;
 
@@ -165,7 +187,7 @@ public class MapItemGenerator : GameBehaviour
 		//cant generate too close to player
 		foreach(var player in game.PlayerManager.Players)
 		{
-			if(player.GetDistance(pPosition) < PlayerVisual.PlayerBodySize)
+			if(player.GetDistance(pPosition) < 2 * PlayerVisual.PlayerBodySize)
 				return false;
 		}
 

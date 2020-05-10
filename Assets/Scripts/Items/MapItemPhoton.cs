@@ -20,7 +20,7 @@ public class MapItemPhoton : PoolObjectPhoton
             case EPhotonMsg.MapItem_InitMapSpecial:
             case EPhotonMsg.MapItem_InitMapBasic:
             case EPhotonMsg.MapItem_InitPowerUp:
-                return view.IsMine;
+                return IsMine;
 
             //only master can return items to pool (master owns all map items)
             //case EPhotonMsg.MapItem_ReturnToPool:

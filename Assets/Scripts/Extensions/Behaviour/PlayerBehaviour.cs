@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +12,7 @@ public abstract class PlayerBehaviour : GameBehaviour
 {
 	[SerializeField]
 	private Player _player;
+	[DebuggerHidden]
 	protected Player player
 	{
 		get

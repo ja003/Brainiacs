@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BrainiacsBehaviour : MonoBehaviour
 {
+	[DebuggerHidden]
 	protected Brainiacs brainiacs => Brainiacs.Instance;
 
 	protected bool isMultiplayer => brainiacs.GameInitInfo.IsMultiplayer();

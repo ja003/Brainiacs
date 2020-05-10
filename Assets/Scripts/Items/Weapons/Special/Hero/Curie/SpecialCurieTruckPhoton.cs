@@ -11,7 +11,7 @@ public class SpecialCurieTruckPhoton : PlayerWeaponSpecialPrefabPhoton
 		{
 			case EPhotonMsg.Special_Curie_StartTruck:
 			case EPhotonMsg.Special_Curie_Collide:
-				return view.IsMine;
+				return IsMine;
 		}
 
 		return false;

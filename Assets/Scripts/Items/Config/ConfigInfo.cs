@@ -32,6 +32,11 @@ public struct InHandWeaponVisualInfo
 	public Sprite playerSpriteDown;
 	public Sprite PlayerSpriteLeft;
 
+	public bool DisableHandsUp;
+	public bool DisableHandsRight;
+	public bool DisableHandsDown;
+	public bool DisableHandsLeft;
+
 	public Sprite InfoSprite;
 }
 

@@ -60,19 +60,22 @@ public class Player : PoolObjectNetwork
 
 		//if already set as local image, keep it
 		IsLocalImage = pIsLocalImage || IsLocalImage;
-		if(IsLocalImage)
-		{
-			rigidBody2D.bodyType = RigidbodyType2D.Static;
-			rigidBody2D.simulated = false;
-		}
+		//if(IsLocalImage)
+		//{
+		//	rigidBody2D.bodyType = RigidbodyType2D.Static;
+		//	rigidBody2D.simulated = false;
+		//}
+		gameObject.name = "Player_" + pPlayerInfo.Name + (IsLocalImage ? "_LI" : "");
+
 
 		InitInfo = pPlayerInfo;
 		Visual.Init(pPlayerInfo);
 
 		Init();
 
-		if(pSpawnPosition != null)
-			Movement.SpawnAt((Vector3)pSpawnPosition);
+		//if spawn pos is null, player is already spawned, but Movement should be still initialized
+		Vector3 spawnPosition = pSpawnPosition != null ? (Vector3)pSpawnPosition : transform.position;
+		Movement.SpawnAt(spawnPosition);
 
 		((PlayerPhotonController)Photon).Init2(pPlayerInfo);
 	}

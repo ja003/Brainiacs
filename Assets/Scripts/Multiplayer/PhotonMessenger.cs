@@ -24,7 +24,9 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		}
 	}
 
-	public bool IsMine => view && isMultiplayer ? view.IsMine : true;
+	protected virtual bool IsLocalImage() { return false; }
+
+	public bool IsMine => view && isMultiplayer ? view.IsMine : !IsLocalImage();
 	public PhotonPlayer PhotonController => view.Controller;
 
 	[SerializeField] protected bool DEBUG_LOG = false;
@@ -138,7 +140,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Pool_SetActive:
-				return !view.IsMine;
+				return !IsMine;
 
 			case EPhotonMsg.Player_ShowWeapon:
 			case EPhotonMsg.Player_ChangeDirection:
@@ -206,6 +208,10 @@ public enum EPhotonMsg
 	Player_ShowWeapon,
 	Player_ApplyDamage,
 	Player_AddKill,
+	
+	Player_Visual_OnDamage, //visual
+	Player_Visual_OnDie,
+
 
 	Player_SetSyncPosition,
 

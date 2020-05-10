@@ -12,7 +12,7 @@ public class FlamethrowerPhoton : PlayerWeaponSpecialPrefabPhoton
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Special_Flamethrower_OnDirectionChange:
-				return view.IsMine;
+				return IsMine;
 		}
 		return false;
 	}

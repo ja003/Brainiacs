@@ -6,40 +6,54 @@ using Random = UnityEngine.Random;
 
 public static class PowerupManager
 {
+	private const int SHIELD_DURATION = 5;
+	private const int SPEED_VALUE = 5;
+	private const int SPEED_DURATION = 5;
+
 	public static void HandlePowerup(PowerUpConfig pConfig, Player pPlayer)
 	{
-		EPowerUp type = pConfig.Type;
+		//EPowerUp type = pConfig.Type;
 		//Debug.Log($"HandlePowerup {type} for {pPlayer}");
 
-		ApplyPowerup(pConfig.Type, pPlayer);
+		string statusMessage = ApplyPowerup(pConfig, pPlayer);
 		//show status
-		Game.Instance.PlayerStatusManager.ShowMapItem(pPlayer.Stats.MapItemUiPosition.position, pConfig.MapItemInfo);
+		Game.Instance.PlayerStatusManager.ShowStatus(pPlayer.Stats.MapItemUiPosition.position,
+			statusMessage.Length > 0 ? statusMessage : pConfig.MapItemInfo.StatusText,
+			pConfig.MapItemInfo.MapSprite);
 	}
 
-	private static void ApplyPowerup(EPowerUp pType, Player pPlayer)
+	/// <summary>
+	/// Applies powerup to the player and returns status text
+	/// </summary>
+	private static string ApplyPowerup(PowerUpConfig pConfig, Player pPlayer)
 	{
-		switch(pType)
+		switch(pConfig.Type)
 		{
 			case EPowerUp.Health:
 				pPlayer.Stats.AddHealth(20);
-				return;
+				break;
 			case EPowerUp.Ammo:
 				pPlayer.WeaponController.OnPowerUpAmmo();
-				return;
+				break;
 			case EPowerUp.Speed:
-				pPlayer.Stats.SetSpeed(5, 5);
-				return;
+				pPlayer.Stats.SetSpeed(SPEED_VALUE, SPEED_DURATION);
+				break;
 			case EPowerUp.Mystery:
-				HandleMystery(pPlayer);
-				return;
+				return HandleMystery(pPlayer);
 			case EPowerUp.Shield:
-				pPlayer.Stats.SetShield(5);
-				return;
+				pPlayer.Stats.SetShield(SHIELD_DURATION);
+				break;
+			default:
+				Debug.LogError($"Powerup {pConfig.Type} not handled!");
+				break;
 		}
-		Debug.LogError($"Powerup {pType} not handled!");
+		return pConfig.MapItemInfo.StatusText;
 	}
 
-	private static void HandleMystery(Player pPlayer)
+	/// <summary>
+	/// Randomly applies some type of powerup
+	/// </summary>
+	private static string HandleMystery(Player pPlayer)
 	{
 		const int chance_ammo = 20;
 		const int chance_health = 40;
@@ -71,14 +85,14 @@ public static class PowerupManager
 		else if(random < chance_damage)
 		{
 			pPlayer.Stats.AddHealth(-20);
-			return;
+			return "- health";
 		}
 		else if(random < chance_double_damage)
 		{
 			pPlayer.Stats.AddHealth(-40);
-			return;
+			return "- health";
 		}
-
-		ApplyPowerup(type, pPlayer);
+		
+		return ApplyPowerup(Brainiacs.Instance.ItemManager.GetPowerupConfig(type), pPlayer);
 	}
 }

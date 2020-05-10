@@ -240,6 +240,4 @@ public class PlayerWeaponController : PlayerBehaviour
 		onWeaponInfoChanged?.Invoke(ActiveWeapon);
 		ActiveWeapon.OnSetActive();
 	}
-
-
 }

@@ -27,7 +27,7 @@ public abstract class PlayerWeaponSpecialPrefabPhoton : PoolObjectPhoton
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Special_Init:
-				return view.IsMine;
+				return IsMine;
 		}
 
 		return CanSend3(pMsgType);

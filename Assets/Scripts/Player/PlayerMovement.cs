@@ -28,7 +28,7 @@ public class PlayerMovement : PlayerBehaviour
 		{
 			if(player.InitInfo != null && player.InitInfo.PlayerType == EPlayerType.AI)
 			{
-				//Debug.Log("skip Move");
+				//Debug.Log("skip Move");igodBody
 			}
 			return;
 		}
@@ -49,7 +49,7 @@ public class PlayerMovement : PlayerBehaviour
 
 	private void SyncPosition()
 	{
-		if(player.LocalImageOwner)
+		if(player.IsLocalImage)
 			return;
 
 		isActualyMoving = Vector3.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
@@ -107,6 +107,7 @@ public class PlayerMovement : PlayerBehaviour
 	/// </summary>
 	public void SetDirection(EDirection pDirection)
 	{
+		//sdDebug.Log(gameObject.name + " SetDirection " + pDirection);
 		bool isDirectionChanged = CurrentDirection != pDirection;
 		CurrentDirection = pDirection; //has to be set before OnDirectionChange call
 		if(isDirectionChanged)
@@ -141,6 +142,7 @@ public class PlayerMovement : PlayerBehaviour
 
 	//Debug try leanTween cancel
 	//int id = -1;
+	//[SerializeField] GameObject testGo;
 	//private void Update()
 	//{
 	//	//debug_useEaseIn = Input.GetKey(KeyCode.Q);
@@ -162,7 +164,6 @@ public class PlayerMovement : PlayerBehaviour
 	//	}
 	//}
 
-	[SerializeField] GameObject testGo;
 
 	float actualMovementDuration;
 	float lastSyncPosTime;
@@ -176,7 +177,7 @@ public class PlayerMovement : PlayerBehaviour
 	//idea: when player starts to move, image doesnt have to follow that tightly => smaller multiply.
 	// if player moves for a long time in the same direction, image expects the direction to remain.
 	// multiply is reset to 1 on direction change
-	[SerializeField] AnimationCurve moveSyncMultiply;
+	[SerializeField] AnimationCurve moveSyncMultiply = null;
 
 	int moveFunctionId;
 
@@ -193,9 +194,27 @@ public class PlayerMovement : PlayerBehaviour
 			Debug.LogError("SetSyncPosition called on owner");
 			return;
 		}
+		if(player.Health.IsDying)
+			return;
+
+
+		if(!gameObject.activeSelf)
+		{
+			//Debug.LogError("");
+		}
 
 		float moveCalls = SYNC_POS_INTERVAL / Time.fixedDeltaTime;
 		Vector3 targetPos = pPosition;
+
+		//when target position is way too far, assign position instantly
+		// - this happens for example during respawn
+		if(Vector3.Distance(targetPos, transform.position) > 10)
+		{
+			//Debug.Log(gameObject.name + " insta port");
+			transform.position = targetPos;
+			return;
+		}
+
 		if(pIsActualyMoving)
 		{
 			actualMovementDuration += Time.time - lastSyncPosTime;
@@ -221,6 +240,7 @@ public class PlayerMovement : PlayerBehaviour
 		}
 		else
 		{
+			//SetDirection(pDirection); //should be redundant
 			actualMovementDuration = 0;
 		}
 		lastSyncPosTime = Time.time;

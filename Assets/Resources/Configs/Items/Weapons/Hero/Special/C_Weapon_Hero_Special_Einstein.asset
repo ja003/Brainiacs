@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 103
   VisualInfo:
-    PlayerSpriteUp: {fileID: 6545748678537406207, guid: 93c2eb22263fe514b84284ac93226e00,
+    PlayerSpriteUp: {fileID: 1967753749925431986, guid: e7d2c4f098720bf47a9047a70dbbc9b9,
       type: 3}
-    PlayerSpriteRight: {fileID: -1111964528512549786, guid: 93c2eb22263fe514b84284ac93226e00,
+    PlayerSpriteRight: {fileID: -5264841380990223516, guid: e7d2c4f098720bf47a9047a70dbbc9b9,
       type: 3}
-    playerSpriteDown: {fileID: -2862908635026704301, guid: 93c2eb22263fe514b84284ac93226e00,
+    playerSpriteDown: {fileID: -1184118432046164790, guid: e7d2c4f098720bf47a9047a70dbbc9b9,
       type: 3}
-    PlayerSpriteLeft: {fileID: -494023722289185070, guid: 93c2eb22263fe514b84284ac93226e00,
+    PlayerSpriteLeft: {fileID: -384727610224060718, guid: e7d2c4f098720bf47a9047a70dbbc9b9,
       type: 3}
+    DisableHandsUp: 1
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 1
     InfoSprite: {fileID: 21300000, guid: 9a625047b0fca2a4b8005472bcef3f9d, type: 3}
   SpecialWeaponInfo:
     InHandInfo:

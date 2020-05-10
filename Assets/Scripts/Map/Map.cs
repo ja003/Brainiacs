@@ -69,7 +69,7 @@ public class Map : GameBehaviour
 		int randIndex = UnityEngine.Random.Range(0, mapItemGenPos.Count);
 		if(randIndex == lastUsedPos)
 		{
-			Debug.Log("Select another pos");
+			//Debug.Log("Select another pos");
 			randIndex = randIndex++ % mapItemGenPos.Count;
 		}
 		lastUsedPos = randIndex;

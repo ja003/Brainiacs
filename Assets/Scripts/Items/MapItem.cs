@@ -1,4 +1,5 @@
 ﻿using FlatBuffers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,12 @@ public class MapItem : MapObject
 	{
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
+		circleCollider2D.enabled = false; //enabled only on explosion
 	}
 
-
 	bool isSpawned;
-	bool isMine;
+	//bool isMine;
+
 	private void Spawn(Vector3 pPosition)
 	{
 		SetActive(true);
@@ -29,7 +31,9 @@ public class MapItem : MapObject
 		game.Map.Items.RegisterItem(this);
 		isSpawned = true;
 		boxCollider2D.enabled = true;
-		isMine = brainiacs.PhotonManager.IsMaster();
+		//isMine = brainiacs.PhotonManager.IsMaster();
+
+		animator.Rebind();
 	}
 
 	public void Init(Vector3 pPosition, PowerUpConfig pPowerUp)
@@ -59,18 +63,6 @@ public class MapItem : MapObject
 
 		Photon.Send(EPhotonMsg.MapItem_InitMapSpecial, pPosition, pSpecialWeapon.Id);
 	}
-
-
-	//TODO: map item photon - sync visual
-
-	//private void OnCollisionEnter2D(Collision2D collision)
-	//{
-	//	Player player = collision.collider.GetComponent<Player>();
-	//	if(player)
-	//	{
-	//		OnEnter(player);
-	//	}
-	//}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -106,20 +98,46 @@ public class MapItem : MapObject
 		ReturnToPool();
 	}
 
-	//public void ReturnToPool()
-	//{
-	//	if(isMine)
-	//		InstanceFactory.Destroy(gameObject);
-	//	else
-	//		Photon.Send(EPhotonMsg.MapItem_ReturnToPool);
-	//}
-
-	private void OnDestroy()
+	/// <summary>
+	/// When item is hit it explodes
+	/// </summary>
+	private void Explode()
 	{
-		if(!game)
-			return;
+		spriteRend.enabled = false;
+		animator.SetBool("explode", true);
+		DoInTime(ApplyExplosion, 0.1f);
+	}
 
+	private void ApplyExplosion()
+	{
+		Debug.Log("ApplyExplosion");
+		circleCollider2D.enabled = true;
+		List<Collider2D> hitResult = new List<Collider2D>();
+		circleCollider2D.OverlapCollider(new ContactFilter2D(), hitResult);
+		foreach(var hit in hitResult)
+		{
+			ICollisionHandler handler = hit.GetComponent<ICollisionHandler>();
+			if(handler != null)
+			{
+				handler.OnCollision(30, null);
+			}
+			Debug.Log(hit.gameObject.name);
+		}
+
+	}
+
+	/// <summary>
+	/// After explosion it is returned to pool
+	/// </summary>
+	public void OnExplosionFinished()
+	{
+		ReturnToPool();
+	}
+
+	protected override void OnReturnToPool2()
+	{
 		game.Map.Items.OnDestroyItem(this);
+		base.OnReturnToPool2();
 	}
 
 	protected override void OnCollisionEffect(int pDamage)
@@ -127,64 +145,9 @@ public class MapItem : MapObject
 		if(!isSpawned)
 			return;
 
-		if(weaponConfig != null)
-		{
-			Debug.Log("todo: weapon explode");
-		}
 		if(pDamage <= 0)
 			return;
 
-		ReturnToPool();
+		Explode();
 	}
-
-	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
-	//{
-	//	switch(pMsgType)
-	//	{
-	//		//master initiates
-	//		case EPhotonMsg.MapItem_InitMapSpecial:
-	//		case EPhotonMsg.MapItem_InitMapBasic:
-	//		case EPhotonMsg.MapItem_InitPowerUp:
-	//			return view.IsMine;
-
-	//		//only master can return items to pool (master owns all map items)
-	//		case EPhotonMsg.MapItem_ReturnToPool:
-	//			return !view.IsMine;
-	//	}
-
-	//	return false;
-	//}
-
-	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-	//{
-	//	base.HandleMsg(pReceivedMsg, pParams, bb);
-	//	switch(pReceivedMsg)
-	//	{
-	//		case EPhotonMsg.MapItem_InitMapBasic:
-	//			Vector3 pos = (Vector3)pParams[0];
-	//			EWeaponId id = (EWeaponId)pParams[1];
-
-	//			Init(pos, brainiacs.ItemManager.GetMapWeaponConfig(id));
-	//			break;
-
-	//		case EPhotonMsg.MapItem_InitMapSpecial:
-	//			pos = (Vector3)pParams[0];
-	//			id = (EWeaponId)pParams[1];
-
-	//			Init(pos, brainiacs.ItemManager.GetMapSpecialWeaponConfig(id));
-	//			break;
-
-	//		case EPhotonMsg.MapItem_InitPowerUp:
-	//			pos = (Vector3)pParams[0];
-	//			EPowerUp type = (EPowerUp)pParams[1];
-
-	//			Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));
-	//			break;
-
-	//		case EPhotonMsg.MapItem_ReturnToPool:
-	//			ReturnToPool();
-	//			break;
-	//	}
-	//}
-
 }

@@ -27,6 +27,11 @@ public class PlayerPhotonController : PoolObjectPhoton
 
 	Game game => Game.Instance;
 
+	protected override bool IsLocalImage()
+	{
+		return player.IsLocalImage;
+	}
+
 	internal void Init2(PlayerInitInfo pInfo)
 	{
 		if(isInited)
@@ -34,7 +39,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 		playerInfo = pInfo;
 		PhotonPlayer = playerInfo.PhotonPlayer;
 
-		//Debug.Log($"{this} IsMine: {view.IsMine}, isItMe: {isItMe}");
+		//Debug.Log($"{this} IsMine: {IsMine}, isItMe: {isItMe}");
 
 		if(PhotonNetwork.IsMasterClient && !player.IsItMe && PhotonPlayer != null)
 		{
@@ -79,7 +84,8 @@ public class PlayerPhotonController : PoolObjectPhoton
 	{
 		if(!isInited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
 		{
-			//Debug.Log("not inited yet. " + pReceivedMsg);
+			Debug.Log(gameObject.name + " not inited yet. " + pReceivedMsg);
+			player.OnPlayerInited.AddAction(() => HandleMsg2(pReceivedMsg, pParams, bb));
 			return;
 		}
 
@@ -150,6 +156,14 @@ public class PlayerPhotonController : PoolObjectPhoton
 				int deaths = (int)pParams[1];
 				player.Visual.Scoreboard.SetScore(kills, deaths);
 				return;
+
+			case EPhotonMsg.Player_Visual_OnDamage:
+				player.Visual.OnDamage();
+				break;
+
+			case EPhotonMsg.Player_Visual_OnDie:
+				player.Visual.OnDie();
+				break;
 
 			default:
 				OnMsgUnhandled(pReceivedMsg);

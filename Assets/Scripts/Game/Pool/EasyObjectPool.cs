@@ -61,7 +61,7 @@ class Pool
 		availableObjs.Add(po);
 		po.isPooled = true;
 		if(holder)
-			po.transform.parent = holder;
+			po.transform.SetParent(holder);
 	}
 
 	private PoolObject NewObjectInstance()

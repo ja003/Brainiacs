@@ -39,7 +39,7 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 			case EPhotonMsg.Pool_ReturnToPool:
 				return true;
 			case EPhotonMsg.Pool_SetActive:
-				return view.IsMine;
+				return IsMine;
 		}
 
 		return CanSend2(pMsgType);

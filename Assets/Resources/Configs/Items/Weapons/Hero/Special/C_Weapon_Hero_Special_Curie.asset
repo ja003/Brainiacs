@@ -22,6 +22,10 @@ MonoBehaviour:
       type: 3}
     PlayerSpriteLeft: {fileID: -2862908635026704301, guid: 93c2eb22263fe514b84284ac93226e00,
       type: 3}
+    DisableHandsUp: 1
+    DisableHandsRight: 0
+    DisableHandsDown: 1
+    DisableHandsLeft: 0
     InfoSprite: {fileID: 21300000, guid: a91abba2899250e49ba5081bd6d86861, type: 3}
   SpecialWeaponInfo:
     InHandInfo:

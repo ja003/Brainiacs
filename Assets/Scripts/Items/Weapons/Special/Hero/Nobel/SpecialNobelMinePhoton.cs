@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpecialNobelMinePhoton : PlayerWeaponSpecialPrefabPhoton
 {
-	[SerializeField] SpecialNobelMine mine = null;
+	//[SerializeField] SpecialNobelMine mine = null;
 
 	protected override bool CanSend3(EPhotonMsg pMsgType)
 	{
@@ -15,7 +15,7 @@ public class SpecialNobelMinePhoton : PlayerWeaponSpecialPrefabPhoton
 			return false;
 		}
 
-		return view.IsMine;
+		return IsMine;
 	}
 
 	protected override void HandleMsg3(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)

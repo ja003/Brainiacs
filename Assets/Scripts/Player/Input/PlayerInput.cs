@@ -16,6 +16,9 @@ public class PlayerInput : PlayerBehaviour
 		if(!player.IsInitedAndMe)
 			return;
 
+		if(player.Health.IsDying)
+			return;
+
 		if(!game.GameStarted)
 			return;
 

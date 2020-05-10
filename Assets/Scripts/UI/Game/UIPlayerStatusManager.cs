@@ -17,13 +17,8 @@ public class UIPlayerStatusManager : MonoBehaviour
 	/// </summary>
 	public void ShowMapItem(Vector3 pWorldPosition, MapItemInfo pInfo)
 	{
-		//Debug.Log("ShowStatus " + pWorldPosition);
-
-		//TODO: pooling
 		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.MapSprite);
 	}
-
-
 
 	public void ShowHealth(Vector3 pWorldPosition, int pIncrement)
 	{
@@ -33,7 +28,7 @@ public class UIPlayerStatusManager : MonoBehaviour
 		ShowStatus(pWorldPosition, prefix + pIncrement, null, textColor);
 	}
 
-	private void ShowStatus(Vector3 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
+	public void ShowStatus(Vector3 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
 	{
 		//HACK: to hide adding debug weapons
 		if(Time.time < 1)

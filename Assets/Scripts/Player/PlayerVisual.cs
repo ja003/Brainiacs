@@ -26,32 +26,58 @@ public class PlayerVisual : PlayerBehaviour
 	//Cca player model size. Not precise!
 	public static float PlayerBodySize { get; } = 1f;
 
+	private const string AC_KEY_DIRECTION = "direction";
+	//private const string AC_KEY_IS_WALKING = "isWalking";
+	private const string AC_KEY_IS_DEAD = "isDead";
+	//private const string AC_KEY_DIE = "die";
+	private const string AC_KEY_WALK_SPEED = "walkSpeed";
+
+
 	EPlayerColor playerColor; //has to be stored for color change on hit
+
+	WeaponConfig currentWeaponConfig;
 
 	internal void OnSetActive(bool pValue)
 	{
 		spriteRend.enabled = pValue;
 
+		//SetAnimBool(AC_KEY_IS_DEAD, false);
 		//if(!pValue)
 		//{
-		//	handsDown.enabled = pValue;
-		//	handsRight.enabled = pValue;
-		//	handsUp.enabled = pValue;
-		//	handsLeft.enabled = pValue;
-
-		//	weaponRight.enabled = pValue;
-		//	weaponDown.enabled = pValue;
-		//	weaponLeft.enabled = pValue;
-		//	weaponUp.enabled = pValue;
+		//	transform.position = Vector2.one * 666;
 		//}
 	}
 
 	internal void OnDie()
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, true);
-		SetAnimTrigger(AC_KEY_DIE);
+		player.Photon.Send(EPhotonMsg.Player_Visual_OnDie);
+		//SetAnimTrigger(AC_KEY_DIE);
+		//DoInTime(() => SetVisible(false), 1);
+	}
 
-		DoInTime(() => SetVisible(false), 1);
+
+	public void OnAfterDeadAnim()
+	{
+		//move player to void (called on all sides), so image 
+		//does not stay visible (because of network delay)
+		transform.position = Vector2.one * 666;
+		DoInTime(OnDeadAnimFinished, 0.5f);
+	}
+
+	/// <summary>
+	/// Kinda hacky solution, maybe will need rework..
+	/// </summary>
+	private void OnDeadAnimFinished()
+	{
+		SetAnimBool(AC_KEY_IS_DEAD, false);
+		SetVisible(false);
+
+		//handled only on owner side
+		if(player.IsItMe)
+		{
+			player.Health.OnDeadAnimFinished();
+		}
 	}
 
 	public void SetVisible(bool pValue)
@@ -65,7 +91,7 @@ public class PlayerVisual : PlayerBehaviour
 		//Debug.Log($"{this} Spawn");
 		SetVisible(true);
 
-		SetAnimBool(AC_KEY_IS_DEAD, false);
+		//SetAnimBool(AC_KEY_IS_DEAD, false);
 		OnDirectionChange(currentDirection); //reset animator value
 	}
 
@@ -89,6 +115,7 @@ public class PlayerVisual : PlayerBehaviour
 	public void OnDamage()
 	{
 		StartCoroutine(FlickColor());
+		player.Photon.Send(EPhotonMsg.Player_Visual_OnDamage); //only owner sends this
 	}
 
 	/// <summary>
@@ -137,11 +164,6 @@ public class PlayerVisual : PlayerBehaviour
 		return spriteRend.sortingOrder + 2;
 	}
 
-	private const string AC_KEY_DIRECTION = "direction";
-	//private const string AC_KEY_IS_WALKING = "isWalking";
-	private const string AC_KEY_IS_DEAD = "isDead";
-	private const string AC_KEY_DIE = "die";
-	private const string AC_KEY_WALK_SPEED = "walkSpeed";
 
 	//idle is just slowed walk animation
 	private const float WALK_ANIM_SPEED = 1;
@@ -212,19 +234,19 @@ public class PlayerVisual : PlayerBehaviour
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				handsUp.enabled = true;
+				handsUp.enabled = true && GetHandsEnabled(pDirection);
 				weaponUp.enabled = true;
 				break;
 			case EDirection.Right:
+				handsRight.enabled = true && GetHandsEnabled(pDirection);
 				weaponRight.enabled = true;
-				handsRight.enabled = true;
 				break;
 			case EDirection.Down:
+				handsDown.enabled = true && GetHandsEnabled(pDirection);
 				weaponDown.enabled = true;
-				handsDown.enabled = true;
 				break;
 			case EDirection.Left:
-				handsLeft.enabled = true;
+				handsLeft.enabled = true && GetHandsEnabled(pDirection);
 				weaponLeft.enabled = true;
 				break;
 		}
@@ -239,6 +261,25 @@ public class PlayerVisual : PlayerBehaviour
 		player.Photon.Send(EPhotonMsg.Player_ChangeDirection, pDirection);
 	}
 
+	private bool GetHandsEnabled(EDirection pDirection)
+	{
+		if(currentWeaponConfig == null)
+			return true;
+
+		switch(pDirection)
+		{
+			case EDirection.Up:
+				return !currentWeaponConfig.VisualInfo.DisableHandsUp;
+			case EDirection.Right:
+				return !currentWeaponConfig.VisualInfo.DisableHandsRight;
+			case EDirection.Down:
+				return !currentWeaponConfig.VisualInfo.DisableHandsDown;
+			case EDirection.Left:
+				return !currentWeaponConfig.VisualInfo.DisableHandsLeft;
+		}
+		return false;
+	}
+
 	//todo: PlayerWeapon ref shouldnt be stored in Visual
 	PlayerWeapon activeWeapon;
 	public void SetActiveWeapon(PlayerWeapon pWeapon)
@@ -250,12 +291,11 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void ShowWeapon(EWeaponId pWeapon)
 	{
-		WeaponConfig config =
-			brainiacs.ItemManager.GetWeaponConfig(pWeapon);
-		weaponUp.sprite = config.VisualInfo.PlayerSpriteUp;
-		weaponRight.sprite = config.VisualInfo.PlayerSpriteRight;
-		weaponDown.sprite = config.VisualInfo.playerSpriteDown;
-		weaponLeft.sprite = config.VisualInfo.PlayerSpriteLeft;
+		currentWeaponConfig = brainiacs.ItemManager.GetWeaponConfig(pWeapon);
+		weaponUp.sprite = currentWeaponConfig.VisualInfo.PlayerSpriteUp;
+		weaponRight.sprite = currentWeaponConfig.VisualInfo.PlayerSpriteRight;
+		weaponDown.sprite = currentWeaponConfig.VisualInfo.playerSpriteDown;
+		weaponLeft.sprite = currentWeaponConfig.VisualInfo.PlayerSpriteLeft;
 	}
 
 	private void UpdatePlayerSortOrder()
