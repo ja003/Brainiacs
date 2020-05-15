@@ -126,7 +126,8 @@ public class PlayerPhotonController : PoolObjectPhoton
 				dir = (EDirection)pParams[1];
 				bool isActuallyMoving = (bool)pParams[2];
 				float speed = (float)pParams[3];
-				player.Movement.SetSyncPosition(pos, dir, isActuallyMoving, speed);
+				bool instantly = (bool)pParams[4];
+				player.Movement.SetSyncPosition(pos, dir, isActuallyMoving, speed, instantly);
 				return;
 
 			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:

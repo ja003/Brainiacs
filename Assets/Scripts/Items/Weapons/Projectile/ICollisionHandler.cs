@@ -10,5 +10,5 @@ public interface ICollisionHandler
 	//TRUE = destroy projectile
 	//bool OnCollision(Projectile pProjectile);
 
-	bool OnCollision(int pDamage, Player pOrigin);
+	bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin);
 }

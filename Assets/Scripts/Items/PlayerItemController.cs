@@ -24,6 +24,7 @@ public class PlayerItemController : PlayerBehaviour
 			AddWeapon(EWeaponId.Special_Nobel);
 			AddWeapon(EWeaponId.Special_Einstein);
 			AddWeapon(EWeaponId.Lasergun);
+			AddWeapon(EWeaponId.MP40);
 		}
 	}
 

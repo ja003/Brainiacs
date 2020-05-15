@@ -33,6 +33,7 @@ class Pool
 	private GameObject poolObjectPrefab;
 	private int poolSize;
 	private string poolName;
+	private int instanceId = 0;
 
 	public Transform holder;
 
@@ -67,8 +68,12 @@ class Pool
 	private PoolObject NewObjectInstance()
 	{
 		GameObject go = GameObject.Instantiate(poolObjectPrefab);
+
+		go.name = go.name.Replace("(Clone)", $"[{instanceId++}]");
+		//go.name += $"[{instanceId++}]";
 		//GameObject go = InstanceFactory.Instantiate(poolObjectPrefab);
 		PoolObject po = go.GetComponent<PoolObject>();
+
 		if(po == null)
 		{
 			po = go.AddComponent<PoolObject>();

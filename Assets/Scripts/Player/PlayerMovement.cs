@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : PlayerBehaviour
+public class PlayerMovement : PlayerBehaviour, ITeleportable
 {
 	[SerializeField] public Collider2D PlayerCollider = null;
 
@@ -37,7 +37,7 @@ public class PlayerMovement : PlayerBehaviour
 		//sync position
 		if(lastTimeSync + SYNC_POS_INTERVAL / 2 < Time.time)
 		{
-			SyncPosition();
+			SyncPosition(false);
 		}
 
 		lastPosition = transform.position; //has to be called before ApplyMove
@@ -47,7 +47,7 @@ public class PlayerMovement : PlayerBehaviour
 
 	}
 
-	private void SyncPosition()
+	private void SyncPosition(bool pInstantly)
 	{
 		if(player.IsLocalImage)
 			return;
@@ -61,7 +61,7 @@ public class PlayerMovement : PlayerBehaviour
 			position += Vector3.down;
 
 		player.Photon.Send(EPhotonMsg.Player_SetSyncPosition, position,
-			CurrentDirection, isActualyMoving, player.Stats.Speed);
+			CurrentDirection, isActualyMoving, player.Stats.Speed, pInstantly);
 	}
 
 	internal void SpawnAt(Vector3 pPosition)
@@ -186,8 +186,10 @@ public class PlayerMovement : PlayerBehaviour
 	/// Calculates target position based on the owner position and his current direction.
 	/// If the owner is moving => target position will be moved by given direction.
 	/// Smoothly moves player towards the calculated position.
+	/// When pInstantly is passed, image is relocated to target position instantly (eg. Teleport)
 	/// </summary>
-	public void SetSyncPosition(Vector3 pPosition, EDirection pDirection, bool pIsActualyMoving, float pSpeed)
+	public void SetSyncPosition(Vector3 pPosition, EDirection pDirection, 
+		bool pIsActualyMoving, float pSpeed, bool pInstantly)
 	{
 		if(player.IsItMe)
 		{
@@ -205,12 +207,13 @@ public class PlayerMovement : PlayerBehaviour
 
 		float moveCalls = SYNC_POS_INTERVAL / Time.fixedDeltaTime;
 		Vector3 targetPos = pPosition;
+		LeanTween.cancel(moveFunctionId);
 
 		//when target position is way too far, assign position instantly
 		// - this happens for example during respawn
-		if(Vector3.Distance(targetPos, transform.position) > 10)
+		if(Vector3.Distance(targetPos, transform.position) > 10 || pInstantly)
 		{
-			//Debug.Log(gameObject.name + " insta port");
+			Debug.Log(gameObject.name + " insta port " + pInstantly);
 			transform.position = targetPos;
 			return;
 		}
@@ -259,7 +262,7 @@ public class PlayerMovement : PlayerBehaviour
 
 		//Utils.DebugDrawCross(targetPos, Color.green, SYNC_POS_INTERVAL);
 
-		LeanTween.cancel(moveFunctionId);
+		//LeanTween.cancel(moveFunctionId);
 		const bool debug_useEaseIn = false;
 		if(debug_useEaseIn)
 		{
@@ -281,4 +284,31 @@ public class PlayerMovement : PlayerBehaviour
 					LeanTween.moveY(gameObject, targetPos.y, SYNC_POS_INTERVAL * yPercentage)).id;
 		}
 	}
+
+	/// TELEPORT
+
+	public ITeleportable TeleportTo(Teleport pTeleport)
+	{
+		//simulated on owner side
+		if(!player.IsItMe)
+			return null;
+
+		transform.position = Vector3.one * 666;
+		player.SetActive(false);
+
+		//small teleport delay
+		DoInTime(() =>
+		{
+			transform.position = pTeleport.OutPosition.position;
+			player.SetActive(true);
+			SetDirection(pTeleport.OutDirection);
+			SyncPosition(true);
+		}, 0.5f);
+
+		return this;
+		//transform.position = pTeleport.OutPosition.position;
+		//SetDirection(pTeleport.OutDirection);
+		//SyncPosition(true);
+	}
+
 }

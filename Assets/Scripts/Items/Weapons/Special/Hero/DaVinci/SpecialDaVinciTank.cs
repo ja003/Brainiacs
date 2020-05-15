@@ -90,7 +90,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 		}
 
 		//Debug.Log("Hit " + collision.gameObject.name);
-		handler.OnCollision(damage, owner);
+		handler.OnCollision(damage, owner, gameObject);
 	}
 
 	public bool OnCollision(int pDamage, Player pOrigin)

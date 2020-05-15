@@ -30,11 +30,12 @@ public class ProjectileManager : GameController
 		ActiveProjectiles.Remove(pProjectile);
 	}
 
-	public void SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
+	public Projectile SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
 		Projectile newProjectile = InstanceFactory.Instantiate(prefab.gameObject, pPosition).GetComponent<Projectile>();
 
 		newProjectile.Spawn(pOwner, pConfig, pDirection);
+		return newProjectile;
 	}
 
 	//int lastProjectileId;

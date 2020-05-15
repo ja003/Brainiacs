@@ -65,7 +65,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	/// <summary>
 	/// Damage from the collision and origin-player of the damage
 	/// </summary>
-	public bool OnCollision(int pDamage, Player pOrigin)
+	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)
 	{
 		if(IsDying)
 		{
@@ -73,7 +73,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			return true;
 		}
 
-		ApplyDamage(pDamage, pOrigin);
+		ApplyDamage(pDamage, pOwner);
 
 		return true;
 	}
@@ -82,18 +82,18 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	/// Apply damage caused by pOrigin player.
 	/// MAYBE: origin can be null (map explosion, turret, ...) => TODO: test
 	/// </summary>
-	public void ApplyDamage(int pDamage, Player pOrigin)
+	public void ApplyDamage(int pDamage, Player pOwner)
 	{
-		if(!player.IsInited || (pOrigin != null && !pOrigin.IsInited))
+		if(!player.IsInited || (pOwner != null && !pOwner.IsInited))
 		{
-			Debug.LogError($"Damage applied before player is inited. {player} | {pOrigin}");
+			Debug.LogError($"Damage applied before player is inited. {player} | {pOwner}");
 			return;
 		}
 
 		//todo animation
 		if(!player.IsItMe)
 		{
-			int playerNumber = pOrigin != null ? pOrigin.InitInfo.Number : -1;
+			int playerNumber = pOwner != null ? pOwner.InitInfo.Number : -1;
 			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, playerNumber);
 		}
 		else
@@ -114,7 +114,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			if(stats.IsDead)
 			{
 				//Debug.Log("Add kill to " + pOrigin);
-				pOrigin?.Stats.AddKill(forceAddKill);
+				pOwner?.Stats.AddKill(forceAddKill);
 			}
 			//visual.OnDamage(); //visual effect first on owner then on image
 		}

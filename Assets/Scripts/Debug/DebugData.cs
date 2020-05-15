@@ -12,8 +12,8 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = true;
-	public static bool LocalImage = true;
+	public static bool TestPlayers = false;
+	public static bool LocalImage = false;
 
 	private static int playerCount = 2;
 
@@ -104,8 +104,8 @@ public static class DebugData
 				//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 				//player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
 				//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
-				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
+				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,

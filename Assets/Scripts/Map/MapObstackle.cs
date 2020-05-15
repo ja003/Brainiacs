@@ -16,7 +16,7 @@ public class MapObstackle : MapObject
 	//	throw new System.NotImplementedException();
 	//}
 
-	protected override void OnCollisionEffect(int pDamage)
+	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
 	{
 		//Debug.Log("todo: play collision sound, make effect...");
 	}

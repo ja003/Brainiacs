@@ -119,7 +119,7 @@ public class MapItem : MapObject
 			ICollisionHandler handler = hit.GetComponent<ICollisionHandler>();
 			if(handler != null)
 			{
-				handler.OnCollision(30, null);
+				handler.OnCollision(30, null, gameObject);
 			}
 			Debug.Log(hit.gameObject.name);
 		}
@@ -140,7 +140,7 @@ public class MapItem : MapObject
 		base.OnReturnToPool2();
 	}
 
-	protected override void OnCollisionEffect(int pDamage)
+	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
 	{
 		if(!isSpawned)
 			return;

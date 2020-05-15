@@ -83,7 +83,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 			return;
 		}
 
-		handler.OnCollision(damage, owner);
+		handler.OnCollision(damage, owner, gameObject);
 		Explode();
 	}
 

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Projectile : PoolObjectNetwork
+public class Projectile : PoolObjectNetwork, ITeleportable
 {
 
 	public Vector3 Direction { get; private set; }
@@ -140,7 +140,7 @@ public class Projectile : PoolObjectNetwork
 
 		bool result = false;
 		if(handler != null)
-			result = handler.OnCollision(config.Damage, Owner);
+			result = handler.OnCollision(config.Damage, Owner, gameObject);
 
 		if(result)
 			ReturnToPool();
@@ -158,41 +158,17 @@ public class Projectile : PoolObjectNetwork
 		game.ProjectileManager.OnDestroyProjectile(this);
 	}
 
-	// PHOTON
+	/// TELEPORT
 
-	//protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-	//{
-	//	base.HandleMsg(pReceivedMsg, pParams, bb);
-	//	switch(pReceivedMsg)
-	//	{
-	//		case EPhotonMsg.Projectile_Spawn:
-	//			Vector3 projectileDirection = (Vector3)pParams[0];
-	//			EWeaponId weapon = (EWeaponId)pParams[1];
-	//			EDirection playerDirection = (EDirection)pParams[2];
-	//			SetSpawn(projectileDirection, weapon, playerDirection);
+	public ITeleportable TeleportTo(Teleport pTeleport)
+	{
+		//simulated on owner side
+		if(!Owner.IsItMe)
+			return null;
 
-	//			break;
-	//	}
-	//}
-
-	//protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
-	//{
-	//	if(LocalImage)
-	//	{
-	//		LocalImage.HandleMsg(pMsgType, pParams);
-	//	}
-	//}
-
-	////internal void Destroy()
-	////{
-	////	PhotonNetwork.Destroy(view);
-	////	projectile.LocalImage?.Photon.Destroy();
-	////}
-
-	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
-	//{
-	//	return view.IsMine || LocalImage;
-	//}
-
-
+		Projectile newProjectile = game.ProjectileManager.SpawnProjectile(
+			pTeleport.OutPosition.position, Owner, config, pTeleport.OutDirection);
+		ReturnToPool();
+		return newProjectile;
+	}
 }
