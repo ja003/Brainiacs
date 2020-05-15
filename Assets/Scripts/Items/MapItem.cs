@@ -10,6 +10,8 @@ public class MapItem : MapObject
 	MapSpecialWeaponConfig weaponSpecialConfig;
 	PowerUpConfig powerUpConfig;
 
+	[SerializeField] SpriteRenderer explosion;
+
 	//[SerializeField] MapItemPhoton photon;
 
 	protected override void OnSetActive0(bool pValue)
@@ -17,6 +19,7 @@ public class MapItem : MapObject
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
 		circleCollider2D.enabled = false; //enabled only on explosion
+		explosion.enabled = false;
 	}
 
 	bool isSpawned;
@@ -104,6 +107,7 @@ public class MapItem : MapObject
 	private void Explode()
 	{
 		spriteRend.enabled = false;
+		explosion.enabled = true;
 		animator.SetBool("explode", true);
 		DoInTime(ApplyExplosion, 0.1f);
 	}
@@ -121,7 +125,7 @@ public class MapItem : MapObject
 			{
 				handler.OnCollision(30, null, gameObject);
 			}
-			Debug.Log(hit.gameObject.name);
+			//Debug.Log(hit.gameObject.name);
 		}
 
 	}

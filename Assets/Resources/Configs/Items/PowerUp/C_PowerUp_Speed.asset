@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 3
   MapItemInfo:
     MapSprite: {fileID: 21300000, guid: 28d74dbc196b26447af7d2ce423687aa, type: 3}
-    StatusSprite: {fileID: 21300000, guid: 28d74dbc196b26447af7d2ce423687aa, type: 3}
+    StatusSprite: {fileID: 21300000, guid: 9f8f8087289fba2458533c75c9176157, type: 3}
     StatusText: speed

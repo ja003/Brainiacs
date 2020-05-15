@@ -12,7 +12,7 @@ public static class DebugData
 
 	public static bool TestMP = false;
 
-	public static bool TestPlayers = false;
+	public static bool TestPlayers = true;
 	public static bool LocalImage = false;
 
 	private static int playerCount = 2;
@@ -23,49 +23,23 @@ public static class DebugData
 
 	public static bool TestNonAggressiveAi = true;
 
-	public static bool TestGenerateItems = false;
+	public static bool TestGenerateItems = true;
 	public static bool StopGenerateItems = !TestGenerateItems;
 
 	public static bool TestExtraPlayerItem = true;
 
-	public static EHero TestHero = EHero.Tesla;
+	public static EHero TestHero = EHero.Nobel;
 
 	public static int TestGameValue = 10;
 
-	public static EPowerUp TestPowerUp = EPowerUp.None;
+	public static EPowerUp TestPowerUp = EPowerUp.Mystery;
+	public static EPlayerEffect TestPlayerEffect = EPlayerEffect.DoubleDamage;
 
-	internal static void TestSetResults()
-	{
-		Brainiacs.Instance.GameResultInfo = new GameResultInfo();
+	public static EWeaponId TestMapWeapon = EWeaponId.None;
+	public static EWeaponId TestMapSpecialWeapon = EWeaponId.None;
 
-		PlayerScoreInfo result = PlayerScoreInfo.debug_PlayerResultInfo();
-		if(playerCount >= 1)
-		{
-			result.Hero = EHero.Nobel;
-			result.Name = $"test {result.Hero} player";
-			result.Kills = 2;
-			result.Deaths = 5;
-			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
-		}
-		if(playerCount >= 2)
-		{
-			result = PlayerScoreInfo.debug_PlayerResultInfo();
-			result.Hero = EHero.Tesla;
-			result.Name = $"test {result.Hero} player";
-			result.Kills = 0;
-			result.Deaths = 0;
-			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
-		}
-		if(playerCount >= 3)
-		{
-			result = PlayerScoreInfo.debug_PlayerResultInfo();
-			result.Name = "t Nobel";
-			result.Hero = EHero.Nobel;
-			result.Kills = 0;
-			result.Deaths = 0;
-			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
-		}
-	}
+
+
 
 	public static void TestSetGameInitInfo()
 	{
@@ -96,14 +70,8 @@ public static class DebugData
 		{
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.Einstein, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Green, EPlayerType.LocalPlayer);
-				//player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
-				//player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
-				//player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
-				//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
-				//player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
-				//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
+							TestHero, GetPlayerName(pPlayerNumber),
+							EPlayerColor.Green, EPlayerType.LocalPlayer);
 				player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
 				player.debug_StartupWeapon.Add(EWeaponId.MP40);
 				break;
@@ -125,6 +93,39 @@ public static class DebugData
 		return player;
 
 
+	}
+
+	internal static void TestSetResults()
+	{
+		Brainiacs.Instance.GameResultInfo = new GameResultInfo();
+
+		PlayerScoreInfo result = PlayerScoreInfo.debug_PlayerResultInfo();
+		if(playerCount >= 1)
+		{
+			result.Hero = TestHero;
+			result.Name = $"test {result.Hero} player";
+			result.Kills = 2;
+			result.Deaths = 5;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+		if(playerCount >= 2)
+		{
+			result = PlayerScoreInfo.debug_PlayerResultInfo();
+			result.Hero = EHero.Tesla;
+			result.Name = $"test {result.Hero} player";
+			result.Kills = 0;
+			result.Deaths = 0;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+		if(playerCount >= 3)
+		{
+			result = PlayerScoreInfo.debug_PlayerResultInfo();
+			result.Name = "t Nobel";
+			result.Hero = EHero.Nobel;
+			result.Kills = 0;
+			result.Deaths = 0;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
 	}
 
 	public static void OnBrainiacsAwake()
@@ -149,8 +150,8 @@ public static class DebugData
 		return "DEBUG_NAME";
 	}
 
-	
 
-	
+
+
 }
 

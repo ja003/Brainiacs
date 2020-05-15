@@ -126,11 +126,14 @@ public class PlayerItemController : PlayerBehaviour
 			case EWeaponId.Flamethrower:
 				weaponSpecial = new SpecialFlamethrowerNew(player, config);
 				break;
+			case EWeaponId.Mine:
+				weaponSpecial = new PlayerWeaponSpecial(player, config);
+				break;
 		}
 
 		if(weaponSpecial == null)
 		{
-			Debug.LogError("MapWeaponSpecial not defined for " + pWeapon);
+			Debug.LogError("AddMapWeaponSpecial not defined for " + pWeapon);
 			weaponSpecial = new PlayerWeaponSpecial(player, config);
 		}
 

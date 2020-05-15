@@ -158,6 +158,12 @@ public class PlayerPhotonController : PoolObjectPhoton
 				player.Visual.Scoreboard.SetScore(kills, deaths);
 				return;
 
+			case EPhotonMsg.Player_UI_SetEffectActive:
+				EPlayerEffect effect = (EPlayerEffect)pParams[0];
+				bool state = (bool)pParams[1];
+				player.Stats.StatsEffect.SetEffectActive(effect, state);
+				return;
+
 			case EPhotonMsg.Player_Visual_OnDamage:
 				player.Visual.OnDamage();
 				break;

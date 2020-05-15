@@ -80,7 +80,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	/// <summary>
 	/// Apply damage caused by pOrigin player.
-	/// MAYBE: origin can be null (map explosion, turret, ...) => TODO: test
+	/// Origin can be null (map explosion, turret, ...) => TODO: test
 	/// </summary>
 	public void ApplyDamage(int pDamage, Player pOwner)
 	{
@@ -88,6 +88,17 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		{
 			Debug.LogError($"Damage applied before player is inited. {player} | {pOwner}");
 			return;
+		}
+
+		//owner doesnt have to be set (item explosion, ..)
+		if(pOwner != null && !player.IsLocalImage) //effect would be applied 2* if local image
+		{
+			float damageMultiplier = pOwner.Stats.StatsEffect.GetDamageMultiplier();
+			if(damageMultiplier != 1)
+			{
+				Debug.Log($"Multiply damage {pDamage} x {damageMultiplier}");
+				pDamage = (int)(pDamage * damageMultiplier);
+			}
 		}
 
 		//todo animation

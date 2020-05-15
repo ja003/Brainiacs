@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 1
   MapItemInfo:
     MapSprite: {fileID: 21300000, guid: 101ab3a08e6871a4cacb465b14b6a277, type: 3}
-    StatusSprite: {fileID: 21300000, guid: 101ab3a08e6871a4cacb465b14b6a277, type: 3}
+    StatusSprite: {fileID: 21300000, guid: f5fb821830720774895810ebc0dae130, type: 3}
     StatusText: health

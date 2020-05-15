@@ -1,0 +1,1484 @@
+fileFormatVersion: 2
+guid: 402b452c4d18856499a86a6fd904da7c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5502175202562247860
+    second: special_curie_up_crash_0
+  - first:
+      213: -1618846031195622396
+    second: special_curie_up_crash_1
+  - first:
+      213: 3823208623443719543
+    second: special_curie_up_crash_2
+  - first:
+      213: -5427772952630365554
+    second: special_curie_up_crash_3
+  - first:
+      213: 104988565585701427
+    second: special_curie_up_crash_4
+  - first:
+      213: -4559268581188233978
+    second: special_curie_up_crash_5
+  - first:
+      213: 3536679914871703169
+    second: special_curie_up_crash_6
+  - first:
+      213: -8033305466439534102
+    second: special_curie_up_crash_7
+  - first:
+      213: 842002791181079563
+    second: special_curie_up_crash_8
+  - first:
+      213: -3517247457841808288
+    second: special_curie_up_crash_9
+  - first:
+      213: 1061108186019383851
+    second: special_curie_up_crash_10
+  - first:
+      213: 3882678393485954555
+    second: special_curie_up_crash_11
+  - first:
+      213: 7362136390181725990
+    second: special_curie_up_crash_12
+  - first:
+      213: 2285901094224997517
+    second: special_curie_up_crash_13
+  - first:
+      213: -2778042112811042104
+    second: special_curie_up_crash_14
+  - first:
+      213: 7505503645380012227
+    second: special_curie_up_crash_15
+  - first:
+      213: -8954375565292044399
+    second: special_curie_up_crash_16
+  - first:
+      213: -9151155320115234435
+    second: special_curie_up_crash_17
+  - first:
+      213: 3318819863615945042
+    second: special_curie_up_crash_18
+  - first:
+      213: 8507881199882698003
+    second: special_curie_up_crash_19
+  - first:
+      213: -5493197362895423437
+    second: special_curie_up_crash_20
+  - first:
+      213: -3239079215852502628
+    second: special_curie_up_crash_21
+  - first:
+      213: -6573134506948869565
+    second: special_curie_up_crash_22
+  - first:
+      213: 91169724519426359
+    second: special_curie_up_crash_23
+  - first:
+      213: 9123903451166869761
+    second: special_curie_up_crash_24
+  - first:
+      213: 1084852555451649621
+    second: special_curie_up_crash_25
+  - first:
+      213: -5395071472655975186
+    second: special_curie_up_crash_26
+  - first:
+      213: 7024617848469648848
+    second: special_curie_up_crash_27
+  - first:
+      213: 431599076317575470
+    second: special_curie_up_crash_28
+  - first:
+      213: 4147366430888242743
+    second: special_curie_up_crash_29
+  - first:
+      213: -7587858022226932049
+    second: special_curie_up_crash_30
+  - first:
+      213: 4924836483648777248
+    second: special_curie_up_crash_31
+  - first:
+      213: 3723582561642873267
+    second: special_curie_up_crash_32
+  - first:
+      213: 9028515715527636359
+    second: special_curie_up_crash_33
+  - first:
+      213: 3586566918106680963
+    second: special_curie_up_crash_34
+  - first:
+      213: -5978705298351174221
+    second: special_curie_up_crash_35
+  - first:
+      213: 1503511250289503864
+    second: special_curie_up_crash_36
+  - first:
+      213: -4221300508262273570
+    second: special_curie_up_crash_37
+  - first:
+      213: -5345833605840773634
+    second: special_curie_up_crash_38
+  - first:
+      213: 7498208913755005198
+    second: special_curie_up_crash_39
+  - first:
+      213: 8700220137207458792
+    second: special_curie_up_crash_40
+  - first:
+      213: 5635998311341408425
+    second: special_curie_up_crash_41
+  - first:
+      213: -8872902561504112854
+    second: special_curie_up_crash_42
+  - first:
+      213: -2004149397042346716
+    second: special_curie_up_crash_43
+  - first:
+      213: -713535037614382894
+    second: special_curie_up_crash_44
+  - first:
+      213: 2592455621852584346
+    second: special_curie_up_crash_45
+  - first:
+      213: -3310566689530566364
+    second: special_curie_up_crash_46
+  - first:
+      213: 9050870470732098546
+    second: special_curie_up_crash_47
+  - first:
+      213: -7905124168265336010
+    second: special_curie_up_crash_48
+  - first:
+      213: -5388570589105847225
+    second: special_curie_up_crash_49
+  - first:
+      213: -6401854809855999899
+    second: special_curie_up_crash_50
+  - first:
+      213: 5751007685369315624
+    second: special_curie_up_crash_51
+  - first:
+      213: 2176971051714174022
+    second: special_curie_up_crash_52
+  - first:
+      213: -3198605832386451950
+    second: special_curie_up_crash_53
+  - first:
+      213: -4897967425280121295
+    second: special_curie_up_crash_54
+  - first:
+      213: 2952610380609895921
+    second: special_curie_up_crash_55
+  - first:
+      213: 8968471937493814561
+    second: special_curie_up_crash_56
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: special_curie_up_crash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d704d4cbd4ca9248ac2d8f4e7ce8573
+      internalID: -5502175202562247860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_1
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab947203f777d5d4ea51e9d676050d1f
+      internalID: -1618846031195622396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_2
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15bd6c0a976e544292e443aab07f535
+      internalID: 3823208623443719543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_3
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f0bda296cb5c548b4b5ba2694b5d05
+      internalID: -5427772952630365554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_4
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7c7d0620a495f41b8576575895f201
+      internalID: 104988565585701427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_5
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1809.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350dc4b2a25228a4e8ec5d587ec6708a
+      internalID: -4559268581188233978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e046d384e7e9624093dc311d4cc37e8
+      internalID: 3536679914871703169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_7
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ac81ce9a1d07042890df71ae1c90ba
+      internalID: -8033305466439534102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_8
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a79cdb34ad8af44cbf86014a3d0c533
+      internalID: 842002791181079563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_9
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfaddfbbe53de9449ad6f1b9098e437
+      internalID: -3517247457841808288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_10
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f65e9cdf2d85d41b1ac08c8e7788be
+      internalID: 1061108186019383851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_11
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1608.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3bf8dec8eee254c979e2f7e7f57449
+      internalID: 3882678393485954555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b37960cc7603642b34a67a46b83abf
+      internalID: 7362136390181725990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_13
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d36bda116bcf140a2e0c3184e6ff8b
+      internalID: 2285901094224997517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_14
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d8231ae39c6db42b8f1b19fd8688d2
+      internalID: -2778042112811042104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_15
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b8fbdc79f29c3489550d0684e1f965
+      internalID: 7505503645380012227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_16
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7323f41e77800354bb337f202489eb09
+      internalID: -8954375565292044399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_17
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1407.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82131600bae415b448bdcd5eb1ee5652
+      internalID: -9151155320115234435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7281dd7f6566a5441bcf52070f305986
+      internalID: 3318819863615945042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_19
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa642e8df31d114b8a740ae99a19fed
+      internalID: 8507881199882698003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_20
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77db617c35305848839ccb23828dc41
+      internalID: -5493197362895423437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_21
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa45a7175d2df444bc869795fd6007a
+      internalID: -3239079215852502628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_22
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35c496c7b3f52749a160e57c0f47d03
+      internalID: -6573134506948869565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_23
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1206.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9d13bbdf828ef4c90ee80d04d55ae8
+      internalID: 91169724519426359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ec0ca4032629b4583f10ffd7e620cc
+      internalID: 9123903451166869761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_25
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aea12666109e65449789c507a232e5f
+      internalID: 1084852555451649621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_26
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2a1d8244301a04cbaa4ab9f1b1e719
+      internalID: -5395071472655975186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_27
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8df751732698f45a760ed7000edaae
+      internalID: 7024617848469648848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_28
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31128370d3324d449835ccd51e9d91de
+      internalID: 431599076317575470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_29
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1005.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0677d4d0c708b941b1125136d6400e4
+      internalID: 4147366430888242743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e84fc13725be55438449cafc5bdb258
+      internalID: -7587858022226932049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_31
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7a744771285e548b0995766d2b2f6a
+      internalID: 4924836483648777248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_32
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ebd4ea3b580a4f4f90244ef555bc062
+      internalID: 3723582561642873267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_33
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc1681ae4fb6da4890694cb0da82c1c
+      internalID: 9028515715527636359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_34
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae209d7f55090a148b3251cea46508a6
+      internalID: 3586566918106680963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_35
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 804.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bbb2018627e324dad462e6b494c1fd
+      internalID: -5978705298351174221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f29f2d6669985348a2b997e29275129
+      internalID: 1503511250289503864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_37
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 402e9556fc0fa87428a2971867807da1
+      internalID: -4221300508262273570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_38
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adaaa0de06c7fa3479fdd63625769737
+      internalID: -5345833605840773634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_39
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a54c9e4cb46c3a448baa404297ba46b
+      internalID: 7498208913755005198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_40
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153ae6fdcdcdf1a41b1b2801dbd5f191
+      internalID: 8700220137207458792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_41
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 603.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1362a30ff8dfe42b0e34bda32c860f
+      internalID: 5635998311341408425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d9a693dffb6624d9bfb540801996d4
+      internalID: -8872902561504112854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_43
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab5490a0416beb4d8d62e1c0d73f2e5
+      internalID: -2004149397042346716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_44
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0153d8e213655346aa2dd827855fcee
+      internalID: -713535037614382894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_45
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a837953f54dcf44e87e2b72769fc62d
+      internalID: 2592455621852584346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_46
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d2c89a9adc2fc440b499cec14c870d6
+      internalID: -3310566689530566364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_47
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 402.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a501593e54c2ba4b8a12265f7e95271
+      internalID: 9050870470732098546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd627fc9e192ca48abd346bcaf6a210
+      internalID: -7905124168265336010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_49
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4cf515964573b4c98b27e237d5888f
+      internalID: -5388570589105847225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_50
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17070f47549fe434fac7e85211065160
+      internalID: -6401854809855999899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_51
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dd8bd7c45240843a4923549bf204b1
+      internalID: 5751007685369315624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_52
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a3254eaeb603e34eb0262e4552cbb4e
+      internalID: 2176971051714174022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_53
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 201.9
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd97d9582e7d154687ff2dcace3acff
+      internalID: -3198605832386451950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.8999939
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14c53912ce924d4b87a189b332113d5
+      internalID: -4897967425280121295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_55
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 0.8999939
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233ae07125bd60a42889de65d3030588
+      internalID: 2952610380609895921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_curie_up_crash_56
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 0.8999939
+        width: 251.16667
+        height: 201.1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ba8b9d4de8c614c952337ebd9a2e1e
+      internalID: 8968471937493814561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

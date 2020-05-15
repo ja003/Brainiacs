@@ -11,13 +11,22 @@ public class UIPlayerStatusManager : MonoBehaviour
 {
 	[SerializeField] private UIPlayerStatus prefab = null;
 
+	[SerializeField] private UIPlayerEffect playerEffectPrefab = null;
+
+	public UIPlayerEffect InitPlayerEffect()
+	{
+		GameObject instance = InstanceFactory.Instantiate(playerEffectPrefab.gameObject, false);
+		instance.SetActive(true);
+		return instance.GetComponent<UIPlayerEffect>();
+	}
+
 	/// <summary>
 	/// Insatntiates the status at given position and sets the info (sprite, text).
-	/// For now only used for player. If needed alse, make this method public.
+	/// For now only used for player.
 	/// </summary>
 	public void ShowMapItem(Vector3 pWorldPosition, MapItemInfo pInfo)
 	{
-		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.MapSprite);
+		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.StatusSprite);
 	}
 
 	public void ShowHealth(Vector3 pWorldPosition, int pIncrement)
@@ -31,7 +40,7 @@ public class UIPlayerStatusManager : MonoBehaviour
 	public void ShowStatus(Vector3 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
 	{
 		//HACK: to hide adding debug weapons
-		if(Time.time < 1)
+		if(Time.time < 0.1f)
 			return;
 
 		//UIPlayerStatus instance = Instantiate(prefab, transform);

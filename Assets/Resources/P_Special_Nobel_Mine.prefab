@@ -94,12 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71139f3100bd6724fb980f49e03ba51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 
-  isPooled: 0
-  Photon: {fileID: 8300263889120918218}
-  IsPhotonInstantiated: 1
   InstanceOnEveryUse: 1
-  damage: 100
+  damage: 50
   mineSprite: {fileID: 1651846596320159259}
 --- !u!114 &1093813226932518741
 MonoBehaviour:
@@ -157,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
-  mine: {fileID: 954417216629635064}
+  debug_notMpMsgDelay: 0.1
 --- !u!1 &4240401200360451975
 GameObject:
   m_ObjectHideFlags: 0

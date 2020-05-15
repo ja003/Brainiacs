@@ -4,9 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Prefab shared by nobel special weapon and map weapon mine.
+/// Explosion damage is extra if the owner is Nobel.
+/// </summary>
 public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 {
-	[SerializeField] int damage = 100;
+	[SerializeField] int damage; //base damage. if owner is Nobel => 2 * damage
+
 	//[SerializeField] Animator mineAnimator = null;
 	[SerializeField] SpriteRenderer mineSprite = null;
 	//[SerializeField] SpecialNobelMinePhoton photon = null;
@@ -41,22 +46,8 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		boxCollider2D.enabled = pValue && owner.IsItMe;
 	}
 
-	//public void Spawn(Player pOwner)
-	//   {
-	//	Debug.Log(gameObject.name + " spawn");
-	//	owner = pOwner;
-	//	//spriteRend.enabled = false; //this is just holder, anmator is in child
-	//	SetActive(true);
-	//	mineSprite.sortingOrder = pOwner.Visual.GetProjectileSortOrder();
-
-	//	Photon.Send(EPhotonMsg.Special_Nobel_Spawn, pOwner.InitInfo.Number);
-
-	//	//mine is simulated only on its owner side
-	//	boxCollider2D.enabled = pOwner.IsItMe;
-	//}
-
 	private void OnTriggerEnter2D(Collider2D collision)
-    {
+	{
 		if(!owner.IsItMe)
 		{
 			Debug.LogError("Mine shouldnt be triggered on its owner image side");
@@ -83,7 +74,8 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 			return;
 		}
 
-		handler.OnCollision(damage, owner, gameObject);
+		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damage * 2 : damage;
+		handler.OnCollision(finalDamage, owner, gameObject);
 		Explode();
 	}
 

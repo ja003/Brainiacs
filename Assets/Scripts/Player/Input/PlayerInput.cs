@@ -105,7 +105,7 @@ public class PlayerInput : PlayerBehaviour
 		//HACK
 		if(Input.GetKeyDown(KeyCode.Backslash))
 		{
-			player.Stats.SetSpeed(10, 1);
+			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, 1);
 		}
 	}
 

@@ -15,5 +15,5 @@ MonoBehaviour:
   Type: 4
   MapItemInfo:
     MapSprite: {fileID: 21300000, guid: cc846ef0a7dc1824e8f47da71630511d, type: 3}
-    StatusSprite: {fileID: 21300000, guid: cc846ef0a7dc1824e8f47da71630511d, type: 3}
+    StatusSprite: {fileID: 21300000, guid: e5041c89269647345ad9077416427db3, type: 3}
     StatusText: mystery

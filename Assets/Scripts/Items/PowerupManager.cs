@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public static class PowerupManager
 {
 	private const int SHIELD_DURATION = 5;
-	private const int SPEED_VALUE = 5;
+	//private const int SPEED_VALUE = 5;
 	private const int SPEED_DURATION = 5;
 
 	public static void HandlePowerup(PowerUpConfig pConfig, Player pPlayer)
@@ -19,7 +19,7 @@ public static class PowerupManager
 		//show status
 		Game.Instance.PlayerStatusManager.ShowStatus(pPlayer.Stats.MapItemUiPosition.position,
 			statusMessage.Length > 0 ? statusMessage : pConfig.MapItemInfo.StatusText,
-			pConfig.MapItemInfo.MapSprite);
+			pConfig.MapItemInfo.StatusSprite);
 	}
 
 	/// <summary>
@@ -36,12 +36,12 @@ public static class PowerupManager
 				pPlayer.WeaponController.OnPowerUpAmmo();
 				break;
 			case EPowerUp.Speed:
-				pPlayer.Stats.SetSpeed(SPEED_VALUE, SPEED_DURATION);
+				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, SPEED_DURATION);//, SPEED_VALUE);
 				break;
 			case EPowerUp.Mystery:
 				return HandleMystery(pPlayer);
 			case EPowerUp.Shield:
-				pPlayer.Stats.SetShield(SHIELD_DURATION);
+				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.Shield, SHIELD_DURATION);
 				break;
 			default:
 				Debug.LogError($"Powerup {pConfig.Type} not handled!");
@@ -55,14 +55,42 @@ public static class PowerupManager
 	/// </summary>
 	private static string HandleMystery(Player pPlayer)
 	{
-		const int chance_ammo = 20;
-		const int chance_health = 40;
-		const int chance_speed = 60;
-		const int chance_shield = 70;
-		const int chance_damage = 80;
-		const int chance_double_damage = 100;
-		float random = Random.Range(0, chance_double_damage);
+		const int chance_ammo = 5;
+		const int chance_health = 10;
+		const int chance_speed = 20;
+		const int chance_shield = 30;
+		const int chance_receive_damage = 40;
+
+		//todo: general method for weighted random
+		const int chance_effect_half_speed = 50;
+		const int chance_effect_double_damage = 60;
+		const int chance_effect_half_damage = 70;
+
+
+		float random = Random.Range(0, chance_effect_half_damage);
 		//Debug.Log($"random = {random}");
+		if(DebugData.TestPlayerEffect != EPlayerEffect.None)
+		{
+			switch(DebugData.TestPlayerEffect)
+			{
+				case EPlayerEffect.None:
+					break;
+				case EPlayerEffect.DoubleSpeed:
+					break;
+				case EPlayerEffect.HalfSpeed:
+					break;
+				case EPlayerEffect.Shield:
+					break;
+				case EPlayerEffect.DoubleDamage:
+					random = chance_effect_double_damage;
+					break;
+				case EPlayerEffect.HalfDamage:
+					break;
+				default:
+					break;
+			}
+			random -= 1;
+		}
 
 		EPowerUp type = EPowerUp.None;
 
@@ -82,16 +110,28 @@ public static class PowerupManager
 		{
 			type = EPowerUp.Shield;
 		}
-		else if(random < chance_damage)
+		else if(random < chance_receive_damage)
 		{
 			pPlayer.Stats.AddHealth(-20);
 			return "- health";
 		}
-		else if(random < chance_double_damage)
+
+		else if(random < chance_effect_half_speed)
 		{
-			pPlayer.Stats.AddHealth(-40);
-			return "- health";
+			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfSpeed, 5);
+			return "- speed";
 		}
+		else if(random < chance_effect_double_damage)
+		{
+			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleDamage, 5);
+			return "+ damage";
+		}
+		else if(random < chance_effect_half_damage)
+		{
+			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfDamage, 5);
+			return "- damage";
+		}
+
 		
 		return ApplyPowerup(Brainiacs.Instance.ItemManager.GetPowerupConfig(type), pPlayer);
 	}

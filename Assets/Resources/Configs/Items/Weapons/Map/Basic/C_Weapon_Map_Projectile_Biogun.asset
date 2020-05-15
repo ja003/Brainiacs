@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8afe60c1ead684198e1af59ffb55cb, type: 3}
+  m_Name: C_Weapon_Map_Projectile_Biogun
+  m_EditorClassIdentifier: 
+  Id: 12
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 7358522245313549249, guid: 0af2568836fb9ed429aba9225892ecb6,
+      type: 3}
+    PlayerSpriteRight: {fileID: 7403081047173714228, guid: 0af2568836fb9ed429aba9225892ecb6,
+      type: 3}
+    playerSpriteDown: {fileID: -2327886522148542573, guid: 0af2568836fb9ed429aba9225892ecb6,
+      type: 3}
+    PlayerSpriteLeft: {fileID: -6472043869732963004, guid: 0af2568836fb9ed429aba9225892ecb6,
+      type: 3}
+    DisableHandsUp: 0
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 0
+    InfoSprite: {fileID: 21300000, guid: 2dbafe89849424049a9e5c006b73cdda, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 6f74264871613bd4e8a2e789dd36a6e0, type: 3}
+    StatusSprite: {fileID: 21300000, guid: 53fc75feb5e44ac4ba0bac9861a0574a, type: 3}
+    StatusText: biogun
+  InHandWeaponInfo:
+    Ammo: 20
+    Magazines: 3
+    Cooldown: 3
+    Cadency: 0.2
+  ProjectileInfo:
+    Projectile: {fileID: 11400000, guid: 1565afca7d6fea749bd40e6c9d0bef86, type: 2}

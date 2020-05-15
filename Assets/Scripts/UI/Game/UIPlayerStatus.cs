@@ -13,10 +13,11 @@ public class UIPlayerStatus : UiBehaviour
 	{
 		gameObject.SetActive(true);
 
-		Vector2 screenPosition = GetScreenPosition(pWorldPosition);
+		SetPosition(pWorldPosition);
 
-		transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
-		rectTransform.anchoredPosition = screenPosition;
+		//Vector2 screenPosition = GetScreenPosition(pWorldPosition);
+		//transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
+		//rectTransform.anchoredPosition = screenPosition;
 
 		//Debug.Log($"Screen {Screen.width} x {Screen.height}");
 		//Debug.Log($"SpawnAt {viewportPos} => {screenPosition.x} ; {screenPosition.y}");
@@ -47,21 +48,7 @@ public class UIPlayerStatus : UiBehaviour
 		rectTransform.anchoredPosition = screenPosition;
 	}
 
-	private Vector2 GetScreenPosition(Vector3 pWorldPos)
-	{
-		Utils.DebugDrawCross(pWorldPos, Color.red);
-
-		Vector3 canvasScale = game.UiCanvas.transform.localScale;
-		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPos);
-
-		float x = viewportPos.x * Screen.width - Screen.width / 2;
-		float y = viewportPos.y * Screen.height - Screen.height / 2;
-		x /= canvasScale.x;
-		y /= canvasScale.y;
-
-		Vector2 screenPosition = new Vector2(x, y);
-		return screenPosition;
-	}
+	
 
 	public void anim_OnAnimFinished()
 	{

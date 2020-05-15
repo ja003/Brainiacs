@@ -222,6 +222,9 @@ public enum EPhotonMsg
 
 	Player_UI_Scoreboard_SetScore,
 
+	Player_UI_SetEffectActive,
+
+
 	//Projectile
 	Projectile_Spawn,
 	// - projectile is Destroyed using PhotonNetwork.Destroy => no need for message

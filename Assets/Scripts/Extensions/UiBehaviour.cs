@@ -9,7 +9,32 @@ public class UiBehaviour : MonoBehaviour
 {
 	protected Brainiacs brainiacs => Brainiacs.Instance;
 	protected Game game => Game.Instance;
-	
+
+	protected Vector2 GetScreenPosition(Vector3 pWorldPos)
+	{
+		Utils.DebugDrawCross(pWorldPos, Color.red);
+
+		Vector3 canvasScale = game.UiCanvas.transform.localScale;
+		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPos);
+
+		float x = viewportPos.x * Screen.width - Screen.width / 2;
+		float y = viewportPos.y * Screen.height - Screen.height / 2;
+		x /= canvasScale.x;
+		y /= canvasScale.y;
+
+		Vector2 screenPosition = new Vector2(x, y);
+		return screenPosition;
+	}
+
+	public void SetPosition(Vector3 pWorldPosition)
+	{
+		Vector2 screenPosition = GetScreenPosition(pWorldPosition);
+
+		transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
+		rectTransform.anchoredPosition = screenPosition;
+	}
+
+
 	private RectTransform _rectTransform;
 	protected RectTransform rectTransform
 	{

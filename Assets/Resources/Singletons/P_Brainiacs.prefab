@@ -89,6 +89,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49f46412e7db7aa4a91872a03834641e, type: 2}
   MapWeaponsSpecial:
   - {fileID: 11400000, guid: f4aa2047e2575ba40a8f4856bd863f71, type: 2}
+  - {fileID: 11400000, guid: c5dcd4a037b05db4d93a628e5744517a, type: 2}
   PowerUps:
   - {fileID: 11400000, guid: 4f533f16f3e36ab41bd96b0956bb7a90, type: 2}
   - {fileID: 11400000, guid: 58d67243edc17b344ba83f4bb1ddd5ae, type: 2}

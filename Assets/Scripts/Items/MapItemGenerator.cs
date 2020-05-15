@@ -52,6 +52,10 @@ public class MapItemGenerator : GameBehaviour
 		EMapItem nextItemType = GetNextMapItemType();
 		if(DebugData.TestPowerUp != EPowerUp.None)
 			nextItemType = EMapItem.PowerUp;
+		else if(DebugData.TestMapWeapon != EWeaponId.None)
+			nextItemType = EMapItem.Weapon;
+		else if(DebugData.TestMapSpecialWeapon != EWeaponId.None)
+			nextItemType = EMapItem.SpecialWeapon;
 
 		int randomIndex = GetRandomItemIndex(nextItemType);
 		Vector3 randomPosition = GetRandomPosition();
@@ -88,8 +92,18 @@ public class MapItemGenerator : GameBehaviour
 				return Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
 			case EMapItem.Weapon:
 			case EMapItem.Weapon2:
+				if(DebugData.TestMapWeapon != EWeaponId.None)
+				{
+					return brainiacs.ItemManager.MapWeapons
+						  .FindIndex(a => a.Id == DebugData.TestMapWeapon);
+				}
 				return Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 			case EMapItem.SpecialWeapon:
+				if(DebugData.TestMapSpecialWeapon != EWeaponId.None)
+				{
+					return brainiacs.ItemManager.MapWeaponsSpecial
+						  .FindIndex(a => a.Id == DebugData.TestMapSpecialWeapon);
+				}
 				return Random.Range(0, brainiacs.ItemManager.MapWeaponsSpecial.Count);
 		}
 		Debug.LogError("Invalid item type");

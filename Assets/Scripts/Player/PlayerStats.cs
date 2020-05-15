@@ -16,12 +16,18 @@ public class PlayerStats : PlayerBehaviour
 
 	private const float DEFAULT_SPEED = 1;
 	private const int MAX_HEALTH = 100;
-	public float Speed { get; private set; } = DEFAULT_SPEED;
+	public float Speed { 
+		get {
+			return DEFAULT_SPEED 
+				+ StatsEffect.GetEffectValue(EPlayerEffect.DoubleSpeed)
+				- StatsEffect.GetEffectValue(EPlayerEffect.HalfSpeed);
+		}
+	}
 	public int Health { get; private set; } = 90;
 
 	public int Kills { get; private set; }
 
-	private bool isShielded;
+	private bool isShielded => StatsEffect.GetEffectValue(EPlayerEffect.Shield) > 0;
 
 	public PlayerInitInfo Info => player.InitInfo;
 
@@ -32,10 +38,17 @@ public class PlayerStats : PlayerBehaviour
 	//change of health info
 	[SerializeField] public Transform HealthUiPosition;
 
+	[SerializeField] public PlayerStatsEffectController StatsEffect;
+
 	public void SetOnStatsChange(Action<PlayerStats> pAction)
 	{
 		onStatsChange += pAction;
 		onStatsChange.Invoke(this);
+	}
+
+	private float GetSpeed()
+	{
+		return DEFAULT_SPEED;
 	}
 
 	public void Init()
@@ -79,15 +92,6 @@ public class PlayerStats : PlayerBehaviour
 
 
 
-	//todo: implement effect management
-	//if SetSpeed is called twice the first call will cancel effect
-	//of the second one
-	public void SetSpeed(float pSpeed, float pDuration)
-	{
-		Debug.Log($"{player.InitInfo.Name} set speed {pSpeed}");
-		Speed = pSpeed;
-		DoInTime(() => Speed = DEFAULT_SPEED, pDuration);
-	}
 
 	public void OnRespawn()
 	{
@@ -165,11 +169,22 @@ public class PlayerStats : PlayerBehaviour
 		//}
 	}
 
-	public void SetShield(float pDuration)
-	{
-		isShielded = true;
-		DoInTime(() => isShielded = false, pDuration);
-	}
+
+	//todo: implement effect management
+	//if SetSpeed is called twice the first call will cancel effect
+	//of the second one
+	//public void SetSpeed(float pSpeed, float pDuration)
+	//{
+	//	Debug.Log($"{player.InitInfo.Name} set speed {pSpeed}");
+	//	Speed = pSpeed;
+	//	DoInTime(() => Speed = DEFAULT_SPEED, pDuration);
+	//}
+
+	//public void SetShield(float pDuration)
+	//{
+	//	isShielded = true;
+	//	DoInTime(() => isShielded = false, pDuration);
+	//}
 }
 
 public enum EPlayerStats

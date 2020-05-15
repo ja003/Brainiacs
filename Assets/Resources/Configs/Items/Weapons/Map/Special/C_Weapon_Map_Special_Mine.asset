@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf3ec5f835350e4f9d928ca01f37763, type: 3}
+  m_Name: C_Weapon_Map_Special_Mine
+  m_EditorClassIdentifier: 
+  Id: 51
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 2344501625228020717, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    PlayerSpriteRight: {fileID: 1333210991162891809, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    playerSpriteDown: {fileID: -3910691347657451504, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    PlayerSpriteLeft: {fileID: -1304705926075300605, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    DisableHandsUp: 0
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 0
+    InfoSprite: {fileID: 21300000, guid: 89d2e66454c48054fb590d9191311bbc, type: 3}
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: 351a13ae709d3ee4b9e36125b171f39d, type: 3}
+    StatusSprite: {fileID: 21300000, guid: c395e683dc382f74ca0815d8d1715f44, type: 3}
+    StatusText: mine
+  SpecialWeaponInfo:
+    InHandInfo:
+      Ammo: 0
+      Magazines: 0
+      Cooldown: 0
+      Cadency: 0
+    Prefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887, type: 3}
+  InHandInfo:
+    Ammo: 1
+    Magazines: 3
+    Cooldown: 1
+    Cadency: 1
