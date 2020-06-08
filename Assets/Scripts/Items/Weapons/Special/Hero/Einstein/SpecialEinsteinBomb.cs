@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 {
@@ -19,7 +20,7 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 	protected override void OnUse()
 	{
 		SetActive(true);
-		Vector3 target = GetTargetPosition();
+		Vector2 target = GetTargetPosition();
 		if(!owner.IsLocalImage)
 		{
 			FallOn(target);
@@ -43,9 +44,9 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 	}
 
 
-	public void FallOn(Vector3 pTarget)
+	public void FallOn(Vector2 pTarget)
 	{
-		transform.position = pTarget + Vector3.up * 10;
+		transform.position = pTarget + Vector2.up * 10;
 		LeanTween.moveY(gameObject, pTarget.y, 2).setOnComplete(Explode);
 		Photon.Send(EPhotonMsg.Special_Einstein_FallOn, pTarget);
 
@@ -66,8 +67,25 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 			ReturnToPool();
 	}
 
-	private Vector3 GetTargetPosition()
+	private Vector2 GetTargetPosition()
 	{
-		return Vector3.zero;
+		var otherPlayers = game.PlayerManager.GetOtherPlayers(owner, true);
+		Vector2 targetedPlayerPos;
+
+		if(otherPlayers.Count == 0)
+			targetedPlayerPos = owner.transform.position;
+		else
+		{
+			int randomPlayerIndex = Random.Range(0, otherPlayers.Count);
+			targetedPlayerPos = otherPlayers[randomPlayerIndex].transform.position;
+		}
+		const float target_offset = 1f;
+		Vector2 randomOffset = new Vector2(
+				Random.Range(-target_offset, target_offset),
+				Random.Range(-target_offset, target_offset));
+		Vector2 finalTargetPos = targetedPlayerPos + randomOffset;
+
+		Utils.DebugDrawCross(finalTargetPos, Color.cyan, 1);
+		return finalTargetPos;
 	}
 }

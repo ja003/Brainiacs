@@ -31,7 +31,7 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 
     protected override void OnUse()
     {
-        Vector3 spawnPos = owner.WeaponController.GetProjectileStart().position;
+        Vector2 spawnPos = owner.WeaponController.GetProjectileStart().position;
         cloneInstance = InstanceFactory.Instantiate(playerPrefab.gameObject, spawnPos).GetComponent<Player>();
         PlayerInitInfo info = owner.InitInfo.Clone();
         info.PlayerType = EPlayerType.AI;

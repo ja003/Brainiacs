@@ -27,7 +27,9 @@ public class PlayerStats : PlayerBehaviour
 
 	public int Kills { get; private set; }
 
-	private bool isShielded => StatsEffect.GetEffectValue(EPlayerEffect.Shield) > 0;
+	public bool IsShielded => StatsEffect.GetEffectValue(EPlayerEffect.Shield) > 0
+		|| (DebugData.TestShield 
+		&& player.InitInfo.PlayerType == EPlayerType.LocalPlayer); //test only on me
 
 	public PlayerInitInfo Info => player.InitInfo;
 
@@ -103,9 +105,9 @@ public class PlayerStats : PlayerBehaviour
 		if(IsDead && !pRespawn)
 			return;
 
-		if(pIncrement < 0 && isShielded)
+		if(pIncrement < 0 && (IsShielded || DebugData.TestImmortality))
 		{
-			Debug.Log($"{player.InitInfo.Name} is invurnelable");
+			//Debug.Log($"{player.InitInfo.Name} is invurnelable");
 			return;
 		}
 
@@ -155,36 +157,8 @@ public class PlayerStats : PlayerBehaviour
 			//local player doesnt send stat info to its image
 			return;
 		}
-
-		//if(player.IsInited)
-		//{
-		//	//player image can only send info about kill - the rest
-		//	//is handled at local player
-		//	if(pType != EPlayerStats.Kills)
-		//	{
-		//		return;
-		//	}
-
-		//	player.Network.Send(EPhotonMsg.Player_AddKill, pForce);
-		//}
 	}
 
-
-	//todo: implement effect management
-	//if SetSpeed is called twice the first call will cancel effect
-	//of the second one
-	//public void SetSpeed(float pSpeed, float pDuration)
-	//{
-	//	Debug.Log($"{player.InitInfo.Name} set speed {pSpeed}");
-	//	Speed = pSpeed;
-	//	DoInTime(() => Speed = DEFAULT_SPEED, pDuration);
-	//}
-
-	//public void SetShield(float pDuration)
-	//{
-	//	isShielded = true;
-	//	DoInTime(() => isShielded = false, pDuration);
-	//}
 }
 
 public enum EPlayerStats

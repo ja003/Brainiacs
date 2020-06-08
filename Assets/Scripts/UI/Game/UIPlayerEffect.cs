@@ -17,6 +17,11 @@ public class UIPlayerEffect : UiBehaviour
         GetIconObject(pType).SetActive(pState);
     }
 
+    public bool IsEffectActive(EPlayerEffect pType)
+    {
+        return GetIconObject(pType).activeSelf;
+    }
+
     private GameObject GetIconObject(EPlayerEffect pType)
     {
         switch(pType)

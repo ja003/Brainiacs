@@ -28,6 +28,22 @@ public static class Utils
 		return new Vector2(vec.x, vec.y);
 	}
 
+	public static EDirection GetDirection(Vector2 pDirection)
+	{
+		float angle = Vector2.SignedAngle(Vector2.right, pDirection);
+		if(angle >= -45 && angle < 45)
+			return EDirection.Right;
+		if(angle >= 45 && angle < 135)
+			return EDirection.Up;
+		if(angle >= -135 && angle < -45)
+			return EDirection.Down;
+		if(angle >= 135 || angle < -135)
+			return EDirection.Left;
+
+		Debug.LogError("Incorrect angle calculation for " + pDirection);
+		return EDirection.None;
+	}
+
 	/// <summary>
 	/// Returns Z rotation vector. Right = 0
 	/// </summary>
@@ -37,16 +53,16 @@ public static class Utils
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				result =  new Vector3(0, 0, 90);
+				result = new Vector3(0, 0, 90);
 				break;
 			case EDirection.Right:
-				result = Vector3.zero;
+				result = Vector2.zero;
 				break;
 			case EDirection.Down:
 				result = new Vector3(0, 0, -90);
 				break;
 			case EDirection.Left:
-				result =  new Vector3(0, 0, 180);
+				result = new Vector3(0, 0, 180);
 				break;
 		}
 		result.z += pOffset;
@@ -77,6 +93,7 @@ public static class Utils
 		return UnityEngine.Random.Range(0, 2) == 1;
 	}
 
+
 	/// <summary>
 	/// Return direction rotated by 90 clockwise
 	/// </summary>
@@ -106,12 +123,61 @@ public static class Utils
 		return values;
 	}
 
-	internal static void DebugDrawCross(Vector3 pPosition, Color pColor, float pDuration = 0.5f)
+	internal static void DebugDrawCross(Vector2 pPosition, Color pColor, float pDuration = -1)
 	{
-		const float length = 0.1f;
+		if(pDuration <= 0)
+			pDuration = Time.deltaTime;
+
+		const float length = 0.05f;
 		//const float duration = 0.5f;
-		Debug.DrawLine(pPosition + Vector3.left * length, pPosition + Vector3.right * length, pColor, pDuration);
-		Debug.DrawLine(pPosition + Vector3.down * length, pPosition + Vector3.up * length, pColor, pDuration);
+		Debug.DrawLine(pPosition + Vector2.left * length, pPosition + Vector2.right * length, pColor, pDuration);
+		Debug.DrawLine(pPosition + Vector2.down * length, pPosition + Vector2.up * length, pColor, pDuration);
+	}
+
+
+	internal static void DebugDrawPath(List<Vector2> pPath, Color pColor, float pDuration = -1)
+	{
+		if(pDuration <= 0)
+			pDuration = Time.deltaTime;
+
+		for(int i = 0; i < pPath.Count - 1; i++)
+		{
+			float val = (float)i / pPath.Count;
+			Color c = new Color(val, val, val);
+			DebugDrawCross(pPath[i], c, pDuration);
+			Debug.DrawLine(pPath[i], pPath[i + 1], pColor, pDuration);
+		}
+	}
+
+	internal static void DebugDrawRect(Vector2 pTopLeft, Vector2 pBotRight, Color pColor, float pDuration = -1)
+	{
+		if(pDuration <= 0)
+			pDuration = Time.deltaTime;
+
+		Vector2 topRight = new Vector2(pBotRight.x, pTopLeft.y);
+		Vector2 botLeft = new Vector2(pTopLeft.x, pBotRight.y);
+		List<Vector2> boxPath = new List<Vector2>()
+		{
+			topRight, pBotRight, botLeft, pTopLeft, topRight
+		};
+		DebugDrawPath(boxPath, pColor, pDuration);
+	}
+
+
+	internal static void DebugDrawBox(Vector2 pCenter, Vector2 pSize, Color pColor, float pDuration = -1)
+	{
+		if(pDuration <= 0)
+			pDuration = Time.deltaTime;
+
+		Vector2 topRight = pCenter + pSize / 2;
+		Vector2 botRight = topRight + Vector2.down * pSize.y;
+		Vector2 botLeft = topRight - pSize;
+		Vector2 topLeft = topRight + Vector2.left * pSize.x;
+		List<Vector2> boxPath = new List<Vector2>()
+		{
+			topRight, botRight, botLeft, topLeft, topRight
+		};
+		DebugDrawPath(boxPath, pColor, pDuration);
 	}
 
 	internal static bool IsSameSign(float pNum1, float pNum2, bool pIgnoreZero)
@@ -122,8 +188,25 @@ public static class Utils
 		return Mathf.Sign(pNum1) == Mathf.Sign(pNum2);
 	}
 
-	internal static bool IsNumEqual(float pNumber, int pValue)
+	internal static bool IsNumEqual(float pNumber, int pValue, float pTolerance = -1)
 	{
-		return Mathf.Abs(pNumber - pValue) < float.Epsilon;
+		if(pTolerance < 0)
+			pTolerance = float.Epsilon;
+		return Mathf.Abs(pNumber - pValue) < pTolerance;
+	}
+
+	/// <summary>
+	/// List<Vector2>.Contains doesnt seem to work correctly, probably due to float error
+	/// </summary>
+	internal static bool ContainsPoint(List<Vector2> pList, Vector2 pPoint, float pTollerance = 0.1f)
+	{
+		//start search from the last element => in this scope usually more effective
+		for(int i = pList.Count - 1; i >=0; i--)
+		{
+			Vector2 p = pList[i];
+			if(Vector2.Distance(p, pPoint) < pTollerance)
+				return true;
+		}
+		return false;
 	}
 }

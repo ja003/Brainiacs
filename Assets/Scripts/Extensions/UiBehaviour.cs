@@ -10,11 +10,11 @@ public class UiBehaviour : MonoBehaviour
 	protected Brainiacs brainiacs => Brainiacs.Instance;
 	protected Game game => Game.Instance;
 
-	protected Vector2 GetScreenPosition(Vector3 pWorldPos)
+	protected Vector2 GetScreenPosition(Vector2 pWorldPos)
 	{
-		Utils.DebugDrawCross(pWorldPos, Color.red);
+		//Utils.DebugDrawCross(pWorldPos, Color.red);
 
-		Vector3 canvasScale = game.UiCanvas.transform.localScale;
+		Vector2 canvasScale = game.UiCanvas.transform.localScale;
 		Vector2 viewportPos = Camera.main.WorldToViewportPoint(pWorldPos);
 
 		float x = viewportPos.x * Screen.width - Screen.width / 2;
@@ -26,11 +26,11 @@ public class UiBehaviour : MonoBehaviour
 		return screenPosition;
 	}
 
-	public void SetPosition(Vector3 pWorldPosition)
+	public void SetPosition(Vector2 pWorldPosition)
 	{
 		Vector2 screenPosition = GetScreenPosition(pWorldPosition);
 
-		transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
+		transform.localScale = Vector2.one; //scale bug (sometimes it is changed?)
 		rectTransform.anchoredPosition = screenPosition;
 	}
 

@@ -44,7 +44,7 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 			return;
 		}
 
-		float dist = Vector3.Distance(transform.position, collision.transform.position);
+		float dist = Vector2.Distance(transform.position, collision.transform.position);
 		float factor = circleCollider2D.radius - dist;
 		
 		float damage = Mathf.Lerp(maxDamage / 10f, maxDamage, factor);

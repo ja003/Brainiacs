@@ -23,15 +23,15 @@ public class PoolManager : GameController, IPunPrefabPool
 
     //public GameObject Instantiate(GameObject pPrefab)
     //{
-    //    return Instantiate(pPrefab, Vector3.zero);
+    //    return Instantiate(pPrefab, Vector2.zero);
     //}
 
-    //public GameObject Instantiate(GameObject pPrefab, Vector3 pPosition)
+    //public GameObject Instantiate(GameObject pPrefab, Vector2 pPosition)
     //{
     //    return Instantiate(pPrefab.name, pPosition);
     //}
 
-    //public GameObject Instantiate(string prefabId, Vector3 position)
+    //public GameObject Instantiate(string prefabId, Vector2 position)
     //{
     //    return Instantiate(prefabId, position, Quaternion.identity);
     //}

@@ -20,10 +20,8 @@ public class Player : PoolObjectNetwork
 	[SerializeField] public PlayerStats Stats;
 	//[SerializeField] public PlayerPhotonController Photon;
 	[SerializeField] public PlayerMovement Movement;
-
 	[SerializeField] public PlayerAiBrain ai;
-
-	public BoxCollider2D Collider => boxCollider2D;
+	
 	public PlayerInitInfo InitInfo;
 
 	//should be called only after player is inited
@@ -33,10 +31,28 @@ public class Player : PoolObjectNetwork
 	//should be called only on update checks, not during an initializing method.
 	public bool IsInitedAndMe => IsInited && IsItMe;
 
+	
+
 	//DEBUG
 	[NonSerialized] public Player LocalImage;
 	[NonSerialized] public Player LocalImageOwner;
 	[NonSerialized] public bool IsLocalImage;
+
+
+    public Vector2 Position => Collider.bounds.center;
+    public Vector3 Position3D => Collider.bounds.center;
+
+	public BoxCollider2D Collider => boxCollider2D;
+	//this is just "estimated size", not actual collider size (which is rectangle)
+	public const float COLLIDER_SIZE = 0.5f;
+	//actual collider size - just static getter (used in PathFinder)
+	public static Vector2 ColliderSize;
+
+	protected override void Awake()
+	{
+		ColliderSize = boxCollider2D.size;
+		base.Awake();
+	}
 
 	protected override void OnSetActive0(bool pValue)
 	{
@@ -54,7 +70,7 @@ public class Player : PoolObjectNetwork
 		}
 	}
 
-	public void SetInfo(PlayerInitInfo pPlayerInfo, bool pIsLocalImage, Vector3? pSpawnPosition = null)
+	public void SetInfo(PlayerInitInfo pPlayerInfo, bool pIsLocalImage, Vector2? pSpawnPosition = null)
 	{
 		//Debug.Log($"{this} SetInfo");
 
@@ -74,7 +90,7 @@ public class Player : PoolObjectNetwork
 		Init();
 
 		//if spawn pos is null, player is already spawned, but Movement should be still initialized
-		Vector3 spawnPosition = pSpawnPosition != null ? (Vector3)pSpawnPosition : transform.position;
+		Vector2 spawnPosition = pSpawnPosition != null ? (Vector2)pSpawnPosition : Position;
 		Movement.SpawnAt(spawnPosition);
 
 		((PlayerPhotonController)Photon).Init2(pPlayerInfo);
@@ -98,14 +114,14 @@ public class Player : PoolObjectNetwork
 	/// <summary>
 	/// True if pPosition is inside of players collider
 	/// </summary>
-	public bool CollidesWith(Vector3 pPosition)
+	public bool CollidesWith(Vector2 pPosition)
 	{
 		return boxCollider2D.OverlapPoint(pPosition);
 	}
 
-	public float GetDistance(Vector3 pPosition)
+	public float GetDistance(Vector2 pPosition)
 	{
-		return Vector3.Distance(transform.position, pPosition);
+		return Vector2.Distance(transform.position, pPosition);
 	}
 
 	public ActionControl OnPlayerInited = new ActionControl();

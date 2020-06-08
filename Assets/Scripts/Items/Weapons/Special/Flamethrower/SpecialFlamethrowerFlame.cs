@@ -88,16 +88,16 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		Player player = pCollision.gameObject.GetComponent<Player>();
 		if(player)
 		{
-			int damage = GetDamage(player.transform.position);
+			int damage = GetDamage(player.Position);
 			//Debug.Log($"Flamethrower  " + damage);
 			player.Health.ApplyDamage(damage, owner);
 		}
 	}
 
-	private int GetDamage(Vector3 pTargetPosition)
+	private int GetDamage(Vector2 pTargetPosition)
 	{
-		float distance = Vector3.Distance(transform.position, pTargetPosition);
-		float maxDist = Vector3.Distance(transform.position, maxDistance.position);
+		float distance = Vector2.Distance(transform.position, pTargetPosition);
+		float maxDist = Vector2.Distance(transform.position, maxDistance.position);
 		float percentage = 1 - distance / maxDist;
 		float damage = Mathf.Lerp(minDamage, maxDamage, percentage);
 
@@ -114,7 +114,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 
 		transform.parent =  owner.WeaponController.GetProjectileStart(pDirection);
 
-		transform.localPosition = Vector3.zero;
+		transform.localPosition = Vector2.zero;
 		transform.localRotation = Quaternion.Euler(0, 0, 0);
 
 		Vector3 rot = Utils.GetRotation(pDirection, 90);

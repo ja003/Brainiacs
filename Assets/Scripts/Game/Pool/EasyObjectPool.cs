@@ -90,7 +90,7 @@ class Pool
 	}
 
 	//o(1)
-	public GameObject NextAvailableObject(Vector3 position, Quaternion rotation)
+	public GameObject NextAvailableObject(Vector2 position, Quaternion rotation)
 	{
 		//Debug.Log("NextAvailableObject");
 		PoolObject po = null;
@@ -256,7 +256,7 @@ public class EasyObjectPool : MonoBehaviour
 	OR 
 	null in case the pool does not have any object available & can grow size is false.
 	*/
-	public GameObject GetObjectFromPool(string poolName, Vector3 position, Quaternion rotation)
+	public GameObject GetObjectFromPool(string poolName, Vector2 position, Quaternion rotation)
 	{
 		GameObject result = null;
 

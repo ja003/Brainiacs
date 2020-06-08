@@ -88,6 +88,8 @@ public class PlayerWeaponController : PlayerBehaviour
 
 	public void StopUseWeapon()
 	{
+		if(IsLogEnabled())
+			Debug.Log("StopUseWeapon");
 		ActiveWeapon.StopUse();
 	}
 
@@ -96,13 +98,23 @@ public class PlayerWeaponController : PlayerBehaviour
 		return weapons.Find(a => a.Id == pWeaponId);
 	}
 
+	private bool IsLogEnabled()
+	{
+		return false;
+		return player.InitInfo.PlayerType == EPlayerType.AI;
+	}
+
 	public void UseWeapon()
 	{
+		if(IsLogEnabled())
+			Debug.Log("UseWeapon");
+
 		EWeaponUseResult useResult = ActiveWeapon.Use();
 		if(useResult == EWeaponUseResult.CantUse)
 		{
 			//Debug.Log($"{activeWeapon} cant be used");
 			//TODO: play CANT_USE sound
+			StopUseWeapon();
 			return;
 		}
 		//Debug.Log($"{activeWeapon} USE");
@@ -179,7 +191,7 @@ public class PlayerWeaponController : PlayerBehaviour
 		return projectileStartRight;
 	}
 
-	private Vector3 GetProjectileStartPosition(EDirection pDirection)
+	private Vector2 GetProjectileStartPosition(EDirection pDirection)
 	{
 		return GetProjectileStart(pDirection).position;
 	}

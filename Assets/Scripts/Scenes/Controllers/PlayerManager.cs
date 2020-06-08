@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using PhotonPlayer = Photon.Realtime.Player;
 
@@ -68,10 +69,6 @@ public class PlayerManager : GameController
 			{
 				spawnedPlayer.LocalImage = SpawnPlayer(playerInfo, true);
 				spawnedPlayer.LocalImage.LocalImageOwner = spawnedPlayer;
-				//spawnedPlayer.LocalImage.gameObject.name += "_remote";
-				//spawnedPlayer.LocalImage.transform.position =
-				//	spawnedPlayer.transform.position + Vector3.down;
-
 				AddPlayer(spawnedPlayer.LocalImage);
 			}
 
@@ -91,11 +88,11 @@ public class PlayerManager : GameController
 	/// </summary>
 	private Player SpawnPlayer(PlayerInitInfo pPlayerInfo, bool pIsLocalImage)
 	{
-		//Vector3 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
-		Vector3 spawnPosition = game.Map.ActiveMap.
+		//Vector2 spawnPosition = game.MapController.ActiveMap.GetSpawnPoint().position;
+		Vector2 spawnPosition = game.Map.ActiveMap.
 			GetSpawnPoint(pPlayerInfo.Number).position;
 		if(pIsLocalImage)
-			spawnPosition += Vector3.down;
+			spawnPosition += Vector2.down;
 
 		GameObject instance = InstanceFactory.Instantiate(playerPrefab.gameObject, spawnPosition);
 
@@ -112,15 +109,15 @@ public class PlayerManager : GameController
 		if(debug_spwan)
 		{
 			if(pPlayerInfo.Name == DebugData.GetPlayerName(1))
-				spawnPosition = new Vector3(-3.3f, 3, 0);
-			//spawnPosition = Vector3.down;
+				spawnPosition = new Vector2(-3.3f, 3);
+			//spawnPosition = Vector2.down;
 
 			if(pPlayerInfo.Name == DebugData.GetPlayerName(2))
-				spawnPosition = new Vector3(-1.8f, 2.3f, 0);
-			//spawnPosition = Vector3.zero;
+				spawnPosition = new Vector2(-1.8f, 2.3f);
+			//spawnPosition = Vector2.zero;
 
 			if(pPlayerInfo.Name == DebugData.GetPlayerName(3))
-				spawnPosition = Vector3.down;
+				spawnPosition = Vector2.down;
 		}
 
 		//OnAllPlayersAdded += () => playerInstance.SetInfo(pPlayerInfo, spawnPosition);
@@ -212,5 +209,40 @@ public class PlayerManager : GameController
 	{
 		return Players.Find(a => a.InitInfo.Number == pPlayerNumber);
 	}
+
+	/// <summary>
+	/// Returns all players aother than the given player sorted by the distance to that player
+	/// </summary>
+	public List<Player> GetOtherPlayers(Player pOtherThan, bool pHasToBeAlive, bool pSortByDistance = true)
+	{
+		List<Player> otherPlayers = Players.Where(a => !a.Equals(pOtherThan)).ToList();
+		if(pHasToBeAlive) //only visual.IsDying is shared to player images
+			otherPlayers = otherPlayers.Where(a => !a.Visual.IsDying).ToList();
+		if(pSortByDistance)
+		{
+			otherPlayers.Sort((a, b) =>
+				Vector2.Distance(pOtherThan.transform.position, a.transform.position)
+					.CompareTo(Vector2.Distance(pOtherThan.transform.position, b.transform.position)));
+		}
+		return otherPlayers;
+	}
+
+	public Player GetClosestPlayerTo(Player pPlayer, bool pHasToBeAlive = true)
+	{
+		var otherPlayers = GetOtherPlayers(pPlayer, pHasToBeAlive);
+		return otherPlayers.Count > 0 ? otherPlayers[0] : null;
+	}
+
+	/// <summary>
+	/// Return
+	/// </summary>
+	/// <param name="pOtherThan"></param>
+	/// <returns></returns>
+	//public List<Player> GetOtherPlayersAlive(Player pOtherThan)
+	//{
+	//	List<Player> otherPlayers = GetOtherPlayers(pOtherThan).Where(a => !a.Visual.IsDying).ToList();
+
+	//	return otherPlayers;
+	//}
 
 }

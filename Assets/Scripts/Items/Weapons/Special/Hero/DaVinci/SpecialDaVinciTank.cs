@@ -21,7 +21,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), owner.Movement.PlayerCollider);
 
 		transform.parent = owner.WeaponController.transform;
-		transform.localPosition = Vector3.zero;
+		transform.localPosition = Vector2.zero;
 
 		owner.Visual.OnSortOrderChanged += UpdateSortOrder;
 		currentHealth = maxHealth;

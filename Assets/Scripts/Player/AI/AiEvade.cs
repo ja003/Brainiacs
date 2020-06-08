@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AiEvade : AiGoalController
 {
-    public AiEvade(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer)
+    public AiEvade(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.Evade)
     {
     }
 
@@ -17,8 +17,8 @@ public class AiEvade : AiGoalController
 
         //sort ascending based on distance to me -> evaluate the colsest first
         activeProjectiles.Sort((a, b) => 
-            Vector3.Distance(playerPosition, a.transform.position).CompareTo(
-                Vector3.Distance(playerPosition, b.transform.position)));
+            Vector2.Distance(playerPosition, a.transform.position).CompareTo(
+                Vector2.Distance(playerPosition, b.transform.position)));
 
         isProjectileGoingToHitMe = false;
         foreach(var projectile in activeProjectiles)
@@ -38,10 +38,10 @@ public class AiEvade : AiGoalController
                     perpDir *= 1;
                 
                 //if there is any map object, try the other direction
-                if(Physics2D.Raycast(playerPosition2D, perpDir, 1, game.Layers.MapObject))
+                if(Physics2D.Raycast(playerPosition, perpDir, 1, game.Layers.MapObject))
                     perpDir *= -1;
 
-                Vector3 perpDir3 = new Vector3(perpDir.x, perpDir.y).normalized;
+                Vector2 perpDir3 = new Vector2(perpDir.x, perpDir.y).normalized;
                 evadeMoveTarget = playerPosition + perpDir3;
 
                 Utils.DebugDrawCross(perpDir3, Color.cyan);
@@ -50,14 +50,14 @@ public class AiEvade : AiGoalController
     }
 
     bool isProjectileGoingToHitMe;
-    Vector3 evadeMoveTarget;
+    Vector2 evadeMoveTarget;
 
     /// <summary>
     /// Check if projectile might possibly hit me
     /// </summary>
     private bool IsGoingToHitMe(Projectile pProjectile)
     {
-        Vector2 dirProjToMe = playerPosition - pProjectile.transform.position;
+        Vector3 dirProjToMe = playerPosition3D - pProjectile.transform.position;
         float angle = Vector2.Angle(dirProjToMe, pProjectile.Direction);
         //angle (me, proj, projDir) is too high
         const int min_hit_angle = 20;
@@ -68,7 +68,7 @@ public class AiEvade : AiGoalController
 
         }
 
-        Vector3 crossProduct = Vector3.Cross(pProjectile.Direction, playerPosition - pProjectile.transform.position);
+        Vector3 crossProduct = Vector3.Cross(pProjectile.Direction, playerPosition3D - pProjectile.transform.position);
 
         //distance to closest point to player in projectile direction
         float distToImpact = crossProduct.magnitude;
@@ -81,10 +81,13 @@ public class AiEvade : AiGoalController
 
     public override int GetPriority()
     {
+        if(player.Stats.IsShielded)
+            return 0;
+
         return isProjectileGoingToHitMe ? 10 : 0;
     }
 
-    public override Vector3 GetTarget()
+    public override Vector2 GetTarget()
     {
         return isProjectileGoingToHitMe ? evadeMoveTarget : playerPosition;
     }

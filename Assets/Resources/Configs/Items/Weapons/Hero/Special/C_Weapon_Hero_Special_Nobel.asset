@@ -22,11 +22,15 @@ MonoBehaviour:
       type: 3}
     PlayerSpriteLeft: {fileID: -1304705926075300605, guid: 6f093c853bda9b049a54f54c3706ce77,
       type: 3}
+    DisableHandsUp: 0
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 0
     InfoSprite: {fileID: 21300000, guid: 503f5177f6f382046820f83d511bc79a, type: 3}
   SpecialWeaponInfo:
     InHandInfo:
       Ammo: 5
       Magazines: 666
-      Cooldown: 1
+      Cooldown: 10
       Cadency: 1
     Prefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887, type: 3}

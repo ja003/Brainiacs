@@ -21,7 +21,7 @@ public class ProjectilePhoton : PoolObjectPhoton
 		switch(pReceivedMsg)
 		{
 			case EPhotonMsg.Projectile_Spawn:
-				Vector3 projectileDirection = (Vector3)pParams[0];
+				Vector2 projectileDirection = (Vector2)pParams[0];
 				EWeaponId weapon = (EWeaponId)pParams[1];
 				EDirection playerDirection = (EDirection)pParams[2];
 				projectile.SetSpawn(projectileDirection, weapon, playerDirection);

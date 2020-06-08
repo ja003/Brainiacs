@@ -22,7 +22,7 @@ public class SpecialEinsteinPhoton : PlayerWeaponSpecialPrefabPhoton
 		switch(pReceivedMsg)
 		{
 			case EPhotonMsg.Special_Einstein_FallOn:
-				Vector3 target = (Vector3)pParams[0];
+				Vector2 target = (Vector2)pParams[0];
 				bomb.FallOn(target);
 				break;
 			default:

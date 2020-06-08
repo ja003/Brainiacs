@@ -73,7 +73,11 @@ public class PlayerStatsEffectController : PlayerBehaviour
 
     internal float GetEffectValue(EPlayerEffect pType)
     {
-        bool isEffectApplied = appliedEffects.Find(a => a.Type == pType) != null;
+        //bool isEffectApplied = appliedEffects.Find(a => a.Type == pType) != null;
+        
+        //check if effect is applied based on UI.
+        //only UI state is shared across network
+        bool isEffectApplied = uiEffect.IsEffectActive(pType);
 
         switch(pType)
         {

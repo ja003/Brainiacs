@@ -10,8 +10,8 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class MapItemGenerator : GameBehaviour
 {
-	Vector3 topLeftCorner;
-	Vector3 botRightCorner;
+	Vector2 topLeftCorner;
+	Vector2 botRightCorner;
 
 	[SerializeField] MapItem mapItemPrefab = null;
 	[SerializeField] private int frequency = -1;
@@ -52,13 +52,13 @@ public class MapItemGenerator : GameBehaviour
 		EMapItem nextItemType = GetNextMapItemType();
 		if(DebugData.TestPowerUp != EPowerUp.None)
 			nextItemType = EMapItem.PowerUp;
-		else if(DebugData.TestMapWeapon != EWeaponId.None)
+		else if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
 			nextItemType = EMapItem.Weapon;
-		else if(DebugData.TestMapSpecialWeapon != EWeaponId.None)
+		else if(DebugData.TestGenerateMapSpecialWeapon != EWeaponId.None)
 			nextItemType = EMapItem.SpecialWeapon;
 
 		int randomIndex = GetRandomItemIndex(nextItemType);
-		Vector3 randomPosition = GetRandomPosition();
+		Vector2 randomPosition = GetRandomPosition();
 		switch(nextItemType)
 		{
 			case EMapItem.PowerUp:
@@ -92,17 +92,17 @@ public class MapItemGenerator : GameBehaviour
 				return Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
 			case EMapItem.Weapon:
 			case EMapItem.Weapon2:
-				if(DebugData.TestMapWeapon != EWeaponId.None)
+				if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
 				{
 					return brainiacs.ItemManager.MapWeapons
-						  .FindIndex(a => a.Id == DebugData.TestMapWeapon);
+						  .FindIndex(a => a.Id == DebugData.TestGenerateMapWeapon);
 				}
 				return Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 			case EMapItem.SpecialWeapon:
-				if(DebugData.TestMapSpecialWeapon != EWeaponId.None)
+				if(DebugData.TestGenerateMapSpecialWeapon != EWeaponId.None)
 				{
 					return brainiacs.ItemManager.MapWeaponsSpecial
-						  .FindIndex(a => a.Id == DebugData.TestMapSpecialWeapon);
+						  .FindIndex(a => a.Id == DebugData.TestGenerateMapSpecialWeapon);
 				}
 				return Random.Range(0, brainiacs.ItemManager.MapWeaponsSpecial.Count);
 		}
@@ -134,30 +134,30 @@ public class MapItemGenerator : GameBehaviour
 		SpecialWeapon
 	}
 
-	private Vector3 GetRandomPosition()
+	private Vector2 GetRandomPosition()
 	{
 		if(DebugData.TestGenerateItems)
 			return debug_GetRandomPosition();
 
-		//return Vector3.up; //DEBUG
-		Vector3 pos = game.Map.ActiveMap.GetRandomMapItemGenPos().position;
+		//return Vector2.up; //DEBUG
+		Vector2 pos = game.Map.ActiveMap.GetRandomMapItemGenPos().position;
 
-		//pos = Vector3.zero; //DEBUG
+		//pos = Vector2.zero; //DEBUG
 
-		Vector3 dirToCenter = (Vector3.zero - pos).normalized;
+		Vector2 dirToCenter = (Vector2.zero - pos).normalized;
 		//in case pos = ZERO
-		if(dirToCenter.magnitude < 0.01f) dirToCenter = Vector3.right;
+		if(dirToCenter.magnitude < 0.01f) dirToCenter = Vector2.right;
 		int iter = 0;
 		while(!CanGenerateOn(pos))
 		{
-			if(CanGenerateOn(pos + Vector3.up))
-				return pos + Vector3.up;
-			if(CanGenerateOn(pos + Vector3.right))
-				return pos + Vector3.right;
-			if(CanGenerateOn(pos + Vector3.down))
-				return pos + Vector3.down;
-			if(CanGenerateOn(pos + Vector3.left))
-				return pos + Vector3.left;
+			if(CanGenerateOn(pos + Vector2.up))
+				return pos + Vector2.up;
+			if(CanGenerateOn(pos + Vector2.right))
+				return pos + Vector2.right;
+			if(CanGenerateOn(pos + Vector2.down))
+				return pos + Vector2.down;
+			if(CanGenerateOn(pos + Vector2.left))
+				return pos + Vector2.left;
 
 			Utils.DebugDrawCross(pos, Color.red, 1);
 
@@ -176,27 +176,27 @@ public class MapItemGenerator : GameBehaviour
 		//random pos approach
 		//float x = Random.Range(topLeftCorner.x, botRightCorner.x);
 		//float y = Random.Range(topLeftCorner.y, botRightCorner.y);
-		//return new Vector3(x, y, 0);
+		//return new Vector2(x, y, 0);
 	}
 
-	Vector3 debug_RandomPosition = Vector3.left * 3;
-	private Vector3 debug_GetRandomPosition()
+	Vector2 debug_RandomPosition = Vector2.left * 3;
+	private Vector2 debug_GetRandomPosition()
 	{
 		//generate items in straight line
 		if(!CanGenerateOn(debug_RandomPosition))
 		{
-			debug_RandomPosition += Vector3.right * 0.5f;
+			debug_RandomPosition += Vector2.right * 0.5f;
 			//Debug.Log("another pos");
 		}
 
 		if(debug_RandomPosition.x > 5)
-			debug_RandomPosition = Vector3.left * 3;
+			debug_RandomPosition = Vector2.left * 3;
 
 		return debug_RandomPosition;
 
 	}
 
-	private bool CanGenerateOn(Vector3 pPosition)
+	private bool CanGenerateOn(Vector2 pPosition)
 	{
 		//cant generate too close to player
 		foreach(var player in game.PlayerManager.Players)

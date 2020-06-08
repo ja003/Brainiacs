@@ -20,7 +20,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 
 	protected override void OnUse()
 	{
-		Debug.Log(gameObject.name + " OnUse");
+		//Debug.Log(gameObject.name + " OnUse");
 		//spriteRend.enabled = false; //this is just holder, anmator is in child
 		SetActive(true);
 		mineSprite.sortingOrder = owner.Visual.GetProjectileSortOrder();

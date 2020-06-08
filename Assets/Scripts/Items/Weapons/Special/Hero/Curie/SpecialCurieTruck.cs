@@ -82,7 +82,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 	private const string AC_KEY_IS_DEAD = "isDead";
 
 
-	public void StartTruck(EDirection pDirection, Vector3 pSpawnPosition)
+	public void StartTruck(EDirection pDirection, Vector2 pSpawnPosition)
 	{
 		direction = pDirection;
 		rigidBody2D.bodyType = RigidbodyType2D.Dynamic;
@@ -111,7 +111,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 			DoInTime(Shoot, cadency);
 
 		//Owner is not set for local image
-		//Vector3 sendSpawnPos = Owner && Owner.LocalImage ?
+		//Vector2 sendSpawnPos = Owner && Owner.LocalImage ?
 		//	Owner.LocalImage.WeaponController.GetProjectileStart(direction).position :
 		//	pSpawnPosition;
 
@@ -130,16 +130,16 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 
 		EDirection dir1 = Utils.GetOrthogonalDirection(direction);
 		EDirection dir2 = Utils.GetOppositeDirection(dir1);
-		//Vector3 direction1 = Utils.GetVector3(dir1);
+		//Vector2 direction1 = Utils.GetVector2(dir1);
 		//Debug.Log($"Shoot {direction}, {transform.position}");
 		//Debug.Log($"dir1 {dir1}, dir2 {dir2}");
 
 		//truck shoots from 2 sides
 		//direction = UP/DOWN => shoots from left and right
 		bool isDirectionUpOrDown = direction == EDirection.Up || direction == EDirection.Down;
-		Vector3 spawnPos2 = isDirectionUpOrDown ?
+		Vector2 spawnPos2 = isDirectionUpOrDown ?
 			projectileSpawnLeft.position : projectileSpawnUp.position;
-		Vector3 spawnPos1 = isDirectionUpOrDown ?
+		Vector2 spawnPos1 = isDirectionUpOrDown ?
 			projectileSpawnRight.position : projectileSpawnDown.position;
 
 		game.ProjectileManager.SpawnProjectile(spawnPos1, owner, projectile, dir1);

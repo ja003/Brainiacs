@@ -10,7 +10,7 @@ public class ProjectileManager : GameController
 	public int LayerProjectile => prefab.gameObject.layer;
 
 	//todo: is needed?
-	//public void SpawnProjectile(Vector3 pPosition, Player pOwner, EWeaponId pWeapon, EDirection pDirection = EDirection.None)
+	//public void SpawnProjectile(Vector2 pPosition, Player pOwner, EWeaponId pWeapon, EDirection pDirection = EDirection.None)
 	//{
 	//	SpawnProjectile(pPosition, pOwner, brainiacs.ItemManager.GetProjectileConfig(pWeapon), pDirection);
 	//}
@@ -30,7 +30,7 @@ public class ProjectileManager : GameController
 		ActiveProjectiles.Remove(pProjectile);
 	}
 
-	public Projectile SpawnProjectile(Vector3 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
+	public Projectile SpawnProjectile(Vector2 pPosition, Player pOwner, ProjectileConfig pConfig, EDirection pDirection = EDirection.None)
 	{
 		Projectile newProjectile = InstanceFactory.Instantiate(prefab.gameObject, pPosition).GetComponent<Projectile>();
 

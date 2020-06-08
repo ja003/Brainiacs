@@ -25,7 +25,7 @@ public class MapItem : MapObject
 	bool isSpawned;
 	//bool isMine;
 
-	private void Spawn(Vector3 pPosition)
+	private void Spawn(Vector2 pPosition)
 	{
 		SetActive(true);
 		transform.position = pPosition;
@@ -39,7 +39,7 @@ public class MapItem : MapObject
 		animator.Rebind();
 	}
 
-	public void Init(Vector3 pPosition, PowerUpConfig pPowerUp)
+	public void Init(Vector2 pPosition, PowerUpConfig pPowerUp)
 	{
 		powerUpConfig = pPowerUp;
 		spriteRend.sprite = pPowerUp.MapItemInfo.MapSprite;
@@ -48,7 +48,7 @@ public class MapItem : MapObject
 		Photon.Send(EPhotonMsg.MapItem_InitPowerUp, pPosition, pPowerUp.Type);
 	}
 
-	public void Init(Vector3 pPosition, MapWeaponConfig pWeapon)
+	public void Init(Vector2 pPosition, MapWeaponConfig pWeapon)
 	{
 		weaponConfig = pWeapon;
 		spriteRend.sprite = pWeapon.MapItemInfo.MapSprite;
@@ -58,7 +58,7 @@ public class MapItem : MapObject
 
 	}
 
-	public void Init(Vector3 pPosition, MapSpecialWeaponConfig pSpecialWeapon)
+	public void Init(Vector2 pPosition, MapSpecialWeaponConfig pSpecialWeapon)
 	{
 		weaponSpecialConfig = pSpecialWeapon;
 		spriteRend.sprite = pSpecialWeapon.MapItemInfo.MapSprite;

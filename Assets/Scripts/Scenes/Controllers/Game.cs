@@ -24,7 +24,9 @@ public class Game : CSingleton<Game>
 	[SerializeField] public Canvas UiCanvas;
 
 	[SerializeField] public Layers Layers;
-	
+
+	[SerializeField] public GameDebug Debug;
+
 
 	protected override void Awake()
 	{

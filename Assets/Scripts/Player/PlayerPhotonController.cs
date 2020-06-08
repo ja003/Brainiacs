@@ -122,7 +122,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return;
 
 			case EPhotonMsg.Player_SetSyncPosition:
-				Vector3 pos = (Vector3)pParams[0];
+				Vector2 pos = (Vector2)pParams[0];
 				dir = (EDirection)pParams[1];
 				bool isActuallyMoving = (bool)pParams[2];
 				float speed = (float)pParams[3];

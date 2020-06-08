@@ -53,7 +53,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		//todo: generate random position
 		IsDying = false;
-		movement.SpawnAt(Vector3.up);
+		movement.SpawnAt(Vector2.up);
 		stats.OnRespawn();
 	}
 

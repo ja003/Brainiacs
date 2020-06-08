@@ -24,12 +24,12 @@ public class UIPlayerStatusManager : MonoBehaviour
 	/// Insatntiates the status at given position and sets the info (sprite, text).
 	/// For now only used for player.
 	/// </summary>
-	public void ShowMapItem(Vector3 pWorldPosition, MapItemInfo pInfo)
+	public void ShowMapItem(Vector2 pWorldPosition, MapItemInfo pInfo)
 	{
 		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.StatusSprite);
 	}
 
-	public void ShowHealth(Vector3 pWorldPosition, int pIncrement)
+	public void ShowHealth(Vector2 pWorldPosition, int pIncrement)
 	{
 		bool isAdd = pIncrement > 0;
 		string prefix = isAdd ? "+" : "-";
@@ -37,7 +37,7 @@ public class UIPlayerStatusManager : MonoBehaviour
 		ShowStatus(pWorldPosition, prefix + pIncrement, null, textColor);
 	}
 
-	public void ShowStatus(Vector3 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
+	public void ShowStatus(Vector2 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)
 	{
 		//HACK: to hide adding debug weapons
 		if(Time.time < 0.1f)
@@ -56,10 +56,10 @@ public class UIPlayerStatusManager : MonoBehaviour
 	//private void Awake()
 	//{
 	//	UIPlayerStatus instance = Instantiate(prefab, transform);
-	//	instance.debug_SpawnAt(Vector3.one);
+	//	instance.debug_SpawnAt(Vector2.one);
 
 	//	instance = Instantiate(prefab, transform);
-	//	instance.debug_SpawnAt(Vector3.one * 2);
+	//	instance.debug_SpawnAt(Vector2.one * 2);
 	//}
 
 }

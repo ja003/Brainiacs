@@ -44,7 +44,7 @@ public class PlayerWeaponSpecial : PlayerWeapon
 			Debug.LogError("Prefab not defined");
 			return;
 		}
-		Vector3 spawnPos = Owner.WeaponController.GetProjectileStart().position;
+		Vector2 spawnPos = Owner.WeaponController.GetProjectileStart().position;
 		prefabInstance = InstanceFactory.Instantiate(prefab.gameObject, spawnPos)
 			.GetComponent<PlayerWeaponSpecialPrefab>();
 

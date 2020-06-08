@@ -35,21 +35,21 @@ public class MapItemPhoton : PoolObjectPhoton
         switch(pReceivedMsg)
         {
             case EPhotonMsg.MapItem_InitMapBasic:
-                Vector3 pos = (Vector3)pParams[0];
+                Vector2 pos = (Vector2)pParams[0];
                 EWeaponId id = (EWeaponId)pParams[1];
 
                 item.Init(pos, brainiacs.ItemManager.GetMapWeaponConfig(id));
                 break;
 
             case EPhotonMsg.MapItem_InitMapSpecial:
-                pos = (Vector3)pParams[0];
+                pos = (Vector2)pParams[0];
                 id = (EWeaponId)pParams[1];
 
                 item.Init(pos, brainiacs.ItemManager.GetMapSpecialWeaponConfig(id));
                 break;
 
             case EPhotonMsg.MapItem_InitPowerUp:
-                pos = (Vector3)pParams[0];
+                pos = (Vector2)pParams[0];
                 EPowerUp type = (EPowerUp)pParams[1];
 
                 item.Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));

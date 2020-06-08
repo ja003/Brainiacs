@@ -26,7 +26,7 @@ public class SpecialCurieTruckPhoton : PlayerWeaponSpecialPrefabPhoton
 		{
 			case EPhotonMsg.Special_Curie_StartTruck:
 				EDirection dir = (EDirection)pParams[0];
-				Vector3 pos = (Vector3)pParams[1];
+				Vector2 pos = (Vector2)pParams[1];
 				truck.StartTruck(dir, pos);
 				break;
 			case EPhotonMsg.Special_Curie_Collide:

@@ -12,7 +12,7 @@ public static class InstanceFactory
 {
 	public static bool poolInitialized;
 
-	public static GameObject Instantiate(GameObject pPrefab, Vector3 pPosition, bool pNetworkInstance = true)
+	public static GameObject Instantiate(GameObject pPrefab, Vector2 pPosition, bool pNetworkInstance = true)
 	{
 		if(pPrefab == null)
 		{
@@ -44,7 +44,7 @@ public static class InstanceFactory
 
 	public static GameObject Instantiate(GameObject pPrefab, bool pNetworkInstance = true)
 	{
-		return Instantiate(pPrefab, Vector3.zero, pNetworkInstance);
+		return Instantiate(pPrefab, Vector2.zero, pNetworkInstance);
 	}
 
 	internal static void Destroy(GameObject pGameObject, bool pNetworkInstance = true)

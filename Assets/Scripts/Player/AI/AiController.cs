@@ -10,8 +10,9 @@ public abstract class AiController
     protected Game game => Game.Instance;
     protected Brainiacs brainiacs => Brainiacs.Instance;
 
-    protected Vector3 playerPosition => player.transform.position;
-    protected Vector2 playerPosition2D => player.transform.position;
+    //protected Vector2 playerPosition => player.transform.position; //NO!
+    protected Vector2 playerPosition => player.Position;
+    protected Vector3 playerPosition3D => player.Position3D;
 
     public AiController(PlayerAiBrain pBrain, Player pPlayer)
     {

@@ -48,8 +48,13 @@ public class PlayerVisual : PlayerBehaviour
 		//}
 	}
 
+	//is player visually dying
+	// - on both owner and image side
+	public bool IsDying = false;
+
 	internal void OnDie()
 	{
+		IsDying = true;
 		SetAnimBool(AC_KEY_IS_DEAD, true);
 		player.Photon.Send(EPhotonMsg.Player_Visual_OnDie);
 		//SetAnimTrigger(AC_KEY_DIE);
@@ -88,6 +93,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void OnSpawn()
 	{
+		IsDying = false;
 		//Debug.Log($"{this} Spawn");
 		SetVisible(true);
 

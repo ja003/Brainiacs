@@ -19,7 +19,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	const float SYNC_POS_INTERVAL = 0.1f;
 	float lastTimeSync;
 
-	Vector3 lastPosition;
+	Vector2 lastPosition;
 
 	private void FixedUpdate()
 	{
@@ -42,9 +42,17 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 		lastPosition = transform.position; //has to be called before ApplyMove
 
+		
+
 		//apply movement
 		ApplyMove(CurrentDirection);
 
+	}
+
+	private bool IsLogEnabled()
+	{
+		return false;
+		return player.InitInfo.PlayerType == EPlayerType.AI;
 	}
 
 	private void SyncPosition(bool pInstantly)
@@ -52,19 +60,19 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		if(player.IsLocalImage)
 			return;
 
-		isActualyMoving = Vector3.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
+		isActualyMoving = Vector2.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
 		//Debug.Log(isActualyMoving);
 
 		lastTimeSync = Time.time;
-		Vector3 position = transform.position;
+		Vector2 position = transform.position;
 		if(player.LocalImage)
-			position += Vector3.down;
+			position += Vector2.down;
 
 		player.Photon.Send(EPhotonMsg.Player_SetSyncPosition, position,
 			CurrentDirection, isActualyMoving, player.Stats.Speed, pInstantly);
 	}
 
-	internal void SpawnAt(Vector3 pPosition)
+	internal void SpawnAt(Vector2 pPosition)
 	{
 		transform.position = pPosition;
 		//Move(EDirection.Right); //set init direction
@@ -76,6 +84,9 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 	public void Stop()
 	{
+		if(IsLogEnabled())
+			Debug.Log("Stop " );
+
 		IsMoving = false;
 		player.Visual.Idle();
 	}
@@ -85,6 +96,9 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// </summary>
 	public void SetMove(EDirection pDirection)
 	{
+		if(IsLogEnabled())
+			Debug.Log("SetMove " + pDirection);
+
 		if(pDirection == EDirection.None)
 		{
 			if(player.InitInfo.PlayerType == EPlayerType.AI)
@@ -123,8 +137,13 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// </summary>
 	private void ApplyMove(EDirection pDirection)
 	{
+		if(IsLogEnabled())
+			Debug.Log($"ApplyMove {pDirection} ({IsMoving})");
+
 		if(!IsMoving)
 			return;
+
+		
 
 		if(pDirection == EDirection.None)
 		{
@@ -188,7 +207,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// Smoothly moves player towards the calculated position.
 	/// When pInstantly is passed, image is relocated to target position instantly (eg. Teleport)
 	/// </summary>
-	public void SetSyncPosition(Vector3 pPosition, EDirection pDirection, 
+	public void SetSyncPosition(Vector2 pPosition, EDirection pDirection, 
 		bool pIsActualyMoving, float pSpeed, bool pInstantly)
 	{
 		if(player.IsItMe)
@@ -206,12 +225,12 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		}
 
 		float moveCalls = SYNC_POS_INTERVAL / Time.fixedDeltaTime;
-		Vector3 targetPos = pPosition;
+		Vector2 targetPos = pPosition;
 		LeanTween.cancel(moveFunctionId);
 
 		//when target position is way too far, assign position instantly
 		// - this happens for example during respawn
-		if(Vector3.Distance(targetPos, transform.position) > 10 || pInstantly)
+		if(Vector2.Distance(targetPos, transform.position) > 10 || pInstantly)
 		{
 			Debug.Log(gameObject.name + " insta port " + pInstantly);
 			transform.position = targetPos;
@@ -238,7 +257,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 			//Debug.Log(isMoveStarting);
 			//todo: send speed info?
-			targetPos += moveMultiply * moveCalls * Utils.GetVector3(pDirection) *
+			targetPos += moveMultiply * moveCalls * Utils.GetVector2(pDirection) *
 				MOVE_SPEED_BASE * pSpeed;
 		}
 		else
@@ -293,7 +312,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		if(!player.IsItMe)
 			return null;
 
-		transform.position = Vector3.one * 666;
+		transform.position = Vector2.one * 666;
 		player.SetActive(false);
 
 		//small teleport delay

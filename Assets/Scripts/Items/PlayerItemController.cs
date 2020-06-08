@@ -124,7 +124,7 @@ public class PlayerItemController : PlayerBehaviour
 		switch(pWeapon)
 		{
 			case EWeaponId.Flamethrower:
-				weaponSpecial = new SpecialFlamethrowerNew(player, config);
+				weaponSpecial = new SpecialFlamethrower(player, config);
 				break;
 			case EWeaponId.Mine:
 				weaponSpecial = new PlayerWeaponSpecial(player, config);

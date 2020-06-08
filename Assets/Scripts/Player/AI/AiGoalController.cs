@@ -4,8 +4,11 @@ using UnityEngine;
 
 public abstract class AiGoalController : AiController
 {
-    public AiGoalController(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer)
+    EAiGoal goal;
+
+    public AiGoalController(PlayerAiBrain pBrain, Player pPlayer, EAiGoal pGoal) : base(pBrain, pPlayer)
     {
+        goal = pGoal;
     }
 
     /// <summary>
@@ -13,7 +16,12 @@ public abstract class AiGoalController : AiController
     /// </summary>
     public abstract int GetPriority();
 
-    public abstract Vector3 GetTarget();
+    public abstract Vector2 GetTarget();
 
     public abstract void Evaluate();
+
+    public override string ToString()
+    {
+        return $"Goal controller: {goal}";
+    }
 }

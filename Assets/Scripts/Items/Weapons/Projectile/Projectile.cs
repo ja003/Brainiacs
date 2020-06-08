@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class Projectile : PoolObjectNetwork, ITeleportable
 {
 
-	public Vector3 Direction { get; private set; }
+	public Vector2 Direction { get; private set; }
 	public ProjectileConfig config;
 
 	bool isInited;
@@ -76,7 +76,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 	/// <summary>
 	/// Called on owner and image side
 	/// </summary>
-	public void SetSpawn(Vector3 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
+	public void SetSpawn(Vector2 pProjectileDirection, EWeaponId pId, EDirection pPlayerDirection)
 	{
 		SetActive(true); //has to be called before animator.SetFloat
 
@@ -122,7 +122,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 			return;
 
 		//transform.position += Utils.GetVector(direction) *
-		transform.position += Direction * Time.deltaTime * config.Speed;
+		transform.position += new Vector3(Direction.x, Direction.y, 0) * Time.fixedDeltaTime * config.Speed;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

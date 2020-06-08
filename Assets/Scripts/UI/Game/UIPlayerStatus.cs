@@ -9,14 +9,14 @@ public class UIPlayerStatus : UiBehaviour
 	[SerializeField] private Image icon = null;
 	[SerializeField] private Text text = null;
 
-	public void SpawnAt(Vector3 pWorldPosition, Sprite pSprite, string pText, Color? pTextColor = null)
+	public void SpawnAt(Vector2 pWorldPosition, Sprite pSprite, string pText, Color? pTextColor = null)
 	{
 		gameObject.SetActive(true);
 
 		SetPosition(pWorldPosition);
 
 		//Vector2 screenPosition = GetScreenPosition(pWorldPosition);
-		//transform.localScale = Vector3.one; //scale bug (sometimes it is changed?)
+		//transform.localScale = Vector2.one; //scale bug (sometimes it is changed?)
 		//rectTransform.anchoredPosition = screenPosition;
 
 		//Debug.Log($"Screen {Screen.width} x {Screen.height}");
@@ -38,7 +38,7 @@ public class UIPlayerStatus : UiBehaviour
 		//LeanTween.moveY(gameObject, -1, 1).setOnComplete(Deactivate);
 	}
 
-	internal void debug_SpawnAt(Vector3 pPos)
+	internal void debug_SpawnAt(Vector2 pPos)
 	{
 		Debug.Log("debug_SpawnAt " + pPos);
 		gameObject.SetActive(true);
