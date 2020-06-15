@@ -167,7 +167,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 			return null;
 
 		Projectile newProjectile = game.ProjectileManager.SpawnProjectile(
-			pTeleport.OutPosition.position, Owner, config, pTeleport.OutDirection);
+			pTeleport.GetOutPosition(), Owner, config, pTeleport.OutDirection);
 		ReturnToPool();
 		return newProjectile;
 	}

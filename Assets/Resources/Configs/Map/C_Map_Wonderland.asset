@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: C_Map_Wonderland
   m_EditorClassIdentifier: 
   Id: 2
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 1091170740151778672, guid: e3ab9e6dc200eb1479416aa1af2782cb, type: 3}
   MapPreview: {fileID: 21300000, guid: 2229fabc3e095dd49b69cd238c36d93a, type: 3}

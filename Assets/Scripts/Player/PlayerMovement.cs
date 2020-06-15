@@ -318,7 +318,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		//small teleport delay
 		DoInTime(() =>
 		{
-			transform.position = pTeleport.OutPosition.position;
+			transform.position = pTeleport.GetOutPosition();
 			player.SetActive(true);
 			SetDirection(pTeleport.OutDirection);
 			SyncPosition(true);

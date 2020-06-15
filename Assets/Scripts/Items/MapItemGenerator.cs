@@ -27,6 +27,13 @@ public class MapItemGenerator : GameBehaviour
 
 		if(!DebugData.StopGenerateItems)
 			GenerateRandomItem(); //DEBUG 
+
+		DoInTime(() =>
+		{
+			bool x = CanGenerateOn(new Vector2(-1, -2));
+			Debug.Log("CanGenerateOn " + x);
+		}, 1);
+
 	}
 
 	private void StartGenerating()
@@ -46,9 +53,6 @@ public class MapItemGenerator : GameBehaviour
 
 	private void GenerateRandomItem()
 	{
-		MapItem newItem = InstanceFactory.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
-		//MapItem newItem = game.Pool.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
-
 		EMapItem nextItemType = GetNextMapItemType();
 		if(DebugData.TestPowerUp != EPowerUp.None)
 			nextItemType = EMapItem.PowerUp;
@@ -58,7 +62,15 @@ public class MapItemGenerator : GameBehaviour
 			nextItemType = EMapItem.SpecialWeapon;
 
 		int randomIndex = GetRandomItemIndex(nextItemType);
-		Vector2 randomPosition = GetRandomPosition();
+		Vector2? randomGenPos = GetRandomGeneratePosition();
+		if(randomGenPos == null)
+		{
+			Debug.Log("Skipping GenerateRandomItem");
+			return;
+		}
+		MapItem newItem = InstanceFactory.Instantiate(mapItemPrefab.gameObject).GetComponent<MapItem>();
+
+		Vector2 randomPosition = (Vector2)randomGenPos;
 		switch(nextItemType)
 		{
 			case EMapItem.PowerUp:
@@ -134,6 +146,34 @@ public class MapItemGenerator : GameBehaviour
 		SpecialWeapon
 	}
 
+	/// <summary>
+	/// Finds random position on map and returns it if there is no near object
+	/// </summary>
+	private Vector2? GetRandomGeneratePosition(int pIteration = 0)
+	{
+
+		Vector2 topLeft = game.Map.ActiveMap.TopLeftCorner.position;
+		Vector2 botRight = game.Map.ActiveMap.BotRightCorner.position;
+
+		Vector2 randomPos = new Vector2(Random.Range(topLeft.x, botRight.x), Random.Range(topLeft.y, botRight.y));
+		Utils.DebugDrawCross(randomPos, Color.red, 1);
+
+		if(CanGenerateOn(randomPos))
+			return randomPos;
+
+		const int max_iterations = 20;
+		if(pIteration > max_iterations)
+		{
+			Debug.Log("Couldnt find good position to generate item");
+			return null;
+		}
+
+		return GetRandomGeneratePosition(pIteration + 1);
+	}
+
+	/// <summary>
+	/// raplaced by: GetRandomGeneratePosition
+	/// </summary>
 	private Vector2 GetRandomPosition()
 	{
 		if(DebugData.TestGenerateItems)

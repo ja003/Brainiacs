@@ -26,6 +26,7 @@ public class MainMenu : CSingleton<MainMenu>
 		SetMenuAnimPosition(debug_InitBgAnim);
 
 		btnStartGame.onClick.AddListener(OnBtnStartGame);
+		btnSettings.onClick.AddListener(OnBtnSettings);
 		//btnBack.onClick.AddListener(OnBtnBack);
 
 		if(Brainiacs.SelfInitGame)
@@ -41,6 +42,11 @@ public class MainMenu : CSingleton<MainMenu>
 	private void OnBtnStartGame()
 	{
 		StartMenuAnim(MENU_ANIM_POSITION_SETUP);
+	}
+
+	private void OnBtnSettings()
+	{
+		StartMenuAnim(MENU_ANIM_POSITION_SETTINGS);
 	}
 
 	public void OnBtnBack()

@@ -23,6 +23,8 @@ public static class PathFinder
 	/// <returns></returns>
 	public static MovePath GetPath(Vector2 pFrom, Vector2 pTo, float pStepSize, bool pDebug = false)
 	{
+		//Debug.Log("GetPath");
+
 		const bool test_path = false;
 		if(test_path)
 		{

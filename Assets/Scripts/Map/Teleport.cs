@@ -6,7 +6,7 @@ using UnityEngine;
 public class Teleport : MapObstackle
 {
 	[SerializeField] Teleport linkedTeleport;
-	[SerializeField] public Transform OutPosition;
+	[SerializeField] Transform OutPosition;
 	[SerializeField] public EDirection OutDirection;
 
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
@@ -32,6 +32,11 @@ public class Teleport : MapObstackle
 			if(teleportedObject != null)
 				linkedTeleport.OnTeleported(teleportedObject);
 		}
+	}
+
+	public Vector2 GetOutPosition()
+	{
+		return OutPosition ? OutPosition.position : transform.position;
 	}
 
 	protected override bool? OnCollision2(int pDamage, Player pOwner, GameObject pOrigin)

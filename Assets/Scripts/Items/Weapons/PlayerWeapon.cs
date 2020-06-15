@@ -50,6 +50,10 @@ public abstract class PlayerWeapon
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 		AmmoLeft--;
+
+		if(DebugData.TestInfiniteAmmo)
+			AmmoLeft++;
+
 		LastUseTime = Time.time;
 		if(AmmoLeft <= 0)
 		{

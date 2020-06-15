@@ -9,63 +9,49 @@ using UnityEngine;
 public static class DebugData
 {
 	public static bool TestRemote = false;
-
 	public static bool TestMP = false;
-
-	public static bool TestPlayers = false;
+	public static bool TestPlayers = true;
 	public static bool LocalImage = false;
-
-	private static int playerCount = 1;
-
 	public static bool TestResult = false;
-
 	public static bool TestMobileInput = false;
 
-	public static bool TestNonAggressiveAi = false;
-	public static bool TestAiDebugMove = false;
+	//Player
+	public static EHero TestHero = EHero.Einstein;
+	public static bool TestExtraPlayerItem = false;
 
+	public static bool TestShield = false;
+	public static bool TestImmortality = false;
+	public static bool TestInfiniteAmmo = true;
+	public static EPlayerEffect TestPlayerEffect = EPlayerEffect.None;
+
+	//GAME
+	private static int playerCount = 1;
+	public static EMap TestMap = EMap.Wonderland;
+	public static int TestGameValue = 10;
+	public static EPowerUp TestPowerUp = EPowerUp.None;
 	public static bool TestGenerateItems = false;
 	public static bool StopGenerateItems = false;
 	public static EWeaponId TestGenerateMapWeapon = EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = EWeaponId.None;
 
-	public static EPowerUp TestPowerUp = EPowerUp.None;
-	public static EPlayerEffect TestPlayerEffect = EPlayerEffect.None;
-
-	public static bool TestExtraPlayerItem = false;
-
-	public static bool TestShield = false;
-	public static bool TestImmortality = false;
-
-
-	public static EHero TestHero = EHero.Einstein;
-
-	public static int TestGameValue = 10;
-
-
-
-
+	// AI
 	public static EWeaponId TestAiWeapon = EWeaponId.None;
+	public static bool TestNonAggressiveAi = true;
+	public static bool TestAiDebugMove = false;
 
 	public static void TestSetGameInitInfo()
 	{
-		if(playerCount >= 1)
+		for(int i = 1; i <= playerCount; i++)
 		{
-			PlayerInitInfo player1 = GetPlayerInitInfo(1);
-			Brainiacs.Instance.GameInitInfo.AddPlayer(player1);
-		}
-
-		if(playerCount >= 2)
-		{
-			PlayerInitInfo player2 = GetPlayerInitInfo(2);
-			Brainiacs.Instance.GameInitInfo.AddPlayer(player2);
+			PlayerInitInfo player = GetPlayerInitInfo(i);
+			Brainiacs.Instance.GameInitInfo.AddPlayer(player);
 		}
 
 		//PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
 		//GameInitInfo.AddPlayer(player3);
 
 		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Score;
-		Brainiacs.Instance.GameInitInfo.Map = EMap.Steampunk;
+		Brainiacs.Instance.GameInitInfo.Map = TestMap == EMap.None ? EMap.Steampunk : TestMap;
 		Brainiacs.Instance.GameInitInfo.GameModeValue = 15;
 	}
 
@@ -87,15 +73,21 @@ public static class DebugData
 				break;
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
-			EHero.Currie, GetPlayerName(pPlayerNumber),
-			EPlayerColor.Yellow, EPlayerType.LocalPlayer);
+					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EPlayerColor.Yellow, EPlayerType.LocalPlayer);
+				break;
+
+			default:
+				player = new PlayerInitInfo(pPlayerNumber,
+					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EPlayerColor.Blue, EPlayerType.LocalPlayer);
 				break;
 		}
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
 		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
-		player.debug_StartupWeapon.Add(EWeaponId.MP40);
 		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+		player.debug_StartupWeapon.Add(EWeaponId.MP40);
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{
 			player.debug_StartupWeapon.Add(TestAiWeapon);

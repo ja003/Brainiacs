@@ -37,6 +37,12 @@ public class MapItem : MapObject
 		//isMine = brainiacs.PhotonManager.IsMaster();
 
 		animator.Rebind();
+
+		Collider2D col;
+		if(col = Physics2D.OverlapBox(pPosition, boxCollider2D.size, 0, game.Layers.MapObject))
+		{
+			Debug.LogError("OVERLAPS " + pPosition + " - " + col.gameObject.name);
+		}
 	}
 
 	public void Init(Vector2 pPosition, PowerUpConfig pPowerUp)

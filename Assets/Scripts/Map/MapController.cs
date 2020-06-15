@@ -16,10 +16,10 @@ public class MapController : GameController
 
 	public void SetMap(EMap pMap)
 	{
-		if(transform.childCount > 0)
+		for(int i = 0; i < transform.childCount; i++)
 		{
-			ActiveMap = transform.GetChild(0).GetComponent<Map>();
-			if(ActiveMap != null)
+			ActiveMap = transform.GetChild(i).GetComponent<Map>();
+			if(ActiveMap != null && ActiveMap.name.Contains(pMap.ToString()))
 			{
 				Debug.LogWarning("Map is already present in the scene");
 				if(!Brainiacs.SelfInitGame)
@@ -27,6 +27,18 @@ public class MapController : GameController
 				return;
 			}
 		}
+
+		//if(transform.childCount > 0)
+		//{
+		//	ActiveMap = transform.GetChild(0).GetComponent<Map>();
+		//	if(ActiveMap != null)
+		//	{
+		//		Debug.LogWarning("Map is already present in the scene");
+		//		if(!Brainiacs.SelfInitGame)
+		//			Debug.LogError("Map object cant be present in the scene [not error if debugging]");
+		//		return;
+		//	}
+		//}
 
 		ActiveMap = Instantiate(brainiacs.MapManager.GetMapConfig(pMap).Prefab);
 		if(ActiveMap == null)

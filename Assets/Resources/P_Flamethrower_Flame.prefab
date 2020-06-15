@@ -132,7 +132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217923434222555201}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -140,7 +140,7 @@ Transform:
   - {fileID: 1592433368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!114 &-1293533251116011119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
+  debug_notMpMsgDelay: 0.1
   flamethrower: {fileID: 1283352233378723769}
 --- !u!114 &1283352233378723769
 MonoBehaviour:
@@ -189,10 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31e5f2e0cc28c04b8d59884ed64d2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 
-  isPooled: 0
-  Photon: {fileID: 2342946905816927956}
-  IsPhotonInstantiated: 0
   InstanceOnEveryUse: 0
   spriteRend: {fileID: 1217923435359725164}
   collisionDetector: {fileID: 1107499961995651341}
@@ -307,9 +304,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingLayerID: 874242211
+  m_SortingLayer: 2
+  m_SortingOrder: 110
   m_Sprite: {fileID: 4974655320942412201, guid: 5eca2ffd12711604284cfdf2737f8e3d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
