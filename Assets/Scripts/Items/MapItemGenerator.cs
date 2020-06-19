@@ -10,9 +10,6 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class MapItemGenerator : GameBehaviour
 {
-	Vector2 topLeftCorner;
-	Vector2 botRightCorner;
-
 	[SerializeField] MapItem mapItemPrefab = null;
 	[SerializeField] private int frequency = -1;
 	[SerializeField] private bool isActive = false;
@@ -20,19 +17,13 @@ public class MapItemGenerator : GameBehaviour
 
 	public void Init()
 	{
-		topLeftCorner = game.Map.ActiveMap.TopLeftCorner.position;
-		botRightCorner = game.Map.ActiveMap.BotRightCorner.position;
-
 		StartGenerating();
 
 		if(!DebugData.StopGenerateItems)
-			GenerateRandomItem(); //DEBUG 
-
-		DoInTime(() =>
 		{
-			bool x = CanGenerateOn(new Vector2(-1, -2));
-			Debug.Log("CanGenerateOn " + x);
-		}, 1);
+			//delay needed, otherwise can be generated on invalid location
+			DoInTime(GenerateRandomItem, 0.5f); //DEBUG 
+		}
 
 	}
 
@@ -62,7 +53,7 @@ public class MapItemGenerator : GameBehaviour
 			nextItemType = EMapItem.SpecialWeapon;
 
 		int randomIndex = GetRandomItemIndex(nextItemType);
-		Vector2? randomGenPos = GetRandomGeneratePosition();
+		Vector2? randomGenPos = game.Map.ActiveMap.GetRandomPosition();
 		if(randomGenPos == null)
 		{
 			Debug.Log("Skipping GenerateRandomItem");
@@ -146,84 +137,86 @@ public class MapItemGenerator : GameBehaviour
 		SpecialWeapon
 	}
 
-	/// <summary>
-	/// Finds random position on map and returns it if there is no near object
-	/// </summary>
-	private Vector2? GetRandomGeneratePosition(int pIteration = 0)
-	{
+	///// <summary>
+	///// Finds random position on map and returns it if there is no near object
+	///// </summary>
+	//private Vector2? GetRandomGeneratePosition(int pIteration = 0)
+	//{
 
-		Vector2 topLeft = game.Map.ActiveMap.TopLeftCorner.position;
-		Vector2 botRight = game.Map.ActiveMap.BotRightCorner.position;
+	//	Vector2 topLeft = game.Map.ActiveMap.TopLeftCorner.position;
+	//	Vector2 botRight = game.Map.ActiveMap.BotRightCorner.position;
 
-		Vector2 randomPos = new Vector2(Random.Range(topLeft.x, botRight.x), Random.Range(topLeft.y, botRight.y));
-		Utils.DebugDrawCross(randomPos, Color.red, 1);
+	//	Vector2 randomPos = new Vector2(Random.Range(topLeft.x, botRight.x), Random.Range(topLeft.y, botRight.y));
+	//	Utils.DebugDrawCross(randomPos, Color.red, 1);
 
-		if(CanGenerateOn(randomPos))
-			return randomPos;
+	//	if(CanGenerateOn(randomPos))
+	//		return randomPos;
 
-		const int max_iterations = 20;
-		if(pIteration > max_iterations)
-		{
-			Debug.Log("Couldnt find good position to generate item");
-			return null;
-		}
+	//	const int max_iterations = 20;
+	//	if(pIteration > max_iterations)
+	//	{
+	//		//not error - this means that there are probably too much items on map already
+	//		// => no need to generate more
+	//		Debug.Log("Couldnt find good position to generate item");
+	//		return null;
+	//	}
 
-		return GetRandomGeneratePosition(pIteration + 1);
-	}
+	//	return GetRandomGeneratePosition(pIteration + 1);
+	//}
 
 	/// <summary>
 	/// raplaced by: GetRandomGeneratePosition
 	/// </summary>
-	private Vector2 GetRandomPosition()
-	{
-		if(DebugData.TestGenerateItems)
-			return debug_GetRandomPosition();
+	//private Vector2 GetRandomPosition()
+	//{
+	//	if(DebugData.TestGenerateItems)
+	//		return debug_GetRandomPosition();
 
-		//return Vector2.up; //DEBUG
-		Vector2 pos = game.Map.ActiveMap.GetRandomMapItemGenPos().position;
+	//	//return Vector2.up; //DEBUG
+	//	Vector2 pos = game.Map.ActiveMap.GetRandomMapItemGenPos().position;
 
-		//pos = Vector2.zero; //DEBUG
+	//	//pos = Vector2.zero; //DEBUG
 
-		Vector2 dirToCenter = (Vector2.zero - pos).normalized;
-		//in case pos = ZERO
-		if(dirToCenter.magnitude < 0.01f) dirToCenter = Vector2.right;
-		int iter = 0;
-		while(!CanGenerateOn(pos))
-		{
-			if(CanGenerateOn(pos + Vector2.up))
-				return pos + Vector2.up;
-			if(CanGenerateOn(pos + Vector2.right))
-				return pos + Vector2.right;
-			if(CanGenerateOn(pos + Vector2.down))
-				return pos + Vector2.down;
-			if(CanGenerateOn(pos + Vector2.left))
-				return pos + Vector2.left;
+	//	Vector2 dirToCenter = (Vector2.zero - pos).normalized;
+	//	//in case pos = ZERO
+	//	if(dirToCenter.magnitude < 0.01f) dirToCenter = Vector2.right;
+	//	int iter = 0;
+	//	while(!CanGenerateOn(pos))
+	//	{
+	//		if(CanGenerateOn(pos + Vector2.up))
+	//			return pos + Vector2.up;
+	//		if(CanGenerateOn(pos + Vector2.right))
+	//			return pos + Vector2.right;
+	//		if(CanGenerateOn(pos + Vector2.down))
+	//			return pos + Vector2.down;
+	//		if(CanGenerateOn(pos + Vector2.left))
+	//			return pos + Vector2.left;
 
-			Utils.DebugDrawCross(pos, Color.red, 1);
+	//		Utils.DebugDrawCross(pos, Color.red, 1);
 
-			const float step = 0.5f;
-			pos += dirToCenter * step;
-			const int maxSteps = 10;
-			if(iter++ > maxSteps)
-			{
-				Debug.Log("Couldnt find good position to generate item");
-				break;
-			}
-		}
+	//		const float step = 0.5f;
+	//		pos += dirToCenter * step;
+	//		const int maxSteps = 10;
+	//		if(iter++ > maxSteps)
+	//		{
+	//			Debug.Log("Couldnt find good position to generate item");
+	//			break;
+	//		}
+	//	}
 
-		return pos;
+	//	return pos;
 
-		//random pos approach
-		//float x = Random.Range(topLeftCorner.x, botRightCorner.x);
-		//float y = Random.Range(topLeftCorner.y, botRightCorner.y);
-		//return new Vector2(x, y, 0);
-	}
+	//	//random pos approach
+	//	//float x = Random.Range(topLeftCorner.x, botRightCorner.x);
+	//	//float y = Random.Range(topLeftCorner.y, botRightCorner.y);
+	//	//return new Vector2(x, y, 0);
+	//}
 
 	Vector2 debug_RandomPosition = Vector2.left * 3;
 	private Vector2 debug_GetRandomPosition()
 	{
 		//generate items in straight line
-		if(!CanGenerateOn(debug_RandomPosition))
+		if(!game.Map.ActiveMap.IsPositionValid(debug_RandomPosition))
 		{
 			debug_RandomPosition += Vector2.right * 0.5f;
 			//Debug.Log("another pos");
@@ -234,21 +227,5 @@ public class MapItemGenerator : GameBehaviour
 
 		return debug_RandomPosition;
 
-	}
-
-	private bool CanGenerateOn(Vector2 pPosition)
-	{
-		//cant generate too close to player
-		foreach(var player in game.PlayerManager.Players)
-		{
-			if(player.GetDistance(pPosition) < 2 * PlayerVisual.PlayerBodySize)
-				return false;
-		}
-
-		//cant overlap with anything (player, projectile, map object or another map item)
-		if(Physics2D.OverlapBox(pPosition, Vector2.one, 0))
-			return false;
-
-		return true;
 	}
 }

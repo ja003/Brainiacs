@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
-public class Map : GameBehaviour
+public class Map : GameBehaviour, IPositionValidator
 {
 	[SerializeField] Transform spawnPointsHolder = null;
 	[SerializeField] Transform mapItemGenPosHolder = null; 
@@ -63,16 +65,71 @@ public class Map : GameBehaviour
 		return spawnPoints[pIndex];
 	}
 
-	int lastUsedPos;
-	public Transform GetRandomMapItemGenPos()
+	//int lastUsedPos;
+	//Replaced by GetRandomPosition
+	//public Transform GetRandomMapItemGenPos()
+	//{
+	//	int randIndex = UnityEngine.Random.Range(0, mapItemGenPos.Count);
+	//	if(randIndex == lastUsedPos)
+	//	{
+	//		//Debug.Log("Select another pos");
+	//		randIndex = randIndex++ % mapItemGenPos.Count;
+	//	}
+	//	lastUsedPos = randIndex;
+	//	return mapItemGenPos[randIndex];
+	//}
+
+	/// <summary>
+	/// Finds random position on map and returns it if the pCondition is met
+	/// </summary>
+	public Vector2? GetRandomPosition(IPositionValidator pCondition = null, int pIteration = 0)
 	{
-		int randIndex = UnityEngine.Random.Range(0, mapItemGenPos.Count);
-		if(randIndex == lastUsedPos)
+		if(pCondition == null)
+			pCondition = this;
+
+		Vector2 topLeft = TopLeftCorner.position;
+		Vector2 botRight = BotRightCorner.position;
+
+		Vector2 randomPos = new Vector2(Random.Range(topLeft.x, botRight.x), Random.Range(topLeft.y, botRight.y));
+		Utils.DebugDrawCross(randomPos, Color.red, 1);
+
+		if(pCondition.IsPositionValid(randomPos))
+			return randomPos;
+
+		const int max_iterations = 20;
+		if(pIteration > max_iterations)
 		{
-			//Debug.Log("Select another pos");
-			randIndex = randIndex++ % mapItemGenPos.Count;
+			//not error - this means that there are probably too much items on map already
+			// => no need to generate more
+			Debug.Log("Couldnt find good position to generate item");
+			return null;
 		}
-		lastUsedPos = randIndex;
-		return mapItemGenPos[randIndex];
+
+		return GetRandomPosition(pCondition, pIteration + 1);
 	}
+
+	/// <summary>
+	/// Default position validator.
+	/// Position is valid if no object if too close.
+	/// </summary>
+	public bool IsPositionValid(Vector2 pPosition)
+	{
+		//not too close to player
+		foreach(var player in game.PlayerManager.Players)
+		{
+			if(player.GetDistance(pPosition) < 2 * PlayerVisual.PlayerBodySize)
+				return false;
+		}
+
+		//cant overlap with anything (player, projectile, map object or another map item)
+		if(Physics2D.OverlapBox(pPosition, Vector2.one, 0))
+			return false;
+
+		return true;
+	}
+}
+
+public interface IPositionValidator
+{
+	bool IsPositionValid(Vector2 pPosition);
 }

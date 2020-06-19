@@ -42,7 +42,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 		lastPosition = transform.position; //has to be called before ApplyMove
 
-		
+
 
 		//apply movement
 		ApplyMove(CurrentDirection);
@@ -85,7 +85,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	public void Stop()
 	{
 		if(IsLogEnabled())
-			Debug.Log("Stop " );
+			Debug.Log("Stop ");
 
 		IsMoving = false;
 		player.Visual.Idle();
@@ -97,7 +97,9 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	public void SetMove(EDirection pDirection)
 	{
 		if(IsLogEnabled())
-			Debug.Log("SetMove " + pDirection);
+		{
+			//Debug.Log("SetMove " + pDirection);
+		}
 
 		if(pDirection == EDirection.None)
 		{
@@ -143,7 +145,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		if(!IsMoving)
 			return;
 
-		
+
 
 		if(pDirection == EDirection.None)
 		{
@@ -207,7 +209,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// Smoothly moves player towards the calculated position.
 	/// When pInstantly is passed, image is relocated to target position instantly (eg. Teleport)
 	/// </summary>
-	public void SetSyncPosition(Vector2 pPosition, EDirection pDirection, 
+	public void SetSyncPosition(Vector2 pPosition, EDirection pDirection,
 		bool pIsActualyMoving, float pSpeed, bool pInstantly)
 	{
 		if(player.IsItMe)
@@ -299,7 +301,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		else //seems better without ease
 		{
 			moveFunctionId = LeanTween.moveX(gameObject, targetPos.x, SYNC_POS_INTERVAL * xPercentage)
-				.setOnComplete(() => 
+				.setOnComplete(() =>
 					LeanTween.moveY(gameObject, targetPos.y, SYNC_POS_INTERVAL * yPercentage)).id;
 		}
 	}

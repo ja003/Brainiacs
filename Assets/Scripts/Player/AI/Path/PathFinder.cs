@@ -15,8 +15,6 @@ using UnityEngine;
 /// </summary>
 public static class PathFinder
 {
-	static LayerMask mapObject => Game.Instance.Layers.MapObject;
-
 	/// <summary>
 	/// Returns path between given points on grid starting at pFrom and having given cell size
 	/// </summary>
@@ -304,7 +302,7 @@ public static class PathFinder
 		float collHeightHalf = Player.ColliderSize.y / 2;
 		Vector2 topLeft = new Vector2(Mathf.Min(pFrom.x, pTo.x) - collWidthHalf, Mathf.Max(pFrom.y, pTo.y) + collHeightHalf);
 		Vector2 botRight = new Vector2(Mathf.Max(pFrom.x, pTo.x) + collWidthHalf, Mathf.Min(pFrom.y, pTo.y) - collHeightHalf);
-		Collider2D overlaps = Physics2D.OverlapArea(topLeft, botRight, mapObject);
+		Collider2D overlaps = Physics2D.OverlapArea(topLeft, botRight, Layers.UnwalkableObject);
 		if(overlaps)
 		{
 			Utils.DebugDrawRect(topLeft, botRight, Color.yellow);
@@ -319,7 +317,7 @@ public static class PathFinder
 	private static bool OverlapsWithMapObject(Vector2 pPoint)
 	{
 		//const float player_size = 0.2f; //todo: connect to real value?
-		Collider2D overlaps = Physics2D.OverlapBox(pPoint, Player.ColliderSize, 0, mapObject);
+		Collider2D overlaps = Physics2D.OverlapBox(pPoint, Player.ColliderSize, 0, Layers.UnwalkableObject);
 		if(overlaps)
 		{
 			//Debug.Log("OverlapsWithMapObject " + overlaps.gameObject.name);

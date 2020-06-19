@@ -16,27 +16,27 @@ public static class DebugData
 	public static bool TestMobileInput = false;
 
 	//Player
-	public static EHero TestHero = EHero.Einstein;
+	public static EHero TestHero = EHero.Nobel;
 	public static bool TestExtraPlayerItem = false;
 
 	public static bool TestShield = false;
 	public static bool TestImmortality = false;
-	public static bool TestInfiniteAmmo = true;
+	public static bool TestInfiniteAmmo = false;
 	public static EPlayerEffect TestPlayerEffect = EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 1;
+	private static int playerCount = 2;
 	public static EMap TestMap = EMap.Wonderland;
 	public static int TestGameValue = 10;
 	public static EPowerUp TestPowerUp = EPowerUp.None;
 	public static bool TestGenerateItems = false;
-	public static bool StopGenerateItems = false;
+	public static bool StopGenerateItems = true;
 	public static EWeaponId TestGenerateMapWeapon = EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = EWeaponId.None;
 
 	// AI
-	public static EWeaponId TestAiWeapon = EWeaponId.None;
-	public static bool TestNonAggressiveAi = true;
+	public static EWeaponId TestAiWeapon = EWeaponId.Biogun;
+	public static bool TestNonAggressiveAi = false;
 	public static bool TestAiDebugMove = false;
 
 	public static void TestSetGameInitInfo()
@@ -86,8 +86,8 @@ public static class DebugData
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
 		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
-		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
 		player.debug_StartupWeapon.Add(EWeaponId.MP40);
+		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{
 			player.debug_StartupWeapon.Add(TestAiWeapon);

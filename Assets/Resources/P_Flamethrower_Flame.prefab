@@ -69,7 +69,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217923434187672384}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -88,10 +88,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: -1.51, y: 1.74}
-      - {x: -2.9, y: 1.18}
-      - {x: -3.06, y: -0.19}
-      - {x: -1.82, y: -1.03}
+      - {x: -1.7515773, y: 1.9815791}
+      - {x: -5.0569468, y: 1.5251114}
+      - {x: -4.595745, y: -0.4143226}
+      - {x: -2.1478558, y: -0.6676329}
 --- !u!114 &1107499961995651341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   collisionDetector: {fileID: 1107499961995651341}
   maxDistance: {fileID: 1592433368}
   minDamage: 1
-  maxDamage: 10
+  maxDamage: 5
 --- !u!95 &720107102228530627
 Animator:
   serializedVersion: 3
@@ -261,8 +261,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217923435359725161}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.59000003, y: -2.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.34, y: -1.222, z: 0}
+  m_LocalScale: {x: 0.56, y: 0.56, z: 0.56}
   m_Children:
   - {fileID: 1217923434187672385}
   m_Father: {fileID: 1217923434222555206}

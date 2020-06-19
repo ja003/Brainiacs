@@ -13,10 +13,10 @@ public class MobileInput : GameBehaviour
 	protected override void Awake()
 	{
 		base.Awake();
-		bool isMobile = PlatformManager.GetPlatform() == EPlatform.Mobile;
+		bool isMobile = PlatformManager.GetPlatform() == EPlatform.Mobile || DebugData.TestMobileInput;
 		btnShoot.gameObject.SetActive(isMobile);
 		btnSwap.gameObject.SetActive(isMobile);
 
-		moveJoystick.gameObject.SetActive(isMobile || DebugData.TestMobileInput);
+		moveJoystick.gameObject.SetActive(isMobile);
 	}
 }

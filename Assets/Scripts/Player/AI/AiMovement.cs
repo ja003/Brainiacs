@@ -21,6 +21,7 @@ public class AiMovement : AiController
 
 	public const float PATH_STEP = Player.COLLIDER_SIZE / 2;
 
+	bool isLogEnabled = false;
 
 	public void Update()
 	{
@@ -45,13 +46,13 @@ public class AiMovement : AiController
 			}
 
 			//check if is close to final target
-			if(IsCloseToTarget())
+			if(IsCloseToMoveTarget())
 			{
 				//if is close, try re-evaluate, target might have changed
 				brain.EvaluateGoals();
 
 				//if is close even after re-evaluation, dont move
-				if(IsCloseToTarget())
+				if(IsCloseToMoveTarget())
 				{
 					//if player is targeted, look at him
 					if(TargetedPlayer != null)
@@ -114,12 +115,16 @@ public class AiMovement : AiController
 		}
 	}
 
-	private bool IsCloseToTarget()
+	public bool IsCloseTo(Vector2 pPosition)
+	{
+		const float max_dist_to_target = 0.1f;
+		return Vector2.Distance(playerPosition, pPosition) < max_dist_to_target;
+	}
+
+	private bool IsCloseToMoveTarget()
 	{
 		if(currentPathNode == null) return false;
-
-		const float max_dist_to_target = 0.1f;
-		return Vector2.Distance(playerPosition, moveTarget) < max_dist_to_target;
+		return IsCloseTo(moveTarget);
 	}
 
 	public Player TargetedPlayer;
@@ -127,9 +132,11 @@ public class AiMovement : AiController
 
 	public void SetTarget(Vector2 pTarget)
 	{
+		if(isLogEnabled)
+			Debug.Log("SetTarget " + pTarget);
+
 		moveTarget = pTarget;
 		RecalculatePath();
-		//Debug.Log("SetTarget " + pTarget);
 	}
 
 	/// <summary>
@@ -177,6 +184,11 @@ public class AiMovement : AiController
 		}
 		else
 		{
+			if(isLogEnabled)
+			{
+				Debug.Log("RecalculatePath");
+			}
+
 			path = PathFinder.GetPath(playerPosition, moveTarget, PATH_STEP, true);
 			currentPathNode = path.GetFirstUnvisitedNode();
 			Utils.DebugDrawPath(path.GetNodePositions(), Color.green, MIN_RECALCULATE_PATH_FREQUENCY);

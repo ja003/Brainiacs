@@ -13,7 +13,7 @@ public class PlayerAiBrain : PlayerBehaviour
 	//currently active goal
 	public AiGoalController CurrentGoal { get; private set; }
 
-	AiMovement aiMovement;
+	public AiMovement aiMovement;
 	public AiShoot shoot;
 	public AiEvade evade;
 	public AiMapItem item;

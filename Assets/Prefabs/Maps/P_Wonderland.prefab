@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447438741}
   - component: {fileID: 447438742}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,8 +218,9 @@ GameObject:
   m_Component:
   - component: {fileID: 465008113}
   - component: {fileID: 465008114}
+  - component: {fileID: 140594497}
   m_Layer: 13
-  m_Name: GameObject
+  m_Name: doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,6 +266,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8516207, y: 0.6088837}
   m_EdgeRadius: 0
+--- !u!114 &140594497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465008112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5229f09c8aa5c74e86d2df120eb070c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546473848
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864944918}
   - component: {fileID: 864944919}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +416,7 @@ GameObject:
   - component: {fileID: 916380471}
   - component: {fileID: 916380473}
   - component: {fileID: 916380472}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968027938}
   - component: {fileID: 968027939}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: hole_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +640,7 @@ GameObject:
   - component: {fileID: 1517922609}
   - component: {fileID: 1517922611}
   - component: {fileID: 1517922610}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017812155651351292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.692, y: 4.502, z: 0}
+  m_LocalPosition: {x: -3.692, y: 4.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9048046402208998189}
@@ -1372,7 +1385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091170740317734278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.34, y: -0.78, z: 0}
+  m_LocalPosition: {x: -3.91, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1091170739396940832}
@@ -2230,7 +2243,7 @@ GameObject:
   - component: {fileID: 324572557}
   - component: {fileID: 324572559}
   - component: {fileID: 324572560}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: map_wonderland_barrier_left_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}

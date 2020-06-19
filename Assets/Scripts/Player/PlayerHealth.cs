@@ -51,9 +51,16 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	private void Respawn()
 	{
+		Vector2? respawnPos = game.Map.ActiveMap.GetRandomPosition();
+		if(respawnPos == null)
+		{
+			Debug.Log("Couldnt find good spawn position => spawn at center");
+			respawnPos = Vector2.zero;
+		}
+
 		//todo: generate random position
 		IsDying = false;
-		movement.SpawnAt(Vector2.up);
+		movement.SpawnAt((Vector2)respawnPos);
 		stats.OnRespawn();
 	}
 

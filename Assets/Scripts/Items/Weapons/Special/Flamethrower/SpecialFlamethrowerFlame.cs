@@ -14,18 +14,15 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 	[SerializeField] private float minDamage = -1;
 	[SerializeField] private float maxDamage = -1;
 
-	//Player owner;
-	//public void Init(Player pOwner)
-	//{
-	//	owner = pOwner;
-	//	SetUse(false);
-
-	//	if(owner.IsItMe) //flame collision detected on player side
-	//		collisionDetector.Init(this);
-
-	//	OnDirectionChange(EDirection.Right); //initial refresh
-	//	//SetActive(true);
-	//}
+	private void Update()
+	{
+		const float auto_stop_use_delay = 0.1f;
+		if(isUsed && Time.time - lastTimeUsed > auto_stop_use_delay)
+		{
+			Debug.LogError("Flame auto-stopped");
+			StopUse();
+		}
+	}
 
 	protected override void OnReturnToPool3()
 	{
@@ -49,6 +46,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		collisionDetector.SetEnabled(pValue && owner.IsItMe);
 	}
 
+	float lastTimeUsed;
 	protected override void OnUse()
 	{
 		SetUse(true);
@@ -58,15 +56,16 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		SetUse(false);
 	}
 
+	bool isUsed;
 	private void SetUse(bool pValue)
 	{
-		//isUsed = pValue;
+		isUsed = pValue;
 		SetActive(true);
 		animator.SetBool("isUsed", pValue);
 		collisionDetector.SetEnabled(pValue);
 
-		//if(pValue)
-		//	lastTimeUsed = Time.time;
+		if(pValue)
+			lastTimeUsed = Time.time;
 	}
 
 

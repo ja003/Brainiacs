@@ -194,6 +194,11 @@ public class AiShoot : AiGoalController
 
 	private Vector2 GetMoveTarget()
 	{
+		if(!moveTargetReached)
+		{
+			moveTargetReached = brain.aiMovement.IsCloseTo(moveTarget);
+		}
+
 		return moveTargetReached ? idealMoveTarget : moveTarget;
 	}
 
@@ -253,6 +258,9 @@ public class AiShoot : AiGoalController
 	{
 		float maxDist = GetWeaponMaxUseDistance(pWeapon);
 		float idealDist = GetWeaponIdealUseDistance(pWeapon);
+		//ideal distance shouldnt be bigger. (probably not configured)
+		if(idealDist > maxDist)
+			idealDist = maxDist;
 
 		Tuple<Vector2, Vector2> posHorizontal = GetShootPositions(pShootTarget, maxDist, idealDist, true);
 		Tuple<Vector2, Vector2> posVertical = GetShootPositions(pShootTarget, maxDist, idealDist, false);
@@ -380,15 +388,23 @@ public class AiShoot : AiGoalController
 
 		switch(pWeapon)
 		{
+			//hero special
 			case EWeaponId.Special_DaVinci:
-				return 1;
+				return 2;
+			case EWeaponId.Special_Nobel:
+			case EWeaponId.Mine:
+				return 15;
 
+			//special
+			case EWeaponId.Flamethrower:
+				return 3;
+
+			//projectile
 			case EWeaponId.MP40:
 				return 8;
-			case EWeaponId.Flamethrower:
-				return 4;
+			
 		}
-		return 666;
+		return 10;
 	}
 
 	private bool CanSwapWeapon()
