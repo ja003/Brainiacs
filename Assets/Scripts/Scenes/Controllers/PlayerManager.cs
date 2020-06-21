@@ -13,6 +13,8 @@ public class PlayerManager : GameController
 	[SerializeField] private Player playerPrefab = null;
 	[SerializeField] private PlayerSorter playerSorter = null;
 
+	public Vector2 PLAYER_SIZE => playerPrefab.Collider.size;
+
 	protected override void OnMainControllerAwaken()
 	{
 		if(PhotonNetwork.IsMasterClient)

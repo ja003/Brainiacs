@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AStarSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,6 +26,13 @@ public class MovePath
 		foreach(var node in pNodes)
 		{
 			nodes.Add(new PathNode(node));
+		}
+		for(int i = 0; i < nodes.Count; i++)
+		{
+			if(i > 0)
+				nodes[i].Previous = nodes[i - 1];
+			if(i < nodes.Count - 2)
+				nodes[i].Next = nodes[i + 1];
 		}
 	}
 

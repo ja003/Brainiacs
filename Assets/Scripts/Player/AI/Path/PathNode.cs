@@ -11,6 +11,7 @@ public class PathNode
 {
 	public Vector2 point;
 	public bool visited;
+	public PathNode Previous, Next;
 
 	public PathNode(Vector2 point)
 	{

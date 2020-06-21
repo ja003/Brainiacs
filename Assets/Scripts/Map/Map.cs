@@ -19,6 +19,22 @@ public class Map : GameBehaviour, IPositionValidator
 	[SerializeField] public Transform TopLeftCorner;
 	[SerializeField] public Transform BotRightCorner;
 
+	public IPathFinder PathFinder { get; private set; }
+
+	[SerializeField] bool debug_DrawGrid;
+
+	protected override void Awake()
+	{
+		PathFinder = new PathFinderController(
+			AiMovement.PATH_STEP, TopLeftCorner.position, BotRightCorner.position);
+	}
+
+	private void Update()
+	{
+		if(debug_DrawGrid)
+			AstarAdapter.Debug_DrawGrid();
+	}
+
 	internal void SetActive(bool pValue)
 	{
 		//register spawnpoints
@@ -126,6 +142,14 @@ public class Map : GameBehaviour, IPositionValidator
 			return false;
 
 		return true;
+	}
+
+	public bool IsWithinMap(Vector2 pPoint)
+	{
+		return pPoint.x >= TopLeftCorner.position.x
+			&& pPoint.x <= BotRightCorner.position.x
+			&& pPoint.y >= BotRightCorner.position.y
+			&& pPoint.y <= TopLeftCorner.position.y;
 	}
 }
 

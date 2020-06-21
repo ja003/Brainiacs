@@ -8,36 +8,38 @@ using UnityEngine;
 
 public static class DebugData
 {
-	public static bool TestRemote = false;
-	public static bool TestMP = false;
-	public static bool TestPlayers = true;
-	public static bool LocalImage = false;
-	public static bool TestResult = false;
-	public static bool TestMobileInput = false;
+	private static bool release = false;
+
+	public static bool TestRemote = false && !release;
+	public static bool TestMP = false && !release;
+	public static bool TestPlayers = true && !release;
+	public static bool LocalImage = false && !release;
+	public static bool TestResult = false && !release;
+	public static bool TestMobileInput = false && !release;
 
 	//Player
-	public static EHero TestHero = EHero.Nobel;
-	public static bool TestExtraPlayerItem = false;
+	public static EHero TestHero = release ? EHero.Nobel : EHero.Nobel;
+	public static bool TestExtraPlayerItem = false && !release;
 
-	public static bool TestShield = false;
-	public static bool TestImmortality = false;
-	public static bool TestInfiniteAmmo = false;
-	public static EPlayerEffect TestPlayerEffect = EPlayerEffect.None;
+	public static bool TestShield = false && !release;
+	public static bool TestImmortality = false && !release;
+	public static bool TestInfiniteAmmo = false && !release;
+	public static EPlayerEffect TestPlayerEffect = release ? EPlayerEffect.None : EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 2;
-	public static EMap TestMap = EMap.Wonderland;
+	private static int playerCount = 1;
+	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 10;
-	public static EPowerUp TestPowerUp = EPowerUp.None;
-	public static bool TestGenerateItems = false;
-	public static bool StopGenerateItems = true;
-	public static EWeaponId TestGenerateMapWeapon = EWeaponId.None;
-	public static EWeaponId TestGenerateMapSpecialWeapon = EWeaponId.None;
+	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.None;
+	public static bool TestGenerateItems = true && !release;
+	public static bool StopGenerateItems = false && !release;
+	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
+	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.None;
 
 	// AI
-	public static EWeaponId TestAiWeapon = EWeaponId.Biogun;
-	public static bool TestNonAggressiveAi = false;
-	public static bool TestAiDebugMove = false;
+	public static EWeaponId TestAiWeapon = release ? EWeaponId.None : EWeaponId.None;
+	public static bool TestNonAggressiveAi = false && !release;
+	public static bool TestAiDebugMove = false && !release;
 
 	public static void TestSetGameInitInfo()
 	{

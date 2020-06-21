@@ -13,6 +13,8 @@ public class AiMovement : AiController
 		//moveTarget = playerPosition;
 	}
 
+	const float DIST_CHECK_TOLERANCE = 0.1f;
+
 	float MIN_RECALCULATE_PATH_FREQUENCY = 0.1f;
 	float lastRecalculatePathTime;
 
@@ -23,10 +25,12 @@ public class AiMovement : AiController
 
 	bool isLogEnabled = false;
 
+
 	public void Update()
 	{
 		Utils.DebugDrawCross(moveTarget, Color.yellow);
-		Utils.DebugDrawPath(path.GetNodePositions(), Color.yellow);
+		if(player.debug_DrawPath)
+			Utils.DebugDrawPath(path.GetNodePositions(), Color.yellow);
 
 		//Utils.DebugDrawCross(playerPosition, Color.red);
 		//Utils.DebugDrawCross(player.transform.position, Color.blue);
@@ -35,6 +39,48 @@ public class AiMovement : AiController
 		if(Time.time < lastMovePauseTime + MOVE_PAUSE)
 			return;
 
+
+		CheckPathProgress();
+
+
+		//if(IsCloseToCurrentPathNode())
+		//{
+		//	//mark node as visited and select the next one
+		//	currentPathNode.visited = true;
+		//	if(path.IsNodeAtStraightPathToTarget(currentPathNode))
+		//	{
+		//		brain.shoot.OnReachedStraightPathToTargetNode();
+		//	}
+
+		//	currentPathNode = path.GetFirstUnvisitedNode();
+		//}
+
+		//try recalculate path
+		if(lastRecalculatePathTime + MIN_RECALCULATE_PATH_FREQUENCY < Time.time)
+		{
+			RecalculatePath();
+			//if(currentPathNode != null)
+			//{
+			//	EDirection directionToTarget = GetDirectionTo(currentPathNode.point);
+			//	if(directionToTarget != player.Movement.CurrentDirection && !CanChangeDirection())
+			//	{
+			//		Debug.Log("Cant change direction so soon after weapon use");
+			//		return;
+			//	}
+			//	else
+			//	{
+			//		player.Movement.SetMove(directionToTarget);
+			//	}
+			//}
+		}
+		else
+		{
+			UpdateMove();
+		}
+	}
+
+	private void CheckPathProgress()
+	{
 		//check path progress
 		if(IsCloseToCurrentPathNode())
 		{
@@ -77,48 +123,14 @@ public class AiMovement : AiController
 			currentPathNode = path.GetFirstUnvisitedNode();
 		}
 
-		
-
-		//if(IsCloseToCurrentPathNode())
-		//{
-		//	//mark node as visited and select the next one
-		//	currentPathNode.visited = true;
-		//	if(path.IsNodeAtStraightPathToTarget(currentPathNode))
-		//	{
-		//		brain.shoot.OnReachedStraightPathToTargetNode();
-		//	}
-
-		//	currentPathNode = path.GetFirstUnvisitedNode();
-		//}
-
-		//try recalculate path
-		if(lastRecalculatePathTime + MIN_RECALCULATE_PATH_FREQUENCY < Time.time)
-		{
-			RecalculatePath();
-			//if(currentPathNode != null)
-			//{
-			//	EDirection directionToTarget = GetDirectionTo(currentPathNode.point);
-			//	if(directionToTarget != player.Movement.CurrentDirection && !CanChangeDirection())
-			//	{
-			//		Debug.Log("Cant change direction so soon after weapon use");
-			//		return;
-			//	}
-			//	else
-			//	{
-			//		player.Movement.SetMove(directionToTarget);
-			//	}
-			//}
-		}
-		else
-		{
-			UpdateMove();
-		}
+		if(IsCloseToCurrentPathNode())
+			CheckPathProgress();
 	}
 
 	public bool IsCloseTo(Vector2 pPosition)
 	{
-		const float max_dist_to_target = 0.1f;
-		return Vector2.Distance(playerPosition, pPosition) < max_dist_to_target;
+		float dist = Vector2.Distance(playerPosition, pPosition);
+		return dist < DIST_CHECK_TOLERANCE;
 	}
 
 	private bool IsCloseToMoveTarget()
@@ -154,14 +166,14 @@ public class AiMovement : AiController
 		if(currentPathNode == null)
 			return false;
 
-		return Vector2.Distance(playerPosition, currentPathNode.point) < 0.1f;
+		return IsCloseTo(currentPathNode.point);
 	}
 
 	Vector2 lastPathTarget;
 	MovePath path = new MovePath();
 	PathNode currentPathNode;
 
-	private void RecalculatePath()
+	private async void RecalculatePath()
 	{
 		lastRecalculatePathTime = Time.time;
 
@@ -170,14 +182,16 @@ public class AiMovement : AiController
 		float newTargetDiff = Vector2.Distance(lastPathTarget, moveTarget);
 
 		//check if player got off the path (eg. pushed out)
-		float playerDistToNode = currentPathNode == null ? 
-			0 : Vector2.Distance(playerPosition, currentPathNode.point);
-		bool isPlayerOffPath = playerDistToNode > PATH_STEP * 1.2f;
-			//|| currentPathNode == null; //path is null => is off path
+		bool isPlayerOffPath = false;
+		if(currentPathNode?.Previous != null)
+		{
+			Vector2 previousToCurrentDirection = currentPathNode.point - currentPathNode.Previous.point;
+			float playerDistFromLine = Utils.GetDistanceFromLine(
+				playerPosition, currentPathNode.Previous.point, previousToCurrentDirection);
+			isPlayerOffPath = playerDistFromLine > 2 * DIST_CHECK_TOLERANCE;
+		}
 
-		//Debug.Log("isPlayerOffPath = " + isPlayerOffPath);
-
-		if(!forceRecalcPath && newTargetDiff < PATH_STEP / 2 && !isPlayerOffPath)
+		if(path.IsValid() && !forceRecalcPath && newTargetDiff < PATH_STEP / 2 && !isPlayerOffPath)
 		{
 			Utils.DebugDrawPath(path.GetNodePositions(), Color.blue);
 			return;
@@ -189,16 +203,50 @@ public class AiMovement : AiController
 				Debug.Log("RecalculatePath");
 			}
 
-			path = PathFinder.GetPath(playerPosition, moveTarget, PATH_STEP, true);
-			currentPathNode = path.GetFirstUnvisitedNode();
-			Utils.DebugDrawPath(path.GetNodePositions(), Color.green, MIN_RECALCULATE_PATH_FREQUENCY);
-
+			path = await pathFinder.GetPathAsync(playerPosition, moveTarget);
+			OnPathRecalculated();
+			CheckPathProgress();
 			//moveTarget = path.First(); //NO!!
 			lastPathTarget = moveTarget;
 			//player.Movement.Stop(); //lagging
 		}
 
 		UpdateMove();
+	}
+
+	/// <summary>
+	/// Path is calculated asynchronously. If it takes too long it is possible that 
+	/// player as already located somewhere else than the start of the path.
+	/// Check first X nodes if player is between some of them and mark them as visited.
+	/// </summary>
+	private void OnPathRecalculated()
+	{
+		if(path == null)
+		{
+			currentPathNode = null;
+			return;
+		}
+
+		int maxCheckCount = Mathf.Min(3, path.nodes.Count);
+		for(int i = 0; i < maxCheckCount; i++)
+		{
+			PathNode node = path.nodes[i];
+			bool isCloseToNode = IsCloseTo(node.point);
+			bool isBetweenThisAndNextNode = node.Next != null &&
+				Utils.GetDistanceFromLine(playerPosition, node.point, node.Next.point) < DIST_CHECK_TOLERANCE;
+
+			if(isCloseToNode || isBetweenThisAndNextNode)
+			{
+				for(int j = i; j >= 0; j--)
+				{
+					path.nodes[j].visited = true;
+					Utils.DebugDrawCross(path.nodes[j].point, Color.red, 1);
+				}
+				break;
+			}
+		}
+
+		currentPathNode = path.GetFirstUnvisitedNode();
 	}
 
 	private void UpdateMove()
@@ -210,6 +258,11 @@ public class AiMovement : AiController
 		}
 
 		EDirection directionToTarget = GetDirectionTo(currentPathNode.point);
+		if(directionToTarget == EDirection.Right)
+		{
+			//Debug.Log("");
+		}
+
 		if(directionToTarget != player.Movement.CurrentDirection && !CanChangeDirection())
 		{
 			//Debug.Log("Cant change direction so soon after weapon use");
@@ -226,7 +279,12 @@ public class AiMovement : AiController
 	{
 		Vector2 dir = pTarget - playerPosition;
 		EDirection direction;
-		if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+		//if(dir.magnitude < dist)
+		if(IsCloseTo(pTarget))
+		{
+			direction = player.Movement.CurrentDirection;
+		}
+		else if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
 		{
 			direction = dir.x > 0 ? EDirection.Right : EDirection.Left;
 		}

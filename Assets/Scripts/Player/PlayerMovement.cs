@@ -84,8 +84,10 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 	public void Stop()
 	{
-		if(IsLogEnabled())
+		if(IsLogEnabled() && IsMoving)
+		{
 			Debug.Log("Stop ");
+		}
 
 		IsMoving = false;
 		player.Visual.Idle();
@@ -128,11 +130,18 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		CurrentDirection = pDirection; //has to be set before OnDirectionChange call
 		if(isDirectionChanged)
 		{
+			if(IsLogEnabled())
+			{
+				Debug.Log(gameObject.name + " SetDirection " + pDirection);
+			}
+
 			visual.OnDirectionChange(pDirection);
 			weapon.OnDirectionChange(pDirection);
 			aiBrain.OnDirectionChange(pDirection);
 		}
 	}
+
+	EDirection debug_lastLoggedDirection;
 
 	/// <summary>
 	/// Moves player in given direction but only if move is requested
@@ -140,7 +149,11 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	private void ApplyMove(EDirection pDirection)
 	{
 		if(IsLogEnabled())
-			Debug.Log($"ApplyMove {pDirection} ({IsMoving})");
+		{
+			if(pDirection != debug_lastLoggedDirection)
+				Debug.Log($"ApplyMove {pDirection} ({IsMoving})");
+			debug_lastLoggedDirection = pDirection;
+		}
 
 		if(!IsMoving)
 			return;

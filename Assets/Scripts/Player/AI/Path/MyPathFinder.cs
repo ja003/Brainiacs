@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
+/// NOT USED - REPLACED BY ASTAR
+/// 
 /// Simple path finder without any big optimization.
 /// Paths are expected not to be very long so performance shouldnt be an issue.
 /// todo: 
@@ -13,8 +15,10 @@ using UnityEngine;
 ///  - prevent too frequent turns (diagonal move)
 /// 3) maybe further path analysis for cutting
 /// </summary>
-public static class PathFinder
+public static class MyPathFinder
 {
+	static Vector2 playerSize => Game.Instance.PlayerManager.PLAYER_SIZE;
+
 	/// <summary>
 	/// Returns path between given points on grid starting at pFrom and having given cell size
 	/// </summary>
@@ -137,14 +141,14 @@ public static class PathFinder
 		}, Color.red);
 
 		Vector2 newPoint = p1 + (p2 - p1) * 2;
-		if(!OverlapsWithMapObject(newPoint))
+		if(!PathFinderController.OverlapsWithMapObject(newPoint))
 		{
 			pPath.RemoveAt(pPath.Count - 2);
 			pPath.Insert(pPath.Count - 1, newPoint);
 			return;
 		}
 		newPoint = p4 + (p3 - p4) * 2;
-		if(!OverlapsWithMapObject(newPoint))
+		if(!PathFinderController.OverlapsWithMapObject(newPoint))
 		{
 			pPath.RemoveAt(pPath.Count - 3);
 			pPath.Insert(pPath.Count - 2, newPoint);
@@ -287,7 +291,7 @@ public static class PathFinder
 		//note: IsReachable method does not work well when player is touching 
 		//a map object (always unreachable)
 		//if(!Utils.ContainsPoint(pIgnorePoints, pPoint) && IsReachable(pCenter, pPoint))
-		if(!Utils.ContainsPoint(pIgnorePoints, pPoint) && !OverlapsWithMapObject(pPoint))
+		if(!Utils.ContainsPoint(pIgnorePoints, pPoint) && !PathFinderController.OverlapsWithMapObject(pPoint))
 		{
 			pCollection.Add(pPoint);
 			return true;
@@ -298,8 +302,8 @@ public static class PathFinder
 	private static bool IsReachable(Vector2 pFrom, Vector2 pTo)
 	{
 		//the path finder is tailored to the Player -> use its collider
-		float collWidthHalf = Player.ColliderSize.x / 2;
-		float collHeightHalf = Player.ColliderSize.y / 2;
+		float collWidthHalf = playerSize.x / 2;
+		float collHeightHalf = playerSize.y / 2;
 		Vector2 topLeft = new Vector2(Mathf.Min(pFrom.x, pTo.x) - collWidthHalf, Mathf.Max(pFrom.y, pTo.y) + collHeightHalf);
 		Vector2 botRight = new Vector2(Mathf.Max(pFrom.x, pTo.x) + collWidthHalf, Mathf.Min(pFrom.y, pTo.y) - collHeightHalf);
 		Collider2D overlaps = Physics2D.OverlapArea(topLeft, botRight, Layers.UnwalkableObject);
@@ -308,24 +312,5 @@ public static class PathFinder
 			Utils.DebugDrawRect(topLeft, botRight, Color.yellow);
 		}
 		return !overlaps;
-	}
-
-
-	/// <summary>
-	/// The path finder is tailored to the Player -> use its collider
-	/// </summary>
-	private static bool OverlapsWithMapObject(Vector2 pPoint)
-	{
-		//const float player_size = 0.2f; //todo: connect to real value?
-		Collider2D overlaps = Physics2D.OverlapBox(pPoint, Player.ColliderSize, 0, Layers.UnwalkableObject);
-		if(overlaps)
-		{
-			//Debug.Log("OverlapsWithMapObject " + overlaps.gameObject.name);
-			//Utils.DebugDrawBox(pPoint, Player.ColliderSize, Color.yellow);
-		}
-
-		return overlaps;
-		//return Physics2D.OverlapCircle(pPoint, Player.COLLIDER_SIZE, mapObject); //not enough
-		//return Physics2D.OverlapPoint(pPoint, mapObject);
 	}
 }

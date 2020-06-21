@@ -60,6 +60,8 @@ public class PlayerWeaponController : PlayerBehaviour
 	//public void AddWeapon(NewWeaponConfig pConfig)
 	public void AddWeapon(PlayerWeapon pWeapon)
 	{
+		//Debug.Log("AddWeapon " + pWeapon);
+
 		PlayerWeapon weaponInInventory =
 			weapons.Find(a => a.Id.Equals(pWeapon.Id));
 		if(weaponInInventory != null)

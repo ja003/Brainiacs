@@ -49,6 +49,8 @@ public class PlayerAiBrain : PlayerBehaviour
 
 	private void InvokeEvaluateGoals()
 	{
+		//Debug.Log("InvokeEvaluateGoals");
+
 		EvaluateGoals();
 
 		DoInTime(InvokeEvaluateGoals, evaluation_frequency);

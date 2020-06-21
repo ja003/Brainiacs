@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MapItem : MapObject
 {
+	//todo: refactor into multiple object types?
+	//or some RewardHandler?
 	MapWeaponConfig weaponConfig;
 	MapSpecialWeaponConfig weaponSpecialConfig;
 	PowerUpConfig powerUpConfig;
@@ -75,10 +77,12 @@ public class MapItem : MapObject
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		//Debug.Log("OnTriggerEnter2D " + isSpawned);
 		if(!isSpawned)
 			return;
 
 		Player player = collision.gameObject.GetComponent<Player>();
+		//Debug.Log("player " + player?.IsItMe);
 		if(player && player.IsItMe)
 		{
 			OnEnter(player);
@@ -120,7 +124,7 @@ public class MapItem : MapObject
 
 	private void ApplyExplosion()
 	{
-		Debug.Log("ApplyExplosion");
+		//Debug.Log("ApplyExplosion");
 		circleCollider2D.enabled = true;
 		List<Collider2D> hitResult = new List<Collider2D>();
 		circleCollider2D.OverlapCollider(new ContactFilter2D(), hitResult);
@@ -146,6 +150,10 @@ public class MapItem : MapObject
 
 	protected override void OnReturnToPool2()
 	{
+		powerUpConfig = null;
+		weaponConfig = null;
+		weaponSpecialConfig = null;
+
 		game.Map.Items.OnDestroyItem(this);
 		base.OnReturnToPool2();
 	}

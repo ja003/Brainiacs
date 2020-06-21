@@ -240,8 +240,11 @@ public class AiShoot : AiGoalController
 			return playerPositions;
 		}
 
-		Tuple<Vector2, Vector2> shootPositions = GetShootPositionTo(targetedPlayer.Position, pPickedWeapon);
-
+		//todo: maybe dont recalculate when targetedPlayer.Position doesnt change but
+		//that is expected to happen quite fast
+		Tuple<Vector2, Vector2> shootPositions
+			= GetShootPositionTo(targetedPlayer.Position, pPickedWeapon);
+			//= new Tuple<Vector2, Vector2>(Vector2.zero, Vector2.zero);
 
 		Utils.DebugDrawCross(shootPositions.Item1, Color.red);
 		Utils.DebugDrawCross(shootPositions.Item2, Color.blue);
@@ -265,9 +268,9 @@ public class AiShoot : AiGoalController
 		Tuple<Vector2, Vector2> posHorizontal = GetShootPositions(pShootTarget, maxDist, idealDist, true);
 		Tuple<Vector2, Vector2> posVertical = GetShootPositions(pShootTarget, maxDist, idealDist, false);
 
-		//TESTING 
+		//TESTING - Select the closest shoot position 
 		//- simple distance compare - select the closest
-		const bool useSimpleDistCompare = false;
+		const bool useSimpleDistCompare = true;
 		if(useSimpleDistCompare)
 		{
 			if(Vector2.Distance(playerPosition, posHorizontal.Item1) < Vector2.Distance(playerPosition, posVertical.Item1))
@@ -279,10 +282,11 @@ public class AiShoot : AiGoalController
 				return posVertical;
 			}
 		}
-		//- calculate path and compare their lengths
 
-		MovePath pathHorizontal = PathFinder.GetPath(playerPosition, posHorizontal.Item1, AiMovement.PATH_STEP);
-		MovePath pathVertical = PathFinder.GetPath(playerPosition, posVertical.Item1, AiMovement.PATH_STEP);
+		//- calculate path and compare their lengths
+		//-- seems very costly, player lags
+		MovePath pathHorizontal = pathFinder.GetPath(playerPosition, posHorizontal.Item1);//, AiMovement.PATH_STEP);
+		MovePath pathVertical = pathFinder.GetPath(playerPosition, posVertical.Item1);//, AiMovement.PATH_STEP);
 
 		if(pathHorizontal.GetLength() < pathVertical.GetLength())
 		{
@@ -320,6 +324,7 @@ public class AiShoot : AiGoalController
 		Vector2 dir = closestPos - pShootTarget;
 		float maxDist = Mathf.Min(dir.magnitude, pMaxDistance);
 		RaycastHit2D hit = Physics2D.Raycast(pShootTarget, dir, maxDist, game.Layers.MapObject);
+
 		Vector2 shootPos = closestPos;
 		if(hit)
 		{

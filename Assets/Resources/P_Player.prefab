@@ -1133,6 +1133,7 @@ MonoBehaviour:
   Movement: {fileID: 7872993416487400290}
   ai: {fileID: 1820979888799123582}
   IsInited: 0
+  debug_DrawPath: 1
 --- !u!114 &7872993416487400290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1243,7 @@ MonoBehaviour:
   handsUp: {fileID: 3636149322915584526}
   handsRight: {fileID: 1921905453}
   paletteSwap: {fileID: 1489477447}
+  IsDying: 0
   PlayerInfo: {fileID: 0}
   Scoreboard: {fileID: 0}
 --- !u!95 &1489477448

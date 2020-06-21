@@ -106,6 +106,7 @@ public class PlayerItemController : PlayerBehaviour
 
 	internal void AddMapWeaponSpecial(EWeaponId pWeapon)
 	{
+		//Debug.Log("AddMapWeaponSpecial " + pWeapon);
 		if(pWeapon == EWeaponId.None)
 		{
 			Debug.LogError($"Added weapon was null");
@@ -115,7 +116,10 @@ public class PlayerItemController : PlayerBehaviour
 		MapSpecialWeaponConfig config =
 			brainiacs.ItemManager.GetMapSpecialWeaponConfig(pWeapon);
 		if(config == null)
-			return;
+		{
+			Debug.LogError("Config is null " + pWeapon);
+			return;	
+		}
 
 		game.PlayerStatusManager.ShowMapItem(player.Stats.MapItemUiPosition.position, config.MapItemInfo);
 

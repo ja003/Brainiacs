@@ -37,20 +37,21 @@ public class Player : PoolObjectNetwork
 	[NonSerialized] public Player LocalImage;
 	[NonSerialized] public Player LocalImageOwner;
 	[NonSerialized] public bool IsLocalImage;
+	[SerializeField] public bool debug_DrawPath;
 
 
-    public Vector2 Position => Collider.bounds.center;
+	public Vector2 Position => Collider.bounds.center;
     public Vector3 Position3D => Collider.bounds.center;
 
 	public BoxCollider2D Collider => boxCollider2D;
 	//this is just "estimated size", not actual collider size (which is rectangle)
 	public const float COLLIDER_SIZE = 0.5f;
 	//actual collider size - just static getter (used in PathFinder)
-	public static Vector2 ColliderSize;
+	//public static Vector2 ColliderSize;
 
 	protected override void Awake()
 	{
-		ColliderSize = boxCollider2D.size;
+		//ColliderSize = boxCollider2D.size;
 		base.Awake();
 	}
 

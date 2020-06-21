@@ -198,15 +198,32 @@ public static class Utils
 	/// <summary>
 	/// List<Vector2>.Contains doesnt seem to work correctly, probably due to float error
 	/// </summary>
-	internal static bool ContainsPoint(List<Vector2> pList, Vector2 pPoint, float pTollerance = 0.1f)
+	internal static bool ContainsPoint(List<Vector2> pList, Vector2 pPoint, float pTolerance = 0.1f)
 	{
 		//start search from the last element => in this scope usually more effective
 		for(int i = pList.Count - 1; i >=0; i--)
 		{
 			Vector2 p = pList[i];
-			if(Vector2.Distance(p, pPoint) < pTollerance)
+			if(Vector2.Distance(p, pPoint) < pTolerance)
 				return true;
 		}
 		return false;
+	}
+
+
+	public static Vector2 FindNearestPointOnLine(Vector2 origin, Vector2 direction, Vector2 point)
+	{
+		direction.Normalize();
+		Vector2 lhs = point - origin;
+
+		float dotP = Vector2.Dot(lhs, direction);
+		return origin + direction * dotP;
+	}
+
+	public static float GetDistanceFromLine(Vector2 pPoint, Vector2 pLineStart, Vector2 pLineDirection)
+	{
+		Vector2 nearestPoint = FindNearestPointOnLine(pLineStart, pLineDirection, pPoint);
+		float dist = Vector2.Distance(pPoint, nearestPoint);
+		return dist;
 	}
 }
