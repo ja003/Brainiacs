@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Provides action calls of main scene controller life-cycle events
@@ -10,8 +10,12 @@ using UnityEngine;
 public abstract class ControllerBehaviour : BrainiacsBehaviour
 {
 	[Header("Controller")]
-	[SerializeField] GameObject holder = null;
-	
+	[SerializeField] private GameObject holder = null;
+	protected GameObject Holder
+	{
+		get { return holder == null ? gameObject : holder; }
+	}
+
 	/// <summary>
 	/// Scenes:
 	/// - MainMenu
@@ -23,6 +27,7 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 	{
 		//Debug.Log($"{gameObject.name} Awake");
 		base.Awake();
+
 		BrainiacsBehaviour mainController = GetMainController();
 		if(mainController != null && mainController != this)
 		{
@@ -33,7 +38,7 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 
 	public void SetActive(bool pValue)
 	{
-		holder.SetActive(pValue);
+		Holder.SetActive(pValue);
 		OnSetActive(pValue);
 	}
 

@@ -40,28 +40,27 @@ public class PlayerInput : PlayerBehaviour
 			//todo: send message to remote player
 			return;
 		}
-		if(PlatformManager.GetPlatform() == EPlatform.PC && !DebugData.TestMobileInput)
+		if(PlatformManager.GetPlatform() == EPlatform.PC)// && !DebugData.TestMobileInput)
 		{
 			keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
 		}
-		else
+
+		if(PlatformManager.IsMobile())
 		{
-			game.MobileInput.btnShoot.OnPressedAction =
-				() => weapon.UseWeapon();
-			game.MobileInput.btnShoot.OnPointerUpAction =
-				() => weapon.StopUseWeapon();
+			MobileInput mobileInput = game.MobileInput;
+			mobileInput.btnShoot.OnPressedAction = () => weapon.UseWeapon();
+			mobileInput.btnShoot.OnPointerUpAction = () => weapon.StopUseWeapon();
+			mobileInput.btnSwap.OnPointerDownAction = () => weapon.SwapWeapon();
 
-			game.MobileInput.btnSwap.OnPointerDownAction =
-				() => weapon.SwapWeapon();
-
-			game.MobileInput.moveJoystick.OnUpdateDirection += HandleMoveJoystick;
+			mobileInput.moveJoystick.OnUpdateDirection += HandleMoveJoystick;
 		}
 		isInited = true;
 	}
 
+	EDirection joystickDirection;
 	private void HandleMoveJoystick(Vector2 pInput)
 	{
-		const float move_threshold = 0.5f;
+		const float move_threshold = 0.1f;
 
 		EDirection direction = EDirection.None;
 
@@ -84,8 +83,9 @@ public class PlayerInput : PlayerBehaviour
 
 		//if(direction == EDirection.None)
 		//	return;
+		joystickDirection = direction;
 
-		movement.SetMove(direction);
+		//movement.SetMove(direction);
 	}
 
 	private void ProcessMovementInput()
@@ -126,16 +126,19 @@ public class PlayerInput : PlayerBehaviour
 
 	private bool IsMovementRequested(EDirection pDirection)
 	{
+		if(pDirection != EDirection.None && pDirection == joystickDirection)
+			return true;
+
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				return Input.GetKey(keys.moveUp); //todo: movement wheel on mobile
+				return Input.GetKey(keys.moveUp) || game.MobileInput.btnMoveUp.IsPressed;
 			case EDirection.Right:
-				return Input.GetKey(keys.moveRight);
+				return Input.GetKey(keys.moveRight) || game.MobileInput.btnMoveRight.IsPressed;
 			case EDirection.Down:
-				return Input.GetKey(keys.moveDown);
+				return Input.GetKey(keys.moveDown) || game.MobileInput.btnMoveDown.IsPressed;
 			case EDirection.Left:
-				return Input.GetKey(keys.moveLeft);
+				return Input.GetKey(keys.moveLeft) || game.MobileInput.btnMoveLeft.IsPressed;
 		}
 		return false;
 	}

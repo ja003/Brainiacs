@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -4307642922166932028}
   - component: {fileID: 7017132246801282532}
   - component: {fileID: 8188547109836730055}
+  - component: {fileID: 7127104824793752955}
   m_Layer: 0
   m_Name: P_Brainiacs
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   MapManager: {fileID: 6192677351245105286}
   PlayerKeysManager: {fileID: -4307642922166932028}
   PhotonManager: {fileID: 7017132246801282532}
+  PlayerPrefs: {fileID: 7127104824793752955}
   debugLogConsole: {fileID: 206920695312540101}
 --- !u!114 &7279955334952776624
 MonoBehaviour:
@@ -166,6 +168,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df43d2d53857abd4a87bd5653bd5f553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7127104824793752955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279955334952776627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2257d81c7ae70624288e2e3d02310183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &206920695312409725

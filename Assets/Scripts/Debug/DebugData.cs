@@ -15,7 +15,8 @@ public static class DebugData
 	public static bool TestPlayers = true && !release;
 	public static bool LocalImage = false && !release;
 	public static bool TestResult = false && !release;
-	public static bool TestMobileInput = false && !release;
+	public static bool TestPlatformMobile = true && !release;
+	public static bool TestMobileJoystick = false;
 
 	//Player
 	public static EHero TestHero = release ? EHero.Nobel : EHero.Nobel;
@@ -32,7 +33,7 @@ public static class DebugData
 	public static int TestGameValue = 10;
 	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.None;
 	public static bool TestGenerateItems = true && !release;
-	public static bool StopGenerateItems = false && !release;
+	public static bool StopGenerateItems = true && !release;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.None;
 
