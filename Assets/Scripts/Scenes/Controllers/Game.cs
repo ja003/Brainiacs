@@ -21,6 +21,9 @@ public class Game : CSingleton<Game>
 	[SerializeField] public PlayersResultManager Results;
 	[SerializeField] public PoolManager Pool;
 
+	[SerializeField] public GameAudioSource AudioSourcePrefab;
+
+
 	[SerializeField] public Canvas UiCanvas;
 
 	[SerializeField] public Layers Layers;

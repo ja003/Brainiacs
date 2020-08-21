@@ -27,26 +27,33 @@ public static class PowerupManager
 	/// </summary>
 	private static string ApplyPowerup(PowerUpConfig pConfig, Player pPlayer)
 	{
+		ESound sound = ESound.None;
 		switch(pConfig.Type)
 		{
 			case EPowerUp.Health:
 				pPlayer.Stats.AddHealth(20);
+				sound = ESound.Item_Powerup_Heal;
 				break;
 			case EPowerUp.Ammo:
 				pPlayer.WeaponController.OnPowerUpAmmo();
+				sound = ESound.Item_Powerup_Ammo;
 				break;
 			case EPowerUp.Speed:
 				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, SPEED_DURATION);//, SPEED_VALUE);
+				sound = ESound.Item_Powerup_Speed;
 				break;
 			case EPowerUp.Mystery:
 				return HandleMystery(pPlayer);
 			case EPowerUp.Shield:
 				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.Shield, SHIELD_DURATION);
+				sound = ESound.Item_Powerup_Shield;
 				break;
 			default:
 				Debug.LogError($"Powerup {pConfig.Type} not handled!");
 				break;
 		}
+		pPlayer.PlaySound(sound);
+
 		return pConfig.MapItemInfo.StatusText;
 	}
 
@@ -113,26 +120,28 @@ public static class PowerupManager
 		else if(random < chance_receive_damage)
 		{
 			pPlayer.Stats.AddHealth(-20);
+			pPlayer.PlaySound(ESound.Item_Powerup_ReceiveDamage);
 			return "- health";
 		}
-
 		else if(random < chance_effect_half_speed)
 		{
 			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfSpeed, 5);
+			pPlayer.PlaySound(ESound.Item_Powerup_Slow);
 			return "- speed";
 		}
 		else if(random < chance_effect_double_damage)
 		{
 			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleDamage, 5);
+			pPlayer.PlaySound(ESound.Item_Powerup_DoubleDamage);
 			return "+ damage";
 		}
 		else if(random < chance_effect_half_damage)
 		{
 			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfDamage, 5);
+			pPlayer.PlaySound(ESound.Item_Powerup_HalfDamage);
 			return "- damage";
 		}
 
-		
 		return ApplyPowerup(Brainiacs.Instance.ItemManager.GetPowerupConfig(type), pPlayer);
 	}
 }

@@ -80,6 +80,19 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
+	private AudioSource _audioSource;
+	protected AudioSource audioSource
+	{
+		get
+		{
+			if(_audioSource == null)
+				_audioSource = gameObject.AddComponent<AudioSource>();
+
+			_audioSource.playOnAwake = false;
+			return _audioSource;
+		}
+	}
+
 	private Image _image;
 	protected Image image
 	{

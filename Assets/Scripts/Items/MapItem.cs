@@ -1,4 +1,5 @@
-﻿using FlatBuffers;
+﻿using ExitGames.Client.Photon;
+using FlatBuffers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ public class MapItem : MapObject
 		if(powerUpConfig != null)
 		{
 			//Debug.Log("OnEnter powerup");
-			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
+			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);			
 		}
 		else if(weaponConfig != null)
 		{
@@ -120,6 +121,8 @@ public class MapItem : MapObject
 		explosion.enabled = true;
 		animator.SetBool("explode", true);
 		DoInTime(ApplyExplosion, 0.1f);
+		//SoundController.PlaySound(ESound.Item_Explode, audioSource);
+		PlaySound(ESound.Item_Explode);
 	}
 
 	private void ApplyExplosion()

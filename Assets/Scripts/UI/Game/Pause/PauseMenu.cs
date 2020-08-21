@@ -16,9 +16,12 @@ public class PauseMenu : GameController
 	[SerializeField] Slider sliderMoveInputScale;
 
 	[SerializeField] Slider sliderVolumeMusic;
+
 	[SerializeField] Slider sliderVolumeSounds;
 
-	protected override void OnMainControllerAwaken()
+	protected override void OnMainControllerAwaken() { }
+
+	internal void Init()
 	{
 		SetMobileInputJoystick(brainiacs.PlayerPrefs.MobileInputJoystick);
 		SetVolumeSounds(brainiacs.PlayerPrefs.VolumeSounds);
@@ -34,7 +37,6 @@ public class PauseMenu : GameController
 		sliderVolumeSounds.onValueChanged.AddListener(SetVolumeSounds);
 
 		sliderMoveInputScale.onValueChanged.AddListener(SetMoveInputScale);
-
 	}
 
 	private void SetMoveInputScale(float pValue)
@@ -48,6 +50,10 @@ public class PauseMenu : GameController
 	{
 		//Debug.Log("SetVolumeMusic " + pValue);
 		brainiacs.PlayerPrefs.VolumeMusic = pValue;
+
+		//audio source volume has to be set (music starts only once)		
+		brainiacs.AudioManager.AudioSourceMusic.volume = pValue;
+
 		sliderVolumeMusic.value = pValue;
 	}
 
@@ -55,6 +61,7 @@ public class PauseMenu : GameController
 	{
 		//Debug.Log("SetVolumeSounds " + pValue);
 		brainiacs.PlayerPrefs.VolumeSounds = pValue;
+		//no need to set volume to audio source, it is set when it is played
 		sliderVolumeSounds.value = pValue;
 	}
 

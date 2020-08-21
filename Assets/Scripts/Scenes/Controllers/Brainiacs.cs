@@ -20,6 +20,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 	[SerializeField] public PhotonManager PhotonManager;
 
 	[SerializeField] public PlayerPrefsController PlayerPrefs;
+	[SerializeField] public AudioManager AudioManager;
 
 	[SerializeField] GameObject debugLogConsole = null;
 

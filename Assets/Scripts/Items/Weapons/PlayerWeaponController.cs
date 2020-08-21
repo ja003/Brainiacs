@@ -19,7 +19,7 @@ public class PlayerWeaponController : PlayerBehaviour
 
 	public void InvokeWeaponChange(PlayerWeapon pWeapon)
 	{
-		onWeaponInfoChanged(pWeapon);
+		onWeaponInfoChanged?.Invoke(pWeapon);
 	}
 
 	public void OnPowerUpAmmo()
@@ -251,7 +251,8 @@ public class PlayerWeaponController : PlayerBehaviour
 
 		visual.SetActiveWeapon(ActiveWeapon);
 
-		onWeaponInfoChanged?.Invoke(ActiveWeapon);
+		InvokeWeaponChange(ActiveWeapon);
+		//onWeaponInfoChanged?.Invoke(ActiveWeapon);
 		ActiveWeapon.OnSetActive();
 	}
 }

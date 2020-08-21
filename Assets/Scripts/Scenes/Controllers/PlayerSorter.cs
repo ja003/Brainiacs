@@ -1,15 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSorter : BrainiacsBehaviour
 {
 	private List<Player> players = new List<Player>();
-
-	public void SetPlayers(List<Player> pPlayers)
-	{
-		players = pPlayers;
-	}
 
 	private void Update()
 	{
@@ -21,5 +17,16 @@ public class PlayerSorter : BrainiacsBehaviour
 		{
 			players[i].Visual.UpdateSortOrder(i);
 		}
+	}
+
+	internal void UnregisterPlayer(Player pPlayer)
+	{
+		players.Remove(pPlayer);
+	}
+
+	internal void RegisterPlayer(Player pPlayer)
+	{
+		if(!players.Contains(pPlayer))
+			players.Add(pPlayer);
 	}
 }

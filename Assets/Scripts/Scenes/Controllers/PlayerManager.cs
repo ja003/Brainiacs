@@ -11,7 +11,7 @@ public class PlayerManager : GameController
 	public List<Player> Players { get; private set; } = new List<Player>();
 
 	[SerializeField] private Player playerPrefab = null;
-	[SerializeField] private PlayerSorter playerSorter = null;
+	[SerializeField] public PlayerSorter playerSorter = null;
 
 	public Vector2 PLAYER_SIZE => playerPrefab.Collider.size;
 
@@ -78,7 +78,7 @@ public class PlayerManager : GameController
 			spawnedPlayer.LocalImage?.OnReceivedInitInfo(playerInfo, true);
 		}
 
-		playerSorter.SetPlayers(Players);
+		//playerSorter.SetPlayers(Players);
 
 		//invoke on activated
 		Activate();
@@ -99,13 +99,6 @@ public class PlayerManager : GameController
 		GameObject instance = InstanceFactory.Instantiate(playerPrefab.gameObject, spawnPosition);
 
 		Player playerInstance = instance.GetComponent<Player>();
-
-		//playerInstance.transform.parent = transform; //handled in Pool
-
-		//moved to Player::SetInfo
-		//playerInstance.gameObject.name = "Player_" + pPlayerInfo.Name + (pIsLocalImage ? "_LI" : "");
-
-		
 
 		bool debug_spwan = false;
 		if(debug_spwan)
@@ -217,7 +210,10 @@ public class PlayerManager : GameController
 	/// </summary>
 	public List<Player> GetOtherPlayers(Player pOtherThan, bool pHasToBeAlive, bool pSortByDistance = true)
 	{
-		List<Player> otherPlayers = Players.Where(a => !a.Equals(pOtherThan)).ToList();
+		List<Player> otherPlayers = Players.Where(
+			//cant use Equals here because of Tesla clone (same number but different type)
+			a => a.InitInfo.Number != pOtherThan.InitInfo.Number).ToList();
+
 		if(pHasToBeAlive) //only visual.IsDying is shared to player images
 			otherPlayers = otherPlayers.Where(a => !a.Visual.IsDying).ToList();
 		if(pSortByDistance)

@@ -51,6 +51,13 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	private void Respawn()
 	{
+		if(stats.LivesLeft <= 0)
+		{
+			Debug.Log($"Player {player} is OUT!");
+			SoundController.PlaySound(ESound.Player_Eliminate, null);
+			return;
+		}
+
 		Vector2? respawnPos = game.Map.ActiveMap.GetRandomPosition();
 		if(respawnPos == null)
 		{
@@ -123,7 +130,13 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			}
 
 			bool wasGameEnded = game.GameEnd.GameEnded;
-			stats.AddHealth(-pDamage);
+			int res = stats.AddHealth(-pDamage);
+			if(res < 0)
+			{
+				const float max_hit_sound_freq = 0.2f;
+				PlaySound(ESound.Player_Hit, max_hit_sound_freq);
+			}
+
 			bool gameEndedAfterThis = game.GameEnd.GameEnded;
 
 			//if this damage ended the game it has to be counted even after game ended

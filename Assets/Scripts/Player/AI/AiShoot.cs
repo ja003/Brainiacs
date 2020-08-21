@@ -68,6 +68,12 @@ public class AiShoot : AiGoalController
 		//pick weapon
 		EWeaponId pickedWeapon = PickWeapon();
 
+		if(brain.IsTmp && pickedWeapon == EWeaponId.Special_Tesla)
+		{
+			Debug.LogError("Tesla clone cant clone itself");
+			return;
+		}
+
 		//swap to it
 		if(pickedWeapon != player.WeaponController.ActiveWeapon.Id)
 		{
@@ -465,7 +471,7 @@ public class AiShoot : AiGoalController
 						priority = 3;
 						break;
 					case EWeaponCathegory.HeroSpecial:
-						//da vinci => based on target distance + if is under fire
+						//todo: da vinci => based on target distance + if is under fire
 						priority = 10;
 						break;
 					case EWeaponCathegory.MapBasic:
@@ -476,6 +482,10 @@ public class AiShoot : AiGoalController
 						break;
 				}
 			}
+
+			//prevent Tesla clone from cloning itself
+			if(weaponId == EWeaponId.Special_Tesla && brain.IsTmp)
+				continue;
 
 			weaponsPriority.Add(new Tuple<EWeaponId, int>(weaponId, priority));
 		}

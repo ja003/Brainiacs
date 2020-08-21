@@ -110,10 +110,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		if(Photon.IsMine)
 			DoInTime(Shoot, cadency);
 
-		//Owner is not set for local image
-		//Vector2 sendSpawnPos = Owner && Owner.LocalImage ?
-		//	Owner.LocalImage.WeaponController.GetProjectileStart(direction).position :
-		//	pSpawnPosition;
+		SoundController.PlaySound(ESound.Curie_Truck_Ride, audioSource, true);
 
 		//todo no need to send?
 		Photon.Send(EPhotonMsg.Special_Curie_StartTruck, pDirection, pSpawnPosition);
@@ -186,6 +183,9 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		//Debug.Log("BOOM " + collision.gameObject.name);
 		LeanTween.cancel(gameObject);
 		rigidBody2D.bodyType = RigidbodyType2D.Static;
+
+		audioSource.Stop();
+		SoundController.PlaySound(ESound.Curie_Truck_Explode, audioSource, false);
 
 		Photon.Send(EPhotonMsg.Special_Curie_Collide);
 	}

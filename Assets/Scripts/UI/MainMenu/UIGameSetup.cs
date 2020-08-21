@@ -27,6 +27,9 @@ public class UIGameSetup : MainMenuBehaviour
 		btnHost.onClick.AddListener(OnBtnHost);
 		btnJoinSearchBack.onClick.AddListener(OnBtnJoinSearchBack);
 		btnBack.onClick.AddListener(mainMenu.OnBtnBack);
+
+		SoundController.PlayMusic(ESound.Music_Menu);
+
 		base.Awake();
 	}
 

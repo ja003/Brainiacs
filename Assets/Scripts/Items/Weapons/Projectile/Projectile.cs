@@ -138,6 +138,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 		ICollisionHandler handler =
 			collision.gameObject.GetComponent<ICollisionHandler>();
 
+
 		bool result = false;
 		if(handler != null)
 			result = handler.OnCollision(config.Damage, Owner, gameObject);

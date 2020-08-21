@@ -57,6 +57,7 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 		//Debug.Log("BOOOM");
 		spriteRend.enabled = false;
 		explosion.Explode();
+		PlaySound(ESound.Einstein_Explosion);
 	}
 
 	internal void OnExplosionStateExit()

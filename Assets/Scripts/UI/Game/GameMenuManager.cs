@@ -11,7 +11,8 @@ public class GameMenuManager : GameController
     protected override void OnMainControllerAwaken()
     {
         pause.SetActive(false);
-
         btnPause.onClick.AddListener(() => pause.SetActive(true));
+
+        pause.Init();
     }
 }

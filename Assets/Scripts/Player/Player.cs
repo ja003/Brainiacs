@@ -21,7 +21,9 @@ public class Player : PoolObjectNetwork
 	//[SerializeField] public PlayerPhotonController Photon;
 	[SerializeField] public PlayerMovement Movement;
 	[SerializeField] public PlayerAiBrain ai;
-	
+
+	[SerializeField] public AudioSource AudioSource;
+
 	public PlayerInitInfo InitInfo;
 
 	//should be called only after player is inited
@@ -60,6 +62,11 @@ public class Player : PoolObjectNetwork
 		spriteRend.enabled = pValue;
 		boxCollider2D.enabled = pValue;
 		Visual.OnSetActive(pValue);
+
+		if(pValue)
+			game.PlayerManager.playerSorter.RegisterPlayer(this);
+		else
+			game.PlayerManager.playerSorter.UnregisterPlayer(this);
 	}
 
 
@@ -179,7 +186,8 @@ public class Player : PoolObjectNetwork
 		else
 		{
 			Player p = (Player)obj;
-			return InitInfo.Number == p.InitInfo.Number;
+			return InitInfo.Number == p.InitInfo.Number &&
+				InitInfo.PlayerType == p.InitInfo.PlayerType; //for tesla clone
 		}
 	}
 
@@ -194,6 +202,9 @@ public class Player : PoolObjectNetwork
 		//when reinstanced (eg. Tesla clone). All event listeners would have to be 
 		//unregistered. For now only visual changes (in SetInfo)
 		//IsInited = false;
+
+		Stats.OnReturnToPool();
+		game.PlayerManager.playerSorter.UnregisterPlayer(this);
 	}
 
 }

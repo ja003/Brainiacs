@@ -8,7 +8,7 @@ using UnityEngine;
 /// Activated while use button is pressed.
 /// It block X hits from projectile then it is destroyed => triggers reload
 /// </summary>
-public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
+public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 {
 	[SerializeField] int damage = 30;
 	[SerializeField] int maxHealth = 3;
@@ -89,12 +89,15 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 			return;
 		}
 
+		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 		//Debug.Log("Hit " + collision.gameObject.name);
 		handler.OnCollision(damage, owner, gameObject);
 	}
 
-	public bool OnCollision(int pDamage, Player pOrigin)
+	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)
 	{
+		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
+
 		if(!owner.IsInitedAndMe)
 			return false;
 
@@ -105,6 +108,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 			{
 				//Debug.Log("Destroyed");
 				owner.WeaponController.ActiveWeapon.AmmoLeft = 0;
+				Debug.LogWarning("TODO: crash anim + sound");
 			}
 
 			//Debug.Log("remains: " + currentHealth);
@@ -113,5 +117,4 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab
 
 		return false;
 	}
-
 }

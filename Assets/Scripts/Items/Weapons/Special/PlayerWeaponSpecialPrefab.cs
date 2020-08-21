@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 
 public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 {
-
 	protected Player owner { get; private set; }
 	public void debug_AssignOwner(Player pOwner)
 	{

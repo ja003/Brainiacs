@@ -18,11 +18,13 @@ public class SpecialFlamethrower : PlayerWeaponSpecial
 	protected override void OnUse()
 	{
 		flame.Use();
+		base.OnUse();
 	}
 
 	public override void StopUse()
 	{
 		flame.StopUse();
+		base.StopUse();
 	}
 
 	float lastTimeChangeDirection;

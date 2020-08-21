@@ -15,27 +15,32 @@ public static class DebugData
 	public static bool TestPlayers = true && !release;
 	public static bool LocalImage = false && !release;
 	public static bool TestResult = false && !release;
-	public static bool TestPlatformMobile = true && !release;
+	public static bool TestPlatformMobile = false && !release;
 	public static bool TestMobileJoystick = false;
 
 	//Player
-	public static EHero TestHero = release ? EHero.Nobel : EHero.Nobel;
+	public static EHero TestHero = release ? EHero.None : EHero.Tesla;
 	public static bool TestExtraPlayerItem = false && !release;
 
 	public static bool TestShield = false && !release;
-	public static bool TestImmortality = false && !release;
+	public static bool TestInvulnerability = false && !release; //cant receive any damage
+	public static bool TestImmortality = false && !release; //cant get under < 1 health
 	public static bool TestInfiniteAmmo = false && !release;
 	public static EPlayerEffect TestPlayerEffect = release ? EPlayerEffect.None : EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 1;
+	private static int playerCount = 3;
 	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
-	public static int TestGameValue = 10;
-	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.None;
+	public static int TestGameValue = 1;
+	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.Speed;
 	public static bool TestGenerateItems = true && !release;
-	public static bool StopGenerateItems = true && !release;
+	public static bool StopGenerateItems = false && !release;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.None;
+
+	//SOUND
+	public static bool MuteMusic = false && !release;
+
 
 	// AI
 	public static EWeaponId TestAiWeapon = release ? EWeaponId.None : EWeaponId.None;
@@ -53,9 +58,9 @@ public static class DebugData
 		//PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
 		//GameInitInfo.AddPlayer(player3);
 
-		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Score;
+		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Deathmatch;
 		Brainiacs.Instance.GameInitInfo.Map = TestMap == EMap.None ? EMap.Steampunk : TestMap;
-		Brainiacs.Instance.GameInitInfo.GameModeValue = 15;
+		Brainiacs.Instance.GameInitInfo.GameModeValue = TestGameValue;
 	}
 
 	public static PlayerInitInfo GetPlayerInitInfo(int pPlayerNumber)
@@ -71,7 +76,7 @@ public static class DebugData
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 					EHero.Nobel, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.AI);
+					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
 			case 3:
@@ -88,9 +93,16 @@ public static class DebugData
 		}
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
+		player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
+		player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
+		player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
+		player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
+
 		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
-		player.debug_StartupWeapon.Add(EWeaponId.MP40);
 		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+		player.debug_StartupWeapon.Add(EWeaponId.MP40);
+
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{
 			player.debug_StartupWeapon.Add(TestAiWeapon);

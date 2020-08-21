@@ -19,6 +19,10 @@ public class MapObstackle : MapObject
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
 	{
 		//Debug.Log("todo: play collision sound, make effect...");
+		if(pDamage > 0)
+		{
+			SoundController.PlaySound(ESound.Map_Obstackle_Hit, audioSource);
+		}
 	}
 
 	

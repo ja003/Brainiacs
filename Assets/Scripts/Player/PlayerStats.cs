@@ -70,6 +70,7 @@ public class PlayerStats : PlayerBehaviour
 	public void OnDie()
 	{
 		SetStat(EPlayerStats.Deaths, Deaths + 1);
+		StatsEffect.OnDie();
 	}
 
 	public void AddKill(bool pForce)
@@ -100,20 +101,32 @@ public class PlayerStats : PlayerBehaviour
 		SetStat(EPlayerStats.Health, MAX_HEALTH);
 	}
 
-	public void AddHealth(int pIncrement, bool pRespawn = false)
+	/// <summary>
+	/// Returns the amount of actualy increased health .
+	/// Can be nulled by shield
+	/// </summary>
+	/// <returns></returns>
+	public int AddHealth(int pIncrement, bool pRespawn = false)
 	{
 		if(IsDead && !pRespawn)
-			return;
+			return 0;
 
-		if(pIncrement < 0 && (IsShielded || DebugData.TestImmortality))
+		if(pIncrement < 0 && (IsShielded || DebugData.TestInvulnerability))
 		{
+			if(IsShielded)
+			{
+				const float max_play_sound_freq = 0.2f;
+				PlaySound(ESound.Player_Shield_Hit, max_play_sound_freq);
+			}
 			//Debug.Log($"{player.InitInfo.Name} is invurnelable");
-			return;
+			return 0;
 		}
 
 		SetStat(EPlayerStats.Health, Health + pIncrement);
 		if(!pRespawn)
 			game.PlayerStatusManager.ShowHealth(player.Stats.HealthUiPosition.position, pIncrement);
+
+		return pIncrement;
 	}
 
 
@@ -145,7 +158,8 @@ public class PlayerStats : PlayerBehaviour
 					//Debug.Log(player + " Kills = " + Kills);
 					break;
 				case EPlayerStats.Health:
-					Health = Mathf.Clamp(pValue, 0, MAX_HEALTH);
+					int newHealthValue = Mathf.Clamp(pValue, DebugData.TestImmortality ? 1 : 0, MAX_HEALTH);
+					Health = newHealthValue;
 					break;
 				case EPlayerStats.Deaths:
 					Deaths = pValue;
@@ -159,6 +173,10 @@ public class PlayerStats : PlayerBehaviour
 		}
 	}
 
+	internal void OnReturnToPool()
+	{
+		StatsEffect.OnReturnToPool();
+	}
 }
 
 public enum EPlayerStats

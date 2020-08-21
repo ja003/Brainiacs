@@ -212,20 +212,5 @@ public class MapItemGenerator : GameBehaviour
 	//	//return new Vector2(x, y, 0);
 	//}
 
-	Vector2 debug_RandomPosition = Vector2.left * 3;
-	private Vector2 debug_GetRandomPosition()
-	{
-		//generate items in straight line
-		if(!game.Map.ActiveMap.IsPositionValid(debug_RandomPosition))
-		{
-			debug_RandomPosition += Vector2.right * 0.5f;
-			//Debug.Log("another pos");
-		}
-
-		if(debug_RandomPosition.x > 5)
-			debug_RandomPosition = Vector2.left * 3;
-
-		return debug_RandomPosition;
-
-	}
+	
 }

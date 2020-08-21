@@ -16,6 +16,8 @@ public class MapController : GameController
 
 	public void SetMap(EMap pMap)
 	{
+		SoundController.PlayMusic(ESound.Music_Game);
+
 		for(int i = 0; i < transform.childCount; i++)
 		{
 			ActiveMap = transform.GetChild(i).GetComponent<Map>();

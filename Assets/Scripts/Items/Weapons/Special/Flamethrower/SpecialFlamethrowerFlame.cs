@@ -44,6 +44,17 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		animator.enabled = pValue;
 		spriteRend.enabled = pValue;
 		collisionDetector.SetEnabled(pValue && owner.IsItMe);
+
+		if(pValue)
+		{
+			//SetActive is called every frame => start audio loop only once
+			if(!audioSource.isPlaying)
+				SoundController.PlayWeaponUseSound(EWeaponId.Flamethrower, audioSource, true);
+		}
+		else
+		{
+			audioSource.Stop();
+		}
 	}
 
 	float lastTimeUsed;
@@ -60,7 +71,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 	private void SetUse(bool pValue)
 	{
 		isUsed = pValue;
-		SetActive(true);
+		SetActive(pValue);
 		animator.SetBool("isUsed", pValue);
 		collisionDetector.SetEnabled(pValue);
 

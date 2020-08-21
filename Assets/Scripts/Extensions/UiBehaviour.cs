@@ -68,6 +68,17 @@ public class UiBehaviour : MonoBehaviour
 		}
 	}
 
+	private Button _button;
+	protected Button button
+	{
+		get
+		{
+			if(_button == null)
+				_button = GetComponent<Button>();
+			return _button;
+		}
+	}
+
 	private bool awaken;
 	private List<Action> onAwaken = new List<Action>();
 

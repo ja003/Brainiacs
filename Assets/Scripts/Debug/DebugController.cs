@@ -28,6 +28,12 @@ public class DebugController : BrainiacsBehaviour
         {
             SetTimeScale(5);
         }
+
+
+        else if(Input.GetKeyDown(KeyCode.M))
+        {
+            Game.Instance.PlayerManager.GetPlayer(1).Health.ApplyDamage(50, null);
+        }
     }
 #endif
 

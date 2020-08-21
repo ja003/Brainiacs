@@ -84,6 +84,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		Debug.Log("Explode");
 		isExploded = true;
 		animator.SetBool("explode", true);
+		SoundController.PlaySound(ESound.Nobel_Mine_Explode, audioSource);
 	}
 
 	internal void OnExplosionStateEnter()

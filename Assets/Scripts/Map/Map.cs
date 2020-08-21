@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class Map : GameBehaviour, IPositionValidator
 {
 	[SerializeField] Transform spawnPointsHolder = null;
-	[SerializeField] Transform mapItemGenPosHolder = null; 
+	[SerializeField] Transform mapItemGenPosHolder = null;
 
 	private List<Transform> spawnPoints = new List<Transform>();
 	//positions where map items can be generated
@@ -37,24 +37,27 @@ public class Map : GameBehaviour, IPositionValidator
 
 	internal void SetActive(bool pValue)
 	{
-		//register spawnpoints
-		for(int i = 0; i < spawnPointsHolder.transform.childCount; i++)
+		if(pValue)
 		{
-			spawnPoints.Add(spawnPointsHolder.GetChild(i));
-		}
-		if(spawnPoints.Count < 4)
-		{
-			Debug.LogError("Not enough spawnpoints defined");
-		}
+			//register spawnpoints
+			for(int i = 0; i < spawnPointsHolder.transform.childCount; i++)
+			{
+				spawnPoints.Add(spawnPointsHolder.GetChild(i));
+			}
+			if(spawnPoints.Count < 4)
+			{
+				Debug.LogError("Not enough spawnpoints defined");
+			}
 
-		//register positions for generating map items
-		for(int i = 0; i < mapItemGenPosHolder.transform.childCount; i++)
-		{
-			mapItemGenPos.Add(mapItemGenPosHolder.GetChild(i));
-		}
-		if(mapItemGenPos.Count < 4)
-		{
-			Debug.LogError("Not enough map item gen pos defined");
+			//register positions for generating map items
+			for(int i = 0; i < mapItemGenPosHolder.transform.childCount; i++)
+			{
+				mapItemGenPos.Add(mapItemGenPosHolder.GetChild(i));
+			}
+			if(mapItemGenPos.Count < 4)
+			{
+				Debug.LogError("Not enough map item gen pos defined");
+			}
 		}
 
 		gameObject.SetActive(pValue);
@@ -103,6 +106,9 @@ public class Map : GameBehaviour, IPositionValidator
 		if(pCondition == null)
 			pCondition = this;
 
+		if(DebugData.TestGenerateItems)
+			return debug_GetRandomPosition();
+
 		Vector2 topLeft = TopLeftCorner.position;
 		Vector2 botRight = BotRightCorner.position;
 
@@ -150,6 +156,23 @@ public class Map : GameBehaviour, IPositionValidator
 			&& pPoint.x <= BotRightCorner.position.x
 			&& pPoint.y >= BotRightCorner.position.y
 			&& pPoint.y <= TopLeftCorner.position.y;
+	}
+
+	Vector2 debug_RandomPosition = Vector2.zero * 3;
+	private Vector2 debug_GetRandomPosition()
+	{
+		//generate items in straight line
+		if(!IsPositionValid(debug_RandomPosition))
+		{
+			debug_RandomPosition += Vector2.right * 0.5f;
+			//Debug.Log("another pos");
+		}
+
+		if(debug_RandomPosition.x > 5)
+			debug_RandomPosition = Vector2.left * 3;
+
+		return debug_RandomPosition;
+
 	}
 }
 

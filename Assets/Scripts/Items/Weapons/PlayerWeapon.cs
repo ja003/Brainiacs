@@ -21,6 +21,9 @@ public abstract class PlayerWeapon
 
 	public bool IsActive;
 
+	private bool IsUsed;
+
+
 	public PlayerWeapon(Player pOwner, EWeaponId pId, InHandWeaponInfo pInHandInfo, InHandWeaponVisualInfo pInHandVisualInfo)
 	{
 		Id = pId;
@@ -50,9 +53,16 @@ public abstract class PlayerWeapon
 
 		//Debug.Log($"Use {Id}, Ammo = {Ammo}");
 		AmmoLeft--;
+		if(!IsUsed)
+		{
+			OnUseStart();
+		}
+
+		IsUsed = true;
 
 		if(DebugData.TestInfiniteAmmo)
 			AmmoLeft++;
+
 
 		LastUseTime = Time.time;
 		if(AmmoLeft <= 0)
@@ -63,7 +73,13 @@ public abstract class PlayerWeapon
 			}
 			return EWeaponUseResult.Reload;
 		}
+
 		return EWeaponUseResult.OK;
+	}
+
+	private void OnUseStart()
+	{
+		SoundController.PlayWeaponUseSound(Id, Owner.AudioSource, false);
 	}
 
 	public virtual bool CanUse()
@@ -76,7 +92,7 @@ public abstract class PlayerWeapon
 
 	public virtual void StopUse()
 	{
-
+		IsUsed = false;
 	}
 
 	/// <summary>
