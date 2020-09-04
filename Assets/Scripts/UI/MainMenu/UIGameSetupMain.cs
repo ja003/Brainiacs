@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +38,7 @@ public class UIGameSetupMain : MainMenuController
 	[SerializeField] Button btnBack = null;
 	[SerializeField] Button btnPlay = null; //master
 	[SerializeField] Button btnReady = null; //client
-	[SerializeField] Text btnReadyText = null;
+	[SerializeField] TextMeshProUGUI btnReadyText = null;
 	[SerializeField] Button btnAllowJoin = null;
 
 	[Header("DEBUG")]
@@ -46,7 +47,7 @@ public class UIGameSetupMain : MainMenuController
 	GameInitInfo gameInitInfo => brainiacs.GameInitInfo;
 
 
-	const int GAME_VALUE_MIN = 2;
+	const int GAME_VALUE_MIN = 1;
 	const int GAME_VALUE_MAX = 10;
 
 	protected override void Awake()

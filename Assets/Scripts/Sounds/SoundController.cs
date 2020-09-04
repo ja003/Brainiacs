@@ -40,22 +40,27 @@ public static class SoundController
 			Debug.LogError($"Clip is null");
 			return;
 		}
+		if(Brainiacs.Instance.AudioManager.debug_LogSounds)
+			Debug.Log($"Play: {clip.name}");
 
 		float musicVolume = DebugData.MuteMusic ? 0 : playerPrefs.VolumeMusic;
 
 		source.volume = pIsMusic ? musicVolume : playerPrefs.VolumeSounds;
 		if(pIsMusic) source.Stop();
 
-		source.clip = clip;
-		source.loop = pIsLoop;
-		source.Play();
-		//if(pIsLoop)
-		//{
-		//    source.clip = clip;
-		//    source.loop = pIsLoop;
-		//}
-		//else
-		//    source.PlayOneShot(clip);
+		//source.clip = clip;
+		//source.loop = pIsLoop;
+		//source.Play(); //no! this stops previously played clip
+		if(pIsLoop)
+		{
+			source.clip = clip;
+			source.loop = pIsLoop;
+			source.Play();
+		}
+		else
+		{
+			source.PlayOneShot(clip);
+		}
 
 	}
 }
@@ -79,8 +84,10 @@ public enum ESound
 	Davinci_Tank_Hit = 104,
 	Nobel_Mine_Explode = 105,
 
+
 	Item_Spawn = 201,
 	Item_Explode = 202,
+	//
 	Item_Powerup_Ammo = 203,
 	Item_Powerup_Heal = 204,
 	Item_Powerup_ReceiveDamage = 205,
@@ -89,6 +96,8 @@ public enum ESound
 	Item_Powerup_Speed = 208,
 	Item_Powerup_DoubleDamage = 209,
 	Item_Powerup_HalfDamage = 210,
+	//
+	Item_Weapon_Pickup = 211,
 
 
 	Player_Hit = 300,

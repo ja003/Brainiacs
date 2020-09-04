@@ -22,6 +22,10 @@ public class MapItemPhoton : PoolObjectPhoton
             case EPhotonMsg.MapItem_InitPowerUp:
                 return IsMine;
 
+            //explosion can be started on both sides
+            case EPhotonMsg.MapItem_DoExplosionEffect:
+                return true;
+
             //only master can return items to pool (master owns all map items)
             //case EPhotonMsg.MapItem_ReturnToPool:
             //    return !view.IsMine;
@@ -53,6 +57,10 @@ public class MapItemPhoton : PoolObjectPhoton
                 EPowerUp type = (EPowerUp)pParams[1];
 
                 item.Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));
+                break;
+
+            case EPhotonMsg.MapItem_DoExplosionEffect:
+                item.DoExplosionEffect(true);
                 break;
 
             //case EPhotonMsg.MapItem_ReturnToPool:

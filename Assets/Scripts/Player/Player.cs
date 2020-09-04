@@ -186,6 +186,8 @@ public class Player : PoolObjectNetwork
 		else
 		{
 			Player p = (Player)obj;
+			if(InitInfo == null || p.InitInfo == null)
+				return false;
 			return InitInfo.Number == p.InitInfo.Number &&
 				InitInfo.PlayerType == p.InitInfo.PlayerType; //for tesla clone
 		}

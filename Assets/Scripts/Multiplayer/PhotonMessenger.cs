@@ -9,6 +9,7 @@ using PhotonPlayer = Photon.Realtime.Player;
 /// <summary>
 /// Handles RPC messanging of one photon view
 /// </summary>
+[RequireComponent(typeof(PhotonView))]
 public abstract class PhotonMessenger : BrainiacsBehaviour
 {
 	[Header("Photon")]
@@ -20,6 +21,8 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		{
 			if(_view == null)
 				_view = GetComponent<PhotonView>();
+			if(!_view)
+				Debug.LogError("PhotonView not found");
 			return _view;
 		}
 	}
@@ -209,9 +212,12 @@ public enum EPhotonMsg
 	Player_ApplyDamage,
 	Player_AddKill,
 	
-	Player_Visual_OnDamage, //visual
+	Player_OnReceiveDamageEffect, //visual + sound
 	Player_Visual_OnDie,
+	Player_DoEliminateEffect,
 
+	Player_PlayWeaponUseSound, //sound
+	Player_DoShieldHitEffect,
 
 	Player_SetSyncPosition,
 
@@ -252,5 +258,9 @@ public enum EPhotonMsg
 	MapItem_InitMapSpecial,
 	MapItem_InitMapBasic,
 	MapItem_InitPowerUp,
+	MapItem_DoExplosionEffect,
 	//MapItem_ReturnToPool,
+
+	//Map
+	Map_Obstackle_DoCollisionEffect,
 }

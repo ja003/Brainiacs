@@ -53,8 +53,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		if(stats.LivesLeft <= 0)
 		{
-			Debug.Log($"Player {player} is OUT!");
-			SoundController.PlaySound(ESound.Player_Eliminate, null);
+			DoEliminateEffect();
 			return;
 		}
 
@@ -69,6 +68,17 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		IsDying = false;
 		movement.SpawnAt((Vector2)respawnPos);
 		stats.OnRespawn();
+	}
+
+	/// <summary>
+	/// Sound. todo: maybe animation on scoreboard?
+	/// RPC
+	/// </summary>
+	public void DoEliminateEffect()
+	{
+		Debug.Log($"Player {player} is OUT!");
+		SoundController.PlaySound(ESound.Player_Eliminate, null);
+		player.Photon.Send(EPhotonMsg.Player_DoEliminateEffect);
 	}
 
 	internal void DebugDie()
@@ -115,7 +125,8 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			}
 		}
 
-		//todo animation
+		//when image is hit => send info to owner => apply damage => show visual effect on both sides
+
 		if(!player.IsItMe)
 		{
 			int playerNumber = pOwner != null ? pOwner.InitInfo.Number : -1;
@@ -133,8 +144,8 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			int res = stats.AddHealth(-pDamage);
 			if(res < 0)
 			{
-				const float max_hit_sound_freq = 0.2f;
-				PlaySound(ESound.Player_Hit, max_hit_sound_freq);
+				//show damage effect only if some damage was applied (can be blocked by shield)
+				OnReceiveDamageEffect();
 			}
 
 			bool gameEndedAfterThis = game.GameEnd.GameEnded;
@@ -149,8 +160,17 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			}
 			//visual.OnDamage(); //visual effect first on owner then on image
 		}
-		//when image is hit => show visual effect => send info to owner => 
-		// => apply damage => show visual effect on both sides
+	}
+
+	/// <summary>
+	/// Visual + sound effect after some damage has been received.
+	/// RPC - owner sends
+	/// </summary>
+	public void OnReceiveDamageEffect()
+	{
 		visual.OnDamage();
+		const float max_hit_sound_freq = 0.2f;
+		PlaySound(ESound.Player_Hit, max_hit_sound_freq);
+		player.Photon.Send(EPhotonMsg.Player_OnReceiveDamageEffect);
 	}
 }

@@ -79,7 +79,7 @@ public abstract class PlayerWeapon
 
 	private void OnUseStart()
 	{
-		SoundController.PlayWeaponUseSound(Id, Owner.AudioSource, false);
+		Owner.WeaponController.PlayWeaponUseSound(Id);
 	}
 
 	public virtual bool CanUse()

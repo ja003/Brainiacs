@@ -22,7 +22,9 @@ public class GameBehaviour : BrainiacsBehaviour
 		else
 			lastPlaySoundTime.Add(pKey, Time.time);
 
-		AudioSource source = InstanceFactory.Instantiate(game.AudioSourcePrefab.gameObject).GetComponent<AudioSource>();
+		AudioSource source = InstanceFactory.Instantiate(
+			game.AudioSourcePrefab.gameObject).GetComponent<AudioSource>();
+
 		source.gameObject.SetActive(true);
 		SoundController.PlaySound(pKey, source, pIsLoop);
 	}

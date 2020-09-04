@@ -10,14 +10,17 @@ public class PauseMenu : GameController
 
 	[SerializeField] Button btnClose;
 
+	[Header("Volume")]
+	[SerializeField] Slider sliderVolumeMusic;
+	[SerializeField] Slider sliderVolumeSounds;
+
+	[Header("Mobile input")]
+	[SerializeField] GameObject inputType;
 	[SerializeField] Button btnInputJoystick;
 	[SerializeField] Button btnInputButtons;
-
+	[SerializeField] GameObject inputScale;
 	[SerializeField] Slider sliderMoveInputScale;
 
-	[SerializeField] Slider sliderVolumeMusic;
-
-	[SerializeField] Slider sliderVolumeSounds;
 
 	protected override void OnMainControllerAwaken() { }
 
@@ -29,14 +32,24 @@ public class PauseMenu : GameController
 		SetMoveInputScale(brainiacs.PlayerPrefs.MoveInputScale);
 
 		btnClose.onClick.AddListener(() => SetActive(false));
-
-		btnInputButtons.onClick.AddListener(() => SetMobileInputJoystick(false));
-		btnInputJoystick.onClick.AddListener(() => SetMobileInputJoystick(true));
-
+		
+		//volume
 		sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
 		sliderVolumeSounds.onValueChanged.AddListener(SetVolumeSounds);
 
-		sliderMoveInputScale.onValueChanged.AddListener(SetMoveInputScale);
+		//mobile input
+		if(PlatformManager.IsMobile())
+		{
+			sliderMoveInputScale.onValueChanged.AddListener(SetMoveInputScale);
+			btnInputButtons.onClick.AddListener(() => SetMobileInputJoystick(false));
+			btnInputJoystick.onClick.AddListener(() => SetMobileInputJoystick(true));
+		}
+		else
+		{
+			inputType.SetActive(false);
+			inputScale.SetActive(false);
+		}
+
 	}
 
 	private void SetMoveInputScale(float pValue)

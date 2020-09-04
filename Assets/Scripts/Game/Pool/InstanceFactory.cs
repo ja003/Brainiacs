@@ -42,18 +42,21 @@ public static class InstanceFactory
 		return instance;
 	}
 
-	public static GameObject Instantiate(GameObject pPrefab, bool pNetworkInstance = true)
+	public static GameObject Instantiate(GameObject pPrefab)//, bool pNetworkInstance = true)
 	{
-		return Instantiate(pPrefab, Vector2.zero, pNetworkInstance);
+		bool isNetworkInstance = pPrefab.GetComponent<PhotonView>();
+		return Instantiate(pPrefab, Vector2.zero, isNetworkInstance);
 	}
 
-	internal static void Destroy(GameObject pGameObject, bool pNetworkInstance = true)
+	internal static void Destroy(GameObject pGameObject)//, bool pNetworkInstance = true)
 	{
-		if(pNetworkInstance && PhotonNetwork.IsConnected)
+		bool isNetworkInstance = pGameObject.GetComponent<PhotonView>();
+
+		if(isNetworkInstance && PhotonNetwork.IsConnected)
 			PhotonNetwork.Destroy(pGameObject);
 		else
 		{
-			if(pNetworkInstance && Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+			if(isNetworkInstance && Brainiacs.Instance.GameInitInfo.IsMultiplayer())
 				Debug.LogError("Not conected to server");
 			Game.Instance.Pool.Destroy(pGameObject);
 		}

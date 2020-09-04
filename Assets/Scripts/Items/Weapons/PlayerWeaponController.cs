@@ -77,6 +77,12 @@ public class PlayerWeaponController : PlayerBehaviour
 		SetActiveWeapon(weapons.IndexOf(weaponInInventory));
 	}
 
+	internal void PlayWeaponUseSound(EWeaponId pId)
+	{
+		SoundController.PlayWeaponUseSound(pId, player.AudioSource, false);
+		player.Photon.Send(EPhotonMsg.Player_PlayWeaponUseSound, (int)pId);
+	}
+
 	public bool CanSwapWeapon = true;
 	public void SwapWeapon()
 	{

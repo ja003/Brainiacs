@@ -18,7 +18,9 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] List<WeaponAudioClip> _weaponUseClips;
 	Dictionary<EWeaponId, AudioClip> weaponUseClips = new Dictionary<EWeaponId, AudioClip>();
 
-	
+
+	public bool debug_LogSounds;
+
 	//Dictionary<ESound, AudioClip> otherSoundClips = new Dictionary<ESound, AudioClip>();
 
 	private void Awake()

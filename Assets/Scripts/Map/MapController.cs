@@ -8,11 +8,16 @@ public class MapController : GameController
 	public Map ActiveMap = null;
 
 	[SerializeField] public MapItemManager Items;
+	[SerializeField] public MapPhoton Photon;
+
+	//all obstackles on map defined by their name-hash
+	Dictionary<int, MapObstackle> obstackles = new Dictionary<int, MapObstackle>();
 
 	protected override void Awake()
 	{
 		base.Awake();
 	}
+
 
 	public void SetMap(EMap pMap)
 	{
@@ -21,11 +26,14 @@ public class MapController : GameController
 		for(int i = 0; i < transform.childCount; i++)
 		{
 			ActiveMap = transform.GetChild(i).GetComponent<Map>();
+			ActiveMap.SetActive(false);
 			if(ActiveMap != null && ActiveMap.name.Contains(pMap.ToString()))
 			{
 				Debug.LogWarning("Map is already present in the scene");
 				if(!Brainiacs.SelfInitGame)
 					Debug.LogError("Map object cant be present in the scene [not error if debugging]");
+
+				ActiveMap.SetActive(true);
 				return;
 			}
 		}
@@ -52,6 +60,8 @@ public class MapController : GameController
 		ActiveMap.transform.parent = transform;
 	}
 
+	
+
 	public new void SetActive(bool pValue)
 	{
 		base.SetActive(pValue);
@@ -72,5 +82,33 @@ public class MapController : GameController
 	{
 		Items.Init();
 		SetActive(true);
+	}
+
+	/// OBSTACKLES
+
+	internal void RegisterObstackle(MapObstackle pObstackle)
+	{
+		int id = pObstackle.gameObject.name.GetHashCode();// Utils.GenerateHash(pObstackle.gameObject.name);
+		if(obstackles.ContainsKey(id))
+		{
+			Debug.LogError($"Obstackle {pObstackle.gameObject.name} already registered. Name has to be unique");
+			return;
+		}
+		obstackles.Add(id, pObstackle);
+	}
+
+
+	internal void UnregisterObstackle(MapObstackle pObstackle)
+	{
+		obstackles.Remove(pObstackle.gameObject.name.GetHashCode());
+	}
+
+	internal MapObstackle GetObstackle(int pId)
+	{
+		MapObstackle result;
+		obstackles.TryGetValue(pId, out result);
+		if(!result)
+			Debug.LogError($"Obstackle {pId} not found");
+		return result;
 	}
 }

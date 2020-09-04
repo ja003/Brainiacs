@@ -15,7 +15,7 @@ public class UIPlayerStatusManager : MonoBehaviour
 
 	public UIPlayerEffect InitPlayerEffect()
 	{
-		GameObject instance = InstanceFactory.Instantiate(playerEffectPrefab.gameObject, false);
+		GameObject instance = InstanceFactory.Instantiate(playerEffectPrefab.gameObject);//, false);
 		instance.SetActive(true);
 		return instance.GetComponent<UIPlayerEffect>();
 	}
@@ -44,7 +44,7 @@ public class UIPlayerStatusManager : MonoBehaviour
 			return;
 
 		//UIPlayerStatus instance = Instantiate(prefab, transform);
-		GameObject instance = InstanceFactory.Instantiate(prefab.gameObject, false);
+		GameObject instance = InstanceFactory.Instantiate(prefab.gameObject);//, false);
 		//instance.transform.parent = transform;
 
 		instance.GetComponent<UIPlayerStatus>().SpawnAt(pWorldPosition, pSprite, pText, pTextColor);

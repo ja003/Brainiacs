@@ -121,7 +121,8 @@ public class PlayerVisual : PlayerBehaviour
 	public void OnDamage()
 	{
 		StartCoroutine(FlickColor());
-		player.Photon.Send(EPhotonMsg.Player_Visual_OnDamage); //only owner sends this
+		//removed: handled in PlayerHealth
+		//player.Photon.Send(EPhotonMsg.Player_OnReceiveDamageEffect); //only owner sends this
 	}
 
 	/// <summary>

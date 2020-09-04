@@ -164,13 +164,26 @@ public class PlayerPhotonController : PoolObjectPhoton
 				player.Stats.StatsEffect.SetEffectActive(effect, state);
 				return;
 
-			case EPhotonMsg.Player_Visual_OnDamage:
-				player.Visual.OnDamage();
+			case EPhotonMsg.Player_OnReceiveDamageEffect:
+				player.Health.OnReceiveDamageEffect();
 				break;
 
 			case EPhotonMsg.Player_Visual_OnDie:
 				player.Visual.OnDie();
 				break;
+
+			case EPhotonMsg.Player_DoEliminateEffect:
+				player.Health.DoEliminateEffect();
+				break;
+
+			case EPhotonMsg.Player_PlayWeaponUseSound:
+				EWeaponId id = (EWeaponId)pParams[0];
+				player.WeaponController.PlayWeaponUseSound(id);
+				return;
+
+			case EPhotonMsg.Player_DoShieldHitEffect:
+				player.Stats.DoShieldHitEffect();
+				return;
 
 			default:
 				OnMsgUnhandled(pReceivedMsg);

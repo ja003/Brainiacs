@@ -101,11 +101,13 @@ public class MapItem : MapObject
 		{
 			//Debug.Log("OnEnter weapon");
 			pPlayer.ItemController.AddMapWeapon(weaponConfig.Id);
+			PlaySound(ESound.Item_Weapon_Pickup);
 		}
 		else if(weaponSpecialConfig != null)
 		{
 			//Debug.Log("OnEnter weapon special");
 			pPlayer.ItemController.AddMapWeaponSpecial(weaponSpecialConfig.Id);
+			PlaySound(ESound.Item_Weapon_Pickup);
 		}
 		//TODO: special weapon + handle error
 
@@ -117,12 +119,22 @@ public class MapItem : MapObject
 	/// </summary>
 	private void Explode()
 	{
+		DoExplosionEffect(false);
+		DoInTime(ApplyExplosion, 0.1f);
+	}
+
+	/// <summary>
+	/// Visual and soudn effect.
+	/// pIsRPC = Is called from RPC => dont send another message.
+	/// </summary>
+	public void DoExplosionEffect(bool pIsRPC)
+	{
 		spriteRend.enabled = false;
 		explosion.enabled = true;
 		animator.SetBool("explode", true);
-		DoInTime(ApplyExplosion, 0.1f);
-		//SoundController.PlaySound(ESound.Item_Explode, audioSource);
 		PlaySound(ESound.Item_Explode);
+		if(!pIsRPC)
+			Photon.Send(EPhotonMsg.MapItem_DoExplosionEffect);
 	}
 
 	private void ApplyExplosion()

@@ -32,11 +32,12 @@ public static class DebugData
 	private static int playerCount = 3;
 	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 1;
-	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.Speed;
-	public static bool TestGenerateItems = true && !release;
+	public static bool TestGenerateItems = true;// && !release;
 	public static bool StopGenerateItems = false && !release;
+	//test generate items have priority: powerup, wepon, specialweapon
+	public static EPowerUp TestPowerUp = release ? EPowerUp.Shield : EPowerUp.Shield;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
-	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.None;
+	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.Flamethrower;
 
 	//SOUND
 	public static bool MuteMusic = false && !release;
@@ -97,11 +98,13 @@ public static class DebugData
 		player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
 		player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
 		player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 
 		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
 		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+		
+		player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 		player.debug_StartupWeapon.Add(EWeaponId.MP40);
+		player.debug_StartupWeapon.Add(EWeaponId.Basic_Curie);
 
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{

@@ -115,8 +115,7 @@ public class PlayerStats : PlayerBehaviour
 		{
 			if(IsShielded)
 			{
-				const float max_play_sound_freq = 0.2f;
-				PlaySound(ESound.Player_Shield_Hit, max_play_sound_freq);
+				DoShieldHitEffect();
 			}
 			//Debug.Log($"{player.InitInfo.Name} is invurnelable");
 			return 0;
@@ -129,6 +128,12 @@ public class PlayerStats : PlayerBehaviour
 		return pIncrement;
 	}
 
+	public void DoShieldHitEffect()
+	{
+		const float max_play_sound_freq = 0.2f;
+		PlaySound(ESound.Player_Shield_Hit, max_play_sound_freq);
+		player.Photon.Send(EPhotonMsg.Player_DoShieldHitEffect);
+	}
 
 	public void SetStat(EPlayerStats pType, int pValue, bool pForce = false)
 	{

@@ -155,23 +155,37 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		SetActive(false);
 	}
 
+	/// <summary>
+	/// Eg. collision with MapItem
+	/// </summary>
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		OnCollision(collision.gameObject.layer);
+	}
+
 	private void OnCollisionStay2D(Collision2D collision)
 	{
-		if(canCollide)
-			OnCollisionEnter2D(collision);
+		OnCollision(collision.gameObject.layer);
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(!canCollide || collision.gameObject.layer == game.ProjectileManager.LayerProjectile)
+		OnCollision(collision.gameObject.layer);
+	}
+
+	/// <summary>
+	/// Projectiles dont destroy the truck
+	/// Called only on owner side, remote object has deactivated collider.
+	/// </summary>
+	private void OnCollision(int pLayer)
+	{
+		if(!canCollide 
+			|| pLayer == game.ProjectileManager.LayerProjectile
+			|| pLayer == game.Layers.MapDecoration)
 		{
 			//Debug.Log("just projectile");
 			return;
 		}
-
-		//remote object has deactivated collider
-		//if(!Network.IsMine)
-		//	return;
 
 		Collide();
 	}
@@ -188,6 +202,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		SoundController.PlaySound(ESound.Curie_Truck_Explode, audioSource, false);
 
 		Photon.Send(EPhotonMsg.Special_Curie_Collide);
+		canCollide = false;
 	}
 
 }

@@ -58,7 +58,7 @@ public class UIPlayerStatus : UiBehaviour
 
 	private void Deactivate()
 	{
-		InstanceFactory.Destroy(gameObject, false);
+		InstanceFactory.Destroy(gameObject);//, false);
 		//gameObject.SetActive(false);
 	}
 }

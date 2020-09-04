@@ -344,8 +344,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3a21b89b79421fe41bcea0a668baaa84, type: 3}
   - key: 208
     clip: {fileID: 8300000, guid: 431c26e59710c354ca110f741518e57d, type: 3}
-  - key: 17
-    clip: {fileID: 0}
+  - key: 211
+    clip: {fileID: 8300000, guid: e062996e68cc67b4c9d3433a8d3668c4, type: 3}
   - key: 18
     clip: {fileID: 0}
   - key: 0
@@ -420,6 +420,7 @@ MonoBehaviour:
     clip: {fileID: 0}
   - key: 0
     clip: {fileID: 0}
+  debug_LogSounds: 0
 --- !u!1 &7279955334952776627
 GameObject:
   m_ObjectHideFlags: 0
