@@ -12,7 +12,7 @@ public class PathFinderController : IPathFinder
 	public PathFinderController(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
     {
 		playerSize = Game.Instance.PlayerManager.PLAYER_SIZE;
-        AstarAdapter.Init(pStepSize, pTopLeft, pBotRight);
+		Game.Instance.StartCoroutine(AstarAdapter.Init(pStepSize, pTopLeft, pBotRight));
 	}
 
 	//public void Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
@@ -33,7 +33,7 @@ public class PathFinderController : IPathFinder
 	//return AstarAdapter.GetPath(pFrom, pTo);
 	//  }
 
-	
+
 
 
 	public async Task<MovePath> GetPathAsync(Vector2 pFrom, Vector2 pTo)
@@ -59,7 +59,7 @@ public class PathFinderController : IPathFinder
 		if(overlaps)
 		{
 			//Debug.Log("OverlapsWithMapObject " + overlaps.gameObject.name);
-			Utils.DebugDrawBox(pPoint, playerSize, Color.yellow, 1);
+			//Utils.DebugDrawBox(pPoint, playerSize, Color.yellow, 1);
 		}
 
 		return overlaps;

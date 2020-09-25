@@ -21,15 +21,29 @@ public class PlayerManager : GameController
 		{
 			loadedPlayers.Add(PhotonNetwork.LocalPlayer);
 		}
+		brainiacs.PhotonManager.OnPlayerLeft += OnPlayerLeftRoom;
+	}
+
+	private void OnPlayerLeftRoom(PhotonPlayer pPlayer)
+	{
+		Player leaver = GetPlayer(pPlayer);
+		//if(PhotonNetwork.IsMasterClient) //on all..right?
+		game.InfoMessenger.Show($"Player {leaver.InitInfo.Name} has left:(");
+
+		DoInTime(() => RemovePlayer(leaver), 1);
+
+		void RemovePlayer(Player pLeaver)
+		{
+			pLeaver.Health.DoEliminateEffect();
+			pLeaver.ReturnToPool();
+		}
 	}
 
 	protected override void OnMainControllerActivated()
 	{
-
-
 		//single player => spawn here
 		//MP => spawn in OnRemotePlayerLoadedScene
-		if(!brainiacs.GameInitInfo.IsMultiplayer())
+		if(!isMultiplayer)
 		{
 			//Debug.Log("Spawn players SP");
 			game.Map.SetOnActivated(() =>
@@ -185,7 +199,7 @@ public class PlayerManager : GameController
 		//map has to be activated first
 
 		//player objects spawn only on master
-		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
 		{
 			Debug.Log("Not MasterClient => dont spawn");
 			return;

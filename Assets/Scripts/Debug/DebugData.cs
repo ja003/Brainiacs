@@ -33,7 +33,7 @@ public static class DebugData
 	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 1;
 	public static bool TestGenerateItems = true;// && !release;
-	public static bool StopGenerateItems = false && !release;
+	public static bool StopGenerateItems = true && !release;
 	//test generate items have priority: powerup, wepon, specialweapon
 	public static EPowerUp TestPowerUp = release ? EPowerUp.Shield : EPowerUp.Shield;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
@@ -59,7 +59,7 @@ public static class DebugData
 		//PlayerInitInfo player3 = DebugData.GetPlayerInitInfo(3);
 		//GameInitInfo.AddPlayer(player3);
 
-		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Deathmatch;
+		Brainiacs.Instance.GameInitInfo.Mode = EGameMode.Score;
 		Brainiacs.Instance.GameInitInfo.Map = TestMap == EMap.None ? EMap.Steampunk : TestMap;
 		Brainiacs.Instance.GameInitInfo.GameModeValue = TestGameValue;
 	}
@@ -94,17 +94,17 @@ public static class DebugData
 		}
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
-		player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
-		player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
-		player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
-		player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
 
-		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
-		player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+		//player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
 		
-		player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
-		player.debug_StartupWeapon.Add(EWeaponId.MP40);
-		player.debug_StartupWeapon.Add(EWeaponId.Basic_Curie);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
+		//player.debug_StartupWeapon.Add(EWeaponId.MP40);
+		//player.debug_StartupWeapon.Add(EWeaponId.Basic_Curie);
+		//player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
+		player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
 
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{

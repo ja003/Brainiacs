@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
 	public Action<PhotonPlayer> OnPlayerEntered;
+	public Action<PhotonPlayer> OnPlayerLeft;
 
 	// Start is called before the first frame update
 	void Start()
@@ -114,7 +115,32 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		Debug.Log("OnPlayerEnteredRoom " + newPlayer);
 		base.OnPlayerEnteredRoom(newPlayer);
 
-		OnPlayerEntered.Invoke(newPlayer);
+		OnPlayerEntered?.Invoke(newPlayer);
+	}
+
+	public override void OnPlayerLeftRoom(PhotonPlayer otherPlayer)
+	{
+		Debug.Log("OnPlayerLeftRoom " + otherPlayer);
+		base.OnPlayerLeftRoom(otherPlayer);
+
+		OnPlayerLeft?.Invoke(otherPlayer);
+	}
+
+	public override void OnDisconnected(DisconnectCause cause)
+	{
+		Debug.Log("OnDisconnected");
+		StartCoroutine(TryReconnect());
+	}
+
+	private IEnumerator TryReconnect()
+	{
+		if(PhotonNetwork.IsConnected)
+			yield return null;
+
+		yield return new WaitForSeconds(1);
+
+		Debug.Log("reconnect");
+		PhotonNetwork.ConnectToBestCloudServer();
 	}
 
 	/// <summary>

@@ -20,8 +20,12 @@ public static class AstarAdapter
 
 	static List<List<Node>> grid;
 
-	public static void Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
+	private static bool isInited;
+
+	public static IEnumerator Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
 	{
+		//Debug.Log($"Init");
+
 		playerSize = Game.Instance.PlayerManager.PLAYER_SIZE;
 
 		stepSize = pStepSize;
@@ -31,6 +35,8 @@ public static class AstarAdapter
 		Vector2 topRight = new Vector2(pBotRight.x, pTopLeft.y);
 		positionShift = -botLeft;
 
+		const int max_steps_per_frame = 100;
+		int steps = 0;
 		for(float x = botLeft.x; x < topRight.x; x += pStepSize)
 		{
 			grid.Add(new List<Node>());
@@ -46,11 +52,20 @@ public static class AstarAdapter
 
 				Node node = new Node(nodePosScaled, isWalkable);
 				grid.Last().Add(node);
+
+				//do only X steps per frame to avoid big lag
+				steps++;
+				if(steps % max_steps_per_frame == 0)
+				{
+					//Debug.Log($"Steps: {steps}");
+					yield return new WaitForEndOfFrame();
+				}
 			}
 		}
 
 		astar = new Astar(grid);
 		Debug_DrawGrid();
+		isInited = true;
 	}
 
 	public static void Debug_DrawGrid()
@@ -92,6 +107,9 @@ public static class AstarAdapter
 
 	public static async Task<MovePath> GetPath(Vector2 pFrom, Vector2 pTo)
 	{
+		while(!isInited)
+			await Task.Delay(100);
+
 		//handled better below
 		//if(PathFinderController.OverlapsWithMapObject(pTo))
 		//	return new MovePath();

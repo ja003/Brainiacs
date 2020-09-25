@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,19 @@ using UnityEngine;
 /// </summary>
 public class TopLayerSorter : GameBehaviour
 {
+	//optional if renderer is on other object (otherwise the renderer on this object is used)
+	[CanBeNull]
+	[SerializeField] 
+	SpriteRenderer sprRenderer;
+
+	protected override void Awake()
+	{
+		if(!sprRenderer)
+			sprRenderer = spriteRend;
+		base.Awake();
+	}
+
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		SpriteRenderer r = collision.gameObject.GetComponent<SpriteRenderer>();
@@ -20,12 +34,12 @@ public class TopLayerSorter : GameBehaviour
 
 		//eg. player sortOrder is X, player hands are X + 2
 		//todo: implement interface for getting actual SortOrder
-		rend.sortingOrder = r.sortingOrder + 5;
+		sprRenderer.sortingOrder = r.sortingOrder + 5;
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		//Debug.Log("OnTriggerExit2D");
-		rend.sortingOrder = 0;
+		sprRenderer.sortingOrder = 0;
 	}
 }

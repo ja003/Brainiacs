@@ -23,7 +23,10 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		//Debug.Log(gameObject.name + " OnUse");
 		//spriteRend.enabled = false; //this is just holder, anmator is in child
 		SetActive(true);
-		mineSprite.sortingOrder = owner.Visual.GetProjectileSortOrder();
+		mineSprite.sortingOrder =
+			//owner.Visual.GetProjectileSortOrder();
+			owner.Visual.CurrentSortOrder - 1;
+
 
 		transform.position = owner.WeaponController.GetProjectileStart().position;
 		//Photon.Send(EPhotonMsg.Special_Nobel_Spawn, owner.InitInfo.Number);		
@@ -89,7 +92,8 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 
 	internal void OnExplosionStateEnter()
 	{
-		mineSprite.sortingOrder = SortLayerManager.GetSortIndex(ESortObject.MapObject);
+		mineSprite.sortingOrder =
+			SortLayerManager.GetSortIndex(ESortObject.MapObject);
 	}
 
 	internal void OnExplosionStateExit()

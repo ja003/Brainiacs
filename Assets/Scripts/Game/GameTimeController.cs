@@ -13,13 +13,15 @@ public class GameTimeController : GameController
 {
 	[SerializeField] UIGameTime uiGameTime = null;
 
+	public bool IsPaused;
+
 	protected override void OnMainControllerAwaken()
 	{
 	}
 
 	protected override void OnMainControllerActivated()
 	{
-		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
 		{
 			//master manages time
 			return;

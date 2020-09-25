@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPlayerInfoElement : BrainiacsBehaviour
+public class UIPlayerInfoElement : UiBehaviour
 {
 	[SerializeField] private Image portrait = null;
 	[SerializeField] private Image weapon = null;

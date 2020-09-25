@@ -11,7 +11,7 @@ public class BrainiacsBehaviour : MonoBehaviour
 	[DebuggerHidden]
 	protected Brainiacs brainiacs => Brainiacs.Instance;
 
-	protected bool isMultiplayer => brainiacs.GameInitInfo.IsMultiplayer();
+	protected bool isMultiplayer => brainiacs.GameInitInfo != null && brainiacs.GameInitInfo.IsMultiplayer();
 
 	private Renderer _rend;
 	protected Renderer rend
@@ -90,17 +90,6 @@ public class BrainiacsBehaviour : MonoBehaviour
 
 			_audioSource.playOnAwake = false;
 			return _audioSource;
-		}
-	}
-
-	private Image _image;
-	protected Image image
-	{
-		get
-		{
-			if(_image == null)
-				_image = GetComponent<Image>();
-			return _image;
 		}
 	}
 

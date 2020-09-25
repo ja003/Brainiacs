@@ -20,6 +20,7 @@ public class Game : CSingleton<Game>
 	[SerializeField] public UIGameTime UIGameTime;
 	[SerializeField] public PlayersResultManager Results;
 	[SerializeField] public PoolManager Pool;
+	[SerializeField] public UIInfoMessenger InfoMessenger;
 
 	[SerializeField] public GameAudioSource AudioSourcePrefab;
 
@@ -35,7 +36,7 @@ public class Game : CSingleton<Game>
 	{
 		brainiacs.SetOnAwaken(OnAwaken);
 
-		Activate();
+		//Activate();
 
 		base.Awake(); //always call base.event() at the end
 	}
@@ -45,13 +46,15 @@ public class Game : CSingleton<Game>
 		mainCamera.enabled = false;
 		//todo: deactivate players
 
-		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
 		{
 			Photon.Send(EPhotonMsg.Game_PlayerLoadedScene, PhotonNetwork.LocalPlayer.ActorNumber);
 		}
+		Activate();
+
 	}
 
-	[SerializeField] bool debug_forceCurtain = false;
+	[SerializeField] bool debug_forceCurtain = false; //debug: start from game scene
 
 	public new void Activate()
 	{
@@ -59,10 +62,13 @@ public class Game : CSingleton<Game>
 		mainCamera.enabled = true;
 
 		//if(Brainiacs.SelfInitGame && !debug_forceCurtain)
-		if(Time.time < 1 && !debug_forceCurtain) //debug: start from game scene
-			StartGame();
-		else
-			uiCurtain.SetFade(false, StartGame);
+		//if(Time.time < 1 && !debug_forceCurtain) 
+		//	StartGame();
+		//else
+		//	uiCurtain.SetFade(false, StartGame);
+
+		uiCurtain.SetFade(false, StartGame, debug_forceCurtain ? 1 : 0.1f);
+
 
 		base.Activate();
 	}
@@ -70,7 +76,8 @@ public class Game : CSingleton<Game>
 	public bool GameStarted { get; private set; }
 	private void StartGame()
 	{
-		//Debug.Log("StartGame");
+		//UnityEngine.Debug.Log("StartGame " + Time.time);
 		GameStarted = true;
+		InfoMessenger.Show("Game started!");
 	}
 }

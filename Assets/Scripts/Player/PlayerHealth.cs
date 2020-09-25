@@ -53,7 +53,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		if(stats.LivesLeft <= 0)
 		{
-			DoEliminateEffect();
+			Eliminate();
 			return;
 		}
 
@@ -71,6 +71,14 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	}
 
 	/// <summary>
+	/// No life left => dont respawn
+	/// </summary>
+	private void Eliminate()
+	{
+		DoEliminateEffect();
+	}
+
+	/// <summary>
 	/// Sound. todo: maybe animation on scoreboard?
 	/// RPC
 	/// </summary>
@@ -79,6 +87,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		Debug.Log($"Player {player} is OUT!");
 		SoundController.PlaySound(ESound.Player_Eliminate, null);
 		player.Photon.Send(EPhotonMsg.Player_DoEliminateEffect);
+		game.InfoMessenger.Show($"Player {player.InitInfo.Name} has been eliminated!");
 	}
 
 	internal void DebugDie()
@@ -103,7 +112,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	}
 
 	/// <summary>
-	/// Apply damage caused by pOrigin player.
+	/// Apply damage caused by pOwner player.
 	/// Origin can be null (map explosion, turret, ...) => TODO: test
 	/// </summary>
 	public void ApplyDamage(int pDamage, Player pOwner)
@@ -125,8 +134,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			}
 		}
 
-		//when image is hit => send info to owner => apply damage => show visual effect on both sides
-
+		//when image is hit => send info to owner => apply damage
 		if(!player.IsItMe)
 		{
 			int playerNumber = pOwner != null ? pOwner.InitInfo.Number : -1;
@@ -157,6 +165,10 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			{
 				//Debug.Log("Add kill to " + pOrigin);
 				pOwner?.Stats.AddKill(forceAddKill);
+				string message = pOwner == null ?
+					$"Player {player.InitInfo.Name} was killed" :
+					$"Player {player.InitInfo.Name} killed by {pOwner.InitInfo.Name}";
+				game.InfoMessenger.Show(message);
 			}
 			//visual.OnDamage(); //visual effect first on owner then on image
 		}

@@ -10,5 +10,11 @@ public class MapConfig : ScriptableObject
 
 	public Map Prefab;
 	public Sprite MapPreview;
+
+	public Sprite Loading1;
+	public Sprite Loading2;
+	public Sprite Loading3;
+	public Sprite Loading4;
+
 }
 

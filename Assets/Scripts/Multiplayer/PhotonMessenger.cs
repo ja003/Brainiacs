@@ -90,9 +90,6 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	/// </summary>
 	public void Send(EPhotonMsg pMsgType, params object[] pParams)
 	{
-		bool isMultiplayer = brainiacs.GameInitInfo.IsMultiplayer();
-		
-		
 		//if(DEBUG_LOG)
 		//	Debug.Log("Send " + pMsgType + ", MP: " + isMultiplayer);
 

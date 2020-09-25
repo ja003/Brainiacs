@@ -22,6 +22,12 @@ public class PlayerInput : PlayerBehaviour
 		if(!game.GameStarted)
 			return;
 
+		if(game.GameEnd.GameEnded)
+			return;
+
+		if(game.GameTime.IsPaused)
+			return;
+
 		ProcessMovementInput();
 
 		ProcessActionInput();
@@ -90,6 +96,7 @@ public class PlayerInput : PlayerBehaviour
 
 	private void ProcessMovementInput()
 	{
+		//Debug.Log("ProcessMovementInput");
 		bool movementRequested = false;
 		foreach(EDirection dir in Enum.GetValues(typeof(EDirection)))
 		{

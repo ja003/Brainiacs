@@ -60,6 +60,13 @@ public class UIGameSetupMain : MainMenuController
 		base.Awake();
 	}
 
+	private void Update()
+	{
+		btnAllowJoin.interactable = PhotonNetwork.IsConnectedAndReady;
+		btnReady.interactable = PhotonNetwork.IsConnectedAndReady;
+		btnPlay.interactable = isMultiplayer ? PhotonNetwork.IsConnectedAndReady : true;
+	}
+
 	internal void SetGameInfo(GameInitInfo pGameInfo)
 	{
 
@@ -357,7 +364,8 @@ public class UIGameSetupMain : MainMenuController
 
 		//no need to send msg => use photon scene loading
 		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
-		brainiacs.Scenes.LoadScene(EScene.Game);
+		brainiacs.Scenes.LoadScene(EScene.Loading);
+		//brainiacs.Scenes.LoadScene(EScene.Game);
 	}
 
 	private bool ArePlayersReady()

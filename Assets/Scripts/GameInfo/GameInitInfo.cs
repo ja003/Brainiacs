@@ -133,6 +133,10 @@ public class GameInitInfo
 		return Players.Find(a => a.Number == pPlayerNumber);
 	}
 
+	/// <summary>
+	/// If there are some remote players.
+	/// Note: call BrainiacsBehaviour::IsMultiplayer()
+	/// </summary>
 	public bool IsMultiplayer()
 	{
 		foreach(var p in Players)

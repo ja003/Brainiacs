@@ -30,19 +30,14 @@ public class UIPlayerEffect : UiBehaviour
                 break;
             case EPlayerEffect.DoubleSpeed:
                 return doubleSpeed;
-                break;
             case EPlayerEffect.HalfSpeed:
                 return halfSpeed;
-                break;
             case EPlayerEffect.Shield:
                 return shield;
-                break;
             case EPlayerEffect.DoubleDamage:
                 return doubleDamage;
-                break;
             case EPlayerEffect.HalfDamage:
                 return halfDamage;
-                break;
             default:
                 break;
         }

@@ -18,7 +18,7 @@ public class GameEndController : GameController
 
 	private void Init()
 	{
-		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
 		{
 			//only master checks end of game
 			return;
@@ -52,7 +52,7 @@ public class GameEndController : GameController
 					if(player.Stats.LivesLeft > 0)
 						alivePlayersCount++;
 				}
-				if(alivePlayersCount <= 1)
+				if(alivePlayersCount <= 1 && !GameEnded)
 					EndGame();
 
 				break;
@@ -67,14 +67,19 @@ public class GameEndController : GameController
 	/// </summary>
 	public void EndGame()
 	{
-		if(brainiacs.GameInitInfo.IsMultiplayer() && !PhotonNetwork.IsMasterClient)
+		if(GameEnded)
+		{
+			Debug.LogError("EndGame called again");
+			return;
+		}
+
+		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
 		{
 			Debug.LogError("EndGame should be called only on master");
 			return;
 		}
 
-		GameEnded = true;
-		Debug.Log("EndGame");
+		
 
 		//generate from players stats
 		brainiacs.SetGameResultInfo(game.Results.PlayersScore, game.GameTime.TimePassed);
@@ -83,12 +88,23 @@ public class GameEndController : GameController
 		var gameResultBytes = brainiacs.GameResultInfo.Serialize();
 		game.Photon.Send(EPhotonMsg.Game_EndGame, gameResultBytes);
 
-
 		//every user will load Results scene locally
-		game.uiCurtain.SetFade(true, LoadResultScene);
+		//game.uiCurtain.SetFade(true, LoadResultScene, 2);
+
+		//in deathmatch/score game start end-game-fade cca after last death animation is finished
+		int fadeDelay = brainiacs.GameInitInfo.Mode != EGameMode.Time ? 2 : 0;
+		const int fadeTime = 2;
+		DoInTime(() =>
+		{
+			game.uiCurtain.SetFade(true, LoadResultScene, fadeTime);
+		}, fadeDelay);
+
+		game.InfoMessenger.Show("Game ended"); //has to be called before GameEnded flag is set
+		GameEnded = true; //prevents player input and stats change
+		Debug.Log("EndGame");
 	}
 
-	
+
 
 	/// <summary>
 	/// End game - called only on clients
@@ -102,7 +118,7 @@ public class GameEndController : GameController
 
 	private void LoadResultScene()
 	{
-		if(brainiacs.GameInitInfo.IsMultiplayer())
+		if(isMultiplayer)
 			PhotonNetwork.LeaveRoom();
 		brainiacs.Scenes.LoadScene(EScene.Results);
 	}

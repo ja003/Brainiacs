@@ -5,9 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UiBehaviour : MonoBehaviour
+public class UiBehaviour : BrainiacsBehaviour
 {
-	protected Brainiacs brainiacs => Brainiacs.Instance;
 	protected Game game => Game.Instance;
 
 	protected Vector2 GetScreenPosition(Vector2 pWorldPos)
@@ -34,6 +33,24 @@ public class UiBehaviour : MonoBehaviour
 		rectTransform.anchoredPosition = screenPosition;
 	}
 
+	/// <summary>
+	/// Instantly sets alpha to image color property
+	/// </summary>
+	protected void SetAlpha(float pAlpha)
+	{
+		image.enabled = true;
+		image.color = new Color(image.color.r, image.color.g, image.color.b, pAlpha);
+	}
+
+	/// <summary>
+	/// Animates alpha value of image over given duration and calls action on complete
+	/// </summary>
+	protected void SetAlpha(float pValue, float pDuration, Action pOnComplete)
+	{
+		LeanTween.alpha(image.rectTransform, pValue, pDuration)
+					.setIgnoreTimeScale(true)
+					.setOnComplete(pOnComplete);
+	}
 
 	private RectTransform _rectTransform;
 	protected RectTransform rectTransform
@@ -43,17 +60,6 @@ public class UiBehaviour : MonoBehaviour
 			if(_rectTransform == null)
 				_rectTransform = GetComponent<RectTransform>();
 			return _rectTransform;
-		}
-	}
-
-	private Animator _animator;
-	protected Animator animator
-	{
-		get
-		{
-			if(_animator == null)
-				_animator = GetComponent<Animator>();
-			return _animator;
 		}
 	}
 
@@ -79,64 +85,4 @@ public class UiBehaviour : MonoBehaviour
 		}
 	}
 
-	private bool awaken;
-	private List<Action> onAwaken = new List<Action>();
-
-	private bool activated;
-	private List<Action> onActivated = new List<Action>();
-
-	protected virtual void Awake()
-	{
-		awaken = true;
-		SetOnAwaken();
-	}
-
-	protected void Activate()
-	{
-		activated = true;
-		SetOnActivated(); //invoke OnMainControllerActivated actions
-	}
-
-	public void SetOnAwaken(Action pAction = null)
-	{
-		if(pAction != null)
-			onAwaken.Add(pAction);
-		//onAwake.Add(pAction);
-
-		if(awaken)
-		{
-			for(int i = onAwaken.Count - 1; i >= 0; i--)
-			{
-				if(i >= onAwaken.Count)
-					continue;
-				Action action = onAwaken[i];
-				onAwaken.RemoveAt(i);
-				action.Invoke();
-			}
-			onAwaken.Clear();
-		}
-	}
-
-	public void SetOnActivated(Action pAction = null)
-	{
-		//Debug.Log($"{gameObject.name} SetOnActivated {activated}");
-		if(pAction != null)
-			onActivated.Add(pAction);
-		//OnMainControllerActivated.Add(pAction);
-
-		if(activated)
-		{
-			for(int i = onActivated.Count - 1; i >= 0; i--)
-			{
-				//NOTE: onActivated count can be changed within invoked action
-				if(i >= onActivated.Count)
-					continue;
-
-				Action action = onActivated[i];
-				onActivated.RemoveAt(i);
-				action.Invoke();
-			}
-			onActivated.Clear();
-		}
-	}
 }

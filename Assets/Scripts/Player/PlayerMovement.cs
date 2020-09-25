@@ -33,6 +33,11 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 			return;
 		}
 
+		if(game.GameEnd.GameEnded)
+		{
+			return;
+		}
+
 
 		//sync position
 		if(lastTimeSync + SYNC_POS_INTERVAL / 2 < Time.time)

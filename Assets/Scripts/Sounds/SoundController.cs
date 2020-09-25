@@ -72,6 +72,11 @@ public enum ESound
 	Music_Menu = 10,
 	Music_Game = 11,
 
+	Loading_Beep_1 = 20,
+	Loading_Beep_2 = 21,
+	Loading_Beep_3 = 22,
+	Loading_Beep_4 = 23,
+
 	Ui_Button_Click = 50,
 	Ui_Button_Hover = 51,
 	Ui_Button_Wrong = 52,
