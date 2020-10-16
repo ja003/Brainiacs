@@ -59,6 +59,8 @@ public class PlayerStats : PlayerBehaviour
 		GameInitInfo gameInitInfo = brainiacs.GameInitInfo;
 		lives = gameInitInfo.Mode == EGameMode.Deathmatch ?
 			gameInitInfo.GameModeValue : 666;
+
+		//SetStat(EPlayerStats.Health, MAX_HEALTH);
 		//Hero = pPlayerInfo.Hero;
 		//Name = pPlayerInfo.Name;
 		//Color = pPlayerInfo.Color;
@@ -81,6 +83,13 @@ public class PlayerStats : PlayerBehaviour
 			return;
 		}
 
+		//if is Tesla clone => add kill to owner of the clone
+		if(player.ai.IsTmp)
+		{
+			player.ai.Owner.Stats.AddKill(pForce);
+			return;
+		}
+
 		//stats set only at local player
 		if(player.IsItMe)
 		{
@@ -93,11 +102,9 @@ public class PlayerStats : PlayerBehaviour
 		}
 	}
 
-
-
-
 	public void OnRespawn()
 	{
+		//Debug.Log($"OnRespawn - {player}");
 		SetStat(EPlayerStats.Health, MAX_HEALTH);
 	}
 
@@ -137,6 +144,8 @@ public class PlayerStats : PlayerBehaviour
 
 	public void SetStat(EPlayerStats pType, int pValue, bool pForce = false)
 	{
+		//Debug.Log($"Set stat {pType} = {pValue}");
+
 		if(game.GameEnd.GameEnded && !pForce)
 		{
 			Debug.Log("GAME ENDED");
@@ -181,6 +190,7 @@ public class PlayerStats : PlayerBehaviour
 	internal void OnReturnToPool()
 	{
 		StatsEffect.OnReturnToPool();
+		SetStat(EPlayerStats.Health, 0);//, true); //set as dead
 	}
 }
 

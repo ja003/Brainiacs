@@ -19,14 +19,11 @@ public class Map : GameBehaviour, IPositionValidator
 	[SerializeField] public Transform TopLeftCorner;
 	[SerializeField] public Transform BotRightCorner;
 
-	public IPathFinder PathFinder { get; private set; }
 
 	[SerializeField] bool debug_DrawGrid;
 
 	protected override void Awake()
 	{
-		PathFinder = new PathFinderController(
-			AiMovement.PATH_STEP, TopLeftCorner.position, BotRightCorner.position);
 	}
 
 	private void Update()
@@ -63,6 +60,7 @@ public class Map : GameBehaviour, IPositionValidator
 		gameObject.SetActive(pValue);
 		assignedSpawnPoints = new List<int>();
 	}
+
 
 	public Transform GetSpawnPoint()
 	{
@@ -156,6 +154,14 @@ public class Map : GameBehaviour, IPositionValidator
 			&& pPoint.x <= BotRightCorner.position.x
 			&& pPoint.y >= BotRightCorner.position.y
 			&& pPoint.y <= TopLeftCorner.position.y;
+	}
+
+	public Vector2 GetPositionWithinMap(Vector2 pPosition)
+	{
+		Vector2 clamped = new Vector2(
+			Mathf.Clamp(pPosition.x, TopLeftCorner.position.x, BotRightCorner.position.x),
+			Mathf.Clamp(pPosition.y, BotRightCorner.position.y, TopLeftCorner.position.y));
+		return clamped;
 	}
 
 	Vector2 debug_RandomPosition = Vector2.zero * 3;

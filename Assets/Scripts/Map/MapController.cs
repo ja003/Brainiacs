@@ -13,6 +13,8 @@ public class MapController : GameController
 	//all obstackles on map defined by their name-hash
 	Dictionary<int, MapObstackle> obstackles = new Dictionary<int, MapObstackle>();
 
+	[SerializeField] public PathFinderController PathFinder;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -58,9 +60,10 @@ public class MapController : GameController
 		}
 
 		ActiveMap.transform.parent = transform;
+
 	}
 
-	
+
 
 	public new void SetActive(bool pValue)
 	{
@@ -76,6 +79,8 @@ public class MapController : GameController
 	{
 		SetMap(brainiacs.GameInitInfo.Map);
 		SetActive(false);
+		//init pathfinder after SetMap
+		PathFinder.Init(AiMovement.PATH_STEP, ActiveMap.TopLeftCorner.position, ActiveMap.BotRightCorner.position);
 	}
 
 	protected override void OnMainControllerActivated()

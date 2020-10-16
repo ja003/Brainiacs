@@ -6,6 +6,8 @@ using System.Text;
 using System.Numerics;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 //https://raw.githubusercontent.com/davecusatis/A-Star-Sharp/master/Astar.cs
 namespace AStarSharp
@@ -57,6 +59,9 @@ namespace AStarSharp
 	public class Astar
 	{
 		List<List<Node>> Grid;
+		private bool stopCalculation;
+		public bool IsSearching;
+
 		int GridRows
 		{
 			get
@@ -71,18 +76,26 @@ namespace AStarSharp
 				return Grid.Count;
 			}
 		}
+		public Stack<Node> Path = new Stack<Node>();
 
 		public Astar(List<List<Node>> grid)
 		{
 			Grid = grid;
 		}
 
-		public async Task<Stack<Node>> FindPathAsync(Vector2 Start, Vector2 End)
+		public IEnumerator FindPathAsync(Vector2 Start, Vector2 End)
 		{
+			stopCalculation = false;
+			IsSearching = true;
+
 			Node start = GetNode(Start);
 			Node end = GetNode(End);
 
-			Stack<Node> Path = new Stack<Node>();
+			//UnityEngine.Debug.Log("start = " + start);
+			//UnityEngine.Debug.Log("end = " + end);
+
+
+			Path = new Stack<Node>();
 			List<Node> OpenList = new List<Node>();
 			List<Node> ClosedList = new List<Node>();
 			List<Node> adjacencies;
@@ -97,6 +110,10 @@ namespace AStarSharp
 
 			while(OpenList.Count != 0 && !ClosedList.Exists(x => x.Position == end.Position))
 			{
+				if(stopCalculation)
+					break;
+					//return Path;
+
 				current = OpenList[0];
 				OpenList.Remove(current);
 				ClosedList.Add(current);
@@ -105,8 +122,16 @@ namespace AStarSharp
 				iterCounter++;
 				if(iterCounter % max_iter_per_frame == 0)
 				{
-					//UnityEngine.Debug.Log($"Delay on iteration: {iterCounter} ");
-					await Task.Delay(1);
+					//UnityEngine.Debug.Log($"Delay on iteration: {iterCounter} ({OpenList.Count}/{ClosedList.Count})");
+					yield return new WaitForEndOfFrame();
+				}
+
+				//this probably means that path is not correct, there shouldnt be that many nodes
+				// => return those found so far
+				if(ClosedList.Count > 300)
+				{
+					//UnityEngine.Debug.LogError("Too many nodes!");
+					break;
 				}
 
 				foreach(Node n in adjacencies)
@@ -115,6 +140,10 @@ namespace AStarSharp
 					{
 						if(!OpenList.Contains(n))
 						{
+							if(stopCalculation)
+								break;
+								//return Path;
+
 							n.Parent = current;
 							n.DistanceToTarget = Math.Abs(n.Position.X - end.Position.X) + Math.Abs(n.Position.Y - end.Position.Y);
 							n.Cost = n.Weight + n.Parent.Cost;
@@ -127,20 +156,41 @@ namespace AStarSharp
 			//UnityEngine.Debug.Log($"FindPath took {iterCounter} iterations");
 
 			// construct path, if end was not closed return null
-			if(!ClosedList.Exists(x => x.Position == end.Position))
-			{
-				return null;
-			}
+			//if(!ClosedList.Exists(x => x.Position == end.Position))
+			//{
+			//	return null;
+			//}
 
 			// if all good, return path
 			Node temp = ClosedList[ClosedList.IndexOf(current)];
-			if(temp == null) return null;
+			if(temp == null) yield return null;
 			do
 			{
-				Path.Push(temp);
+				if(Path.Count > 200)
+				{
+					UnityEngine.Debug.LogError("Path too long");
+					break;
+				}
+
+				try
+				{
+					Path.Push(temp);
+					//UnityEngine.Debug.Log("add: " + temp);
+				}
+				catch(OutOfMemoryException e)
+				{
+					UnityEngine.Debug.LogError("OutOfMemoryException!");
+				}
 				temp = temp.Parent;
 			} while(temp != start && temp != null);
-			return Path;
+			IsSearching = false;
+			//return Path;
+		}
+
+		internal void StopCalculation()
+		{
+			//UnityEngine.Debug.Log("StopCalculation");
+			stopCalculation = true;
 		}
 
 		private static Node GetNode(Vector2 pPoint)
@@ -148,14 +198,23 @@ namespace AStarSharp
 			return new Node(new Vector2((int)(pPoint.X / Node.NODE_SIZE), (int)(pPoint.Y / Node.NODE_SIZE)), true);
 		}
 
+		//This is not correct!
+		//private Node GetNode(Vector2 pPoint) 
+		//{
+		//	int row = (int)pPoint.X;
+		//	int col = (int)pPoint.Y;
+		//	return Grid[col][row];
+		//}
+
 		public bool IsWalkable(Vector2 pPoint)
 		{
-			int row = (int)(pPoint.X / Node.NODE_SIZE);
-			int col = (int)(pPoint.Y / Node.NODE_SIZE);
+			Node node = GetNode(pPoint);
+			int row = (int)node.Position.Y;
+			int col = (int)node.Position.X;
 			if(!IsWithinGrid(row, col))
 				return false;
 
-			return Grid[row][col].Walkable;
+			return Grid[col][row].Walkable;
 		}
 
 		/// <summary>
@@ -166,13 +225,15 @@ namespace AStarSharp
 			if(IsWalkable(pPoint))
 				return pPoint;
 
-			var neighbours = GetAdjacentNodes(GetNode(pPoint));
-
-			//and other neighbours 
-			//todo: make dependent on input parameter?
-			for(int i = neighbours.Count - 1; i >= 0; i--)
+			List<Node> neighbours = new List<Node>();
+			const int max_steps = 3; //todo: make dependent on input parameter?
+			for(int dist = 1; dist < max_steps; dist++)
 			{
-				neighbours.AddRange(GetAdjacentNodes(neighbours[i]));
+				neighbours = GetNodesInDistance(GetNode(pPoint), dist, true);
+				if(IsAnyWalkable(neighbours))
+					break;
+				else
+					neighbours.Clear();
 			}
 
 			//sort ascending based on distance to pRefPoint
@@ -185,6 +246,34 @@ namespace AStarSharp
 					return n.Center;
 			}
 			return null;
+		}
+
+		private static bool IsAnyWalkable(List<Node> pNodes)
+		{
+			return pNodes.Any(x => x.Walkable);
+		}
+
+		private List<Node> GetNodesInDistance(Node pOrigin, int pSteps, bool pOnlyWalkable)
+		{
+			List<Node> nodes = new List<Node>();
+			for(int x = -pSteps; x <= pSteps; x++)
+			{
+				for(int y = -pSteps; y <= pSteps; y++)
+				{
+					int row = (int)pOrigin.Position.Y + y;
+					int col = (int)pOrigin.Position.X + x;
+					if(!IsWithinGrid(row, col))
+						continue;
+
+					Node node = Grid[col][row];
+					if(pOnlyWalkable && !node.Walkable)
+						continue;
+
+					nodes.Add(node);
+				}
+			}
+
+			return nodes;
 		}
 
 		private List<Node> GetAdjacentNodes(Node n)

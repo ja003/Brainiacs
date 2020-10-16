@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AStarSharp;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class AiMovement : AiController
@@ -11,9 +13,19 @@ public class AiMovement : AiController
 		//seems to assign player.transform.position instead of playerPosition?
 		//seems better without it
 		//moveTarget = playerPosition;
+
+		Debug.Log($"{player} move init");
+		if(AstarAdapter.isInited)
+		{
+			astar = new Astar(AstarAdapter.grid);
+		}
+		else
+		{
+			AstarAdapter.OnInited += () => astar = new Astar(AstarAdapter.grid);
+		}
 	}
 
-	const float DIST_CHECK_TOLERANCE = 0.1f;
+	public const float DIST_CHECK_TOLERANCE = 0.1f;
 
 	float MIN_RECALCULATE_PATH_FREQUENCY = 0.1f;
 	float lastRecalculatePathTime;
@@ -29,7 +41,7 @@ public class AiMovement : AiController
 	public void Update()
 	{
 		Utils.DebugDrawCross(moveTarget, Color.yellow);
-		if(player.debug_DrawPath)
+		if(player.debug_DrawPath && path != null)
 			Utils.DebugDrawPath(path.GetNodePositions(), Color.yellow);
 
 		//Utils.DebugDrawCross(playerPosition, Color.red);
@@ -58,7 +70,8 @@ public class AiMovement : AiController
 		//try recalculate path
 		if(lastRecalculatePathTime + MIN_RECALCULATE_PATH_FREQUENCY < Time.time)
 		{
-			RecalculatePath();
+			if(astar != null && player.isActiveAndEnabled)
+				brain.StartCoroutine(RecalculatePath());
 			//if(currentPathNode != null)
 			//{
 			//	EDirection directionToTarget = GetDirectionTo(currentPathNode.point);
@@ -88,7 +101,7 @@ public class AiMovement : AiController
 			currentPathNode.visited = true;
 			if(path.IsNodeAtStraightPathToTarget(currentPathNode))
 			{
-				brain.shoot.OnReachedStraightPathToTargetNode();
+				brain.Shoot.OnReachedStraightPathToTargetNode();
 			}
 
 			//check if is close to final target
@@ -111,7 +124,7 @@ public class AiMovement : AiController
 						player.Movement.Stop();
 						currentPathNode = null;
 						path.Clear(); //otherwise he gets stucked
-						brain.shoot.OnReachedTarget();
+						brain.Shoot.OnReachedTarget();
 						return;
 					}
 
@@ -148,7 +161,8 @@ public class AiMovement : AiController
 			Debug.Log("SetTarget " + pTarget);
 
 		moveTarget = pTarget;
-		RecalculatePath();
+		if(astar != null && player.isActiveAndEnabled)
+			brain.StartCoroutine(RecalculatePath());
 	}
 
 	/// <summary>
@@ -173,10 +187,18 @@ public class AiMovement : AiController
 	MovePath path = new MovePath();
 	PathNode currentPathNode;
 
-	private async void RecalculatePath()
-	{
-		lastRecalculatePathTime = Time.time;
+	int pathCalcId;
+	Astar astar;
 
+	private IEnumerator RecalculatePath()
+	{
+		if(astar == null)
+			goto end;
+
+		pathCalcId++;
+		//pathFinder.StopCalculation();
+
+		lastRecalculatePathTime = Time.time;
 
 		bool forceRecalcPath = false;
 		float newTargetDiff = Vector2.Distance(lastPathTarget, moveTarget);
@@ -191,19 +213,33 @@ public class AiMovement : AiController
 			isPlayerOffPath = playerDistFromLine > 2 * DIST_CHECK_TOLERANCE;
 		}
 
-		if(path.IsValid() && !forceRecalcPath && newTargetDiff < PATH_STEP / 2 && !isPlayerOffPath)
+		if(
+			//path.IsValid() && 
+			!forceRecalcPath && newTargetDiff < PATH_STEP / 2 && !isPlayerOffPath)
 		{
-			Utils.DebugDrawPath(path.GetNodePositions(), Color.blue);
-			return;
+			if(path != null)
+				Utils.DebugDrawPath(path.GetNodePositions(), Color.blue);
+			goto end;
 		}
 		else
 		{
+			//Debug.Log($"RecalculatePath - {pathCalcId} | {player.InitInfo.Number} | {Time.frameCount}");
+
 			if(isLogEnabled)
 			{
-				Debug.Log("RecalculatePath");
+				Debug.Log($"RecalculatePath - {newTargetDiff}");
 			}
 
-			path = await pathFinder.GetPathAsync(playerPosition, moveTarget);
+			astar.StopCalculation();
+			brain.StartCoroutine(pathFinder.GetPathAsync(playerPosition, moveTarget, astar));
+			while(pathFinder.IsSearching)
+				yield return new WaitForEndOfFrame();
+
+			path = pathFinder.Path;
+
+			if(path == null || !path.IsValid())
+				goto end;
+
 			OnPathRecalculated();
 			CheckPathProgress();
 			//moveTarget = path.First(); //NO!!
@@ -211,7 +247,7 @@ public class AiMovement : AiController
 			//player.Movement.Stop(); //lagging
 		}
 
-		UpdateMove();
+		end: UpdateMove();
 	}
 
 	/// <summary>

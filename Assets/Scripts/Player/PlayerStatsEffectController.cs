@@ -26,8 +26,7 @@ public class PlayerStatsEffectController : PlayerBehaviour
 		StatsEffect appliedEffect = appliedEffects.Find(a => a.Type == pType);
 		float duration = pDuration;
 
-		Debug.Log($"ApplyEffect {pType} for {duration}");
-
+		//Debug.Log($"ApplyEffect {pType} for {duration}");
 
 		if(appliedEffect != null)
 		{
@@ -38,7 +37,7 @@ public class PlayerStatsEffectController : PlayerBehaviour
 				Debug.LogError("Time left cant be < 0");
 			}
 			duration += appliedEffect.TimeLeft;
-			Debug.Log($"{pType}: add {appliedEffect.TimeLeft}s => {duration}s");
+			//Debug.Log($"{pType}: add {appliedEffect.TimeLeft}s => {duration}s");
 		}
 
 		StatsEffect newEffect = new StatsEffect(pType, duration);//, pValue);

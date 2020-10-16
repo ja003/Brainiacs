@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 752047351}
-  countdown: 3
+  countdown: 1
   background: {fileID: 1614195369}
 --- !u!82 &429695743
 AudioSource:

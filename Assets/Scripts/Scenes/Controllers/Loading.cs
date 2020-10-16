@@ -10,9 +10,10 @@ public class Loading : BrainiacsBehaviour
 	[SerializeField]
 	private Slider slider;
 
-	[SerializeField] int countdown;
+	private const int COUNTDOWN = 3;
+	[SerializeField] int countdown = COUNTDOWN;
 
-	[SerializeField] Image background;
+	[SerializeField] Image background = null;
 
 	MapConfig currentMapConfig;
 
@@ -28,6 +29,9 @@ public class Loading : BrainiacsBehaviour
 			Debug.LogError("Map not set");
 			map = EMap.Steampunk;
 		}
+
+		if(countdown != COUNTDOWN)
+			Debug.LogError("Countdown not set to default value [testing?]");
 
 		currentMapConfig = brainiacs.MapManager.GetMapConfig(map);
 

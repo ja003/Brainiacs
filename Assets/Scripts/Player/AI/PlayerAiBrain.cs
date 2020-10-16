@@ -13,23 +13,24 @@ public class PlayerAiBrain : PlayerBehaviour
 	//currently active goal
 	public AiGoalController CurrentGoal { get; private set; }
 
-	public AiMovement aiMovement;
-	public AiShoot shoot;
-	public AiEvade evade;
-	public AiMapItem item;
+	public AiMovement Movement;
+	public AiShoot Shoot;
+	public AiEvade Evade;
+	public AiMapItem Item;
 	public AiDebug debug;
 
 	//[SerializeField]
 	//[Range(0.1f, 1)]
 	float evaluation_frequency = .2f;
 
+	public Player Owner;
 
 	public void Init()
 	{
-		aiMovement = new AiMovement(this, player);
-		shoot = new AiShoot(this, player);
-		evade = new AiEvade(this, player);
-		item = new AiMapItem(this, player);
+		Movement = new AiMovement(this, player);
+		Shoot = new AiShoot(this, player);
+		Evade = new AiEvade(this, player);
+		Item = new AiMapItem(this, player);
 		debug = new AiDebug(this, player);
 
 		game.PlayerManager.OnAllPlayersAdded.AddAction(() => DoInTime(InvokeEvaluateGoals, 1));
@@ -41,19 +42,31 @@ public class PlayerAiBrain : PlayerBehaviour
 		if(!isInited)
 			return;
 
-		aiMovement.Update();
-		shoot.Update();
-		item.Update();
+		Movement.Update();
+		Shoot.Update();
+		Item.Update();
 		//debug.Update();
+	}
+
+	//no evaluation is done before this time
+	float timeBrainEnabled;
+
+	public void StopBrain(float pDuration)
+	{
+		timeBrainEnabled = Time.time + pDuration;
 	}
 
 	private void InvokeEvaluateGoals()
 	{
-		//Debug.Log("InvokeEvaluateGoals");
+		DoInTime(InvokeEvaluateGoals, evaluation_frequency);
 
+		//repeat the invoke but evaluate only if clone is alive
+		if(player.Stats.IsDead)
+			return;
+
+		//Debug.Log("InvokeEvaluateGoals");
 		EvaluateGoals();
 
-		DoInTime(InvokeEvaluateGoals, evaluation_frequency);
 	}
 
 	float lastEvaluateTime;
@@ -61,10 +74,14 @@ public class PlayerAiBrain : PlayerBehaviour
 
 	public void EvaluateGoals()
 	{
+		//Debug.Log($"{player} EvaluateGoals");
+
 		//EvaluateGoals can be called from other places.
 		//prevent too frequent calls
 		const float maxEvaluationFrequency = 0.1f;
-		if(Time.time < lastEvaluateTime + maxEvaluationFrequency)
+		bool isEvaluationTooFrequent = Time.time < lastEvaluateTime + maxEvaluationFrequency;
+		bool isBrainDisabled = Time.time < timeBrainEnabled;
+		if(isEvaluationTooFrequent || isBrainDisabled)
 		{
 			//Debug.Log("Ignore evaluation");
 			return;
@@ -75,22 +92,22 @@ public class PlayerAiBrain : PlayerBehaviour
 		List<Tuple<int, EAiGoal>> priorityOfGoals = new List<Tuple<int, EAiGoal>>();
 
 		//evaluate all controllers
-		shoot.Evaluate();
-		evade.Evaluate();
-		item.Evaluate();
+		Shoot.Evaluate();
+		Evade.Evaluate();
+		Item.Evaluate();
 		debug.Evaluate();
 
 		//get priority of controllers
 		priorityOfGoals.Add(new Tuple<int, EAiGoal>(1, EAiGoal.None));
-		priorityOfGoals.Add(new Tuple<int, EAiGoal>(shoot.GetPriority(), EAiGoal.Shoot));
-		priorityOfGoals.Add(new Tuple<int, EAiGoal>(evade.GetPriority(), EAiGoal.Evade));
-		priorityOfGoals.Add(new Tuple<int, EAiGoal>(item.GetPriority(), EAiGoal.PickupItem));
+		priorityOfGoals.Add(new Tuple<int, EAiGoal>(Shoot.GetPriority(), EAiGoal.Shoot));
+		priorityOfGoals.Add(new Tuple<int, EAiGoal>(Evade.GetPriority(), EAiGoal.Evade));
+		priorityOfGoals.Add(new Tuple<int, EAiGoal>(Item.GetPriority(), EAiGoal.PickupItem));
 		priorityOfGoals.Add(new Tuple<int, EAiGoal>(debug.GetPriority(), EAiGoal.Debug));
 
 		//pick the highest priority controller
 		priorityOfGoals.Sort((b, a) => a.Item1.CompareTo(b.Item1)); //sort descending
 
-		aiMovement.TargetedPlayer = null;
+		Movement.TargetedPlayer = null;
 		CurrentGoal = null;
 
 		//Debug.Log("EvaluateGoals: " + priorityOfGoals[0].Item2);
@@ -102,10 +119,10 @@ public class PlayerAiBrain : PlayerBehaviour
 				break;
 			case EAiGoal.Shoot:
 
-				CurrentGoal = shoot;
-				aiMovement.TargetedPlayer = shoot.targetedPlayer;
+				CurrentGoal = Shoot;
+				Movement.TargetedPlayer = Shoot.targetedPlayer;
 				//aiMovement.SetTarget(shoot.moveTarget);
-				aiMovement.SetTarget(shoot.GetTarget());
+				Movement.SetTarget(Shoot.GetTarget());
 
 				//var target = shoot.GetPlayerTarget();
 				////Vector2 target = shoot.GetTarget();
@@ -116,17 +133,17 @@ public class PlayerAiBrain : PlayerBehaviour
 				//}
 				break;
 			case EAiGoal.Evade:
-				CurrentGoal = evade;
-				aiMovement.SetTarget(evade.GetTarget());
+				CurrentGoal = Evade;
+				Movement.SetTarget(Evade.GetTarget());
 				break;
 			case EAiGoal.PickupItem:
-				CurrentGoal = item;
-				aiMovement.SetTarget(item.GetTarget());
+				CurrentGoal = Item;
+				Movement.SetTarget(Item.GetTarget());
 				break;
 
 			case EAiGoal.Debug:
 				CurrentGoal = debug;
-				aiMovement.SetTarget(debug.GetTarget());
+				Movement.SetTarget(debug.GetTarget());
 				break;
 		}
 	}
@@ -136,7 +153,7 @@ public class PlayerAiBrain : PlayerBehaviour
 		if(!isInited)
 			return;
 
-		shoot.OnDirectionChange(pDirection);
+		Shoot.OnDirectionChange(pDirection);
 	}
 
 	//private void Update()

@@ -10,7 +10,7 @@ public abstract class AiController
     protected Game game => Game.Instance;
     protected Brainiacs brainiacs => Brainiacs.Instance;
 
-    protected IPathFinder pathFinder => game.Map.ActiveMap.PathFinder;
+    protected PathFinderController pathFinder => game.Map.PathFinder;
 
     //protected Vector2 playerPosition => player.transform.position; //NO!
     protected Vector2 playerPosition => player.Position;

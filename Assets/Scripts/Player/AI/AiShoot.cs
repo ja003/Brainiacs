@@ -202,7 +202,7 @@ public class AiShoot : AiGoalController
 	{
 		if(!moveTargetReached)
 		{
-			moveTargetReached = brain.aiMovement.IsCloseTo(moveTarget);
+			moveTargetReached = brain.Movement.IsCloseTo(moveTarget);
 		}
 
 		return moveTargetReached ? idealMoveTarget : moveTarget;

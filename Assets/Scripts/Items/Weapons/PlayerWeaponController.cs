@@ -253,7 +253,7 @@ public class PlayerWeaponController : PlayerBehaviour
 			ActiveWeapon.IsActive = false;
 		ActiveWeapon = weapons[pIndex];
 		ActiveWeapon.IsActive = true;
-		//Debug.Log("SetActiveWeapon " + ActiveWeapon);
+		//Debug.Log(player + "SetActiveWeapon " + ActiveWeapon);
 
 		visual.SetActiveWeapon(ActiveWeapon);
 

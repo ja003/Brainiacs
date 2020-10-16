@@ -102,7 +102,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		if(IsDying)
 		{
-			Debug.Log("No kill for shooting dying player");
+			//Debug.Log("No kill for shooting dying player");
 			return true;
 		}
 

@@ -33,7 +33,7 @@ public class Player : PoolObjectNetwork
 	//should be called only on update checks, not during an initializing method.
 	public bool IsInitedAndMe => IsInited && IsItMe;
 
-	
+
 
 	//DEBUG
 	[NonSerialized] public Player LocalImage;
@@ -43,7 +43,7 @@ public class Player : PoolObjectNetwork
 
 
 	public Vector2 Position => Collider.bounds.center;
-    public Vector3 Position3D => Collider.bounds.center;
+	public Vector3 Position3D => Collider.bounds.center;
 
 	public BoxCollider2D Collider => boxCollider2D;
 	//this is just "estimated size", not actual collider size (which is rectangle)
@@ -89,7 +89,10 @@ public class Player : PoolObjectNetwork
 		//	rigidBody2D.bodyType = RigidbodyType2D.Static;
 		//	rigidBody2D.simulated = false;
 		//}
-		gameObject.name = "Player_" + pPlayerInfo.Name + (IsLocalImage ? "_LI" : "");
+		string suffix_LI = IsLocalImage ? "_LI" : "";
+		string suffix_type = "_" + pPlayerInfo.PlayerType;
+		string suffix_clone = ai.IsTmp ? "_clone" : "";
+		gameObject.name = "Player_" + pPlayerInfo.Name + suffix_type + suffix_LI + suffix_clone;
 
 
 		InitInfo = pPlayerInfo;
@@ -189,7 +192,8 @@ public class Player : PoolObjectNetwork
 			if(InitInfo == null || p.InitInfo == null)
 				return false;
 			return InitInfo.Number == p.InitInfo.Number &&
-				InitInfo.PlayerType == p.InitInfo.PlayerType; //for tesla clone
+				InitInfo.PlayerType == p.InitInfo.PlayerType &&
+				ai.IsTmp == p.ai.IsTmp; //for tesla clone
 		}
 	}
 

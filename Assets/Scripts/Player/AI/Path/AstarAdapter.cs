@@ -1,4 +1,5 @@
 ﻿using AStarSharp;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,20 @@ using SVector2 = System.Numerics.Vector2;
 
 public static class AstarAdapter
 {
-	static Astar astar;
+	//static Astar astar;
 	static float stepScale => Node.NODE_SIZE / stepSize;
-	static float stepSize;
+	public static float stepSize;
 
 	//all coordinates have to be positive in Astar
 	static Vector2 positionShift;
 
 	static Vector2 playerSize;
 
-	static List<List<Node>> grid;
+	public static List<List<Node>> grid;
 
-	private static bool isInited;
+	public static bool isInited;
+
+	public static Action OnInited;
 
 	public static IEnumerator Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
 	{
@@ -35,6 +38,7 @@ public static class AstarAdapter
 		Vector2 topRight = new Vector2(pBotRight.x, pTopLeft.y);
 		positionShift = -botLeft;
 
+		yield return new WaitForEndOfFrame(); //without this some MapObjects are ignored
 		const int max_steps_per_frame = 100;
 		int steps = 0;
 		for(float x = botLeft.x; x < topRight.x; x += pStepSize)
@@ -46,7 +50,9 @@ public static class AstarAdapter
 				Vector2 nodePos = new Vector2(x, y);
 				bool isWalkable = !PathFinderController.OverlapsWithMapObject(nodePos);
 
-				//Utils.DebugDrawCross(nodePos, isWalkable ? Color.green : Color.red, 1000);
+				const bool debug_draw_grid = true;
+				if(debug_draw_grid)
+					Utils.DebugDrawCross(nodePos, isWalkable ? Color.green : Color.red, 1000);
 
 				SVector2 nodePosScaled = GetScaledVector(nodePos);
 
@@ -63,9 +69,11 @@ public static class AstarAdapter
 			}
 		}
 
-		astar = new Astar(grid);
+		//astar = new Astar(grid);
 		Debug_DrawGrid();
 		isInited = true;
+		OnInited?.Invoke();
+		//Debug.Log($"Astar init");
 	}
 
 	public static void Debug_DrawGrid()
@@ -81,17 +89,22 @@ public static class AstarAdapter
 		}
 	}
 
-	private static SVector2 GetScaledVector(Vector2 pVector)
+	public static SVector2 GetScaledVector(Vector2 pVector)
 	{
 		pVector += positionShift;
 		return new SVector2(pVector.x * stepScale, pVector.y * stepScale);
 	}
 
-	private static Vector2 GetScaledVector(SVector2 pVector)
+	public static Vector2 GetScaledVector(SVector2 pVector)
 	{
 		Vector2 scaledVector = new Vector2(pVector.X / stepScale, pVector.Y / stepScale);
 		return scaledVector - positionShift;
 	}
+
+	//internal static void StopCalculation()
+	//{
+	//	astar?.StopCalculation();
+	//}
 
 
 	//public static async Task<MovePath> GetPathAsync(Vector2 pFrom, Vector2 pTo)
@@ -105,10 +118,14 @@ public static class AstarAdapter
 	//	return GetPath(pFrom, pTo);
 	//}
 
-	public static async Task<MovePath> GetPath(Vector2 pFrom, Vector2 pTo)
+	/*public MovePath Path;
+
+	public IEnumerator GetPath(Vector2 pFrom, Vector2 pTo, Astar astar)
 	{
-		while(!isInited)
-			await Task.Delay(100);
+		//while(!isInited)
+		//	await Task.Delay(100);
+		if(!isInited)
+			return new MovePath();
 
 		//handled better below
 		//if(PathFinderController.OverlapsWithMapObject(pTo))
@@ -137,7 +154,8 @@ public static class AstarAdapter
 		pathNodes.Add(pFrom);
 
 		//skip the first node - otherwise the path starts with sharp turn.
-		pathStack?.Pop();
+		if(pathStack != null && pathStack.Count > 0)
+			pathStack.Pop();
 
 		bool isPathValid = pathStack != null && pathStack.Count > 0;
 
@@ -161,5 +179,5 @@ public static class AstarAdapter
 
 		MovePath path = new MovePath(pathNodes, stepSize);
 		return path;
-	}
+	}*/
 }
