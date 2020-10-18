@@ -226,4 +226,9 @@ public static class Utils
 		float dist = Vector2.Distance(pPoint, nearestPoint);
 		return dist;
 	}
+
+	public static int PositiveModulo(int x, int m)
+	{
+		return (x % m + m) % m;
+	}
 }

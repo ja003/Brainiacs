@@ -19,7 +19,7 @@ public static class DebugData
 	public static bool TestMobileJoystick = false;
 
 	//Player
-	public static EHero TestHero = release ? EHero.None : EHero.Tesla;
+	public static EHero TestHero = release ? EHero.None : EHero.DaVinci;
 	public static bool TestExtraPlayerItem = false && !release;
 
 	public static bool TestShield = false && !release;
@@ -29,7 +29,7 @@ public static class DebugData
 	public static EPlayerEffect TestPlayerEffect = release ? EPlayerEffect.None : EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 2;
+	private static int playerCount = 3;
 	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 5;
 	public static bool TestGenerateItems = false && !release;
@@ -41,7 +41,6 @@ public static class DebugData
 
 	//SOUND
 	public static bool MuteMusic = false && !release;
-
 
 	// AI
 	public static EWeaponId TestAiWeapon = release ? EWeaponId.None : EWeaponId.None;
@@ -72,7 +71,8 @@ public static class DebugData
 			case 1:
 				player = new PlayerInitInfo(pPlayerNumber,
 					TestHero, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Green, EPlayerType.LocalPlayer);
+					EPlayerColor.Green, EPlayerType.LocalPlayer,
+					EKeyset.KeysetA);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
@@ -83,7 +83,7 @@ public static class DebugData
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
 					EHero.Currie, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Yellow, EPlayerType.AI);
+					EPlayerColor.Yellow, EPlayerType.LocalPlayer);
 				break;
 
 			default:

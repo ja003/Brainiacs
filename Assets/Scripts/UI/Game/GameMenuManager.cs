@@ -8,6 +8,14 @@ public class GameMenuManager : GameController
     [SerializeField] Button btnPause;
     [SerializeField] PauseMenu pause;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause.SetActive(!pause.isActiveAndEnabled);
+        }
+    }
+
     protected override void OnMainControllerAwaken()
     {
         pause.SetActive(false);

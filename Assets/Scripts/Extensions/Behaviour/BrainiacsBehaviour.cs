@@ -167,14 +167,14 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
-	protected int DoInTime(Action pEvent, float pTime, Action<float> pOnUpdate = null)
+	protected int DoInTime(Action pEvent, float pTime, bool pUseUnscaledTime = false, Action<float> pOnUpdate = null)
 	{
 		if(pOnUpdate == null)
-			return LeanTween.value(gameObject, 0, 1, pTime).setOnComplete(pEvent).id;
+			return LeanTween.value(gameObject, 0, 1, pTime).setIgnoreTimeScale(pUseUnscaledTime).setOnComplete(pEvent).id;
 		else
 		{
 			return LeanTween.value(gameObject, 0, 1, pTime)
-				  .setOnComplete(pEvent).setOnUpdate(pOnUpdate).id;
+				  .setOnComplete(pEvent).setIgnoreTimeScale(pUseUnscaledTime).setOnUpdate(pOnUpdate).id;
 		}
 	}
 

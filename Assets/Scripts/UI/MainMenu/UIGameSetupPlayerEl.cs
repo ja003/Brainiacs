@@ -16,6 +16,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	[SerializeField] Text playerNameText = null;
 	//[SerializeField] UiTextSwapper playerTypeSwapper;
 	[SerializeField] UiTextSwapper heroSwapper = null;
+	[SerializeField] UiTextSwapper keySetSwapper = null;
 	[SerializeField] Text playerTypeText = null;
 	[SerializeField] Button btnRemove = null;
 
@@ -41,6 +42,9 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//playerTypeSwapper.Init(playerTypes, OnPlayerTypeChanged, 0);
 		List<string> heroes = Utils.GetStrings(typeof(EHero));
 		heroSwapper.Init(heroes, OnHeroChanged, 0);
+
+		List<string> keySets = Utils.GetStrings(typeof(EKeyset));
+		keySetSwapper.Init(keySets, OnKeySetChanged, 0);
 	}
 
 	private void OnBtnRemove()
@@ -107,6 +111,9 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
 
+		//if LocalPlayer (master) then at first is active for all clients, but disabled if it is not me
+		keySetSwapper.gameObject.SetActive(IsItMe);
+
 		if(Info.Color != pPlayer.Color)
 		{
 			Debug.LogError("Assigned color doesnt match");
@@ -162,6 +169,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 				Info.PhotonPlayer = PhotonNetwork.LocalPlayer;
 			}
 		}
+		
+		keySetSwapper.gameObject.SetActive(pPlayerType == EPlayerType.LocalPlayer);
 
 		playerTypeText.text = pPlayerType.ToString();
 
@@ -250,6 +259,12 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		Info.Hero = (EHero)heroSwapper.CurrentIndex;
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(Info.Hero).Portrait;
 		SyncInfo();
+	}
+
+	private void OnKeySetChanged()
+	{
+		Info.Keyset = (EKeyset)keySetSwapper.CurrentIndex;
+		//SyncInfo();
 	}
 
 	private void SyncInfo()

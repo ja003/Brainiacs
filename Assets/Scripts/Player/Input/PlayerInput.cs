@@ -48,7 +48,30 @@ public class PlayerInput : PlayerBehaviour
 		}
 		if(PlatformManager.GetPlatform() == EPlatform.PC)// && !DebugData.TestMobileInput)
 		{
-			keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Number);
+			if(pPlayerInfo.Keyset == EKeyset.None)
+			{
+				Debug.LogError($"{player} has no keyset");
+				switch(pPlayerInfo.Number)
+				{
+					case 1:
+						pPlayerInfo.Keyset = EKeyset.KeysetA;
+						break;
+					case 2:
+						pPlayerInfo.Keyset = EKeyset.KeysetB;
+						break;
+					case 3:
+						pPlayerInfo.Keyset = EKeyset.KeysetC;
+						break;
+					case 4:
+						pPlayerInfo.Keyset = EKeyset.KeysetD;
+						break;
+					default:
+						pPlayerInfo.Keyset = EKeyset.KeysetA;
+						break;
+				}
+			}
+
+			keys = brainiacs.PlayerKeysManager.GetPlayerKeys(pPlayerInfo.Keyset);
 		}
 
 		if(PlatformManager.IsMobile())

@@ -10,8 +10,8 @@ using UnityEngine;
 /// </summary>
 public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 {
-	[SerializeField] int damage = 30;
-	[SerializeField] int maxHealth = 3;
+	[SerializeField] int damage;
+	[SerializeField] int maxHealth;
 
 	int currentHealth;
 		
@@ -52,6 +52,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	protected override void OnUse()
 	{
+		//Debug.Log("OnUse");
 		UpdateSortOrder();
 		//prevent weapon change
 		owner.WeaponController.CanSwapWeapon = false;
@@ -64,6 +65,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	protected override void OnStopUse()
 	{
+		//Debug.Log("OnStopUse");
 		//allow weapon change
 		owner.WeaponController.CanSwapWeapon = true;
 		SetActive(false);
@@ -74,14 +76,26 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		currentHealth = maxHealth;
 	}
 
+	Dictionary<ICollisionHandler, float> collisionTimes = new Dictionary<ICollisionHandler, float>();
+	const float MIN_COLLISION_DELAY = 0.5f;
+
 	//private void OnTriggerEnter2D(Collider2D collision)
-	private void OnCollisionEnter2D(Collision2D collision)
+	//private void OnCollisionEnter2D(Collision2D collision)
+	private void OnCollisionStay2D(Collision2D collision)
 	{
 		//Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
 
 		ICollisionHandler handler = collision.gameObject.GetComponent<ICollisionHandler>();
 		if(handler == null)
 			return;
+
+		float lastCollisionTime;
+		if(collisionTimes.TryGetValue(handler, out lastCollisionTime) && 
+			lastCollisionTime > Time.time - MIN_COLLISION_DELAY)
+		{
+			Debug.Log("Collision too soon");
+			return;
+		}
 
 		if(collision.gameObject == owner.gameObject)
 		{
@@ -92,6 +106,12 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 		//Debug.Log("Hit " + collision.gameObject.name);
 		handler.OnCollision(damage, owner, gameObject);
+
+		if(collisionTimes.ContainsKey(handler))
+			collisionTimes[handler] =  Time.time;
+		else
+			collisionTimes.Add(handler, Time.time);
+
 	}
 
 	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)

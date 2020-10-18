@@ -98,12 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f370458ae236632449ffdbeb88b52f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 
-  isPooled: 0
-  Photon: {fileID: 5436923547793472413}
-  IsPhotonInstantiated: 0
   InstanceOnEveryUse: 0
-  damage: 30
+  damage: 15
   maxHealth: 3
 --- !u!61 &5113511810212698395
 BoxCollider2D:
@@ -166,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
+  debug_notMpMsgDelay: 0.1

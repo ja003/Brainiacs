@@ -97,7 +97,7 @@ public class GameEndController : GameController
 		DoInTime(() =>
 		{
 			game.uiCurtain.SetFade(true, LoadResultScene, fadeTime);
-		}, fadeDelay);
+		}, fadeDelay, true);
 
 		game.InfoMessenger.Show("Game ended"); //has to be called before GameEnded flag is set
 		GameEnded = true; //prevents player input and stats change

@@ -16,18 +16,21 @@ public class MainMenu : CSingleton<MainMenu>
 	[SerializeField] private Button btnSettings = null;
 	[SerializeField] private Button btnQuit = null;
 
-	[SerializeField] int debug_InitBgAnim = -1;
+	[SerializeField] int debug_InitBgAnim = MENU_ANIM_POSITION_MAIN;
 
 	[SerializeField] public UIGameSetup GameSetup;
 	[SerializeField] public MainMenuPhoton Photon;
+	[SerializeField] public UIInputKeySelector InputKeySelector;
 
 	protected override void Awake()
 	{
+		if(debug_InitBgAnim != MENU_ANIM_POSITION_MAIN)
+			Debug.LogError("Default menu position changed [test?]");
 		SetMenuAnimPosition(debug_InitBgAnim);
 
 		btnStartGame.onClick.AddListener(OnBtnStartGame);
 		btnSettings.onClick.AddListener(OnBtnSettings);
-		//btnBack.onClick.AddListener(OnBtnBack);
+		btnQuit.onClick.AddListener(OnBtnQuit);
 
 		if(Brainiacs.SelfInitGame)
 		{
@@ -37,6 +40,7 @@ public class MainMenu : CSingleton<MainMenu>
 
 		base.Awake(); //always call base.event() at the end
 	}
+
 
 	float currentMenuAnimPosition = 0;
 	private void OnBtnStartGame()
@@ -54,6 +58,11 @@ public class MainMenu : CSingleton<MainMenu>
 		StartMenuAnim(MENU_ANIM_POSITION_MAIN);
 	}
 
+	private void OnBtnQuit()
+	{
+		Application.Quit();
+	}
+
 	int menuAnimId;
 
 	private void StartMenuAnim(int pTargetMenuAnimPosition)
@@ -64,6 +73,7 @@ public class MainMenu : CSingleton<MainMenu>
 
 	private void SetMenuAnimPosition(float pValue)
 	{
+		//Debug.Log("SetMenuAnimPosition: " + pValue);
 		currentMenuAnimPosition = pValue;
 		animator.SetFloat("position", pValue);
 	}

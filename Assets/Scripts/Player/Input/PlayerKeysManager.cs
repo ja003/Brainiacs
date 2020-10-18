@@ -1,68 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerKeysManager : MonoBehaviour
+public class PlayerKeysManager : BrainiacsBehaviour
 {
-	List<PlayerKeys> keys;
+	Dictionary<EKeyset, PlayerKeys> keys = new Dictionary<EKeyset, PlayerKeys>();
 
-	Dictionary<int, PlayerKeys> assignedKeys;
-
-	private void Awake()
+	internal void UpdateKeySet(EKeyset pSet, PlayerKeys pPlayerKeys)
 	{
-		assignedKeys = new Dictionary<int, PlayerKeys>();
-		//TODO: load from DB
-		keys = new List<PlayerKeys>();
-		//1
-		keys.Add(new PlayerKeys(
-			KeyCode.W, KeyCode.D,
-			KeyCode.S, KeyCode.A,
-			KeyCode.LeftControl, KeyCode.LeftShift));
-		//2
-		keys.Add(new PlayerKeys(
-			KeyCode.UpArrow, KeyCode.RightArrow,
-			KeyCode.DownArrow, KeyCode.LeftArrow,
-			KeyCode.RightControl, KeyCode.RightShift));
-		//3
-		keys.Add(new PlayerKeys(
-			KeyCode.I, KeyCode.L,
-			KeyCode.K, KeyCode.J,
-			KeyCode.O, KeyCode.P));
+		if(!keys.ContainsKey(pSet))
+			keys.Add(pSet, pPlayerKeys);
+		else
+			keys[pSet] = pPlayerKeys;
 
-		//4
-		keys.Add(new PlayerKeys(
-			KeyCode.Keypad8, KeyCode.Keypad6,
-			KeyCode.Keypad5, KeyCode.Keypad4,
-			KeyCode.Keypad1, KeyCode.Keypad0));
+		brainiacs.PlayerPrefs.SetPlayerKeys(pSet, pPlayerKeys);
 	}
 
-	int lastAssignedKeyIndex;
-
-	public PlayerKeys GetPlayerKeys(int pPlayerNumber)
+	public PlayerKeys GetPlayerKeys(EKeyset pSet)
 	{
-		PlayerKeys playerKeys;
-		if(!assignedKeys.ContainsKey(pPlayerNumber))
+		if(!keys.ContainsKey(pSet))
 		{
-			assignedKeys.Add(pPlayerNumber, keys[lastAssignedKeyIndex]);
-			lastAssignedKeyIndex++;
+			Debug.LogError($"Set {pSet} not defined");
+			return new PlayerKeys(pSet);
 		}
-
-		bool res = assignedKeys.TryGetValue(pPlayerNumber, out playerKeys);
-		if(!res)
-		{
-			Debug.LogError($"Keys for player {pPlayerNumber} not configured");
-			return keys[0];
-		}
-
-		return playerKeys;
-
-		if(pPlayerNumber > keys.Count)
-		{
-			Debug.LogError($"Keys for player {pPlayerNumber} not configured");
-			return GetPlayerKeys(pPlayerNumber % keys.Count);
-		}
-
-		return keys[pPlayerNumber - 1];
+		return keys[pSet];
 	}
-
 }
+

@@ -9,9 +9,9 @@ public class PlayerInitInfo
 	public string Name;
 	public int Number;
 	public EHero Hero;
-	//public PlayerKeys PlayerKeys;
 	public EPlayerColor Color;
 	public EPlayerType PlayerType;
+	public EKeyset Keyset;
 	public bool IsReady;
 	public PhotonPlayer PhotonPlayer;
 	//NOTE: if new attribute added -> update Update() and 
@@ -23,7 +23,11 @@ public class PlayerInitInfo
 	public PlayerInitInfo() { }
 
 	//DEBUG INIT
-	public PlayerInitInfo(int pNumber, EHero pHero, string pName, EPlayerColor pColor, EPlayerType pPlayerType, PhotonPlayer pPhotonPlayer = null)
+	public PlayerInitInfo(
+		int pNumber, EHero pHero, string pName, 
+		EPlayerColor pColor, EPlayerType pPlayerType,
+		EKeyset pKeyset = EKeyset.None,
+		PhotonPlayer pPhotonPlayer = null)
 	{
 		Number = pNumber;
 		Hero = pHero;
@@ -31,11 +35,12 @@ public class PlayerInitInfo
 		Color = pColor;
 		PlayerType = pPlayerType;
 		PhotonPlayer = pPhotonPlayer;
+		Keyset = pKeyset;
 	}
 
 	public PlayerInitInfo Clone()
 	{
-		return new PlayerInitInfo(Number, Hero, Name, Color, PlayerType, PhotonPlayer);
+		return new PlayerInitInfo(Number, Hero, Name, Color, PlayerType, Keyset, PhotonPlayer);
 	}
 
 	internal Offset<PlayerInitInfoS> Create(ref FlatBufferBuilder fbb)

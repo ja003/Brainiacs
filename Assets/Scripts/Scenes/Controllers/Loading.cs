@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class Loading : BrainiacsBehaviour
 {
-	[SerializeField]
-	private Slider slider;
-
 	private const int COUNTDOWN = 3;
 	[SerializeField] int countdown = COUNTDOWN;
 

@@ -341,8 +341,6 @@ public class UIGameSetupMain : MainMenuController
 		btnReadyText.text = myPLayerEl.Info.IsReady ? "NOT - READY" : "READY";
 	}
 
-
-
 	private void OnBtnPlay()
 	{
 		if(GetLocalPlayer() == null)
