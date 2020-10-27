@@ -1,13 +1,35 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupSearch : MainMenuController
 {
+	[SerializeField] TMP_InputField txtInputRoomName;
+	[SerializeField] Button btnJoinRandomGame;
+	[SerializeField] Text txtStatus;
+
 	protected override void OnMainControllerAwaken()
 	{
+		btnJoinRandomGame.onClick.AddListener(OnJoinRandomGame);
+		txtInputRoomName.onValueChanged.AddListener(OnRoomNameSet);
+	}
+
+	private void OnRoomNameSet(string pRoomName)
+	{
+		Debug.Log($"OnGameIDSet {pRoomName}");
+		brainiacs.PhotonManager.JoinRoom(pRoomName);
+		txtStatus.text = "Joining room " + pRoomName;
+	}
+
+	private void OnJoinRandomGame()
+	{
+		brainiacs.PhotonManager.JoinRandomRoom();
+		txtStatus.text = "Joining random room";
 	}
 
 	protected override void OnSetActive(bool pValue)
@@ -15,8 +37,8 @@ public class UIGameSetupSearch : MainMenuController
 		//Debug.LogError("comment before build");
 		//return; //debug
 
-		if(pValue)
-			brainiacs.PhotonManager.JoinRandomRoom();
+		//if(pValue)
+		//	brainiacs.PhotonManager.JoinRandomRoom();
 	}
 
 	public void debug_CreateRoom()

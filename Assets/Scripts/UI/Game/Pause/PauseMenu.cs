@@ -16,12 +16,8 @@ public class PauseMenu : GameController
 	[SerializeField] Slider sliderVolumeMusic;
 	[SerializeField] Slider sliderVolumeSounds;
 
-	[Header("Mobile input")]
-	[SerializeField] GameObject inputType;
-	[SerializeField] Button btnInputJoystick;
-	[SerializeField] Button btnInputButtons;
-	[SerializeField] GameObject inputScale;
-	[SerializeField] Slider sliderMoveInputScale;
+
+	[SerializeField] Button btnResetSettings;
 
 	[Header("End game")]
 	[SerializeField] Button btnEndGame;
@@ -35,10 +31,8 @@ public class PauseMenu : GameController
 
 	internal void Init()
 	{
-		SetMobileInputJoystick(brainiacs.PlayerPrefs.MobileInputJoystick);
 		SetVolumeSounds(brainiacs.PlayerPrefs.VolumeSounds);
 		SetVolumeMusic(brainiacs.PlayerPrefs.VolumeMusic);
-		SetMoveInputScale(brainiacs.PlayerPrefs.MoveInputScale);
 
 		btnClose.onClick.AddListener(() => SetActive(false));
 
@@ -46,18 +40,7 @@ public class PauseMenu : GameController
 		sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
 		sliderVolumeSounds.onValueChanged.AddListener(SetVolumeSounds);
 
-		//mobile input
-		if(PlatformManager.IsMobile())
-		{
-			sliderMoveInputScale.onValueChanged.AddListener(SetMoveInputScale);
-			btnInputButtons.onClick.AddListener(() => SetMobileInputJoystick(false));
-			btnInputJoystick.onClick.AddListener(() => SetMobileInputJoystick(true));
-		}
-		else
-		{
-			inputType.SetActive(false);
-			inputScale.SetActive(false);
-		}
+		btnResetSettings.onClick.AddListener(ResetSettings);
 
 		//end game
 		holderEndGameConfirm.SetActive(false);
@@ -128,13 +111,6 @@ public class PauseMenu : GameController
 		holderEndGameConfirm.SetActive(true);
 	}
 
-	private void SetMoveInputScale(float pValue)
-	{
-		brainiacs.PlayerPrefs.MoveInputScale = pValue;
-		sliderMoveInputScale.value = pValue;
-		game.MobileInput.SetMoveInputScale(pValue);
-	}
-
 	private void SetVolumeMusic(float pValue)
 	{
 		//Debug.Log("SetVolumeMusic " + pValue);
@@ -154,24 +130,18 @@ public class PauseMenu : GameController
 		sliderVolumeSounds.value = pValue;
 	}
 
-	private void SetMobileInputJoystick(bool pValue)
-	{
-		//Debug.Log("SetMobileInputJoystick " + pValue);
-
-		brainiacs.PlayerPrefs.MobileInputJoystick = pValue;
-		btnInputButtons.image.color = pValue ? Color.gray : Color.white;
-		btnInputJoystick.image.color = !pValue ? Color.gray : Color.white;
-
-		if(PlatformManager.IsMobile())
-			game.MobileInput.SetActive(true, pValue);
-	}
-
 	protected override void OnSetActive(bool pValue)
 	{
-		game.GameTime.IsPaused = pValue && !isMultiplayer;
+		game.GameTime.SetPause(pValue && !isMultiplayer);
 		header.text = $"Game {(game.GameTime.IsPaused ? "" : "not ")}paused";
-		Time.timeScale = game.GameTime.IsPaused ? 0 : 1;
 
 		base.OnSetActive(pValue);
+	}
+
+	private void ResetSettings()
+	{
+		SetVolumeMusic(1);
+		SetVolumeSounds(1);
+		game.MobileInput.OnResetSettings();
 	}
 }

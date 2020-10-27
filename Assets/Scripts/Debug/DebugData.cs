@@ -15,11 +15,10 @@ public static class DebugData
 	public static bool TestPlayers = true && !release;
 	public static bool LocalImage = false && !release;
 	public static bool TestResult = false && !release;
-	public static bool TestPlatformMobile = false && !release;
-	public static bool TestMobileJoystick = false;
+	public static bool TestPlatformMobile = true && !release;
 
 	//Player
-	public static EHero TestHero = release ? EHero.None : EHero.DaVinci;
+	public static EHero TestHero = release ? EHero.None : EHero.Einstein;
 	public static bool TestExtraPlayerItem = false && !release;
 
 	public static bool TestShield = false && !release;
@@ -30,7 +29,7 @@ public static class DebugData
 
 	//GAME
 	private static int playerCount = 3;
-	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
+	public static EMap TestMap = release ?  EMap.None : EMap.Steampunk;
 	public static int TestGameValue = 5;
 	public static bool TestGenerateItems = false && !release;
 	public static bool StopGenerateItems = true && !release;

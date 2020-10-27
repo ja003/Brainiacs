@@ -61,6 +61,8 @@ public class GameEndController : GameController
 		}
 	}
 
+	public Action OnGameEnd;
+
 	/// <summary>
 	/// End game - called only on master.
 	/// Block user input and prevents player stats from changing
@@ -101,6 +103,7 @@ public class GameEndController : GameController
 
 		game.InfoMessenger.Show("Game ended"); //has to be called before GameEnded flag is set
 		GameEnded = true; //prevents player input and stats change
+		OnGameEnd?.Invoke();
 		Debug.Log("EndGame");
 	}
 
@@ -118,6 +121,9 @@ public class GameEndController : GameController
 
 	private void LoadResultScene()
 	{
+		//game could have been paused
+		game.GameTime.SetPause(false);
+
 		if(isMultiplayer)
 			PhotonNetwork.LeaveRoom();
 		brainiacs.Scenes.LoadScene(EScene.Results);

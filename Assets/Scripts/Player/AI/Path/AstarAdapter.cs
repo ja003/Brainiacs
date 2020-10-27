@@ -52,7 +52,7 @@ public static class AstarAdapter
 
 				const bool debug_draw_grid = true;
 				if(debug_draw_grid)
-					Utils.DebugDrawCross(nodePos, isWalkable ? Color.green : Color.red, 1000);
+					Utils.DebugDrawCross(nodePos, isWalkable ? Color.green : Color.red, 1);
 
 				SVector2 nodePosScaled = GetScaledVector(nodePos);
 

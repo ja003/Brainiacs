@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableForPlatform : MonoBehaviour
+public class HideForPlatform : MonoBehaviour
 {
-	[SerializeField]
-	EPlatform platform;
+	[SerializeField] EPlatform platform;
 
-	// Start is called before the first frame update
+	[SerializeField] CanvasGroup canvasGroup;
+
 	void Start()
 	{
 		bool enable = true;
@@ -21,6 +21,8 @@ public class DisableForPlatform : MonoBehaviour
 				break;
 		}
 
-		gameObject.SetActive(enable);
+		canvasGroup.alpha = enable ? 1 : 0;
+		canvasGroup.blocksRaycasts = enable;
+		//gameObject.SetActive(enable);
 	}
 }

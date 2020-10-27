@@ -44,6 +44,15 @@ public static class Utils
 		return EDirection.None;
 	}
 
+	internal static bool IsWithinScreeen(Vector3 pPosition)
+	{
+		return
+			pPosition.x < Screen.width &&
+			pPosition.x > 0 &&
+			pPosition.y > 0 &&
+			pPosition.y < Screen.height;
+	}
+
 	/// <summary>
 	/// Returns Z rotation vector. Right = 0
 	/// </summary>

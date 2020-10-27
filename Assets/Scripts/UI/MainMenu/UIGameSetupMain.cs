@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,6 +42,9 @@ public class UIGameSetupMain : MainMenuController
 	[SerializeField] TextMeshProUGUI btnReadyText = null;
 	[SerializeField] Button btnAllowJoin = null;
 
+	[SerializeField] Button btnCopyRoomName;
+	[SerializeField] TextMeshProUGUI txtRoomName;
+
 	[Header("DEBUG")]
 	[SerializeField] Button debug_btnSyncInfo = null;
 
@@ -56,13 +60,14 @@ public class UIGameSetupMain : MainMenuController
 		btnPlay.onClick.AddListener(OnBtnPlay);
 		btnReady.onClick.AddListener(OnBtnReady);
 		btnAllowJoin.onClick.AddListener(OnBtnAllowJoin);
+		btnCopyRoomName.onClick.AddListener(OnBtnCopyRoomName);
 		debug_btnSyncInfo.onClick.AddListener(OnBtnSyncInfo);
 		base.Awake();
 	}
 
 	private void Update()
 	{
-		btnAllowJoin.interactable = PhotonNetwork.IsConnectedAndReady;
+		btnAllowJoin.interactable = PhotonNetwork.IsConnectedAndReady && !isJoinAllowed;
 		btnReady.interactable = PhotonNetwork.IsConnectedAndReady;
 		btnPlay.interactable = isMultiplayer ? PhotonNetwork.IsConnectedAndReady : true;
 	}
@@ -110,6 +115,9 @@ public class UIGameSetupMain : MainMenuController
 	{
 		SetMenuMode(pIsMaster);
 		isJoinAllowed = false;
+
+		btnCopyRoomName.interactable = false;
+		txtRoomName.text = "room_x";
 
 		//reset elements
 		foreach(var p in players)
@@ -190,9 +198,18 @@ public class UIGameSetupMain : MainMenuController
 		isJoinAllowed = true;
 		//todo: check if any remote + check max players
 		int playersCount = GetActivatedPlayers().Count;
-		brainiacs.PhotonManager.CreateRoom(
+		string roomName = brainiacs.PhotonManager.CreateRoom(
 			playersCount, OnRemotePlayerEnteredRoom);
 		btnGroupAddPlayer.SetActive(false);
+
+		btnCopyRoomName.interactable = true;
+		txtRoomName.text = roomName;
+	}
+
+	private void OnBtnCopyRoomName()
+	{
+		UniClipboard.SetText(txtRoomName.text);
+		Debug.Log($"{txtRoomName.text} copied to clipboard");
 	}
 
 	private void OnBtnSyncInfo()

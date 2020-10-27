@@ -9,8 +9,11 @@ using PhotonPlayer = Photon.Realtime.Player;
 public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 {
 	EDirection direction;
-	[SerializeField] [Range(10, 100)]float speed = -1;
+	[SerializeField] [Range(10, 100)] float speed = -1;
 	[SerializeField] [Range(0.01f, 1)] float cadency = 0.1f;
+	//damage done by collision
+	[SerializeField] [Range(0, 100)] int damage = 50;
+	[SerializeField] [Range(0.1f, 3)] float radius = 1;
 
 	[SerializeField] BoxCollider2D colliderUpDown = null;
 	[SerializeField] BoxCollider2D colliderRightLeft = null;
@@ -54,7 +57,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 
 	protected override void OnReturnToPool3()
 	{
-		
+
 	}
 
 	protected override void OnSetActive2(bool pValue)
@@ -70,9 +73,9 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		colliderUpDown.enabled = pValue && colliderActive;
 		colliderRightLeft.enabled = pValue && colliderActive;
 
-		colliderUpDown.enabled = pValue && colliderActive && 
+		colliderUpDown.enabled = pValue && colliderActive &&
 			(direction == EDirection.Down || direction == EDirection.Up);
-		colliderRightLeft.enabled = pValue && colliderActive && 
+		colliderRightLeft.enabled = pValue && colliderActive &&
 			(direction == EDirection.Right || direction == EDirection.Left);
 	}
 
@@ -105,17 +108,19 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		animator.SetFloat(AC_KEY_DIRECTION, (int)direction);
 
 		canCollide = false;
-		
+
 		//only owner shoots, projectiles are handled separately
 		if(Photon.IsMine)
 			DoInTime(Shoot, cadency);
 
 		SoundController.PlaySound(ESound.Curie_Truck_Ride, audioSource, true);
 
+		spriteRend.sortingOrder = owner.Visual.GetProjectileSortOrder();
+
 		//todo no need to send?
 		Photon.Send(EPhotonMsg.Special_Curie_StartTruck, pDirection, pSpawnPosition);
 	}
-	
+
 
 	private void Shoot()
 	{
@@ -179,7 +184,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 	/// </summary>
 	private void OnCollision(int pLayer)
 	{
-		if(!canCollide 
+		if(!canCollide
 			|| pLayer == game.ProjectileManager.LayerProjectile
 			|| pLayer == game.Layers.MapDecoration)
 		{
@@ -200,6 +205,25 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 
 		audioSource.Stop();
 		SoundController.PlaySound(ESound.Curie_Truck_Explode, audioSource, false);
+
+		Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, radius);
+
+		ICollisionHandler ownerHandler = owner.GetComponent<ICollisionHandler>();
+		foreach(var c in collisions)
+		{
+			ICollisionHandler handler = c.GetComponent<ICollisionHandler>();
+			if(handler == null)
+				continue;
+
+			if(handler == ownerHandler)
+			{
+				Debug.Log("SpecialCurieTruck Collision with myself " + handler);
+				continue;
+			}
+
+			handler.OnCollision(damage, owner, gameObject);
+			Debug.Log("SpecialCurieTruck Collision with " + handler);
+		}
 
 		Photon.Send(EPhotonMsg.Special_Curie_Collide);
 		canCollide = false;

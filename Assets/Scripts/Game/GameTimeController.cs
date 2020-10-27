@@ -13,7 +13,16 @@ public class GameTimeController : GameController
 {
 	[SerializeField] UIGameTime uiGameTime = null;
 
-	public bool IsPaused;
+	public bool IsPaused { get; private set; }
+	public Action<bool> OnSetPause;
+
+	public void SetPause(bool pIsPaused)
+	{
+		Time.timeScale = pIsPaused ? 0 : 1;
+		IsPaused = pIsPaused;
+		OnSetPause?.Invoke(IsPaused);
+		SoundController.OnSetPause(IsPaused);
+	}
 
 	protected override void OnMainControllerAwaken()
 	{

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5604251347788511079}
   - component: {fileID: 5604251347788511078}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider_SoundsVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67, y: 0}
-  m_SizeDelta: {x: 203.55, y: 20}
+  m_AnchoredPosition: {x: 82.9, y: 0}
+  m_SizeDelta: {x: 486.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5604251347788511078
 MonoBehaviour:
@@ -123,8 +123,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 102.600006, y: 0}
-  m_SizeDelta: {x: 151, y: 62.4}
+  m_AnchoredPosition: {x: 114.9, y: 0}
+  m_SizeDelta: {x: 175.6, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5604251347958212632
 CanvasRenderer:
@@ -158,14 +158,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 12
-    m_MaxSize: 40
+    m_MaxSize: 54
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Music
+  m_Text: Sounds
 --- !u!1 &5604251348130303006
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -4.9999847, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5604251348896805231

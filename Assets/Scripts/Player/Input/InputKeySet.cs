@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InputKeyset : MainMenuBehaviour
+public class InputKeyset : BrainiacsBehaviour
 {
 	[SerializeField] Text header;
 
@@ -15,7 +14,6 @@ public class InputKeyset : MainMenuBehaviour
 
 	[SerializeField] UiInputKey keySwap;
 	[SerializeField] UiInputKey keyUse;
-
 
 	EKeyset Keyset;
 

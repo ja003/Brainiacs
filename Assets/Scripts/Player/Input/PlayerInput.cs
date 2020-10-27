@@ -162,13 +162,13 @@ public class PlayerInput : PlayerBehaviour
 		switch(pDirection)
 		{
 			case EDirection.Up:
-				return Input.GetKey(keys.moveUp) || game.MobileInput.btnMoveUp.IsPressed;
+				return Input.GetKey(keys.moveUp);
 			case EDirection.Right:
-				return Input.GetKey(keys.moveRight) || game.MobileInput.btnMoveRight.IsPressed;
+				return Input.GetKey(keys.moveRight);
 			case EDirection.Down:
-				return Input.GetKey(keys.moveDown) || game.MobileInput.btnMoveDown.IsPressed;
+				return Input.GetKey(keys.moveDown);
 			case EDirection.Left:
-				return Input.GetKey(keys.moveLeft) || game.MobileInput.btnMoveLeft.IsPressed;
+				return Input.GetKey(keys.moveLeft);
 		}
 		return false;
 	}

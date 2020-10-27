@@ -21,7 +21,8 @@ public class PlayerKeysManager : BrainiacsBehaviour
 	{
 		if(!keys.ContainsKey(pSet))
 		{
-			Debug.LogError($"Set {pSet} not defined");
+			if(Time.time > 1)
+				Debug.LogError($"Set {pSet} not defined");
 			return new PlayerKeys(pSet);
 		}
 		return keys[pSet];

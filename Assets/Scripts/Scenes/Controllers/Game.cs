@@ -69,7 +69,6 @@ public class Game : CSingleton<Game>
 
 		uiCurtain.SetFade(false, StartGame, debug_forceCurtain ? 1 : 0.1f);
 
-
 		base.Activate();
 	}
 

@@ -7,6 +7,42 @@ public static class SoundController
 	static AudioManager audioManager => Brainiacs.Instance.AudioManager;
 	static PlayerPrefsController playerPrefs => Brainiacs.Instance.PlayerPrefs;
 
+	static List<AudioSource> usedSources = new List<AudioSource>();
+
+	public static void OnSetPause(bool pIsPaused)
+	{
+		for(int i = usedSources.Count - 1; i >= 0; i--)
+		{
+			AudioSource s = usedSources[i];
+			if(s == null)
+			{
+				usedSources.RemoveAt(i);
+				continue;
+			}
+
+
+			if(pIsPaused)
+			{
+				//music never stops
+				if(s == audioManager.AudioSourceMusic)
+					continue;
+
+				//sources that are not playing are not used anymore
+				if(!s.isPlaying)
+				{
+					usedSources.RemoveAt(i);
+					continue;
+				}
+
+				s.Pause();
+			}
+			else
+			{
+				s.UnPause();
+			}
+		}
+	}
+
 	public static void PlaySound(ESound pKey, AudioSource pSource, bool pIsLoop = false)
 	{
 		if(pSource == null)
@@ -61,7 +97,7 @@ public static class SoundController
 		{
 			source.PlayOneShot(clip);
 		}
-
+		usedSources.Add(source);
 	}
 }
 

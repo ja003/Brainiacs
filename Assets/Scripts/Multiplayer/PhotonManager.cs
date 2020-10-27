@@ -42,11 +42,27 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.JoinRandomRoom();
 	}
 
-	public void CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered)
+	public void JoinRoom(string pName)
 	{
-		Debug.Log("CreateRoom");
-		PhotonNetwork.CreateRoom("room1", new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
+		Debug.Log("JoinRoom " + pName);
+		PhotonNetwork.JoinRoom(pName);
+	}
+
+	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered)
+	{
+		string roomName = GenerateRoomName();
+
+		Debug.Log("CreateRoom " + roomName);
+
+		PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
 		OnPlayerEntered = pOnPlayerEntered;
+		return roomName;
+	}
+
+	private string GenerateRoomName()
+	{
+		int index = UnityEngine.Random.Range(1, 100);
+		return "room_" + index;
 	}
 
 	public void LeaveRoom()
@@ -101,6 +117,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		//	//MainMenu.Instance.GameSetup.OpenMain(false);
 		//}
 
+	}
+
+	public override void OnJoinRandomFailed(short returnCode, string message)
+	{
+		base.OnJoinRandomFailed(returnCode, message);
 	}
 
 	public override void OnLeftRoom()

@@ -29,7 +29,7 @@ MonoBehaviour:
     InfoSprite: {fileID: 21300000, guid: fefbf8cc015988f48b3d38d195d7ff38, type: 3}
   SpecialWeaponInfo:
     InHandInfo:
-      Ammo: 1000
+      Ammo: 300
       Magazines: 666
       Cooldown: 2
       Cadency: 0
