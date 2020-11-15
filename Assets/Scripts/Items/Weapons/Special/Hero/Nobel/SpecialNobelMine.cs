@@ -78,9 +78,9 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		}
 
 		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damage * 2 : damage;
-		handler.OnCollision(finalDamage, owner, gameObject);
+		handler.OnCollision(finalDamage, owner, gameObject, GetPush(player.transform));
 		Explode();
-	}
+	}	
 
 	private void Explode()
 	{

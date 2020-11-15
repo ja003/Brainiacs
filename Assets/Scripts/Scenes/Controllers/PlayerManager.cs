@@ -15,6 +15,9 @@ public class PlayerManager : GameController
 
 	public Vector2 PLAYER_SIZE => playerPrefab.Collider.size;
 
+	public bool ArePlayersSpawned;
+	public bool AreAllPlayersAdded;
+
 	protected override void OnMainControllerAwaken()
 	{
 		if(PhotonNetwork.IsMasterClient)
@@ -64,10 +67,9 @@ public class PlayerManager : GameController
 		//}
 	}
 
-	bool arePlayersSpawned;
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
 	{
-		if(arePlayersSpawned)
+		if(ArePlayersSpawned)
 		{
 			//todo: for some reason the PC instance (not in unity)
 			//sends LoadedScene 2x
@@ -96,7 +98,7 @@ public class PlayerManager : GameController
 
 		//invoke on activated
 		Activate();
-		arePlayersSpawned = true;
+		ArePlayersSpawned = true;
 	}
 
 	/// <summary>
@@ -161,7 +163,7 @@ public class PlayerManager : GameController
 			if(pPlayer.IsLocalImage)
 				return;
 
-			if(allPlayersAdded)
+			if(AreAllPlayersAdded)
 			{
 				Debug.LogError("OnAllPlayersAdded already called");
 				return;
@@ -174,10 +176,9 @@ public class PlayerManager : GameController
 			//Debug.Log("All players added");
 			OnAllPlayersAdded.Invoke();
 			//OnAllPlayersAdded = null;
-			allPlayersAdded = true;
+			AreAllPlayersAdded = true;
 		}
 	}
-	bool allPlayersAdded;
 
 	List<PhotonPlayer> loadedPlayers = new List<PhotonPlayer>();
 	internal void OnRemotePlayerLoadedScene(PhotonPlayer pPlayer)

@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
+  debug_notMpMsgDelay: 0.1
   bomb: {fileID: 5437132089663561377}
 --- !u!114 &5437132089663561377
 MonoBehaviour:
@@ -133,10 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e789cb4d20f1640814855959d8a972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 
-  isPooled: 0
-  Photon: {fileID: 6630779198772327814}
-  IsPhotonInstantiated: 0
+  pushForce: 10
   InstanceOnEveryUse: 1
   explosion: {fileID: 7026618453370485617}
   MaxDamage: 100

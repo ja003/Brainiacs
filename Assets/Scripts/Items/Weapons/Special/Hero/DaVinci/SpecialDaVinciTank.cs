@@ -93,7 +93,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		if(collisionTimes.TryGetValue(handler, out lastCollisionTime) && 
 			lastCollisionTime > Time.time - MIN_COLLISION_DELAY)
 		{
-			Debug.Log("Collision too soon");
+			//Debug.Log("Collision too soon");
 			return;
 		}
 
@@ -104,8 +104,9 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		}
 
 		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
-		//Debug.Log("Hit " + collision.gameObject.name);
-		handler.OnCollision(damage, owner, gameObject);
+		Vector2 push = GetPush(collision.transform);
+		Debug.Log($"Hit {collision.gameObject.name}. {push}");
+		handler.OnCollision(damage, owner, gameObject, push);
 
 		if(collisionTimes.ContainsKey(handler))
 			collisionTimes[handler] =  Time.time;
@@ -114,7 +115,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	}
 
-	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)
+	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin, Vector2 pPush)
 	{
 		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 

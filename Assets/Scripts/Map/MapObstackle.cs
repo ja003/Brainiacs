@@ -4,29 +4,15 @@ using UnityEngine;
 
 public class MapObstackle : MapObject
 {
-	//protected override void Awake()
-	//{
-	//	game.Map.RegisterObstackle(this);
-	//	base.Awake();
-	//}
-
-	protected override void OnSetActive0(bool pValue)
+	private void OnEnable()
 	{
-		spriteRend.enabled = pValue;
-		boxCollider2D.enabled = pValue;
-
-		if(pValue)
-			game.Map.RegisterObstackle(this);
-		else //we have to do unregister because of debug - when some map is already present in scene
-			game.Map.UnregisterObstackle(this);
-
+		game.Map.RegisterObstackle(this);
 	}
-
-
-	//protected override bool CanSendMsg(EPhotonMsg pMsgType)
-	//{
-	//	throw new System.NotImplementedException();
-	//}
+	private void OnDisable()
+	{
+		//we have to do unregister because of debug - when some map is already present in scene
+		game?.Map?.UnregisterObstackle(this);
+	}
 
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
 	{

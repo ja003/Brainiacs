@@ -208,7 +208,8 @@ public enum EPhotonMsg
 	Player_ShowWeapon,
 	Player_ApplyDamage,
 	Player_AddKill,
-	
+	Player_Push,
+
 	Player_OnReceiveDamageEffect, //visual + sound
 	Player_Visual_OnDie,
 	Player_DoEliminateEffect,

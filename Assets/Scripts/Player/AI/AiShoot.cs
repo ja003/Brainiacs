@@ -176,10 +176,19 @@ public class AiShoot : AiGoalController
 			//dont use weapon if - there is a map object between player and target
 			Vector2 dirToTarget = targetedPlayer.Position - playerPosition;
 			bool hitMapObject = Physics2D.Raycast(
-				playerPosition, dirToTarget, dirToTarget.magnitude, game.Layers.MapObject);
+				playerPosition, dirToTarget, dirToTarget.magnitude, 
+				GetDontHitLayer(player.WeaponController.ActiveWeapon.Id));
 			if(hitMapObject)
 				isUseWeaponRequested = false;
 		}
+	}
+
+	private LayerMask GetDontHitLayer(EWeaponId pWeapon)
+	{
+		LayerMask dontHitLayer = game.Layers.MapObject;
+		if(pWeapon == EWeaponId.Special_Curie)
+			dontHitLayer = dontHitLayer | game.Layers.Unwalkable;
+		return dontHitLayer;
 	}
 
 	private bool IsLookingAtTarget()
@@ -255,6 +264,8 @@ public class AiShoot : AiGoalController
 		Utils.DebugDrawCross(shootPositions.Item1, Color.red);
 		Utils.DebugDrawCross(shootPositions.Item2, Color.blue);
 
+		//Debug.Log($"shootPositions = {shootPositions.Item1} | {shootPositions.Item1}");
+
 		return shootPositions;
 	}
 
@@ -271,8 +282,12 @@ public class AiShoot : AiGoalController
 		if(idealDist > maxDist)
 			idealDist = maxDist;
 
-		Tuple<Vector2, Vector2> posHorizontal = GetShootPositions(pShootTarget, maxDist, idealDist, true);
-		Tuple<Vector2, Vector2> posVertical = GetShootPositions(pShootTarget, maxDist, idealDist, false);
+		Tuple<Vector2, Vector2> posHorizontal = 
+			GetShootPositions(pShootTarget, maxDist, idealDist, true, 
+			GetDontHitLayer(pWeapon));
+		Tuple<Vector2, Vector2> posVertical = 
+			GetShootPositions(pShootTarget, maxDist, idealDist, false,
+			GetDontHitLayer(pWeapon));
 
 		//TESTING - Select the closest shoot position 
 		//- simple distance compare - select the closest
@@ -308,10 +323,11 @@ public class AiShoot : AiGoalController
 
 	/// <summary>
 	/// Returns 2 positions from which a player should hit the target.
-	/// First = position closest to the player
-	/// Second = position closer to the target
+	/// First = position closest to the player.
+	/// Second = position closer to the target.
+	/// pDontHitLayer = layers that cant be hit during raycast from shoot target to the shoot position
 	/// </summary>
-	private Tuple<Vector2, Vector2> GetShootPositions(Vector2 pShootTarget, float pMaxDistance, float pIdealDistance, bool pHorizontal)
+	private Tuple<Vector2, Vector2> GetShootPositions(Vector2 pShootTarget, float pMaxDistance, float pIdealDistance, bool pHorizontal, LayerMask pDontHitLayer)
 	{
 		if(Vector2.Distance(playerPosition, pShootTarget) > INVALID_TARGET_DISTANCE)
 		{
@@ -319,8 +335,7 @@ public class AiShoot : AiGoalController
 			return playerPositions;
 		}
 
-
-		const float pos_step = Player.COLLIDER_SIZE;// 0.1f;
+		const float pos_step = Player.COLLIDER_SIZE;
 
 		Vector2 closestPos = pHorizontal ?
 			new Vector2(playerPosition.x, pShootTarget.y) :
@@ -329,7 +344,7 @@ public class AiShoot : AiGoalController
 
 		Vector2 dir = closestPos - pShootTarget;
 		float maxDist = Mathf.Min(dir.magnitude, pMaxDistance);
-		RaycastHit2D hit = Physics2D.Raycast(pShootTarget, dir, maxDist, game.Layers.MapObject);
+		RaycastHit2D hit = Physics2D.Raycast(pShootTarget, dir, maxDist, pDontHitLayer);
 
 		Vector2 shootPos = closestPos;
 		if(hit)
@@ -338,6 +353,7 @@ public class AiShoot : AiGoalController
 			shootPos -= dir.normalized * pos_step;
 			//Debug.Log("HIT " + shootPos);
 			Utils.DebugDrawCross(shootPos, Color.magenta);
+			Debug.DrawLine(pShootTarget, shootPos, Color.red, 1);
 		}
 
 

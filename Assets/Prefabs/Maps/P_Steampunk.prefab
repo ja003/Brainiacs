@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 5108794324729171881}
   - component: {fileID: 1355350347}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 8832318553405403950}
   - component: {fileID: 1876578513854717307}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

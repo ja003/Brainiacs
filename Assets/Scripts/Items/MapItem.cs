@@ -14,6 +14,7 @@ public class MapItem : MapObject
 	PowerUpConfig powerUpConfig;
 
 	[SerializeField] SpriteRenderer explosion;
+	[SerializeField] float explosionPushForce;
 
 	//[SerializeField] MapItemPhoton photon;
 
@@ -95,7 +96,7 @@ public class MapItem : MapObject
 		if(powerUpConfig != null)
 		{
 			//Debug.Log("OnEnter powerup");
-			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);			
+			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
 		}
 		else if(weaponConfig != null)
 		{
@@ -148,7 +149,8 @@ public class MapItem : MapObject
 			ICollisionHandler handler = hit.GetComponent<ICollisionHandler>();
 			if(handler != null)
 			{
-				handler.OnCollision(30, null, gameObject);
+				Vector3 push = (hit.transform.position - transform.position).normalized * explosionPushForce;
+				handler.OnCollision(30, null, gameObject, push);
 			}
 			//Debug.Log(hit.gameObject.name);
 		}

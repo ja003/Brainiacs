@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 116426459}
+  explosionPushForce: 10
 --- !u!114 &8188287233207646796
 MonoBehaviour:
   m_ObjectHideFlags: 0

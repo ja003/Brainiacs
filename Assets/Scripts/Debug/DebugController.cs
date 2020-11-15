@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DebugController : BrainiacsBehaviour
 {
-
+    [SerializeField] float pushForce = 5;
 #if UNITY_EDITOR
     void Update()
     {
@@ -33,6 +33,14 @@ public class DebugController : BrainiacsBehaviour
         else if(Input.GetKeyDown(KeyCode.M))
         {
             Game.Instance.PlayerManager.GetPlayer(1).Health.ApplyDamage(50, null);
+        }
+        else if(Input.GetKeyDown(KeyCode.P))
+        {
+            Game.Instance.PlayerManager.GetPlayer(1).Push.Push(Vector2.up * pushForce);
+        }
+        else if(Input.GetKeyDown(KeyCode.O))
+        {
+            Game.Instance.PlayerManager.GetPlayer(1).Push.Push(Vector2.left * pushForce);
         }
     }
 #endif

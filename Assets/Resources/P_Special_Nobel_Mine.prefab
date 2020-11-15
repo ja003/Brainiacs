@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71139f3100bd6724fb980f49e03ba51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushForce: 8
   InstanceOnEveryUse: 1
   damage: 50
   mineSprite: {fileID: 1651846596320159259}

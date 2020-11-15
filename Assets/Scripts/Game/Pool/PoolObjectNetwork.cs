@@ -63,7 +63,7 @@ public abstract class PoolObjectNetwork : GameBehaviour, IPoolObject
 
 	public void SetActive(bool pValue)
 	{
-		poolObject.SetActive(pValue);
+		poolObject?.SetActive(pValue);
 	}
 
 	public bool IsMine()

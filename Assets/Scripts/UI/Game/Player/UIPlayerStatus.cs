@@ -20,7 +20,7 @@ public class UIPlayerStatus : UiBehaviour
 		//rectTransform.anchoredPosition = screenPosition;
 
 		//Debug.Log($"Screen {Screen.width} x {Screen.height}");
-		//Debug.Log($"SpawnAt {viewportPos} => {screenPosition.x} ; {screenPosition.y}");
+		Debug.Log($"SpawnAt {pWorldPosition} => {pText}");
 
 		//if(pSprite != null)
 		icon.sprite = pSprite;

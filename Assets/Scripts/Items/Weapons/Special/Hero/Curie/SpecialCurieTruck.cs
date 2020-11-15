@@ -221,7 +221,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 				continue;
 			}
 
-			handler.OnCollision(damage, owner, gameObject);
+			handler.OnCollision(damage, owner, gameObject, GetPush(c.transform));
 			Debug.Log("SpecialCurieTruck Collision with " + handler);
 		}
 

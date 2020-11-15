@@ -157,7 +157,7 @@ public static class Utils
 			Debug.DrawLine(pPath[i], pPath[i + 1], pColor, pDuration);
 		}
 	}
-
+		
 	internal static void DebugDrawRect(Vector2 pTopLeft, Vector2 pBotRight, Color pColor, float pDuration = -1)
 	{
 		if(pDuration <= 0)

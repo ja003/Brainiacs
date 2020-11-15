@@ -7,10 +7,10 @@ public class InputKeysSetup : MainMenuBehaviour
 {
 	[SerializeField] private Button btnSettingsBack = null;
 
-    [SerializeField] InputKeyset keySetA;
-	[SerializeField] InputKeyset keySetB;
-    [SerializeField] InputKeyset keySetC;
-    [SerializeField] InputKeyset keySetD;
+    [SerializeField] InputKeys keySetA;
+	[SerializeField] InputKeys keySetB;
+    [SerializeField] InputKeys keySetC;
+    [SerializeField] InputKeys keySetD;
 
     private new void Awake()
     {

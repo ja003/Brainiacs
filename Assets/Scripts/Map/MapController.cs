@@ -99,6 +99,7 @@ public class MapController : GameController
 			Debug.LogError($"Obstackle {pObstackle.gameObject.name} already registered. Name has to be unique");
 			return;
 		}
+		//Debug.Log($"RegisterObstackle {pObstackle.gameObject.name} = {id}");
 		obstackles.Add(id, pObstackle);
 	}
 

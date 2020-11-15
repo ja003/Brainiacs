@@ -178,6 +178,11 @@ public class BrainiacsBehaviour : MonoBehaviour
 		}
 	}
 
+	protected virtual GameObject GetLeanTweenObject()
+	{
+		return gameObject;
+	}
+
 	protected int UpdateValue(float pForm, float pTo, float pTime, Action<float> pOnUpdate)
 	{
 		return LeanTween.value(gameObject, pForm, pTo, pTime).setOnUpdate(pOnUpdate).id;

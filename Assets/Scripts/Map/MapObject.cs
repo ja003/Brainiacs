@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 {
-	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)
+	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin, Vector2 pPush)
 	{
 		OnCollisionEffect(pDamage, pOrigin);
 		//if(pDamage > 0)

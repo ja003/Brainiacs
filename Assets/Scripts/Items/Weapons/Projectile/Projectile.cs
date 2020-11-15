@@ -141,8 +141,10 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 
 		bool result = false;
 		if(handler != null)
-			result = handler.OnCollision(config.Damage, Owner, gameObject);
-
+		{
+			result = handler.OnCollision(
+				config.Damage, Owner, gameObject, Direction.normalized * config.PushForce);
+		}
 		if(result)
 			ReturnToPool();
 		//Photon.Destroy();

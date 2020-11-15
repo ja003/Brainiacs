@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Manages showing players status (pickup weapon, powerup, ...)
 /// </summary>
-public class UIPlayerStatusManager : MonoBehaviour
+public class UIPlayerStatusManager : GameBehaviour
 {
 	[SerializeField] private UIPlayerStatus prefab = null;
 
@@ -41,6 +41,9 @@ public class UIPlayerStatusManager : MonoBehaviour
 	{
 		//HACK: to hide adding debug weapons
 		if(Time.time < 0.1f)
+			return;
+
+		if(!game.PlayerManager.AreAllPlayersAdded)
 			return;
 
 		//UIPlayerStatus instance = Instantiate(prefab, transform);

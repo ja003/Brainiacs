@@ -17,3 +17,4 @@ MonoBehaviour:
   Damage: 5
   Speed: 2
   Dispersion: 0.5
+  PushForce: 0.5

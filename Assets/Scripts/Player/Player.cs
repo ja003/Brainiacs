@@ -21,6 +21,7 @@ public class Player : PoolObjectNetwork
 	//[SerializeField] public PlayerPhotonController Photon;
 	[SerializeField] public PlayerMovement Movement;
 	[SerializeField] public PlayerAiBrain ai;
+	[SerializeField] public PlayerPush Push;
 
 	[SerializeField] public AudioSource AudioSource;
 

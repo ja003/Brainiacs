@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InputKeyset : BrainiacsBehaviour
+public class InputKeys : BrainiacsBehaviour
 {
 	[SerializeField] Text header;
 
@@ -15,7 +15,7 @@ public class InputKeyset : BrainiacsBehaviour
 	[SerializeField] UiInputKey keySwap;
 	[SerializeField] UiInputKey keyUse;
 
-	EKeyset Keyset;
+	EKeyset Keyset; 
 
 	public void Init(EKeyset pKeyset, PlayerKeys pPlayerKeys)
 	{

@@ -14,7 +14,7 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 	{
 		//SetActive(true);
 		spriteRend.enabled = false;
-		explosion.OnInit(owner, MaxDamage);
+		explosion.OnInit(owner, this);
 	}
 
 	protected override void OnUse()

@@ -74,6 +74,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return true;
 			case EPhotonMsg.Player_AddKill:
 			case EPhotonMsg.Player_ApplyDamage:
+			case EPhotonMsg.Player_Push:
 				return player.IsInited;
 		}
 
@@ -111,6 +112,10 @@ public class PlayerPhotonController : PoolObjectPhoton
 				playerNumber = (int)pParams[1];
 				Player originOfDamage = game.PlayerManager.GetPlayer(playerNumber);
 				player.Health.ApplyDamage(damage, originOfDamage);
+				return;
+			case EPhotonMsg.Player_Push:
+				Vector2 push = (Vector2)pParams[0];
+				player.Push.Push(push);
 				return;
 
 			case EPhotonMsg.Player_AddKill:

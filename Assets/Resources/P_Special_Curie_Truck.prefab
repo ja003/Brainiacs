@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG_LOG: 0
+  debug_notMpMsgDelay: 0.1
   truck: {fileID: 7978713589407924031}
 --- !u!114 &7978713589407924031
 MonoBehaviour:
@@ -232,13 +233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc234ab50d6c9e46bd5199c5dfe7740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: P_Special_Curie_Truck
-  isPooled: 0
-  Photon: {fileID: 7978257476093442939}
-  IsPhotonInstantiated: 0
+  pushForce: 8
   InstanceOnEveryUse: 1
   speed: 36.6
   cadency: 0.1
+  damage: 50
+  radius: 1
   colliderUpDown: {fileID: 2362432123046370667}
   colliderRightLeft: {fileID: 6281628193919711912}
   projectileSpawnUp: {fileID: 7209490705096603003}

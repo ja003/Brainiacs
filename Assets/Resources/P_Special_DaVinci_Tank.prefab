@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f370458ae236632449ffdbeb88b52f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushForce: 15
   InstanceOnEveryUse: 0
   damage: 15
   maxHealth: 3

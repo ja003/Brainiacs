@@ -98,13 +98,14 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	/// <summary>
 	/// Damage from the collision and origin-player of the damage
 	/// </summary>
-	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin)
+	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin, Vector2 pPush)
 	{
 		if(IsDying)
 		{
 			//Debug.Log("No kill for shooting dying player");
 			return true;
 		}
+		player.Push.Push(pPush);
 
 		ApplyDamage(pDamage, pOwner);
 
@@ -139,39 +140,39 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		{
 			int playerNumber = pOwner != null ? pOwner.InitInfo.Number : -1;
 			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, playerNumber);
+			return;
 		}
-		else
+
+
+		if(IsDying)
 		{
-			if(IsDying)
-			{
-				//Cant apply damage to dying player;
-				return;
-			}
-
-			bool wasGameEnded = game.GameEnd.GameEnded;
-			int res = stats.AddHealth(-pDamage);
-			if(res < 0)
-			{
-				//show damage effect only if some damage was applied (can be blocked by shield)
-				OnReceiveDamageEffect();
-			}
-
-			bool gameEndedAfterThis = game.GameEnd.GameEnded;
-
-			//if this damage ended the game it has to be counted even after game ended
-			bool forceAddKill = wasGameEnded != gameEndedAfterThis;
-
-			if(stats.IsDead)
-			{
-				//Debug.Log("Add kill to " + pOrigin);
-				pOwner?.Stats.AddKill(forceAddKill);
-				string message = pOwner == null ?
-					$"Player {player.InitInfo.Name} was killed" :
-					$"Player {player.InitInfo.Name} killed by {pOwner.InitInfo.Name}";
-				game.InfoMessenger.Show(message);
-			}
-			//visual.OnDamage(); //visual effect first on owner then on image
+			//Cant apply damage to dying player;
+			return;
 		}
+
+		bool wasGameEnded = game.GameEnd.GameEnded;
+		int res = stats.AddHealth(-pDamage);
+		if(res < 0)
+		{
+			//show damage effect only if some damage was applied (can be blocked by shield)
+			OnReceiveDamageEffect();
+		}
+
+		bool gameEndedAfterThis = game.GameEnd.GameEnded;
+
+		//if this damage ended the game it has to be counted even after game ended
+		bool forceAddKill = wasGameEnded != gameEndedAfterThis;
+
+		if(stats.IsDead)
+		{
+			//Debug.Log("Add kill to " + pOrigin);
+			pOwner?.Stats.AddKill(forceAddKill);
+			string message = pOwner == null ?
+				$"Player {player.InitInfo.Name} was killed" :
+				$"Player {player.InitInfo.Name} killed by {pOwner.InitInfo.Name}";
+			game.InfoMessenger.Show(message);
+		}
+		//visual.OnDamage(); //visual effect first on owner then on image
 	}
 
 	/// <summary>

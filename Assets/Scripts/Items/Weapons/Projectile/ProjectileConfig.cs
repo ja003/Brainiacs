@@ -11,6 +11,7 @@ public class ProjectileConfig : ScriptableObject
 	public int Damage; //public new int Damage;
 	public float Speed;
 	public float Dispersion;
+	public float PushForce;
 }
 
 

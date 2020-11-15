@@ -24,6 +24,8 @@ public static class AstarAdapter
 	public static bool isInited;
 
 	public static Action OnInited;
+	
+	const bool debug_draw_grid = false;
 
 	public static IEnumerator Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
 	{
@@ -50,7 +52,6 @@ public static class AstarAdapter
 				Vector2 nodePos = new Vector2(x, y);
 				bool isWalkable = !PathFinderController.OverlapsWithMapObject(nodePos);
 
-				const bool debug_draw_grid = true;
 				if(debug_draw_grid)
 					Utils.DebugDrawCross(nodePos, isWalkable ? Color.green : Color.red, 1);
 

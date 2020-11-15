@@ -6,14 +6,14 @@ using UnityEngine;
 public class SpecialEinsteinExplosion : BrainiacsBehaviour
 {
 	//SpecialEinstein controller;
-	int maxDamage;
 	Player owner;
+	SpecialEinsteinBomb bomb;
 
-	public void OnInit(Player pOwner, int pMaxDamage)
+	public void OnInit(Player pOwner, SpecialEinsteinBomb pBomb)
 	{
 		spriteRend.sortingOrder = 0; //reset
 		owner = pOwner;
-		maxDamage = pMaxDamage;
+		bomb = pBomb;
 		SetEnabled(false);
 
 		//owner.OnPlayerInited.AddAction(() => SetEnabled(false));
@@ -48,10 +48,12 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		float dist = Vector2.Distance(transform.position, collision.transform.position);
 		float factor = circleCollider2D.radius - dist;
 
-		float damage = Mathf.Lerp(maxDamage / 10f, maxDamage, factor);
+		float damage = Mathf.Lerp(bomb.MaxDamage / 10f, bomb.MaxDamage, factor);
 
 		//Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
-		handler.OnCollision((int)damage, owner, gameObject);
+		Vector3 push = (collision.transform.position - transform.position).normalized * bomb.PushForce;
+		Debug.Log("TODO: calculate push force");
+		handler.OnCollision((int)damage, owner, gameObject,	push);
 
 		SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
 		if(sr)
