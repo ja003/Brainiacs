@@ -15,20 +15,20 @@ public static class DebugData
 	public static bool TestPlayers = true && !release;
 	public static bool LocalImage = false && !release;
 	public static bool TestResult = false && !release;
-	public static bool TestPlatformMobile = true && !release;
+	public static bool TestPlatformMobile = false && !release;
 
 	//Player
 	public static EHero TestHero = release ? EHero.None : EHero.Currie;
 	public static bool TestExtraPlayerItem = false && !release;
 
-	public static bool TestShield = true && !release;
+	public static bool TestShield = false && !release;
 	public static bool TestInvulnerability = false && !release; //cant receive any damage
 	public static bool TestImmortality = false && !release; //cant get under < 1 health
 	public static bool TestInfiniteAmmo = false && !release;
 	public static EPlayerEffect TestPlayerEffect = release ? EPlayerEffect.None : EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 2;
+	private static int playerCount = 4;
 	public static EMap TestMap = release ?  EMap.None : EMap.Steampunk;
 	public static int TestGameValue = 5;
 	public static bool TestGenerateItems = true && !release;
@@ -81,13 +81,13 @@ public static class DebugData
 				break;
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EHero.Tesla, GetPlayerName(pPlayerNumber),
 					EPlayerColor.Yellow, EPlayerType.LocalPlayer);
 				break;
 
 			default:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EHero.Einstein, GetPlayerName(pPlayerNumber),
 					EPlayerColor.Blue, EPlayerType.LocalPlayer);
 				break;
 		}
@@ -104,7 +104,7 @@ public static class DebugData
 		//player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
 		//player.debug_StartupWeapon.Add(EWeaponId.Biogun);
 		//player.debug_StartupWeapon.Add(EWeaponId.Mine);
-		player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
+		//player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
 
 		if(player.PlayerType == EPlayerType.AI && TestAiWeapon != EWeaponId.None)
 		{

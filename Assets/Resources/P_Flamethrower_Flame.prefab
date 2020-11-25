@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31e5f2e0cc28c04b8d59884ed64d2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushForce: 0
   InstanceOnEveryUse: 0
   spriteRend: {fileID: 1217923435359725164}
   collisionDetector: {fileID: 1107499961995651341}
@@ -283,10 +284,11 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

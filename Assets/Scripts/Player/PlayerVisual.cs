@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerVisual : PlayerBehaviour
 {
@@ -20,6 +21,17 @@ public class PlayerVisual : PlayerBehaviour
 
 
 	[SerializeField] private PaletteSwapController paletteSwap = null;
+
+	
+
+	[SerializeField] private Light2D light = null;
+	[SerializeField] private Color lightColor_Red = Color.red;
+	[SerializeField] private Color lightColor_Green = Color.green;
+
+
+	[SerializeField] private Color lightColor_Blue = Color.blue;
+	[SerializeField] private Color lightColor_Yellow = Color.yellow;
+	[SerializeField] private Color lightColor_Pink = Color.magenta;
 
 	[SerializeField] public int CurrentSortOrder { get; private set; } = 0;
 
@@ -113,6 +125,48 @@ public class PlayerVisual : PlayerBehaviour
 		playerColor = pPlayerInfo.Color;
 		int paletteIndex = GetColorPaletteIndex(pPlayerInfo.Color);
 		paletteSwap.SetPalette(paletteIndex);
+		SetLightColor(playerColor);
+	}
+
+	internal void SetLightIntensity(float pIntensity)
+	{
+		light.intensity = pIntensity;
+	}
+
+	internal void SetLightRadius(float pRadius)
+	{
+		light.pointLightOuterRadius = pRadius;
+	}
+
+	private void SetLightColor(EPlayerColor pColor)
+	{
+		Color color = Color.white;
+		switch(pColor)
+		{
+			case EPlayerColor.None:
+				color = Color.white;
+				break;
+			case EPlayerColor.Blue:
+				color = lightColor_Blue;
+				break;
+			case EPlayerColor.Red:
+				color = lightColor_Red;
+				break;
+			case EPlayerColor.Yellow:
+				color = lightColor_Yellow;
+				break;
+			case EPlayerColor.Green:
+				color = lightColor_Green;
+				break;
+			case EPlayerColor.Pink:
+				color = lightColor_Pink;
+				break;
+			default:
+				Debug.LogError("Color not found");
+				break;
+		}
+
+		light.color = color;
 	}
 
 	/// <summary>
@@ -132,8 +186,10 @@ public class PlayerVisual : PlayerBehaviour
 	{
 		const float flicker_length = 0.1f;
 		paletteSwap.SetPalette(GetColorPaletteIndex(playerColor, 1));
+		SetLightColor(EPlayerColor.None);
 		yield return new WaitForSeconds(flicker_length);
 		paletteSwap.SetPalette(GetColorPaletteIndex(playerColor));
+		SetLightColor(playerColor);
 	}
 
 	private static int GetColorPaletteIndex(EPlayerColor pColor, int pOffset = 0)
