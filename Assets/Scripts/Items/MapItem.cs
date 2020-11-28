@@ -9,9 +9,9 @@ public class MapItem : MapObject
 {
 	//todo: refactor into multiple object types?
 	//or some RewardHandler?
-	MapWeaponConfig weaponConfig;
-	MapSpecialWeaponConfig weaponSpecialConfig;
-	PowerUpConfig powerUpConfig;
+	//MapWeaponConfig weaponConfig;
+	//MapSpecialWeaponConfig weaponSpecialConfig;
+	//PowerUpConfig powerUpConfig;
 
 	[SerializeField] SpriteRenderer explosion;
 	[SerializeField] float explosionPushForce;
@@ -27,6 +27,10 @@ public class MapItem : MapObject
 	}
 
 	bool isSpawned;
+
+	private EType type;
+	private int subtypeIndex = -1;
+
 	//bool isMine;
 
 	private void Spawn(Vector2 pPosition)
@@ -49,33 +53,102 @@ public class MapItem : MapObject
 		}
 	}
 
-	public void Init(Vector2 pPosition, PowerUpConfig pPowerUp)
+	public enum EType
 	{
-		powerUpConfig = pPowerUp;
-		spriteRend.sprite = pPowerUp.MapItemInfo.MapSprite;
-		Spawn(pPosition);
-
-		Photon.Send(EPhotonMsg.MapItem_InitPowerUp, pPosition, pPowerUp.Type);
+		None,
+		Weapon,
+		SpecialWeapon,
+		PowerUp,
+		GameEffect
 	}
 
-	public void Init(Vector2 pPosition, MapWeaponConfig pWeapon)
+	public void Init(Vector2 pPosition, EType pType, int pSubtypeIndex)
 	{
-		weaponConfig = pWeapon;
-		spriteRend.sprite = pWeapon.MapItemInfo.MapSprite;
+		type = pType;
+		subtypeIndex = pSubtypeIndex;
 		Spawn(pPosition);
-
-		Photon.Send(EPhotonMsg.MapItem_InitMapBasic, pPosition, pWeapon.Id);
-
+		RefreshMapSprite();
+		Photon.Send(EPhotonMsg.MapItem_Init, pPosition, pType, pSubtypeIndex);
 	}
 
-	public void Init(Vector2 pPosition, MapSpecialWeaponConfig pSpecialWeapon)
+	private void RefreshMapSprite()
 	{
-		weaponSpecialConfig = pSpecialWeapon;
-		spriteRend.sprite = pSpecialWeapon.MapItemInfo.MapSprite;
-		Spawn(pPosition);
+		Sprite s = null;
+		switch(type)
+		{
+			case EType.Weapon:
+				MapWeaponConfig weapon = GetMapWeaponConfig();
+				s = weapon.MapItemInfo.MapSprite;
+				break;
+			case EType.SpecialWeapon:
+				MapSpecialWeaponConfig specialWeapon = GetMapSpecialWeaponConfig();
+				s = specialWeapon.MapItemInfo.MapSprite;
+				break;
+			case EType.PowerUp:
+				PowerUpConfig powerUpConfig = GetPowerUpConfig();
+				s = powerUpConfig.MapItemInfo.MapSprite;
+				break;
 
-		Photon.Send(EPhotonMsg.MapItem_InitMapSpecial, pPosition, pSpecialWeapon.Id);
+			case EType.GameEffect:
+				GameEffectConfig config = GetGameEffectConfig();
+				s = config.MapItemInfo.MapSprite;
+				break;
+
+			default:
+				Debug.LogError("Map item type not inited");
+				break;
+		}
+
+		spriteRend.sprite = s;
 	}
+
+	private MapSpecialWeaponConfig GetMapSpecialWeaponConfig()
+	{
+		return brainiacs.ItemManager.GetMapSpecialWeaponConfig((EWeaponId)subtypeIndex);
+	}
+
+	private MapWeaponConfig GetMapWeaponConfig()
+	{
+		return brainiacs.ItemManager.GetMapWeaponConfig((EWeaponId)subtypeIndex);
+	}
+
+	private PowerUpConfig GetPowerUpConfig()
+	{
+		return brainiacs.ItemManager.GetPowerupConfig((EPowerUp)subtypeIndex);
+	}
+
+	private GameEffectConfig GetGameEffectConfig()
+	{
+		return brainiacs.ItemManager.GetGameEffectConfig((EGameEffect)subtypeIndex);
+	}
+
+	//public void Init(Vector2 pPosition, PowerUpConfig pPowerUp)
+	//{
+	//	powerUpConfig = pPowerUp;
+	//	spriteRend.sprite = pPowerUp.MapItemInfo.MapSprite;
+	//	Spawn(pPosition);
+
+	//Photon.Send(EPhotonMsg.MapItem_InitPowerUp, pPosition, pPowerUp.Type);
+	//}
+
+	//public void Init(Vector2 pPosition, MapWeaponConfig pWeapon)
+	//{
+	//	weaponConfig = pWeapon;
+	//	spriteRend.sprite = pWeapon.MapItemInfo.MapSprite;
+	//	Spawn(pPosition);
+
+	//	Photon.Send(EPhotonMsg.MapItem_InitMapBasic, pPosition, pWeapon.Id);
+
+	//}
+
+	//public void Init(Vector2 pPosition, MapSpecialWeaponConfig pSpecialWeapon)
+	//{
+	//	weaponSpecialConfig = pSpecialWeapon;
+	//	spriteRend.sprite = pSpecialWeapon.MapItemInfo.MapSprite;
+	//	Spawn(pPosition);
+
+	//	Photon.Send(EPhotonMsg.MapItem_InitMapSpecial, pPosition, pSpecialWeapon.Id);
+	//}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -93,23 +166,47 @@ public class MapItem : MapObject
 
 	private void OnEnter(Player pPlayer)
 	{
-		if(powerUpConfig != null)
+		switch(type)
 		{
-			//Debug.Log("OnEnter powerup");
-			PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
+			case EType.Weapon:
+				MapWeaponConfig weapon = GetMapWeaponConfig();
+				pPlayer.ItemController.AddMapWeapon(weapon.Id);
+				break;
+			case EType.SpecialWeapon:
+				MapSpecialWeaponConfig specialWeapon = GetMapSpecialWeaponConfig();
+				pPlayer.ItemController.AddMapWeaponSpecial(specialWeapon.Id);
+				break;
+			case EType.PowerUp:
+				PowerUpConfig powerUpConfig = GetPowerUpConfig();
+				PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
+				break;
+			case EType.GameEffect:
+				GameEffectConfig config = GetGameEffectConfig();
+				game.GameEffect.HandleEffect(config.Type);
+				break;
+			default:
+				Debug.LogError("Map item type not handled");
+				break;
 		}
-		else if(weaponConfig != null)
-		{
-			//Debug.Log("OnEnter weapon");
-			pPlayer.ItemController.AddMapWeapon(weaponConfig.Id);
-			PlaySound(ESound.Item_Weapon_Pickup);
-		}
-		else if(weaponSpecialConfig != null)
-		{
-			//Debug.Log("OnEnter weapon special");
-			pPlayer.ItemController.AddMapWeaponSpecial(weaponSpecialConfig.Id);
-			PlaySound(ESound.Item_Weapon_Pickup);
-		}
+		PlaySound(ESound.Item_Weapon_Pickup);
+
+		//if(powerUpConfig != null)
+		//{
+		//	//Debug.Log("OnEnter powerup");
+		//	PowerupManager.HandlePowerup(powerUpConfig, pPlayer);
+		//}
+		//else if(weaponConfig != null)
+		//{
+		//	//Debug.Log("OnEnter weapon");
+		//	pPlayer.ItemController.AddMapWeapon(weaponConfig.Id);
+		//	PlaySound(ESound.Item_Weapon_Pickup);
+		//}
+		//else if(weaponSpecialConfig != null)
+		//{
+		//	//Debug.Log("OnEnter weapon special");
+		//	pPlayer.ItemController.AddMapWeaponSpecial(weaponSpecialConfig.Id);
+		//	PlaySound(ESound.Item_Weapon_Pickup);
+		//}
 		//TODO: special weapon + handle error
 
 		ReturnToPool();
@@ -167,9 +264,8 @@ public class MapItem : MapObject
 
 	protected override void OnReturnToPool2()
 	{
-		powerUpConfig = null;
-		weaponConfig = null;
-		weaponSpecialConfig = null;
+		type = EType.None;
+		subtypeIndex = -1;
 
 		game.Map.Items.OnDestroyItem(this);
 		base.OnReturnToPool2();

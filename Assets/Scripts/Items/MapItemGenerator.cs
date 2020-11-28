@@ -29,6 +29,9 @@ public class MapItemGenerator : GameBehaviour
 
 	private void StartGenerating()
 	{
+		if(DebugData.TestGenerateItems)
+			frequency = 2;
+
 		float time = Random.Range(frequency - 1, frequency + 1);
 		DoInTime(OnGenerateCountdownFinished, time);
 	}
@@ -45,7 +48,9 @@ public class MapItemGenerator : GameBehaviour
 	private void GenerateRandomItem()
 	{
 		EMapItem nextItemType = GetNextMapItemType();
-		if(DebugData.TestPowerUp != EPowerUp.None)
+		if(DebugData.TestGameEffect!= EGameEffect.None)
+			nextItemType = EMapItem.GameEffect;
+		else if(DebugData.TestPowerUp != EPowerUp.None)
 			nextItemType = EMapItem.PowerUp;
 		else if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
 			nextItemType = EMapItem.Weapon;
@@ -64,50 +69,64 @@ public class MapItemGenerator : GameBehaviour
 		Vector2 randomPosition = (Vector2)randomGenPos;
 		switch(nextItemType)
 		{
+			case EMapItem.GameEffect:
+				newItem.Init(randomPosition, MapItem.EType.GameEffect, randomIndex);
+
+				break;
+
 			case EMapItem.PowerUp:
 			case EMapItem.PowerUp2:
 			case EMapItem.PowerUp3:
-				PowerUpConfig powerUpConfig = brainiacs.ItemManager.PowerUps[randomIndex];
-				if(DebugData.TestPowerUp != EPowerUp.None)
-					powerUpConfig = brainiacs.ItemManager.PowerUps.Find(a => a.Type == DebugData.TestPowerUp);
+				//if(DebugData.TestPowerUp != EPowerUp.None)
+				//	randomIndex = (int)DebugData.TestPowerUp;
 
-				newItem.Init(randomPosition, powerUpConfig);
+				newItem.Init(randomPosition, MapItem.EType.PowerUp, randomIndex);
 				break;
 			case EMapItem.Weapon:
 			case EMapItem.Weapon2:
-				MapWeaponConfig weapon = brainiacs.ItemManager.MapWeapons[randomIndex];
-				newItem.Init(randomPosition, weapon);
+				newItem.Init(randomPosition, MapItem.EType.Weapon, randomIndex);
 				break;
 			case EMapItem.SpecialWeapon:
-				MapSpecialWeaponConfig specialWeapon = brainiacs.ItemManager.MapWeaponsSpecial[randomIndex];
-				newItem.Init(randomPosition, specialWeapon);
+				newItem.Init(randomPosition, MapItem.EType.SpecialWeapon, randomIndex);
 				break;
 		}
 	}
 
 	private int GetRandomItemIndex(EMapItem pType)
 	{
+		int i;
 		switch(pType)
 		{
+			case EMapItem.GameEffect:
+				if(DebugData.TestGameEffect != EGameEffect.None)
+					return (int)DebugData.TestGameEffect;
+
+				i = Random.Range(0, brainiacs.ItemManager.GameEffects.Count);
+				return (int)brainiacs.ItemManager.GameEffects[i].Type;
+
 			case EMapItem.PowerUp:
 			case EMapItem.PowerUp2:
 			case EMapItem.PowerUp3:
-				return Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
+				if(DebugData.TestPowerUp != EPowerUp.None)
+					return (int)DebugData.TestPowerUp;
+
+				i = Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
+				return (int)brainiacs.ItemManager.PowerUps[i].Type;
+
 			case EMapItem.Weapon:
 			case EMapItem.Weapon2:
 				if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
-				{
-					return brainiacs.ItemManager.MapWeapons
-						  .FindIndex(a => a.Id == DebugData.TestGenerateMapWeapon);
-				}
-				return Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
+					return (int)DebugData.TestGenerateMapWeapon;
+
+				i = Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
+				return (int)brainiacs.ItemManager.MapWeapons[i].Id;
+			
 			case EMapItem.SpecialWeapon:
 				if(DebugData.TestGenerateMapSpecialWeapon != EWeaponId.None)
-				{
-					return brainiacs.ItemManager.MapWeaponsSpecial
-						  .FindIndex(a => a.Id == DebugData.TestGenerateMapSpecialWeapon);
-				}
-				return Random.Range(0, brainiacs.ItemManager.MapWeaponsSpecial.Count);
+					return (int)DebugData.TestGenerateMapSpecialWeapon;
+
+				i = Random.Range(0, brainiacs.ItemManager.MapWeaponsSpecial.Count);
+				return (int)brainiacs.ItemManager.MapWeaponsSpecial[i].Id;
 		}
 		Debug.LogError("Invalid item type");
 		return -1;
@@ -134,7 +153,8 @@ public class MapItemGenerator : GameBehaviour
 		PowerUp3,
 		Weapon,
 		Weapon2,
-		SpecialWeapon
+		SpecialWeapon,
+		GameEffect
 	}
 
 	///// <summary>

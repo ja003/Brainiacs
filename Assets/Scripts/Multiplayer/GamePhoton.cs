@@ -9,6 +9,7 @@ public class GamePhoton : PhotonMessenger
 
 	protected override void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
 	{
+		//Debug.Log($"Game HandleMsg {pReceivedMsg}");
 		switch(pReceivedMsg)
 		{
 			case EPhotonMsg.Game_PlayerLoadedScene:
@@ -49,6 +50,17 @@ public class GamePhoton : PhotonMessenger
 
 				game.GameEnd.OnReceiveEndGame(gameResultInfo);
 				break;
+
+			case EPhotonMsg.Game_Lighting_SetMode:
+				bool night = (bool)pParams[0];
+				game.Lighting.SetMode(night);
+				break;
+
+			case EPhotonMsg.Game_HandleEffect:
+				EGameEffect effect = (EGameEffect)pParams[0];
+				game.GameEffect.HandleEffect(effect);
+				break;
+
 			default:
 				Debug.LogError("Message not handled");
 				break;
@@ -65,6 +77,7 @@ public class GamePhoton : PhotonMessenger
 				return !isMaster;
 			//only master send time 
 			case EPhotonMsg.Game_Ui_ShowTimeValue:
+			case EPhotonMsg.Game_Lighting_SetMode:
 				return isMaster;
 		}
 

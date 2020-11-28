@@ -5,75 +5,59 @@ using UnityEngine;
 
 public class MapItemPhoton : PoolObjectPhoton
 {
-    [SerializeField] MapItem item = null;
+	[SerializeField] MapItem item = null;
 
-    public override void OnReturnToPool()
-    {
-        //throw new System.NotImplementedException();
-    }
+	public override void OnReturnToPool()
+	{
+		//throw new System.NotImplementedException();
+	}
 
-    protected override bool CanSend2(EPhotonMsg pMsgType)
-    {
-        switch(pMsgType)
-        {
-            //master initiates
-            case EPhotonMsg.MapItem_InitMapSpecial:
-            case EPhotonMsg.MapItem_InitMapBasic:
-            case EPhotonMsg.MapItem_InitPowerUp:
-                return IsMine;
+	protected override bool CanSend2(EPhotonMsg pMsgType)
+	{
+		switch(pMsgType)
+		{
+			//master initiates
+			case EPhotonMsg.MapItem_Init:
+				return IsMine;
 
-            //explosion can be started on both sides
-            case EPhotonMsg.MapItem_DoExplosionEffect:
-                return true;
+			//explosion can be started on both sides
+			case EPhotonMsg.MapItem_DoExplosionEffect:
+				return true;
 
-            //only master can return items to pool (master owns all map items)
-            //case EPhotonMsg.MapItem_ReturnToPool:
-            //    return !view.IsMine;
-        }
+				//only master can return items to pool (master owns all map items)
+				//case EPhotonMsg.MapItem_ReturnToPool:
+				//    return !view.IsMine;
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
-    {
-        switch(pReceivedMsg)
-        {
-            case EPhotonMsg.MapItem_InitMapBasic:
-                Vector2 pos = (Vector2)pParams[0];
-                EWeaponId id = (EWeaponId)pParams[1];
+	protected override void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb)
+	{
+		switch(pReceivedMsg)
+		{
+			case EPhotonMsg.MapItem_Init:
+				Vector2 pos = (Vector2)pParams[0];
+				MapItem.EType type = (MapItem.EType)pParams[1];
+				int subtypeIndex = (int)pParams[2];
+				item.Init(pos, type, subtypeIndex);
+				break;
 
-                item.Init(pos, brainiacs.ItemManager.GetMapWeaponConfig(id));
-                break;
+			case EPhotonMsg.MapItem_DoExplosionEffect:
+				item.DoExplosionEffect(true);
+				break;
 
-            case EPhotonMsg.MapItem_InitMapSpecial:
-                pos = (Vector2)pParams[0];
-                id = (EWeaponId)pParams[1];
+			//case EPhotonMsg.MapItem_ReturnToPool:
+			//    item.ReturnToPool();
+			//    break;
 
-                item.Init(pos, brainiacs.ItemManager.GetMapSpecialWeaponConfig(id));
-                break;
+			default:
+				OnMsgUnhandled(pReceivedMsg);
+				break;
+		}
+	}
 
-            case EPhotonMsg.MapItem_InitPowerUp:
-                pos = (Vector2)pParams[0];
-                EPowerUp type = (EPowerUp)pParams[1];
-
-                item.Init(pos, brainiacs.ItemManager.GetPowerupConfig(type));
-                break;
-
-            case EPhotonMsg.MapItem_DoExplosionEffect:
-                item.DoExplosionEffect(true);
-                break;
-
-            //case EPhotonMsg.MapItem_ReturnToPool:
-            //    item.ReturnToPool();
-            //    break;
-
-            default:
-                OnMsgUnhandled(pReceivedMsg);
-                break;
-        }
-    }
-
-    protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
-    {
-    }
+	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	{
+	}
 }

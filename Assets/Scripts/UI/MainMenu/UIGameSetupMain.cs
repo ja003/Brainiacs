@@ -377,6 +377,10 @@ public class UIGameSetupMain : MainMenuController
 			return;
 		}
 
+		//todo: map info is not yet synced right after change. 
+		//sync it now, clients need map info
+		brainiacs.SyncGameInitInfo();
+
 		//no need to send msg => use photon scene loading
 		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
 		brainiacs.Scenes.LoadScene(EScene.Loading);

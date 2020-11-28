@@ -6,15 +6,12 @@ using UnityEngine.Serialization;
 
 public class ItemManager : BrainiacsController
 {
-	[SerializeField]
-	public List<MapWeaponConfig> MapWeapons;
+	[SerializeField] public List<MapWeaponConfig> MapWeapons;
 
-	[SerializeField]
-	public List<MapSpecialWeaponConfig> MapWeaponsSpecial;
+	[SerializeField] public List<MapSpecialWeaponConfig> MapWeaponsSpecial;
 
-
-	[SerializeField]
-	public List<PowerUpConfig> PowerUps;
+	[SerializeField] public List<PowerUpConfig> PowerUps;
+	[SerializeField] public List<GameEffectConfig> GameEffects;
 
 	private Dictionary<EWeaponId, WeaponConfig> allWeapons = 
 		new Dictionary<EWeaponId, WeaponConfig>();
@@ -79,6 +76,11 @@ public class ItemManager : BrainiacsController
 		return PowerUps.Find(a => a.Type == pPowerUp);
 	}
 
+	internal GameEffectConfig GetGameEffectConfig(EGameEffect pGameEffect)
+	{
+		return GameEffects.Find(a => a.Type == pGameEffect);
+	}
+
 	public MapSpecialWeaponConfig GetMapSpecialWeaponConfig(EWeaponId pId)
 	{
 		return MapWeaponsSpecial.Find(a => a.Id == pId);
@@ -87,8 +89,8 @@ public class ItemManager : BrainiacsController
 	public MapWeaponConfig GetMapWeaponConfig(EWeaponId pId)
 	{
 		MapWeaponConfig config = MapWeapons.Find(a => a.Id == pId);
-		//if(config == null) //not error?ge
-		//	Debug.LogError($"Config for weapon {pId} not found");
+		if(config == null) //not error
+			Debug.LogError($"Config for weapon {pId} not found");
 
 		return config;
 	}

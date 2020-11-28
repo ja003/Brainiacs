@@ -16,7 +16,11 @@ public class Scenes : MonoBehaviour
 	public void LoadScene(EScene pScene)
 	{
 		if(IsPhotonLoad(pScene))
-			PhotonNetwork.LoadLevel(GetSceneIndex(pScene));
+		{
+			//only master loads levels
+			if(PhotonNetwork.IsMasterClient)
+				PhotonNetwork.LoadLevel(GetSceneIndex(pScene));
+		}
 		else
 			SceneManager.LoadScene(GetSceneIndex(pScene));
 
@@ -24,6 +28,9 @@ public class Scenes : MonoBehaviour
 
 	private bool IsPhotonLoad(EScene pScene)
 	{
+		if(!Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+			return false;
+
 		switch(pScene)
 		{
 			case EScene.Init:

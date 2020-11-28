@@ -36,7 +36,7 @@ public class GameTimeController : GameController
 			return;
 		}
 
-		StartTime();
+		game.OnGameStarted += StartTime;
 	}
 
 	int timeLeft;
@@ -45,6 +45,7 @@ public class GameTimeController : GameController
 
 	private void StartTime()
 	{
+		Debug.Log("StartTime");
 		if(mode == EGameMode.Time)
 		{
 			timeLeft = brainiacs.GameInitInfo.GameModeValue * 60;

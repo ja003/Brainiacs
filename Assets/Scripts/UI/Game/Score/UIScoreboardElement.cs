@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// Player score UI.
 /// Changes on mine player stats change and sends data to others
 /// </summary>
-public class UIScoreboardElement : BrainiacsBehaviour
+public class UIScoreboardElement : GameBehaviour
 {
 	[SerializeField] private TextMeshProUGUI playerName = null;
 	[SerializeField] private Text kills = null;
@@ -41,6 +41,7 @@ public class UIScoreboardElement : BrainiacsBehaviour
 		}
 
 		pPlayer.Visual.Scoreboard = this;
+		game.Lighting.RegisterForLighting(background);
 	}
 
 	private void OnStatsChanged(PlayerStats pStats)

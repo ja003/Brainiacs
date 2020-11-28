@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public static class Utils
 {
@@ -42,6 +43,16 @@ public static class Utils
 
 		Debug.LogError("Incorrect angle calculation for " + pDirection);
 		return EDirection.None;
+	}
+
+	internal static void SetAlpha(Image pImage, float pValue)
+	{
+		pImage.color = new Color(
+			pImage.color.r,
+			pImage.color.g,
+			pImage.color.b,
+			pValue
+			);
 	}
 
 	internal static bool IsWithinScreeen(Vector3 pPosition)

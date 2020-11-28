@@ -51,6 +51,10 @@ public class PlayerManager : GameController
 			//Debug.Log("Spawn players SP");
 			game.Map.SetOnActivated(() =>
 					SpawnPlayers(brainiacs.GameInitInfo.Players));
+
+			//test delayed add players
+			//game.Map.SetOnActivated(() =>
+			//		DoInTime(() => SpawnPlayers(brainiacs.GameInitInfo.Players), 2));
 		}
 	}
 

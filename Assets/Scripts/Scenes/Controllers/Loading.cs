@@ -90,7 +90,7 @@ public class Loading : BrainiacsBehaviour
 
 	private void StartGame()
 	{
-		Debug.Log("StartGame");
+		Debug.Log("Loading_StartGame");
 
 		//Game.Instance.Activate();
 		Brainiacs.Instance.Scenes.LoadScene(EScene.Game);

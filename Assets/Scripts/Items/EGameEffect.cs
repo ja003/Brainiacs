@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum EPowerUp
+public enum EGameEffect
 {
 	None,
-	Health,
-	Ammo,
-	Speed,
-	Mystery,
-	Shield,
+	Night
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 public static class DebugData
 {
-	private static bool release = false;
+	private static bool release = true;
 
 	public static bool TestRemote = false && !release;
 	public static bool TestMP = false && !release;
@@ -28,13 +28,14 @@ public static class DebugData
 	public static EPlayerEffect TestPlayerEffect = release ? EPlayerEffect.None : EPlayerEffect.None;
 
 	//GAME
-	private static int playerCount = 4;
-	public static EMap TestMap = release ?  EMap.None : EMap.Steampunk;
+	private static int playerCount = 1;
+	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 5;
-	public static bool TestGenerateItems = true && !release;
+	public static bool TestGenerateItems = true;// && !release;
 	public static bool StopGenerateItems = false && !release;
 	//test generate items have priority: powerup, wepon, specialweapon
-	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.Shield;
+	public static EGameEffect TestGameEffect = release ? EGameEffect.Night : EGameEffect.Night;
+	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.Health;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.Flamethrower;
 

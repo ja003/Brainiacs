@@ -21,11 +21,17 @@ public class UIPlayerStatusManager : GameBehaviour
 	}
 
 	/// <summary>
-	/// Insatntiates the status at given position and sets the info (sprite, text).
+	/// Insantiates the status at given position and sets the info (sprite, text).
 	/// For now only used for player.
 	/// </summary>
 	public void ShowMapItem(Vector2 pWorldPosition, MapItemInfo pInfo)
 	{
+		if(pInfo.StatusSprite == null)
+		{
+			Debug.Log($"Map item has no status defined");
+			return;
+		}
+
 		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.StatusSprite);
 	}
 

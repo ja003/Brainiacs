@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.UI;
 
 public class LightingController : GameBehaviour
 {
@@ -15,19 +17,23 @@ public class LightingController : GameBehaviour
 	private const float PLAYER_LIGHT_RADIUS_NIGHT = 2.5f;
 	private const float PLAYER_LIGHT_RADIUS_DAY = 1.5f;
 
-	[SerializeField] Light2D globalLight;
+	[SerializeField] public Light2D GlobalLight;
 
 	public bool IsNight;
 
 	//time when night should end.
 	//the value is updated with each SetNight call.
 	//night cant end sooner that this time.
+	//Value is updated only on master, clients dont handle lighting.
 	float endNightTime;
+
+	private void Awake()
+	{
+		UpdateLights(1);
+	}
 
 	public void SetNight(float pDuration)
 	{
-		Debug.LogError("TODO: MP msg");
-
 		endNightTime = Time.time + pDuration;
 		if(!IsNight)
 			SetMode(true);
@@ -36,6 +42,8 @@ public class LightingController : GameBehaviour
 
 	public void SetMode(bool pNight)
 	{
+		Debug.Log("SetMode " + pNight);
+
 		if(!pNight && Time.time < endNightTime - 0.1f)
 		{
 			Debug.Log($"Dont turn back to day. {Time.time} < {endNightTime}");
@@ -43,7 +51,10 @@ public class LightingController : GameBehaviour
 		}
 
 		IsNight = pNight;
+		LeanTween.cancel(gameObject);
 		DoInTime(null, DAY_MODE_TRANSITION_DURATION, false, UpdateLights);
+
+		game.Photon.Send(EPhotonMsg.Game_Lighting_SetMode, pNight);
 	}
 
 	/// <summary>
@@ -53,15 +64,29 @@ public class LightingController : GameBehaviour
 	private void UpdateLights(float pProgress)
 	{
 		float t = IsNight ? pProgress : 1 - pProgress;
-		float intensity = Mathf.Lerp(GLOBAL_LIGHT_INTENSITY_DAY, GLOBAL_LIGHT_INTENSITY_NIGHT, t);
-		globalLight.intensity = intensity;
 
-		intensity = Mathf.Lerp(PLAYER_LIGHT_INTENSITY_DAY, PLAYER_LIGHT_INTENSITY_NIGHT, t);
+		float globalIntensity = Mathf.Lerp(GLOBAL_LIGHT_INTENSITY_DAY, GLOBAL_LIGHT_INTENSITY_NIGHT, t);
+		GlobalLight.intensity = globalIntensity;
+
+		float playerIntensity = Mathf.Lerp(PLAYER_LIGHT_INTENSITY_DAY, PLAYER_LIGHT_INTENSITY_NIGHT, t);
 		foreach(Player player in game.PlayerManager.Players)
 		{
-			player.Visual.SetLightIntensity(intensity);
-			player.Visual.SetLightRadius(intensity);
+			player.Visual.SetLightIntensity(playerIntensity);
+			player.Visual.SetLightRadius(playerIntensity);
+		}
+
+		foreach(Tuple<Image, Color> affImage in affectedImages)
+		{
+			affImage.Item1.color = affImage.Item2 * globalIntensity;
+			Utils.SetAlpha(affImage.Item1, affImage.Item2.a);
 		}
 	}
 
+	List<Tuple<Image, Color>> affectedImages = new List<Tuple<Image, Color>>();
+
+
+	internal void RegisterForLighting(Image pImage)
+	{
+		affectedImages.Add(new Tuple<Image, Color>(pImage, pImage.color));
+	}
 }

@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class Game : CSingleton<Game>
 	[SerializeField] public PoolManager Pool;
 	[SerializeField] public UIInfoMessenger InfoMessenger;
 	[SerializeField] public LightingController Lighting;
+	[SerializeField] public GameEffectManager GameEffect;
 
 	[SerializeField] public GameAudioSource AudioSourcePrefab;
 
@@ -35,6 +37,8 @@ public class Game : CSingleton<Game>
 
 	protected override void Awake()
 	{
+		UnityEngine.Debug.Log("Game Awake");
+
 		brainiacs.SetOnAwaken(OnAwaken);
 
 		//Activate();
@@ -42,9 +46,16 @@ public class Game : CSingleton<Game>
 		base.Awake(); //always call base.event() at the end
 	}
 
+	protected override void OnDestroy()
+	{
+		UnityEngine.Debug.Log("Game OnDestroy");
+	}
+
 	private void OnAwaken()
 	{
-		mainCamera.enabled = false;
+		UnityEngine.Debug.Log("Game OnAwaken");
+
+		//mainCamera?.enabled = false;
 		//todo: deactivate players
 
 		if(isMultiplayer && !PhotonNetwork.IsMasterClient)
@@ -53,14 +64,16 @@ public class Game : CSingleton<Game>
 		}
 		Activate();
 
+
+		PlayerManager.OnAllPlayersAdded.AddAction(() => uiCurtain.SetFade(false, StartGame, debug_fastCurtain ? 0.1f : 1f));
 	}
 
-	[SerializeField] bool debug_forceCurtain = false; //debug: start from game scene
+	[SerializeField] bool debug_fastCurtain = false; //debug: start from game scene
 
 	public new void Activate()
 	{
 		//Debug.Log("Game Activate");
-		mainCamera.enabled = true;
+		//mainCamera.enabled = true;
 
 		//if(Brainiacs.SelfInitGame && !debug_forceCurtain)
 		//if(Time.time < 1 && !debug_forceCurtain) 
@@ -68,16 +81,18 @@ public class Game : CSingleton<Game>
 		//else
 		//	uiCurtain.SetFade(false, StartGame);
 
-		uiCurtain.SetFade(false, StartGame, debug_forceCurtain ? 1 : 0.1f);
+		//uiCurtain.SetFade(false, StartGame, debug_forceCurtain ? 1 : 0.1f);
 
 		base.Activate();
 	}
 
 	public bool GameStarted { get; private set; }
+	public Action OnGameStarted;
 	private void StartGame()
 	{
-		//UnityEngine.Debug.Log("StartGame " + Time.time);
+		UnityEngine.Debug.Log("StartGame " + Time.time);
 		GameStarted = true;
 		InfoMessenger.Show("Game started!");
+		OnGameStarted?.Invoke();
 	}
 }

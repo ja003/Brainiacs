@@ -9,6 +9,7 @@ public class UIPlayerInfoElement : UiBehaviour
 {
 	[SerializeField] private Image portrait = null;
 	[SerializeField] private Image weapon = null;
+	[SerializeField] private Image frame = null;
 	[SerializeField] private Text health = null;
 	[SerializeField] private Text ammo = null;
 
@@ -22,6 +23,9 @@ public class UIPlayerInfoElement : UiBehaviour
 
 		// Reloading
 		weapon.color = isRealoading ? Color.black : Color.white;
+		weapon.color *= game.Lighting.GlobalLight.intensity;
+		Utils.SetAlpha(weapon, 1);
+
 		if(isRealoading)
 		{
 			float reloadTimeLeft = (reloadTimeStarted + reloadTimeTotal) - Time.time;
@@ -36,12 +40,7 @@ public class UIPlayerInfoElement : UiBehaviour
 		//set weapon alpha based on cadency ready state
 		float rdyPercentage = GetCadencyReadyPercentage();
 		//Debug.Log($"{activeWeapon} rdy: {rdyPercentage*100}%");
-		weapon.color = new Color(
-			weapon.color.r,
-			weapon.color.g,
-			weapon.color.b,
-			rdyPercentage
-			);
+		Utils.SetAlpha(weapon, rdyPercentage);
 	}
 
 	private float GetCadencyReadyPercentage()
@@ -71,6 +70,11 @@ public class UIPlayerInfoElement : UiBehaviour
 			pPlayer.Stats.SetOnStatsChange(OnPlayerStatsChange);
 		}
 		pPlayer.Visual.PlayerInfo = this;
+
+		game.Lighting.RegisterForLighting(image);
+		game.Lighting.RegisterForLighting(portrait);
+		game.Lighting.RegisterForLighting(frame);
+		//game.Lighting.RegisterForLighting(weapon); //controlled in Update
 	}
 
 	private void OnPlayerStatsChange(PlayerStats pStats)

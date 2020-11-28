@@ -197,6 +197,10 @@ public enum EPhotonMsg
 
 	Game_Ui_ShowTimeValue,
 
+	Game_HandleEffect,
+
+	Game_Lighting_SetMode,
+
 	//Main menu
 	MainMenu_SyncGameInfo,
 	MainMenu_SyncPlayerInfo,
@@ -253,9 +257,11 @@ public enum EPhotonMsg
 
 
 	//Map items
-	MapItem_InitMapSpecial,
-	MapItem_InitMapBasic,
-	MapItem_InitPowerUp,
+	MapItem_Init,
+
+	//MapItem_InitMapSpecial,
+	//MapItem_InitMapBasic,
+	//MapItem_InitPowerUp,
 	MapItem_DoExplosionEffect,
 	//MapItem_ReturnToPool,
 
