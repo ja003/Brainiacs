@@ -1,0 +1,1004 @@
+fileFormatVersion: 2
+guid: 071e802d0143e8541bb1554625e269be
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5857071113741174442
+    second: special_nobel_spawn_0
+  - first:
+      213: 3013435352381662057
+    second: special_nobel_spawn_1
+  - first:
+      213: -7930783672999068221
+    second: special_nobel_spawn_2
+  - first:
+      213: -2824520885987706464
+    second: special_nobel_spawn_3
+  - first:
+      213: -3047066587432305703
+    second: special_nobel_spawn_4
+  - first:
+      213: -7024681066392485618
+    second: special_nobel_spawn_5
+  - first:
+      213: -3985540005435678660
+    second: special_nobel_spawn_6
+  - first:
+      213: 4719458596779341331
+    second: special_nobel_spawn_7
+  - first:
+      213: -1371069328427832466
+    second: special_nobel_spawn_8
+  - first:
+      213: 4818236460264291556
+    second: special_nobel_spawn_9
+  - first:
+      213: 955976705612417062
+    second: special_nobel_spawn_10
+  - first:
+      213: -2438693285284366790
+    second: special_nobel_spawn_11
+  - first:
+      213: -8721540998756932650
+    second: special_nobel_spawn_12
+  - first:
+      213: -6130498141236687705
+    second: special_nobel_spawn_13
+  - first:
+      213: 8967402566659251168
+    second: special_nobel_spawn_14
+  - first:
+      213: 1848437897696435477
+    second: special_nobel_spawn_15
+  - first:
+      213: -8294367820485506048
+    second: special_nobel_spawn_16
+  - first:
+      213: -1920641357058223463
+    second: special_nobel_spawn_17
+  - first:
+      213: 1646775196919101889
+    second: special_nobel_spawn_18
+  - first:
+      213: -1799789565194523737
+    second: special_nobel_spawn_19
+  - first:
+      213: 5507421820311778498
+    second: special_nobel_spawn_20
+  - first:
+      213: -5786221853251526829
+    second: special_nobel_spawn_21
+  - first:
+      213: -3877679442152596000
+    second: special_nobel_spawn_22
+  - first:
+      213: -1323244985529167818
+    second: special_nobel_spawn_23
+  - first:
+      213: 227725522467707720
+    second: special_nobel_spawn_24
+  - first:
+      213: 4557468757950705796
+    second: special_nobel_spawn_25
+  - first:
+      213: 4563953952784573953
+    second: special_nobel_spawn_26
+  - first:
+      213: -769937248358012025
+    second: special_nobel_spawn_27
+  - first:
+      213: -343048612469407955
+    second: special_nobel_spawn_28
+  - first:
+      213: 3117478341677606115
+    second: special_nobel_spawn_29
+  - first:
+      213: 2761954174973420649
+    second: special_nobel_spawn_30
+  - first:
+      213: -1561913536650250181
+    second: special_nobel_spawn_31
+  - first:
+      213: 8341611388882867883
+    second: special_nobel_spawn_32
+  - first:
+      213: -8837391881918927784
+    second: special_nobel_spawn_33
+  - first:
+      213: -8073252900817448901
+    second: special_nobel_spawn_34
+  - first:
+      213: 6740603207070256333
+    second: special_nobel_spawn_35
+  - first:
+      213: -5480268588659230642
+    second: special_nobel_spawn_36
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: special_nobel_spawn_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6597149aad087bea0800000000000000
+      internalID: -5857071113741174442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9632054bc7fd1d920800000000000000
+      internalID: 3013435352381662057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_2
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd3c6cb44230f190800000000000000
+      internalID: -7930783672999068221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_3
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9f70a18394dc8d0800000000000000
+      internalID: -2824520885987706464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_4
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dbb2213515a6b5d0800000000000000
+      internalID: -3047066587432305703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_5
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e018349d9c1538e90800000000000000
+      internalID: -7024681066392485618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_6
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30e5e93b7480b8c0800000000000000
+      internalID: -3985540005435678660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_7
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 404.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3163239c692ee7140800000000000000
+      internalID: 4719458596779341331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b20a4c5bbf8fce0800000000000000
+      internalID: -1371069328427832466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_9
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ec73e15880ddd240800000000000000
+      internalID: 4818236460264291556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_10
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 628839fafbf444d00800000000000000
+      internalID: 955976705612417062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_11
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36be76b065082ed0800000000000000
+      internalID: -2438693285284366790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_12
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d3661b9bacd6f680800000000000000
+      internalID: -8721540998756932650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_13
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac056bdb681ceaa0800000000000000
+      internalID: -6130498141236687705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_14
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb96af7f1d927c70800000000000000
+      internalID: 8967402566659251168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_15
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 303.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51dd0997978f6a910800000000000000
+      internalID: 1848437897696435477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00cc787a96c74ec80800000000000000
+      internalID: -8294367820485506048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_17
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992de9b9cd28855e0800000000000000
+      internalID: -1920641357058223463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_18
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9794d01558ad610800000000000000
+      internalID: 1646775196919101889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_19
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab20281decd507e0800000000000000
+      internalID: -1799789565194523737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_20
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c43beb47fa4e6c40800000000000000
+      internalID: 5507421820311778498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_21
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f175591e533bfa0800000000000000
+      internalID: -5786221853251526829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_22
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edd8a99717bf2ac0800000000000000
+      internalID: -3877679442152596000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_23
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 202.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63097be42b3e2ade0800000000000000
+      internalID: -1323244985529167818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b5af8f72b092300800000000000000
+      internalID: 227725522467707720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_25
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 480b79850b16f3f30800000000000000
+      internalID: 4557468757950705796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_26
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106e6fe60fb665f30800000000000000
+      internalID: 4563953952784573953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_27
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b6744e622a055f0800000000000000
+      internalID: -769937248358012025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_28
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ff111ca1f3d3bf0800000000000000
+      internalID: -343048612469407955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_29
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e4eaaed802834b20800000000000000
+      internalID: 3117478341677606115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_30
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964a23d40be645620800000000000000
+      internalID: 2761954174973420649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_31
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 101.8
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38761ee9e7f25ae0800000000000000
+      internalID: -1561913536650250181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.80000305
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba657b8cc5b53c370800000000000000
+      internalID: 8341611388882867883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_33
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0.80000305
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c2d49e7e64b5580800000000000000
+      internalID: -8837391881918927784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_34
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0.80000305
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3052e8b24b06ff80800000000000000
+      internalID: -8073252900817448901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_35
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0.80000305
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc084157ee6b8d50800000000000000
+      internalID: 6740603207070256333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_spawn_36
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0.80000305
+        width: 126.125
+        height: 101.2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e483c3b11cc22f3b0800000000000000
+      internalID: -5480268588659230642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

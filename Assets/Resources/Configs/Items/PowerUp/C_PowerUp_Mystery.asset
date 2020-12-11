@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c99156d64519ee47b691fae750cef79, type: 3}
+  m_Name: C_PowerUp_Mystery
+  m_EditorClassIdentifier: 
+  Type: 4
+  MapItemInfo:
+    MapSprite: {fileID: 21300000, guid: cc846ef0a7dc1824e8f47da71630511d, type: 3}
+    StatusSprite: {fileID: 21300000, guid: e5041c89269647345ad9077416427db3, type: 3}
+    StatusText: mystery

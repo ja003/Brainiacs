@@ -1,0 +1,1064 @@
+fileFormatVersion: 2
+guid: 442bace6f868b0c47bd4536a45c6e9b4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2884420419766493661
+    second: special_einstein_explosion_0
+  - first:
+      213: 6987288134873404956
+    second: special_einstein_explosion_1
+  - first:
+      213: 6651985692432176790
+    second: special_einstein_explosion_2
+  - first:
+      213: 2278897039635551373
+    second: special_einstein_explosion_3
+  - first:
+      213: -410699128740188124
+    second: special_einstein_explosion_4
+  - first:
+      213: 5746618131290769050
+    second: special_einstein_explosion_5
+  - first:
+      213: -3111889431953438982
+    second: special_einstein_explosion_6
+  - first:
+      213: -8149937801571688654
+    second: special_einstein_explosion_7
+  - first:
+      213: -6714993739252172666
+    second: special_einstein_explosion_8
+  - first:
+      213: 6339580084217929155
+    second: special_einstein_explosion_9
+  - first:
+      213: 3741013274670081392
+    second: special_einstein_explosion_10
+  - first:
+      213: 1956411463274306185
+    second: special_einstein_explosion_11
+  - first:
+      213: 8227963785207909777
+    second: special_einstein_explosion_12
+  - first:
+      213: -3984770104532711299
+    second: special_einstein_explosion_13
+  - first:
+      213: -3933940002452033602
+    second: special_einstein_explosion_14
+  - first:
+      213: -2886294324684043519
+    second: special_einstein_explosion_15
+  - first:
+      213: 8845883707424620439
+    second: special_einstein_explosion_16
+  - first:
+      213: -4767870963603674697
+    second: special_einstein_explosion_17
+  - first:
+      213: -215587187270934695
+    second: special_einstein_explosion_18
+  - first:
+      213: -7530951009237525546
+    second: special_einstein_explosion_19
+  - first:
+      213: 7170078788607734190
+    second: special_einstein_explosion_20
+  - first:
+      213: 4763807744439489073
+    second: special_einstein_explosion_21
+  - first:
+      213: -2229440953934064113
+    second: special_einstein_explosion_22
+  - first:
+      213: -6578081410483065210
+    second: special_einstein_explosion_23
+  - first:
+      213: 346975072265806049
+    second: special_einstein_explosion_24
+  - first:
+      213: 5468086911683338894
+    second: special_einstein_explosion_25
+  - first:
+      213: -3874341655873287646
+    second: special_einstein_explosion_26
+  - first:
+      213: 2789602932782215247
+    second: special_einstein_explosion_27
+  - first:
+      213: 999908989381324541
+    second: special_einstein_explosion_28
+  - first:
+      213: 4390739463590047379
+    second: special_einstein_explosion_29
+  - first:
+      213: -7324586194802240274
+    second: special_einstein_explosion_30
+  - first:
+      213: 8357818631238290771
+    second: special_einstein_explosion_31
+  - first:
+      213: 5981021860310468854
+    second: special_einstein_explosion_32
+  - first:
+      213: -8775228970820838595
+    second: special_einstein_explosion_33
+  - first:
+      213: -6230288791637822725
+    second: special_einstein_explosion_34
+  - first:
+      213: -5856434871494674025
+    second: special_einstein_explosion_35
+  - first:
+      213: -8827986807443803579
+    second: special_einstein_explosion_36
+  - first:
+      213: -8351496310772643075
+    second: special_einstein_explosion_37
+  - first:
+      213: 8953144809648388842
+    second: special_einstein_explosion_38
+  - first:
+      213: 4744202307265508291
+    second: special_einstein_explosion_39
+  - first:
+      213: 4270197998844073894
+    second: special_einstein_explosion_40
+  - first:
+      213: -3076608995153483716
+    second: special_einstein_explosion_41
+  - first:
+      213: -1566301660270751980
+    second: special_einstein_explosion_42
+  - first:
+      213: -7024960713990426653
+    second: special_einstein_explosion_43
+  - first:
+      213: -7306126493276345596
+    second: special_einstein_explosion_44
+  - first:
+      213: 6523210401998306036
+    second: special_einstein_explosion_45
+  - first:
+      213: -1288660975815853301
+    second: special_einstein_explosion_46
+  - first:
+      213: 7195971334079362095
+    second: special_einstein_explosion_47
+  - first:
+      213: 4042577157206488828
+    second: special_einstein_explosion_48
+  - first:
+      213: -2522560426367917385
+    second: special_einstein_explosion_49
+  - first:
+      213: -5347647201795672690
+    second: special_einstein_explosion_50
+  - first:
+      213: 3506969951395114672
+    second: special_einstein_explosion_51
+  - first:
+      213: -2644960158091519725
+    second: special_einstein_explosion_52
+  - first:
+      213: 1156783283618712458
+    second: special_einstein_explosion_53
+  - first:
+      213: 187991853852505534
+    second: special_einstein_explosion_54
+  - first:
+      213: 8600093140140520148
+    second: special_einstein_explosion_55
+  - first:
+      213: -3908365007729741917
+    second: special_einstein_explosion_56
+  - first:
+      213: -5471533510875174063
+    second: special_einstein_explosion_57
+  - first:
+      213: 5093753520986345838
+    second: special_einstein_explosion_58
+  - first:
+      213: -8623218528474500522
+    second: special_einstein_explosion_59
+  - first:
+      213: -6704235936837562987
+    second: special_einstein_explosion_60
+  - first:
+      213: -2981783391593215278
+    second: special_einstein_explosion_61
+  - first:
+      213: 1000350830271908170
+    second: special_einstein_explosion_62
+  - first:
+      213: 2201145302166573773
+    second: special_einstein_explosion_63
+  - first:
+      213: -5193828037650683776
+    second: special_einstein_explosion_64
+  - first:
+      213: -7327041572115667869
+    second: special_einstein_explosion_65
+  - first:
+      213: -1290231131782793901
+    second: special_einstein_explosion_66
+  - first:
+      213: 2918607327395478555
+    second: special_einstein_explosion_67
+  - first:
+      213: 5186331952483836900
+    second: special_einstein_explosion_68
+  - first:
+      213: -1497889106885294551
+    second: special_einstein_explosion_69
+  - first:
+      213: 4902484273123076408
+    second: special_einstein_explosion_70
+  - first:
+      213: 8718564850407487952
+    second: special_einstein_explosion_71
+  - first:
+      213: 7399076805063265282
+    second: special_einstein_explosion_72
+  - first:
+      213: 6401600968135458507
+    second: special_einstein_explosion_73
+  - first:
+      213: -2910804535826968472
+    second: special_einstein_explosion_74
+  - first:
+      213: -4623977176066661147
+    second: special_einstein_explosion_75
+  - first:
+      213: 6835856273901501240
+    second: special_einstein_explosion_76
+  - first:
+      213: -758892429095159074
+    second: special_einstein_explosion_77
+  - first:
+      213: 3446561498640514779
+    second: special_einstein_explosion_78
+  - first:
+      213: 4289370391071177858
+    second: special_einstein_explosion_79
+  - first:
+      213: 8396516536294848586
+    second: special_einstein_explosion_80
+  - first:
+      213: -3133635894905297217
+    second: special_einstein_explosion_81
+  - first:
+      213: 6441887964243243157
+    second: special_einstein_explosion_82
+  - first:
+      213: 8928487729426957621
+    second: special_einstein_explosion_83
+  - first:
+      213: -4734518000756870933
+    second: special_einstein_explosion_84
+  - first:
+      213: -5054938777355649450
+    second: special_einstein_explosion_85
+  - first:
+      213: -6714584155961955560
+    second: special_einstein_explosion_86
+  - first:
+      213: 5251586555184824730
+    second: special_einstein_explosion_87
+  - first:
+      213: -6746682861843078431
+    second: special_einstein_explosion_88
+  - first:
+      213: -6318583790327922909
+    second: special_einstein_explosion_89
+  - first:
+      213: 8410743619821509786
+    second: special_einstein_explosion_90
+  - first:
+      213: 1105763554769711348
+    second: special_einstein_explosion_91
+  - first:
+      213: 4359305239322875941
+    second: special_einstein_explosion_92
+  - first:
+      213: 4476986419344241235
+    second: special_einstein_explosion_93
+  - first:
+      213: 6321645976635544936
+    second: special_einstein_explosion_94
+  - first:
+      213: 3179196421136229516
+    second: special_einstein_explosion_95
+  - first:
+      213: 4615963520495848371
+    second: special_einstein_explosion_96
+  - first:
+      213: 2696187823221405169
+    second: special_einstein_explosion_97
+  - first:
+      213: -4338936633523157457
+    second: special_einstein_explosion_98
+  - first:
+      213: 2556853650434089824
+    second: special_einstein_explosion_99
+  - first:
+      213: 1802400712483430897
+    second: special_einstein_explosion_100
+  - first:
+      213: -688671785306641630
+    second: special_einstein_explosion_101
+  - first:
+      213: -7712587476196481189
+    second: special_einstein_explosion_102
+  - first:
+      213: -2900767604266138219
+    second: special_einstein_explosion_103
+  - first:
+      213: -5881782126417812880
+    second: special_einstein_explosion_104
+  - first:
+      213: 6416649889216129774
+    second: special_einstein_explosion_105
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: special_einstein_explosion_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae279c96f86cc794bb1692542f105a93
+      internalID: -2884420419766493661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_1
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1f31e1fe24f92a459bc57834e9a21a4
+      internalID: 6987288134873404956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_2
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7fa8778461beaa4681b2113fa44f210
+      internalID: 6651985692432176790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_3
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1525170d07dc045ad51b6e326fc2e4
+      internalID: 2278897039635551373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_4
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72fa0644e87a8f4ca130fcb9a54356f
+      internalID: -410699128740188124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_5
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c266c00443ced8c45a80b8e1e7c3b814
+      internalID: 5746618131290769050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_6
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0749220956fed459e96d6288694804
+      internalID: -3111889431953438982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_7
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 903.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ebfb76cd1bbc84f9e19cc912949f9c
+      internalID: -8149937801571688654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef042224ad016d41b23de73355bd405
+      internalID: -6714993739252172666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_9
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b19f2b3af1f6b24e9ff88979ea7abb8
+      internalID: 6339580084217929155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_10
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb5236ee4f0bc484bb4a0a917d628f93
+      internalID: 3741013274670081392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_11
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fc7af501620c64db6a311984e8c377
+      internalID: 1956411463274306185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_12
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6600192d390d041841dbfab810515f
+      internalID: 8227963785207909777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_13
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288951c7ce5ad5f43b00b2deeb8c2291
+      internalID: -3984770104532711299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_14
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b75dc61c3c8f24e97f14e90ac4ac17
+      internalID: -3933940002452033602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_15
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 602.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e4d3aec6fc671429b98faebd18b6fe
+      internalID: -2886294324684043519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4e17a971367c24ea58f7bf8e0c5eb2
+      internalID: 8845883707424620439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_17
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe7d78ba5c48f147a1444494e348889
+      internalID: -4767870963603674697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_18
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e069e051a49384db367f7ad9a11b17
+      internalID: -215587187270934695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_19
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc7047e0ccd6274dbc46d1f660c199b
+      internalID: -7530951009237525546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_20
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655f03129facbb24dbe24971c1aba86c
+      internalID: 7170078788607734190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_21
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99f50f55ea3da4e44aff8f4a084cc01f
+      internalID: 4763807744439489073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_22
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ce8aaf02166a24d9a26430dae0838d
+      internalID: -2229440953934064113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_23
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 301.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec9b6ef3a7ad09458ad70293af82b6c
+      internalID: -6578081410483065210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d9a9d0d1f9ad64f905bcfd724421e9
+      internalID: 346975072265806049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_25
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed583f9fc64342249ae77a1d222d4fbe
+      internalID: 5468086911683338894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_26
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2404939f18228994db02cc0493b242cc
+      internalID: -3874341655873287646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_27
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6106c63350b152439509fa730bd36e9
+      internalID: 2789602932782215247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_28
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3113dc44e79a70488a1570250296f6f
+      internalID: 999908989381324541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_einstein_explosion_29
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 0.75
+        width: 251.125
+        height: 301.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7fc1db68ae14e4e9862cf8892cf60c
+      internalID: 4390739463590047379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

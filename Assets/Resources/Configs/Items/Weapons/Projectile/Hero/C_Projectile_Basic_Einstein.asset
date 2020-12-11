@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1605c987f38da42a631bb53ff7f7a3, type: 3}
+  m_Name: C_Projectile_Basic_Einstein
+  m_EditorClassIdentifier: 
+  WeaponId: 203
+  Visual: {fileID: 4078532044920050858, guid: c3d8337d96f40b248b8368d88e324971, type: 3}
+  Damage: 5
+  Speed: 2
+  Dispersion: 0.5
+  PushForce: 0.5

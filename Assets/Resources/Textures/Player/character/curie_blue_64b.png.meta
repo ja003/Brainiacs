@@ -1,0 +1,3187 @@
+fileFormatVersion: 2
+guid: 50430effa7e0ace448a67e248cff6883
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6449675269073840430
+    second: curie_anim_blue_32b_0
+  - first:
+      213: -8786762391978900251
+    second: curie_anim_blue_32b_1
+  - first:
+      213: -3477162973118095011
+    second: curie_anim_blue_32b_2
+  - first:
+      213: 8426197179944123833
+    second: curie_anim_blue_32b_3
+  - first:
+      213: -4595638924549403912
+    second: curie_anim_blue_32b_4
+  - first:
+      213: 8383068970169077116
+    second: curie_anim_blue_32b_5
+  - first:
+      213: 2758185554104549307
+    second: curie_anim_blue_32b_6
+  - first:
+      213: -8933312412415365152
+    second: curie_anim_blue_32b_7
+  - first:
+      213: 2828942703368610743
+    second: curie_anim_blue_32b_8
+  - first:
+      213: -2211859039482170763
+    second: curie_anim_blue_32b_9
+  - first:
+      213: -8218358734932222051
+    second: curie_anim_blue_32b_10
+  - first:
+      213: -8664888331699266340
+    second: curie_anim_blue_32b_11
+  - first:
+      213: 3568621079847785203
+    second: curie_anim_blue_32b_12
+  - first:
+      213: 4529146739481415737
+    second: curie_anim_blue_32b_13
+  - first:
+      213: 7522639991200198925
+    second: curie_anim_blue_32b_14
+  - first:
+      213: -548866950496079053
+    second: curie_anim_blue_32b_15
+  - first:
+      213: 5397436105926417607
+    second: curie_anim_blue_32b_16
+  - first:
+      213: 7395274925994902730
+    second: curie_anim_blue_32b_17
+  - first:
+      213: -4889580253554250681
+    second: curie_anim_blue_32b_18
+  - first:
+      213: -6529154161967564423
+    second: curie_anim_blue_32b_19
+  - first:
+      213: 8134577626117987649
+    second: curie_anim_blue_32b_20
+  - first:
+      213: 4760367812201138207
+    second: curie_anim_blue_32b_21
+  - first:
+      213: -9142719254140725347
+    second: curie_anim_blue_32b_22
+  - first:
+      213: -3642409668413362753
+    second: curie_anim_blue_32b_23
+  - first:
+      213: -7158404447140592591
+    second: curie_anim_blue_32b_24
+  - first:
+      213: 5073480118691159891
+    second: curie_anim_blue_32b_25
+  - first:
+      213: 5348387689988997890
+    second: curie_anim_blue_32b_26
+  - first:
+      213: -8714390215504797130
+    second: curie_anim_blue_32b_27
+  - first:
+      213: 6417620512232512810
+    second: curie_anim_blue_32b_28
+  - first:
+      213: 4824361502834329084
+    second: curie_anim_blue_32b_29
+  - first:
+      213: 7051148528530192346
+    second: curie_anim_blue_32b_30
+  - first:
+      213: 4635519708310492425
+    second: curie_anim_blue_32b_31
+  - first:
+      213: 7003872975071502557
+    second: curie_anim_blue_32b_32
+  - first:
+      213: 628727905894066169
+    second: curie_anim_blue_32b_33
+  - first:
+      213: -7829667575247689660
+    second: curie_anim_blue_32b_34
+  - first:
+      213: 7156190088378593345
+    second: curie_anim_blue_32b_35
+  - first:
+      213: -1519931988462710726
+    second: curie_anim_blue_32b_36
+  - first:
+      213: 3164010940881765838
+    second: curie_anim_blue_32b_37
+  - first:
+      213: -8826710303533519784
+    second: curie_anim_blue_32b_38
+  - first:
+      213: -8832881789789784882
+    second: curie_anim_blue_32b_39
+  - first:
+      213: -4990627093571555083
+    second: curie_anim_blue_32b_40
+  - first:
+      213: -6439664799627240315
+    second: curie_anim_blue_32b_41
+  - first:
+      213: 4221191523303679551
+    second: curie_anim_blue_32b_42
+  - first:
+      213: 8536727126625781932
+    second: curie_anim_blue_32b_43
+  - first:
+      213: 4845916892390027403
+    second: curie_anim_blue_32b_44
+  - first:
+      213: 381225247435247563
+    second: curie_anim_blue_32b_45
+  - first:
+      213: 904252329415859347
+    second: curie_anim_blue_32b_46
+  - first:
+      213: -607082030231594521
+    second: curie_anim_blue_32b_47
+  - first:
+      213: -5601952780809922405
+    second: curie_anim_blue_32b_48
+  - first:
+      213: 4331212087043018095
+    second: curie_anim_blue_32b_49
+  - first:
+      213: 5657085977537870360
+    second: curie_anim_blue_32b_50
+  - first:
+      213: -2550572098268400645
+    second: curie_anim_blue_32b_51
+  - first:
+      213: 866245608879166357
+    second: curie_anim_blue_32b_52
+  - first:
+      213: 1755508640652418823
+    second: curie_anim_blue_32b_53
+  - first:
+      213: 4251014507358712348
+    second: curie_anim_blue_32b_54
+  - first:
+      213: -7695124081310560336
+    second: curie_anim_blue_32b_55
+  - first:
+      213: 5337702286581819278
+    second: curie_anim_blue_32b_56
+  - first:
+      213: 676935262857899936
+    second: curie_anim_blue_32b_57
+  - first:
+      213: -7595043570328882800
+    second: curie_anim_blue_32b_58
+  - first:
+      213: -792887989316877387
+    second: curie_anim_blue_32b_59
+  - first:
+      213: 8712143984873599708
+    second: curie_anim_blue_32b_60
+  - first:
+      213: 8666177103713477600
+    second: curie_anim_blue_32b_61
+  - first:
+      213: 3197976747195922019
+    second: curie_anim_blue_32b_62
+  - first:
+      213: 7815240054750584832
+    second: curie_anim_blue_32b_63
+  - first:
+      213: 709240104989434764
+    second: curie_anim_blue_32b_64
+  - first:
+      213: 5838296948305257695
+    second: curie_anim_blue_32b_65
+  - first:
+      213: 404423338570518556
+    second: curie_anim_blue_32b_66
+  - first:
+      213: 7762258689825295670
+    second: curie_anim_blue_32b_67
+  - first:
+      213: -6620932086751423278
+    second: curie_anim_blue_32b_68
+  - first:
+      213: 6686771263317915048
+    second: curie_anim_blue_32b_69
+  - first:
+      213: 8431603322775364386
+    second: curie_anim_blue_32b_70
+  - first:
+      213: -8254558620059449133
+    second: curie_anim_blue_32b_71
+  - first:
+      213: 5759131992552704061
+    second: curie_anim_blue_32b_72
+  - first:
+      213: -6927983638690997595
+    second: curie_anim_blue_32b_73
+  - first:
+      213: -9200303985758475579
+    second: curie_anim_blue_32b_74
+  - first:
+      213: 347175003370107641
+    second: curie_anim_blue_32b_75
+  - first:
+      213: -5431247515970031250
+    second: curie_anim_blue_32b_76
+  - first:
+      213: -4188396561619169467
+    second: curie_anim_blue_32b_77
+  - first:
+      213: -9137728516980278509
+    second: curie_anim_blue_32b_78
+  - first:
+      213: -8513993794957898370
+    second: curie_anim_blue_32b_79
+  - first:
+      213: 652413869336305800
+    second: curie_anim_blue_32b_80
+  - first:
+      213: 2916470801623830741
+    second: curie_anim_blue_32b_81
+  - first:
+      213: 8029295530922349683
+    second: curie_anim_blue_32b_82
+  - first:
+      213: 1028003715253241480
+    second: curie_anim_blue_32b_83
+  - first:
+      213: 3826728678248944488
+    second: curie_anim_blue_32b_84
+  - first:
+      213: -2678140492324023709
+    second: curie_anim_blue_32b_85
+  - first:
+      213: 5129252136891748008
+    second: curie_anim_blue_32b_86
+  - first:
+      213: 5998193762279182248
+    second: curie_anim_blue_32b_87
+  - first:
+      213: 3720758880292530152
+    second: curie_anim_blue_32b_88
+  - first:
+      213: -6082639881265831168
+    second: curie_anim_blue_32b_89
+  - first:
+      213: 387540797551137302
+    second: curie_anim_blue_32b_90
+  - first:
+      213: 5548057703858848747
+    second: curie_anim_blue_32b_91
+  - first:
+      213: 5817748762632437033
+    second: curie_anim_blue_32b_92
+  - first:
+      213: 8548095743879506735
+    second: curie_anim_blue_32b_93
+  - first:
+      213: -2346852877369283203
+    second: curie_anim_blue_32b_94
+  - first:
+      213: -6433110310962127029
+    second: curie_anim_blue_32b_95
+  - first:
+      213: 1843679573342843111
+    second: curie_anim_blue_32b_96
+  - first:
+      213: 848781399592963913
+    second: curie_anim_blue_32b_97
+  - first:
+      213: 7612554141692676282
+    second: curie_anim_blue_32b_98
+  - first:
+      213: 5627797503806760210
+    second: curie_anim_blue_32b_99
+  - first:
+      213: 3874728716173303687
+    second: curie_anim_blue_32b_100
+  - first:
+      213: 8099461375094776889
+    second: curie_anim_blue_32b_101
+  - first:
+      213: 5386317821232559107
+    second: curie_anim_blue_32b_102
+  - first:
+      213: -1461798211971579260
+    second: curie_anim_blue_32b_103
+  - first:
+      213: -4706290422426805717
+    second: curie_anim_blue_32b_104
+  - first:
+      213: 3603713096345042729
+    second: curie_anim_blue_32b_105
+  - first:
+      213: -6667186022583941306
+    second: curie_anim_blue_32b_106
+  - first:
+      213: -3914428569257988586
+    second: curie_anim_blue_32b_107
+  - first:
+      213: 7865843775241657548
+    second: curie_anim_blue_32b_108
+  - first:
+      213: 1501443685381017961
+    second: curie_anim_blue_32b_109
+  - first:
+      213: -2096466904011290945
+    second: curie_anim_blue_32b_110
+  - first:
+      213: -5150525637887917192
+    second: curie_anim_blue_32b_111
+  - first:
+      213: -7638245931859554158
+    second: curie_anim_blue_32b_112
+  - first:
+      213: 3300764775666038916
+    second: curie_anim_blue_32b_113
+  - first:
+      213: 3073974127064248522
+    second: curie_anim_blue_32b_114
+  - first:
+      213: 7053600991364621326
+    second: curie_anim_blue_32b_115
+  - first:
+      213: 556043763434176668
+    second: curie_anim_blue_32b_116
+  - first:
+      213: 397202039958520723
+    second: curie_anim_blue_32b_117
+  - first:
+      213: -7944142228361639646
+    second: curie_anim_blue_32b_118
+  - first:
+      213: -7204659025766869256
+    second: curie_anim_blue_32b_119
+  - first:
+      213: 8525773599256765442
+    second: curie_anim_blue_32b_120
+  - first:
+      213: 4704110834773736231
+    second: curie_anim_blue_32b_121
+  - first:
+      213: -4078464788684591912
+    second: curie_anim_blue_32b_122
+  - first:
+      213: -9058553320932117141
+    second: curie_anim_blue_32b_123
+  - first:
+      213: -2843481494338758160
+    second: curie_anim_blue_32b_124
+  - first:
+      213: 4381680613800906616
+    second: curie_anim_blue_32b_125
+  - first:
+      213: 4170902806167379785
+    second: curie_anim_blue_32b_126
+  - first:
+      213: -1310493817763981804
+    second: curie_anim_blue_32b_127
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 948ce74f378afdc44951d8f7d2a543dd
+      internalID: -6449675269073840430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1402c0d18582855448cb0af291658af9
+      internalID: -8786762391978900251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7dd5750bbdc0f742b5342dd37eb2ac3
+      internalID: -3477162973118095011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e6c0f305dd86c641954461d64015feb
+      internalID: 8426197179944123833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7614bf71c10d2a6439200b1c46783f3e
+      internalID: -4595638924549403912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_5
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa35b763ef589ca48be9e77b73212859
+      internalID: 8383068970169077116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_6
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624fa3226cd24fd4e9de0ae0bf1f5dd8
+      internalID: 2758185554104549307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f43a6d1418288c4fa91e69ee890bd0e
+      internalID: -8933312412415365152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_8
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c021120cadb0349b40ad240fa98ecd
+      internalID: 2828942703368610743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_9
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1594192a30243842bf687cca651f78a
+      internalID: -2211859039482170763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_10
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38be91ed725222b49a3b62b132ce6840
+      internalID: -8218358734932222051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_11
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa48f2278f737b49ac1bfe1e3404469
+      internalID: -8664888331699266340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_12
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 910.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b6c399e60ed7945821aa39bb67dd9b
+      internalID: 3568621079847785203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d4478ed18093f4ea4c5db87a546403
+      internalID: 4529146739481415737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c75b3e68f1256134d997aa8631d1fcd7
+      internalID: 7522639991200198925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_15
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c5940cdc993a04b9786277ed3876ff
+      internalID: -548866950496079053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_16
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6afa245202739e41ad8c9c42f710b7c
+      internalID: 5397436105926417607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_17
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5759d6e63ed6ee04381674a64cfd38af
+      internalID: 7395274925994902730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_18
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d98e07c7228adbf4691db98d5aafa239
+      internalID: -4889580253554250681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_19
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cced679dc871b54caf5a0f9ad6441d0
+      internalID: -6529154161967564423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_20
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef477c787d8796b4a8cd0217acb71ab4
+      internalID: 8134577626117987649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_21
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070187011b0968c44aab9641770c929c
+      internalID: 4760367812201138207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_22
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52706ae2911eb5547ab6c85891f16b95
+      internalID: -9142719254140725347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_23
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 723676fec5aa5ca47b0e28ef899f3d6c
+      internalID: -3642409668413362753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_24
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2b5224fabb3af49b47e3ab2efbeb19
+      internalID: -7158404447140592591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_25
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 809.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4604053dcc3f54c96adb7be9980b9d
+      internalID: 5073480118691159891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3f346087b099c418448fb7c0466948
+      internalID: 5348387689988997890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f4e9f4ce68b8c4a8cb538a8547a058
+      internalID: -8714390215504797130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_28
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db871f6942b8cc74995c0aa2b14efe09
+      internalID: 6417620512232512810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_29
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4329bdd808fbc4c8b266d352955648
+      internalID: 4824361502834329084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_30
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d296fb4690bf394fb31a37905fc6985
+      internalID: 7051148528530192346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_31
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c7f6d6612143f43b054eeee2909203
+      internalID: 4635519708310492425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_32
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 140adf6783d30d14c868cffaf74d852d
+      internalID: 7003872975071502557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_33
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f153159c95934145894fbe911e6528c
+      internalID: 628727905894066169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_34
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466f8774288723441b605a39c9159ff1
+      internalID: -7829667575247689660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_35
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77fdbddee0c8e664f9abb2c597aa1c86
+      internalID: 7156190088378593345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_36
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470f70638f1e50d48acd6e13ddea7782
+      internalID: -1519931988462710726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_37
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b89545b8a3b9a41b452cb80a80ba82
+      internalID: 3164010940881765838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_38
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 708.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014256222cb4bdd4da508ad532fbe383
+      internalID: -8826710303533519784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e12bd2cb8ed65664d839901c7e4fb046
+      internalID: -8832881789789784882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_40
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d81d3e85933acb438257519b3be92e4
+      internalID: -4990627093571555083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_41
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b9df164ca9caa46ae98bb7bf1c9391
+      internalID: -6439664799627240315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_42
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e841cbcf1541d54ba142ee7cfd3c95a
+      internalID: 4221191523303679551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_43
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f2947518f8375443bc7f1e25e13db3f
+      internalID: 8536727126625781932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_44
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e9c5b5b7adb824db8fdb138c657895
+      internalID: 4845916892390027403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_45
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5578f4b167d6a9c4e97de8897f831f9b
+      internalID: 381225247435247563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_46
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd21cae2b0ca9e429edb959e14a6ab8
+      internalID: 904252329415859347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_47
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f58e4a29a85d84eae2bd1072000e77
+      internalID: -607082030231594521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_48
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52a9d8b1c4e44f458a2f470047051c2
+      internalID: -5601952780809922405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_49
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcf3cace40bc0e45bd0a52a17dd54a8
+      internalID: 4331212087043018095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_50
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d7f2e0f5da19148b412eb5b8bb9a30
+      internalID: 5657085977537870360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_51
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 607.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f37e1bf72bf6ab46b7e5d6c6b4dae61
+      internalID: -2550572098268400645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c2e4b0291a9e546b7a16376be65b35
+      internalID: 866245608879166357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_53
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb888403d75e804882e472d34db9ab4
+      internalID: 1755508640652418823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_54
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8100eae8b46bd8f4082d621aed527e02
+      internalID: 4251014507358712348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_55
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12df8a65922613c448553c0b08c760f2
+      internalID: -7695124081310560336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_56
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3921c75cd9dbca14d99559d87def0933
+      internalID: 5337702286581819278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_57
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069fea327c1dd824f82c27f3558f655a
+      internalID: 676935262857899936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_58
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5626e63ae18e642960821c4cd4eee6
+      internalID: -7595043570328882800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_59
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a07ed84db1c074d80c74a2a85218d5
+      internalID: -792887989316877387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_60
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a64748272f76c349ba924623787d405
+      internalID: 8712143984873599708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_61
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0195c87fcf6e72a41828a4067447192b
+      internalID: 8666177103713477600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_62
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4d55743058e8848a1776380b28f097
+      internalID: 3197976747195922019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_63
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7fd9a61561c0145b36b9eb868f6217
+      internalID: 7815240054750584832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_64
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 506.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc3dfa375f284849be8610fe2d3a67d
+      internalID: 709240104989434764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17f27601c4dda74ca559261bb6e9ac3
+      internalID: 5838296948305257695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_66
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb7c9f670a85334499f387d78fd67b2
+      internalID: 404423338570518556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_67
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108494d457127c048a83a6e2ae965582
+      internalID: 7762258689825295670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_68
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91003e687b2b25a4fa64b60488ec775c
+      internalID: -6620932086751423278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_69
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d9448d6187fcf4ba765a85805d5010
+      internalID: 6686771263317915048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_70
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b1e39f8252d144c8c7971a41b1ab1a
+      internalID: 8431603322775364386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_71
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e64b2d11e13c44e88def07fe0e8df8
+      internalID: -8254558620059449133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_72
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04701341a2b49d840a201e938f4f6473
+      internalID: 5759131992552704061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_73
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a912a8f14b566848ac385608a1a9fe4
+      internalID: -6927983638690997595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_74
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362b5b20a07d2754c8d50109c78b26f4
+      internalID: -9200303985758475579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_75
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37b72bf9f0b71c4495cb38dd0e9c330
+      internalID: 347175003370107641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_76
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e61034776e99f64fbbc0ef5da5a41fe
+      internalID: -5431247515970031250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_77
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 405.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7be7a70ae6a7354baac5109c46917d7
+      internalID: -4188396561619169467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfdeb01b0058f546b9842a9d44f1027
+      internalID: -9137728516980278509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_79
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fab1ed8f2a1bd64eae3a1f1b0c0aa1e
+      internalID: -8513993794957898370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_80
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb6e9e976320bb24aa999887ae21140e
+      internalID: 652413869336305800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_81
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddd6ea401be3ed4f92baae69e76a4a0
+      internalID: 2916470801623830741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_82
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d4470bc75779a47a21157e24d9521b
+      internalID: 8029295530922349683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_83
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a239c00a34b3bc34cb03985c77415036
+      internalID: 1028003715253241480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_84
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb68722fd62aff4ca174e33876e09b1
+      internalID: 3826728678248944488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_85
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26b78733e01c3a43bb1a3ae48b77448
+      internalID: -2678140492324023709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_86
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8e7e0fc03b48640bdff11f268209e9
+      internalID: 5129252136891748008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_87
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f47c08e59ced0d44a78eb2964f5e812
+      internalID: 5998193762279182248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_88
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b34206b6f8755c4996dd8b79a5695e0
+      internalID: 3720758880292530152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_89
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf44b2695da12af45a6595d5c28ec702
+      internalID: -6082639881265831168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_90
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 304.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e002d18cc69e5b41927d6b1b9ce7dde
+      internalID: 387540797551137302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4504f186b7df4154bb5dc271a67c75da
+      internalID: 5548057703858848747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_92
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e7ea37ac4c451458a3d0188919dead
+      internalID: 5817748762632437033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_93
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf45d23649191fb4ab90b7202fe37792
+      internalID: 8548095743879506735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_94
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45778acb95138e2408065e1faebd2324
+      internalID: -2346852877369283203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_95
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d3d38d6e56bb26448219e2ed1c7d841
+      internalID: -6433110310962127029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_96
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad0d7d736ee70f41b6ef52a8fc32dd3
+      internalID: 1843679573342843111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_97
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b29c80ecb87e3f41b95d9f7101c845d
+      internalID: 848781399592963913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_98
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10308b91bda1b6146bb253159c65ae03
+      internalID: 7612554141692676282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_99
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0afed440dbac89a4bbe959289acf5c03
+      internalID: 5627797503806760210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_100
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01dbb0016bf280644929c0edbb1910ab
+      internalID: 3874728716173303687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_101
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d8481556be2dd4f9a4bf59d5fbacf9
+      internalID: 8099461375094776889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_102
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e47a714826e2845ae95cb42cd0d19a
+      internalID: 5386317821232559107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_103
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 203.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d672c8da16822b4284e0d5b339c6389
+      internalID: -1461798211971579260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f12c4a0b90eb94dad121a9dda74795
+      internalID: -4706290422426805717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_105
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c494ffa946775e46ae5f3ec5b772ffe
+      internalID: 3603713096345042729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_106
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4960a170cadd6468023aa385b5f987
+      internalID: -6667186022583941306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_107
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c3b93354380f8d44a0009489396a43e
+      internalID: -3914428569257988586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_108
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfaae2bffe5fa446b942ba341cfcca2
+      internalID: 7865843775241657548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_109
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ea38da319425d43bd63b75c6820cf1
+      internalID: 1501443685381017961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_110
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e1b99c5c613ea4c987d0416d66ab40
+      internalID: -2096466904011290945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_111
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed03ab41a9cce4468d9070244babb8e
+      internalID: -5150525637887917192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_112
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f92fda0de6b5747b7b23d651be66a3
+      internalID: -7638245931859554158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_113
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b120ff1a5da549f4982d57b8193ed238
+      internalID: 3300764775666038916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_114
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4e017f8e2fee8459d20b934a068c6a
+      internalID: 3073974127064248522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_115
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444475f4c4ca2a64e8dd710724c169e2
+      internalID: 7053600991364621326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_116
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 102.9
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3aa85e361368b44d9ccdc01e1a1d8d7
+      internalID: 556043763434176668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf16d1e3629b10644acfb7e9e3d108cd
+      internalID: 397202039958520723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_118
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 2
+        width: 150
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8c2274aa7513544b75e514c8de11f0
+      internalID: -7944142228361639646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_119
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94552bd211998ef4e8d03080ef2b68df
+      internalID: -7204659025766869256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_120
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a5305800759ae46a2bbc3602c48ffe
+      internalID: 8525773599256765442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_121
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed132872be5dd345bb1c192a4c08b78
+      internalID: 4704110834773736231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_122
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39821fd4f4705d54ba5c1b4e288011b8
+      internalID: -4078464788684591912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_123
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322240a35148bb1498983b0c114457d4
+      internalID: -9058553320932117141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_124
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ffab95ef96210940a08cea270135bf3
+      internalID: -2843481494338758160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_125
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26bdd85a366f52544824eba4f294e99b
+      internalID: 4381680613800906616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_126
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d5cab2cecd50c4eb3c46f44e433828
+      internalID: 4170902806167379785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curie_anim_blue_32b_127
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1.9000015
+        width: 150.07692
+        height: 100.1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c3bd0fedcfdf14fa66b58c97a81baa
+      internalID: -1310493817763981804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

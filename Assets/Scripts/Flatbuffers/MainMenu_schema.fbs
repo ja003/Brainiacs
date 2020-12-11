@@ -1,0 +1,27 @@
+// example save file
+
+// namespace CompanyNamespaceWhatever;
+
+// enum Color : byte { Red = 1, Green, Blue }
+
+// union WeaponClassesOrWhatever { Sword, Gun }
+
+table GameInitInfoS {
+  mode:int;
+  map:int;
+  gameModeValue:int;  
+  players:[PlayerInitInfoS];
+}
+
+table PlayerInitInfoS {
+  name:string;
+  number:int;
+  hero:int;
+  color:int;
+  playerType:int;
+  photonPlayerNumber:int;
+  isReady:bool;
+}
+
+//root_type GameDataWhatever;
+//file_identifier "WHAT"; => generates BufferHasIdentifier method

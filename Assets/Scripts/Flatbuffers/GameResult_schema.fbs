@@ -1,0 +1,13 @@
+
+table GameResultInfoS {
+  playTime:int; 
+  playerResults:[PlayerResultInfoS];
+}
+
+table PlayerResultInfoS {
+  number:int;
+  name:string;  
+  hero:int;
+  kills:int;
+  livesLeft:int;
+}

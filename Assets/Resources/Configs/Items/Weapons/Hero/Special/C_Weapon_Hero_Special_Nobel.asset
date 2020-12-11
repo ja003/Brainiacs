@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7a3eada3490e6469893d01b8d2e1be, type: 3}
+  m_Name: C_Weapon_Hero_Special_Nobel
+  m_EditorClassIdentifier: 
+  Id: 104
+  VisualInfo:
+    PlayerSpriteUp: {fileID: 2344501625228020717, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    PlayerSpriteRight: {fileID: 1333210991162891809, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    playerSpriteDown: {fileID: -3910691347657451504, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    PlayerSpriteLeft: {fileID: -1304705926075300605, guid: 6f093c853bda9b049a54f54c3706ce77,
+      type: 3}
+    DisableHandsUp: 0
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 0
+    InfoSprite: {fileID: 21300000, guid: 503f5177f6f382046820f83d511bc79a, type: 3}
+  SpecialWeaponInfo:
+    InHandInfo:
+      Ammo: 5
+      Magazines: 666
+      Cooldown: 10
+      Cadency: 1
+    Prefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887, type: 3}
