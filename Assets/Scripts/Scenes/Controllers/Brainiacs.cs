@@ -9,7 +9,7 @@ public class Brainiacs : CSingleton<Brainiacs>
 {
 	public static bool SelfInitGame = false;
 
-	public GameInitInfo GameInitInfo;// = new GameInitInfo();
+	public GameInitInfo GameInitInfo = new GameInitInfo();
 	public GameResultInfo GameResultInfo = new GameResultInfo();
 
 	[SerializeField] public Scenes Scenes;
@@ -26,9 +26,6 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 	protected override void Awake()
 	{
-
-		GameInitInfo = new GameInitInfo();
-
 		if(DebugData.TestPlayers)
 			DebugData.TestSetGameInitInfo();
 

@@ -15,7 +15,7 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 	// VARIABLES
 	//=========================================//
 
-	public static bool IsInstantiated { get; private set; }
+	public static bool IsInstantiated => _instance != null;
 	public static bool IsDestroyed { get; private set; }
 	private static T _instance;
 
@@ -76,7 +76,7 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 
 	protected virtual void OnDestroy()
 	{
-		IsInstantiated = false;
+		//IsInstantiated = false;
 		_instance = null;
 	}
 
@@ -119,7 +119,7 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 			_instance.gameObject.SetActive(true);
 			_instance.Init();
 
-			IsInstantiated = true;
+			//IsInstantiated = true;
 			IsDestroyed = false;
 
 			return;
@@ -162,7 +162,7 @@ public abstract class CSingleton<T> : BrainiacsBehaviour where T : CSingleton<T>
 			_instance = go.GetComponent<T>() ?? go.AddComponent<T>();
 		}
 		//NOTE: IsInstantiated has been moved here
-		IsInstantiated = true;
+		//IsInstantiated = true;
 
 		_instance.Init();
 	}

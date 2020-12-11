@@ -31,7 +31,7 @@ public static class DebugData
 	private static int playerCount = 1;
 	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
 	public static int TestGameValue = 5;
-	public static bool TestGenerateItems = true;// && !release;
+	public static bool TestGenerateItems = true && !release;
 	public static bool StopGenerateItems = false && !release;
 	//test generate items have priority: powerup, wepon, specialweapon
 	public static EGameEffect TestGameEffect = release ? EGameEffect.Night : EGameEffect.Night;

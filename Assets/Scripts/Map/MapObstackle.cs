@@ -11,7 +11,8 @@ public class MapObstackle : MapObject
 	private void OnDisable()
 	{
 		//we have to do unregister because of debug - when some map is already present in scene
-		game?.Map?.UnregisterObstackle(this);
+		if(Game.IsInstantiated)
+			game.Map.UnregisterObstackle(this);
 	}
 
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)

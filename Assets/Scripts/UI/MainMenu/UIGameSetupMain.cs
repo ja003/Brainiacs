@@ -186,8 +186,13 @@ public class UIGameSetupMain : MainMenuController
 		//DEBUG game mode
 		//gameModeToggleScore.isOn = true;
 		//OnGameModeToggled(true, EGameMode.Score);
-
+		
 		mapSwapper.Init(Utils.GetStrings(typeof(EMap)), OnMapChanged, 0);
+
+	}
+
+	protected override void OnMainControllerActivated()
+	{
 	}
 
 	/// MULTIPLAYER

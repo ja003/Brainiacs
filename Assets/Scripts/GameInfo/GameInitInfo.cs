@@ -21,12 +21,7 @@ public class GameInitInfo
 		set { mode = value; /*OnInfoChanged();*/ }
 	}
 
-	private EMap map;
-	public EMap Map
-	{
-		get { return map; }
-		set { map = value; /*OnInfoChanged();*/ }
-	}
+	public EMap Map { get; set; } = EMap.Steampunk;
 
 	private int gameModeValue;
 	public int GameModeValue
