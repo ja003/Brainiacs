@@ -33,7 +33,7 @@ public class SpecialNobelMinePhoton : PlayerWeaponSpecialPrefabPhoton
 		}
 	}
 
-	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	protected override void debug_SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
 		//throw new System.NotImplementedException();
 	}

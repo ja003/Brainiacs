@@ -44,19 +44,19 @@ public class Loading : BrainiacsBehaviour
 		switch(pIndex)
 		{
 			case 0:
-				SoundController.PlaySound(ESound.Loading_Beep_1, audioSource);
+				brainiacs.AudioManager.PlaySound(ESound.Loading_Beep_1, audioSource);
 				background.sprite = currentMapConfig.Loading1;
 				break;
 			case 1:
-				SoundController.PlaySound(ESound.Loading_Beep_2, audioSource);
+				brainiacs.AudioManager.PlaySound(ESound.Loading_Beep_2, audioSource);
 				background.sprite = currentMapConfig.Loading2;
 				break;
 			case 2:
-				SoundController.PlaySound(ESound.Loading_Beep_3, audioSource);
+				brainiacs.AudioManager.PlaySound(ESound.Loading_Beep_3, audioSource);
 				background.sprite = currentMapConfig.Loading3;
 				break;
 			case 3:
-				SoundController.PlaySound(ESound.Loading_Beep_4, audioSource);
+				brainiacs.AudioManager.PlaySound(ESound.Loading_Beep_4, audioSource);
 				background.sprite = currentMapConfig.Loading4;
 				break;
 		}

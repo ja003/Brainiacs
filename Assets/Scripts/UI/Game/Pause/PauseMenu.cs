@@ -116,8 +116,8 @@ public class PauseMenu : GameController
 		//Debug.Log("SetVolumeMusic " + pValue);
 		brainiacs.PlayerPrefs.VolumeMusic = pValue;
 
-		//audio source volume has to be set (music starts only once)		
-		brainiacs.AudioManager.AudioSourceMusic.volume = pValue;
+		//audio source volume has to be updated (music starts only once)		
+		brainiacs.AudioManager.UpdateAudioVolume(brainiacs.AudioManager.AudioSourceMusic, pValue);
 
 		sliderVolumeMusic.value = pValue;
 	}

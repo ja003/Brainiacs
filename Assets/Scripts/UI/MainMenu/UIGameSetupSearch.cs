@@ -34,6 +34,7 @@ public class UIGameSetupSearch : MainMenuController
 
 	protected override void OnSetActive(bool pValue)
 	{
+		txtStatus.text = "";
 		//Debug.LogError("comment before build");
 		//return; //debug
 

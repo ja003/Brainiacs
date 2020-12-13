@@ -13,6 +13,13 @@ public class MainMenuPhoton : PhotonMessenger
 
 	protected override bool CanSend(EPhotonMsg pMsgType)
 	{
+		switch(pMsgType)
+		{
+			case EPhotonMsg.MainMenu_SyncGameInfo:
+				//Debug.Log("CanSend sync = " + brainiacs.PhotonManager.IsMaster());
+				return brainiacs.PhotonManager.IsMaster();
+		}
+
 		return true;
 	}
 
@@ -47,10 +54,9 @@ public class MainMenuPhoton : PhotonMessenger
 	}
 
 
-	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	protected override void debug_SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
-		HandleMsg(pMsgType, pParams);
-
+		//HandleMsg(pMsgType, pParams);
 	}
 
 }

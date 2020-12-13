@@ -24,7 +24,7 @@ public class PlayerInput : PlayerBehaviour
 
 		if(game.GameEnd.GameEnded)
 			return;
-
+		
 		if(game.GameTime.IsPaused)
 			return;
 

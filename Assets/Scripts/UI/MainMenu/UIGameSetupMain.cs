@@ -45,14 +45,17 @@ public class UIGameSetupMain : MainMenuController
 	[SerializeField] Button btnCopyRoomName;
 	[SerializeField] TextMeshProUGUI txtRoomName;
 
-	[Header("DEBUG")]
-	[SerializeField] Button debug_btnSyncInfo = null;
+	[Header("OTHER")]
+	[SerializeField] TextMeshProUGUI txtGameType;
 
 	GameInitInfo gameInitInfo => brainiacs.GameInitInfo;
 
 
 	const int GAME_VALUE_MIN = 1;
 	const int GAME_VALUE_MAX = 10;
+
+	//there is at least 1 remote player defined
+	bool isSetAsMPGame;
 
 	protected override void Awake()
 	{
@@ -61,13 +64,12 @@ public class UIGameSetupMain : MainMenuController
 		btnReady.onClick.AddListener(OnBtnReady);
 		btnAllowJoin.onClick.AddListener(OnBtnAllowJoin);
 		btnCopyRoomName.onClick.AddListener(OnBtnCopyRoomName);
-		debug_btnSyncInfo.onClick.AddListener(OnBtnSyncInfo);
 		base.Awake();
 	}
 
 	private void Update()
 	{
-		btnAllowJoin.interactable = PhotonNetwork.IsConnectedAndReady && !isJoinAllowed;
+		btnAllowJoin.interactable = PhotonNetwork.IsConnectedAndReady && !isJoinAllowed && isSetAsMPGame;
 		btnReady.interactable = PhotonNetwork.IsConnectedAndReady;
 		btnPlay.interactable = isMultiplayer ? PhotonNetwork.IsConnectedAndReady : true;
 	}
@@ -97,7 +99,6 @@ public class UIGameSetupMain : MainMenuController
 		isMaster = pIsMaster;
 
 		btnAllowJoin.gameObject.SetActive(pIsMaster);
-		debug_btnSyncInfo.gameObject.SetActive(pIsMaster);
 		btnGroupAddPlayer.SetActive(pIsMaster);
 
 		gameModeToggleTime.interactable = pIsMaster;
@@ -116,7 +117,7 @@ public class UIGameSetupMain : MainMenuController
 		SetMenuMode(pIsMaster);
 		isJoinAllowed = false;
 
-		btnCopyRoomName.interactable = false;
+		btnCopyRoomName.gameObject.SetActive(false);
 		txtRoomName.text = "room_x";
 
 		//reset elements
@@ -154,6 +155,9 @@ public class UIGameSetupMain : MainMenuController
 			//	gameModeValueSwapper.SetNumberValue(
 			//		brainiacs.GameInitInfo.GameModeValue);
 			//}
+
+			if(!IsActive())
+				mainMenu.GameSetup.InfoMessenger.Show("WELCOME!");
 		}
 		base.SetActive(pValue);
 	}
@@ -186,7 +190,7 @@ public class UIGameSetupMain : MainMenuController
 		//DEBUG game mode
 		//gameModeToggleScore.isOn = true;
 		//OnGameModeToggled(true, EGameMode.Score);
-		
+
 		mapSwapper.Init(Utils.GetStrings(typeof(EMap)), OnMapChanged, 0);
 
 	}
@@ -207,7 +211,7 @@ public class UIGameSetupMain : MainMenuController
 			playersCount, OnRemotePlayerEnteredRoom);
 		btnGroupAddPlayer.SetActive(false);
 
-		btnCopyRoomName.interactable = true;
+		btnCopyRoomName.gameObject.SetActive(true);
 		txtRoomName.text = roomName;
 	}
 
@@ -217,7 +221,7 @@ public class UIGameSetupMain : MainMenuController
 		Debug.Log($"{txtRoomName.text} copied to clipboard");
 	}
 
-	private void OnBtnSyncInfo()
+	private void debug_OnBtnSyncInfo()
 	{
 		Debug.LogError("DEBUG sync");
 		brainiacs.SyncGameInitInfo();
@@ -247,12 +251,16 @@ public class UIGameSetupMain : MainMenuController
 		brainiacs.GameInitInfo.Map = (EMap)mapSwapper.CurrentIndex;
 		mapPreview.sprite = brainiacs.MapManager.
 			GetMapConfig(brainiacs.GameInitInfo.Map).MapPreview;
+
+		brainiacs.SyncGameInitInfo();
 	}
 
 	private void OnGameModeValueChanged()
 	{
 		gameInitInfo.GameModeValue = GAME_VALUE_MIN + gameModeValueSwapper.CurrentIndex;
 		Debug.Log("gameModeValue = " + gameInitInfo.GameModeValue);
+
+		brainiacs.SyncGameInitInfo();
 	}
 
 	private void OnDeathmatchToggled(bool pValue)
@@ -275,7 +283,9 @@ public class UIGameSetupMain : MainMenuController
 	{
 		if(!pValue)
 			return;
+
 		gameInitInfo.Mode = pGameMode;
+		brainiacs.SyncGameInitInfo();
 	}
 
 	//remote
@@ -285,7 +295,11 @@ public class UIGameSetupMain : MainMenuController
 		addedElement.Init(pPlayer);
 	}
 
-	//MASTER
+	/// <summary>
+	/// MASTER
+	/// Called on btnAddPlayer(AI/Local/Remote) click
+	/// </summary>
+	/// <param name="pType"></param>
 	private void AddPlayer(EPlayerType pType)
 	{
 		btnGroupAddPlayer.transform.parent = null;
@@ -353,6 +367,24 @@ public class UIGameSetupMain : MainMenuController
 			PlatformManager.IsMobile() && GetLocalPlayer() != null;
 
 		btnAddPlayerLocal.gameObject.SetActive(!alreadyHasLocalPlayer);
+
+		UpdateGameType();
+	}
+
+	private void UpdateGameType()
+	{
+		isSetAsMPGame = false;
+		foreach(var p in GetActivatedPlayers())
+		{
+			if(p.Info.PlayerType == EPlayerType.RemotePlayer)
+			{
+				isSetAsMPGame = true;
+				break;
+			}
+		}
+		txtGameType.text = isSetAsMPGame ? "MULTIPLAYER GAME" : "LOCAL GAME";
+		btnAllowJoin.gameObject.SetActive(isSetAsMPGame);
+		btnCopyRoomName.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
 	}
 
 	private void OnBtnReady()
@@ -367,24 +399,27 @@ public class UIGameSetupMain : MainMenuController
 	{
 		if(GetLocalPlayer() == null)
 		{
-			Debug.LogError("Cant start game with no local player");
+			mainMenu.GameSetup.InfoMessenger.Show(
+				"Cant start game with no local player", DebugInfoMsg.Error);
 			return;
 		}
 
 		if(gameInitInfo.Players.Count < 1)
 		{
-			Debug.LogError("Cant start game with no player");
+			mainMenu.GameSetup.InfoMessenger.Show(
+				"Cant start game with no player", DebugInfoMsg.Error);
 			return;
 		}
 		if(!ArePlayersReady())
 		{
-			Debug.LogError("Not all players are ready");
+			mainMenu.GameSetup.InfoMessenger.Show(
+				"Not all players are ready", DebugInfoMsg.Error);
 			return;
 		}
 
 		//todo: map info is not yet synced right after change. 
 		//sync it now, clients need map info
-		brainiacs.SyncGameInitInfo();
+		//brainiacs.SyncGameInitInfo(); //fixed?
 
 		//no need to send msg => use photon scene loading
 		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
@@ -407,7 +442,7 @@ public class UIGameSetupMain : MainMenuController
 		return players.Find(a => a.IsItMe);
 	}
 
-	private List<UIGameSetupPlayerEl> GetActivatedPlayers()
+	public List<UIGameSetupPlayerEl> GetActivatedPlayers()
 	{
 		return players.FindAll(a => a.gameObject.activeSelf);
 	}

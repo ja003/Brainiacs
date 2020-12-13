@@ -49,7 +49,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		{
 			//SetActive is called every frame => start audio loop only once
 			if(!audioSource.isPlaying)
-				SoundController.PlayWeaponUseSound(EWeaponId.Flamethrower, audioSource, true);
+				brainiacs.AudioManager.PlayWeaponUseSound(EWeaponId.Flamethrower, audioSource, true);
 		}
 		else
 		{

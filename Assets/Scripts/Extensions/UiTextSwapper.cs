@@ -91,9 +91,16 @@ public class UiTextSwapper : MonoBehaviour
 			return;
 		}
 
+		bool isChange = CurrentIndex != pIndex;
 		CurrentIndex = pIndex;
 		text.text = values[pIndex];
-		OnValueChanged?.Invoke();
+		if(isChange)
+			OnValueChanged?.Invoke();
+	}
+
+	public void SetNextValue()
+	{
+		SetValue(CurrentIndex + 1);
 	}
 
 	private void OnBtnPrevious()
@@ -103,7 +110,7 @@ public class UiTextSwapper : MonoBehaviour
 
 	private void OnBtnNext()
 	{
-		SetValue(CurrentIndex + 1);
+		SetNextValue();
 	}
 
 }

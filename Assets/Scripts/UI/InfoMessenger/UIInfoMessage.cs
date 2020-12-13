@@ -12,6 +12,9 @@ public class UIInfoMessage : UiBehaviour
 	private const float VISIBLE_ALPHA = 0.8f;
 	[SerializeField] Text msgText;
 
+	//pooling is implemented only in Game
+	public bool UsePooling = true;
+
 	private new void Awake()
 	{
 		SetAlpha(0);
@@ -30,7 +33,11 @@ public class UIInfoMessage : UiBehaviour
 
 	private void Hide()
 	{
-		SetAlpha(0, 0.1f, () => GetComponent<PoolObject>().ReturnToPool());
+		if(UsePooling)
+			SetAlpha(0, 0.1f, () => GetComponent<PoolObject>().ReturnToPool());
+		else
+			SetAlpha(0, 0.1f, () => Destroy(gameObject));
+
 	}
 
 	/// <summary>

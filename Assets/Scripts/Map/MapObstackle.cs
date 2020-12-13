@@ -30,7 +30,7 @@ public class MapObstackle : MapObject
 	/// </summary>
 	public void DoCollisionEffect(bool pIsRPC)
 	{
-		SoundController.PlaySound(ESound.Map_Obstackle_Hit, audioSource);
+		brainiacs.AudioManager.PlaySound(ESound.Map_Obstackle_Hit, audioSource);
 		if(!pIsRPC)
 			game.Map.Photon.Send(EPhotonMsg.Map_Obstackle_DoCollisionEffect, name.GetHashCode());
 	}

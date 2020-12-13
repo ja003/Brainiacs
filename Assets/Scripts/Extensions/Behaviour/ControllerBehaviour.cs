@@ -44,6 +44,11 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 
 	protected virtual void OnSetActive(bool pValue) { }
 
+	public bool IsActive()
+	{
+		return Holder.activeSelf;
+	}
+
 	bool onMainControllerAwakenCalled = false;
 	private void MainControllerAwaken()
 	{

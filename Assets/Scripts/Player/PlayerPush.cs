@@ -9,7 +9,6 @@ public class PlayerPush : PlayerBehaviour
 	{
 		if(!player.IsItMe)
 		{
-			Debug.LogError("TODO: sent MP msg");
 			player.Photon.Send(EPhotonMsg.Player_Push, pForce);
 			return;
 		}

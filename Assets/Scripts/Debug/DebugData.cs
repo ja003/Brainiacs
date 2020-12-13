@@ -8,7 +8,7 @@ using UnityEngine;
 
 public static class DebugData
 {
-	private static bool release = true;
+	public static bool release = true;
 
 	public static bool TestRemote = false && !release;
 	public static bool TestMP = false && !release;
@@ -29,12 +29,12 @@ public static class DebugData
 
 	//GAME
 	private static int playerCount = 1;
-	public static EMap TestMap = release ?  EMap.None : EMap.Wonderland;
+	public static EMap TestMap = release ?  EMap.None : EMap.Steampunk;
 	public static int TestGameValue = 5;
 	public static bool TestGenerateItems = true && !release;
 	public static bool StopGenerateItems = false && !release;
 	//test generate items have priority: powerup, wepon, specialweapon
-	public static EGameEffect TestGameEffect = release ? EGameEffect.Night : EGameEffect.Night;
+	public static EGameEffect TestGameEffect = release ? EGameEffect.None : EGameEffect.Night;
 	public static EPowerUp TestPowerUp = release ? EPowerUp.None : EPowerUp.Health;
 	public static EWeaponId TestGenerateMapWeapon = release ? EWeaponId.None : EWeaponId.None;
 	public static EWeaponId TestGenerateMapSpecialWeapon = release ? EWeaponId.None : EWeaponId.Flamethrower;
@@ -102,7 +102,7 @@ public static class DebugData
 		//player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
 		//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
 		//player.debug_StartupWeapon.Add(EWeaponId.MP40);
-		//player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
+		player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
 		//player.debug_StartupWeapon.Add(EWeaponId.Biogun);
 		//player.debug_StartupWeapon.Add(EWeaponId.Mine);
 		//player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);

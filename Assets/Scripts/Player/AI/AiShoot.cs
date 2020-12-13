@@ -63,10 +63,12 @@ public class AiShoot : AiGoalController
 
 	private float lastTimeSwapWeapon;
 
+	EWeaponId pickedWeapon;
+
 	public override void Evaluate()
 	{
 		//pick weapon
-		EWeaponId pickedWeapon = PickWeapon();
+		pickedWeapon = PickWeapon();
 
 		if(brain.IsTmp && pickedWeapon == EWeaponId.Special_Tesla)
 		{
@@ -133,6 +135,9 @@ public class AiShoot : AiGoalController
 	/// </summary>
 	public void OnReachedTarget()
 	{
+		//turn to targeted player (required to shoot)
+		if(targetedPlayer)
+			player.Movement.SetDirection(Utils.GetDirection(targetedPlayer.Position - player.Position));
 		//Debug.Log("OnReachedTarget");
 		EvaluateWeaponUsage();
 
@@ -193,10 +198,18 @@ public class AiShoot : AiGoalController
 
 	private bool IsLookingAtTarget()
 	{
+		switch(pickedWeapon)
+		{
+			//these weapons dont require player to be looking at the target
+			case EWeaponId.Special_Einstein:
+			case EWeaponId.Special_Nobel:
+			case EWeaponId.Mine:
+				return true;
+		}
+
 		Vector2 dirToTarget = targetedPlayer.Position - player.Position;
 		EDirection dir = Utils.GetDirection(dirToTarget);
 		return player.Movement.CurrentDirection == dir;
-
 	}
 
 

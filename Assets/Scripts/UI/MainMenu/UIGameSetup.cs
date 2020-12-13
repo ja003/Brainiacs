@@ -16,6 +16,7 @@ public class UIGameSetup : MainMenuBehaviour
 	[SerializeField] private UIGameSetupSearch setupSearch = null;
 	[SerializeField] public UIGameSetupMain SetupMain = null;
 
+	[SerializeField] public UIInfoMessenger InfoMessenger;
 
 	protected override void Awake()
 	{
@@ -28,7 +29,7 @@ public class UIGameSetup : MainMenuBehaviour
 		btnJoinSearchBack.onClick.AddListener(OnBtnJoinSearchBack);
 		btnBack.onClick.AddListener(mainMenu.OnBtnBack);
 
-		SoundController.PlayMusic(ESound.Music_Menu);
+		brainiacs.AudioManager.PlayMusic(ESound.Music_Menu);
 
 		base.Awake();
 	}

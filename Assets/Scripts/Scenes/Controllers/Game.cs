@@ -21,7 +21,7 @@ public class Game : CSingleton<Game>
 	[SerializeField] public UIGameTime UIGameTime;
 	[SerializeField] public PlayersResultManager Results;
 	[SerializeField] public PoolManager Pool;
-	[SerializeField] public UIInfoMessenger InfoMessenger;
+	[SerializeField] public UIInfoMessengerGame InfoMessenger;
 	[SerializeField] public LightingController Lighting;
 	[SerializeField] public GameEffectManager GameEffect;
 

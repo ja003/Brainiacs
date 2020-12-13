@@ -72,7 +72,7 @@ public abstract class PoolObjectPhoton : PhotonMessenger
 	protected abstract void HandleMsg2(EPhotonMsg pReceivedMsg, object[] pParams, ByteBuffer bb);
 
 
-	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	protected override void debug_SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
 
 	}

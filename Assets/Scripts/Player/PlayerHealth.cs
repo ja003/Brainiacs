@@ -85,7 +85,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	public void DoEliminateEffect()
 	{
 		Debug.Log($"Player {player} is OUT!");
-		SoundController.PlaySound(ESound.Player_Eliminate, null);
+		brainiacs.AudioManager.PlaySound(ESound.Player_Eliminate, null);
 		player.Photon.Send(EPhotonMsg.Player_DoEliminateEffect);
 		game.InfoMessenger.Show($"Player {player.InitInfo.Name} has been eliminated!");
 	}

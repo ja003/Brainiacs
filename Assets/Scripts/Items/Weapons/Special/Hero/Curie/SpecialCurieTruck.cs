@@ -113,7 +113,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		if(Photon.IsMine)
 			DoInTime(Shoot, cadency);
 
-		SoundController.PlaySound(ESound.Curie_Truck_Ride, audioSource, true);
+		brainiacs.AudioManager.PlaySound(ESound.Curie_Truck_Ride, audioSource, true);
 
 		spriteRend.sortingOrder = owner.Visual.GetProjectileSortOrder();
 
@@ -204,7 +204,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		rigidBody2D.bodyType = RigidbodyType2D.Static;
 
 		audioSource.Stop();
-		SoundController.PlaySound(ESound.Curie_Truck_Explode, audioSource, false);
+		brainiacs.AudioManager.PlaySound(ESound.Curie_Truck_Explode, audioSource, false);
 
 		Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, radius);
 

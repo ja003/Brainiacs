@@ -60,7 +60,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	}
 
 	/// <summary>
-	/// Each player has number as ID <1,4>
+	/// Each player has number has ID <1,4>
 	/// if pPhotonPlayer is null it will be determined in SetType
 	/// </summary>
 	public void Init(int pPlayerNumber, EPlayerType pPlayerType, PhotonPlayer pPhotonPlayer)
@@ -78,7 +78,13 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		SetName("player " + pPlayerNumber);
 
+		if(pPhotonPlayer == null)
+			SetReady(false);
+
 		SetType(pPlayerType);
+
+		//refresh keyset (needed when element is removed and added again)
+		OnKeySetChanged();
 
 		//if photon player is set then element is being
 		//initialized at client
@@ -169,7 +175,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 				Info.PhotonPlayer = PhotonNetwork.LocalPlayer;
 			}
 		}
-		
+
 		keySetSwapper.gameObject.SetActive(pPlayerType == EPlayerType.LocalPlayer);
 
 		playerTypeText.text = pPlayerType.ToString();
@@ -181,7 +187,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//master is always considered ready
 		//client ready state is set in Init
 		if(!isRemote)
-			SetReady(true); 
+			SetReady(true);
 	}
 
 
@@ -263,7 +269,29 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	private void OnKeySetChanged()
 	{
+		if(Info.PlayerType != EPlayerType.LocalPlayer)
+		{
+			Info.Keyset = EKeyset.None;
+			return;
+		}
+
 		Info.Keyset = (EKeyset)keySetSwapper.CurrentIndex;
+		var allPlayers = mainMenu.GameSetup.SetupMain.GetActivatedPlayers();
+
+		//check if selectet keyset is not used by another player
+		foreach(var p in allPlayers)
+		{
+			if(p.Info.Number == Info.Number)
+				continue;
+
+			//if it is used => set another
+			if(p.Info.Keyset == Info.Keyset)
+			{
+				keySetSwapper.SetNextValue();
+				return;
+			}
+		}
+
 		//SyncInfo();
 	}
 

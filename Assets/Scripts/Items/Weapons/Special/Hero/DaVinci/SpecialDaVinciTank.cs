@@ -103,7 +103,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 			return;
 		}
 
-		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
+		brainiacs.AudioManager.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 		Vector2 push = GetPush(collision.transform);
 		Debug.Log($"Hit {collision.gameObject.name}. {push}");
 		handler.OnCollision(damage, owner, gameObject, push);
@@ -117,7 +117,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	public bool OnCollision(int pDamage, Player pOwner, GameObject pOrigin, Vector2 pPush)
 	{
-		SoundController.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
+		brainiacs.AudioManager.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 
 		if(!owner.IsInitedAndMe)
 			return false;

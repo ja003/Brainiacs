@@ -8,14 +8,14 @@ public class PlayerPrefsController : GameBehaviour
 	private const string KEY_VOLUME_MUSIC = "VOLUME_MUSIC";
 	public float VolumeMusic
 	{
-		get { return PlayerPrefs.GetFloat(KEY_VOLUME_MUSIC, 1); }
+		get { return PlayerPrefs.GetFloat(KEY_VOLUME_MUSIC, .2f); }
 		set { PlayerPrefs.SetFloat(KEY_VOLUME_MUSIC, value); }
 	}
 
 	private const string KEY_VOLUME_SOUNDS = "VOLUME_SOUNDS";
 	public float VolumeSounds
 	{
-		get { return PlayerPrefs.GetFloat(KEY_VOLUME_SOUNDS, 1); }
+		get { return PlayerPrefs.GetFloat(KEY_VOLUME_SOUNDS, .2f); }
 		set { PlayerPrefs.SetFloat(KEY_VOLUME_SOUNDS, value); }
 	}
 

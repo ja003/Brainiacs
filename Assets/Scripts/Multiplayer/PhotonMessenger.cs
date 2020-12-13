@@ -123,9 +123,9 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 				Debug.Log("SendNotMP " + pMsgType);
 
 			if(debug_notMpMsgDelay > 0)
-				DoInTime(() => SendNotMP(pMsgType, pParams), debug_notMpMsgDelay);
+				DoInTime(() => debug_SendNotMP(pMsgType, pParams), debug_notMpMsgDelay);
 			else
-				SendNotMP(pMsgType, pParams);
+				debug_SendNotMP(pMsgType, pParams);
 		}
 	}
 
@@ -154,7 +154,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		return false;
 	}
 
-	protected abstract void SendNotMP(EPhotonMsg pMsgType, object[] pParams);
+	protected abstract void debug_SendNotMP(EPhotonMsg pMsgType, object[] pParams);
 
 	protected abstract bool CanSend(EPhotonMsg pMsgType);
 

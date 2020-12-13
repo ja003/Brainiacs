@@ -26,7 +26,7 @@ public class GameBehaviour : BrainiacsBehaviour
 			game.AudioSourcePrefab.gameObject).GetComponent<AudioSource>();
 
 		source.gameObject.SetActive(true);
-		SoundController.PlaySound(pKey, source, pIsLoop);
+		brainiacs.AudioManager.PlaySound(pKey, source, pIsLoop);
 	}
 
 }

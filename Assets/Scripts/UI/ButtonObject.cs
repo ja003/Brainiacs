@@ -14,16 +14,16 @@ public class ButtonObject : UiBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void OnClick()
     {
-        SoundController.PlaySound(ESound.Ui_Button_Click, null);
+        brainiacs.AudioManager.PlaySound(ESound.Ui_Button_Click, null);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        SoundController.PlaySound(ESound.Ui_Button_Hover, null);
+        brainiacs.AudioManager.PlaySound(ESound.Ui_Button_Hover, null);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        SoundController.PlaySound(ESound.Ui_Button_Hover, null);
+        brainiacs.AudioManager.PlaySound(ESound.Ui_Button_Hover, null);
     }
 }

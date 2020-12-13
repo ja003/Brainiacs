@@ -79,7 +79,7 @@ public class PlayerWeaponController : PlayerBehaviour
 
 	internal void PlayWeaponUseSound(EWeaponId pId)
 	{
-		SoundController.PlayWeaponUseSound(pId, player.AudioSource, false);
+		brainiacs.AudioManager.PlayWeaponUseSound(pId, player.AudioSource, false);
 		player.Photon.Send(EPhotonMsg.Player_PlayWeaponUseSound, (int)pId);
 	}
 

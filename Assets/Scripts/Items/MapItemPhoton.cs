@@ -57,7 +57,7 @@ public class MapItemPhoton : PoolObjectPhoton
 		}
 	}
 
-	protected override void SendNotMP(EPhotonMsg pMsgType, object[] pParams)
+	protected override void debug_SendNotMP(EPhotonMsg pMsgType, object[] pParams)
 	{
 	}
 }

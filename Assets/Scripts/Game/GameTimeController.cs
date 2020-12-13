@@ -21,7 +21,7 @@ public class GameTimeController : GameController
 		Time.timeScale = pIsPaused ? 0 : 1;
 		IsPaused = pIsPaused;
 		OnSetPause?.Invoke(IsPaused);
-		SoundController.OnSetPause(IsPaused);
+		brainiacs.AudioManager.OnSetPause(IsPaused);
 	}
 
 	protected override void OnMainControllerAwaken()
