@@ -39,7 +39,7 @@ public class Teleport : MapObstackle
 		return OutPosition ? OutPosition.position : transform.position;
 	}
 
-	protected override bool? OnCollision2(int pDamage, Player pOwner, GameObject pOrigin)
+	protected override bool? OnCollision2(int pDamage, Player pOwner, GameObject pOrigin, Vector2 pPush)
 	{
 		//if teleport collides with teleportable object, dont destroy it.
 		//it will be handled in TeleportTo method of individual objects
@@ -47,7 +47,7 @@ public class Teleport : MapObstackle
 		if(teleportableObject != null)
 			return false;
 
-		return base.OnCollision2(pDamage, pOwner, pOrigin);
+		return base.OnCollision2(pDamage, pOwner, pOrigin, pPush);
 	}
 
 	List<ITeleportable> teleportedObjects = new List<ITeleportable>();

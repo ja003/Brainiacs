@@ -41,7 +41,7 @@ public class SpecialFlamethrower : PlayerWeaponSpecial
 		//refresh direction
 		//reason: when flamethrower reloads while holding another weapon and player switches
 		//back to it, flame remembers only the last direction
-		OnDirectionChange(Owner.Movement.CurrentDirection);
+		OnDirectionChange(Owner.Movement.CurrentEDirection);
 	}
 
 	/// <summary>

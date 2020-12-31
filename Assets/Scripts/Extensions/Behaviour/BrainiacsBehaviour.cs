@@ -10,8 +10,9 @@ public class BrainiacsBehaviour : MonoBehaviour
 {
 	[DebuggerHidden]
 	protected Brainiacs brainiacs => Brainiacs.Instance;
+	protected CDebug debug => CDebug.Instance;
 
-	protected bool isMultiplayer => brainiacs.GameInitInfo != null && brainiacs.GameInitInfo.IsMultiplayer();
+	protected bool isMultiplayer => Brainiacs.IsInstantiated && brainiacs.GameInitInfo != null && brainiacs.GameInitInfo.IsMultiplayer();
 
 	private Renderer _rend;
 	protected Renderer rend

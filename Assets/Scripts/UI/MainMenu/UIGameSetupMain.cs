@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -57,6 +58,25 @@ public class UIGameSetupMain : MainMenuController
 	//there is at least 1 remote player defined
 	bool isSetAsMPGame;
 
+	internal void KickOtherPlayers()
+	{
+		if(!IsMaster)
+			return;
+
+		List<PhotonPlayer> players = GetActivatedPlayers().Select(i => i.Info.PhotonPlayer).ToList();
+		brainiacs.PhotonManager.KickPlayers(players, true);
+	}
+
+	internal void OnKickedOut()
+	{
+		Debug.Log("OnKickedOut " + IsMaster);
+		if(IsMaster)
+			return;
+
+		mainMenu.GameSetup.InfoMessenger.Show("The game was cancelled!");
+		DoInTime(mainMenu.GameSetup.OnSubMenuBtnBack, 2);
+	}
+
 	protected override void Awake()
 	{
 		btnBack.onClick.AddListener(mainMenu.GameSetup.OnSubMenuBtnBack);
@@ -76,7 +96,6 @@ public class UIGameSetupMain : MainMenuController
 
 	internal void SetGameInfo(GameInitInfo pGameInfo)
 	{
-
 		for(int i = 0; i < pGameInfo.Players.Count; i++)
 		{
 			PlayerInitInfo player = pGameInfo.Players[i];
@@ -90,13 +109,17 @@ public class UIGameSetupMain : MainMenuController
 		mapSwapper.SetValue((int)pGameInfo.Map);
 
 		gameModeValueSwapper.SetNumberValue(pGameInfo.GameModeValue);
+
+		//set just game values. 
+		//player info is determined from UI elements.
+		brainiacs.GameInitInfo.SetGameValues(pGameInfo); //needed to set map
 	}
 
-	bool isMaster;
+	public bool IsMaster;
 
 	private void SetMenuMode(bool pIsMaster)
 	{
-		isMaster = pIsMaster;
+		IsMaster = pIsMaster;
 
 		btnAllowJoin.gameObject.SetActive(pIsMaster);
 		btnGroupAddPlayer.SetActive(pIsMaster);
@@ -180,8 +203,8 @@ public class UIGameSetupMain : MainMenuController
 		gameModeValueSwapper.InitNumberSwapper(GAME_VALUE_MIN, GAME_VALUE_MAX, OnGameModeValueChanged);
 		gameModeToggleTime.onValueChanged.AddListener(OnTimeToggled);
 		//gameModeToggleTime.isOn = true;
-		if(DebugData.TestGameValue > 0)
-			gameModeValueSwapper.SetNumberValue(DebugData.TestGameValue); //debug
+		if(debug.GameValue > 0)
+			gameModeValueSwapper.SetNumberValue(debug.GameValue); //debug
 		OnTimeToggled(true);
 
 		gameModeToggleScore.onValueChanged.AddListener(OnScoreToggled);
@@ -207,8 +230,9 @@ public class UIGameSetupMain : MainMenuController
 		isJoinAllowed = true;
 		//todo: check if any remote + check max players
 		int playersCount = GetActivatedPlayers().Count;
-		string roomName = brainiacs.PhotonManager.CreateRoom(
-			playersCount, OnRemotePlayerEnteredRoom);
+		string roomName = brainiacs.PhotonManager.CreateRoom(playersCount, 
+			OnRemotePlayerEnteredRoom, OnRemotePlayerLeftRoom);
+
 		btnGroupAddPlayer.SetActive(false);
 
 		btnCopyRoomName.gameObject.SetActive(true);
@@ -229,13 +253,15 @@ public class UIGameSetupMain : MainMenuController
 
 	private void OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
 	{
-		Debug.Log("OnRemotePlayerEnteredRoom " + pPlayer);
 		List<UIGameSetupPlayerEl> availableRemotes = GetAvailableRemotePlayers();
 		if(availableRemotes.Count == 0)
 		{
 			Debug.LogError("No free remote element rdy. todo: kick out of room");
 			return;
 		}
+		
+		mainMenu.GameSetup.InfoMessenger.Show($"Player {pPlayer} has joined");
+
 		availableRemotes[0].OnRemoteConnected(pPlayer);
 
 		brainiacs.SyncGameInitInfo();
@@ -245,6 +271,19 @@ public class UIGameSetupMain : MainMenuController
 		//todo: send data just to this player?
 	}
 
+	private void OnRemotePlayerLeftRoom(PhotonPlayer pPlayer)
+	{
+		foreach(UIGameSetupPlayerEl playerEl in GetActivatedPlayers())
+		{
+			if(playerEl.Info.PhotonPlayer == pPlayer)
+			{
+				playerEl.OnRemoteDisconnected(pPlayer);
+				mainMenu.GameSetup.InfoMessenger.Show($"Player {pPlayer} has left");
+				return;
+			}
+		}
+		Debug.LogError($"Player {pPlayer} left room but was not found in active players");
+	}
 
 	private void OnMapChanged()
 	{
@@ -258,7 +297,7 @@ public class UIGameSetupMain : MainMenuController
 	private void OnGameModeValueChanged()
 	{
 		gameInitInfo.GameModeValue = GAME_VALUE_MIN + gameModeValueSwapper.CurrentIndex;
-		Debug.Log("gameModeValue = " + gameInitInfo.GameModeValue);
+		//Debug.Log("gameModeValue = " + gameInitInfo.GameModeValue);
 
 		brainiacs.SyncGameInitInfo();
 	}
@@ -270,7 +309,7 @@ public class UIGameSetupMain : MainMenuController
 
 	private void OnScoreToggled(bool pValue)
 	{
-		Debug.Log("OnScoreToggled " + pValue);
+		//Debug.Log("OnScoreToggled " + pValue);
 		OnGameModeToggled(pValue, EGameMode.Score);
 	}
 
@@ -302,7 +341,7 @@ public class UIGameSetupMain : MainMenuController
 	/// <param name="pType"></param>
 	private void AddPlayer(EPlayerType pType)
 	{
-		btnGroupAddPlayer.transform.parent = null;
+		btnGroupAddPlayer.transform.SetParent(null);
 
 		UIGameSetupPlayerEl addedElement = AddPlayerElement();
 		addedElement.Init(players.IndexOf(addedElement) + 1, pType, null);
@@ -310,7 +349,7 @@ public class UIGameSetupMain : MainMenuController
 
 		//todo: check player count (max 4?)
 		//keep btnAddPlayer at the end of the list
-		btnGroupAddPlayer.transform.parent = playersHolder;
+		btnGroupAddPlayer.transform.SetParent(playersHolder);
 
 		OnPlayersChanged();
 	}
@@ -318,7 +357,7 @@ public class UIGameSetupMain : MainMenuController
 
 	internal void UpdatePlayer(PlayerInitInfo pPlayerInfo)
 	{
-		GetPlayerEl(pPlayerInfo.Number).UpdateInfo(pPlayerInfo);
+		GetPlayerEl(pPlayerInfo.Number)?.UpdateInfo(pPlayerInfo);
 	}
 
 	private UIGameSetupPlayerEl GetPlayerEl(int pNumber)
@@ -420,6 +459,8 @@ public class UIGameSetupMain : MainMenuController
 		//todo: map info is not yet synced right after change. 
 		//sync it now, clients need map info
 		//brainiacs.SyncGameInitInfo(); //fixed?
+
+		Debug.Log(brainiacs.GameInitInfo);
 
 		//no need to send msg => use photon scene loading
 		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);

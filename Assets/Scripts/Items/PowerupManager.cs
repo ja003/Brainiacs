@@ -76,9 +76,9 @@ public static class PowerupManager
 
 		float random = Random.Range(0, chance_effect_half_damage);
 		//Debug.Log($"random = {random}");
-		if(DebugData.TestPlayerEffect != EPlayerEffect.None)
+		if(CDebug.Instance.PlayerEffect != EPlayerEffect.None)
 		{
-			switch(DebugData.TestPlayerEffect)
+			switch(CDebug.Instance.PlayerEffect)
 			{
 				case EPlayerEffect.None:
 					break;

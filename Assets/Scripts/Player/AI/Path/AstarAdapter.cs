@@ -24,8 +24,8 @@ public static class AstarAdapter
 	public static bool isInited;
 
 	public static Action OnInited;
-	
-	const bool debug_draw_grid = false;
+
+	static bool debug_draw_grid = false;
 
 	public static IEnumerator Init(float pStepSize, Vector2 pTopLeft, Vector2 pBotRight)
 	{

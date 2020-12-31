@@ -89,8 +89,8 @@ public class ItemManager : BrainiacsController
 	public MapWeaponConfig GetMapWeaponConfig(EWeaponId pId)
 	{
 		MapWeaponConfig config = MapWeapons.Find(a => a.Id == pId);
-		if(config == null) //not error
-			Debug.LogError($"Config for weapon {pId} not found");
+		//if(config == null) //not error
+		//	Debug.Log($"Config for weapon {pId} not found");
 
 		return config;
 	}

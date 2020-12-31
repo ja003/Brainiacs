@@ -25,9 +25,19 @@ public class PauseMenu : GameController
 	[SerializeField] GameObject holderEndGameConfirm;
 	[SerializeField] Button btnConfirmYes;
 	[SerializeField] Button btnConfirmNo;
+	[SerializeField] Toggle toggleAllowAllDir;
 
 
 	protected override void OnMainControllerAwaken() { }
+
+	protected override void OnSetActive(bool pValue)
+	{
+		game.GameTime.SetPause(pValue && !isMultiplayer);
+		header.text = $"Game {(game.GameTime.IsPaused ? "" : "not ")}paused";
+		holderEndGameConfirm.SetActive(false);
+
+		base.OnSetActive(pValue);
+	}
 
 	internal void Init()
 	{
@@ -35,6 +45,9 @@ public class PauseMenu : GameController
 		SetVolumeMusic(brainiacs.PlayerPrefs.VolumeMusic);
 
 		btnClose.onClick.AddListener(() => SetActive(false));
+
+		toggleAllowAllDir.onValueChanged.AddListener(OnAllowAllDirChanged);
+		toggleAllowAllDir.isOn = brainiacs.PlayerPrefs.AllowMoveAllDir;
 
 		//volume
 		sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
@@ -59,6 +72,11 @@ public class PauseMenu : GameController
 			btnConfirmYes.onClick.AddListener(OnLeaveGameConfirmYesClick);
 		}
 
+	}
+
+	private void OnAllowAllDirChanged(bool pValue)
+	{
+		brainiacs.PlayerPrefs.AllowMoveAllDir = pValue;
 	}
 
 	/// <summary>
@@ -130,13 +148,6 @@ public class PauseMenu : GameController
 		sliderVolumeSounds.value = pValue;
 	}
 
-	protected override void OnSetActive(bool pValue)
-	{
-		game.GameTime.SetPause(pValue && !isMultiplayer);
-		header.text = $"Game {(game.GameTime.IsPaused ? "" : "not ")}paused";
-
-		base.OnSetActive(pValue);
-	}
 
 	private void ResetSettings()
 	{

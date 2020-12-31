@@ -87,7 +87,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -214,7 +214,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -445,7 +445,6 @@ GameObject:
   - component: {fileID: 6192677351245105286}
   - component: {fileID: -4307642922166932028}
   - component: {fileID: 7017132246801282532}
-  - component: {fileID: 8188547109836730055}
   - component: {fileID: 7127104824793752955}
   m_Layer: 0
   m_Name: P_Brainiacs
@@ -591,19 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896084de81222764db854d1f96f5a462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8188547109836730055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7279955334952776627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df43d2d53857abd4a87bd5653bd5f553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushForce: 15
 --- !u!114 &7127104824793752955
 MonoBehaviour:
   m_ObjectHideFlags: 0

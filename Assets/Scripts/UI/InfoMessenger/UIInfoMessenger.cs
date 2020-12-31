@@ -43,9 +43,8 @@ public class UIInfoMessenger : MonoBehaviour
 			return;
 		}
 
-		Debug.Log("Show " + pText);
+		//Debug.Log("Show " + pText);
 		UIInfoMessage msgInstance = InstantiateInfoMsg();
-			
 			
 		msgInstance.Show(pText, pDuration);
 	}
@@ -54,7 +53,7 @@ public class UIInfoMessenger : MonoBehaviour
 	{
 		UIInfoMessage uIInfoMessage = Instantiate(infoMessagePrefab.gameObject).GetComponent<UIInfoMessage>();
 		uIInfoMessage.UsePooling = false;
-		uIInfoMessage.transform.parent = transform;
+		uIInfoMessage.transform.SetParent(transform);
 		return uIInfoMessage;
 	}
 

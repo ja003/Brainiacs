@@ -49,7 +49,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 
 		//if direction is not specified, use players current direction
 		EDirection direction = pDirection == EDirection.None ?
-			pOwner.Movement.CurrentDirection : pDirection;
+			pOwner.Movement.CurrentEDirection : pDirection;
 
 		Vector2 projectileDirection = GetDirectionVector(direction, pConfig.Dispersion);
 		SetSpawn(projectileDirection, pConfig.WeaponId, direction);

@@ -33,6 +33,13 @@ public class PlayerPrefsController : GameBehaviour
 		set { PlayerPrefsX.SetVector2(KEY_MOVE_INPUT_POS, value); }
 	}
 
+	private const string KEY_ALLOW_MOVE_ALL_DIR = "KEY_ALLOW_MOVE_ALL_DIR";
+	public bool AllowMoveAllDir
+	{
+		get { return PlayerPrefsX.GetBool(KEY_ALLOW_MOVE_ALL_DIR); }
+		set { PlayerPrefsX.SetBool(KEY_ALLOW_MOVE_ALL_DIR, value); }
+	}
+
 	public PlayerKeys GetPlayerKeys(EKeyset pKeyset)
 	{
 		KeyCode up = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Up);

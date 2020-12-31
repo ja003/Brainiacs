@@ -10,9 +10,9 @@ public class UiResults : ResultsController
 
 	protected override void OnMainControllerAwaken()
 	{
-		if(DebugData.TestResult)
+		if(debug.Result)
 		{
-			DebugData.TestSetResults();
+			debug.SetResults();
 		}
 
 		SetResults();

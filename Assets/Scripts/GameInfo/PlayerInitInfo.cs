@@ -66,7 +66,8 @@ public class PlayerInitInfo
 		PlayerInitInfoS.AddColor(fbb, (int)Color);
 		PlayerInitInfoS.AddPlayerType(fbb, (int)PlayerType);
 		PlayerInitInfoS.AddIsReady(fbb, IsReady);
-		PlayerInitInfoS.AddPhotonPlayerNumber(fbb, PhotonPlayer.ActorNumber);
+		int actorNumber = PhotonPlayer != null ? PhotonPlayer.ActorNumber : -1;
+		PlayerInitInfoS.AddPhotonPlayerNumber(fbb, actorNumber);
 		Offset<PlayerInitInfoS> playerInfoOffset = PlayerInitInfoS.EndPlayerInitInfoS(fbb);
 		fbb.Finish(playerInfoOffset.Value);
 		byte[] result = fbb.SizedByteArray();
@@ -116,5 +117,10 @@ public class PlayerInitInfo
 			return false;
 
 		return PhotonPlayer == PhotonNetwork.LocalPlayer;
+	}
+
+	public override string ToString()
+	{
+		return $"{Name}, [{Number}], {Hero}, {Color}, {PlayerType}, {Keyset}";
 	}
 }

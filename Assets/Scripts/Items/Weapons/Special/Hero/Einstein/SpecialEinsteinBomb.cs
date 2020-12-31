@@ -62,7 +62,7 @@ public class SpecialEinsteinBomb : PlayerWeaponSpecialPrefab
 
 	internal void OnExplosionStateExit()
 	{
-		//transform.parent = weaponContoller.transform;
+		//transform.SetParent(weaponContoller.transform;
 		//explosion.SetEnabled(false);
 		if(Photon.IsMine)
 			ReturnToPool();

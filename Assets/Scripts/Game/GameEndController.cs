@@ -34,7 +34,7 @@ public class GameEndController : GameController
 		}
 	}
 
-	private void CheckEndGame(PlayerScoreInfo pResult)
+	public void CheckEndGame(PlayerScoreInfo pResult)
 	{
 		switch(mode)
 		{

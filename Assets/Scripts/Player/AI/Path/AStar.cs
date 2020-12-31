@@ -179,7 +179,7 @@ namespace AStarSharp
 				}
 				catch(OutOfMemoryException e)
 				{
-					UnityEngine.Debug.LogError("OutOfMemoryException!");
+					UnityEngine.Debug.LogError("OutOfMemoryException! " + e);
 				}
 				temp = temp.Parent;
 			} while(temp != start && temp != null);

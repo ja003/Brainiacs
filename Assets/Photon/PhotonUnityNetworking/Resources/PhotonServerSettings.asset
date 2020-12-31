@@ -33,7 +33,10 @@ MonoBehaviour:
   - DestroyRpc
   - DestroySpaceship
   - Fire
-  - HandleMsg
   - RespawnSpaceship
+  - HandleMsg
+  - RpcClearBuffer
+  - RpcNonServerOwnedTeleportFromServer
+  - RpcTeleport
   DisableAutoOpenWizard: 1
   ShowSettings: 0

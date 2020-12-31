@@ -17,7 +17,7 @@ public class PlayerItemController : PlayerBehaviour
 			AddWeapon(weapon);
 		}
 
-		if(DebugData.TestExtraPlayerItem)
+		if(debug.ExtraPlayerItem)
 		{
 			AddWeapon(EWeaponId.Flamethrower);
 			AddWeapon(EWeaponId.Special_Curie);

@@ -23,6 +23,12 @@ public static class Utils
 		return Vector3.zero;
 	}
 
+
+	internal static Vector3 GetVector3(Vector2 pDir)
+	{
+		return new Vector3(pDir.x, pDir.y, 0);
+	}
+
 	public static Vector2 GetVector2(EDirection pDirection)
 	{
 		Vector3 vec = GetVector3(pDirection);
@@ -31,6 +37,9 @@ public static class Utils
 
 	public static EDirection GetDirection(Vector2 pDirection)
 	{
+		if(pDirection.magnitude < 0.1f)
+			return EDirection.None;
+
 		float angle = Vector2.SignedAngle(Vector2.right, pDirection);
 		if(angle >= -45 && angle < 45)
 			return EDirection.Right;

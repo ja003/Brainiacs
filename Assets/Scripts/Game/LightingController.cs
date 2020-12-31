@@ -27,8 +27,9 @@ public class LightingController : GameBehaviour
 	//Value is updated only on master, clients dont handle lighting.
 	float endNightTime;
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		UpdateLights(1);
 	}
 

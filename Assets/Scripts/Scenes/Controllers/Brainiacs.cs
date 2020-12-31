@@ -26,16 +26,24 @@ public class Brainiacs : CSingleton<Brainiacs>
 
 	protected override void Awake()
 	{
-		if(DebugData.TestPlayers)
-			DebugData.TestSetGameInitInfo();
+		InstantiateSingleton();
+
+		//start from game => use debug data
+		if(Scenes.GetCurrentScene() == EScene.Game && Time.time < 1)
+			debug.SetGameInitInfo();
 
 
 		debugLogConsole.SetActive(!Application.isEditor);
+		CDebug.Instance.enabled = true; //force instantiation
 
-		DebugData.OnBrainiacsAwake();
 		base.Awake();
 	}
 
+	protected override void OnDestroy()
+	{
+		//Debug.Log("Brainiacs OnDestroy");
+		base.OnDestroy();
+	}
 
 
 	public void SetGameResultInfo(List<PlayerScoreInfo> pResults, int pTimePassed)

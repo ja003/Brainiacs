@@ -17,7 +17,7 @@ public class PlayerAiBrain : PlayerBehaviour
 	public AiShoot Shoot;
 	public AiEvade Evade;
 	public AiMapItem Item;
-	public AiDebug debug;
+	public new AiDebug debug;
 
 	//[SerializeField]
 	//[Range(0.1f, 1)]

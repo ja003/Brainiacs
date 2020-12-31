@@ -109,7 +109,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	private bool IsLogEnabled()
 	{
 		return false;
-		return player.InitInfo.PlayerType == EPlayerType.AI;
+		//return player.InitInfo.PlayerType == EPlayerType.AI;
 	}
 
 	public void UseWeapon()
@@ -135,7 +135,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	public void ShootProjectile(ProjectileWeaponInfo pProjectile)
 	{
 		game.ProjectileManager.SpawnProjectile(
-				GetProjectileStartPosition(movement.CurrentDirection),
+				GetProjectileStartPosition(movement.CurrentEDirection),
 				player, pProjectile.Projectile);
 
 		player.LocalImage?.WeaponController.ShootProjectile(pProjectile);
@@ -179,7 +179,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	/// </summary>
 	public Transform GetProjectileStart()
 	{
-		return GetProjectileStart(movement.CurrentDirection);
+		return GetProjectileStart(movement.CurrentEDirection);
 	}
 
 	public Transform GetProjectileStart(EDirection pDirection)

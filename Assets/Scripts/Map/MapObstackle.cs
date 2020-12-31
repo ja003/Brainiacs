@@ -15,6 +15,13 @@ public class MapObstackle : MapObject
 			game.Map.UnregisterObstackle(this);
 	}
 
+	protected override void OnDestroyed()
+	{
+		//todo: or should it be destroyable?
+		//if so => play destroy animation + implement health states visual
+		Debug.LogError("Obstackle shouldnt be destroyed");
+	}
+
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
 	{
 		//Debug.Log("todo: play collision sound, make effect...");

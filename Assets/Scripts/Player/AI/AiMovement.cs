@@ -299,7 +299,7 @@ public class AiMovement : AiController
 			//Debug.Log("");
 		}
 
-		if(directionToTarget != player.Movement.CurrentDirection && !CanChangeDirection())
+		if(directionToTarget != player.Movement.CurrentEDirection && !CanChangeDirection())
 		{
 			//Debug.Log("Cant change direction so soon after weapon use");
 			//player.Movement.Stop(); //causes lagging on a straight path
@@ -318,7 +318,7 @@ public class AiMovement : AiController
 		//if(dir.magnitude < dist)
 		if(IsCloseTo(pTarget))
 		{
-			direction = player.Movement.CurrentDirection;
+			direction = player.Movement.CurrentEDirection;
 		}
 		else if(Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
 		{

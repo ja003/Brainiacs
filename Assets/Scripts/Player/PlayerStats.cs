@@ -28,7 +28,7 @@ public class PlayerStats : PlayerBehaviour
 	public int Kills { get; private set; }
 
 	public bool IsShielded => StatsEffect.GetEffectValue(EPlayerEffect.Shield) > 0
-		|| (DebugData.TestShield 
+		|| (debug.Shield 
 		&& player.InitInfo.PlayerType == EPlayerType.LocalPlayer); //test only on me
 
 	public PlayerInitInfo Info => player.InitInfo;
@@ -118,7 +118,7 @@ public class PlayerStats : PlayerBehaviour
 		if(IsDead && !pRespawn)
 			return 0;
 
-		if(pIncrement < 0 && (IsShielded || DebugData.TestInvulnerability))
+		if(pIncrement < 0 && (IsShielded || debug.Invulnerability))
 		{
 			if(IsShielded)
 			{
@@ -172,7 +172,7 @@ public class PlayerStats : PlayerBehaviour
 					//Debug.Log(player + " Kills = " + Kills);
 					break;
 				case EPlayerStats.Health:
-					int newHealthValue = Mathf.Clamp(pValue, DebugData.TestImmortality ? 1 : 0, MAX_HEALTH);
+					int newHealthValue = Mathf.Clamp(pValue, debug.Immortality ? 1 : 0, MAX_HEALTH);
 					Health = newHealthValue;
 					break;
 				case EPlayerStats.Deaths:

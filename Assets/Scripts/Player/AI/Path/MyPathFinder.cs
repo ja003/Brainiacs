@@ -27,7 +27,7 @@ public static class MyPathFinder
 	{
 		//Debug.Log("GetPath");
 
-		const bool test_path = false;
+		bool test_path = false;
 		if(test_path)
 		{
 			pFrom = Vector2.zero;

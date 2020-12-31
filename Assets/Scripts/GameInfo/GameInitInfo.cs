@@ -33,7 +33,10 @@ public class GameInitInfo
 	//todo: implement readonly structure -> prevent Players.Add call from outside
 	public List<PlayerInitInfo> Players { get; }
 
-	public void AddPlayer(PlayerInitInfo pInfo)
+	/// <summary>
+	/// Add or update player info
+	/// </summary>
+	public void UpdatePlayer(PlayerInitInfo pInfo)
 	{
 		PlayerInitInfo existingPlayer = GetPlayer(pInfo.Number);
 		if(existingPlayer != null)
@@ -48,7 +51,13 @@ public class GameInitInfo
 
 	public override string ToString()
 	{
-		return $"InitInfo: P:{Players.Count}, M:{Mode},M:{Map},V:{GameModeValue}";
+		string playersTxt = "players: " + Environment.NewLine;
+		foreach(var player in Players)
+		{
+			playersTxt += player + Environment.NewLine;
+		}
+		return $"InitInfo: P:{Players.Count}, M:{Mode},M:{Map},V:{GameModeValue} " +
+			$"{Environment.NewLine} {playersTxt}";
 	}
 
 	//http://google.github.io/flatbuffers/flatbuffers_guide_tutorial.html
@@ -91,10 +100,20 @@ public class GameInitInfo
 			PlayerInitInfoS? playerS = pGameInfoS.Players(i);
 			if(playerS != null)
 			{
-				gameInfo.AddPlayer(PlayerInitInfo.Deserialize((PlayerInitInfoS)playerS));
+				gameInfo.UpdatePlayer(PlayerInitInfo.Deserialize((PlayerInitInfoS)playerS));
 			}
 		}
 		return gameInfo;
+	}
+
+	/// <summary>
+	/// Set game values but not the info about players
+	/// </summary>
+	internal void SetGameValues(GameInitInfo pGameInfo)
+	{
+		mode = pGameInfo.mode;
+		Map = pGameInfo.Map;
+		GameModeValue = pGameInfo.GameModeValue;
 	}
 
 	//internal void UpdatePlayer(UIGameSetupPlayerEl pPlayerUi)

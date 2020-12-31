@@ -20,7 +20,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		//Debug.Log(gameObject.name + " OnInit");
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), owner.Movement.PlayerCollider);
 
-		transform.parent = owner.WeaponController.transform;
+		transform.SetParent(owner.WeaponController.transform);
 		transform.localPosition = Vector2.zero;
 
 		owner.Visual.OnSortOrderChanged += UpdateSortOrder;

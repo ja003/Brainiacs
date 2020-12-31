@@ -21,7 +21,11 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	[SerializeField] Button btnRemove = null;
 
 	public PlayerInitInfo Info;
-	public bool IsItMe;
+	public bool IsItMe =>
+		(Info.PlayerType == EPlayerType.RemotePlayer ||
+		Info.PlayerType == EPlayerType.LocalPlayer)
+		&&
+		Info.PhotonPlayer == PhotonNetwork.LocalPlayer;
 
 	bool preInited;
 
@@ -68,15 +72,17 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		PreInit();
 		gameObject.SetActive(true);
 
-		brainiacs.GameInitInfo.AddPlayer(Info);
 
-		Info.PhotonPlayer = pPhotonPlayer;
 
 		Info.Number = pPlayerNumber;
 
 		AssignColor((EPlayerColor)pPlayerNumber);
 
-		SetName("player " + pPlayerNumber);
+		Info.PhotonPlayer = pPhotonPlayer;
+		//LocalPlayer.NickName is always set
+		string name = pPhotonPlayer == null ?
+			$"{PhotonNetwork.LocalPlayer.NickName}_{pPlayerNumber}" : pPhotonPlayer.NickName;
+		SetName($"{PhotonNetwork.LocalPlayer.NickName}_{pPlayerNumber}");
 
 		if(pPhotonPlayer == null)
 			SetReady(false);
@@ -91,10 +97,12 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		bool elementCreated = pPhotonPlayer == null;
 		//OnElementChanged(elementCreated);
 
-		if(DebugData.TestHero != EHero.None)
+		if(debug.Hero != EHero.None)
 		{
-			heroSwapper.SetValue((int)DebugData.TestHero);
+			heroSwapper.SetValue((int)debug.Hero);
 		}
+
+		brainiacs.GameInitInfo.UpdatePlayer(Info);
 	}
 
 	bool isClientInitializing;
@@ -113,12 +121,15 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		//this Init need to be called before any other changes
 		Init(pPlayer.Number, pPlayer.PlayerType, pPlayer.PhotonPlayer);
-		IsItMe = Info.PlayerType == EPlayerType.RemotePlayer &&
-			pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
+		//IsItMe = Info.PlayerType == EPlayerType.RemotePlayer &&
+		//	pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
 
+		portraitAnimator.enabled = false;
+
 		//if LocalPlayer (master) then at first is active for all clients, but disabled if it is not me
-		keySetSwapper.gameObject.SetActive(IsItMe);
+		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
+		//OnKeySetChanged();
 
 		if(Info.Color != pPlayer.Color)
 		{
@@ -159,7 +170,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		if(isRemote)
 		{
 			if(Info.PhotonPlayer == null)
-				playerNameText.text = "WAITING...";
+				SetName("WAITING...");
 		}
 		//todo: even AI needs to have assigned photon player?
 		else if(pPlayerType == EPlayerType.LocalPlayer ||
@@ -176,7 +187,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			}
 		}
 
-		keySetSwapper.gameObject.SetActive(pPlayerType == EPlayerType.LocalPlayer);
+		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
+
 
 		playerTypeText.text = pPlayerType.ToString();
 
@@ -247,17 +259,33 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	}
 
 
-	//bool remoteConnected;
-	//bool remoteReady;
+	/// <summary>
+	/// Called only on master
+	/// </summary>
 	public void OnRemoteConnected(PhotonPlayer pPlayer)
 	{
 		Info.PhotonPlayer = pPlayer;
 		//remoteConnected = true;
 		//remoteReady = true;
 		Debug.Log($"Remote player {pPlayer.UserId} connected");
-		playerNameText.text = pPlayer.NickName;
+		SetName(pPlayer.NickName);
 		portraitAnimator.enabled = false;
 		//OnElementChanged(true);
+		SyncInfo();
+	}
+
+	/// <summary>
+	/// Called only on master
+	/// </summary>
+	public void OnRemoteDisconnected(PhotonPlayer pPlayer)
+	{
+		Info.PhotonPlayer = null;
+		Debug.Log($"Remote player {pPlayer.UserId} disconnected");
+
+		//sets text and icon animation
+		SetType(EPlayerType.RemotePlayer);
+
+		SetReady(false);
 	}
 
 	private void OnHeroChanged()
@@ -269,7 +297,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	private void OnKeySetChanged()
 	{
-		if(Info.PlayerType != EPlayerType.LocalPlayer)
+		//only local players can have keyset
+		if(!IsLocalPlayer())
 		{
 			Info.Keyset = EKeyset.None;
 			return;
@@ -295,10 +324,24 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//SyncInfo();
 	}
 
+	/// <summary>
+	/// On master local = LocalPlayer.
+	/// On client local = RemotePlayer.
+	/// </summary>
+	public bool IsLocalPlayer()
+	{
+		bool isMaster = mainMenu.GameSetup.SetupMain.IsMaster;
+		return isMaster && Info.PlayerType == EPlayerType.LocalPlayer ||
+			!isMaster && Info.PlayerType == EPlayerType.RemotePlayer;
+	}
+
 	private void SyncInfo()
 	{
 		if(isClientInitializing)
 			return;
+
+		//trigger update info
+		brainiacs.GameInitInfo.UpdatePlayer(Info);
 
 		//no reason to sync
 		//should happen only on master

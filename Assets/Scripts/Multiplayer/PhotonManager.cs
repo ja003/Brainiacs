@@ -16,6 +16,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
 	public Action<PhotonPlayer> OnPlayerEntered;
 	public Action<PhotonPlayer> OnPlayerLeft;
+	public Action OnKickedOut; //called eg when client gets kicked out of room
 
 	// Start is called before the first frame update
 	void Start()
@@ -25,30 +26,43 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 		PhotonNetwork.AutomaticallySyncScene = true;
 
-		string suffix = Application.isMobilePlatform ? "mobile" : "pc";
+		string suffix = PlatformManager.IsMobile() ? "mobile" : "pc";
 #if UNITY_EDITOR
 		suffix = "editor";
 #endif
 
 		PhotonNetwork.LocalPlayer.NickName = "ADAM_" + suffix;
 
-		Debug.Log("Connecting..");
+		//Debug.Log("Connecting..");
 		PhotonNetwork.ConnectUsingSettings();
 	}
 
-	public void JoinRandomRoom()
+	/// <summary>
+	/// Reset all actions.
+	/// Actions should be specific for each scene.
+	/// </summary>
+	public void OnSceneChange()
 	{
+		OnPlayerEntered = null;
+		OnPlayerLeft = null;
+		OnKickedOut = null;
+	}
+
+	public void JoinRandomRoom(Action pOnKickedOut)
+	{
+		OnKickedOut = pOnKickedOut;
 		Debug.Log("JoinRandomRoom");
 		PhotonNetwork.JoinRandomRoom();
 	}
 
-	public void JoinRoom(string pName)
+	public void JoinRoom(string pName, Action pOnKickedOut)
 	{
+		OnKickedOut = pOnKickedOut;
 		Debug.Log("JoinRoom " + pName);
 		PhotonNetwork.JoinRoom(pName);
 	}
 
-	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered)
+	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered, Action<PhotonPlayer> pOnPlayerLeft)
 	{
 		string roomName = GenerateRoomName();
 
@@ -56,6 +70,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 		PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
 		OnPlayerEntered = pOnPlayerEntered;
+		OnPlayerLeft = pOnPlayerLeft;
 		return roomName;
 	}
 
@@ -76,7 +91,17 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.LeaveRoom();
 	}
 
+	internal void KickPlayers(List<PhotonPlayer> pPlayers, bool pIgnoreLocal)
+	{
+		foreach(var p in pPlayers)
+		{
+			if(p == null || (pIgnoreLocal && p.IsLocal))
+				continue;
 
+			Debug.Log("Kick player " + p);
+			PhotonNetwork.CloseConnection(p);
+		}
+	}
 
 	public override void OnConnectedToMaster()
 	{
@@ -89,9 +114,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public override void OnJoinedLobby()
 	{
 		base.OnJoinedLobby();
-		Debug.Log("OnJoinedLobby");
+		//Debug.Log("OnJoinedLobby");
 
-		if(DebugData.TestMP)
+		if(CDebug.Instance.MP)
 		{
 
 		}
@@ -127,6 +152,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public override void OnLeftRoom()
 	{
 		Debug.Log("OnLeftRoom");
+		OnKickedOut?.Invoke();
 		//IsMultiplayer = false;
 		base.OnLeftRoom();
 	}

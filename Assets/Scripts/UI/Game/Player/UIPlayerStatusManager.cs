@@ -54,7 +54,7 @@ public class UIPlayerStatusManager : GameBehaviour
 
 		//UIPlayerStatus instance = Instantiate(prefab, transform);
 		GameObject instance = InstanceFactory.Instantiate(prefab.gameObject);//, false);
-		//instance.transform.parent = transform;
+		//instance.transform.SetParent(transform;
 
 		instance.GetComponent<UIPlayerStatus>().SpawnAt(pWorldPosition, pSprite, pText, pTextColor);
 	}

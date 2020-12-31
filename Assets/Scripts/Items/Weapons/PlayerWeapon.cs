@@ -60,7 +60,7 @@ public abstract class PlayerWeapon
 
 		IsUsed = true;
 
-		if(DebugData.TestInfiniteAmmo)
+		if(CDebug.Instance.InfiniteAmmo)
 			AmmoLeft++;
 
 

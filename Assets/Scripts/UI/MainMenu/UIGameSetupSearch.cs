@@ -22,13 +22,13 @@ public class UIGameSetupSearch : MainMenuController
 	private void OnRoomNameSet(string pRoomName)
 	{
 		Debug.Log($"OnGameIDSet {pRoomName}");
-		brainiacs.PhotonManager.JoinRoom(pRoomName);
+		brainiacs.PhotonManager.JoinRoom(pRoomName, mainMenu.GameSetup.SetupMain.OnKickedOut);
 		txtStatus.text = "Joining room " + pRoomName;
 	}
 
 	private void OnJoinRandomGame()
 	{
-		brainiacs.PhotonManager.JoinRandomRoom();
+		brainiacs.PhotonManager.JoinRandomRoom(mainMenu.GameSetup.SetupMain.OnKickedOut);
 		txtStatus.text = "Joining random room";
 	}
 
@@ -44,12 +44,17 @@ public class UIGameSetupSearch : MainMenuController
 
 	public void debug_CreateRoom()
 	{
-		brainiacs.PhotonManager.CreateRoom(4, OnRemotePlayerEnteredRoom);
+		brainiacs.PhotonManager.CreateRoom(4, debug_OnRemotePlayerEnteredRoom, debug_OnRemotePlayerLeftRoom);
 
 	}
-	private void OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
+	private void debug_OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
 	{
-		Debug.Log("OnRemotePlayerEnteredRoom " + pPlayer);
+		Debug.Log("debug_OnRemotePlayerEnteredRoom " + pPlayer);
+	}
+
+	private void debug_OnRemotePlayerLeftRoom(PhotonPlayer pPlayer)
+	{
+		Debug.Log("debug_OnRemotePlayerLeftRoom " + pPlayer);
 	}
 
 	public void debug_ReceiveGameinfo()
@@ -60,23 +65,23 @@ public class UIGameSetupSearch : MainMenuController
 		PlayerInitInfo player = new PlayerInitInfo(
 			1, EHero.Currie, "ADA", EPlayerColor.Blue, EPlayerType.LocalPlayer);
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
-		info.AddPlayer(player);
+		info.UpdatePlayer(player);
 
 		player = new PlayerInitInfo(
 			1, EHero.Einstein, "ADA_bot", EPlayerColor.Red, EPlayerType.AI);
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
-		info.AddPlayer(player);
+		info.UpdatePlayer(player);
 
 		player = new PlayerInitInfo(
 			1, EHero.DaVinci, "ADA_remote", EPlayerColor.Yellow, EPlayerType.RemotePlayer);
 		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
-		info.AddPlayer(player);
+		info.UpdatePlayer(player);
 
 		player = new PlayerInitInfo(
 			1, EHero.Nobel, "ADA_remote2", EPlayerColor.Pink, EPlayerType.RemotePlayer);
 		//player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 		player.IsReady = true;
-		info.AddPlayer(player);
+		info.UpdatePlayer(player);
 
 		var gameInfoBytes = info.Serialize();
 		MainMenu.Instance.Photon.debug_HandleMsg(EPhotonMsg.MainMenu_SyncGameInfo, gameInfoBytes);

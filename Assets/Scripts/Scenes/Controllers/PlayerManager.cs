@@ -27,11 +27,39 @@ public class PlayerManager : GameController
 		brainiacs.PhotonManager.OnPlayerLeft += OnPlayerLeftRoom;
 	}
 
+	public void debug_OnPlayerLeftRoom()
+	{
+		Debug.Log("debug_OnPlayerLeftRoom");
+		OnPlayerLeftRoom(GetPlayer(1).InitInfo.PhotonPlayer);
+	}
+
+	/// <summary>
+	/// Player disconnected -> remove him.
+	/// todo: change to AI - might be problematic to sync this
+	/// </summary>
 	private void OnPlayerLeftRoom(PhotonPlayer pPlayer)
 	{
 		Player leaver = GetPlayer(pPlayer);
 		//if(PhotonNetwork.IsMasterClient) //on all..right?
 		game.InfoMessenger.Show($"Player {leaver.InitInfo.Name} has left:(");
+
+		/*
+		DoInTime(() => ChangeToAi(leaver), 1f);
+
+		void ChangeToAi(Player pLeaver)
+		{
+			//PlayerInitInfo info = pLeaver.InitInfo;
+			//info.PlayerType = EPlayerType.AI;
+			//pLeaver.SetInfo(info, false);
+
+			//not working in MP
+			pLeaver.InitInfo.PlayerType = EPlayerType.AI;
+			pLeaver.ai.Init();
+		}
+
+		return;*/
+
+		//for now we change player to ai
 
 		DoInTime(() => RemovePlayer(leaver), 1);
 
@@ -39,7 +67,14 @@ public class PlayerManager : GameController
 		{
 			pLeaver.Health.DoEliminateEffect();
 			pLeaver.ReturnToPool();
-		}
+			Players.Remove(pLeaver);
+
+			if(Players.Count <= 1)
+			{
+				Debug.Log("Ending game, no other player!");
+				game.GameEnd.EndGame();
+			}
+		}		
 	}
 
 	protected override void OnMainControllerActivated()
@@ -87,7 +122,7 @@ public class PlayerManager : GameController
 		{
 			Player spawnedPlayer = SpawnPlayer(playerInfo, false);
 
-			if(DebugData.LocalImage && spawnedPlayer.LocalImage == null)
+			if(debug.LocalImage && spawnedPlayer.LocalImage == null)
 			{
 				spawnedPlayer.LocalImage = SpawnPlayer(playerInfo, true);
 				spawnedPlayer.LocalImage.LocalImageOwner = spawnedPlayer;
@@ -120,18 +155,18 @@ public class PlayerManager : GameController
 
 		Player playerInstance = instance.GetComponent<Player>();
 
-		bool debug_spwan = false;
-		if(debug_spwan)
+		bool debug_spawn = false;
+		if(debug_spawn)
 		{
-			if(pPlayerInfo.Name == DebugData.GetPlayerName(1))
+			if(pPlayerInfo.Name == debug.GetPlayerName(1))
 				spawnPosition = new Vector2(-3.3f, 3);
 			//spawnPosition = Vector2.down;
 
-			if(pPlayerInfo.Name == DebugData.GetPlayerName(2))
+			if(pPlayerInfo.Name == debug.GetPlayerName(2))
 				spawnPosition = new Vector2(-1.8f, 2.3f);
 			//spawnPosition = Vector2.zero;
 
-			if(pPlayerInfo.Name == DebugData.GetPlayerName(3))
+			if(pPlayerInfo.Name == debug.GetPlayerName(3))
 				spawnPosition = Vector2.down;
 		}
 
@@ -151,10 +186,18 @@ public class PlayerManager : GameController
 	/// </summary>
 	public void AddPlayer(Player pPlayer)
 	{
+		//Debug.Log($"AddPlayer {pPlayer}");
+
 		if(pPlayer.ai.IsTmp)
 		{
 			//Debug.Log("Skip tmp ai");
 			//tmp AIs (Tesla clone) are not registered as active players
+			return;
+		}
+
+		if(Players.Contains(pPlayer))
+		{
+			Debug.LogError($"Player {pPlayer} already added");
 			return;
 		}
 

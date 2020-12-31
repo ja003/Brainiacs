@@ -39,20 +39,17 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		if(handler == null)
 			return;
 
-		if(collision.gameObject == owner.gameObject)
-		{
-			//Debug.Log("thats me ");
-			return;
-		}
-
 		float dist = Vector2.Distance(transform.position, collision.transform.position);
-		float factor = circleCollider2D.radius - dist;
+		float factor = circleCollider2D.radius - dist; //(0 - radius) //radius = 1,5
 
-		float damage = Mathf.Lerp(bomb.MaxDamage / 10f, bomb.MaxDamage, factor);
+		//owner is pushed but not damaged
+		bool isItOwner = collision.gameObject == owner.gameObject;
+		float damage = isItOwner ? 0 : Mathf.Lerp(bomb.MaxDamage / 10f, bomb.MaxDamage, factor);
 
-		//Debug.Log("OnTriggerEnter2D " + collision.gameObject.name);
-		Vector3 push = (collision.transform.position - transform.position).normalized * bomb.PushForce;
-		Debug.Log("TODO: calculate push force");
+		Vector3 push = (collision.transform.position - transform.position).normalized
+			* bomb.PushForce
+			* (factor + 0.5f);
+		//Debug.Log($"push force {factor} = {push.magnitude}");
 		handler.OnCollision((int)damage, owner, gameObject,	push);
 
 		SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();

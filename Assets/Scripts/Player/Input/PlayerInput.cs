@@ -24,9 +24,14 @@ public class PlayerInput : PlayerBehaviour
 
 		if(game.GameEnd.GameEnded)
 			return;
-		
+
 		if(game.GameTime.IsPaused)
 			return;
+
+		//dont calculate keys input on mobile (performance)
+		//in editor we still want it for debug
+		if(!PlatformManager.IsMobile() || !debug.release) 
+			CalculateMoveKeys();
 
 		ProcessMovementInput();
 
@@ -46,11 +51,11 @@ public class PlayerInput : PlayerBehaviour
 			//todo: send message to remote player
 			return;
 		}
-		if(PlatformManager.GetPlatform() == EPlatform.PC)// && !DebugData.TestMobileInput)
+		if(PlatformManager.GetPlatform() == EPlatform.PC)// && !debug.MobileInput)
 		{
 			if(pPlayerInfo.Keyset == EKeyset.None)
 			{
-				Debug.LogError($"{player} has no keyset");
+				Debug.LogError($"{player} has no keyset [not error when start from S_Game]");
 				switch(pPlayerInfo.Number)
 				{
 					case 1:
@@ -81,14 +86,18 @@ public class PlayerInput : PlayerBehaviour
 			mobileInput.btnShoot.OnPointerUpAction = () => weapon.StopUseWeapon();
 			mobileInput.btnSwap.OnPointerDownAction = () => weapon.SwapWeapon();
 
-			mobileInput.moveJoystick.OnUpdateDirection += HandleMoveJoystick;
+			mobileInput.moveJoystick.OnUpdateDirection += CalculateMoveJoystick;
 		}
 		isInited = true;
 	}
 
 	EDirection joystickDirection;
-	private void HandleMoveJoystick(Vector2 pInput)
+	Vector2 joystickInput;
+
+	private void CalculateMoveJoystick(Vector2 pInput)
 	{
+		joystickInput = pInput;
+
 		const float move_threshold = 0.1f;
 
 		EDirection direction = EDirection.None;
@@ -117,8 +126,74 @@ public class PlayerInput : PlayerBehaviour
 		//movement.SetMove(direction);
 	}
 
+	Vector2 keyDirection;
+
+	/// <summary>
+	/// Input from keyboard.
+	/// small BUG: if holding 2 opposite keys (<-, ->) one direction
+	/// is has bigger impact
+	/// </summary>
+	private void CalculateMoveKeys()
+	{
+		const float move_change_speed = .25f;
+		bool movementRequested = false;
+		if(Input.GetKey(keys.moveUp))
+		{
+			//has to be registered in every case
+			movementRequested = true;
+			//set to zero if going down for fast direction change
+			if(keyDirection.y < 0)
+				keyDirection.y = 0;
+			keyDirection += Vector2.up * move_change_speed;
+		}
+		if(Input.GetKey(keys.moveRight))
+		{
+			if(keyDirection.x < 0)
+				keyDirection.x = 0;
+			movementRequested = true;
+			keyDirection += Vector2.right * move_change_speed;
+		}
+		if(Input.GetKey(keys.moveDown))
+		{
+			if(keyDirection.y > 0)
+				keyDirection.y = 0;
+			movementRequested = true;
+			keyDirection += Vector2.down * move_change_speed;
+		}
+		if(Input.GetKey(keys.moveLeft))
+		{
+			if(keyDirection.x > 0)
+				keyDirection.x = 0;
+			movementRequested = true;
+			keyDirection += Vector2.left * move_change_speed;
+		}
+
+		//Debug.Log($"keyDir = {keyDirection} | {movementRequested}");
+
+		if(keyDirection.magnitude > 1)
+			keyDirection.Normalize();
+
+		//stop immediately
+		if(!movementRequested)
+			keyDirection = Vector2.zero;
+	}
+
+
 	private void ProcessMovementInput()
 	{
+		// ALL DIRECTION MOVEMENT
+		if(brainiacs.PlayerPrefs.AllowMoveAllDir)
+		{
+			if(joystickDirection != EDirection.None)
+				movement.SetMove(joystickInput);
+			else
+				movement.SetMove(keyDirection);
+
+			return;
+		}
+
+		// 2D MOVEMENT
+
 		//Debug.Log("ProcessMovementInput");
 		bool movementRequested = false;
 		foreach(EDirection dir in Enum.GetValues(typeof(EDirection)))
@@ -131,12 +206,6 @@ public class PlayerInput : PlayerBehaviour
 		}
 		if(!movementRequested)
 			movement.SetMove(EDirection.None);
-
-		//HACK
-		if(Input.GetKeyDown(KeyCode.Backslash))
-		{
-			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, 1);
-		}
 	}
 
 

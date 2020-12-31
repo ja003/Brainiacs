@@ -96,7 +96,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 
 		Vector3 dir = Utils.GetVector3(direction);
 
-		//transform.parent = game.ProjectileManager.transform;
+		//transform.SetParent(game.ProjectileManager.transform;
 		transform.position = pSpawnPosition;
 		//Debug.Log("position " + transform.position);
 

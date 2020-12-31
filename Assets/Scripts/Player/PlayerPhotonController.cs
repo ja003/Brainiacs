@@ -1,5 +1,6 @@
 ﻿using FlatBuffers;
 using Photon.Pun;
+using Smooth;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,12 @@ public class PlayerPhotonController : PoolObjectPhoton
 
 	Game game => Game.Instance;
 
+	protected override void Awake()
+	{
+		player.Movement.SmoothSync.enabled = false;
+		base.Awake();
+	}
+
 	protected override bool IsLocalImage()
 	{
 		return player.IsLocalImage;
@@ -50,9 +57,15 @@ public class PlayerPhotonController : PoolObjectPhoton
 		//Debug.Log(this + " send init Info");
 		//DoInTime(() => Send(
 		//	EPhotonMsg.Player_InitPlayer, pPlayerInfo.Number), 1);
+
+		//Debug.Log("send Player_InitPlayer " + playerInfo.Number);
+
 		Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
 
 		isInited = true;
+
+		//if not disabled from start it throws error on client
+		player.Movement.SmoothSync.enabled = true;
 	}
 
 	public override void OnReturnToPool()
@@ -70,8 +83,20 @@ public class PlayerPhotonController : PoolObjectPhoton
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Player_InitPlayer:
+			//this has been added in 55 but fucked up the player initialization.
+			//but maybe this is how it should be.
+			//Problem was in PlayerHealth::ApplyDamage - it expects both damage
+			//origin and target to be inited.
+			//Should they be both inited? 
+			//Maybe we should add message Player_OnPlayerInited informing only
+			//that remote player was inited and we can mark him as inited?
+			//TODO: test how this works and find out reason why this condition
+			//		has been added
+			//return brainiacs.PhotonManager.IsMaster();
+
 			case EPhotonMsg.Player_ShowWeapon:
 				return true;
+
 			case EPhotonMsg.Player_AddKill:
 			case EPhotonMsg.Player_ApplyDamage:
 			case EPhotonMsg.Player_Push:
@@ -126,6 +151,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 				player.Stats.AddKill(force);
 				return;
 
+			//not used - replaced by SmoothSync
 			case EPhotonMsg.Player_SetSyncPosition:
 				Vector2 pos = (Vector2)pParams[0];
 				dir = (EDirection)pParams[1];

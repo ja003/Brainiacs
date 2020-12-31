@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Game : CSingleton<Game>
 {
-	[SerializeField] Camera mainCamera = null;
+	//[SerializeField] Camera mainCamera = null;
 
 	[SerializeField] public MapController Map;
 	[SerializeField] public PlayerManager PlayerManager;
@@ -32,12 +32,13 @@ public class Game : CSingleton<Game>
 
 	[SerializeField] public Layers Layers;
 
-	[SerializeField] public GameDebug Debug;
+	[SerializeField] public GameDebug GameDebug;
 
 
 	protected override void Awake()
 	{
-		UnityEngine.Debug.Log("Game Awake");
+		//Debug.Log("Game Awake");
+		//Debug.Log(brainiacs.GameInitInfo);
 
 		brainiacs.SetOnAwaken(OnAwaken);
 
@@ -48,12 +49,12 @@ public class Game : CSingleton<Game>
 
 	protected override void OnDestroy()
 	{
-		UnityEngine.Debug.Log("Game OnDestroy");
+		//UnityEngine.Debug.Log("Game OnDestroy");
 	}
 
 	private void OnAwaken()
 	{
-		UnityEngine.Debug.Log("Game OnAwaken");
+		//UnityEngine.Debug.Log("Game OnAwaken");
 
 		//mainCamera?.enabled = false;
 		//todo: deactivate players
@@ -90,7 +91,7 @@ public class Game : CSingleton<Game>
 	public Action OnGameStarted;
 	private void StartGame()
 	{
-		UnityEngine.Debug.Log("StartGame " + Time.time);
+		//UnityEngine.Debug.Log("StartGame " + Time.time);
 		GameStarted = true;
 		InfoMessenger.Show("Game started!");
 		OnGameStarted?.Invoke();

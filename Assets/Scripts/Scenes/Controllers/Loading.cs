@@ -20,6 +20,9 @@ public class Loading : BrainiacsBehaviour
 	{	
 		Brainiacs.SelfInitGame = false;
 
+		//Debug.Log("Loading Awake");
+		//Debug.Log(brainiacs.GameInitInfo);
+
 		EMap map = brainiacs.GameInitInfo.Map;
 		if(map == EMap.None)
 		{
@@ -67,7 +70,7 @@ public class Loading : BrainiacsBehaviour
 
 	private void LoadGame()
 	{
-		Debug.Log("LoadGame");
+		//Debug.Log("LoadGame");
 		
 		StartCoroutine(Countdown());
 		//StartCoroutine(Brainiacs.Instance.Scenes.LoadScene(
@@ -77,11 +80,11 @@ public class Loading : BrainiacsBehaviour
 
 	private IEnumerator Countdown()
 	{
-		Debug.Log("Countdown");
+		//Debug.Log("Countdown");
 
 		for(int i = 1; i <= countdown; i++)
 		{
-			Debug.Log("Countdown: " + i);
+			//Debug.Log("Countdown: " + i);
 			SetBackground(i);
 			yield return new WaitForSeconds(BEEP_DELAY);
 		}
@@ -90,7 +93,7 @@ public class Loading : BrainiacsBehaviour
 
 	private void StartGame()
 	{
-		Debug.Log("Loading_StartGame");
+		//Debug.Log("Loading_StartGame");
 
 		//Game.Instance.Activate();
 		Brainiacs.Instance.Scenes.LoadScene(EScene.Game);

@@ -30,7 +30,7 @@ public static class InstanceFactory
 		//NOTE: we could use PhotonNetwork.Instantiate always but a lot of warnings are thrown
 		//=> call PoolManager.Instantiate / PoolManager.Destroy directly
 
-		if(pNetworkInstance && PhotonNetwork.IsConnected && isMultiplayer)// || DebugData.TestPlayers)
+		if(pNetworkInstance && PhotonNetwork.IsConnected && isMultiplayer)// || debug.Players)
 			instance = PhotonNetwork.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
 		else
 		{

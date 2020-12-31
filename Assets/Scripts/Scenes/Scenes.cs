@@ -6,15 +6,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Scenes : MonoBehaviour
+public class Scenes : BrainiacsBehaviour
 {
 	private int GetSceneIndex(EScene pScene)
 	{
 		return (int)pScene;
 	}
 
+	public static EScene GetCurrentScene()
+	{
+		return (EScene)SceneManager.GetActiveScene().buildIndex;
+	}
+
 	public void LoadScene(EScene pScene)
 	{
+		brainiacs.PhotonManager.OnSceneChange();
+
 		if(IsPhotonLoad(pScene))
 		{
 			//only master loads levels
@@ -23,7 +30,6 @@ public class Scenes : MonoBehaviour
 		}
 		else
 			SceneManager.LoadScene(GetSceneIndex(pScene));
-
 	}
 
 	private bool IsPhotonLoad(EScene pScene)

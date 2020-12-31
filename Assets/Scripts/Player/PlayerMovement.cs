@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smooth;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,13 @@ using UnityEngine;
 public class PlayerMovement : PlayerBehaviour, ITeleportable
 {
 	[SerializeField] public Collider2D PlayerCollider = null;
+	[SerializeField] public SmoothSyncPUN2 SmoothSync = null;
 
 	private const float MOVE_SPEED_BASE = 0.05f;
 
-	public EDirection CurrentDirection { get; private set; } = EDirection.Right;
+	public EDirection CurrentEDirection { get; private set; } = EDirection.Right;
+	public Vector2 CurrentDirection { get; private set; } = Vector2.right;
+
 	//move is requested - move key is pressed
 	public bool IsMoving { get; private set; }
 	//did player physically moved since last update
@@ -40,42 +44,43 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 
 		//sync position
-		if(lastTimeSync + SYNC_POS_INTERVAL / 2 < Time.time)
-		{
-			SyncPosition(false);
-		}
+		//if(lastTimeSync + SYNC_POS_INTERVAL / 2 < Time.time)
+		//{
+		//	SyncPosition(false);
+		//}
 
 		lastPosition = transform.position; //has to be called before ApplyMove
 
 
-
 		//apply movement
 		ApplyMove(CurrentDirection);
-
 	}
 
 	private bool IsLogEnabled()
 	{
 		return false;
-		return player.InitInfo.PlayerType == EPlayerType.AI;
+		//return player.InitInfo.PlayerType == EPlayerType.AI;
 	}
 
-	private void SyncPosition(bool pInstantly)
-	{
-		if(player.IsLocalImage)
-			return;
+	// Replaced by SmoothSync
+	//private void SyncPosition(bool pInstantly)
+	//{
+	//	return;
 
-		isActualyMoving = Vector2.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
-		//Debug.Log(isActualyMoving);
+	//	if(player.IsLocalImage)
+	//		return;
 
-		lastTimeSync = Time.time;
-		Vector2 position = transform.position;
-		if(player.LocalImage)
-			position += Vector2.down;
+	//	isActualyMoving = Vector2.Distance(lastPosition, transform.position) > MOVE_SPEED_BASE / 2;
+	//	//Debug.Log(isActualyMoving);
 
-		player.Photon.Send(EPhotonMsg.Player_SetSyncPosition, position,
-			CurrentDirection, isActualyMoving, player.Stats.Speed, pInstantly);
-	}
+	//	lastTimeSync = Time.time;
+	//	Vector2 position = transform.position;
+	//	if(player.LocalImage)
+	//		position += Vector2.down;
+
+	//	player.Photon.Send(EPhotonMsg.Player_SetSyncPosition, position,
+	//		CurrentDirection, isActualyMoving, player.Stats.Speed, pInstantly);
+	//}
 
 	internal void SpawnAt(Vector2 pPosition)
 	{
@@ -84,7 +89,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		player.Visual.OnSpawn();
 
 		SetMove(CurrentDirection); //refresh visual
-		SetMove(EDirection.None); //stop
+		SetMove(Vector2.zero); //stop
 	}
 
 	public void Stop()
@@ -98,11 +103,20 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		player.Visual.Idle();
 	}
 
+	public void SetMove(EDirection pDir)
+	{
+		SetMove(Utils.GetVector2(pDir));
+	}
+
 	/// <summary>
 	/// Move player object and set direction
 	/// </summary>
-	public void SetMove(EDirection pDirection)
+	public void SetMove(Vector2 pDir)
 	{
+		//do we want to normalize or allow small move steps?
+		//pDir.Normalize();
+		EDirection pDirection = Utils.GetDirection(pDir);
+
 		if(IsLogEnabled())
 		{
 			//Debug.Log("SetMove " + pDirection);
@@ -120,29 +134,38 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		}
 
 		IsMoving = true;
-		SetDirection(pDirection);
+		SetDirection(pDir);
 
-		player.LocalImage?.Movement.SetMove(pDirection);
+		player.LocalImage?.Movement.SetMove(pDir);
+	}
+
+	public void SetDirection(EDirection pDir)
+	{
+		SetDirection(Utils.GetVector2(pDir));
 	}
 
 	/// <summary>
 	/// Set direction and update visual
 	/// </summary>
-	public void SetDirection(EDirection pDirection)
+	public void SetDirection(Vector2 pDir)
 	{
+		EDirection eDirection = Utils.GetDirection(pDir);
+
 		//sdDebug.Log(gameObject.name + " SetDirection " + pDirection);
-		bool isDirectionChanged = CurrentDirection != pDirection;
-		CurrentDirection = pDirection; //has to be set before OnDirectionChange call
+		bool isDirectionChanged = CurrentEDirection != eDirection;
+		CurrentEDirection = eDirection; //has to be set before OnDirectionChange call
+		CurrentDirection = pDir;
+
 		if(isDirectionChanged)
 		{
 			if(IsLogEnabled())
 			{
-				Debug.Log(gameObject.name + " SetDirection " + pDirection);
+				Debug.Log(gameObject.name + " SetDirection " + eDirection);
 			}
 
-			visual.OnDirectionChange(pDirection);
-			weapon.OnDirectionChange(pDirection);
-			aiBrain.OnDirectionChange(pDirection);
+			visual.OnDirectionChange(eDirection);
+			weapon.OnDirectionChange(eDirection);
+			aiBrain.OnDirectionChange(eDirection);
 		}
 	}
 
@@ -151,28 +174,30 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// <summary>
 	/// Moves player in given direction but only if move is requested
 	/// </summary>
-	private void ApplyMove(EDirection pDirection)
+	private void ApplyMove(Vector2 pDir)
 	{
+		EDirection eDirection = Utils.GetDirection(pDir);
+
 		if(IsLogEnabled())
 		{
-			if(pDirection != debug_lastLoggedDirection)
-				Debug.Log($"ApplyMove {pDirection} ({IsMoving})");
-			debug_lastLoggedDirection = pDirection;
+			if(eDirection != debug_lastLoggedDirection)
+				Debug.Log($"ApplyMove {eDirection} ({IsMoving})");
+			debug_lastLoggedDirection = eDirection;
 		}
 
 		if(!IsMoving)
 			return;
 
-
-
-		if(pDirection == EDirection.None)
+		if(eDirection == EDirection.None)
 		{
 			//player.Visual.Idle();
 			return;
 		}
 
-		transform.position += Utils.GetVector3(pDirection) *
+		transform.position += Utils.GetVector3(pDir) *
 			MOVE_SPEED_BASE * player.Stats.Speed;
+		//transform.position += Utils.GetVector3(pDirection) *
+		//	MOVE_SPEED_BASE * player.Stats.Speed;
 
 		player.Visual.Move();
 
@@ -225,7 +250,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	/// Calculates target position based on the owner position and his current direction.
 	/// If the owner is moving => target position will be moved by given direction.
 	/// Smoothly moves player towards the calculated position.
-	/// When pInstantly is passed, image is relocated to target position instantly (eg. Teleport)
+	/// pInstantly = image is relocated to target position instantly (eg. Teleport)
 	/// </summary>
 	public void SetSyncPosition(Vector2 pPosition, EDirection pDirection,
 		bool pIsActualyMoving, float pSpeed, bool pInstantly)
@@ -302,7 +327,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 		//Utils.DebugDrawCross(targetPos, Color.green, SYNC_POS_INTERVAL);
 
 		//LeanTween.cancel(moveFunctionId);
-		const bool debug_useEaseIn = false;
+		bool debug_useEaseIn = false;
 		if(debug_useEaseIn)
 		{
 			//first move by X-axis in time proportional to x-diff from total dif		
@@ -341,7 +366,8 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 			transform.position = pTeleport.GetOutPosition();
 			player.SetActive(true);
 			SetDirection(pTeleport.OutDirection);
-			SyncPosition(true);
+			SmoothSync.teleportOwnedObjectFromOwner();
+			//SyncPosition(true);
 		}, 0.5f);
 
 		return this;

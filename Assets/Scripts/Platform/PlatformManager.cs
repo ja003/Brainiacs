@@ -19,7 +19,7 @@ public static class PlatformManager
 
 	public static bool IsMobile()
 	{
-		return GetPlatform() == EPlatform.Mobile || DebugData.TestPlatformMobile;
+		return GetPlatform() == EPlatform.Mobile || CDebug.Instance.PlatformMobile;
 	}
 }
 

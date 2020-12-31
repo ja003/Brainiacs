@@ -19,7 +19,7 @@ public class MapItemGenerator : GameBehaviour
 	{
 		StartGenerating();
 
-		if(!DebugData.StopGenerateItems)
+		if(!debug.StopGenerateItems)
 		{
 			//delay needed, otherwise can be generated on invalid location
 			DoInTime(GenerateRandomItem, 0.5f); //DEBUG 
@@ -29,7 +29,7 @@ public class MapItemGenerator : GameBehaviour
 
 	private void StartGenerating()
 	{
-		if(DebugData.TestGenerateItems)
+		if(debug.GenerateItems)
 			frequency = 2;
 
 		float time = Random.Range(frequency - 1, frequency + 1);
@@ -38,7 +38,7 @@ public class MapItemGenerator : GameBehaviour
 
 	private void OnGenerateCountdownFinished()
 	{
-		if(isActive && !DebugData.StopGenerateItems)
+		if(isActive && !debug.StopGenerateItems)
 		{
 			GenerateRandomItem();
 		}
@@ -48,13 +48,13 @@ public class MapItemGenerator : GameBehaviour
 	private void GenerateRandomItem()
 	{
 		EMapItem nextItemType = GetNextMapItemType();
-		if(DebugData.TestGameEffect!= EGameEffect.None)
+		if(debug.GameEffect!= EGameEffect.None)
 			nextItemType = EMapItem.GameEffect;
-		else if(DebugData.TestPowerUp != EPowerUp.None)
+		else if(debug.PowerUp != EPowerUp.None)
 			nextItemType = EMapItem.PowerUp;
-		else if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
+		else if(debug.GenerateMapWeapon != EWeaponId.None)
 			nextItemType = EMapItem.Weapon;
-		else if(DebugData.TestGenerateMapSpecialWeapon != EWeaponId.None)
+		else if(debug.GenerateMapSpecialWeapon != EWeaponId.None)
 			nextItemType = EMapItem.SpecialWeapon;
 
 		int randomIndex = GetRandomItemIndex(nextItemType);
@@ -77,8 +77,8 @@ public class MapItemGenerator : GameBehaviour
 			case EMapItem.PowerUp:
 			case EMapItem.PowerUp2:
 			case EMapItem.PowerUp3:
-				//if(DebugData.TestPowerUp != EPowerUp.None)
-				//	randomIndex = (int)DebugData.TestPowerUp;
+				//if(debug.PowerUp != EPowerUp.None)
+				//	randomIndex = (int)debug.PowerUp;
 
 				newItem.Init(randomPosition, MapItem.EType.PowerUp, randomIndex);
 				break;
@@ -98,8 +98,8 @@ public class MapItemGenerator : GameBehaviour
 		switch(pType)
 		{
 			case EMapItem.GameEffect:
-				if(DebugData.TestGameEffect != EGameEffect.None)
-					return (int)DebugData.TestGameEffect;
+				if(debug.GameEffect != EGameEffect.None)
+					return (int)debug.GameEffect;
 
 				i = Random.Range(0, brainiacs.ItemManager.GameEffects.Count);
 				return (int)brainiacs.ItemManager.GameEffects[i].Type;
@@ -107,23 +107,23 @@ public class MapItemGenerator : GameBehaviour
 			case EMapItem.PowerUp:
 			case EMapItem.PowerUp2:
 			case EMapItem.PowerUp3:
-				if(DebugData.TestPowerUp != EPowerUp.None)
-					return (int)DebugData.TestPowerUp;
+				if(debug.PowerUp != EPowerUp.None)
+					return (int)debug.PowerUp;
 
 				i = Random.Range(0, brainiacs.ItemManager.PowerUps.Count);
 				return (int)brainiacs.ItemManager.PowerUps[i].Type;
 
 			case EMapItem.Weapon:
 			case EMapItem.Weapon2:
-				if(DebugData.TestGenerateMapWeapon != EWeaponId.None)
-					return (int)DebugData.TestGenerateMapWeapon;
+				if(debug.GenerateMapWeapon != EWeaponId.None)
+					return (int)debug.GenerateMapWeapon;
 
 				i = Random.Range(0, brainiacs.ItemManager.MapWeapons.Count);
 				return (int)brainiacs.ItemManager.MapWeapons[i].Id;
 			
 			case EMapItem.SpecialWeapon:
-				if(DebugData.TestGenerateMapSpecialWeapon != EWeaponId.None)
-					return (int)DebugData.TestGenerateMapSpecialWeapon;
+				if(debug.GenerateMapSpecialWeapon != EWeaponId.None)
+					return (int)debug.GenerateMapSpecialWeapon;
 
 				i = Random.Range(0, brainiacs.ItemManager.MapWeaponsSpecial.Count);
 				return (int)brainiacs.ItemManager.MapWeaponsSpecial[i].Id;
@@ -189,7 +189,7 @@ public class MapItemGenerator : GameBehaviour
 	/// </summary>
 	//private Vector2 GetRandomPosition()
 	//{
-	//	if(DebugData.TestGenerateItems)
+	//	if(debug.GenerateItems)
 	//		return debug_GetRandomPosition();
 
 	//	//return Vector2.up; //DEBUG

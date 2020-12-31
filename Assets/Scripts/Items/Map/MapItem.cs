@@ -262,6 +262,8 @@ public class MapItem : MapObject
 		ReturnToPool();
 	}
 
+	// OVERRIDES //
+
 	protected override void OnReturnToPool2()
 	{
 		type = EType.None;
@@ -271,14 +273,17 @@ public class MapItem : MapObject
 		base.OnReturnToPool2();
 	}
 
-	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
+	protected override void OnDestroyed()
 	{
 		if(!isSpawned)
+		{
+			Debug.LogError("Item destroyed before spawn");
 			return;
-
-		if(pDamage <= 0)
-			return;
-
+		}
 		Explode();
+	}
+
+	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
+	{
 	}
 }

@@ -44,6 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MapObject_Top
+    uniqueID: 3685513621
+    locked: 0
+  - name: Weapon_Effect
+    uniqueID: 3653617065
+    locked: 0
   - name: Map_Foreground
     uniqueID: 213940443
     locked: 0

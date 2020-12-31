@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : BrainiacsBehaviour
 {
 	[SerializeField] public AudioSource AudioSourceNormal;
 	[SerializeField] public AudioSource AudioSourceMusic;
@@ -24,8 +24,9 @@ public class AudioManager : MonoBehaviour
 
 	//Dictionary<ESound, AudioClip> otherSoundClips = new Dictionary<ESound, AudioClip>();
 
-	private void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		Init();
 	}
 
@@ -173,7 +174,7 @@ public class AudioManager : MonoBehaviour
 
 		source.spatialBlend = 1; //set all sources to 3D (dont wanna set it manually)
 		
-		float musicVolume = DebugData.MuteMusic ? 0 : playerPrefs.VolumeMusic;
+		float musicVolume = debug.MuteMusic ? 0 : playerPrefs.VolumeMusic;
 		UpdateAudioVolume(source, pIsMusic ? musicVolume : playerPrefs.VolumeSounds);
 
 		if(pIsMusic) source.Stop();

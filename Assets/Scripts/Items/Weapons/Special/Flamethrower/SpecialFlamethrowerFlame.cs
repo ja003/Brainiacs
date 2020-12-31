@@ -115,14 +115,12 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		return (int)damage;
 	}
 
-	
-
 	public void OnDirectionChange(EDirection pDirection)
 	{
 		if(!isInited)
 			return;
 
-		transform.parent =  owner.WeaponController.GetProjectileStart(pDirection);
+		transform.SetParent(owner.WeaponController.GetProjectileStart(pDirection));
 
 		transform.localPosition = Vector2.zero;
 		transform.localRotation = Quaternion.Euler(0, 0, 0);

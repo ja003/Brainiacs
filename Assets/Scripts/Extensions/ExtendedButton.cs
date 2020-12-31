@@ -12,8 +12,6 @@ public class ExtendedButton : Button
 	public Action OnPointerUpAction;
 	public Action OnPressedAction;
 
-	public bool IsPressed { get; private set; }
-
 	private void FixedUpdate()
 	{
 		if(IsPressed())
@@ -26,14 +24,12 @@ public class ExtendedButton : Button
 	public override void OnPointerDown(PointerEventData eventData)
 	{
 		base.OnPointerDown(eventData);
-		IsPressed = true;
 		OnPointerDownAction?.Invoke();
 	}
 
 	public override void OnPointerUp(PointerEventData eventData)
 	{
 		base.OnPointerUp(eventData);
-		IsPressed = false;
 		OnPointerUpAction?.Invoke();
 	}
 

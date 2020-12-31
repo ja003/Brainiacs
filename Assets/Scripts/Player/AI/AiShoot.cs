@@ -26,7 +26,7 @@ public class AiShoot : AiGoalController
 		mySpecialWeapon = Brainiacs.Instance.ItemManager.GetHeroSpecialWeaponConfig(player.InitInfo.Hero).Id;
 	}
 
-	static bool debug = false;
+	static bool debug_log = false;
 
 	public override int GetPriority()
 	{
@@ -36,7 +36,7 @@ public class AiShoot : AiGoalController
 			|| targetedPlayer == null
 			//target is shielded
 			|| (targetedPlayer != null && targetedPlayer.Stats.IsShielded)
-			|| DebugData.TestNonAggressiveAi)
+			|| debug.NonAggressiveAi)
 		{
 			return 0;
 		}
@@ -48,12 +48,11 @@ public class AiShoot : AiGoalController
 		float coef = max_prio - dist_reduce_coef * (distToTarget - min_measure_dist) / max_measure_dist;
 		int prio = (int)Mathf.Clamp(coef, 5, 10);
 
-		if(debug)
+		if(debug_log)
 			Debug.Log($"Shoot prio: dist = {distToTarget:0.0} => {prio}");
 
 		return prio;
-
-		return targetedPlayer == null || DebugData.TestNonAggressiveAi ? 0 : 5;
+		//return targetedPlayer == null || debug.NonAggressiveAi ? 0 : 5;
 	}
 
 	public override Vector2 GetTarget()
@@ -118,16 +117,12 @@ public class AiShoot : AiGoalController
 
 	private Player GetPlayerToTarget(EWeaponId pPickeWeapon)
 	{
-		if(DebugData.TestNonAggressiveAi)
+		if(debug.NonAggressiveAi)
 			return null;
 
 		Player closestPlayer = game.PlayerManager.GetClosestPlayerTo(player);
 		return closestPlayer;
-
 		//return closestPlayer.Stats.IsShielded ? closestPlayer : null;
-
-		//Debug.Log("No player to shoot");
-		return null;
 	}
 
 	/// <summary>
@@ -137,7 +132,7 @@ public class AiShoot : AiGoalController
 	{
 		//turn to targeted player (required to shoot)
 		if(targetedPlayer)
-			player.Movement.SetDirection(Utils.GetDirection(targetedPlayer.Position - player.Position));
+			player.Movement.SetDirection(targetedPlayer.Position - player.Position);
 		//Debug.Log("OnReachedTarget");
 		EvaluateWeaponUsage();
 
@@ -209,7 +204,7 @@ public class AiShoot : AiGoalController
 
 		Vector2 dirToTarget = targetedPlayer.Position - player.Position;
 		EDirection dir = Utils.GetDirection(dirToTarget);
-		return player.Movement.CurrentDirection == dir;
+		return player.Movement.CurrentEDirection == dir;
 	}
 
 
@@ -304,7 +299,7 @@ public class AiShoot : AiGoalController
 
 		//TESTING - Select the closest shoot position 
 		//- simple distance compare - select the closest
-		const bool useSimpleDistCompare = true;
+		bool useSimpleDistCompare = true;
 		if(useSimpleDistCompare)
 		{
 			if(Vector2.Distance(playerPosition, posHorizontal.Item1) < Vector2.Distance(playerPosition, posVertical.Item1))
@@ -462,8 +457,8 @@ public class AiShoot : AiGoalController
 		//{
 		//	return mySpecialWeapon;
 		//}
-		if(DebugData.TestAiWeapon != EWeaponId.None)
-			return DebugData.TestAiWeapon;
+		if(debug.AiWeapon != EWeaponId.None)
+			return debug.AiWeapon;
 
 		if(!CanSwapWeapon())
 		{

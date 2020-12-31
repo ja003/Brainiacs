@@ -9,6 +9,7 @@ public abstract class AiController
 
     protected Game game => Game.Instance;
     protected Brainiacs brainiacs => Brainiacs.Instance;
+    protected CDebug debug => CDebug.Instance;
 
     protected PathFinderController pathFinder => game.Map.PathFinder;
 

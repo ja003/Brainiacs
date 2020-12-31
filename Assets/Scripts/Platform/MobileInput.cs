@@ -26,7 +26,7 @@ public class MobileInput : GameBehaviour
 	{
 		SetActive(PlatformManager.IsMobile());
 		SetMoveInputScale(brainiacs.PlayerPrefs.MoveInputScale);
-		
+
 		RefreshMoveInputTransform();
 
 		game.GameEnd.OnGameEnd += SaveInputTransform;
@@ -66,7 +66,7 @@ public class MobileInput : GameBehaviour
 			brainiacs.PlayerPrefs.MoveInputPos = GetMoveInputPosition();
 		}
 
-		Debug.Log("RefreshMoveInputTransform " + brainiacs.PlayerPrefs.MoveInputPos + ", " + brainiacs.PlayerPrefs.MoveInputScale);
+		//Debug.Log("RefreshMoveInputTransform " + brainiacs.PlayerPrefs.MoveInputPos + ", " + brainiacs.PlayerPrefs.MoveInputScale);
 
 		moveJoystick.GetComponent<RectTransform>().position = brainiacs.PlayerPrefs.MoveInputPos;
 		moveJoystick.GetComponent<RectTransform>().localScale = brainiacs.PlayerPrefs.MoveInputScale * Vector3.one;
@@ -86,7 +86,7 @@ public class MobileInput : GameBehaviour
 	{
 		brainiacs.PlayerPrefs.MoveInputPos = GetMoveInputPosition();
 		brainiacs.PlayerPrefs.MoveInputScale = GetMoveInputScale().x;
-		Debug.Log("SaveInputTransform " + brainiacs.PlayerPrefs.MoveInputPos + ", " + brainiacs.PlayerPrefs.MoveInputScale);
+		//Debug.Log("SaveInputTransform " + brainiacs.PlayerPrefs.MoveInputPos + ", " + brainiacs.PlayerPrefs.MoveInputScale);
 	}
 
 	private void OnSetPause(bool pIsPaused)

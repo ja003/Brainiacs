@@ -59,7 +59,7 @@ public class MapController : GameController
 			return;
 		}
 
-		ActiveMap.transform.parent = transform;
+		ActiveMap.transform.SetParent(transform);
 
 	}
 

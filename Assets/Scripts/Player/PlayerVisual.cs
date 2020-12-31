@@ -22,9 +22,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	[SerializeField] private PaletteSwapController paletteSwap = null;
 
-	
-
-	[SerializeField] private Light2D light = null;
+	[SerializeField] private new Light2D light = null;
 	[SerializeField] private Color lightColor_Red = Color.red;
 	[SerializeField] private Color lightColor_Green = Color.green;
 
@@ -276,7 +274,7 @@ public class PlayerVisual : PlayerBehaviour
 		player.LocalImage?.Visual.SetAnimTrigger(pKey);
 	}
 
-	private EDirection currentDirection => movement.CurrentDirection;
+	private EDirection currentDirection => movement.CurrentEDirection;
 
 
 	public UIPlayerInfoElement PlayerInfo;

@@ -104,7 +104,7 @@ public class Map : GameBehaviour, IPositionValidator
 		if(pCondition == null)
 			pCondition = this;
 
-		if(DebugData.TestGenerateItems)
+		if(debug.GenerateItems)
 			return debug_GetRandomPosition();
 
 		Vector2 topLeft = TopLeftCorner.position;

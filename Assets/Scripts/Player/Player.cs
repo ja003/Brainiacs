@@ -113,7 +113,8 @@ public class Player : PoolObjectNetwork
 	/// </summary>
 	public void OnReceivedInitInfo(PlayerInitInfo pInfo, bool pIsLocalImage)
 	{
-		//Debug.Log($"{this} OnReceivedInitInfo");
+		Debug.Log($"{this} OnReceivedInitInfo");
+
 		SetInfo(pInfo, pIsLocalImage);
 		if(!pIsLocalImage)
 			game.PlayerManager.AddPlayer(this);

@@ -141,7 +141,7 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 	protected abstract void OnStopUse();
 
 	//current player direction
-	protected EDirection playerDirection => owner.Movement.CurrentDirection;
+	protected EDirection playerDirection => owner.Movement.CurrentEDirection;
 
 
 

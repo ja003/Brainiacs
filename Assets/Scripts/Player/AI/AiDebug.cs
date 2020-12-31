@@ -16,11 +16,11 @@ public class AiDebug : AiGoalController
 
 	public override int GetPriority()
 	{
-		return DebugData.TestAiDebugMove ? 666 : 0;
+		return CDebug.Instance.AiDebugMove ? 666 : 0;
 	}
 
 	public override Vector2 GetTarget()
 	{
-		return game.Debug.AiMoveTarget.position;
+		return game.GameDebug.AiMoveTarget.position;
 	}
 }

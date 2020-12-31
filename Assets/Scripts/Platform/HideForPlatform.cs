@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HideForPlatform : MonoBehaviour
+public class HideForPlatform : BrainiacsBehaviour
 {
 	[SerializeField] EPlatform platform;
 
@@ -14,10 +14,10 @@ public class HideForPlatform : MonoBehaviour
 		switch(platform)
 		{
 			case EPlatform.Mobile:
-				enable = !Application.isMobilePlatform;
+				enable = !PlatformManager.IsMobile();
 				break;
 			case EPlatform.PC:
-				enable = Application.isMobilePlatform;
+				enable = PlatformManager.IsMobile();
 				break;
 		}
 

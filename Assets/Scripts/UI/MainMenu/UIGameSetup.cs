@@ -29,9 +29,13 @@ public class UIGameSetup : MainMenuBehaviour
 		btnJoinSearchBack.onClick.AddListener(OnBtnJoinSearchBack);
 		btnBack.onClick.AddListener(mainMenu.OnBtnBack);
 
-		brainiacs.AudioManager.PlayMusic(ESound.Music_Menu);
 
 		base.Awake();
+	}
+
+	private void Start()
+	{
+		brainiacs.AudioManager.PlayMusic(ESound.Music_Menu);
 	}
 
 	private void OnBtnJoinSearchBack()
@@ -68,8 +72,8 @@ public class UIGameSetup : MainMenuBehaviour
 
 	public void OnSubMenuBtnBack()
 	{
+		SetupMain.KickOtherPlayers();
 		brainiacs.PhotonManager.LeaveRoom();
-		Debug.LogError("todo: reset game info more generally");
 		brainiacs.GameInitInfo = null;
 
 		setupInit.SetActive(true);
