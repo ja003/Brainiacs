@@ -334,6 +334,9 @@ public class UIGameSetupMain : MainMenuController
 		addedElement.Init(pPlayer);
 	}
 
+	[SerializeField] Tutorial tutorialSelectHero;
+	bool isFirstPlayerAdded;
+
 	/// <summary>
 	/// MASTER
 	/// Called on btnAddPlayer(AI/Local/Remote) click
@@ -346,12 +349,21 @@ public class UIGameSetupMain : MainMenuController
 		UIGameSetupPlayerEl addedElement = AddPlayerElement();
 		addedElement.Init(players.IndexOf(addedElement) + 1, pType, null);
 
+		if(!isFirstPlayerAdded)
+		{
+			tutorialSelectHero.SetFocusedObject(addedElement.color.gameObject);
+			tutorialSelectHero.SetFocusedObject(addedElement.heroSwapper.gameObject);
+
+			tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnNext);
+			tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnPrevious);
+		}
 
 		//todo: check player count (max 4?)
 		//keep btnAddPlayer at the end of the list
 		btnGroupAddPlayer.transform.SetParent(playersHolder);
 
 		OnPlayersChanged();
+		isFirstPlayerAdded = true;
 	}
 
 

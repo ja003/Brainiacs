@@ -24,6 +24,7 @@ public class Game : CSingleton<Game>
 	[SerializeField] public UIInfoMessengerGame InfoMessenger;
 	[SerializeField] public LightingController Lighting;
 	[SerializeField] public GameEffectManager GameEffect;
+	[SerializeField] public TutorialGameController Tutorial;
 
 	[SerializeField] public GameAudioSource AudioSourcePrefab;
 

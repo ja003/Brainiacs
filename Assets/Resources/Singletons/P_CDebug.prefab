@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5460b8335af336943a94dea803963a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  release: 1
+  release: 0
   _MP: 0
   _LocalImage: 0
   _Result: 0
-  _PlatformMobile: 0
+  _PlatformMobile: 1
   _Hero: 3
   _ExtraPlayerItem: 0
   _Shield: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   _Immortality: 0
   _InfiniteAmmo: 0
   _PlayerEffect: 0
-  playerCount: 1
+  playerCount: 2
   _Map: 1
   GameValue: 5
   _GenerateItems: 0
@@ -68,4 +68,7 @@ MonoBehaviour:
   _AiWeapon: 0
   _NonAggressiveAi: 0
   _AiDebugMove: 0
+  _SkipTutorial: 0
+  _ForceTutorial: 0
+  _InstaAnimation: 1
   pushForce: 15

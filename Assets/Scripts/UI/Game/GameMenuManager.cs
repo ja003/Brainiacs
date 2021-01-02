@@ -5,22 +5,25 @@ using UnityEngine.UI;
 
 public class GameMenuManager : GameController
 {
-    [SerializeField] Button btnPause;
-    [SerializeField] PauseMenu pause;
+	[SerializeField] Button btnPause;
+	[SerializeField] PauseMenu pause;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            pause.SetActive(!pause.isActiveAndEnabled);
-        }
-    }
+	private void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			if(game.Tutorial.IsTutorialActive())
+				return;
 
-    protected override void OnMainControllerAwaken()
-    {
-        pause.SetActive(false);
-        btnPause.onClick.AddListener(() => pause.SetActive(true));
+			pause.SetActive(!pause.isActiveAndEnabled);
+		}
+	}
 
-        pause.Init();
-    }
+	protected override void OnMainControllerAwaken()
+	{
+		pause.SetActive(false);
+		btnPause.onClick.AddListener(() => pause.SetActive(true));
+
+		pause.Init();
+	}
 }

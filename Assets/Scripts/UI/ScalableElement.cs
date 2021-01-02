@@ -16,14 +16,14 @@ public class ScalableElement : UiBehaviour, IBeginDragHandler, IDragHandler
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		beginDragTime = Time.time;
+		beginDragTime = Time.unscaledTime;
 		handleDistFromCenter = Vector3.Distance(rectTransform.position, holder.position);
 		scaleAtDragBegin = holder.localScale.x;
 	}
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		if(Time.time - beginDragTime < minDragTime)
+		if(Time.unscaledTime - beginDragTime < minDragTime)
 			return;
 
 		if(!Utils.IsWithinScreeen(Input.mousePosition))

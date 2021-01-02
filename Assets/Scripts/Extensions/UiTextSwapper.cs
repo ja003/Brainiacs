@@ -11,8 +11,8 @@ using UnityEngine.UI;
 public class UiTextSwapper : MonoBehaviour
 {
 	[SerializeField] Text text = null;
-	[SerializeField] Button btnNext = null;
-	[SerializeField] Button btnPrevious = null;
+	[SerializeField] public Button btnNext = null;
+	[SerializeField] public Button btnPrevious = null;
 
 	List<string> values;
 	public int CurrentIndex { get; private set; }

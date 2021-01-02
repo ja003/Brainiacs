@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class UIPlayerInfoElement : UiBehaviour
 {
 	[SerializeField] private Image portrait = null;
-	[SerializeField] private Image weapon = null;
+	[SerializeField] public Image weapon = null;
 	[SerializeField] private Image frame = null;
-	[SerializeField] private Text health = null;
-	[SerializeField] private Text ammo = null;
+	[SerializeField] public Text health = null;
+	[SerializeField] public Text ammo = null;
 
 	private void Update()
 	{

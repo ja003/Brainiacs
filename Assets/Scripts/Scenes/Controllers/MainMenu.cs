@@ -22,6 +22,8 @@ public class MainMenu : CSingleton<MainMenu>
 	[SerializeField] public MainMenuPhoton Photon;
 	[SerializeField] public UIInputKeySelector InputKeySelector;
 
+	[SerializeField] public TutorialMenuController Tutorial;
+
 	protected override void Awake()
 	{
 		if(debug_InitBgAnim != MENU_ANIM_POSITION_MAIN)
@@ -68,7 +70,8 @@ public class MainMenu : CSingleton<MainMenu>
 	private void StartMenuAnim(int pTargetMenuAnimPosition)
 	{
 		LeanTween.cancel(menuAnimId);
-		menuAnimId = UpdateValue(currentMenuAnimPosition, pTargetMenuAnimPosition, ANIM_TIME, SetMenuAnimPosition);
+		float animTime = debug.InstaAnimation ? 0 : ANIM_TIME;
+		menuAnimId = UpdateValue(currentMenuAnimPosition, pTargetMenuAnimPosition, animTime, SetMenuAnimPosition);
 	}
 
 	private void SetMenuAnimPosition(float pValue)

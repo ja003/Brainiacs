@@ -217,12 +217,12 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 
 			if(handler == ownerHandler)
 			{
-				Debug.Log("SpecialCurieTruck Collision with myself " + handler);
+				//Debug.Log("SpecialCurieTruck Collision with myself " + handler);
 				continue;
 			}
 
 			handler.OnCollision(damage, owner, gameObject, GetPush(c.transform));
-			Debug.Log("SpecialCurieTruck Collision with " + handler);
+			//Debug.Log("SpecialCurieTruck Collision with " + handler);
 		}
 
 		Photon.Send(EPhotonMsg.Special_Curie_Collide);

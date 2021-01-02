@@ -28,10 +28,22 @@ public class UIPlayerInfoController : GameController
 		prefab.gameObject.SetActive(false);
 	}
 
+	[SerializeField] TutorialGame tutorialPlayerInfo;
+	bool isFirstPlayerAdded;
+
 	private void AddPlayerInfo(Player pPlayer)
 	{
 		UIPlayerInfoElement instance = Instantiate(prefab, transform);
 		instance.Init(pPlayer);
+
+		if(!isFirstPlayerAdded)
+		{
+			tutorialPlayerInfo.SetFocusedObject(instance.weapon.gameObject);
+			tutorialPlayerInfo.SetFocusedObject(instance.ammo.gameObject);
+			tutorialPlayerInfo.SetFocusedObject(instance.health.gameObject);
+		}
+
+		isFirstPlayerAdded = true;
 	}
 	
 }

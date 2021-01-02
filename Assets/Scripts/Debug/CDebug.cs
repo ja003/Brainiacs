@@ -77,6 +77,7 @@ public class CDebug : CSingleton<CDebug>
 	public bool MuteMusic => GetDebugBool(_MuteMusic);
 
 	// AI
+	[Header("AI")]
 	[SerializeField] EWeaponId _AiWeapon;
 	public EWeaponId AiWeapon => release ? EWeaponId.None : _AiWeapon;
 	[SerializeField] bool _NonAggressiveAi;
@@ -84,7 +85,15 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _AiDebugMove;
 	public bool AiDebugMove => GetDebugBool(_AiDebugMove);
 
+	[Header("Tutorial")]
+	[SerializeField] bool _SkipTutorial;
+	public bool SkipTutorial => GetDebugBool(_SkipTutorial);
+	[SerializeField] bool _ForceTutorial;
+	public bool ForceTutorial => GetDebugBool(_ForceTutorial);
 
+	[Header("Menu")]
+	[SerializeField] bool _InstaAnimation;
+	public bool InstaAnimation => GetDebugBool(_InstaAnimation);
 
 	internal void Reset()
 	{
@@ -152,7 +161,7 @@ public class CDebug : CSingleton<CDebug>
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 					EHero.Currie, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.LocalPlayer);
+					EPlayerColor.Pink, EPlayerType.AI);
 
 				break;
 			case 3:

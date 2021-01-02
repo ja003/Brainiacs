@@ -9,13 +9,13 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupPlayerEl : MainMenuBehaviour
 {
-	[SerializeField] Image color = null;
+	[SerializeField] public Image color = null;
 	[SerializeField] Image state = null; //ready = green, waiting = red
 	[SerializeField] Animator portraitAnimator = null;
 	[SerializeField] Image portrait = null;
 	[SerializeField] Text playerNameText = null;
 	//[SerializeField] UiTextSwapper playerTypeSwapper;
-	[SerializeField] UiTextSwapper heroSwapper = null;
+	[SerializeField] public UiTextSwapper heroSwapper = null;
 	[SerializeField] UiTextSwapper keySetSwapper = null;
 	[SerializeField] Text playerTypeText = null;
 	[SerializeField] Button btnRemove = null;
