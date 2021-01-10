@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(CDebug))]
 public class CDebugEditor : Editor
 {
@@ -15,3 +16,4 @@ public class CDebugEditor : Editor
 		base.OnInspectorGUI();
 	}
 }
+#endif

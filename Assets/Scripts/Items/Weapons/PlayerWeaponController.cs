@@ -11,7 +11,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	[SerializeField] private Transform projectileStartLeft = null;
 
 	public List<PlayerWeapon> weapons = new List<PlayerWeapon>();
-	public PlayerWeapon ActiveWeapon { get; private set; }
+	public PlayerWeapon ActiveWeapon { get; private set; } //set only on player side
 	[SerializeField] private int activeWeaponIndex;
 
 	private Action<PlayerWeapon> onWeaponInfoChanged;
@@ -20,6 +20,11 @@ public class PlayerWeaponController : PlayerBehaviour
 	public void InvokeWeaponChange(PlayerWeapon pWeapon)
 	{
 		onWeaponInfoChanged?.Invoke(pWeapon);
+	}
+
+	public void OnDie()
+	{
+		StopUseWeapon();
 	}
 
 	public void OnPowerUpAmmo()

@@ -54,7 +54,7 @@ public class PlayerInitInfo
 		return result;
 	}
 
-	internal byte[] Serizalize()
+	internal byte[] Serialize()
 	{
 		FlatBufferBuilder fbb = new FlatBufferBuilder(1);
 		StringOffset nameOff = fbb.CreateString(Name);

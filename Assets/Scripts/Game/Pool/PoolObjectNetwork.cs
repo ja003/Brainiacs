@@ -29,6 +29,11 @@ public abstract class PoolObjectNetwork : GameBehaviour, IPoolObject
 		}
 	}
 
+	//sends OnSetActive state over network
+	[SerializeField] bool sendActivateMsg = true;
+	//should be false for objects that are destroyed using PhotonNetwork.Destroy (eg. Projectiles)
+	[SerializeField] bool sendDeactivateMsg = true;
+
 	/// <summary>
 	/// Only the owner of the object can return it to pool.
 	/// If not mine => deactivate object (so it cant be interacted with)
@@ -37,9 +42,13 @@ public abstract class PoolObjectNetwork : GameBehaviour, IPoolObject
 	public void ReturnToPool()
 	{
 		if(Photon.IsMine)
+		{
+			//Debug.Log($"{gameObject.name} ReturnToPool");
 			poolObject.ReturnToPool();
+		}
 		else
 		{
+			//Debug.Log($"{gameObject.name} send Pool_ReturnToPool");
 			SetActive(false);
 			Photon.Send(EPhotonMsg.Pool_ReturnToPool);
 		}
@@ -56,7 +65,9 @@ public abstract class PoolObjectNetwork : GameBehaviour, IPoolObject
 	public void OnSetActive(bool pValue)
 	{
 		OnSetActive0(pValue);
-		Photon.Send(EPhotonMsg.Pool_SetActive, pValue);
+
+		if((pValue && sendActivateMsg) || (!pValue && sendDeactivateMsg))
+			Photon.Send(EPhotonMsg.Pool_SetActive, pValue);
 	}
 
 	protected abstract void OnSetActive0(bool pValue);

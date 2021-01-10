@@ -26,10 +26,12 @@ public class MainMenu : CSingleton<MainMenu>
 
 	protected override void Awake()
 	{
-		if(debug_InitBgAnim != MENU_ANIM_POSITION_MAIN)
-			Debug.LogError("Default menu position changed [test?]");
-		SetMenuAnimPosition(debug_InitBgAnim);
-
+		//if(!debug.release)
+		{
+			if(debug_InitBgAnim != MENU_ANIM_POSITION_MAIN)
+				Debug.LogError("Default menu position changed [test?]");
+			SetMenuAnimPosition(debug_InitBgAnim);
+		}
 		btnStartGame.onClick.AddListener(OnBtnStartGame);
 		btnSettings.onClick.AddListener(OnBtnSettings);
 		btnQuit.onClick.AddListener(OnBtnQuit);

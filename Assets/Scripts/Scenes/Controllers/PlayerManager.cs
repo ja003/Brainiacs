@@ -197,7 +197,10 @@ public class PlayerManager : GameController
 
 		if(Players.Contains(pPlayer))
 		{
-			Debug.LogError($"Player {pPlayer} already added");
+			//not bug
+			//called from OnReceivedInitInfo - has to be called on every
+			//side => just prevent adding the same player
+			//Debug.LogError($"Player {pPlayer} already added");
 			return;
 		}
 

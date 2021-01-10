@@ -19,6 +19,16 @@ public static class InstanceFactory
 			Debug.LogError("Instantiate null");
 			return null;
 		}
+		return Instantiate(pPrefab.name, pPosition, pNetworkInstance);
+	}
+
+	public static GameObject Instantiate(string pPrefabName, Vector2 pPosition, bool pNetworkInstance = true)
+	{
+		if(pPrefabName.Length == 0)
+		{
+			Debug.LogError("Instantiate null");
+			return null;
+		}
 		if(!poolInitialized)
 		{
 			Game.Instance.Pool.Init();
@@ -31,12 +41,12 @@ public static class InstanceFactory
 		//=> call PoolManager.Instantiate / PoolManager.Destroy directly
 
 		if(pNetworkInstance && PhotonNetwork.IsConnected && isMultiplayer)// || debug.Players)
-			instance = PhotonNetwork.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
+			instance = PhotonNetwork.Instantiate(pPrefabName, pPosition, Quaternion.identity);
 		else
 		{
 			if(isMultiplayer && pNetworkInstance)
 				Debug.LogError("Not conected to server");
-			instance = Game.Instance.Pool.Instantiate(pPrefab.name, pPosition, Quaternion.identity);
+			instance = Game.Instance.Pool.Instantiate(pPrefabName, pPosition, Quaternion.identity);
 		}
 
 		return instance;

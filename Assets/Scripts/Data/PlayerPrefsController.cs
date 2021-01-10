@@ -36,9 +36,16 @@ public class PlayerPrefsController : GameBehaviour
 	private const string KEY_ALLOW_MOVE_ALL_DIR = "KEY_ALLOW_MOVE_ALL_DIR";
 	public bool AllowMoveAllDir
 	{
-		get { return PlayerPrefsX.GetBool(KEY_ALLOW_MOVE_ALL_DIR); }
+		get { return PlayerPrefsX.GetBool(KEY_ALLOW_MOVE_ALL_DIR, true); }
 		set { PlayerPrefsX.SetBool(KEY_ALLOW_MOVE_ALL_DIR, value); }
 	}
+
+	private const string KEY_SHOW_HEALTHBARS= "KEY_SHOW_HEALTHBARS";
+	public bool ShowHealthbars
+	{
+		get { return PlayerPrefsX.GetBool(KEY_SHOW_HEALTHBARS, true); }
+		set { PlayerPrefsX.SetBool(KEY_SHOW_HEALTHBARS, value); }
+	}	
 
 	public PlayerKeys GetPlayerKeys(EKeyset pKeyset)
 	{

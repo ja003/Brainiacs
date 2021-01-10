@@ -59,7 +59,7 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 			//multiple players can be hit - use the topmost order
 			if(spriteRend.sortingOrder < orderAbove)
 			{
-				Debug.Log($"Set order {orderAbove}");
+				//Debug.Log($"Set order {orderAbove}");
 				spriteRend.sortingOrder = orderAbove;
 			}
 		}

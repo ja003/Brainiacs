@@ -15,9 +15,13 @@ public abstract class Tutorial : BrainiacsBehaviour
 	[SerializeField] List<Button> targetBtns;
 	[SerializeField] protected Tutorial next;
 
+	//part completed by this tutorial. OnCompleted gets called
 	[SerializeField] protected ETutorial tutorialPart;
 
 	[SerializeField] bool skipAddingCanvas;
+
+	[SerializeField] EPlatform targetPlatform;
+
 
 	protected override void Awake()
 	{
@@ -33,6 +37,13 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 	public new void Activate()
 	{
+		//if target platform is specified and does not match => skip to next
+		if(targetPlatform != EPlatform.None && targetPlatform != PlatformManager.GetPlatform())
+		{
+			next?.Activate();
+			return;
+		}
+
 		//Debug.Log($"Activate {gameObject.name}");
 		gameObject.SetActive(true);
 		SetBgEnabled(true);
@@ -105,7 +116,7 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 	internal void SetTargetBtn(Button pTargetBtn)
 	{
-		Debug.Log($"SetTargetBtn {pTargetBtn.gameObject.name}");
+		//Debug.Log($"SetTargetBtn {pTargetBtn.gameObject.name}");
 		targetBtns.Add(pTargetBtn);
 		pTargetBtn.onClick.AddListener(OnTargetBtnClick);
 	}

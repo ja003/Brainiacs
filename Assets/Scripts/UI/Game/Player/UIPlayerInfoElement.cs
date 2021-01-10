@@ -88,6 +88,8 @@ public class UIPlayerInfoElement : UiBehaviour
 			return;
 		health.text = pHealth.ToString();
 
+		player.Health.Healthbar.SetHealth(pHealth, PlayerStats.MAX_HEALTH);
+
 		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetHealth, pHealth);
 	}
 

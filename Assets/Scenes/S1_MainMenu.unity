@@ -2096,6 +2096,7 @@ MonoBehaviour:
   - {fileID: 277727862}
   next: {fileID: 1477994952}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!224 &234652917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2162,6 +2163,7 @@ MonoBehaviour:
   - {fileID: 1173083783}
   next: {fileID: 985095638}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!224 &239222965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3029,6 +3031,7 @@ MonoBehaviour:
   - {fileID: 1088646201}
   next: {fileID: 2122567767}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!224 &409503245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3069,6 +3072,7 @@ GameObject:
   - component: {fileID: 410701115}
   - component: {fileID: 410701117}
   - component: {fileID: 410701116}
+  - component: {fileID: 410701118}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -3178,6 +3182,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410701112}
   m_CullTransparentMesh: 0
+--- !u!114 &410701118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410701112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &414216739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,6 +4417,7 @@ MonoBehaviour:
   - {fileID: 373194467}
   next: {fileID: 234652916}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!222 &556627947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6501,6 +6523,7 @@ MonoBehaviour:
   - {fileID: 398908959}
   next: {fileID: 1551958359}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!222 &985095639
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8818,6 +8841,7 @@ MonoBehaviour:
   - {fileID: 391655094}
   next: {fileID: 409503244}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!222 &1477994953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9141,7 +9165,8 @@ MonoBehaviour:
   targetBtns:
   - {fileID: 1984685140}
   next: {fileID: 0}
-  tutorialPart: 0
+  tutorialPart: 1
+  skipAddingCanvas: 0
 --- !u!222 &1551958360
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10757,7 +10782,7 @@ MonoBehaviour:
   btnStartGame: {fileID: 373194467}
   btnSettings: {fileID: 225178008}
   btnQuit: {fileID: 523244045}
-  debug_InitBgAnim: 0
+  debug_InitBgAnim: 1
   GameSetup: {fileID: 44279631}
   Photon: {fileID: 1939122613}
   InputKeySelector: {fileID: 212903445}
@@ -11407,6 +11432,7 @@ MonoBehaviour:
   targetBtns: []
   next: {fileID: 239222964}
   tutorialPart: 0
+  skipAddingCanvas: 0
 --- !u!224 &2122567768
 RectTransform:
   m_ObjectHideFlags: 0

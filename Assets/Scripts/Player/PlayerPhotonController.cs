@@ -74,6 +74,39 @@ public class PlayerPhotonController : PoolObjectPhoton
 		base.OnReturnToPool();
 	}
 
+	public override void Send(EPhotonMsg pMsgType, params object[] pParams)
+	{
+		//todo: this doesnt work?
+		// => handled in PlayerPhoton.HandleMsg2
+		if(IsPhotonPlayerMsg(pMsgType))
+		{
+			//Debug.Log($"send msg {pMsgType} to {PhotonPlayer}, LOCAL = {PhotonPlayer.IsLocal}");
+			if(PhotonPlayer.IsLocal)
+				return;
+			Send(pMsgType, PhotonPlayer, pParams);
+		}
+		else
+		{
+			base.Send(pMsgType, pParams);
+		}
+
+	}
+
+	private bool IsPhotonPlayerMsg(EPhotonMsg pMsgType)
+	{
+		switch(pMsgType)
+		{
+			//case EPhotonMsg.Player_ChangeDirection:
+			//case EPhotonMsg.Player_InitPlayer:
+			//case EPhotonMsg.Player_ShowWeapon:
+			case EPhotonMsg.Player_ApplyDamage:
+			case EPhotonMsg.Player_AddKill:
+			case EPhotonMsg.Player_Push:
+				return true;
+		}
+		return false;
+	}
+
 	/// <summary>
 	/// Player can send data only if it is mine player and is inited.
 	/// There are execeptions.
@@ -110,8 +143,20 @@ public class PlayerPhotonController : PoolObjectPhoton
 	{
 		if(!isInited && pReceivedMsg != EPhotonMsg.Player_InitPlayer)
 		{
-			Debug.Log(gameObject.name + " not inited yet. " + pReceivedMsg);
+			//Debug.Log(gameObject.name + " not inited yet. " + pReceivedMsg);
 			player.OnPlayerInited.AddAction(() => HandleMsg2(pReceivedMsg, pParams, bb));
+			return;
+		}
+
+		//if(PhotonPlayer != null)
+		//	Debug.Log($"Handle {pReceivedMsg}, {PhotonPlayer}, local = {PhotonPlayer.IsLocal}");
+
+		//msg is meant only for 1 specific player
+		if(PhotonPlayer != null 
+			&& IsPhotonPlayerMsg(pReceivedMsg) 
+			&& !PhotonPlayer.IsLocal)
+		{
+			Debug.LogError($"Handle {pReceivedMsg}, {PhotonPlayer}, local = {PhotonPlayer.IsLocal}");
 			return;
 		}
 
@@ -144,6 +189,8 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return;
 
 			case EPhotonMsg.Player_AddKill:
+				Debug.Log("handle AddKill");
+
 				//EPlayerStats stat = (EPlayerStats)pParams[0];
 				//int value = (int)pParams[1];
 				//bool force = (bool)pParams[2];

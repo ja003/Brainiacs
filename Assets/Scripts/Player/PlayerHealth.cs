@@ -8,10 +8,23 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	protected override void Awake()
 	{
 		stats.SetOnStatsChange(OnStatsChange);
+		
+		Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
+		Healthbar.Init(this, Vector2.up, true);
+
 		base.Awake();
 	}
 
 	public bool IsDying { get; private set; } //flag to prevent deadlock
+
+	//healthbar object is controlled from here (init, position) but value
+	//is updated from UIPlayerInfoElement
+	public UIHealthbar Healthbar;
+
+	internal void Init()
+	{
+		
+	}
 
 	private void OnStatsChange(PlayerStats pStats)
 	{
@@ -24,7 +37,6 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		}
 	}
 
-
 	private void Die()
 	{
 		if(IsDying)
@@ -36,6 +48,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 		visual.OnDie();
 		stats.OnDie();
+		weapon.OnDie();
 
 		//controlled by animation now
 		//if(stats.LivesLeft > 0)
@@ -186,4 +199,5 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		PlaySound(ESound.Player_Hit, max_hit_sound_freq);
 		player.Photon.Send(EPhotonMsg.Player_OnReceiveDamageEffect);
 	}
+
 }

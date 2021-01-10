@@ -54,8 +54,8 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 	public void HandleMsg(EPhotonMsg pReceivedMsg, object[] pParams)
 	{
 		//var receivedMsg = (EPhotonMsg_MainMenu)objectArray[0];
-		if(DEBUG_LOG && !IsLogMsgIgnored(pReceivedMsg))
-			Debug.Log("HandleMsg " + pReceivedMsg);
+		//if(DEBUG_LOG && !IsLogMsgIgnored(pReceivedMsg))
+		//	Debug.Log($"{gameObject.name} HandleMsg {pReceivedMsg}");
 
 		byte[] bytes = IsFlafbuffer(pReceivedMsg) && pParams != null ? (byte[])pParams[0] : null;
 		ByteBuffer bb = IsFlafbuffer(pReceivedMsg) && bytes != null ? new ByteBuffer(bytes) : null;
@@ -83,15 +83,20 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 		Debug.LogError(this.gameObject.name + " message not handled " + pReceivedMsg);
 	}
 
+	public virtual void Send(EPhotonMsg pMsgType, params object[] pParams)
+	{
+		Send(pMsgType, null, pParams);
+	}
+
 	/// <summary>
 	/// Send data to {target} (based on message type).
 	/// If game is not multiplayer the message wont send 
 	/// and will be handled right away
 	/// </summary>
-	public void Send(EPhotonMsg pMsgType, params object[] pParams)
+	public void Send(EPhotonMsg pMsgType, PhotonPlayer pTargetPlayer, params object[] pParams)
 	{
 		//if(DEBUG_LOG)
-		//	Debug.Log("Send " + pMsgType + ", MP: " + isMultiplayer);
+		//	Debug.Log($"{gameObject.name} Send {pMsgType}");
 
 		//todo: add timestamp to all messages?
 		//eg. neede for setting health
@@ -115,7 +120,16 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 				Debug.Log("Send " + pMsgType);
 
 			RpcTarget target = GetMsgTarget(pMsgType);
-			view.RPC("HandleMsg", target, pMsgType, pParams);
+			//view.RPC("HandleMsg", target, pMsgType, pParams);
+			//https://forum.photonengine.com/discussion/16375/photon-unity-send-an-rpc-function-to-one-specific-player-to-execute
+			//this doesnt work?
+			//msg is sent to all, not just pTargetPlayer
+			// => handled in PlayerPhoton.HandleMsg2
+			if(pTargetPlayer == null)
+				view.RPC("HandleMsg", target, pMsgType, pParams);
+			else
+				view.RPC("HandleMsg", pTargetPlayer, pMsgType, pParams);
+
 		}
 		else
 		{
@@ -171,6 +185,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 			case EPhotonMsg.MainMenu_SyncGameInfo:
 				//return RpcTarget.AllViaServer; //debug
 				return RpcTarget.Others;
+
 		}
 		return RpcTarget.Others;
 	}
@@ -255,6 +270,9 @@ public enum EPhotonMsg
 	//- Nobel
 	Special_Nobel_Spawn,
 
+	//- DaVinci
+	Special_DaVinci_OnCollision,
+	Special_DaVinci_UpdateHealthbar,
 
 	//Map items
 	MapItem_Init,

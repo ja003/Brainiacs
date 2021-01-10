@@ -30,7 +30,7 @@ public class PlayerInput : PlayerBehaviour
 
 		//dont calculate keys input on mobile (performance)
 		//in editor we still want it for debug
-		if(!PlatformManager.IsMobile() || !debug.release) 
+		if(!PlatformManager.IsMobile() || !debug.release)
 			CalculateMoveKeys();
 
 		ProcessMovementInput();
@@ -211,15 +211,24 @@ public class PlayerInput : PlayerBehaviour
 
 	private void ProcessActionInput()
 	{
+		if(PlatformManager.IsMobile())
+			return;
+
 		if(Input.GetKeyDown(keys.swapWeapon))
 			weapon.SwapWeapon();
-
-		if(Input.GetKey(keys.useWeapon))
-			weapon.UseWeapon();
 
 		if(Input.GetKeyUp(keys.useWeapon))
 			weapon.StopUseWeapon();
 
+		if(Input.GetKey(keys.useWeapon))
+			weapon.UseWeapon();
+		//auto detect if weapon is used when shouldnt 
+		//eg. daVinci tank after death
+		else if(weapon.ActiveWeapon.IsUsed)
+		{
+			Debug.LogError("Active weapon is still used");
+			weapon.StopUseWeapon();
+		}
 
 	}
 

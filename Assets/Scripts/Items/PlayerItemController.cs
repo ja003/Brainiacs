@@ -12,19 +12,11 @@ public class PlayerItemController : PlayerBehaviour
 
 		weapon.SetDefaultWeaponActive();
 
+		debug.SetDebugStartupWeapon(ref player.InitInfo);
+
 		foreach(var weapon in player.InitInfo.debug_StartupWeapon)
 		{
 			AddWeapon(weapon);
-		}
-
-		if(debug.ExtraPlayerItem)
-		{
-			AddWeapon(EWeaponId.Flamethrower);
-			AddWeapon(EWeaponId.Special_Curie);
-			AddWeapon(EWeaponId.Special_Nobel);
-			AddWeapon(EWeaponId.Special_Einstein);
-			AddWeapon(EWeaponId.Lasergun);
-			AddWeapon(EWeaponId.MP40);
 		}
 	}
 

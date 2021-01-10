@@ -22,6 +22,7 @@ using UnityEngine;
 public class CDebug : CSingleton<CDebug>
 {
 	public bool release = false;
+	public bool releaseWithExceptions = true;
 
 	[SerializeField] bool _MP;
 	public bool MP => GetDebugBool(_MP);
@@ -35,8 +36,8 @@ public class CDebug : CSingleton<CDebug>
 	[Header("Player")]
 	[SerializeField] EHero _Hero;
 	public EHero Hero => release ? EHero.None : _Hero;
-	[SerializeField] bool _ExtraPlayerItem;
-	public bool ExtraPlayerItem => GetDebugBool(_ExtraPlayerItem);
+	[SerializeField] EWeaponId _ExtraPlayerWeapon;
+	public EWeaponId ExtraPlayerWeapon => _ExtraPlayerWeapon;
 
 	[SerializeField] bool _Shield;
 	public bool Shield => GetDebugBool(_Shield);
@@ -121,7 +122,7 @@ public class CDebug : CSingleton<CDebug>
 
 	private bool GetDebugBool(bool pValue)
 	{
-		return pValue && !release;
+		return pValue && (!release || releaseWithExceptions);
 	}
 
 	
@@ -160,8 +161,8 @@ public class CDebug : CSingleton<CDebug>
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.AI);
+					EHero.Nobel, GetPlayerName(pPlayerNumber),
+					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
 			case 3:
@@ -176,29 +177,28 @@ public class CDebug : CSingleton<CDebug>
 					EPlayerColor.Blue, EPlayerType.LocalPlayer);
 				break;
 		}
-		player.PhotonPlayer = PhotonNetwork.LocalPlayer;
 
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Einstein);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
-		//player.debug_StartupWeapon.Add(EWeaponId.Basic_Curie);
-		//player.debug_StartupWeapon.Add(EWeaponId.Flamethrower);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Nobel);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_Tesla);
-		player.debug_StartupWeapon.Add(EWeaponId.MP40);
-		//player.debug_StartupWeapon.Add(EWeaponId.Lasergun);
-		//player.debug_StartupWeapon.Add(EWeaponId.Biogun);
-		//player.debug_StartupWeapon.Add(EWeaponId.Mine);
-		//player.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
 
-		if(player.PlayerType == EPlayerType.AI && AiWeapon != EWeaponId.None)
-		{
-			player.debug_StartupWeapon.Add(AiWeapon);
-		}
 
 		return player;
+	}
 
+	/// <summary>
+	/// Called during player items init
+	/// </summary>
+	internal void SetDebugStartupWeapon(ref PlayerInitInfo initInfo)
+	{
+		if(release && !releaseWithExceptions)
+			return;
 
+		initInfo.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
+		initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
+
+		initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
+		if(initInfo.PlayerType == EPlayerType.AI && AiWeapon != EWeaponId.None)
+		{
+			initInfo.debug_StartupWeapon.Add(AiWeapon);
+		}
 	}
 
 	internal void SetResults()

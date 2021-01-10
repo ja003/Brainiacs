@@ -8,7 +8,7 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.Serialization;
 using PhotonPlayer = Photon.Realtime.Player;
 
-public class Player : PoolObjectNetwork
+public class Player : PoolObjectNetwork, IOwner
 {
 	[Header("Player")]
 	[SerializeField] private PlayerInput input = null;
@@ -153,6 +153,7 @@ public class Player : PoolObjectNetwork
 
 		Stats.Init();
 		input.Init(InitInfo);
+		Health.Init();
 
 		ItemController.Init(InitInfo.Hero);
 
@@ -215,4 +216,8 @@ public class Player : PoolObjectNetwork
 		game.PlayerManager.playerSorter.UnregisterPlayer(this);
 	}
 
+	public Player GetOwner()
+	{
+		return this;
+	}
 }

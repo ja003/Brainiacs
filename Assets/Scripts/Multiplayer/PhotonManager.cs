@@ -51,14 +51,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public void JoinRandomRoom(Action pOnKickedOut)
 	{
 		OnKickedOut = pOnKickedOut;
-		Debug.Log("JoinRandomRoom");
+		//Debug.Log("JoinRandomRoom");
 		PhotonNetwork.JoinRandomRoom();
 	}
 
 	public void JoinRoom(string pName, Action pOnKickedOut)
 	{
 		OnKickedOut = pOnKickedOut;
-		Debug.Log("JoinRoom " + pName);
+		//Debug.Log("JoinRoom " + pName);
 		PhotonNetwork.JoinRoom(pName);
 	}
 
@@ -66,7 +66,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	{
 		string roomName = GenerateRoomName();
 
-		Debug.Log("CreateRoom " + roomName);
+		//Debug.Log("CreateRoom " + roomName);
 
 		PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
 		OnPlayerEntered = pOnPlayerEntered;
@@ -106,7 +106,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public override void OnConnectedToMaster()
 	{
 		base.OnConnectedToMaster();
-		Debug.Log("Connected to master");
+		//Debug.Log("Connected to master");
 
 		PhotonNetwork.JoinLobby();
 	}
@@ -124,7 +124,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnCreatedRoom()
 	{
-		Debug.Log("OnCreatedRoom");
+		//Debug.Log("OnCreatedRoom");
 		base.OnCreatedRoom();
 	}
 
@@ -132,7 +132,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnJoinedRoom()
 	{
-		Debug.Log("OnJoinedRoom");
+		//Debug.Log("OnJoinedRoom");
 		base.OnJoinedRoom();
 		//IsMultiplayer = true;
 		//if(!PhotonNetwork.IsMasterClient)
@@ -151,7 +151,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnLeftRoom()
 	{
-		Debug.Log("OnLeftRoom");
+		//Debug.Log("OnLeftRoom");
 		OnKickedOut?.Invoke();
 		//IsMultiplayer = false;
 		base.OnLeftRoom();
@@ -159,7 +159,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnPlayerEnteredRoom(PhotonPlayer newPlayer)
 	{
-		Debug.Log("OnPlayerEnteredRoom " + newPlayer);
+		//Debug.Log("OnPlayerEnteredRoom " + newPlayer);
 		base.OnPlayerEnteredRoom(newPlayer);
 
 		OnPlayerEntered?.Invoke(newPlayer);
@@ -167,7 +167,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnPlayerLeftRoom(PhotonPlayer otherPlayer)
 	{
-		Debug.Log("OnPlayerLeftRoom " + otherPlayer);
+		//Debug.Log("OnPlayerLeftRoom " + otherPlayer);
 		base.OnPlayerLeftRoom(otherPlayer);
 
 		OnPlayerLeft?.Invoke(otherPlayer);
@@ -175,7 +175,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnDisconnected(DisconnectCause cause)
 	{
-		Debug.Log("OnDisconnected");
+		//Debug.Log("OnDisconnected");
 		StartCoroutine(TryReconnect());
 	}
 

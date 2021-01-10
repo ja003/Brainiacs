@@ -14,6 +14,8 @@ public class BrainiacsBehaviour : MonoBehaviour
 
 	protected bool isMultiplayer => Brainiacs.IsInstantiated && brainiacs.GameInitInfo != null && brainiacs.GameInitInfo.IsMultiplayer();
 
+	public Vector2 Position2D => new Vector2(transform.position.x, transform.position.y);
+
 	private Renderer _rend;
 	protected Renderer rend
 	{

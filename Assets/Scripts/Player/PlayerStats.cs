@@ -15,7 +15,7 @@ public class PlayerStats : PlayerBehaviour
 	//public EPlayerColor Color { get; internal set; }
 
 	private const float DEFAULT_SPEED = 1;
-	private const int MAX_HEALTH = 100;
+	public const int MAX_HEALTH = 100;
 	public float Speed { 
 		get {
 			return DEFAULT_SPEED 
@@ -77,6 +77,8 @@ public class PlayerStats : PlayerBehaviour
 
 	public void AddKill(bool pForce)
 	{
+		Debug.Log("AddKill");
+
 		if(!player.IsInited)
 		{
 			Debug.LogError($"AddKill called before player is inited. {player}");
@@ -98,6 +100,7 @@ public class PlayerStats : PlayerBehaviour
 		//player image only sends info 
 		else
 		{
+			Debug.Log("send AddKill");
 			player.Photon.Send(EPhotonMsg.Player_AddKill, pForce);
 		}
 	}

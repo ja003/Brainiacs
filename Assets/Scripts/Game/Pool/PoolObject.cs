@@ -59,6 +59,13 @@ public class PoolObject : GameBehaviour, IPunInstantiateMagicCallback
 	public virtual void OnInstantiated()
 	{
 		//...will see if needed
+		//Debug.Log($"{gameObject.name} OnInstantiated");
+	}
+
+	public void OnGetFromPool()
+	{
+		//some objects (speacial weapons prefabs, ...) cant be activated from start
+		//SetActive(true);
 	}
 
 	public bool IsNetworkObject()

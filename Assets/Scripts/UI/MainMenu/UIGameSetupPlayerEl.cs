@@ -267,7 +267,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		Info.PhotonPlayer = pPlayer;
 		//remoteConnected = true;
 		//remoteReady = true;
-		Debug.Log($"Remote player {pPlayer.UserId} connected");
+		//Debug.Log($"Remote player {pPlayer.UserId} connected");
 		SetName(pPlayer.NickName);
 		portraitAnimator.enabled = false;
 		//OnElementChanged(true);
@@ -314,7 +314,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 				continue;
 
 			//if it is used => set another
-			if(p.Info.Keyset == Info.Keyset)
+			if(p.Info.PhotonPlayer.IsLocal && p.Info.Keyset == Info.Keyset)
 			{
 				keySetSwapper.SetNextValue();
 				return;
@@ -348,7 +348,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		if(!PhotonNetwork.InRoom)
 			return;
 
-		byte[] infoS = Info.Serizalize();
+		byte[] infoS = Info.Serialize();
 		mainMenu.Photon.Send(EPhotonMsg.MainMenu_SyncPlayerInfo, infoS);
 	}
 

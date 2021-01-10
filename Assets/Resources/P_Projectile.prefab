@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d868509f5d64074ea2ce3fdbbe2f05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendActivateMsg: 1
+  sendDeactivateMsg: 0
   config: {fileID: 0}
   LocalImage: {fileID: 0}
 --- !u!50 &5544410765107709605

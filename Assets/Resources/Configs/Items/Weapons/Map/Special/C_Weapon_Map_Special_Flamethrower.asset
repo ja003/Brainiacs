@@ -40,7 +40,7 @@ MonoBehaviour:
     Prefab: {fileID: 1283352233378723769, guid: 0f9cbc6669e22fd46a8008da9e8b62dc,
       type: 3}
   InHandInfo:
-    Ammo: 300
+    Ammo: 5
     Magazines: 666
     Cooldown: 2
     Cadency: 0

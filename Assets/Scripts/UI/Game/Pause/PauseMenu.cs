@@ -26,6 +26,7 @@ public class PauseMenu : GameController
 	[SerializeField] Button btnConfirmYes;
 	[SerializeField] Button btnConfirmNo;
 	[SerializeField] Toggle toggleAllowAllDir;
+	[SerializeField] Toggle toggleShowHealthbars;
 
 
 	protected override void OnMainControllerAwaken() { }
@@ -48,6 +49,9 @@ public class PauseMenu : GameController
 
 		toggleAllowAllDir.onValueChanged.AddListener(OnAllowAllDirChanged);
 		toggleAllowAllDir.isOn = brainiacs.PlayerPrefs.AllowMoveAllDir;
+		toggleShowHealthbars.onValueChanged.AddListener(OnShowHealthbarsChanged);
+		toggleShowHealthbars.isOn = brainiacs.PlayerPrefs.ShowHealthbars;
+
 
 		//volume
 		sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
@@ -78,6 +82,11 @@ public class PauseMenu : GameController
 	{
 		brainiacs.PlayerPrefs.AllowMoveAllDir = pValue;
 	}
+
+	private void OnShowHealthbarsChanged(bool pValue)
+	{
+		brainiacs.PlayerPrefs.ShowHealthbars = pValue;
+	}	
 
 	/// <summary>
 	/// Leave room and loads the result scene.

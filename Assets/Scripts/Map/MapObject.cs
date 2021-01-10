@@ -38,7 +38,7 @@ public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 			return;
 
 		Player player = collision.gameObject.GetComponent<Player>();
-		if(player)
+		if(player && player.InitInfo.PhotonPlayer != null)
 		{
 			photonView.TransferOwnership(player.InitInfo.PhotonPlayer);
 		}

@@ -8,13 +8,15 @@ using UnityEngine;
 /// Activated while use button is pressed.
 /// It block X hits from projectile then it is destroyed => triggers reload
 /// </summary>
-public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
+public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, IOwner
 {
 	[SerializeField] int damage;
 	[SerializeField] int maxHealth;
 
 	int currentHealth;
-		
+
+	UIHealthbar healthbar;
+
 	protected override void OnInit()
 	{
 		//Debug.Log(gameObject.name + " OnInit");
@@ -25,6 +27,11 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 		owner.Visual.OnSortOrderChanged += UpdateSortOrder;
 		currentHealth = maxHealth;
+
+		healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
+		healthbar.Init(this, Vector2.up, false);
+
+		UpdateSortOrder(); //needs to be updated on image side
 	}
 
 	protected override void OnReturnToPool3()
@@ -33,20 +40,41 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	protected override void OnSetActive2(bool pValue)
 	{
-		SetEnabled(pValue);
-	}
-
-	private void SetEnabled(bool pValue)
-	{
 		spriteRend.enabled = pValue;
-		boxCollider2D.enabled = pValue && Photon.IsMine;
-	}
+		//needed in MP...right?
+		//collider has to be active for projectiles to be blocked etc
+		boxCollider2D.enabled = pValue;// && Photon.IsMine;
 
+		if(!isInited)
+			return;
+
+		healthbar.SetVisibility(pValue);
+		owner.Health.Healthbar.SetVisibility(!pValue);
+
+	}
 	private void UpdateSortOrder()
 	{
 		//if(!spriteRend.enabled)
 		//	return;
 		spriteRend.sortingOrder = owner.Visual.GetPlayerOverlaySortOrder();
+
+		//image doesnt have ActiveWeapon set
+		if(!owner.IsItMe)
+			return;
+
+		if(owner.WeaponController.ActiveWeapon == null)
+		{
+			Debug.LogError("No active weapon set");
+			return;
+		}
+
+		//bug: player dies in tank => tank is not reseted
+		if(gameObject.activeSelf && owner.WeaponController.ActiveWeapon.Id != EWeaponId.Special_DaVinci)
+		{
+			Debug.LogError("DaVinci tank still active");
+			StopUse();
+		}
+
 		//Debug.Log("sortingOrder = " + spriteRend.sortingOrder);
 	}
 
@@ -57,7 +85,10 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 		//prevent weapon change
 		owner.WeaponController.CanSwapWeapon = false;
 
+
 		//todo: make player invulnerable (he can be hit by bomb etc..)
+		//owner.Collider.enabled = false; //doesnt work in MP
+		//...or he doesnt have to be invulnerable?
 
 		SetActive(true);
 
@@ -65,15 +96,37 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 	protected override void OnStopUse()
 	{
+		owner.Collider.enabled = true;
+
 		//Debug.Log("OnStopUse");
 		//allow weapon change
 		owner.WeaponController.CanSwapWeapon = true;
 		SetActive(false);
 	}
 
+	private void SetHealth(int pHealth)
+	{
+		currentHealth = pHealth;
+		UpdateHealtbar(pHealth);
+		//Debug.Log("Tank health: " + currentHealth);
+
+		if(currentHealth <= 0)
+		{
+			//Debug.Log("Destroyed");
+			owner.WeaponController.ActiveWeapon.AmmoLeft = 0;
+			Debug.LogWarning("TODO: crash anim + sound");
+		}
+	}
+
+	public void UpdateHealtbar(int pHealth)
+	{
+		healthbar.SetHealth(pHealth, maxHealth);
+		Photon.Send(EPhotonMsg.Special_DaVinci_UpdateHealthbar, pHealth);
+	}
+
 	public override void OnStartReloadWeapon()
 	{
-		currentHealth = maxHealth;
+		SetHealth(maxHealth);
 	}
 
 	Dictionary<ICollisionHandler, float> collisionTimes = new Dictionary<ICollisionHandler, float>();
@@ -83,6 +136,13 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 	//private void OnCollisionEnter2D(Collision2D collision)
 	private void OnCollisionStay2D(Collision2D collision)
 	{
+		//collisions are handled only on owner side
+		//collider has to be active for projectiles to be blocked etc
+		if(!owner.IsItMe)
+		{
+			return;
+		}
+
 		//Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
 
 		ICollisionHandler handler = collision.gameObject.GetComponent<ICollisionHandler>();
@@ -90,7 +150,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 			return;
 
 		float lastCollisionTime;
-		if(collisionTimes.TryGetValue(handler, out lastCollisionTime) && 
+		if(collisionTimes.TryGetValue(handler, out lastCollisionTime) &&
 			lastCollisionTime > Time.time - MIN_COLLISION_DELAY)
 		{
 			//Debug.Log("Collision too soon");
@@ -105,11 +165,11 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 
 		brainiacs.AudioManager.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 		Vector2 push = GetPush(collision.transform);
-		Debug.Log($"Hit {collision.gameObject.name}. {push}");
+		//Debug.Log($"Hit {collision.gameObject.name}. {push}");
 		handler.OnCollision(damage, owner, gameObject, push);
 
 		if(collisionTimes.ContainsKey(handler))
-			collisionTimes[handler] =  Time.time;
+			collisionTimes[handler] = Time.time;
 		else
 			collisionTimes.Add(handler, Time.time);
 
@@ -119,23 +179,31 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler
 	{
 		brainiacs.AudioManager.PlaySound(ESound.Davinci_Tank_Hit, audioSource);
 
-		if(!owner.IsInitedAndMe)
+		if(!owner.IsInited)
 			return false;
+
+		if(!owner.IsItMe)
+		{
+			//we dont care about pOwner and pOrigin
+			Photon.Send(EPhotonMsg.Special_DaVinci_OnCollision, pDamage, pPush);
+			return pDamage > 0;
+		}
+
+		//Debug.Log("Tank OnCollision: " + pDamage);
+
+		owner.Push.Push(pPush);
 
 		if(pDamage > 0)
 		{
-			currentHealth--;
-			if(currentHealth <= 0)
-			{
-				//Debug.Log("Destroyed");
-				owner.WeaponController.ActiveWeapon.AmmoLeft = 0;
-				Debug.LogWarning("TODO: crash anim + sound");
-			}
-
-			//Debug.Log("remains: " + currentHealth);
+			SetHealth(currentHealth - 1);
 			return true;
 		}
 
 		return false;
+	}
+
+	public Player GetOwner()
+	{
+		return owner;
 	}
 }

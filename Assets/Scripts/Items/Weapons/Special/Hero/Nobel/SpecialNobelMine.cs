@@ -64,21 +64,24 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		if(handler == null)
 			return;
 
-		Player player = collision.GetComponent<Player>();
+		IOwner iOwner = collision.GetComponent<IOwner>();
+		Player player = iOwner?.GetOwner();
 
-		if(player == null)
-		{
-			//Debug.Log("Not player");
-			return;
-		}
-		if(player.Equals(owner))
+		//we should hit even non-player (eg. DaVinci tank)
+		//if(player == null)
+		//{
+		//	Debug.Log("Not player");
+		//	return;
+		//}
+		if(player != null && player.Equals(owner))
 		{
 			//Debug.Log("thats me ");
 			return;
 		}
 
 		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damage * 2 : damage;
-		handler.OnCollision(finalDamage, owner, gameObject, GetPush(player.transform));
+		Transform transform = player != null ? player.transform : collision.GetComponent<Transform>();
+		handler.OnCollision(finalDamage, owner, gameObject, GetPush(transform));
 		Explode();
 	}	
 

@@ -148,6 +148,7 @@ class Pool
 			po.isPooled = false;
 			result = po.gameObject;
 			//result.SetActive(true);
+			po.OnGetFromPool();
 
 			result.transform.position = position;
 			result.transform.rotation = rotation;
@@ -269,7 +270,6 @@ public class EasyObjectPool : MonoBehaviour
 			{
 				Debug.LogWarning("No object available in pool. Consider setting fixedSize to false.: " + poolName);
 			}
-
 		}
 		else
 		{
