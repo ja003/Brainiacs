@@ -129,7 +129,7 @@ public class PlayerInput : PlayerBehaviour
 	Vector2 keyDirection;
 
 	/// <summary>
-	/// Input from keyboard.
+	/// Input from keyboard and physical joystick.
 	/// small BUG: if holding 2 opposite keys (<-, ->) one direction
 	/// is has bigger impact
 	/// </summary>
@@ -138,9 +138,13 @@ public class PlayerInput : PlayerBehaviour
 		const float move_change_speed = .25f;
 		bool movementRequested = false;
 
-		float vertical = Input.GetAxis("Vertical");
+		const float input_thr = 0.1f;
+		float vertical = GetJoystickInput("Vertical");
+		float horizontal = GetJoystickInput("Horizontal");
 
-		if(Input.GetKey(keys.moveUp) || vertical > 0.1f)
+		//Debug.Log($"{player.InitInfo.Keyset} = {horizontal} , {vertical}");
+
+		if(Input.GetKey(keys.moveUp) || vertical > input_thr)
 		{
 			//has to be registered in every case
 			movementRequested = true;
@@ -149,21 +153,21 @@ public class PlayerInput : PlayerBehaviour
 				keyDirection.y = 0;
 			keyDirection += Vector2.up * move_change_speed;
 		}
-		if(Input.GetKey(keys.moveRight))
+		if(Input.GetKey(keys.moveRight) || horizontal > input_thr)
 		{
 			if(keyDirection.x < 0)
 				keyDirection.x = 0;
 			movementRequested = true;
 			keyDirection += Vector2.right * move_change_speed;
 		}
-		if(Input.GetKey(keys.moveDown))
+		if(Input.GetKey(keys.moveDown) || vertical < -input_thr)
 		{
 			if(keyDirection.y > 0)
 				keyDirection.y = 0;
 			movementRequested = true;
 			keyDirection += Vector2.down * move_change_speed;
 		}
-		if(Input.GetKey(keys.moveLeft))
+		if(Input.GetKey(keys.moveLeft) || horizontal < -input_thr)
 		{
 			if(keyDirection.x > 0)
 				keyDirection.x = 0;
@@ -211,19 +215,18 @@ public class PlayerInput : PlayerBehaviour
 			movement.SetMove(EDirection.None);
 	}
 
-
 	private void ProcessActionInput()
 	{
 		if(PlatformManager.IsMobile())
 			return;
 
-		if(Input.GetKeyDown(keys.swapWeapon))
+		if(Input.GetKeyDown(keys.swapWeapon) || Input.GetKeyDown(GetJoystickKeyCode(EActionKey.Swap)))
 			weapon.SwapWeapon();
 
-		if(Input.GetKeyUp(keys.useWeapon))
+		if(Input.GetKeyUp(keys.useWeapon) || Input.GetKeyUp(GetJoystickKeyCode(EActionKey.Use)))
 			weapon.StopUseWeapon();
 
-		if(Input.GetKey(keys.useWeapon))
+		if(Input.GetKey(keys.useWeapon) || Input.GetKey(GetJoystickKeyCode(EActionKey.Use)))
 			weapon.UseWeapon();
 		//auto detect if weapon is used when shouldnt 
 		//eg. daVinci tank after death
@@ -233,6 +236,73 @@ public class PlayerInput : PlayerBehaviour
 			weapon.StopUseWeapon();
 		}
 
+	}
+
+	/// <summary>
+	/// Returns KeyCode for use or swap action of physical joystick controller (not the virtal joystick)
+	/// </summary>
+	private KeyCode GetJoystickKeyCode(EActionKey pAction)
+	{
+		switch(pAction)
+		{
+			case EActionKey.Swap:
+				switch(player.InitInfo.Keyset)
+				{
+					case EKeyset.KeysetA:
+						return KeyCode.Joystick1Button4;
+					case EKeyset.KeysetB:
+						return KeyCode.Joystick2Button4;
+					case EKeyset.KeysetC:
+						return KeyCode.Joystick3Button4;
+					case EKeyset.KeysetD:
+						return KeyCode.Joystick4Button4;
+				}
+				Debug.LogError("No valid keyset");
+				return KeyCode.Joystick1Button4;
+
+			case EActionKey.Use:
+				switch(player.InitInfo.Keyset)
+				{
+					case EKeyset.KeysetA:
+						return KeyCode.Joystick1Button5;
+					case EKeyset.KeysetB:
+						return KeyCode.Joystick2Button5;
+					case EKeyset.KeysetC:
+						return KeyCode.Joystick3Button5;
+					case EKeyset.KeysetD:
+						return KeyCode.Joystick4Button5;
+				}
+				Debug.LogError("No valid keyset");
+				return KeyCode.Joystick1Button5;
+		}
+
+		Debug.LogError("No button found");
+		return KeyCode.None;
+	}
+
+	/// <summary>
+	/// Input from physical joystick controller (not the virtal joystick)
+	/// </summary>
+	private float GetJoystickInput(string pName)
+	{
+		switch(player.InitInfo.Keyset)
+		{
+			case EKeyset.KeysetA:
+				pName += "A";
+				break;
+			case EKeyset.KeysetB:
+				pName += "B";
+				break;
+			case EKeyset.KeysetC:
+				pName += "C";
+				break;
+			case EKeyset.KeysetD:
+				pName += "D";
+				break;
+		}
+		//Debug.Log($"{pName} = {Input.GetAxis(pName)}");
+
+		return Input.GetAxis(pName);
 	}
 
 	private bool IsMovementRequested(EDirection pDirection)
