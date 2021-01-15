@@ -8,7 +8,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	protected override void Awake()
 	{
 		stats.SetOnStatsChange(OnStatsChange);
-		
+
 		Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
 		Healthbar.Init(this, Vector2.up, true);
 
@@ -23,7 +23,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	internal void Init()
 	{
-		
+
 	}
 
 	private void OnStatsChange(PlayerStats pStats)
@@ -108,6 +108,11 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		Die();
 	}
 
+	//ref to DaVinco tank.
+	//needed for multiplayer because player image doesnt have Active weapon set
+	//so there would be no way to check the tank state
+	public SpecialDaVinciTank MyTank;
+
 	/// <summary>
 	/// Damage from the collision and origin-player of the damage
 	/// </summary>
@@ -118,6 +123,19 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			//Debug.Log("No kill for shooting dying player");
 			return true;
 		}
+
+		if(MyTank != null && MyTank.gameObject.activeSelf)
+		{
+			//Debug.Log("Redirect collision to tank");
+			//todo: not very nice implementation
+			//- this happens when 
+			//-- 2 DaVinci tanks collide
+			//-- Einstein bomb => lets keep this (tank gets 2 hits from the bomb)
+			//-- other collisions should be handled by the tank and shouldnt reach player
+			//- try figure out how 2 tanks can collide
+			return MyTank.OnCollision(pDamage, pOwner, pOrigin, pPush);
+		}
+
 		player.Push.Push(pPush);
 
 		ApplyDamage(pDamage, pOwner);

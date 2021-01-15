@@ -15,7 +15,7 @@ public class UIGameSetupSearch : MainMenuController
 
 	protected override void OnMainControllerAwaken()
 	{
-		btnJoinRandomGame.onClick.AddListener(OnJoinRandomGame);
+		btnJoinRandomGame.onClick.AddListener(OnClickJoinRandomGame);
 		txtInputRoomName.onValueChanged.AddListener(OnRoomNameSet);
 	}
 
@@ -26,7 +26,7 @@ public class UIGameSetupSearch : MainMenuController
 		txtStatus.text = "Joining room " + pRoomName;
 	}
 
-	private void OnJoinRandomGame()
+	private void OnClickJoinRandomGame()
 	{
 		brainiacs.PhotonManager.JoinRandomRoom(mainMenu.GameSetup.SetupMain.OnKickedOut);
 		txtStatus.text = "Joining random room";
@@ -38,8 +38,8 @@ public class UIGameSetupSearch : MainMenuController
 		//Debug.LogError("comment before build");
 		//return; //debug
 
-		//if(pValue)
-		//	brainiacs.PhotonManager.JoinRandomRoom();
+		if(pValue && debug.AutoJoinRandomRoom)
+			OnClickJoinRandomGame();
 	}
 
 	public void debug_CreateRoom()

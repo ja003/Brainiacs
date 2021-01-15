@@ -24,14 +24,16 @@ public class CDebug : CSingleton<CDebug>
 	public bool release = false;
 	public bool releaseWithExceptions = true;
 
-	[SerializeField] bool _MP;
-	public bool MP => GetDebugBool(_MP);
-	[SerializeField] bool _LocalImage;
-	public bool LocalImage => GetDebugBool(_LocalImage);
 	[SerializeField] bool _Result;
 	public bool Result => GetDebugBool(_Result);
 	[SerializeField] bool _PlatformMobile;
 	public bool PlatformMobile => GetDebugBool(_PlatformMobile);
+
+	[Header("Multiplayer")]
+	[SerializeField] bool _AutoJoinRandomRoom;
+	public bool AutoJoinRandomRoom => _AutoJoinRandomRoom;// GetDebugBool(_AutoJoinRandomRoom);
+	[SerializeField] bool _LocalImage;
+	public bool LocalImage => GetDebugBool(_LocalImage);
 
 	[Header("Player")]
 	[SerializeField] EHero _Hero;
@@ -161,7 +163,7 @@ public class CDebug : CSingleton<CDebug>
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Nobel, GetPlayerName(pPlayerNumber),
+					EHero.DaVinci, GetPlayerName(pPlayerNumber),
 					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
@@ -191,8 +193,8 @@ public class CDebug : CSingleton<CDebug>
 		if(release && !releaseWithExceptions)
 			return;
 
-		initInfo.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
-		initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
+		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
+		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 
 		initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
 		if(initInfo.PlayerType == EPlayerType.AI && AiWeapon != EWeaponId.None)
@@ -237,7 +239,7 @@ public class CDebug : CSingleton<CDebug>
 	protected override void Awake()
 	{
 		base.Awake();
-		if(Result || MP || LocalImage)
+		if(Result || AutoJoinRandomRoom || LocalImage)
 		{
 			Debug.LogError("testing data is ON - turn off in build");
 		}

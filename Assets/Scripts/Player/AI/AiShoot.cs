@@ -379,15 +379,20 @@ public class AiShoot : AiGoalController
 
 		Vector2 idealPos = shootPos;
 		int iter = 0;
-		while(Vector2.Distance(idealPos, pShootTarget) > pIdealDistance)
+		//search ideal position until it is further than ideal position.
+		//in case of ideal pos = 0 there needs to be some deviation otherwise infinite loop
+		float dist = Vector2.Distance(idealPos, pShootTarget);
+		while(dist > pIdealDistance + float.Epsilon)
 		{
-			idealPos += (pShootTarget - idealPos).normalized * pos_step;
+			float posStep = Mathf.Min(dist, pos_step);
+			idealPos += (pShootTarget - idealPos).normalized * posStep;
 			iter++;
 			if(iter > 100)
 			{
 				Debug.LogError("Too many idealPos iterations");
 				break;
 			}
+			dist = Vector2.Distance(idealPos, pShootTarget);
 		}
 		//Debug.Log("idealPos = " + idealPos);
 
@@ -404,7 +409,7 @@ public class AiShoot : AiGoalController
 		switch(pWeapon)
 		{
 			case EWeaponId.Special_DaVinci:
-				return 0;
+				return 0.1f;
 
 			case EWeaponId.MP40:
 				return 4;

@@ -210,10 +210,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2245a10b9d296004bb372538583038bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendActivateMsg: 1
+  sendDeactivateMsg: 0
   maxHealth: 1
   isHealthDiscrete: 1
   isDamagable: 1
   isPushable: 0
+  photonView: {fileID: 0}
   explosion: {fileID: 116426459}
   explosionPushForce: 10
 --- !u!114 &8188287233207646796

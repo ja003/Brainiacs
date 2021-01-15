@@ -57,8 +57,17 @@ public class PlayerItemController : PlayerBehaviour
 			return;
 		}
 
-		PlayerWeaponSpecial weaponSpecial = new PlayerWeaponSpecial(player, config, pHero);
+		//special weapons spawn a prefab.
+		//without this check it would spawn multiple prefabs but only
+		//one would be used (and only one is needed)
+		PlayerWeapon existingWeapon = weapon.GetWeapon(config.Id); 
+		if(existingWeapon != null)
+		{
+			weapon.AddWeapon(existingWeapon);
+			return;
+		}
 
+		PlayerWeaponSpecial weaponSpecial = new PlayerWeaponSpecial(player, config, pHero);
 		weapon.AddWeapon(weaponSpecial);
 	}
 

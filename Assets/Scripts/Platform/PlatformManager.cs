@@ -5,21 +5,17 @@ using UnityEngine;
 
 public static class PlatformManager
 {
-	static bool debugMobile = false;
-	
 	public static EPlatform GetPlatform()
 	{		
-		if(Application.isMobilePlatform || debugMobile)
-		{
+		if(IsMobile())
 			return EPlatform.Mobile;
-		}
 
 		return EPlatform.PC;
 	}
 
 	public static bool IsMobile()
 	{
-		return GetPlatform() == EPlatform.Mobile || CDebug.Instance.PlatformMobile;
+		return Application.isMobilePlatform || CDebug.Instance.PlatformMobile;
 	}
 }
 

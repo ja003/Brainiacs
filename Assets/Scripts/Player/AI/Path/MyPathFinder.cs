@@ -180,8 +180,8 @@ public static class MyPathFinder
 
 		const float angle_tolerance = 1;
 		const int ortho_angle = 90;
-		bool isOrthogonal1 = Utils.IsNumEqual(angle1, ortho_angle, angle_tolerance);
-		bool isOrthogonal2 = Utils.IsNumEqual(angle2, ortho_angle, angle_tolerance);
+		bool isOrthogonal1 = Utils.Equals(angle1, ortho_angle, angle_tolerance);
+		bool isOrthogonal2 = Utils.Equals(angle2, ortho_angle, angle_tolerance);
 		if(isOrthogonal1 && isOrthogonal2)
 		{
 			//prevent case:

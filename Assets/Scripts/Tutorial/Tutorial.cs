@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public abstract class Tutorial : BrainiacsBehaviour
@@ -18,7 +19,10 @@ public abstract class Tutorial : BrainiacsBehaviour
 	//part completed by this tutorial. OnCompleted gets called
 	[SerializeField] protected ETutorial tutorialPart;
 
-	[SerializeField] bool skipAddingCanvas;
+	[FormerlySerializedAs("skipAddingCanvas")]
+	//skip adding (and then removing) canvas and graphic raycaster
+	//focused element should be already in good state for tutorial
+	[SerializeField] bool skipAddingFocusComponent;
 
 	[SerializeField] EPlatform targetPlatform;
 
@@ -57,9 +61,12 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 	private void BringFocusedToFront()
 	{
+		if(skipAddingFocusComponent)
+			return;
+
 		foreach(GameObject foc in additionalFocused)
 		{
-			var canvas = skipAddingCanvas ? foc.GetComponent<Canvas>() : foc.AddComponent<Canvas>();
+			var canvas = skipAddingFocusComponent ? foc.GetComponent<Canvas>() : foc.AddComponent<Canvas>();
 			foc.AddComponent<GraphicRaycaster>();
 			canvas.overrideSorting = true;
 			canvas.sortingOrder = 10;
@@ -69,10 +76,13 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 	private void RevertFocused()
 	{
+		if(skipAddingFocusComponent)
+			return;
+
 		foreach(GameObject foc in additionalFocused)
 		{
 			Destroy(foc.GetComponent(typeof(GraphicRaycaster)));
-			if(!skipAddingCanvas)
+			if(!skipAddingFocusComponent)
 				Destroy(foc.GetComponent(typeof(Canvas)));
 		}
 	}

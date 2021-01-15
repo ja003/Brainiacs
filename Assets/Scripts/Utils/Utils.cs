@@ -211,17 +211,22 @@ public static class Utils
 
 	internal static bool IsSameSign(float pNum1, float pNum2, bool pIgnoreZero)
 	{
-		if(pIgnoreZero && (IsNumEqual(pNum1, 0) || IsNumEqual(pNum2, 0)))
+		if(pIgnoreZero && (Equals(pNum1, 0) || Equals(pNum2, 0)))
 			return true;
 
 		return Mathf.Sign(pNum1) == Mathf.Sign(pNum2);
 	}
 
-	internal static bool IsNumEqual(float pNumber, int pValue, float pTolerance = -1)
+	internal static bool Equals(float pValue1, float pValue2, float pTolerance = -1)
 	{
 		if(pTolerance < 0)
 			pTolerance = float.Epsilon;
-		return Mathf.Abs(pNumber - pValue) < pTolerance;
+		return Mathf.Abs(pValue1 - pValue2) < pTolerance;
+	}
+
+	internal static bool Equals(float pValue1, int pValue2, float pTolerance = -1)
+	{
+		return Equals(pValue1, (float)pValue2, pTolerance);
 	}
 
 	/// <summary>

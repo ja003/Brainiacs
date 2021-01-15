@@ -137,7 +137,10 @@ public class PlayerInput : PlayerBehaviour
 	{
 		const float move_change_speed = .25f;
 		bool movementRequested = false;
-		if(Input.GetKey(keys.moveUp))
+
+		float vertical = Input.GetAxis("Vertical");
+
+		if(Input.GetKey(keys.moveUp) || vertical > 0.1f)
 		{
 			//has to be registered in every case
 			movementRequested = true;

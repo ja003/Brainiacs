@@ -35,7 +35,8 @@ public class MobileInput : GameBehaviour
 
 	private void OnApplicationPause(bool pause)
 	{
-		SaveInputTransform();
+		if(pause) //dont call it at game start, otherwise default position is saved
+			SaveInputTransform();
 	}
 
 	private void OnApplicationQuit()

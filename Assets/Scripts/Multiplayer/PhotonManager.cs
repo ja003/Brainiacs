@@ -115,11 +115,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	{
 		base.OnJoinedLobby();
 		//Debug.Log("OnJoinedLobby");
-
-		if(CDebug.Instance.MP)
-		{
-
-		}
 	}
 
 	public override void OnCreatedRoom()

@@ -39,6 +39,7 @@ public abstract class PlayerWeapon
 
 	//cant be zero or first use might fail
 	public float LastUseTime { get; private set; } = int.MinValue;
+	public float LastUseStartTime { get; private set; } = int.MinValue;
 
 	/// <summary>
 	/// Tries to use the weapon and reports about the result.
@@ -61,7 +62,7 @@ public abstract class PlayerWeapon
 
 		IsUsed = true;
 
-		if(CDebug.Instance.InfiniteAmmo)
+		if(AmmoLeft == 0 && CDebug.Instance.InfiniteAmmo)
 			AmmoLeft++;
 
 
@@ -94,6 +95,7 @@ public abstract class PlayerWeapon
 
 	private void OnUseStart()
 	{
+		LastUseStartTime = Time.time;
 		//Debug.Log("OnUseStart");
 		AmmoLeft--;
 		lastAmmoReduceTime = Time.time;

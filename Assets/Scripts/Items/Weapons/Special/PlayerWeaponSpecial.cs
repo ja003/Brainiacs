@@ -13,7 +13,7 @@ public class PlayerWeaponSpecial : PlayerWeapon
 {
 	//PlayerWeaponSpecialController specialController;
 	private PlayerWeaponSpecialPrefab prefab;
-	protected PlayerWeaponSpecialPrefab prefabInstance;
+	public PlayerWeaponSpecialPrefab prefabInstance;
 	private EHero hero;
 
 	public PlayerWeaponSpecial(Player pOwner, HeroSpecialWeaponConfig pConfig, EHero pHero) :

@@ -259,7 +259,9 @@ public class MapItem : MapObject
 	/// </summary>
 	public void OnExplosionFinished()
 	{
-		ReturnToPool();
+		//dont send RPC for returning to pool.
+		//MapItem_DoExplosionEffect is already sent and ReturnToPool is called at the end of animation
+		ReturnToPool(false);
 	}
 
 	// OVERRIDES //

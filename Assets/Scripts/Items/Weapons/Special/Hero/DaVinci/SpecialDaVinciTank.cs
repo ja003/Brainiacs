@@ -32,6 +32,8 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 		healthbar.Init(this, Vector2.up, false);
 
 		UpdateSortOrder(); //needs to be updated on image side
+
+		owner.Health.MyTank = this;
 	}
 
 	protected override void OnReturnToPool3()
@@ -115,6 +117,9 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 			//Debug.Log("Destroyed");
 			owner.WeaponController.ActiveWeapon.AmmoLeft = 0;
 			Debug.LogWarning("TODO: crash anim + sound");
+			if(debug.InfiniteAmmo)
+				Debug.Log("DaVinci tank wont destroy when InfiniteAmmo is on");
+
 		}
 	}
 
@@ -140,10 +145,11 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 		//collider has to be active for projectiles to be blocked etc
 		if(!owner.IsItMe)
 		{
+			//Debug.Log("thats me ");
 			return;
 		}
 
-		//Debug.Log("OnCollisionEnter2D " + collision.gameObject.name);
+		//Debug.Log($"{gameObject.name} OnCollisionEnter2D {collision.gameObject.name}");
 
 		ICollisionHandler handler = collision.gameObject.GetComponent<ICollisionHandler>();
 		if(handler == null)

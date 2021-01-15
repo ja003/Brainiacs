@@ -39,18 +39,18 @@ public abstract class PoolObjectNetwork : GameBehaviour, IPoolObject
 	/// If not mine => deactivate object (so it cant be interacted with)
 	/// and send request to return in to the pool.
 	/// </summary>
-	public void ReturnToPool()
+	public void ReturnToPool(bool pSendRPC = true)
 	{
 		if(Photon.IsMine)
 		{
 			//Debug.Log($"{gameObject.name} ReturnToPool");
 			poolObject.ReturnToPool();
 		}
-		else
+		else if(pSendRPC)
 		{
 			//Debug.Log($"{gameObject.name} send Pool_ReturnToPool");
 			SetActive(false);
-			Photon.Send(EPhotonMsg.Pool_ReturnToPool);
+			Photon.Send(EPhotonMsg.Pool_ReturnToPool, Photon.view.Owner);
 		}
 	}
 

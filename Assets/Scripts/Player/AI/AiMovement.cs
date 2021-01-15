@@ -172,7 +172,9 @@ public class AiMovement : AiController
 	private bool CanChangeDirection()
 	{
 		const float min_change_dir_after_weapon_use_delay = 0.2f;
-		return player.WeaponController.ActiveWeapon.LastUseTime + min_change_dir_after_weapon_use_delay < Time.time;
+		//use LastUseStartTime! otherwise 0-cadency weapons (DaVinci, Flamethrower) 
+		//returns always false when used
+		return player.WeaponController.ActiveWeapon.LastUseStartTime + min_change_dir_after_weapon_use_delay < Time.time;
 	}
 
 	private bool IsCloseToCurrentPathNode()

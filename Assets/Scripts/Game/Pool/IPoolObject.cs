@@ -10,7 +10,7 @@ public interface IPoolObject
 
     void SetActive(bool pValue);
 
-    void ReturnToPool();
+    void ReturnToPool(bool pSendRPC = true);
 
     bool IsMine();
 
