@@ -49,7 +49,7 @@ public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 		OnCollisionEffect(pDamage, pOrigin);
 
 		//see: OnCollisionEnter2D
-		if(isPushable && pOwner.InitInfo.PhotonPlayer != null)
+		if(isPushable && pOwner != null && pOwner.InitInfo.PhotonPlayer != null)
 		{
 			photonView.TransferOwnership(pOwner.InitInfo.PhotonPlayer);
 			//Debug.Log($"Push {pPush}");

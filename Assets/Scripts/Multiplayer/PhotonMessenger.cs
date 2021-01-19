@@ -269,6 +269,7 @@ public enum EPhotonMsg
 
 	//- Nobel
 	Special_Nobel_Spawn,
+	Special_Nobel_Explode,
 
 	//- DaVinci
 	Special_DaVinci_OnCollision,

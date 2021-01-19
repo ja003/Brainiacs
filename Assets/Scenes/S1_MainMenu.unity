@@ -2096,7 +2096,8 @@ MonoBehaviour:
   - {fileID: 277727862}
   next: {fileID: 1477994952}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!224 &234652917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2163,7 +2164,8 @@ MonoBehaviour:
   - {fileID: 1173083783}
   next: {fileID: 985095638}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!224 &239222965
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3031,7 +3033,8 @@ MonoBehaviour:
   - {fileID: 1088646201}
   next: {fileID: 2122567767}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!224 &409503245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4417,7 +4420,8 @@ MonoBehaviour:
   - {fileID: 373194467}
   next: {fileID: 234652916}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!222 &556627947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6523,7 +6527,8 @@ MonoBehaviour:
   - {fileID: 398908959}
   next: {fileID: 1551958359}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!222 &985095639
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8841,7 +8846,8 @@ MonoBehaviour:
   - {fileID: 391655094}
   next: {fileID: 409503244}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!222 &1477994953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9166,7 +9172,8 @@ MonoBehaviour:
   - {fileID: 1984685140}
   next: {fileID: 0}
   tutorialPart: 1
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!222 &1551958360
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11432,7 +11439,8 @@ MonoBehaviour:
   targetBtns: []
   next: {fileID: 239222964}
   tutorialPart: 0
-  skipAddingCanvas: 0
+  skipAddingFocusComponent: 0
+  targetPlatform: 0
 --- !u!224 &2122567768
 RectTransform:
   m_ObjectHideFlags: 0

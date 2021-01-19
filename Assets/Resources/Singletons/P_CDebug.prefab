@@ -49,8 +49,8 @@ MonoBehaviour:
   _PlatformMobile: 0
   _AutoJoinRandomRoom: 1
   _LocalImage: 0
-  _Hero: 2
-  _ExtraPlayerWeapon: 102
+  _Hero: 3
+  _ExtraPlayerWeapon: 51
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
@@ -58,9 +58,10 @@ MonoBehaviour:
   _PlayerEffect: 0
   playerCount: 2
   _Map: 1
-  GameValue: 5
-  _GenerateItems: 0
-  _StopGenerateItems: 1
+  GameValue: 999
+  _GenerateItems: 1
+  _StopGenerateItems: 0
+  _DontEndGame: 0
   _GameEffect: 0
   _PowerUp: 0
   _GenerateMapWeapon: 0

@@ -189,7 +189,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return;
 
 			case EPhotonMsg.Player_AddKill:
-				Debug.Log("handle AddKill");
+				//Debug.Log("handle AddKill");
 
 				//EPlayerStats stat = (EPlayerStats)pParams[0];
 				//int value = (int)pParams[1];

@@ -43,7 +43,7 @@ public class LightingController : GameBehaviour
 
 	public void SetMode(bool pNight)
 	{
-		Debug.Log("SetMode " + pNight);
+		//Debug.Log("SetMode " + pNight);
 
 		if(!pNight && Time.time < endNightTime - 0.1f)
 		{

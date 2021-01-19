@@ -99,6 +99,13 @@ public class PoolObject : GameBehaviour, IPunInstantiateMagicCallback
 
 	public void ReturnToPool()
 	{
+		if(isPooled)
+		{
+			//this happens eg. when Projectile hits 2 items (when there are 2 stuck on each other)
+			//and projectile hit is called twice.
+			return;
+		}
+
 		//if(Photon.IsMine)
 		if(IsMine())
 			InstanceFactory.Destroy(gameObject);

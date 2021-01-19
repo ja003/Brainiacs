@@ -74,6 +74,10 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void OnAfterDeadAnim()
 	{
+		//without this the player's image shows default sprite (Einstein texture) and
+		//it looks horrible..
+		spriteRend.enabled = false;
+
 		//move player to void (called on all sides), so image 
 		//does not stay visible (because of network delay)
 		transform.position = Vector2.one * 666;
@@ -87,6 +91,7 @@ public class PlayerVisual : PlayerBehaviour
 	{
 		SetAnimBool(AC_KEY_IS_DEAD, false);
 		SetVisible(false);
+		IsDying = false;
 
 		//handled only on owner side
 		if(player.IsItMe)
@@ -98,7 +103,7 @@ public class PlayerVisual : PlayerBehaviour
 	public void SetVisible(bool pValue)
 	{
 		player.SetActive(pValue);
-		//playerRenderer.enabled = pValue;
+		spriteRend.enabled = pValue;
 	}
 
 	public void OnSpawn()

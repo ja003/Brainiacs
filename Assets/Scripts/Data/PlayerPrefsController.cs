@@ -54,10 +54,10 @@ public class PlayerPrefsController : GameBehaviour
 		KeyCode down = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Down);
 		KeyCode left = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Left);
 
-		KeyCode swap = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Swap);
 		KeyCode use = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Use);
+		KeyCode swap = PlayerPrefsX.GetKeysetKey(pKeyset, EActionKey.Swap);
 
-		PlayerKeys keys = new PlayerKeys(up, right, down, left, swap, use);
+		PlayerKeys keys = new PlayerKeys(up, right, down, left, use, swap);
 		if(!keys.IsValid())
 		{
 			Debug.LogError($"{pKeyset} not set. is this first run?");
@@ -79,7 +79,12 @@ public class PlayerPrefsController : GameBehaviour
 
 	private void SetPlayerActionKey(EKeyset pKeyset, EActionKey pKey, KeyCode pKeyCode)
 	{
+		if(pKeyCode == KeyCode.None)
+			return;
+
 		PlayerPrefs.SetInt(PlayerPrefsX.GenerateKeysetActionName(pKeyset, pKey), (int)pKeyCode);
+		if(pKey == EActionKey.Use)
+			Debug.Log($"SetPlayerActionKey {pKeyset} | {pKey} = {pKeyCode}");
 	}
 
 }

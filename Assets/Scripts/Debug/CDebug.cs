@@ -50,7 +50,7 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _InfiniteAmmo;
 	public bool InfiniteAmmo => GetDebugBool(_InfiniteAmmo);
 	[SerializeField] EPlayerEffect _PlayerEffect;
-	public EPlayerEffect PlayerEffect => release ? EPlayerEffect.None : PlayerEffect;
+	public EPlayerEffect PlayerEffect => release ? EPlayerEffect.None : _PlayerEffect;
 
 	[Header("Game")]
 	[SerializeField] int playerCount = 1;
@@ -61,7 +61,9 @@ public class CDebug : CSingleton<CDebug>
 	public bool GenerateItems => GetDebugBool(_GenerateItems);
 	[SerializeField] bool _StopGenerateItems;
 	public bool StopGenerateItems => GetDebugBool(_StopGenerateItems);
-	
+	[SerializeField] bool _DontEndGame;
+	public bool DontEndGame => GetDebugBool(_DontEndGame);
+
 	// generate items have priority: powerup, wepon, specialweapon
 	[SerializeField] EGameEffect _GameEffect;
 	public EGameEffect GameEffect => release ? EGameEffect.None : _GameEffect;

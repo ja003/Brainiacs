@@ -77,7 +77,7 @@ public class PlayerStats : PlayerBehaviour
 
 	public void AddKill(bool pForce)
 	{
-		Debug.Log("AddKill");
+		//Debug.Log("AddKill");
 
 		if(!player.IsInited)
 		{
@@ -100,7 +100,7 @@ public class PlayerStats : PlayerBehaviour
 		//player image only sends info 
 		else
 		{
-			Debug.Log("send AddKill");
+			//Debug.Log("send AddKill");
 			player.Photon.Send(EPhotonMsg.Player_AddKill, pForce);
 		}
 	}

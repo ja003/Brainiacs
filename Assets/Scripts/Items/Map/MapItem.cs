@@ -243,6 +243,10 @@ public class MapItem : MapObject
 		circleCollider2D.OverlapCollider(new ContactFilter2D(), hitResult);
 		foreach(var hit in hitResult)
 		{
+			//dont hit self
+			if(hit.transform == transform)
+				continue;
+
 			ICollisionHandler handler = hit.GetComponent<ICollisionHandler>();
 			if(handler != null)
 			{

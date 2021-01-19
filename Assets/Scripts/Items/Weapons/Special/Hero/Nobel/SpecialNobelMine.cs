@@ -14,6 +14,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 
 	//[SerializeField] Animator mineAnimator = null;
 	[SerializeField] SpriteRenderer mineSprite = null;
+	[SerializeField] SpriteRenderer explosionSprite = null;
 	//[SerializeField] SpecialNobelMinePhoton photon = null;
 
 	bool isExploded;
@@ -65,7 +66,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 			return;
 
 		IOwner iOwner = collision.GetComponent<IOwner>();
-		Player player = iOwner?.GetOwner();
+		Player triggerOrigin = iOwner?.GetOwner();
 
 		//we should hit even non-player (eg. DaVinci tank)
 		//if(player == null)
@@ -73,35 +74,44 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		//	Debug.Log("Not player");
 		//	return;
 		//}
-		if(player != null && player.Equals(owner))
+		if(triggerOrigin != null && triggerOrigin.Equals(owner))
 		{
 			//Debug.Log("thats me ");
 			return;
 		}
 
 		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damage * 2 : damage;
-		Transform transform = player != null ? player.transform : collision.GetComponent<Transform>();
+		Transform transform = triggerOrigin != null ? triggerOrigin.transform : collision.GetComponent<Transform>();
 		handler.OnCollision(finalDamage, owner, gameObject, GetPush(transform));
-		Explode();
-	}	
 
-	private void Explode()
+		//set sort order above the player who triggered the explosion
+		int explosionSortOrder = triggerOrigin.Visual.GetProjectileSortOrder();
+		Explode(explosionSortOrder, false);
+	}
+
+	public void Explode(int pSortOrder, bool pIsRPC)
 	{
-		Debug.Log("Explode");
+		//Debug.Log("Explode");
 		isExploded = true;
 		animator.SetBool("explode", true);
 		brainiacs.AudioManager.PlaySound(ESound.Nobel_Mine_Explode, audioSource);
+
+		mineSprite.enabled = false;
+		explosionSprite.enabled = true;
+		explosionSprite.sortingOrder = pSortOrder;
+
+		if(!pIsRPC)
+			Photon.Send(EPhotonMsg.Special_Nobel_Explode, pSortOrder);
 	}
 
 	internal void OnExplosionStateEnter()
 	{
-		mineSprite.sortingOrder =
-			SortLayerManager.GetSortIndex(ESortObject.MapObject);
 	}
 
 	internal void OnExplosionStateExit()
 	{
-		//Debug.Log("OnExplosionStateExit");
+		//the explosion animation seems to repeat on remote image => disable it
+		explosionSprite.enabled = false;
 		if(Photon.IsMine)
 			ReturnToPool();
 	}

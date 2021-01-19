@@ -36,6 +36,9 @@ public class GameEndController : GameController
 
 	public void CheckEndGame(PlayerScoreInfo pResult)
 	{
+		if(debug.DontEndGame)
+			return;
+
 		switch(mode)
 		{
 			case EGameMode.Time:
