@@ -170,6 +170,12 @@ public class AiMovement : AiController
 		if(isLogEnabled)
 			Debug.Log("SetTarget " + pTarget);
 
+		//pTarget might be on unwalkable position.
+		//try to move it
+		bool res = pathFinder.MoveToWalkablePos(ref pTarget, pTarget + Vector2.right, astar);
+		if(!res)
+			Debug.LogError($"SetTarget {pTarget} is unreachable");
+
 		moveTarget = pTarget;
 		if(astar != null && player.isActiveAndEnabled)
 			brain.StartCoroutine(RecalculatePath());

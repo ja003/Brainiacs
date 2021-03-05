@@ -158,7 +158,7 @@ public class MapItem : MapObject
 		if(!isSpawned)
 			return;
 
-		Debug.Log($"{Time.frameCount} | {gameObject.name} OnTriggerEnter2D {collision.gameObject.name}");
+		//Debug.Log($"{Time.frameCount} | {gameObject.name} OnTriggerEnter2D {collision.gameObject.name}");
 
 		Player player = collision.gameObject.GetComponent<Player>();
 		//Debug.Log("player " + player?.IsItMe);

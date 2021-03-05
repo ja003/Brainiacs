@@ -69,7 +69,7 @@ MonoBehaviour:
   _MuteMusic: 0
   _AiWeapon: 0
   _NonAggressiveAi: 0
-  _AiDebugMove: 0
+  _AiDebugMove: 1
   _SkipTutorial: 0
   _ForceTutorial: 0
   _InstaAnimation: 1
