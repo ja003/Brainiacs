@@ -9,6 +9,7 @@ public class Map : GameBehaviour, IPositionValidator
 {
 	[SerializeField] Transform spawnPointsHolder = null;
 	[SerializeField] Transform mapItemGenPosHolder = null;
+	[SerializeField] Transform debug_ItemGenPos = null;
 
 	private List<Transform> spawnPoints = new List<Transform>();
 	//positions where map items can be generated
@@ -24,6 +25,8 @@ public class Map : GameBehaviour, IPositionValidator
 
 	protected override void Awake()
 	{
+		if(debug_ItemGenPos != null)
+			debug_RandomPosition = Utils.GetVector2(debug_ItemGenPos.position);
 	}
 
 	private void Update()
