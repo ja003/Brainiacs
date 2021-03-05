@@ -195,7 +195,7 @@ public class CDebug : CSingleton<CDebug>
 		if(release && !releaseWithExceptions)
 			return;
 
-		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_DaVinci);
+		initInfo.debug_StartupWeapon.Add(EWeaponId.MP40);
 		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 
 		initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);

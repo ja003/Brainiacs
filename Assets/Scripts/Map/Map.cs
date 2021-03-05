@@ -164,7 +164,7 @@ public class Map : GameBehaviour, IPositionValidator
 		return clamped;
 	}
 
-	Vector2 debug_RandomPosition = Vector2.zero * 3;
+	Vector2 debug_RandomPosition = Vector2.left * 2;
 	private Vector2 debug_GetRandomPosition()
 	{
 		//generate items in straight line
@@ -174,8 +174,8 @@ public class Map : GameBehaviour, IPositionValidator
 			//Debug.Log("another pos");
 		}
 
-		if(debug_RandomPosition.x > 5)
-			debug_RandomPosition = Vector2.left * 3;
+		if(debug_RandomPosition.x > 0)
+			debug_RandomPosition = Vector2.left * 2;
 
 		return debug_RandomPosition;
 

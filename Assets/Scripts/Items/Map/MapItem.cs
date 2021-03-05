@@ -42,6 +42,7 @@ public class MapItem : MapObject
 		game.Map.Items.RegisterItem(this);
 		isSpawned = true;
 		boxCollider2D.enabled = true;
+		isExploded = false;
 		//isMine = brainiacs.PhotonManager.IsMaster();
 
 		animator.Rebind();
@@ -152,9 +153,12 @@ public class MapItem : MapObject
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+
 		//Debug.Log("OnTriggerEnter2D " + isSpawned);
 		if(!isSpawned)
 			return;
+
+		Debug.Log($"{Time.frameCount} | {gameObject.name} OnTriggerEnter2D {collision.gameObject.name}");
 
 		Player player = collision.gameObject.GetComponent<Player>();
 		//Debug.Log("player " + player?.IsItMe);
@@ -212,13 +216,30 @@ public class MapItem : MapObject
 		ReturnToPool();
 	}
 
+	bool isExploded;
+
 	/// <summary>
 	/// When item is hit it explodes
 	/// </summary>
 	private void Explode()
 	{
+		if(isExploded)
+		{
+			//this should happen only when debug.GenerateItems generates multiple items stuck
+			//on each other
+			//- NOPE
+			//happens because there is an explosion collider enabled and it can receive a
+			//hit from another projectile 
+			//=> not error
+
+			//Debug.LogError($"{Time.frameCount} | {gameObject.name} exploded multiple times");
+			return;
+		}
+
+		//Debug.Log($"{Time.frameCount} | {gameObject.name} explode");
 		DoExplosionEffect(false);
 		DoInTime(ApplyExplosion, 0.1f);
+		isExploded = true;
 	}
 
 	/// <summary>
@@ -237,12 +258,19 @@ public class MapItem : MapObject
 
 	private void ApplyExplosion()
 	{
-		//Debug.Log("ApplyExplosion");
-		circleCollider2D.enabled = true;
-		List<Collider2D> hitResult = new List<Collider2D>();
-		circleCollider2D.OverlapCollider(new ContactFilter2D(), hitResult);
-		foreach(var hit in hitResult)
+		//Debug.Log($"{Time.frameCount} | {gameObject.name} ApplyExplosion");
+
+		//circleCollider2D.enabled = true;
+		//List<Collider2D> hitResult = new List<Collider2D>();
+		//circleCollider2D.OverlapCollider(new ContactFilter2D(), hitResult);
+		//upgrade: the previous OverlapCollider doesnt hit triggers => other
+		//MapItem could not be hit. 
+		//We want to allow multiple items to explode in a chain
+		Collider2D[] hits = Physics2D.OverlapCircleAll(circleCollider2D.transform.position, circleCollider2D.radius);
+
+		for(int i = 0; i < hits.Length; i++)
 		{
+			Collider2D hit = hits[i];
 			//dont hit self
 			if(hit.transform == transform)
 				continue;
@@ -251,9 +279,9 @@ public class MapItem : MapObject
 			if(handler != null)
 			{
 				Vector3 push = (hit.transform.position - transform.position).normalized * explosionPushForce;
+				Debug.Log($"{ Time.frameCount} | ApplyExplosion from {gameObject.name} to {hit.gameObject.name}");
 				handler.OnCollision(30, null, gameObject, push);
 			}
-			//Debug.Log(hit.gameObject.name);
 		}
 
 	}
@@ -281,11 +309,14 @@ public class MapItem : MapObject
 
 	protected override void OnDestroyed()
 	{
+		//Debug.Log($"{ Time.frameCount} | OnDestroyed {gameObject.name}");
+
 		if(!isSpawned)
 		{
 			Debug.LogError("Item destroyed before spawn");
 			return;
 		}
+		boxCollider2D.enabled = false;
 		Explode();
 	}
 

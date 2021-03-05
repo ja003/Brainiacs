@@ -56,6 +56,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		if(Info.PlayerType == EPlayerType.RemotePlayer)
 		{
 			Debug.LogError("TODO: are you sure dialog");
+			PhotonNetwork.CloseConnection(Info.PhotonPlayer);
+			Debug.Log($"kick player {Info.PhotonPlayer}");
 		}
 		gameObject.SetActive(false);
 		brainiacs.GameInitInfo.Players.Remove(Info);
@@ -71,7 +73,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		PreInit();
 		gameObject.SetActive(true);
-
+		//master can remove every player (even himself - he wont be able to start game)
+		btnRemove.gameObject.SetActive(true);
 
 
 		Info.Number = pPlayerNumber;
@@ -108,7 +111,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	bool isClientInitializing;
 
 	/// <summary>
-	/// Init only for client
+	/// Init only for remote players 
+	/// (called on both sides after any update)
 	/// </summary>
 	public void Init(PlayerInitInfo pPlayer)
 	{
@@ -145,10 +149,11 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			OnRemoteConnected(Info.PhotonPlayer);
 		}
 		heroSwapper.SetInteractable(IsItMe);
-		btnRemove.gameObject.SetActive(false);
+		//only master can kick out player
+		btnRemove.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+
 		isClientInitializing = false;
 	}
-
 
 	public void UpdateInfo(PlayerInitInfo pPlayerInfo)
 	{
@@ -164,7 +169,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	private void SetType(EPlayerType pPlayerType)
 	{
-		btnRemove.gameObject.SetActive(true);
+		//btnRemove.gameObject.SetActive(true);
 		Info.PlayerType = pPlayerType;
 		bool isRemote = pPlayerType == EPlayerType.RemotePlayer;
 		if(isRemote)

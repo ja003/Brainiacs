@@ -29,6 +29,123 @@ TextureImporter:
   - first:
       213: 5463537090889736250
     second: special_nobel_explosion_2_8
+  - first:
+      213: -1948803605332757020
+    second: special_nobel_explosion_2_0
+  - first:
+      213: -5173728350436234066
+    second: special_nobel_explosion_2_1
+  - first:
+      213: 3657829784520604433
+    second: special_nobel_explosion_2_2
+  - first:
+      213: -2887633998526485724
+    second: special_nobel_explosion_2_3
+  - first:
+      213: -902210651828068020
+    second: special_nobel_explosion_2_4
+  - first:
+      213: 509614390293913987
+    second: special_nobel_explosion_2_5
+  - first:
+      213: -2893791937377069106
+    second: special_nobel_explosion_2_6
+  - first:
+      213: 9215465177310201979
+    second: special_nobel_explosion_2_7
+  - first:
+      213: 4594285494557449381
+    second: special_nobel_explosion_2_8
+  - first:
+      213: -1437378977265717309
+    second: special_nobel_explosion_2_9
+  - first:
+      213: -4294458000205615734
+    second: special_nobel_explosion_2_10
+  - first:
+      213: -2434137596708580835
+    second: special_nobel_explosion_2_11
+  - first:
+      213: 6354647957711731065
+    second: special_nobel_explosion_2_12
+  - first:
+      213: 3908372642353083672
+    second: special_nobel_explosion_2_13
+  - first:
+      213: 3721921558808631050
+    second: special_nobel_explosion_2_14
+  - first:
+      213: 6936328178696957222
+    second: special_nobel_explosion_2_15
+  - first:
+      213: -1539951544568251740
+    second: special_nobel_explosion_2_16
+  - first:
+      213: 807373207265512779
+    second: special_nobel_explosion_2_17
+  - first:
+      213: -2977599968523022351
+    second: special_nobel_explosion_2_18
+  - first:
+      213: 6906927473771067208
+    second: special_nobel_explosion_2_19
+  - first:
+      213: 4496288685625210506
+    second: special_nobel_explosion_2_20
+  - first:
+      213: 5259061773885439441
+    second: special_nobel_explosion_2_21
+  - first:
+      213: -2823774323844467865
+    second: special_nobel_explosion_2_22
+  - first:
+      213: -365239655630703280
+    second: special_nobel_explosion_2_23
+  - first:
+      213: 7547896833670282668
+    second: special_nobel_explosion_2_24
+  - first:
+      213: 921038926293517287
+    second: special_nobel_explosion_2_25
+  - first:
+      213: -2865740624990738238
+    second: special_nobel_explosion_2_26
+  - first:
+      213: 6961691046129990285
+    second: special_nobel_explosion_2_27
+  - first:
+      213: 2484289612361041928
+    second: special_nobel_explosion_2_28
+  - first:
+      213: -5725596407075763792
+    second: special_nobel_explosion_2_29
+  - first:
+      213: -2567084021203959914
+    second: special_nobel_explosion_2_30
+  - first:
+      213: -8762666550925405493
+    second: special_nobel_explosion_2_31
+  - first:
+      213: -3100010354421679815
+    second: special_nobel_explosion_2_32
+  - first:
+      213: -3948629086085282617
+    second: special_nobel_explosion_2_33
+  - first:
+      213: 6795334687729484424
+    second: special_nobel_explosion_2_34
+  - first:
+      213: -5072903139164357829
+    second: special_nobel_explosion_2_35
+  - first:
+      213: 5001107438698941123
+    second: special_nobel_explosion_2_36
+  - first:
+      213: 3673828667019867673
+    second: special_nobel_explosion_2_37
+  - first:
+      213: -6719786434779739914
+    second: special_nobel_explosion_2_38
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -146,7 +263,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdec3d781f5886ee0800000000000000
-      internalID: -1267616022692376869
+      spriteID: 4e5f327327574f4e0800000000000000
+      internalID: -1948803605332757020
       vertices: []
       indices: 
       edges: []
@@ -167,7 +284,7 @@ TextureImporter:
         x: 130
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeaac7a469cf72f20800000000000000
-      internalID: 3397962166299306734
+      spriteID: eac61e31a793338b0800000000000000
+      internalID: -5173728350436234066
       vertices: []
       indices: 
       edges: []
@@ -188,7 +305,7 @@ TextureImporter:
         x: 260
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85e020579f5002050800000000000000
-      internalID: 5773621291257040472
+      spriteID: 11bb13b1fc833c230800000000000000
+      internalID: 3657829784520604433
       vertices: []
       indices: 
       edges: []
@@ -209,7 +326,7 @@ TextureImporter:
         x: 390
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c84f5a9baf0f3540800000000000000
-      internalID: 4989724141853558978
+      spriteID: 42bec7c7d201de7d0800000000000000
+      internalID: -2887633998526485724
       vertices: []
       indices: 
       edges: []
@@ -230,7 +347,7 @@ TextureImporter:
         x: 520
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e29c0e34989e3580800000000000000
-      internalID: -8845464855645482265
+      spriteID: c41e6393134ba73f0800000000000000
+      internalID: -902210651828068020
       vertices: []
       indices: 
       edges: []
@@ -251,7 +368,7 @@ TextureImporter:
         x: 650
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,8 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 894060dd9a3771960800000000000000
-      internalID: 7572648471841604760
+      spriteID: 38165e18693821700800000000000000
+      internalID: 509614390293913987
       vertices: []
       indices: 
       edges: []
@@ -272,7 +389,7 @@ TextureImporter:
         x: 780
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,8 +397,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f327f8507f65734b0800000000000000
-      internalID: -5460800404213239233
+      spriteID: ec710ce909f27d7d0800000000000000
+      internalID: -2893791937377069106
       vertices: []
       indices: 
       edges: []
@@ -293,7 +410,7 @@ TextureImporter:
         x: 910
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,8 +418,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2436884624bd517d0800000000000000
-      internalID: -2948209302843137214
+      spriteID: b788e8dc0c8e3ef70800000000000000
+      internalID: 9215465177310201979
       vertices: []
       indices: 
       edges: []
@@ -314,7 +431,7 @@ TextureImporter:
         x: 1040
         y: 0
         width: 130
-        height: 200
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,8 +439,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3067af790262db40800000000000000
-      internalID: 5463537090889736250
+      spriteID: 5ac93d3d05e22cf30800000000000000
+      internalID: 4594285494557449381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_2_9
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 0
+        width: 130
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf667c8f676d0ce0800000000000000
+      internalID: -1437378977265717309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: special_nobel_explosion_2_10
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 130
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8de8eaa3350764c0800000000000000
+      internalID: -4294458000205615734
       vertices: []
       indices: 
       edges: []

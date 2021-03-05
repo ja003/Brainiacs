@@ -69,11 +69,12 @@ public class UIGameSetupMain : MainMenuController
 
 	internal void OnKickedOut()
 	{
-		Debug.Log("OnKickedOut " + IsMaster);
-		if(IsMaster)
+		bool wasMaster = Time.time - lastTimeWasMaster < 5;
+		Debug.Log("OnKickedOut " + (IsMaster || wasMaster));
+		if(IsMaster || wasMaster)
 			return;
 
-		mainMenu.GameSetup.InfoMessenger.Show("The game was cancelled!");
+		mainMenu.GameSetup.InfoMessenger.Show("You were kicked out!");
 		DoInTime(mainMenu.GameSetup.OnSubMenuBtnBack, 2);
 	}
 
@@ -113,12 +114,19 @@ public class UIGameSetupMain : MainMenuController
 		//set just game values. 
 		//player info is determined from UI elements.
 		brainiacs.GameInitInfo.SetGameValues(pGameInfo); //needed to set map
+
+		//update needed on client who just joined
+		UpdateGameType();
 	}
 
 	public bool IsMaster;
+	//just to detect if it was master who canceled the game or player was kicked out
+	float lastTimeWasMaster;
 
 	private void SetMenuMode(bool pIsMaster)
 	{
+		if((IsMaster && !pIsMaster) || pIsMaster)
+			lastTimeWasMaster = Time.time;
 		IsMaster = pIsMaster;
 
 		btnAllowJoin.gameObject.SetActive(pIsMaster);
@@ -140,8 +148,12 @@ public class UIGameSetupMain : MainMenuController
 		SetMenuMode(pIsMaster);
 		isJoinAllowed = false;
 
-		btnCopyRoomName.gameObject.SetActive(false);
-		txtRoomName.text = "room_x";
+		//client always shows room info so he can share it 
+		if(pValue && !IsMaster)
+		{
+			txtRoomName.text = PhotonNetwork.CurrentRoom.Name;
+			btnCopyRoomName.gameObject.SetActive(true);
+		}
 
 		//reset elements
 		foreach(var p in players)
@@ -243,6 +255,9 @@ public class UIGameSetupMain : MainMenuController
 	{
 		UniClipboard.SetText(txtRoomName.text);
 		Debug.Log($"{txtRoomName.text} copied to clipboard");
+		string message = $"{txtRoomName.text} copied to clipboard" + Environment.NewLine
+			+ "share it with your friend!";
+		mainMenu.GameSetup.InfoMessenger.Show(message);
 	}
 
 	private void debug_OnBtnSyncInfo()
@@ -422,6 +437,10 @@ public class UIGameSetupMain : MainMenuController
 		UpdateGameType();
 	}
 
+	/// <summary>
+	/// Show info if game is multi/single player.
+	/// Set visibility of join-buttons
+	/// </summary>
 	private void UpdateGameType()
 	{
 		isSetAsMPGame = false;
@@ -433,9 +452,15 @@ public class UIGameSetupMain : MainMenuController
 				break;
 			}
 		}
+		Debug.Log("UpdateGameType " + isSetAsMPGame);
 		txtGameType.text = isSetAsMPGame ? "MULTIPLAYER GAME" : "LOCAL GAME";
-		btnAllowJoin.gameObject.SetActive(isSetAsMPGame);
-		btnCopyRoomName.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
+
+		//only master changes visibility of join-buttons
+		if(IsMaster)
+		{
+			btnAllowJoin.gameObject.SetActive(isSetAsMPGame);
+			btnCopyRoomName.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
+		}
 	}
 
 	private void OnBtnReady()
