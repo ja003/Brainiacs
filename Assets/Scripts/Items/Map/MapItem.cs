@@ -279,7 +279,7 @@ public class MapItem : MapObject
 			if(handler != null)
 			{
 				Vector3 push = (hit.transform.position - transform.position).normalized * explosionPushForce;
-				Debug.Log($"{ Time.frameCount} | ApplyExplosion from {gameObject.name} to {hit.gameObject.name}");
+				//Debug.Log($"{ Time.frameCount} | ApplyExplosion from {gameObject.name} to {hit.gameObject.name}");
 				handler.OnCollision(30, null, gameObject, push);
 			}
 		}

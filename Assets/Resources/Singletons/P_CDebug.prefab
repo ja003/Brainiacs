@@ -50,7 +50,7 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 1
   _LocalImage: 0
   _Hero: 3
-  _ExtraPlayerWeapon: 10
+  _ExtraPlayerWeapon: 50
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   _MuteMusic: 0
   _AiWeapon: 0
   _NonAggressiveAi: 0
-  _AiDebugMove: 1
+  _AiDebugMove: 0
   _SkipTutorial: 0
   _ForceTutorial: 0
   _InstaAnimation: 1

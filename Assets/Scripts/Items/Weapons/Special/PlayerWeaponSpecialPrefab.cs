@@ -63,19 +63,21 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 		if(GetCollider() != null)
 			Physics2D.IgnoreCollision(GetCollider(), pOwner.Collider);
 
-		//Debug.Log($"Ignore collisions between {GetCollider().gameObject.name} and {owner}");
+		//Debug.Log($"Init {gameObject.name} | {owner}");
 		isInited = true;
 
 		OnInit();
 
+		//probably not necessary
+		//poolObject.SetActive(false);
+
 		DoInTime(debug_AssignOwnerName, 1); //has to be called after prefab is instanced
 											//SetActive(false);
-
-		//replaced by OnPhotonInstantiated
-		//Photon.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
+											//replaced by OnPhotonInstantiated
+											//Photon.Send(EPhotonMsg.Special_Init, pOwner.InitInfo.Number);
 	}
 
-	
+
 
 	protected abstract void OnSetActive2(bool pValue);
 

@@ -51,7 +51,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 			return;
 
 		healthbar.SetVisibility(pValue);
-		owner.Health.Healthbar.SetVisibility(!pValue);
+		owner.Health.Healthbar?.SetVisibility(!pValue);
 
 	}
 	private void UpdateSortOrder()

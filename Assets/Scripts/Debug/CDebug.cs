@@ -166,7 +166,7 @@ public class CDebug : CSingleton<CDebug>
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 					EHero.DaVinci, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.AI);
+					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
 			case 3:
