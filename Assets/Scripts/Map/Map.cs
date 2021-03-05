@@ -116,7 +116,7 @@ public class Map : GameBehaviour, IPositionValidator
 		Vector2 randomPos = new Vector2(Random.Range(topLeft.x, botRight.x), Random.Range(topLeft.y, botRight.y));
 		Utils.DebugDrawCross(randomPos, Color.red, 1);
 
-		if(pCondition.IsPositionValid(randomPos))
+		if(pCondition.IsPositionValid(randomPos, 1))
 			return randomPos;
 
 		const int max_iterations = 20;
@@ -135,7 +135,7 @@ public class Map : GameBehaviour, IPositionValidator
 	/// Default position validator.
 	/// Position is valid if no object if too close.
 	/// </summary>
-	public bool IsPositionValid(Vector2 pPosition)
+	public bool IsPositionValid(Vector2 pPosition, float pMinDistance)
 	{
 		//not too close to player
 		foreach(var player in game.PlayerManager.Players)
@@ -145,7 +145,7 @@ public class Map : GameBehaviour, IPositionValidator
 		}
 
 		//cant overlap with anything (player, projectile, map object or another map item)
-		if(Physics2D.OverlapBox(pPosition, Vector2.one, 0))
+		if(Physics2D.OverlapBox(pPosition, Vector2.one * pMinDistance, 0))
 			return false;
 
 		return true;
@@ -168,17 +168,37 @@ public class Map : GameBehaviour, IPositionValidator
 	}
 
 	Vector2 debug_RandomPosition = Vector2.left * 2;
-	private Vector2 debug_GetRandomPosition()
+	private Vector2 debug_GetRandomPosition(int pIterCount = 0)
 	{
-		//generate items in straight line
-		if(!IsPositionValid(debug_RandomPosition))
+		const float item_pos_step = 0.5f;
+
+		if(!IsWithinMap(debug_RandomPosition))
+			debug_RandomPosition = debug_ItemGenPos.position;
+
+		if(pIterCount > 100)
 		{
-			debug_RandomPosition += Vector2.right * 0.5f;
-			//Debug.Log("another pos");
+			Debug.LogError("too many iterations");
+			return debug_ItemGenPos.position;
 		}
 
-		if(debug_RandomPosition.x > 0)
-			debug_RandomPosition = Vector2.left * 2;
+		//generate items in straight line
+		if(!IsPositionValid(debug_RandomPosition, item_pos_step - 0.1f))
+		{
+			debug_RandomPosition += Vector2.right * item_pos_step;
+
+			if(debug_RandomPosition.x > debug_ItemGenPos.position.x + 3)
+			{
+				debug_RandomPosition.x = debug_ItemGenPos.position.x;
+				debug_RandomPosition.y += item_pos_step;
+			}
+
+
+
+			//Debug.Log("another pos");
+			return debug_GetRandomPosition(pIterCount++);
+		}
+
+
 
 		return debug_RandomPosition;
 
@@ -187,5 +207,5 @@ public class Map : GameBehaviour, IPositionValidator
 
 public interface IPositionValidator
 {
-	bool IsPositionValid(Vector2 pPosition);
+	bool IsPositionValid(Vector2 pPosition, float pMinDistance);
 }
