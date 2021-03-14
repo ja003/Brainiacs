@@ -260,7 +260,7 @@ public class AiShoot : AiGoalController
 
 		if(Vector2.Distance(playerPosition, targetedPlayer.Position) > INVALID_TARGET_DISTANCE)
 		{
-			Debug.Log("Target is too far - either teleporting or dead");
+			//Debug.Log("Target is too far - either teleporting or dead");
 			return playerPositions;
 		}
 
@@ -458,17 +458,12 @@ public class AiShoot : AiGoalController
 
 	private void UpdateLastTimeWeaponPicked(EWeaponId pWeapon)
 	{
+		//Debug.Log($"UpdateLastTimeWeaponPicked {pWeapon} | {Time.time}");
+
 		if(lastTimeWeaponPicked.ContainsKey(pWeapon))
 			lastTimeWeaponPicked[pWeapon] = Time.time;
 		else
 			lastTimeWeaponPicked.Add(pWeapon, Time.time);
-	}
-
-	private bool WasWeaponPicked(EWeaponId pWeapon, float pTime)
-	{
-		float lastTimePicked;
-		bool wasPicked = lastTimeWeaponPicked.TryGetValue(pWeapon, out lastTimePicked);
-		return wasPicked && Time.time - pTime < lastTimePicked;
 	}
 
 	private float GetTimeSinceWeaponPicked(EWeaponId pWeapon)
@@ -508,7 +503,9 @@ public class AiShoot : AiGoalController
 		{
 			EWeaponId weapon = weaponPrio.Item1;
 			const int minTimeToPickAnotherWeapon = 3;
-			if(GetTimeSinceWeaponPicked(weapon) < minTimeToPickAnotherWeapon || GetTimeSinceWeaponPicked(weapon) > 2* minTimeToPickAnotherWeapon)
+			bool wasPickedRecently = GetTimeSinceWeaponPicked(weapon) < minTimeToPickAnotherWeapon;
+			bool wasPickedInLongTime = GetTimeSinceWeaponPicked(weapon) > 2 * minTimeToPickAnotherWeapon;
+			if(wasPickedRecently || wasPickedInLongTime)
 			{
 				if(pickedWeapon != weapon)
 					UpdateLastTimeWeaponPicked(weapon);

@@ -219,8 +219,8 @@ public class AiMovement : AiController
 		lastRecalculatePathTime = Time.time;
 
 		bool isIdleForTooLong = idleDuration > 0.5f;
-		if(isIdleForTooLong)
-			Debug.Log("Idle for too long");
+		//if(isIdleForTooLong)
+		//	Debug.Log("Idle for too long");
 
 		//can be used for debug purpose as well
 		bool forceRecalcPath = isIdleForTooLong;
