@@ -103,7 +103,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	{
 		if(IsLogEnabled())
 			Debug.Log("StopUseWeapon");
-		ActiveWeapon.StopUse();
+		ActiveWeapon?.StopUse();
 	}
 
 	internal PlayerWeapon GetWeapon(EWeaponId pWeaponId)
@@ -250,6 +250,10 @@ public class PlayerWeaponController : PlayerBehaviour
 
 	private void SetActiveWeapon(int pIndex)
 	{
+		//stop using weapon before swap 
+		//needed eg. when ai is swaping from DaVinci tank, flamethrower
+		StopUseWeapon();
+
 		pIndex = pIndex % weapons.Count;
 
 		activeWeaponIndex = pIndex;
