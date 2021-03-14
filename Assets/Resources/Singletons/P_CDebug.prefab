@@ -57,7 +57,7 @@ MonoBehaviour:
   _InfiniteAmmo: 0
   _PlayerEffect: 0
   playerCount: 2
-  _Map: 2
+  _Map: 1
   GameValue: 999
   _GenerateItems: 1
   _StopGenerateItems: 0

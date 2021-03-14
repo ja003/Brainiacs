@@ -166,7 +166,7 @@ public class CDebug : CSingleton<CDebug>
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
 					EHero.DaVinci, GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.LocalPlayer);
+					EPlayerColor.Pink, EPlayerType.AI);
 
 				break;
 			case 3:
@@ -195,10 +195,10 @@ public class CDebug : CSingleton<CDebug>
 		if(release && !releaseWithExceptions)
 			return;
 
-		initInfo.debug_StartupWeapon.Add(EWeaponId.MP40);
+		//initInfo.debug_StartupWeapon.Add(EWeaponId.MP40);
 		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 
-		initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
+		//initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
 		if(initInfo.PlayerType == EPlayerType.AI && AiWeapon != EWeaponId.None)
 		{
 			initInfo.debug_StartupWeapon.Add(AiWeapon);

@@ -115,6 +115,7 @@ public class AiShoot : AiGoalController
 			player.WeaponController.StopUseWeapon();
 	}
 
+
 	private Player GetPlayerToTarget(EWeaponId pPickeWeapon)
 	{
 		if(debug.NonAggressiveAi)
@@ -453,6 +454,30 @@ public class AiShoot : AiGoalController
 		return Time.time - min_weapon_swap_frequency > lastTimeSwapWeapon;
 	}
 
+	private Dictionary<EWeaponId, float> lastTimeWeaponPicked = new Dictionary<EWeaponId, float>();
+
+	private void UpdateLastTimeWeaponPicked(EWeaponId pWeapon)
+	{
+		if(lastTimeWeaponPicked.ContainsKey(pWeapon))
+			lastTimeWeaponPicked[pWeapon] = Time.time;
+		else
+			lastTimeWeaponPicked.Add(pWeapon, Time.time);
+	}
+
+	private bool WasWeaponPicked(EWeaponId pWeapon, float pTime)
+	{
+		float lastTimePicked;
+		bool wasPicked = lastTimeWeaponPicked.TryGetValue(pWeapon, out lastTimePicked);
+		return wasPicked && Time.time - pTime < lastTimePicked;
+	}
+
+	private float GetTimeSinceWeaponPicked(EWeaponId pWeapon)
+	{
+		float lastTimePicked;
+		bool wasPicked = lastTimeWeaponPicked.TryGetValue(pWeapon, out lastTimePicked);
+		return wasPicked ? Time.time - lastTimePicked : int.MaxValue;
+	}
+
 	private EWeaponId PickWeapon()
 	{
 		//todo: limit weapon swap frequency
@@ -478,6 +503,20 @@ public class AiShoot : AiGoalController
 			return myBasicWeapon;
 		}
 		weaponsPriority.Sort((b, a) => a.Item2.CompareTo(b.Item2)); //sort descending
+
+		foreach(var weaponPrio in weaponsPriority)
+		{
+			EWeaponId weapon = weaponPrio.Item1;
+			const int minTimeToPickAnotherWeapon = 3;
+			if(GetTimeSinceWeaponPicked(weapon) < minTimeToPickAnotherWeapon || GetTimeSinceWeaponPicked(weapon) > 2* minTimeToPickAnotherWeapon)
+			{
+				if(pickedWeapon != weapon)
+					UpdateLastTimeWeaponPicked(weapon);
+				return weapon;
+			}
+			//Debug.Log("Skip weapon " + weapon);
+		}
+		//Debug.Log("All weapons have been used by AI recently => pick basic weapon");
 		return weaponsPriority[0].Item1;
 	}
 
