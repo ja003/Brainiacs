@@ -49,7 +49,7 @@ MonoBehaviour:
   _PlatformMobile: 0
   _AutoJoinRandomRoom: 1
   _LocalImage: 0
-  _Hero: 3
+  _Hero: 2
   _ExtraPlayerWeapon: 50
   _Shield: 0
   _Invulnerability: 0
