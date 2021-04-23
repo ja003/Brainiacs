@@ -67,10 +67,10 @@ public class CDebug : CSingleton<CDebug>
 	// generate items have priority: powerup, wepon, specialweapon
 	[SerializeField] EGameEffect _GameEffect;
 	public EGameEffect GameEffect => release ? EGameEffect.None : _GameEffect;
-	
+
 	[SerializeField] EPowerUp _PowerUp;
 	public EPowerUp PowerUp => release ? EPowerUp.None : _PowerUp;
-	
+
 	[SerializeField] EWeaponId _GenerateMapWeapon;
 	public EWeaponId GenerateMapWeapon => release ? EWeaponId.None : _GenerateMapWeapon;
 
@@ -129,7 +129,7 @@ public class CDebug : CSingleton<CDebug>
 		return pValue && (!release || releaseWithExceptions);
 	}
 
-	
+
 	public void SetGameInitInfo()
 	{
 		if(debug.release)
@@ -246,22 +246,22 @@ public class CDebug : CSingleton<CDebug>
 			Debug.LogError("testing data is ON - turn off in build");
 		}
 	}
-	
+
 	public string GetPlayerName(int pIndex)
 	{
 		switch(pIndex)
 		{
 			case 1:
-				return "Adam";
+				return "Player1name";
 			case 2:
-				return "Téra";
+				return "Player2name";
 			case 3:
-				return "Johanka";
+				return "Player3name";
 		}
 		return "DEBUG_NAME";
 	}
 
-	
+
 
 
 

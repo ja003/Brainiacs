@@ -322,7 +322,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			//note: use p.Info.PhotonPlayer.IsLocal, not p.Info.PlayerType == LocalPlayer
 			//		or this doesnt work correctly on remote side
 			//PhotonPlayer == null => not connected yet
-			if((p.Info.PhotonPlayer == null || p.Info.PhotonPlayer.IsLocal) 
+			if((p.Info.PhotonPlayer == null || p.Info.PhotonPlayer.IsLocal)
 				&& p.Info.Keyset == Info.Keyset)
 			{
 				keySetSwapper.SetNextValue();
