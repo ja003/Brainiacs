@@ -14,19 +14,15 @@ public class AiShoot : AiGoalController
 	Vector2 moveTarget;
 	Vector2 idealMoveTarget;
 	bool moveTargetReached;
-
-	EWeaponId myBasicWeapon;
-	EWeaponId mySpecialWeapon;
+	AiWeaponPicker weaponPicker;
+	static bool debug_log = false;
 
 	private Tuple<Vector2, Vector2> playerPositions => new Tuple<Vector2, Vector2>(playerPosition, playerPosition);
 
 	public AiShoot(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.Shoot)
 	{
-		myBasicWeapon = Brainiacs.Instance.ItemManager.GetHeroBasicWeaponConfig(player.InitInfo.Hero).Id;
-		mySpecialWeapon = Brainiacs.Instance.ItemManager.GetHeroSpecialWeaponConfig(player.InitInfo.Hero).Id;
+		weaponPicker = new AiWeaponPicker(pBrain, pPlayer);
 	}
-
-	static bool debug_log = false;
 
 	public override int GetPriority()
 	{
@@ -60,35 +56,16 @@ public class AiShoot : AiGoalController
 		return GetMoveTarget();
 	}
 
-	private float lastTimeSwapWeapon;
-
-	EWeaponId pickedWeapon;
-
 	public override void Evaluate()
 	{
 		//pick weapon
-		pickedWeapon = PickWeapon();
-
-		if(brain.IsTmp && pickedWeapon == EWeaponId.Special_Tesla)
-		{
-			Debug.LogError("Tesla clone cant clone itself");
-			return;
-		}
-
-		//swap to it
-		if(pickedWeapon != player.WeaponController.ActiveWeapon.Id)
-		{
-			player.WeaponController.SetActiveWeapon(pickedWeapon);
-			isUseWeaponRequested = false;
-			lastTimeSwapWeapon = Time.time;
-		}
-
+		weaponPicker.Evaluate();
 
 		//target a player
-		targetedPlayer = GetPlayerToTarget(pickedWeapon);
+		targetedPlayer = GetPlayerToTarget(weaponPicker.PickedWeapon);
 
 		//set move target
-		Tuple<Vector2, Vector2> usePositions = GetUseWeaponPosition(pickedWeapon);
+		Tuple<Vector2, Vector2> usePositions = GetUseWeaponPosition(weaponPicker.PickedWeapon);
 		SetMoveTarget(usePositions);
 	}
 
@@ -114,6 +91,7 @@ public class AiShoot : AiGoalController
 		else
 			player.WeaponController.StopUseWeapon();
 	}
+
 
 	private Player GetPlayerToTarget(EWeaponId pPickeWeapon)
 	{
@@ -155,6 +133,11 @@ public class AiShoot : AiGoalController
 		//if player is stil targeted, request weapon usage
 		//but only if he is not shielded
 		isUseWeaponRequested = targetedPlayer != null && !targetedPlayer.Stats.IsShielded;
+
+		//dont use weapon immediately after weapon swap
+		if(Time.time - weaponPicker.LastTimeSwapWeapon < 0.2f)
+			isUseWeaponRequested = true;
+
 		if(!isUseWeaponRequested)
 			return;
 
@@ -193,7 +176,7 @@ public class AiShoot : AiGoalController
 
 	private bool IsLookingAtTarget()
 	{
-		switch(pickedWeapon)
+		switch(weaponPicker.PickedWeapon)
 		{
 			//these weapons dont require player to be looking at the target
 			case EWeaponId.Special_Einstein:
@@ -259,7 +242,7 @@ public class AiShoot : AiGoalController
 
 		if(Vector2.Distance(playerPosition, targetedPlayer.Position) > INVALID_TARGET_DISTANCE)
 		{
-			Debug.Log("Target is too far - either teleporting or dead");
+			//Debug.Log("Target is too far - either teleporting or dead");
 			return playerPositions;
 		}
 
@@ -446,82 +429,5 @@ public class AiShoot : AiGoalController
 		}
 		return 10;
 	}
-
-	private bool CanSwapWeapon()
-	{
-		const float min_weapon_swap_frequency = 0.5f;
-		return Time.time - min_weapon_swap_frequency > lastTimeSwapWeapon;
-	}
-
-	private EWeaponId PickWeapon()
-	{
-		//todo: limit weapon swap frequency
-
-		//prefer using special weapon (always present in inventory)
-		//if(player.WeaponController.GetWeapon(mySpecialWeapon).CanUse())
-		//{
-		//	return mySpecialWeapon;
-		//}
-		if(debug.AiWeapon != EWeaponId.None)
-			return debug.AiWeapon;
-
-		if(!CanSwapWeapon())
-		{
-			return player.WeaponController.ActiveWeapon.Id;
-		}
-
-		List<Tuple<EWeaponId, int>> weaponsPriority = GetWeaponsPriority();
-		if(weaponsPriority.Count < 2)
-		{
-			//Debug.LogError("Cant have less than 2 weapons");
-			//actually can, weapon might be reloading => pick basic
-			return myBasicWeapon;
-		}
-		weaponsPriority.Sort((b, a) => a.Item2.CompareTo(b.Item2)); //sort descending
-		return weaponsPriority[0].Item1;
-	}
-
-	/// <summary>
-	/// Calculates priority of each weapon (0 = cant use, 10 = max prio)
-	/// </summary>
-	internal List<Tuple<EWeaponId, int>> GetWeaponsPriority()
-	{
-		List<Tuple<EWeaponId, int>> weaponsPriority = new List<Tuple<EWeaponId, int>>();
-		foreach(var weapon in player.WeaponController.weapons)
-		{
-			EWeaponId weaponId = weapon.Id;
-			int priority = 0;
-			if(weapon.CanUse())
-			{
-				//todo: implement special cases for individual weapons
-				switch(brainiacs.ItemManager.GetWeaponCathegory(weaponId))
-				{
-					case EWeaponCathegory.HeroBasic:
-						priority = 3;
-						break;
-					case EWeaponCathegory.HeroSpecial:
-						//todo: da vinci => based on target distance + if is under fire
-						priority = 10;
-						break;
-					case EWeaponCathegory.MapBasic:
-						priority = 5;
-						break;
-					case EWeaponCathegory.MapSpecial:
-						priority = 7;
-						break;
-				}
-			}
-
-			//prevent Tesla clone from cloning itself
-			if(weaponId == EWeaponId.Special_Tesla && brain.IsTmp)
-				continue;
-
-			weaponsPriority.Add(new Tuple<EWeaponId, int>(weaponId, priority));
-		}
-		return weaponsPriority;
-	}
-
-
-
 
 }

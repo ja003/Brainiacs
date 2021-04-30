@@ -5,8 +5,8 @@ using UnityEngine;
 public enum EKeyset
 {
 	None,
-	KeysetA,
-	KeysetB,
-	KeysetC,
-	KeysetD,
+	A,
+	B,
+	C,
+	D,
 }

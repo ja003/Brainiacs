@@ -42,6 +42,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 
 	protected override void OnSetActive2(bool pValue)
 	{
+		//Debug.Log("OnSetActive2 " + pValue);
 		spriteRend.enabled = pValue;
 		//needed in MP...right?
 		//collider has to be active for projectiles to be blocked etc
@@ -51,7 +52,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 			return;
 
 		healthbar.SetVisibility(pValue);
-		owner.Health.Healthbar.SetVisibility(!pValue);
+		owner.Health.Healthbar?.SetVisibility(!pValue);
 
 	}
 	private void UpdateSortOrder()

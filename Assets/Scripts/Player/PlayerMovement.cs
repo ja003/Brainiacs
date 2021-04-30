@@ -366,7 +366,8 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 			transform.position = pTeleport.GetOutPosition();
 			player.SetActive(true);
 			SetDirection(pTeleport.OutDirection);
-			SmoothSync.teleportOwnedObjectFromOwner();
+			if(brainiacs.GameInitInfo.IsMultiplayer())
+				SmoothSync.teleportOwnedObjectFromOwner();
 			//SyncPosition(true);
 		}, 0.5f);
 

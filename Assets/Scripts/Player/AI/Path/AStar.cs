@@ -226,7 +226,7 @@ namespace AStarSharp
 				return pPoint;
 
 			List<Node> neighbours = new List<Node>();
-			const int max_steps = 3; //todo: make dependent on input parameter?
+			const int max_steps = 4; //todo: make dependent on input parameter?
 			for(int dist = 1; dist < max_steps; dist++)
 			{
 				neighbours = GetNodesInDistance(GetNode(pPoint), dist, true);

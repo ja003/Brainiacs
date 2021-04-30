@@ -35,6 +35,11 @@ public static class Utils
 		return new Vector2(vec.x, vec.y);
 	}
 
+	internal static Vector3 GetVector2(Vector3 pVector)
+	{
+		return new Vector2(pVector.x, pVector.y);
+	}
+
 	public static EDirection GetDirection(Vector2 pDirection)
 	{
 		if(pDirection.magnitude < 0.1f)

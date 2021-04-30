@@ -312,14 +312,18 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		Info.Keyset = (EKeyset)keySetSwapper.CurrentIndex;
 		var allPlayers = mainMenu.GameSetup.SetupMain.GetActivatedPlayers();
 
-		//check if selectet keyset is not used by another player
+		//check if selected keyset is not used by another player
 		foreach(var p in allPlayers)
 		{
 			if(p.Info.Number == Info.Number)
 				continue;
 
 			//if it is used => set another
-			if(p.Info.PhotonPlayer.IsLocal && p.Info.Keyset == Info.Keyset)
+			//note: use p.Info.PhotonPlayer.IsLocal, not p.Info.PlayerType == LocalPlayer
+			//		or this doesnt work correctly on remote side
+			//PhotonPlayer == null => not connected yet
+			if((p.Info.PhotonPlayer == null || p.Info.PhotonPlayer.IsLocal)
+				&& p.Info.Keyset == Info.Keyset)
 			{
 				keySetSwapper.SetNextValue();
 				return;

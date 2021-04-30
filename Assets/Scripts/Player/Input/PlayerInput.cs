@@ -59,19 +59,19 @@ public class PlayerInput : PlayerBehaviour
 				switch(pPlayerInfo.Number)
 				{
 					case 1:
-						pPlayerInfo.Keyset = EKeyset.KeysetA;
+						pPlayerInfo.Keyset = EKeyset.A;
 						break;
 					case 2:
-						pPlayerInfo.Keyset = EKeyset.KeysetB;
+						pPlayerInfo.Keyset = EKeyset.B;
 						break;
 					case 3:
-						pPlayerInfo.Keyset = EKeyset.KeysetC;
+						pPlayerInfo.Keyset = EKeyset.C;
 						break;
 					case 4:
-						pPlayerInfo.Keyset = EKeyset.KeysetD;
+						pPlayerInfo.Keyset = EKeyset.D;
 						break;
 					default:
-						pPlayerInfo.Keyset = EKeyset.KeysetA;
+						pPlayerInfo.Keyset = EKeyset.A;
 						break;
 				}
 			}
@@ -248,13 +248,13 @@ public class PlayerInput : PlayerBehaviour
 			case EActionKey.Swap:
 				switch(player.InitInfo.Keyset)
 				{
-					case EKeyset.KeysetA:
+					case EKeyset.A:
 						return KeyCode.Joystick1Button4;
-					case EKeyset.KeysetB:
+					case EKeyset.B:
 						return KeyCode.Joystick2Button4;
-					case EKeyset.KeysetC:
+					case EKeyset.C:
 						return KeyCode.Joystick3Button4;
-					case EKeyset.KeysetD:
+					case EKeyset.D:
 						return KeyCode.Joystick4Button4;
 				}
 				Debug.LogError("No valid keyset");
@@ -263,13 +263,13 @@ public class PlayerInput : PlayerBehaviour
 			case EActionKey.Use:
 				switch(player.InitInfo.Keyset)
 				{
-					case EKeyset.KeysetA:
+					case EKeyset.A:
 						return KeyCode.Joystick1Button5;
-					case EKeyset.KeysetB:
+					case EKeyset.B:
 						return KeyCode.Joystick2Button5;
-					case EKeyset.KeysetC:
+					case EKeyset.C:
 						return KeyCode.Joystick3Button5;
-					case EKeyset.KeysetD:
+					case EKeyset.D:
 						return KeyCode.Joystick4Button5;
 				}
 				Debug.LogError("No valid keyset");
@@ -287,16 +287,16 @@ public class PlayerInput : PlayerBehaviour
 	{
 		switch(player.InitInfo.Keyset)
 		{
-			case EKeyset.KeysetA:
+			case EKeyset.A:
 				pName += "A";
 				break;
-			case EKeyset.KeysetB:
+			case EKeyset.B:
 				pName += "B";
 				break;
-			case EKeyset.KeysetC:
+			case EKeyset.C:
 				pName += "C";
 				break;
-			case EKeyset.KeysetD:
+			case EKeyset.D:
 				pName += "D";
 				break;
 		}

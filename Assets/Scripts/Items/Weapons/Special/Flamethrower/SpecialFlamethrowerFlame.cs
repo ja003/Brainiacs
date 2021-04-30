@@ -1,4 +1,5 @@
 ﻿using FlatBuffers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,8 +30,10 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 
 	}
 
+
 	protected override void OnInit()
 	{
+		SetActive(false);
 		StopUse();
 
 		if(owner.IsItMe) //flame collision detected on player side
@@ -71,14 +74,22 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 	private void SetUse(bool pValue)
 	{
 		isUsed = pValue;
-		SetActive(pValue);
-		animator.SetBool("isUsed", pValue);
+		if(pValue)
+			SetActive(pValue);
+		
+		if(animator.enabled)
+			animator.SetBool("isUsed", pValue);
 		collisionDetector.SetEnabled(pValue);
 
 		if(pValue)
 			lastTimeUsed = Time.time;
 	}
 
+
+	internal void OnFlameFinished()
+	{
+		SetActive(false);
+	}
 
 	/// <summary>
 	/// Called from collision detector.
@@ -117,6 +128,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 
 	public void OnDirectionChange(EDirection pDirection)
 	{
+		Debug.Log("OnDirectionChange " + pDirection);
 		if(!isInited)
 			return;
 
@@ -126,6 +138,8 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		transform.localRotation = Quaternion.Euler(0, 0, 0);
 
 		Vector3 rot = Utils.GetRotation(pDirection, 90);
+		Debug.Log("rot = " + rot);
+
 		transform.Rotate(rot);
 
 		Photon.Send(EPhotonMsg.Special_Flamethrower_OnDirectionChange, pDirection);

@@ -158,7 +158,7 @@ public class MapItem : MapObject
 		if(!isSpawned)
 			return;
 
-		Debug.Log($"{Time.frameCount} | {gameObject.name} OnTriggerEnter2D {collision.gameObject.name}");
+		//Debug.Log($"{Time.frameCount} | {gameObject.name} OnTriggerEnter2D {collision.gameObject.name}");
 
 		Player player = collision.gameObject.GetComponent<Player>();
 		//Debug.Log("player " + player?.IsItMe);
@@ -279,7 +279,7 @@ public class MapItem : MapObject
 			if(handler != null)
 			{
 				Vector3 push = (hit.transform.position - transform.position).normalized * explosionPushForce;
-				Debug.Log($"{ Time.frameCount} | ApplyExplosion from {gameObject.name} to {hit.gameObject.name}");
+				//Debug.Log($"{ Time.frameCount} | ApplyExplosion from {gameObject.name} to {hit.gameObject.name}");
 				handler.OnCollision(30, null, gameObject, push);
 			}
 		}

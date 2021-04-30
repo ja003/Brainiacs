@@ -28,7 +28,7 @@ public class UIInfoMessage : UiBehaviour
         transform.SetAsFirstSibling(); //new msgs will be on top
 		msgText.text = pText;
 		SetAlpha(0);
-		SetAlpha(VISIBLE_ALPHA, 0.3f, () => DoInTime(Hide, pDuration));
+		SetAlpha(VISIBLE_ALPHA, 0.3f, () => DoInTime(Hide, pDuration, true));
 	}
 
 	private void Hide()
@@ -41,7 +41,7 @@ public class UIInfoMessage : UiBehaviour
 	}
 
 	/// <summary>
-	/// There is artefact if text alpha is not set as well
+	/// There is artifact if text alpha is not set as well
 	/// </summary>
 	private new void SetAlpha(float pAlpha)
 	{

@@ -39,7 +39,7 @@ public class PathFinderController : GameBehaviour
 	public MovePath Path;
 	public bool IsSearching;
 
-	public IEnumerator GetPathAsync(Vector2 pFrom, Vector2 pTo, Astar astar)
+	public IEnumerator GetPathAsync(Vector2 pFrom, Vector2 pTo, Astar pAstar)
 	{
 		//Debug.Log($"GetPath {pFrom}-{pTo}");
 		Path = new MovePath();
@@ -56,7 +56,7 @@ public class PathFinderController : GameBehaviour
 		//while(!isInited)
 		//	await Task.Delay(100);
 		if(!AstarAdapter.isInited)
-		goto end;
+			goto end;
 
 		//handled better below
 		//if(PathFinderController.OverlapsWithMapObject(pTo))
@@ -66,23 +66,15 @@ public class PathFinderController : GameBehaviour
 		SVector2 end = AstarAdapter.GetScaledVector(pTo);
 
 		//if pTo is unreachable, try to find the closest node and navigate to it
-		if(!astar.IsWalkable(end))
-		{
-			//Debug.Log($"End {end} is unreachable");
-			SVector2? closest = astar.GetClosestWalkable(end, start);
-			//Debug.Log($"closest  = {closest }");
-			if(closest == null)
-				goto end;
-			else
-				end = (SVector2)closest;
-		}
+		MoveToWalkablePos(ref end, start, pAstar);
+
 		yield return new WaitForEndOfFrame();
-		StartCoroutine(astar.FindPathAsync(start, end));
-		while(astar.IsSearching)
+		StartCoroutine(pAstar.FindPathAsync(start, end));
+		while(pAstar.IsSearching)
 		{
 			yield return new WaitForEndOfFrame();
 		}
-		var pathStack = astar.Path;
+		var pathStack = pAstar.Path;
 
 		List<Vector2> pathNodes = new List<Vector2>();
 		pathNodes.Add(pFrom);
@@ -94,8 +86,8 @@ public class PathFinderController : GameBehaviour
 		bool isPathValid = pathStack != null && pathStack.Count > 0;
 
 		//try to join the next node with simple node
-		Vector2 joinTarget = !isPathValid ? 
-			AstarAdapter.GetScaledVector(end) : 
+		Vector2 joinTarget = !isPathValid ?
+			AstarAdapter.GetScaledVector(end) :
 			AstarAdapter.GetScaledVector(pathStack.Peek().Center);
 		Vector2? joinPoint = GetJoinPoint(pFrom, joinTarget);
 		if(joinPoint == null && !isPathValid)
@@ -112,8 +104,39 @@ public class PathFinderController : GameBehaviour
 		pathNodes.Add(AstarAdapter.GetScaledVector(end));
 
 		Path = new MovePath(pathNodes, AstarAdapter.stepSize);
-		end:  IsSearching = false;
+		end: IsSearching = false;
 		//return path;
+	}
+
+	/// <summary>
+	/// Scales the input param positions and executes MoveToWalkablePos.
+	/// Suited for external call.
+	/// </summary>
+	public bool MoveToWalkablePos(ref Vector2 pPos, Vector2 pRefPos, Astar pAstar)
+	{
+		SVector2 scaledPos = AstarAdapter.GetScaledVector(pPos);
+		bool res = MoveToWalkablePos(ref scaledPos, AstarAdapter.GetScaledVector(pRefPos), pAstar);
+		pPos = AstarAdapter.GetScaledVector(scaledPos);
+		return res;
+	}
+
+	/// <summary>
+	/// Moves pPos to walkable position closest to the pRefPos.
+	/// </summary>
+	/// <returns>True if any walkable position is found</returns>
+	private bool MoveToWalkablePos(ref SVector2 pPos, SVector2 pRefPos, Astar pAstar)
+	{
+		if(!pAstar.IsWalkable(pPos))
+		{
+			//Debug.Log($"End {end} is unreachable");
+			SVector2? closest = pAstar.GetClosestWalkable(pPos, pRefPos);
+			//Debug.Log($"closest  = {closest }");
+			if(closest == null)
+				return false;
+			else
+				pPos = (SVector2)closest;
+		}
+		return true;
 	}
 
 

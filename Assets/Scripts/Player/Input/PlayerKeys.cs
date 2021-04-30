@@ -40,7 +40,7 @@ public struct PlayerKeys
 	{
 		switch(pDefaultValues)
 		{
-			case EKeyset.KeysetA:
+			case EKeyset.A:
 				moveUp = KeyCode.W;
 				moveRight = KeyCode.D;
 				moveDown = KeyCode.S;
@@ -48,7 +48,7 @@ public struct PlayerKeys
 				useWeapon = KeyCode.LeftControl;
 				swapWeapon = KeyCode.LeftShift;
 				break;
-			case EKeyset.KeysetB:
+			case EKeyset.B:
 				moveUp = KeyCode.UpArrow;
 				moveRight = KeyCode.RightArrow;
 				moveDown = KeyCode.DownArrow;
@@ -56,7 +56,7 @@ public struct PlayerKeys
 				useWeapon = KeyCode.RightControl;
 				swapWeapon = KeyCode.RightShift;
 				break;
-			case EKeyset.KeysetC:
+			case EKeyset.C:
 				moveUp = KeyCode.I;
 				moveRight = KeyCode.L;
 				moveDown = KeyCode.K;
@@ -65,7 +65,7 @@ public struct PlayerKeys
 				swapWeapon = KeyCode.P;
 
 				break;
-			case EKeyset.KeysetD:
+			case EKeyset.D:
 				moveUp = KeyCode.Keypad8;
 				moveRight = KeyCode.Keypad6;
 				moveDown = KeyCode.Keypad5;

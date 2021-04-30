@@ -16,14 +16,14 @@ public class InputKeysSetup : MainMenuBehaviour
     {
 		btnSettingsBack.onClick.AddListener(mainMenu.OnBtnBack);
 
-		PlayerKeys keysA = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.KeysetA);
-		PlayerKeys keysB = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.KeysetB);
-		PlayerKeys keysC = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.KeysetC);
-		PlayerKeys keysD = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.KeysetD);
+		PlayerKeys keysA = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.A);
+		PlayerKeys keysB = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.B);
+		PlayerKeys keysC = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.C);
+		PlayerKeys keysD = brainiacs.PlayerPrefs.GetPlayerKeys(EKeyset.D);
 
-		keySetA.Init(EKeyset.KeysetA, keysA);
-		keySetB.Init(EKeyset.KeysetB, keysB);
-		keySetC.Init(EKeyset.KeysetC, keysC);
-		keySetD.Init(EKeyset.KeysetD, keysD);
+		keySetA.Init(EKeyset.A, keysA);
+		keySetB.Init(EKeyset.B, keysB);
+		keySetC.Init(EKeyset.C, keysC);
+		keySetD.Init(EKeyset.D, keysD);
 	}
 }

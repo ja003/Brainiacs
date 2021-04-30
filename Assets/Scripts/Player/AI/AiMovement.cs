@@ -37,9 +37,19 @@ public class AiMovement : AiController
 
 	bool isLogEnabled = false;
 
+	Vector2 lastPos;
+
+	float idleDuration;
 
 	public void Update()
 	{
+		if(Vector2.Distance(lastPos, player.Position2D) < float.Epsilon)
+			idleDuration += Time.deltaTime;
+		else
+			idleDuration = 0;
+
+		lastPos = player.Position2D;
+
 		Utils.DebugDrawCross(moveTarget, Color.yellow);
 		if(player.debug_DrawPath && path != null)
 			Utils.DebugDrawPath(path.GetNodePositions(), Color.yellow);
@@ -160,6 +170,12 @@ public class AiMovement : AiController
 		if(isLogEnabled)
 			Debug.Log("SetTarget " + pTarget);
 
+		//pTarget might be on unwalkable position.
+		//try to move it
+		bool res = pathFinder.MoveToWalkablePos(ref pTarget, pTarget + Vector2.right, astar);
+		if(!res)
+			Debug.LogError($"SetTarget {pTarget} is unreachable");
+
 		moveTarget = pTarget;
 		if(astar != null && player.isActiveAndEnabled)
 			brain.StartCoroutine(RecalculatePath());
@@ -202,7 +218,12 @@ public class AiMovement : AiController
 
 		lastRecalculatePathTime = Time.time;
 
-		bool forceRecalcPath = false;
+		bool isIdleForTooLong = idleDuration > 0.5f;
+		//if(isIdleForTooLong)
+		//	Debug.Log("Idle for too long");
+
+		//can be used for debug purpose as well
+		bool forceRecalcPath = isIdleForTooLong;
 		float newTargetDiff = Vector2.Distance(lastPathTarget, moveTarget);
 
 		//check if player got off the path (eg. pushed out)
@@ -231,6 +252,9 @@ public class AiMovement : AiController
 			{
 				Debug.Log($"RecalculatePath - {newTargetDiff}");
 			}
+
+			if(isIdleForTooLong)
+				idleDuration = 0;
 
 			astar.StopCalculation();
 			brain.StartCoroutine(pathFinder.GetPathAsync(playerPosition, moveTarget, astar));
