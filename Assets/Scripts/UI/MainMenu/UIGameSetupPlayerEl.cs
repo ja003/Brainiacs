@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using PhotonPlayer = Photon.Realtime.Player;
 
@@ -18,7 +19,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	[SerializeField] public UiTextSwapper heroSwapper = null;
 	[SerializeField] UiTextSwapper keySetSwapper = null;
 	[SerializeField] Text playerTypeText = null;
-	[SerializeField] Button btnRemove = null;
+	//[SerializeField] Button btnRemove = null; //replaced by click-hold on 
+	[SerializeField] ButtonObject elementButton = null; //clickable area of this element
 
 	public PlayerInitInfo Info;
 	public bool IsItMe =>
@@ -38,7 +40,14 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			return;
 
 		preInited = true;
-		btnRemove.onClick.AddListener(OnBtnRemove);
+		//btnRemove.onClick.AddListener(OnBtnRemove);
+
+		//remove player (only master)
+		if(IsMaster())
+		{
+			elementButton.OnPointerUpAction += OnElementButtonPointerUp;
+			elementButton.OnPointerHoldUpdate += OnElementButtonHoldUpdate;
+		}
 
 		Info = new PlayerInitInfo();
 
@@ -51,8 +60,49 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		keySetSwapper.Init(keySets, OnKeySetChanged, 0);
 	}
 
-	private void OnBtnRemove()
+	/// <summary>
+	/// Animate return element to original size - scale up (see OnElementButtonHoldUpdate)
+	/// </summary>
+	private void Update()
 	{
+		//gradually scale element up until the original scale (only if it is not being clicked)
+		if(transform.localScale.x >= 1 || elementButton.IsClicked())
+			return;
+
+		const float scale_up_speed = 1f;
+		transform.localScale += (scale_up_speed * Time.deltaTime) * Vector3.one;
+	}
+
+	const float required_hold_time_to_remove = 0.5f;
+
+	/// <summary>
+	/// Animate remove player - scale element down
+	/// </summary>
+	private void OnElementButtonHoldUpdate(float pButtonHoldTime)
+	{
+		const float min_hold_time = 0.1f; //to start scale anim
+		if(pButtonHoldTime < min_hold_time || transform.localScale.x <= 0)
+			return;
+
+		float progress = (pButtonHoldTime - min_hold_time) / required_hold_time_to_remove; //0-1
+		//Debug.Log($"hold {progress}");
+		transform.localScale = Vector3.one * (1 - progress);
+	}
+
+	/// <summary>
+	/// Try remove player
+	/// </summary>
+	private void OnElementButtonPointerUp(float pButtonHoldTime)
+	{
+		if(!IsMaster())
+		{
+			Debug.Log("Client cant remove players");
+			return;
+		}
+		//Debug.Log(pButtonHoldTime);
+		if(pButtonHoldTime < required_hold_time_to_remove)
+			return;
+
 		if(Info.PlayerType == EPlayerType.RemotePlayer)
 		{
 			Debug.LogError("TODO: are you sure dialog");
@@ -62,8 +112,21 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		gameObject.SetActive(false);
 		brainiacs.GameInitInfo.Players.Remove(Info);
 		mainMenu.GameSetup.SetupMain.OnPlayersChanged();
-		//OnElementChanged(true);
 	}
+
+	//private void OnBtnRemove()
+	//{
+	//	if(Info.PlayerType == EPlayerType.RemotePlayer)
+	//	{
+	//		Debug.LogError("TODO: are you sure dialog");
+	//		PhotonNetwork.CloseConnection(Info.PhotonPlayer);
+	//		Debug.Log($"kick player {Info.PhotonPlayer}");
+	//	}
+	//	gameObject.SetActive(false);
+	//	brainiacs.GameInitInfo.Players.Remove(Info);
+	//	mainMenu.GameSetup.SetupMain.OnPlayersChanged();
+	//	//OnElementChanged(true);
+	//}
 
 	/// <summary>
 	/// Each player has number has ID <1,4>
@@ -74,8 +137,12 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		PreInit();
 		gameObject.SetActive(true);
 		//master can remove every player (even himself - he wont be able to start game)
-		btnRemove.gameObject.SetActive(true);
+		//btnRemove.gameObject.SetActive(true);
 
+		//reset remove animation
+		transform.localScale = Vector3.one;
+		//reset portrait animation for remote player
+		portraitAnimator.Rebind();
 
 		Info.Number = pPlayerNumber;
 
@@ -150,7 +217,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		}
 		heroSwapper.SetInteractable(IsItMe);
 		//only master can kick out player
-		btnRemove.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+		//btnRemove.gameObject.SetActive(PhotonNetwork.IsMasterClient);
 
 		isClientInitializing = false;
 	}
@@ -182,7 +249,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			pPlayerType == EPlayerType.AI)
 		{
 			//local player = master
-			if(PhotonNetwork.InRoom && !PhotonNetwork.IsMasterClient)
+			if(PhotonNetwork.InRoom && !IsMaster())
 			{
 				//client doesnt change local player
 			}
@@ -207,11 +274,19 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			SetReady(true);
 	}
 
+	/// <summary>
+	/// Is menu opened in master mode?
+	/// </summary>
+	private bool IsMaster()
+	{
+		return mainMenu.GameSetup.SetupMain.IsMaster;
+	}
 
 	public void SetReady(bool pValue)
 	{
 		Info.IsReady = pValue;
-		state.color = pValue ? Color.green : Color.red;
+		//looks hideous. disabled for now
+		//state.color = pValue ? Color.green : Color.red;
 
 		bool interactable = !pValue;
 		if(Info.PlayerType == EPlayerType.LocalPlayer ||
@@ -339,7 +414,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	/// </summary>
 	public bool IsLocalPlayer()
 	{
-		bool isMaster = mainMenu.GameSetup.SetupMain.IsMaster;
+		bool isMaster = IsMaster();
 		return isMaster && Info.PlayerType == EPlayerType.LocalPlayer ||
 			!isMaster && Info.PlayerType == EPlayerType.RemotePlayer;
 	}

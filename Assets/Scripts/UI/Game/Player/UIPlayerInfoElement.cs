@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIPlayerInfoElement : UiBehaviour
 {
 	[SerializeField] private Image portrait = null;
+	[SerializeField] private Image portraitBg = null;
 	[SerializeField] public Image weapon = null;
 	[SerializeField] private Image frame = null;
 	[SerializeField] public Text health = null;
@@ -60,7 +61,9 @@ public class UIPlayerInfoElement : UiBehaviour
 		player = pPlayer;
 		gameObject.SetActive(true);
 
+		//disabled for now, replaced by portraitBg
 		image.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
+		portraitBg.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
 
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.InitInfo.Hero).Portrait;
 

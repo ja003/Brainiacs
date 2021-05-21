@@ -48,6 +48,7 @@ public class UIGameSetupMain : MainMenuController
 
 	[Header("OTHER")]
 	[SerializeField] TextMeshProUGUI txtGameType;
+	[SerializeField] Animator txtGameTypeAnim;
 
 	GameInitInfo gameInitInfo => brainiacs.GameInitInfo;
 
@@ -119,6 +120,7 @@ public class UIGameSetupMain : MainMenuController
 		UpdateGameType();
 	}
 
+	//if this mode was opened in master mode
 	public bool IsMaster;
 	//just to detect if it was master who canceled the game or player was kicked out
 	float lastTimeWasMaster;
@@ -453,7 +455,12 @@ public class UIGameSetupMain : MainMenuController
 			}
 		}
 		Debug.Log("UpdateGameType " + isSetAsMPGame);
-		txtGameType.text = isSetAsMPGame ? "MULTIPLAYER GAME" : "LOCAL GAME";
+		string gameTypeStr = isSetAsMPGame ? "NETWORK GAME" : "LOCAL GAME";
+		bool isChange = gameTypeStr != txtGameType.text;
+		txtGameType.text = gameTypeStr;
+		//if gametype changed => highlight it (by anim)
+		if(isChange)
+			txtGameTypeAnim.Rebind();
 
 		//only master changes visibility of join-buttons
 		if(IsMaster)

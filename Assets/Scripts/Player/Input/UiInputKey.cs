@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 public class UiInputKey : UiBehaviour
 {
 	[SerializeField] Text keyText;
+	[SerializeField] TextMeshProUGUI keyTextPro;
 	UIInputKeySelector selector => MainMenu.Instance.InputKeySelector;
 
 	public KeyCode Key;
@@ -25,7 +27,13 @@ public class UiInputKey : UiBehaviour
 	{
 		//Debug.Log(gameObject.name + " set " + pKey);
 		Key = pKey;
-		keyText.text = GetKeyName(pKey);
+		if(keyText != null)
+			keyText.text = GetKeyName(pKey);
+		else if(keyTextPro != null)
+			keyTextPro.text = GetKeyName(pKey);
+		else
+			Debug.LogError("no text field set");
+
 		OnKeySet?.Invoke();
 	}
 

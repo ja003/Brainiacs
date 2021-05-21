@@ -27,7 +27,10 @@ public class UIScoreboardElement : GameBehaviour
 		player = pPlayer;
 
 		//color and name dont change during game
+		//for now replaced by playerName.color
 		background.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
+		playerName.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
+
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;
 		playerName.text = pPlayer.InitInfo.Name;

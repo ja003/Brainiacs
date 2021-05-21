@@ -160,5 +160,23 @@ public class GameInitInfo
 		}
 		return false;
 	}
+
+	/// <summary>
+	/// Am I master?
+	/// If one of LocalPlayers has local photon then I have to be master.
+	/// If single player => true.
+	/// </summary>
+	public bool IsMaster()
+	{
+		if(!IsMultiplayer())
+			return true;
+
+		foreach(var p in Players)
+		{
+			if(p.PlayerType == EPlayerType.LocalPlayer)
+				return p.PhotonPlayer.IsLocal;
+		}
+		return false;
+	}
 }
 
