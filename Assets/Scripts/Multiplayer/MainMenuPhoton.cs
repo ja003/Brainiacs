@@ -36,13 +36,17 @@ public class MainMenuPhoton : PhotonMessenger
 				//reset current game info - DONT assign it
 				//it will be set from UI elements
 				brainiacs.GameInitInfo = new GameInitInfo();
-				mainMenu.GameSetup.OpenMain(gameInfo);
+				//OpenMain(false);
+				mainMenu.SetupSearch.SetActive(false);
+				mainMenu.SetupMain.SetActive(true);
+				mainMenu.SetupMain.SetGameInfo(gameInfo);
+				//mainMenu.GameSetup.OpenMain(gameInfo);
 				break;
 
 			case EPhotonMsg.MainMenu_SyncPlayerInfo:
 				PlayerInitInfoS playerInfoS = PlayerInitInfoS.GetRootAsPlayerInitInfoS(bb);
 				PlayerInitInfo playerInfo = PlayerInitInfo.Deserialize(playerInfoS);
-				mainMenu.GameSetup.SetupMain.UpdatePlayer(playerInfo);
+				mainMenu.SetupMain.UpdatePlayer(playerInfo);
 				break;
 
 			case EPhotonMsg.None:

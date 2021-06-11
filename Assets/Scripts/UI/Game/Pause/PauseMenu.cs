@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenu : GameController
+public class PauseMenu : GameMenuController
 {
 	[SerializeField] Text header;
 
@@ -31,13 +31,13 @@ public class PauseMenu : GameController
 
 	protected override void OnMainControllerAwaken() { }
 
-	protected override void OnSetActive(bool pValue)
+	public override void SetActive(bool pValue)
 	{
+		base.SetActive(pValue);
+
 		game.GameTime.SetPause(pValue && !isMultiplayer);
 		header.text = $"Game {(game.GameTime.IsPaused ? "" : "not ")}paused";
 		holderEndGameConfirm.SetActive(false);
-
-		base.OnSetActive(pValue);
 	}
 
 	internal void Init()

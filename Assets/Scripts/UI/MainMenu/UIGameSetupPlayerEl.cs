@@ -111,7 +111,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		}
 		gameObject.SetActive(false);
 		brainiacs.GameInitInfo.Players.Remove(Info);
-		mainMenu.GameSetup.SetupMain.OnPlayersChanged();
+		mainMenu.SetupMain.OnPlayersChanged();
 	}
 
 	//private void OnBtnRemove()
@@ -279,7 +279,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	/// </summary>
 	private bool IsMaster()
 	{
-		return mainMenu.GameSetup.SetupMain.IsMaster;
+		return mainMenu.SetupMain.IsMaster;
 	}
 
 	public void SetReady(bool pValue)
@@ -385,7 +385,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		}
 
 		Info.Keyset = (EKeyset)keySetSwapper.CurrentIndex;
-		var allPlayers = mainMenu.GameSetup.SetupMain.GetActivatedPlayers();
+		var allPlayers = mainMenu.SetupMain.GetActivatedPlayers();
 
 		//check if selected keyset is not used by another player
 		foreach(var p in allPlayers)

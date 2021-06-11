@@ -15,6 +15,8 @@ public class UIInfoMessengerGame : UIInfoMessenger
 
     protected override UIInfoMessage InstantiateInfoMsg()
     {
-        return InstanceFactory.Instantiate(infoMessagePrefab.gameObject).GetComponent<UIInfoMessage>();
+		UIInfoMessage infoMessage = InstanceFactory.Instantiate(infoMessagePrefab.gameObject).GetComponent<UIInfoMessage>();
+		infoMessage.OnInstantiate(transform);
+		return infoMessage;
     }
 }

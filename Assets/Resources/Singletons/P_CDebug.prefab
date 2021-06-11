@@ -47,7 +47,7 @@ MonoBehaviour:
   releaseWithExceptions: 0
   _Result: 0
   _PlatformMobile: 0
-  _AutoJoinRandomRoom: 1
+  _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _Hero: 2
   _ExtraPlayerWeapon: 50
@@ -72,5 +72,5 @@ MonoBehaviour:
   _AiDebugMove: 0
   _SkipTutorial: 0
   _ForceTutorial: 0
-  _InstaAnimation: 1
+  _InstaAnimation: 0
   pushForce: 15

@@ -27,6 +27,17 @@ public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 		base.Awake();
 	}
 
+#if UNITY_EDITOR
+	private void Update()
+	{
+		if(isPushable && Input.GetKeyDown(KeyCode.P))
+		{
+			rigidBody2D.AddForce(Vector2.right, ForceMode2D.Impulse);
+			Debug.Log($"{gameObject.name} push");
+		}
+	}
+#endif
+
 	/// <summary>
 	/// If the object is pushable we need to transfer ownership to the player who 
 	/// collides with the object, otherwise there is a horrible delay.
@@ -49,11 +60,16 @@ public abstract class MapObject : PoolObjectNetwork, ICollisionHandler
 		OnCollisionEffect(pDamage, pOrigin);
 
 		//see: OnCollisionEnter2D
-		if(isPushable && pOwner != null && pOwner.InitInfo.PhotonPlayer != null)
+		if(isPushable)
 		{
-			photonView.TransferOwnership(pOwner.InitInfo.PhotonPlayer);
+			if(pOwner != null && pOwner.InitInfo.PhotonPlayer != null &&
+				!pOwner.InitInfo.PhotonPlayer.IsLocal)
+			{
+				photonView.TransferOwnership(pOwner.InitInfo.PhotonPlayer);
+			}
+
 			//Debug.Log($"Push {pPush}");
-			rigidBody2D.AddForce(pPush);
+			rigidBody2D.AddForce(pPush, ForceMode2D.Impulse);
 		}
 
 		if(isDamagable && pDamage > 0)

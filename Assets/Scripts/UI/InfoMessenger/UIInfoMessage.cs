@@ -24,6 +24,12 @@ public class UIInfoMessage : UiBehaviour
 
 	public void Show(string pText, float pDuration = 3)
 	{
+		if(rectTransform.localScale.x > 1)
+		{
+			Debug.LogError($"UIInfoMessage {gameObject.name} has larger scale");
+			rectTransform.localScale = Vector3.one;
+		}
+
 		gameObject.SetActive(true);
         transform.SetAsFirstSibling(); //new msgs will be on top
 		msgText.text = pText;
@@ -47,5 +53,11 @@ public class UIInfoMessage : UiBehaviour
 	{
 		base.SetAlpha(pAlpha);
 		msgText.color = new Color(msgText.color.r, msgText.color.g, msgText.color.b, pAlpha);
+	}
+
+	internal void OnInstantiate(Transform pHolder)
+	{
+		transform.SetParent(pHolder);
+		rectTransform.localScale = Vector3.one;
 	}
 }

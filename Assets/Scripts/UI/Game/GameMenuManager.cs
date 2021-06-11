@@ -15,7 +15,7 @@ public class GameMenuManager : GameController
 			if(game.Tutorial.IsTutorialActive())
 				return;
 
-			pause.SetActive(!pause.isActiveAndEnabled);
+			pause.SetActive(!pause.IsActive());
 		}
 	}
 

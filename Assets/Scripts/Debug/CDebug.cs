@@ -31,7 +31,7 @@ public class CDebug : CSingleton<CDebug>
 
 	[Header("Multiplayer")]
 	[SerializeField] bool _AutoJoinRandomRoom;
-	public bool AutoJoinRandomRoom => _AutoJoinRandomRoom;// GetDebugBool(_AutoJoinRandomRoom);
+	public bool AutoJoinRandomGame => _AutoJoinRandomRoom;// GetDebugBool(_AutoJoinRandomRoom);
 	[SerializeField] bool _LocalImage;
 	public bool LocalImage => GetDebugBool(_LocalImage);
 
@@ -241,7 +241,7 @@ public class CDebug : CSingleton<CDebug>
 	protected override void Awake()
 	{
 		base.Awake();
-		if(Result || AutoJoinRandomRoom || LocalImage)
+		if(Result || AutoJoinRandomGame || LocalImage)
 		{
 			Debug.LogError("testing data is ON - turn off in build");
 		}
@@ -358,7 +358,7 @@ public class CDebug : CSingleton<CDebug>
 		else if(Input.GetKeyDown(KeyCode.S))
 		{
 			if(MainMenu.IsInstantiated)
-				MainMenu.Instance.GameSetup.InfoMessenger.Show("Menu message");
+				MainMenu.Instance.InfoMessenger.Show("Menu message");
 		}
 	}
 #endif

@@ -55,11 +55,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		PhotonNetwork.JoinRandomRoom();
 	}
 
-	public void JoinRoom(string pName, Action pOnKickedOut)
+
+	public bool JoinRoom(string pName, Action pOnKickedOut)
 	{
 		OnKickedOut = pOnKickedOut;
 		//Debug.Log("JoinRoom " + pName);
-		PhotonNetwork.JoinRoom(pName);
+		return PhotonNetwork.JoinRoom(pName);
 	}
 
 	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered, Action<PhotonPlayer> pOnPlayerLeft)
@@ -77,7 +78,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	private string GenerateRoomName()
 	{
 		int index = UnityEngine.Random.Range(1, 100);
-		return "room_" + index;
+		return "" + index;
+		//we dont want "room" in game id
+		//return "room_" + index;
 	}
 
 	public void LeaveRoom()
@@ -123,25 +126,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		base.OnCreatedRoom();
 	}
 
-	//public bool IsMultiplayer;
-
-	public override void OnJoinedRoom()
-	{
-		//Debug.Log("OnJoinedRoom");
-		base.OnJoinedRoom();
-		//IsMultiplayer = true;
-		//if(!PhotonNetwork.IsMasterClient)
-		//{
-		//	Debug.Log("Opening main game setup");
-		//	Debug.Log("...maybe after fisrt game info msg?");
-		//	//MainMenu.Instance.GameSetup.OpenMain(false);
-		//}
-
-	}
-
 	public override void OnJoinRandomFailed(short returnCode, string message)
 	{
+		MainMenu.Instance.SetupSearch.OnJoinFailed(returnCode, message);
 		base.OnJoinRandomFailed(returnCode, message);
+	}
+		public override void OnJoinRoomFailed(short returnCode, string message)
+	{
+		MainMenu.Instance.SetupSearch.OnJoinFailed(returnCode, message);
+		base.OnJoinRoomFailed(returnCode, message);
 	}
 
 	public override void OnLeftRoom()

@@ -52,8 +52,10 @@ public class UIInfoMessenger : MonoBehaviour
 	protected virtual UIInfoMessage InstantiateInfoMsg()
 	{
 		UIInfoMessage uIInfoMessage = Instantiate(infoMessagePrefab.gameObject).GetComponent<UIInfoMessage>();
-		uIInfoMessage.UsePooling = false;
-		uIInfoMessage.transform.SetParent(transform);
+		uIInfoMessage.OnInstantiate(transform);
+		uIInfoMessage.UsePooling = false; //pooling is implemented only in game
+
+
 		return uIInfoMessage;
 	}
 

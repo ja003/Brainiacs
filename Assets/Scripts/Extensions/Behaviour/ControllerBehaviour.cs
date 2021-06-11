@@ -28,6 +28,14 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 		//Debug.Log($"{gameObject.name} Awake");
 		base.Awake();
 
+
+
+		if(!Holder.activeSelf)
+		{
+			Holder.SetActive(true);
+			Debug.LogWarning($"Auto activating {gameObject.name}. todo: activate before release");
+		}
+
 		BrainiacsBehaviour mainController = GetMainController();
 		if(mainController != null && mainController != this)
 		{
@@ -36,15 +44,12 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 		}
 	}
 
-	public void SetActive(bool pValue)
+	public virtual void SetActive(bool pValue)
 	{
 		Holder.SetActive(pValue);
-		OnSetActive(pValue);
 	}
 
-	protected virtual void OnSetActive(bool pValue) { }
-
-	public bool IsActive()
+	public virtual bool IsActive()
 	{
 		return Holder.activeSelf;
 	}

@@ -13,16 +13,22 @@ public class MainMenu : CSingleton<MainMenu>
 	private const int MENU_ANIM_POSITION_SETTINGS = -1;
 
 	[SerializeField] private Button btnStartGame = null;
+	[SerializeField] private Button btnJoinGame = null;
 	[SerializeField] private Button btnSettings = null;
 	[SerializeField] private Button btnQuit = null;
 
 	[SerializeField] int debug_InitBgAnim = MENU_ANIM_POSITION_MAIN;
 
-	[SerializeField] public UIGameSetup GameSetup;
+	[SerializeField] public UIGameSetupMain SetupMain = null;
+	//[SerializeField] public UIGameSetup GameSetup;
 	[SerializeField] public MainMenuPhoton Photon;
 	[SerializeField] public UIInputKeySelector InputKeySelector;
 
 	[SerializeField] public TutorialMenuController Tutorial;
+
+	[SerializeField] public UIGameSetupSearch SetupSearch = null;
+
+	[SerializeField] public UIInfoMessenger InfoMessenger;
 
 	protected override void Awake()
 	{
@@ -33,6 +39,7 @@ public class MainMenu : CSingleton<MainMenu>
 			SetMenuAnimPosition(debug_InitBgAnim);
 		}
 		btnStartGame.onClick.AddListener(OnBtnStartGame);
+		btnJoinGame.onClick.AddListener(OnBtnJoinGame);
 		btnSettings.onClick.AddListener(OnBtnSettings);
 		btnQuit.onClick.AddListener(OnBtnQuit);
 
@@ -50,6 +57,15 @@ public class MainMenu : CSingleton<MainMenu>
 	private void OnBtnStartGame()
 	{
 		StartMenuAnim(MENU_ANIM_POSITION_SETUP);
+		SetupMain.SetActive(true, true);
+		SetupSearch.SetActive(false);
+	}
+
+	private void OnBtnJoinGame()
+	{
+		StartMenuAnim(MENU_ANIM_POSITION_SETUP);
+		SetupSearch.SetActive(true);
+		SetupMain.SetActive(false);
 	}
 
 	private void OnBtnSettings()

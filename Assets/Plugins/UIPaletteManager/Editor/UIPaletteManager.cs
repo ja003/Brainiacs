@@ -2,11 +2,14 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIPaletteManager : EditorWindow
 {
 	UiPalette activePalette;
+	[SerializeField]
+	GameObject targetObject;
 
 	[MenuItem("Tools/UIPaletteManager")]
 	public static void ShowWindow()
@@ -29,6 +32,8 @@ public class UIPaletteManager : EditorWindow
 	{
 		activePalette = EditorGUILayout.ObjectField("Active palette", activePalette, typeof(UiPalette), false) as UiPalette;
 
+		targetObject = EditorGUILayout.ObjectField("Target object", targetObject, typeof(GameObject), true) as GameObject;
+
 		if(GUILayout.Button("Apply"))
 		{
 			Apply();
@@ -36,49 +41,26 @@ public class UIPaletteManager : EditorWindow
 
 		if(GUILayout.Button("Add script [UIApplyPaletteColor] to all Images"))
 		{
-			AddScriptToImages();
+			AddScriptTo<Image>();
 		}
 
 		if(GUILayout.Button("Add script [UIApplyPaletteColor] to all Texts"))
 		{
-			AddScriptToTexts();
+			AddScriptTo<Text>();
 		}
 
 		if(GUILayout.Button("Add script [UIApplyPaletteColor] to all TextMeshPros"))
 		{
-			AddScriptToTMPro();
+			AddScriptTo<TextMeshProUGUI>();
 		}
 	}
 
-	private void AddScriptToTexts()
+	private void AddScriptTo<T>() where T : UIBehaviour
 	{
-		Text[] objsInScene = FindObjectsOfType<Text>();
-		for(int i = 0; i < objsInScene.Length; i++)
-		{
-			if(objsInScene[i].GetComponent<UIApplyPaletteColor>() == null)
-			{
-				objsInScene[i].gameObject.AddComponent<UIApplyPaletteColor>();
-				Debug.Log($"Add UIApplyPaletteColor to {objsInScene[i].gameObject.name}");
-			}
-		}
-	}
+		T[] objsInScene = targetObject == null ?
+			FindObjectsOfType<T>() :
+			targetObject.GetComponentsInChildren<T>();
 
-	private void AddScriptToImages()
-	{
-		Image[] objsInScene = FindObjectsOfType<Image>();
-		for(int i = 0; i < objsInScene.Length; i++)
-		{
-			if(objsInScene[i].GetComponent<UIApplyPaletteColor>() == null)
-			{
-				objsInScene[i].gameObject.AddComponent<UIApplyPaletteColor>();
-				Debug.Log($"Add UIApplyPaletteColor to {objsInScene[i].gameObject.name}");
-			}
-		}
-	}
-
-	private void AddScriptToTMPro()
-	{
-		TextMeshProUGUI[] objsInScene = FindObjectsOfType<TextMeshProUGUI>();
 		for(int i = 0; i < objsInScene.Length; i++)
 		{
 			if(objsInScene[i].GetComponent<UIApplyPaletteColor>() == null)

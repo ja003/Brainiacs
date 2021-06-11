@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: UIPaletteA
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+  - {r: 0.951, g: 0.951, b: 0.951, a: 1}
   - {r: 0.8078432, g: 0.91372555, b: 0.10588236, a: 1}

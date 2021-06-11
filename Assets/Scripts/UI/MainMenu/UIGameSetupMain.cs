@@ -43,8 +43,8 @@ public class UIGameSetupMain : MainMenuController
 	[SerializeField] TextMeshProUGUI btnReadyText = null;
 	[SerializeField] Button btnAllowJoin = null;
 
-	[SerializeField] Button btnCopyRoomName;
-	[SerializeField] TextMeshProUGUI txtRoomName;
+	[SerializeField] Button btnCopyGameId;
+	[SerializeField] TextMeshProUGUI txtGameId;
 
 	[Header("OTHER")]
 	[SerializeField] TextMeshProUGUI txtGameType;
@@ -75,18 +75,30 @@ public class UIGameSetupMain : MainMenuController
 		if(IsMaster || wasMaster)
 			return;
 
-		mainMenu.GameSetup.InfoMessenger.Show("You were kicked out!");
-		DoInTime(mainMenu.GameSetup.OnSubMenuBtnBack, 2);
+		mainMenu.InfoMessenger.Show("You were kicked out!");
+		DoInTime(OnBtnBack, 2);
 	}
 
 	protected override void Awake()
 	{
-		btnBack.onClick.AddListener(mainMenu.GameSetup.OnSubMenuBtnBack);
+		btnBack.onClick.AddListener(OnBtnBack);
 		btnPlay.onClick.AddListener(OnBtnPlay);
 		btnReady.onClick.AddListener(OnBtnReady);
 		btnAllowJoin.onClick.AddListener(OnBtnAllowJoin);
-		btnCopyRoomName.onClick.AddListener(OnBtnCopyRoomName);
+		btnCopyGameId.onClick.AddListener(OnBtnCopyGameId);
 		base.Awake();
+	}
+
+	private void OnBtnBack()
+	{
+		KickOtherPlayers();
+		brainiacs.PhotonManager.LeaveRoom();
+		brainiacs.GameInitInfo = null;
+
+		//setupInit.SetActive(true);
+		//setupSearch.SetActive(false);
+		SetActive(false);
+		mainMenu.OnBtnBack();
 	}
 
 	private void Update()
@@ -153,8 +165,8 @@ public class UIGameSetupMain : MainMenuController
 		//client always shows room info so he can share it 
 		if(pValue && !IsMaster)
 		{
-			txtRoomName.text = PhotonNetwork.CurrentRoom.Name;
-			btnCopyRoomName.gameObject.SetActive(true);
+			txtGameId.text = PhotonNetwork.CurrentRoom.Name;
+			btnCopyGameId.gameObject.SetActive(true);
 		}
 
 		//reset elements
@@ -167,9 +179,12 @@ public class UIGameSetupMain : MainMenuController
 		{
 			if(pIsMaster)
 			{
+				//reset game info
+				brainiacs.GameInitInfo = new GameInitInfo();
+
 				AddPlayer(EPlayerType.LocalPlayer);
 
-				//set default vlaues
+				//set default values
 				OnTimeToggled(true);
 				OnScoreToggled(true);
 				OnMapChanged();
@@ -194,7 +209,10 @@ public class UIGameSetupMain : MainMenuController
 			//}
 
 			if(!IsActive())
-				mainMenu.GameSetup.InfoMessenger.Show("WELCOME!");
+			{
+				//show after open menu anim
+				DoInTime(() => mainMenu.InfoMessenger.Show("WELCOME!"), 1);
+			}
 		}
 		base.SetActive(pValue);
 	}
@@ -229,37 +247,41 @@ public class UIGameSetupMain : MainMenuController
 		//OnGameModeToggled(true, EGameMode.Score);
 
 		mapSwapper.Init(Utils.GetStrings(typeof(EMap)), OnMapChanged, 0);
-
 	}
 
 	protected override void OnMainControllerActivated()
 	{
+		SetActive(false);
 	}
 
 	/// MULTIPLAYER
 
 	bool isJoinAllowed;
+	const string game_id_prefix = "game id: ";
+
 	private void OnBtnAllowJoin()
 	{
 		isJoinAllowed = true;
 		//todo: check if any remote + check max players
 		int playersCount = GetActivatedPlayers().Count;
-		string roomName = brainiacs.PhotonManager.CreateRoom(playersCount, 
+		string roomName = brainiacs.PhotonManager.CreateRoom(playersCount,
 			OnRemotePlayerEnteredRoom, OnRemotePlayerLeftRoom);
 
 		btnGroupAddPlayer.SetActive(false);
 
-		btnCopyRoomName.gameObject.SetActive(true);
-		txtRoomName.text = roomName;
+		btnCopyGameId.gameObject.SetActive(true);
+		txtGameId.text = game_id_prefix + roomName;
+		btnAllowJoin.gameObject.SetActive(false);
 	}
 
-	private void OnBtnCopyRoomName()
+	private void OnBtnCopyGameId()
 	{
-		UniClipboard.SetText(txtRoomName.text);
-		Debug.Log($"{txtRoomName.text} copied to clipboard");
-		string message = $"{txtRoomName.text} copied to clipboard" + Environment.NewLine
+		string gameId = txtGameId.text.Replace(game_id_prefix, "");
+		UniClipboard.SetText(gameId);
+		Debug.Log($"{gameId} copied to clipboard");
+		string message = $"Game ID {gameId} copied to clipboard" + Environment.NewLine
 			+ "share it with your friend!";
-		mainMenu.GameSetup.InfoMessenger.Show(message);
+		mainMenu.InfoMessenger.Show(message);
 	}
 
 	private void debug_OnBtnSyncInfo()
@@ -276,8 +298,8 @@ public class UIGameSetupMain : MainMenuController
 			Debug.LogError("No free remote element rdy. todo: kick out of room");
 			return;
 		}
-		
-		mainMenu.GameSetup.InfoMessenger.Show($"Player {pPlayer} has joined");
+
+		mainMenu.InfoMessenger.Show($"Player {pPlayer} has joined");
 
 		availableRemotes[0].OnRemoteConnected(pPlayer);
 
@@ -295,7 +317,7 @@ public class UIGameSetupMain : MainMenuController
 			if(playerEl.Info.PhotonPlayer == pPlayer)
 			{
 				playerEl.OnRemoteDisconnected(pPlayer);
-				mainMenu.GameSetup.InfoMessenger.Show($"Player {pPlayer} has left");
+				mainMenu.InfoMessenger.Show($"Player {pPlayer} has left");
 				return;
 			}
 		}
@@ -466,7 +488,7 @@ public class UIGameSetupMain : MainMenuController
 		if(IsMaster)
 		{
 			btnAllowJoin.gameObject.SetActive(isSetAsMPGame);
-			btnCopyRoomName.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
+			btnCopyGameId.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
 		}
 	}
 
@@ -482,20 +504,20 @@ public class UIGameSetupMain : MainMenuController
 	{
 		if(GetLocalPlayer() == null)
 		{
-			mainMenu.GameSetup.InfoMessenger.Show(
+			mainMenu.InfoMessenger.Show(
 				"Cant start game with no local player", DebugInfoMsg.Error);
 			return;
 		}
 
 		if(gameInitInfo.Players.Count < 1)
 		{
-			mainMenu.GameSetup.InfoMessenger.Show(
+			mainMenu.InfoMessenger.Show(
 				"Cant start game with no player", DebugInfoMsg.Error);
 			return;
 		}
 		if(!ArePlayersReady())
 		{
-			mainMenu.GameSetup.InfoMessenger.Show(
+			mainMenu.InfoMessenger.Show(
 				"Not all players are ready", DebugInfoMsg.Error);
 			return;
 		}

@@ -9,37 +9,87 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupSearch : MainMenuController
 {
-	[SerializeField] TMP_InputField txtInputRoomName;
+	[SerializeField] TMP_InputField txtInputGameId;
 	[SerializeField] Button btnJoinRandomGame;
 	[SerializeField] Text txtStatus;
+	[SerializeField] Animator txtStatusAnimator;
+	[SerializeField] Button btnBack;
+	[SerializeField] Image joinGameIndicator;
 
 	protected override void OnMainControllerAwaken()
 	{
 		btnJoinRandomGame.onClick.AddListener(OnClickJoinRandomGame);
-		txtInputRoomName.onValueChanged.AddListener(OnRoomNameSet);
+		txtInputGameId.onValueChanged.AddListener(OnGameIdSet);
+		btnBack.onClick.AddListener(OnClickBtnBack);
+		SetActive(false);
 	}
 
-	private void OnRoomNameSet(string pRoomName)
+	private void OnClickBtnBack()
 	{
-		Debug.Log($"OnGameIDSet {pRoomName}");
-		brainiacs.PhotonManager.JoinRoom(pRoomName, mainMenu.GameSetup.SetupMain.OnKickedOut);
-		txtStatus.text = "Joining room " + pRoomName;
+		mainMenu.OnBtnBack();
+		SetActive(false);
+	}
+
+	string currentGameId;
+
+	private void OnGameIdSet(string pGameId)
+	{
+		if(pGameId.Length == 0)
+			return;
+
+		currentGameId = pGameId;
+		Debug.Log($"OnGameIDSet {pGameId}");
+		//call join room with delay to give user time to write game id
+		DoInTime(() => TryStartSearchForGame(pGameId), 1);
+		//txtStatus.text = $"Joining game [{pGameId}]";
+		joinGameIndicator.enabled = true;
+		btnJoinRandomGame.interactable = false;
+	}
+
+	private void TryStartSearchForGame(string pGameId)
+	{
+		if(currentGameId != pGameId)
+		{
+			Debug.Log("new game id was set");
+			return;
+		}
+		brainiacs.PhotonManager.JoinRoom(pGameId, mainMenu.SetupMain.OnKickedOut);
 	}
 
 	private void OnClickJoinRandomGame()
 	{
-		brainiacs.PhotonManager.JoinRandomRoom(mainMenu.GameSetup.SetupMain.OnKickedOut);
-		txtStatus.text = "Joining random room";
+		DoInTime(() => brainiacs.PhotonManager.JoinRandomRoom(mainMenu.SetupMain.OnKickedOut), 0.5f);
+		//brainiacs.PhotonManager.JoinRandomRoom(mainMenu.SetupMain.OnKickedOut);
+		//txtStatus.text = "Joining random game";
+		joinGameIndicator.enabled = true;
+		txtInputGameId.enabled = false;
+		btnJoinRandomGame.interactable = false;
 	}
 
-	protected override void OnSetActive(bool pValue)
+	public override void SetActive(bool pValue)
 	{
+		base.SetActive(pValue);
+
+		btnJoinRandomGame.interactable = pValue;
+		txtInputGameId.enabled = pValue;
+		joinGameIndicator.enabled = false;
 		txtStatus.text = "";
 		//Debug.LogError("comment before build");
 		//return; //debug
 
-		if(pValue && debug.AutoJoinRandomRoom)
+		if(pValue && debug.AutoJoinRandomGame)
 			OnClickJoinRandomGame();
+	}
+
+	//todo: menu transitions
+
+	internal void OnJoinFailed(short returnCode, string message)
+	{
+		joinGameIndicator.enabled = false;
+		txtStatus.text = message;// "Joining game failed";
+		txtStatusAnimator.Rebind();
+		btnJoinRandomGame.interactable = true;
+		txtInputGameId.enabled = true;
 	}
 
 	public void debug_CreateRoom()
@@ -47,6 +97,7 @@ public class UIGameSetupSearch : MainMenuController
 		brainiacs.PhotonManager.CreateRoom(4, debug_OnRemotePlayerEnteredRoom, debug_OnRemotePlayerLeftRoom);
 
 	}
+
 	private void debug_OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
 	{
 		Debug.Log("debug_OnRemotePlayerEnteredRoom " + pPlayer);
@@ -86,4 +137,5 @@ public class UIGameSetupSearch : MainMenuController
 		var gameInfoBytes = info.Serialize();
 		MainMenu.Instance.Photon.debug_HandleMsg(EPhotonMsg.MainMenu_SyncGameInfo, gameInfoBytes);
 	}
+
 }

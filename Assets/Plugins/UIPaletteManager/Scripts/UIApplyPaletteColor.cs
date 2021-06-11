@@ -8,10 +8,18 @@ using UnityEngine.UI;
 public class UIApplyPaletteColor : MonoBehaviour
 {
 	[SerializeField] int colorIndex;
+	[SerializeField] 
+	[Tooltip("true = color wont be applied to this object")]
+	bool disable;
 
 	public void Apply(UiPalette pPalette)
 	{
 		Color color = pPalette.GetColor(colorIndex);
+		if(disable)
+		{
+			Debug.Log($"{gameObject.name} DONT apply");
+			return;
+		}
 		Debug.Log($"{gameObject.name} apply {color}");
 
 		if(GetComponent<Image>() != null)
