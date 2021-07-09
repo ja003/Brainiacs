@@ -7,7 +7,7 @@ using UnityEngine;
 [CSingletion("Singletons/P_Brainiacs", true)]
 public class Brainiacs : CSingleton<Brainiacs>
 {
-	public static bool SelfInitGame = false;
+	public static bool SelfInitGame = false; //todo: old debug, doesnt work?
 
 	public GameInitInfo GameInitInfo = new GameInitInfo();
 	public GameResultInfo GameResultInfo = new GameResultInfo();

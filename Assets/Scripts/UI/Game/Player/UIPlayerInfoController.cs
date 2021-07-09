@@ -21,17 +21,25 @@ public class UIPlayerInfoController : GameController
 	/// </summary>
 	private void InitPlayersInfo()
 	{
+		List<UIPlayerInfoElement> elements = new List<UIPlayerInfoElement>();
 		foreach(var player in game.PlayerManager.Players)
 		{
-			AddPlayerInfo(player);
+			elements.Add(AddPlayerInfo(player));
 		}
 		prefab.gameObject.SetActive(false);
+
+		//easiest way to position tutorial on the first element
+		//todo: or use UiCopyPosition
+		tutorialPlayerInfo.transform.SetParent(elements[0].transform);
+		tutorialPlayerInfo.transform.localPosition = Vector3.zero;
+		DoInTime(() => tutorialPlayerInfo.transform.SetParent(game.Tutorial.transform), 0.1f);
+
 	}
 
 	[SerializeField] TutorialGame tutorialPlayerInfo;
 	bool isFirstPlayerAdded;
 
-	private void AddPlayerInfo(Player pPlayer)
+	UIPlayerInfoElement AddPlayerInfo(Player pPlayer)
 	{
 		UIPlayerInfoElement instance = Instantiate(prefab, transform);
 		instance.Init(pPlayer);
@@ -44,6 +52,7 @@ public class UIPlayerInfoController : GameController
 		}
 
 		isFirstPlayerAdded = true;
+		return instance;
 	}
-	
+
 }

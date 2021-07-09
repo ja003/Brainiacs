@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public class UiCopyPosition : UiBehaviour
 {
-	[SerializeField] RectTransform copyFrom;
-	[SerializeField] Vector2 offset;
+	[SerializeField] public RectTransform copyFrom;
+	[SerializeField] public Vector2 offset;
 
 	private void Update()
 	{

@@ -85,7 +85,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			return;
 
 		float progress = (pButtonHoldTime - min_hold_time) / required_hold_time_to_remove; //0-1
-		//Debug.Log($"hold {progress}");
+																						   //Debug.Log($"hold {progress}");
 		transform.localScale = Vector3.one * (1 - progress);
 	}
 
@@ -132,7 +132,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	/// Each player has number has ID <1,4>
 	/// if pPhotonPlayer is null it will be determined in SetType
 	/// </summary>
-	public void Init(int pPlayerNumber, EPlayerType pPlayerType, PhotonPlayer pPhotonPlayer)
+	public void Init(int pPlayerNumber, EPlayerType pPlayerType,
+		PhotonPlayer pPhotonPlayer = null, EHero pHero = EHero.None)
 	{
 		PreInit();
 		gameObject.SetActive(true);
@@ -142,7 +143,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//reset remove animation
 		transform.localScale = Vector3.one;
 		//reset portrait animation for remote player
-		portraitAnimator.Rebind();
+		portrait.rectTransform.rotation = Quaternion.identity;
 
 		Info.Number = pPlayerNumber;
 
@@ -166,6 +167,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//initialized at client
 		bool elementCreated = pPhotonPlayer == null;
 		//OnElementChanged(elementCreated);
+
+		if(pHero == EHero.None)
+			pHero = (EHero)UnityEngine.Random.Range(1, Enum.GetValues(typeof(EHero)).Length);
+		heroSwapper.SetValue((int)pHero);
 
 		//apply debug hero only in SP
 		if(pPhotonPlayer == null && debug.Hero != EHero.None)
@@ -199,7 +204,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
 
 		portraitAnimator.enabled = false;
-		
+
 		//if LocalPlayer (master) then at first is active for all clients, but disabled if it is not me
 		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
 		//OnKeySetChanged();
@@ -351,6 +356,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//Debug.Log($"Remote player {pPlayer.UserId} connected");
 		SetName(pPlayer.NickName);
 		portraitAnimator.enabled = false;
+		portrait.rectTransform.rotation = Quaternion.identity;
+
 		//OnElementChanged(true);
 		SyncInfo();
 	}

@@ -63,7 +63,10 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] int playerCount = 1;
 	[SerializeField] EMap _Map;
 	public EMap Map => release ? EMap.None : _Map;
-	public int GameValue = 5;
+
+	[SerializeField] int _gameValue;
+	public int GameValue => release ? -1 : _gameValue;
+
 	[SerializeField] bool _GenerateItems;
 	public bool GenerateItems => GetDebugBool(_GenerateItems);
 	[SerializeField] bool _StopGenerateItems;
@@ -71,7 +74,7 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _DontEndGame;
 	public bool DontEndGame => GetDebugBool(_DontEndGame);
 
-	// generate items have priority: powerup, wepon, specialweapon
+	// generate items have priority: powerup, weapon, specialweapon
 	[SerializeField] EGameEffect _GameEffect;
 	public EGameEffect GameEffect => release ? EGameEffect.None : _GameEffect;
 
@@ -110,6 +113,9 @@ public class CDebug : CSingleton<CDebug>
 	[Header("Menu")]
 	[SerializeField] bool _InstaAnimation;
 	public bool InstaAnimation => GetDebugBool(_InstaAnimation);
+
+	[SerializeField] bool _OpenMenu;
+	public bool OpenMenu => GetDebugBool(_OpenMenu);
 
 	internal void Reset()
 	{

@@ -46,7 +46,14 @@ public class MainMenu : CSingleton<MainMenu>
 		if(Brainiacs.SelfInitGame)
 		{
 			//todo: Activate from scene loading?
-			DoInTime(Activate, 0.5f);
+			DoInTime(Activate, 0.2f);
+		}
+
+		if(debug.OpenMenu)
+		{
+			Debug.LogWarning("debug.OpenMenu");
+			DoInTime(OnBtnStartGame, 0.2f);
+			//OnBtnStartGame();
 		}
 
 		base.Awake(); //always call base.event() at the end

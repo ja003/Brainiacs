@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public abstract class Tutorial : BrainiacsBehaviour
 {
-	//usually tehre is only 1 object focused, so this is special field for it.
-	//special objects arte defined in additionalFocused and all operations are
+	//usually there is only 1 object focused, so this is special field for it.
+	//special objects are defined in additionalFocused and all operations are
 	//done on that list
 	[SerializeField] GameObject focused;
 	[SerializeField] List<GameObject> additionalFocused;
 
+	//buttons we want user to click
 	[SerializeField] List<Button> targetBtns;
 	[SerializeField] protected Tutorial next;
 
@@ -32,10 +33,14 @@ public abstract class Tutorial : BrainiacsBehaviour
 		if(focused != null)
 			additionalFocused.Add(focused);
 
+		//in case SetTargetBtn was called before Awake => remove
+		//all listeners and add them again (easier than keeping that extra info)
 		foreach(Button btn in targetBtns)
-		{
+			btn.onClick.RemoveListener(OnTargetBtnClick);
+
+		foreach(Button btn in targetBtns)
 			btn.onClick.AddListener(OnTargetBtnClick);
-		}
+
 		base.Awake();
 	}
 
@@ -51,7 +56,12 @@ public abstract class Tutorial : BrainiacsBehaviour
 		//Debug.Log($"Activate {gameObject.name}");
 		gameObject.SetActive(true);
 		SetBgEnabled(true);
-		BringFocusedToFront();
+		//BringFocusedToFront();
+		//show with small delay
+		//looks better plus there is a problem when removing and adding GraphicRaycaster
+		//from the same object in 2 following Tutorials
+		DoInTime(() => BringFocusedToFront(), 0.2f, true);
+
 		OnActivated();
 	}
 
@@ -66,7 +76,8 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 		foreach(GameObject foc in additionalFocused)
 		{
-			var canvas = skipAddingFocusComponent ? foc.GetComponent<Canvas>() : foc.AddComponent<Canvas>();
+			var canvas = foc.GetComponent<Canvas>() != null ?
+				foc.GetComponent<Canvas>() : foc.AddComponent<Canvas>();
 			foc.AddComponent<GraphicRaycaster>();
 			canvas.overrideSorting = true;
 			canvas.sortingOrder = 10;
@@ -102,6 +113,8 @@ public abstract class Tutorial : BrainiacsBehaviour
 		RevertFocused();
 		SetBgEnabled(false);
 		gameObject.SetActive(false);
+
+		//DoInTime(() => next?.Activate(), 0.2f);
 		next?.Activate();
 
 		OnCompleted();

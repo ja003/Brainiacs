@@ -13,6 +13,8 @@ public class UiTextSwapper : MonoBehaviour
 	[SerializeField] Text text = null;
 	[SerializeField] public Button btnNext = null;
 	[SerializeField] public Button btnPrevious = null;
+	[SerializeField] public Animator animator;
+	[SerializeField] int initialValueIndex;
 
 	List<string> values;
 	public int CurrentIndex { get; private set; }
@@ -51,7 +53,7 @@ public class UiTextSwapper : MonoBehaviour
 		skippedIndex = pSkippedIndex;
 		values = pValues;
 		OnValueChanged = pOnValueChanged;
-		SetValue(0);
+		SetValue(initialValueIndex);
 		SetInteractable(true);
 	}
 
@@ -106,11 +108,21 @@ public class UiTextSwapper : MonoBehaviour
 	private void OnBtnPrevious()
 	{
 		SetValue(CurrentIndex - 1, false);
+		PlayAnimation(false);
 	}
+
 
 	private void OnBtnNext()
 	{
 		SetNextValue();
+		PlayAnimation(true);
 	}
 
+	private void PlayAnimation(bool pNext)
+	{
+		if(animator == null)
+			return;
+
+		animator?.SetTrigger(pNext ? "next" : "previous");
+	}
 }

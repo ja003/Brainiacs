@@ -380,13 +380,12 @@ public class UIGameSetupMain : MainMenuController
 	/// MASTER
 	/// Called on btnAddPlayer(AI/Local/Remote) click
 	/// </summary>
-	/// <param name="pType"></param>
 	private void AddPlayer(EPlayerType pType)
 	{
 		btnGroupAddPlayer.transform.SetParent(null);
 
 		UIGameSetupPlayerEl addedElement = AddPlayerElement();
-		addedElement.Init(players.IndexOf(addedElement) + 1, pType, null);
+		addedElement.Init(players.IndexOf(addedElement) + 1, pType);
 
 		if(!isFirstPlayerAdded)
 		{
@@ -394,7 +393,10 @@ public class UIGameSetupMain : MainMenuController
 			tutorialSelectHero.SetFocusedObject(addedElement.heroSwapper.gameObject);
 
 			tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnNext);
-			tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnPrevious);
+			//only 1 button is used now
+			//tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnPrevious);
+			tutorialSelectHero.GetComponent<UiCopyPosition>().copyFrom = addedElement.GetComponent<RectTransform>();
+			tutorialSelectHero.GetComponent<UiCopyPosition>().offset = new Vector2(-100, 0);
 		}
 
 		//todo: check player count (max 4?)
@@ -438,6 +440,7 @@ public class UIGameSetupMain : MainMenuController
 
 		return addedElement;
 	}
+
 
 
 	public void OnPlayersChanged()

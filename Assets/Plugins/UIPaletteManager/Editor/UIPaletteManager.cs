@@ -59,7 +59,7 @@ public class UIPaletteManager : EditorWindow
 	{
 		T[] objsInScene = targetObject == null ?
 			FindObjectsOfType<T>() :
-			targetObject.GetComponentsInChildren<T>();
+			targetObject.GetComponentsInChildren<T>(true);
 
 		for(int i = 0; i < objsInScene.Length; i++)
 		{
