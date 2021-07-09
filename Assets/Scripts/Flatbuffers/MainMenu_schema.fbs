@@ -21,6 +21,7 @@ table PlayerInitInfoS {
   playerType:int;
   photonPlayerNumber:int;
   isReady:bool;
+  keyset:int;
 }
 
 //root_type GameDataWhatever;

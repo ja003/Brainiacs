@@ -6,7 +6,7 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class PlayerInitInfo
 {
-	public string Name;
+	public string Name { set; private get; }
 	public int Number;
 	public EHero Hero;
 	public EPlayerColor Color;
@@ -24,7 +24,7 @@ public class PlayerInitInfo
 
 	//DEBUG INIT
 	public PlayerInitInfo(
-		int pNumber, EHero pHero, string pName, 
+		int pNumber, EHero pHero, string pName,
 		EPlayerColor pColor, EPlayerType pPlayerType,
 		EKeyset pKeyset = EKeyset.None,
 		PhotonPlayer pPhotonPlayer = null)
@@ -49,7 +49,7 @@ public class PlayerInitInfo
 
 		Offset<PlayerInitInfoS> result = PlayerInitInfoS.CreatePlayerInitInfoS(fbb,
 			nameOff, Number, (int)Hero, (int)Color, (int)PlayerType,
-			PhotonPlayer != null ? PhotonPlayer.ActorNumber : -1, 
+			PhotonPlayer != null ? PhotonPlayer.ActorNumber : -1,
 			IsReady);
 		return result;
 	}
@@ -68,6 +68,7 @@ public class PlayerInitInfo
 		PlayerInitInfoS.AddIsReady(fbb, IsReady);
 		int actorNumber = PhotonPlayer != null ? PhotonPlayer.ActorNumber : -1;
 		PlayerInitInfoS.AddPhotonPlayerNumber(fbb, actorNumber);
+		PlayerInitInfoS.AddKeyset(fbb, (int)Keyset);
 		Offset<PlayerInitInfoS> playerInfoOffset = PlayerInitInfoS.EndPlayerInitInfoS(fbb);
 		fbb.Finish(playerInfoOffset.Value);
 		byte[] result = fbb.SizedByteArray();
@@ -83,6 +84,7 @@ public class PlayerInitInfo
 		playerInfo.Color = (EPlayerColor)pPlayerS.Color;
 		playerInfo.PlayerType = (EPlayerType)pPlayerS.PlayerType;
 		playerInfo.IsReady = pPlayerS.IsReady;
+		playerInfo.Keyset = (EKeyset)pPlayerS.Keyset;
 
 		if(PhotonNetwork.IsConnected && PhotonNetwork.CurrentRoom != null)
 			playerInfo.PhotonPlayer = PhotonNetwork.CurrentRoom.GetPlayer(pPlayerS.PhotonPlayerNumber);
@@ -99,6 +101,7 @@ public class PlayerInitInfo
 		PlayerType = pNewInfo.PlayerType;
 		PhotonPlayer = pNewInfo.PhotonPlayer;
 		IsReady = pNewInfo.IsReady;
+		Keyset = pNewInfo.Keyset;
 	}
 
 	/// <summary>
@@ -123,4 +126,10 @@ public class PlayerInitInfo
 	{
 		return $"{Name}, [{Number}], {Hero}, {Color}, {PlayerType}, {Keyset}";
 	}
+
+	public string GetName(bool pFormatted = false)
+	{
+		return !pFormatted ? Name : $"<b><color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(UIColorDB.GetColor(Color))}>{Name}</color></b>";
+	}
+
 }

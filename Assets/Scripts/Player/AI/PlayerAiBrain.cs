@@ -23,6 +23,9 @@ public class PlayerAiBrain : PlayerBehaviour
 	//[Range(0.1f, 1)]
 	float evaluation_frequency = .2f;
 
+	public int CloneCounter;
+
+	//owner of this AI (eg. of Tesla clone)
 	public Player Owner;
 
 	public void Init()
@@ -40,6 +43,9 @@ public class PlayerAiBrain : PlayerBehaviour
 	private void Update()
 	{
 		if(!isInited)
+			return;
+
+		if(base.debug.PassiveAi)
 			return;
 
 		Movement.Update();

@@ -70,6 +70,7 @@ public abstract class PhotonMessenger : BrainiacsBehaviour
 			case EPhotonMsg.MainMenu_SyncGameInfo:
 			case EPhotonMsg.MainMenu_SyncPlayerInfo:
 			case EPhotonMsg.Game_EndGame:
+			case EPhotonMsg.Player_InitPlayer:
 				return true;
 		}
 
@@ -206,7 +207,7 @@ public enum EPhotonMsg
 
 	//Game
 	Game_PlayerLoadedScene,
-	//Game_Activate, //no need, activate is called autimatically on all sides
+	//Game_Activate, //no need, activate is called automatically on all sides
 	Game_UpdatePlayerScore,
 	Game_EndGame,
 
@@ -237,6 +238,8 @@ public enum EPhotonMsg
 	Player_DoShieldHitEffect,
 
 	Player_SetSyncPosition,
+
+	Player_UpdateHealthbar,
 
 	Player_UI_PlayerInfo_SetHealth,
 	Player_UI_PlayerInfo_SetReloading,
@@ -286,4 +289,5 @@ public enum EPhotonMsg
 
 	//Map
 	Map_Obstackle_DoCollisionEffect,
+	
 }

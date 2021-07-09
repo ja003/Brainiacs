@@ -29,6 +29,10 @@ public class PlayerVisual : PlayerBehaviour
 
 	[SerializeField] private Color lightColor_Blue = Color.blue;
 	[SerializeField] private Color lightColor_Yellow = Color.yellow;
+
+	List<SpriteRenderer> allSpriteRenderers;
+
+
 	[SerializeField] private Color lightColor_Pink = Color.magenta;
 
 	[SerializeField] public int CurrentSortOrder { get; private set; } = 0;
@@ -50,6 +54,8 @@ public class PlayerVisual : PlayerBehaviour
 	internal void OnSetActive(bool pValue)
 	{
 		spriteRend.enabled = pValue;
+
+		health.Healthbar?.SetVisibility(pValue);
 
 		//SetAnimBool(AC_KEY_IS_DEAD, false);
 		//if(!pValue)
@@ -106,6 +112,16 @@ public class PlayerVisual : PlayerBehaviour
 		spriteRend.enabled = pValue;
 	}
 
+	/// <summary>
+	/// Clones have darker color
+	/// </summary>
+	internal void SetCloneColor()
+	{
+		const float clone_color_val = .7f;
+		Color color = new Color(clone_color_val, clone_color_val, clone_color_val);
+		allSpriteRenderers.ForEach(a => a.color = color);
+	}
+
 	public void OnSpawn()
 	{
 		IsDying = false;
@@ -118,6 +134,13 @@ public class PlayerVisual : PlayerBehaviour
 
 	public void Init(PlayerInitInfo pPlayerInfo)
 	{
+		allSpriteRenderers = new List<SpriteRenderer>()
+		{
+			spriteRend,
+			weaponUp, weaponRight, weaponDown, weaponLeft,
+			handsUp, handsRight, handsDown, handsLeft
+		};
+
 		heroConfig = brainiacs.HeroManager.GetHeroConfig(pPlayerInfo.Hero);
 
 		if(heroConfig.Animator)

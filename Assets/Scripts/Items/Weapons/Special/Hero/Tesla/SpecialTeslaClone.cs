@@ -18,7 +18,11 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 
 	protected override void OnStopUse() { }
 
-	const int CLONE_DURATION = 5;
+	[SerializeField]
+	int CLONE_DURATION = 5;
+
+	[SerializeField]
+	int CLONE_HEALTH = 3;
 
 	protected override void OnUse()
 	{
@@ -28,9 +32,16 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 		cloneInstance = InstanceFactory.Instantiate(playerPrefab.gameObject, spawnPos).GetComponent<Player>();
 		PlayerInitInfo info = owner.InitInfo.Clone();
 		info.PlayerType = EPlayerType.AI;
+		info.Number = -1; //-1 = clone
+
 		cloneInstance.ai.IsTmp = true;
 		cloneInstance.SetInfo(info, false);
 		cloneInstance.Stats.OnRespawn();
+
+		cloneInstance.Visual.SetCloneColor();
+
+		//set clone health
+		cloneInstance.Health.CloneHealth = CLONE_HEALTH;
 
 		//stop ai brain for 1 sec
 		cloneInstance.ai.StopBrain(1);
@@ -39,6 +50,7 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 
 		cloneInstance.SetActive(true);
 		cloneInstance.ai.Owner = owner;
+		cloneInstance.gameObject.name += "_" + owner.ai.CloneCounter++;
 
 		//store reference and pass to Destroy function.
 		//reason: another clone might have been instanced before this one is destroyed

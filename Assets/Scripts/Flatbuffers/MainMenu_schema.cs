@@ -72,6 +72,7 @@ public struct PlayerInitInfoS : IFlatbufferObject
   public int PlayerType { get { int o = __p.__offset(12); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
   public int PhotonPlayerNumber { get { int o = __p.__offset(14); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
   public bool IsReady { get { int o = __p.__offset(16); return o != 0 ? 0!=__p.bb.Get(o + __p.bb_pos) : (bool)false; } }
+  public int Keyset { get { int o = __p.__offset(18); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
 
   public static Offset<PlayerInitInfoS> CreatePlayerInitInfoS(FlatBufferBuilder builder,
       StringOffset nameOffset = default(StringOffset),
@@ -80,8 +81,10 @@ public struct PlayerInitInfoS : IFlatbufferObject
       int color = 0,
       int playerType = 0,
       int photonPlayerNumber = 0,
-      bool isReady = false) {
-    builder.StartTable(7);
+      bool isReady = false,
+      int keyset = 0) {
+    builder.StartTable(8);
+    PlayerInitInfoS.AddKeyset(builder, keyset);
     PlayerInitInfoS.AddPhotonPlayerNumber(builder, photonPlayerNumber);
     PlayerInitInfoS.AddPlayerType(builder, playerType);
     PlayerInitInfoS.AddColor(builder, color);
@@ -92,7 +95,7 @@ public struct PlayerInitInfoS : IFlatbufferObject
     return PlayerInitInfoS.EndPlayerInitInfoS(builder);
   }
 
-  public static void StartPlayerInitInfoS(FlatBufferBuilder builder) { builder.StartTable(7); }
+  public static void StartPlayerInitInfoS(FlatBufferBuilder builder) { builder.StartTable(8); }
   public static void AddName(FlatBufferBuilder builder, StringOffset nameOffset) { builder.AddOffset(0, nameOffset.Value, 0); }
   public static void AddNumber(FlatBufferBuilder builder, int number) { builder.AddInt(1, number, 0); }
   public static void AddHero(FlatBufferBuilder builder, int hero) { builder.AddInt(2, hero, 0); }
@@ -100,6 +103,7 @@ public struct PlayerInitInfoS : IFlatbufferObject
   public static void AddPlayerType(FlatBufferBuilder builder, int playerType) { builder.AddInt(4, playerType, 0); }
   public static void AddPhotonPlayerNumber(FlatBufferBuilder builder, int photonPlayerNumber) { builder.AddInt(5, photonPlayerNumber, 0); }
   public static void AddIsReady(FlatBufferBuilder builder, bool isReady) { builder.AddBool(6, isReady, false); }
+  public static void AddKeyset(FlatBufferBuilder builder, int keyset) { builder.AddInt(7, keyset, 0); }
   public static Offset<PlayerInitInfoS> EndPlayerInitInfoS(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<PlayerInitInfoS>(o);

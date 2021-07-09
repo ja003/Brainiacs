@@ -62,7 +62,7 @@ public class PlayerStats : PlayerBehaviour
 
 		//SetStat(EPlayerStats.Health, MAX_HEALTH);
 		//Hero = pPlayerInfo.Hero;
-		//Name = pPlayerInfo.Name;
+		//Name = pPlayerInfo.GetName();
 		//Color = pPlayerInfo.Color;
 
 		player.OnPlayerInited.AddAction(OnRespawn); //stats can be set only after player is inited
@@ -127,7 +127,7 @@ public class PlayerStats : PlayerBehaviour
 			{
 				DoShieldHitEffect();
 			}
-			//Debug.Log($"{player.InitInfo.Name} is invurnelable");
+			//Debug.Log($"{player.InitInfo.GetName()} is invurnelable");
 			return 0;
 		}
 
@@ -177,6 +177,8 @@ public class PlayerStats : PlayerBehaviour
 				case EPlayerStats.Health:
 					int newHealthValue = Mathf.Clamp(pValue, debug.Immortality ? 1 : 0, MAX_HEALTH);
 					Health = newHealthValue;
+					player.Health.Healthbar?.SetHealth(Health, MAX_HEALTH);
+					player.Photon.Send(EPhotonMsg.Player_UpdateHealthbar, Health);
 					break;
 				case EPlayerStats.Deaths:
 					Deaths = pValue;

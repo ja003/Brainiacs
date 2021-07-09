@@ -39,7 +39,7 @@ public class UIInfoMessenger : MonoBehaviour
 
 		if(!CanShow())// game.GameEnd.GameEnded)
 		{
-			//Debug.Log("Dont show message after game ended");
+			Debug.Log("Dont show message after game ended");
 			return;
 		}
 

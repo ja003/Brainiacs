@@ -165,7 +165,7 @@ public class UIGameSetupMain : MainMenuController
 		//client always shows room info so he can share it 
 		if(pValue && !IsMaster)
 		{
-			txtGameId.text = PhotonNetwork.CurrentRoom.Name;
+			txtGameId.text = game_id_prefix + PhotonNetwork.CurrentRoom.Name;
 			btnCopyGameId.gameObject.SetActive(true);
 		}
 
@@ -480,7 +480,7 @@ public class UIGameSetupMain : MainMenuController
 		string gameTypeStr = isSetAsMPGame ? "NETWORK GAME" : "LOCAL GAME";
 		bool isChange = gameTypeStr != txtGameType.text;
 		txtGameType.text = gameTypeStr;
-		//if gametype changed => highlight it (by anim)
+		//if game type changed => highlight it (by anim)
 		if(isChange)
 			txtGameTypeAnim.Rebind();
 
@@ -497,7 +497,7 @@ public class UIGameSetupMain : MainMenuController
 		UIGameSetupPlayerEl myPLayerEl = GetMyPlayer();
 		bool isReady = myPLayerEl.Info.IsReady;
 		myPLayerEl.SetReady(!isReady);
-		btnReadyText.text = myPLayerEl.Info.IsReady ? "NOT - READY" : "READY";
+		btnReadyText.text = myPLayerEl.Info.IsReady ? "NOT READY" : "READY";
 	}
 
 	private void OnBtnPlay()

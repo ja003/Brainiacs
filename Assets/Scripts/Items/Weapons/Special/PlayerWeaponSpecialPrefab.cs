@@ -110,7 +110,7 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 			origName = gameObject.name;
 
 		//just debug
-		origName += $"({owner.InitInfo.Name})";
+		origName += $"({owner.InitInfo.GetName()})";
 	}
 
 	internal virtual bool CanUse()

@@ -93,7 +93,7 @@ public class Player : PoolObjectNetwork, IOwner
 		string suffix_LI = IsLocalImage ? "_LI" : "";
 		string suffix_type = "_" + pPlayerInfo.PlayerType;
 		string suffix_clone = ai.IsTmp ? "_clone" : "";
-		gameObject.name = "Player_" + pPlayerInfo.Name + suffix_type + suffix_LI + suffix_clone;
+		gameObject.name = "Player_" + pPlayerInfo.GetName() + suffix_type + suffix_LI + suffix_clone;
 
 
 		InitInfo = pPlayerInfo;
@@ -113,11 +113,18 @@ public class Player : PoolObjectNetwork, IOwner
 	/// </summary>
 	public void OnReceivedInitInfo(PlayerInitInfo pInfo, bool pIsLocalImage)
 	{
-		Debug.Log($"{this} OnReceivedInitInfo");
+		//Debug.Log($"{this} OnReceivedInitInfo");
+		if(IsInited)
+		{
+			Debug.Log($"already inited");
+			return;
+		}
 
 		SetInfo(pInfo, pIsLocalImage);
 		if(!pIsLocalImage)
 			game.PlayerManager.AddPlayer(this);
+
+		Health.Init();
 		//Init(); 
 		IsInited = true;
 		OnPlayerInited.Invoke();
@@ -213,6 +220,7 @@ public class Player : PoolObjectNetwork, IOwner
 		//IsInited = false;
 
 		Stats.OnReturnToPool();
+		Health.OnReturnToPool();
 		game.PlayerManager.playerSorter.UnregisterPlayer(this);
 	}
 

@@ -28,4 +28,5 @@ public abstract class PlayerBehaviour : GameBehaviour
 	protected PlayerStats stats => player.Stats;
 	protected PlayerVisual visual => player.Visual;
 	protected PlayerAiBrain aiBrain => player.ai;
+	protected PlayerHealth health => player.Health;
 }

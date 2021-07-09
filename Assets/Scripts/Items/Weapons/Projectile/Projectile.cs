@@ -19,6 +19,7 @@ public class Projectile : PoolObjectNetwork, ITeleportable
 
 	public Projectile LocalImage;
 
+	//set only on owner side. null for client
 	public Player Owner { get; private set; }
 
 	protected override void OnSetActive0(bool pValue)

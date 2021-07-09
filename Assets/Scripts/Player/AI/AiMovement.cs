@@ -313,7 +313,7 @@ public class AiMovement : AiController
 
 	private void UpdateMove()
 	{
-		if(currentPathNode == null)
+		if(currentPathNode == null || debug.PassiveAi)
 		{
 			player.Movement.Stop();
 			return;

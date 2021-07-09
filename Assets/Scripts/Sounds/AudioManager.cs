@@ -177,7 +177,8 @@ public class AudioManager : BrainiacsBehaviour
 		float musicVolume = debug.MuteMusic ? 0 : playerPrefs.VolumeMusic;
 		UpdateAudioVolume(source, pIsMusic ? musicVolume : playerPrefs.VolumeSounds);
 
-		if(pIsMusic) source.Stop();
+		if(pIsMusic) 
+			source.Stop();
 
 		//source.clip = clip;
 		//source.loop = pIsLoop;

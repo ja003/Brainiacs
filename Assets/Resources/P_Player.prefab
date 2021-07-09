@@ -1254,6 +1254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6a0e2ffa2a1604ab5c9dd1bfc5cef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendActivateMsg: 1
+  sendDeactivateMsg: 1
   input: {fileID: 7872993416487400291}
   WeaponController: {fileID: 897093172}
   Visual: {fileID: 4773161991021014474}
@@ -1436,6 +1438,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  Healthbar: {fileID: 0}
+  MyTank: {fileID: 0}
+  CloneHealth: 3
 --- !u!114 &8791258408710402016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,6 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  CloneCounter: 0
   Owner: {fileID: 0}
 --- !u!114 &-4499410442952435621
 MonoBehaviour:

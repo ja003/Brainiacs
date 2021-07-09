@@ -33,7 +33,7 @@ public class UIScoreboardElement : GameBehaviour
 
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;
-		playerName.text = pPlayer.InitInfo.Name;
+		playerName.text = pPlayer.InitInfo.GetName();
 
 		if(pPlayer.IsItMe)
 		{

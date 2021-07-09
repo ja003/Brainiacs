@@ -9,8 +9,10 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		stats.SetOnStatsChange(OnStatsChange);
 
-		Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
-		Healthbar.Init(this, Vector2.up, true);
+		//InstantiateHealthbar();
+		//Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
+		//Healthbar.Init(this, Vector2.up, true);
+
 
 		base.Awake();
 	}
@@ -23,7 +25,18 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	internal void Init()
 	{
+		InstantiateHealthbar();
 
+		Color healthbarColor = player.InitInfo.PlayerType == EPlayerType.AI ? Color.blue : Color.green;
+		Healthbar.Init(this, Vector2.up, true, healthbarColor);
+	}
+
+	private void InstantiateHealthbar()
+	{
+		if(Healthbar == null)
+		{
+			Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
+		}
 	}
 
 	private void OnStatsChange(PlayerStats pStats)
@@ -64,6 +77,12 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	private void Respawn()
 	{
+		if(player.ai.IsTmp)
+		{
+			Debug.Log("AI dont respawn");
+			return;
+		}
+
 		if(stats.LivesLeft <= 0)
 		{
 			Eliminate();
@@ -100,7 +119,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		Debug.Log($"Player {player} is OUT!");
 		brainiacs.AudioManager.PlaySound(ESound.Player_Eliminate, null);
 		player.Photon.Send(EPhotonMsg.Player_DoEliminateEffect);
-		game.InfoMessenger.Show($"Player {player.InitInfo.Name} has been eliminated!");
+		game.InfoMessenger.Show($"Player {player.InitInfo.GetName(true)} has been <b>eliminated!</b>");
 	}
 
 	internal void DebugDie()
@@ -143,22 +162,36 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		return true;
 	}
 
+	//Tesla clone has special health. he will be killed in 'CloneHealth' hits
+	public int CloneHealth = 3; 
+
 	/// <summary>
-	/// Apply damage caused by pOwner player.
+	/// Apply damage caused by pOrigin player.
 	/// Origin can be null (map explosion, turret, ...) => TODO: test
 	/// </summary>
-	public void ApplyDamage(int pDamage, Player pOwner)
+	public void ApplyDamage(int pDamage, Player pOrigin)
 	{
-		if(!player.IsInited || (pOwner != null && !pOwner.IsInited))
+		if(debug.InstaKill)
+			pDamage = PlayerStats.MAX_HEALTH;
+
+		//clone has special damage system
+		if(player.ai.IsTmp)
 		{
-			Debug.LogError($"Damage applied before player is inited. {player} | {pOwner}");
+			pDamage = (int)Mathf.Ceil(PlayerStats.MAX_HEALTH / (float)CloneHealth);
+		}
+
+		if(!player.IsInited || (pOrigin != null && !pOrigin.IsInited))
+		{
+			Debug.LogError($"Damage applied before player is inited. {player} | {pOrigin}");
 			return;
 		}
 
+		
+
 		//owner doesnt have to be set (item explosion, ..)
-		if(pOwner != null && !player.IsLocalImage) //effect would be applied 2* if local image
+		if(pOrigin != null && !player.IsLocalImage) //effect would be applied 2* if local image
 		{
-			float damageMultiplier = pOwner.Stats.StatsEffect.GetDamageMultiplier();
+			float damageMultiplier = pOrigin.Stats.StatsEffect.GetDamageMultiplier();
 			if(damageMultiplier != 1)
 			{
 				Debug.Log($"Multiply damage {pDamage} x {damageMultiplier}");
@@ -169,7 +202,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		//when image is hit => send info to owner => apply damage
 		if(!player.IsItMe)
 		{
-			int playerNumber = pOwner != null ? pOwner.InitInfo.Number : -1;
+			int playerNumber = pOrigin != null ? pOrigin.InitInfo.Number : -1;
 			player.Photon.Send(EPhotonMsg.Player_ApplyDamage, pDamage, playerNumber);
 			return;
 		}
@@ -194,13 +227,14 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		//if this damage ended the game it has to be counted even after game ended
 		bool forceAddKill = wasGameEnded != gameEndedAfterThis;
 
-		if(stats.IsDead)
+		//no kill point for killing AI
+		if(stats.IsDead && !player.ai.IsTmp)
 		{
 			//Debug.Log("Add kill to " + pOrigin);
-			pOwner?.Stats.AddKill(forceAddKill);
-			string message = pOwner == null ?
-				$"Player {player.InitInfo.Name} was killed" :
-				$"Player {player.InitInfo.Name} killed by {pOwner.InitInfo.Name}";
+			pOrigin?.Stats.AddKill(forceAddKill);
+			string message = pOrigin == null ?
+				$"Player {player.InitInfo.GetName(true)} was <b>killed</b>" :
+				$"Player {player.InitInfo.GetName(true)} <b>killed</b> by {pOrigin.InitInfo.GetName(true)}";
 			game.InfoMessenger.Show(message);
 		}
 		//visual.OnDamage(); //visual effect first on owner then on image
@@ -218,4 +252,9 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		player.Photon.Send(EPhotonMsg.Player_OnReceiveDamageEffect);
 	}
 
+	internal void OnReturnToPool()
+	{
+		//needed for Tesla clone
+		IsDying = false;
+	}
 }

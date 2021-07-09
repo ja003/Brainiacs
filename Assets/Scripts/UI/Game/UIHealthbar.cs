@@ -21,13 +21,14 @@ public class UIHealthbar : UiBehaviour
 
 	bool isInited;
 
-	public void Init(GameBehaviour pOwner, Vector2 pOffset, bool pInitVisible)
+	public void Init(GameBehaviour pOwner, Vector2 pOffset, bool pInitVisible, Color pColor)
 	{
 		isInited = true;
 		owner = pOwner;
 		offset = pOffset;
 		gameObject.SetActive(true);
-		IsVisible = pInitVisible; 
+		IsVisible = pInitVisible;
+		fill.color = pColor;
 	}
 
 	private void Update()

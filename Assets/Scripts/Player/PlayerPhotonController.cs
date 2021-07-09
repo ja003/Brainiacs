@@ -60,7 +60,8 @@ public class PlayerPhotonController : PoolObjectPhoton
 
 		//Debug.Log("send Player_InitPlayer " + playerInfo.Number);
 
-		Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
+		Send(EPhotonMsg.Player_InitPlayer, playerInfo.Serialize());
+		//Send(EPhotonMsg.Player_InitPlayer, playerInfo.Number);
 
 		isInited = true;
 
@@ -109,13 +110,14 @@ public class PlayerPhotonController : PoolObjectPhoton
 
 	/// <summary>
 	/// Player can send data only if it is mine player and is inited.
-	/// There are execeptions.
+	/// There are exceptions.
 	/// </summary>
 	protected override bool CanSend2(EPhotonMsg pMsgType)
 	{
 		switch(pMsgType)
 		{
 			case EPhotonMsg.Player_InitPlayer:
+
 			//this has been added in 55 but fucked up the player initialization.
 			//but maybe this is how it should be.
 			//Problem was in PlayerHealth::ApplyDamage - it expects both damage
@@ -168,8 +170,13 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return;
 
 			case EPhotonMsg.Player_InitPlayer:
-				int playerNumber = (int)pParams[0];
-				PlayerInitInfo info = brainiacs.GameInitInfo.GetPlayer(playerNumber);
+				//int playerNumber = (int)pParams[0];
+				//PlayerInitInfo info = brainiacs.GameInitInfo.GetPlayer(playerNumber);
+
+				PlayerInitInfoS infoS = PlayerInitInfoS.GetRootAsPlayerInitInfoS(bb);
+				PlayerInitInfo info = PlayerInitInfo.Deserialize(infoS);
+				//Debug.Log($"Player_InitPlayer {info.Number} {info.Keyset}");
+
 				player.OnReceivedInitInfo(info, false);
 				return;
 
@@ -179,7 +186,7 @@ public class PlayerPhotonController : PoolObjectPhoton
 				return;
 			case EPhotonMsg.Player_ApplyDamage:
 				int damage = (int)pParams[0];
-				playerNumber = (int)pParams[1];
+				int playerNumber = (int)pParams[1];
 				Player originOfDamage = game.PlayerManager.GetPlayer(playerNumber);
 				player.Health.ApplyDamage(damage, originOfDamage);
 				return;
@@ -208,8 +215,13 @@ public class PlayerPhotonController : PoolObjectPhoton
 				player.Movement.SetSyncPosition(pos, dir, isActuallyMoving, speed, instantly);
 				return;
 
-			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
+			case EPhotonMsg.Player_UpdateHealthbar:
 				int health = (int)pParams[0];
+				player.Health.Healthbar?.SetHealth(health, PlayerStats.MAX_HEALTH);
+				return;
+
+			case EPhotonMsg.Player_UI_PlayerInfo_SetHealth:
+				health = (int)pParams[0];
 				player.Visual.PlayerInfo.SetHealth(health);
 				return;
 

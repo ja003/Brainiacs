@@ -36,6 +36,8 @@ public class CDebug : CSingleton<CDebug>
 	public bool LocalImage => GetDebugBool(_LocalImage);
 
 	[Header("Player")]
+	[SerializeField] int _debugPlayerNumber = 1;
+
 	[SerializeField] EHero _Hero;
 	public EHero Hero => release ? EHero.None : _Hero;
 	[SerializeField] EWeaponId _ExtraPlayerWeapon;
@@ -45,8 +47,13 @@ public class CDebug : CSingleton<CDebug>
 	public bool Shield => GetDebugBool(_Shield);
 	[SerializeField] bool _Invulnerability;
 	public bool Invulnerability => GetDebugBool(_Invulnerability); //cant receive any damage
+
 	[SerializeField] bool _Immortality;
 	public bool Immortality => GetDebugBool(_Immortality); //cant get under < 1 health
+
+	[SerializeField] bool _InstaKill;
+	public bool InstaKill => GetDebugBool(_InstaKill); //every damage taken is MAX_HEALTH
+
 	[SerializeField] bool _InfiniteAmmo;
 	public bool InfiniteAmmo => GetDebugBool(_InfiniteAmmo);
 	[SerializeField] EPlayerEffect _PlayerEffect;
@@ -88,6 +95,10 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _NonAggressiveAi;
 	public bool NonAggressiveAi => GetDebugBool(_NonAggressiveAi);
 	[SerializeField] bool _AiDebugMove;
+
+	[SerializeField] bool _PassiveAi;
+	public bool PassiveAi => GetDebugBool(_PassiveAi);
+
 	public bool AiDebugMove => GetDebugBool(_AiDebugMove);
 
 	[Header("Tutorial")]
@@ -165,7 +176,7 @@ public class CDebug : CSingleton<CDebug>
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.DaVinci, GetPlayerName(pPlayerNumber),
+					EHero.Tesla, GetPlayerName(pPlayerNumber),
 					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
@@ -293,7 +304,7 @@ public class CDebug : CSingleton<CDebug>
 	void Update()
 	{
 		Player player = Game.IsInstantiated ?
-			Game.Instance.PlayerManager.GetPlayer(1) : null;
+			Game.Instance.PlayerManager.GetPlayer(_debugPlayerNumber) : null;
 
 		if(Input.GetKeyDown(KeyCode.F1))
 		{
@@ -339,7 +350,7 @@ public class CDebug : CSingleton<CDebug>
 		//HACK
 		if(Input.GetKeyDown(KeyCode.Backslash))
 		{
-			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, 1);
+			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfDamage, 10);
 		}
 
 
@@ -355,10 +366,12 @@ public class CDebug : CSingleton<CDebug>
 
 
 		//INFO MESSAGE
-		else if(Input.GetKeyDown(KeyCode.S))
+		else if(Input.GetKeyDown(KeyCode.U))
 		{
 			if(MainMenu.IsInstantiated)
 				MainMenu.Instance.InfoMessenger.Show("Menu message");
+			if(Game.IsInstantiated)
+				Game.Instance.InfoMessenger.Show($"Game message. 1st player =  {Game.Instance.PlayerManager.Players[0].InitInfo.GetName(true)} !!!");
 		}
 	}
 #endif

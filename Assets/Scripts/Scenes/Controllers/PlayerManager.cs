@@ -41,7 +41,7 @@ public class PlayerManager : GameController
 	{
 		Player leaver = GetPlayer(pPlayer);
 		//if(PhotonNetwork.IsMasterClient) //on all..right?
-		game.InfoMessenger.Show($"Player {leaver.InitInfo.Name} has left:(");
+		game.InfoMessenger.Show($"Player {leaver.InitInfo.GetName(true)} has <b>left:(</b>");
 
 		/*
 		DoInTime(() => ChangeToAi(leaver), 1f);
@@ -158,15 +158,15 @@ public class PlayerManager : GameController
 		bool debug_spawn = false;
 		if(debug_spawn)
 		{
-			if(pPlayerInfo.Name == debug.GetPlayerName(1))
+			if(pPlayerInfo.GetName() == debug.GetPlayerName(1))
 				spawnPosition = new Vector2(-3.3f, 3);
 			//spawnPosition = Vector2.down;
 
-			if(pPlayerInfo.Name == debug.GetPlayerName(2))
+			if(pPlayerInfo.GetName() == debug.GetPlayerName(2))
 				spawnPosition = new Vector2(-1.8f, 2.3f);
 			//spawnPosition = Vector2.zero;
 
-			if(pPlayerInfo.Name == debug.GetPlayerName(3))
+			if(pPlayerInfo.GetName() == debug.GetPlayerName(3))
 				spawnPosition = Vector2.down;
 		}
 

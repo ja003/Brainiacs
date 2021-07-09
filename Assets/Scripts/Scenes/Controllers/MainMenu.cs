@@ -52,6 +52,12 @@ public class MainMenu : CSingleton<MainMenu>
 		base.Awake(); //always call base.event() at the end
 	}
 
+	private void Start()
+	{
+		//this stops the game music 
+		brainiacs.AudioManager.PlayMusic(ESound.Music_Menu);
+	}
+
 
 	float currentMenuAnimPosition = 0;
 	private void OnBtnStartGame()

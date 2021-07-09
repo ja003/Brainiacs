@@ -19,7 +19,7 @@ public class PlayerScoreInfo
 	public PlayerScoreInfo(PlayerStats pStats)
 	{
 		PlayerNumber = pStats.Info.Number;
-		Name = pStats.Info.Name;
+		Name = pStats.Info.GetName();
 		Hero = pStats.Info.Hero;
 		Kills = pStats.Kills;
 		Deaths = pStats.Deaths;

@@ -49,11 +49,12 @@ MonoBehaviour:
   _PlatformMobile: 0
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
-  _Hero: 2
+  _Hero: 5
   _ExtraPlayerWeapon: 50
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
+  _InstaKill: 0
   _InfiniteAmmo: 0
   _PlayerEffect: 0
   playerCount: 2
@@ -70,7 +71,8 @@ MonoBehaviour:
   _AiWeapon: 0
   _NonAggressiveAi: 0
   _AiDebugMove: 0
+  _PassiveAi: 1
   _SkipTutorial: 0
   _ForceTutorial: 0
-  _InstaAnimation: 0
+  _InstaAnimation: 1
   pushForce: 15

@@ -131,7 +131,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		MainMenu.Instance.SetupSearch.OnJoinFailed(returnCode, message);
 		base.OnJoinRandomFailed(returnCode, message);
 	}
-		public override void OnJoinRoomFailed(short returnCode, string message)
+	public override void OnJoinRoomFailed(short returnCode, string message)
 	{
 		MainMenu.Instance.SetupSearch.OnJoinFailed(returnCode, message);
 		base.OnJoinRoomFailed(returnCode, message);
@@ -185,9 +185,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	{
 		return Brainiacs.Instance.GameInitInfo.IsMaster();
 
-		if(!Brainiacs.Instance.GameInitInfo.IsMultiplayer())
-			return true;
+		//if(!Brainiacs.Instance.GameInitInfo.IsMultiplayer())
+		//	return true;
 
-		return PhotonNetwork.IsMasterClient;
+		//return PhotonNetwork.IsMasterClient;
 	}
 }

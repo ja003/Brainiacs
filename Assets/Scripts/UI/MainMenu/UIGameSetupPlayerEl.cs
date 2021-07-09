@@ -167,8 +167,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		bool elementCreated = pPhotonPlayer == null;
 		//OnElementChanged(elementCreated);
 
-		if(debug.Hero != EHero.None)
+		//apply debug hero only in SP
+		if(pPhotonPlayer == null && debug.Hero != EHero.None)
 		{
+			Debug.Log("Setting debug hero");
 			heroSwapper.SetValue((int)debug.Hero);
 		}
 
@@ -197,7 +199,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
 
 		portraitAnimator.enabled = false;
-
+		
 		//if LocalPlayer (master) then at first is active for all clients, but disabled if it is not me
 		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
 		//OnKeySetChanged();
@@ -207,7 +209,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			Debug.LogError("Assigned color doesnt match");
 		}
 		AssignColor(pPlayer.Color);
-		SetName(pPlayer.Name);
+		SetName(pPlayer.GetName());
 		heroSwapper.SetValue((int)pPlayer.Hero);
 
 		if(IsItMe)
@@ -285,8 +287,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	public void SetReady(bool pValue)
 	{
 		Info.IsReady = pValue;
-		//looks hideous. disabled for now
-		//state.color = pValue ? Color.green : Color.red;
+		state.color = pValue ? Color.green : Color.red;
 
 		bool interactable = !pValue;
 		if(Info.PlayerType == EPlayerType.LocalPlayer ||
@@ -380,7 +381,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//only local players can have keyset
 		if(!IsLocalPlayer())
 		{
-			Info.Keyset = EKeyset.None;
+			//Info.Keyset = EKeyset.None;
 			return;
 		}
 
@@ -434,6 +435,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		byte[] infoS = Info.Serialize();
 		mainMenu.Photon.Send(EPhotonMsg.MainMenu_SyncPlayerInfo, infoS);
+		//Debug.Log("sync hero" + Info.Hero);
 	}
 
 }

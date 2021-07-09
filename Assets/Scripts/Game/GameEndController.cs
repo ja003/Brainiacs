@@ -84,7 +84,7 @@ public class GameEndController : GameController
 			return;
 		}
 
-		
+
 
 		//generate from players stats
 		brainiacs.SetGameResultInfo(game.Results.PlayersScore, game.GameTime.TimePassed);
@@ -117,9 +117,13 @@ public class GameEndController : GameController
 	/// </summary>
 	public void OnReceiveEndGame(GameResultInfo pGameResultInfo)
 	{
+		Debug.Log("OnReceiveEndGame");
+		//has to be called before GameEnded flag is set
+		game.InfoMessenger.Show("This game is finished!"); 
 		GameEnded = true;
 		brainiacs.GameResultInfo = pGameResultInfo;
-		game.uiCurtain.SetFade(true, LoadResultScene);
+
+		DoInTime(() => game.uiCurtain.SetFade(true, LoadResultScene), 2);
 	}
 
 	private void LoadResultScene()
