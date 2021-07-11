@@ -22,6 +22,9 @@ public class Brainiacs : CSingleton<Brainiacs>
 	[SerializeField] public PlayerPrefsController PlayerPrefs;
 	[SerializeField] public AudioManager AudioManager;
 
+	[SerializeField] public PlayerColorManager PlayerColorManager;
+	
+
 	[SerializeField] GameObject debugLogConsole = null;
 
 	protected override void Awake()

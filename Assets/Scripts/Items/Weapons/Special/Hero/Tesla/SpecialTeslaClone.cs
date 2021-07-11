@@ -38,7 +38,9 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 		cloneInstance.SetInfo(info, false);
 		cloneInstance.Stats.OnRespawn();
 
+		//distinguish clone
 		cloneInstance.Visual.SetCloneColor();
+		cloneInstance.Health.Healthbar.SetColor(brainiacs.PlayerColorManager.GetColor(EPlayerColor.Gray));
 
 		//set clone health
 		cloneInstance.Health.CloneHealth = CLONE_HEALTH;

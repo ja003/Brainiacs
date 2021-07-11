@@ -15,7 +15,7 @@ public class UIHealthbar : UiBehaviour
 	[SerializeField] Image fill;
 
 	private GameBehaviour owner;
-	private Vector2 offset;
+	[SerializeField] private Vector2 offset;
 
 	public bool IsVisible { get; private set; }
 
@@ -28,7 +28,7 @@ public class UIHealthbar : UiBehaviour
 		offset = pOffset;
 		gameObject.SetActive(true);
 		IsVisible = pInitVisible;
-		fill.color = pColor;
+		SetColor(pColor);
 	}
 
 	private void Update()
@@ -57,6 +57,12 @@ public class UIHealthbar : UiBehaviour
 		IsVisible = pValue;
 		//force position update, or there is 1 frame delay
 		Update();
+	}
+
+	internal void SetColor(Color pColor)
+	{
+		fill.color = pColor;
+		background.color = pColor;
 	}
 
 	void SetVisible(bool pValue)

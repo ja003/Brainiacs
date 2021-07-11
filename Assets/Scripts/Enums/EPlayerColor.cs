@@ -10,4 +10,5 @@ public enum EPlayerColor
 	Yellow = 3,
 	Green = 4,
 	Pink = 5,
+	Gray = 6,
 }

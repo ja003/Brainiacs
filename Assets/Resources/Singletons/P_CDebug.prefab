@@ -50,17 +50,17 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
-  _Hero: 0
+  _Hero: 2
   _ExtraPlayerWeapon: 50
   _Shield: 0
   _Invulnerability: 0
-  _Immortality: 0
+  _Immortality: 1
   _InstaKill: 0
   _InfiniteAmmo: 0
   _PlayerEffect: 0
   playerCount: 2
   _Map: 1
-  _gameValue: 0
+  _gameValue: 5
   _GenerateItems: 0
   _StopGenerateItems: 1
   _DontEndGame: 0

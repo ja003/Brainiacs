@@ -27,8 +27,10 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		InstantiateHealthbar();
 
-		Color healthbarColor = player.InitInfo.PlayerType == EPlayerType.AI ? Color.blue : Color.green;
-		Healthbar.Init(this, Vector2.up, true, healthbarColor);
+		Color healthbarColor =
+			brainiacs.PlayerColorManager.GetColor(player.InitInfo.Color);
+			//player.InitInfo.PlayerType == EPlayerType.AI ? Color.blue : Color.green;
+		Healthbar.Init(this, .75f * Vector2.up, true, healthbarColor);
 	}
 
 	private void InstantiateHealthbar()

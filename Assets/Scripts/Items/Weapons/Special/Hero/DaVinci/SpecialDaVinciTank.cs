@@ -29,7 +29,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 		currentHealth = maxHealth;
 
 		healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
-		healthbar.Init(this, Vector2.up, false, Color.blue);
+		healthbar.Init(this, .85f * Vector2.up, false, brainiacs.PlayerColorManager.GetColor(EPlayerColor.Gray));
 
 		UpdateSortOrder(); //needs to be updated on image side
 

@@ -62,8 +62,8 @@ public class UIPlayerInfoElement : UiBehaviour
 		gameObject.SetActive(true);
 
 		//disabled for now, replaced by portraitBg
-		image.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
-		portraitBg.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
+		image.color = brainiacs.PlayerColorManager.GetColor(pPlayer.InitInfo.Color);
+		portraitBg.color = brainiacs.PlayerColorManager.GetColor(pPlayer.InitInfo.Color);
 
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(pPlayer.InitInfo.Hero).Portrait;
 

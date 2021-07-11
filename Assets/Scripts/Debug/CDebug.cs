@@ -175,8 +175,14 @@ public class CDebug : CSingleton<CDebug>
 		switch(pPlayerNumber)
 		{
 			case 1:
+				EHero hero = Hero;
+				if(hero == EHero.None)
+				{
+					Debug.LogError("no debug hero is set");
+					hero = EHero.Tesla;
+				}
 				player = new PlayerInitInfo(pPlayerNumber,
-					Hero, GetPlayerName(pPlayerNumber),
+					hero, GetPlayerName(pPlayerNumber),
 					EPlayerColor.Green, EPlayerType.LocalPlayer,
 					EKeyset.A);
 				break;

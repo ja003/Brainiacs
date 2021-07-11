@@ -23,17 +23,11 @@ public class PlayerVisual : PlayerBehaviour
 	[SerializeField] private PaletteSwapController paletteSwap = null;
 
 	[SerializeField] private new Light2D light = null;
-	[SerializeField] private Color lightColor_Red = Color.red;
-	[SerializeField] private Color lightColor_Green = Color.green;
 
-
-	[SerializeField] private Color lightColor_Blue = Color.blue;
-	[SerializeField] private Color lightColor_Yellow = Color.yellow;
 
 	List<SpriteRenderer> allSpriteRenderers;
 
 
-	[SerializeField] private Color lightColor_Pink = Color.magenta;
 
 	[SerializeField] public int CurrentSortOrder { get; private set; } = 0;
 
@@ -166,33 +160,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	private void SetLightColor(EPlayerColor pColor)
 	{
-		Color color = Color.white;
-		switch(pColor)
-		{
-			case EPlayerColor.None:
-				color = Color.white;
-				break;
-			case EPlayerColor.Blue:
-				color = lightColor_Blue;
-				break;
-			case EPlayerColor.Red:
-				color = lightColor_Red;
-				break;
-			case EPlayerColor.Yellow:
-				color = lightColor_Yellow;
-				break;
-			case EPlayerColor.Green:
-				color = lightColor_Green;
-				break;
-			case EPlayerColor.Pink:
-				color = lightColor_Pink;
-				break;
-			default:
-				Debug.LogError("Color not found");
-				break;
-		}
-
-		light.color = color;
+		light.color = brainiacs.PlayerColorManager.GetLightColor(pColor);
 	}
 
 	/// <summary>

@@ -28,8 +28,8 @@ public class UIScoreboardElement : GameBehaviour
 
 		//color and name dont change during game
 		//for now replaced by playerName.color
-		background.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
-		playerName.color = UIColorDB.GetColor(pPlayer.InitInfo.Color);
+		background.color = brainiacs.PlayerColorManager.GetColor(pPlayer.InitInfo.Color);
+		playerName.color = brainiacs.PlayerColorManager.GetColor(pPlayer.InitInfo.Color);
 
 		//todo: sortingOrder is not applied -> set it manually
 		background.GetComponent<Canvas>().sortingOrder = -1;

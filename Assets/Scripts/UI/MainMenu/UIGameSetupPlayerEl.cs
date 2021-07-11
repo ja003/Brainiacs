@@ -316,7 +316,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	private void AssignColor(EPlayerColor pColor)
 	{
 		Info.Color = pColor;
-		color.color = UIColorDB.GetColor(Info.Color);
+		color.color = brainiacs.PlayerColorManager.GetColor(Info.Color);
 	}
 
 
