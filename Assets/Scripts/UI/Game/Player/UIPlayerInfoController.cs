@@ -28,12 +28,8 @@ public class UIPlayerInfoController : GameController
 		}
 		prefab.gameObject.SetActive(false);
 
-		//easiest way to position tutorial on the first element
-		//todo: or use UiCopyPosition
-		tutorialPlayerInfo.transform.SetParent(elements[0].transform);
-		tutorialPlayerInfo.transform.localPosition = Vector3.zero;
-		DoInTime(() => tutorialPlayerInfo.transform.SetParent(game.Tutorial.transform), 0.1f);
-
+		//stick tutorial to the first element
+		tutorialPlayerInfo.GetComponent<UiCopyPosition>().copyFrom = elements[0].GetComponent<RectTransform>();
 	}
 
 	[SerializeField] TutorialGame tutorialPlayerInfo;

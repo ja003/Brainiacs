@@ -396,7 +396,6 @@ public class UIGameSetupMain : MainMenuController
 			//only 1 button is used now
 			//tutorialSelectHero.SetTargetBtn(addedElement.heroSwapper.btnPrevious);
 			tutorialSelectHero.GetComponent<UiCopyPosition>().copyFrom = addedElement.GetComponent<RectTransform>();
-			tutorialSelectHero.GetComponent<UiCopyPosition>().offset = new Vector2(-100, 0);
 		}
 
 		//todo: check player count (max 4?)

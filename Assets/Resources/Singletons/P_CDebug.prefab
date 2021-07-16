@@ -46,7 +46,7 @@ MonoBehaviour:
   release: 0
   releaseWithExceptions: 0
   _Result: 0
-  _PlatformMobile: 1
+  _PlatformMobile: 0
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1

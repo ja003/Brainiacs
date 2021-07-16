@@ -25,10 +25,16 @@ public class TutorialMenuController : MainMenuController
 
 		if(!isMenuStartGameDone || debug.ForceTutorial)
 		{
+			Debug.Log("Menu tutorial");
+
 			if(debug_tut1 != null)
 				debug_tut1.Activate();
 			else
 				tut1.Activate();
+		}
+		else
+		{
+			Debug.Log("Menu tutorial already done");
 		}
 	}
 

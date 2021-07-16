@@ -99,8 +99,8 @@ public class AudioManager : BrainiacsBehaviour
 
 	List<AudioSource> usedSources = new List<AudioSource>();
 
-	//globally reduce all sounds (all seem to be set unconfortably loud)
-	private const float VOLUME_REDUCTION = 7f;
+	//globally reduce all sounds (all seem to be set uncomfortably loud)
+	private const float VOLUME_REDUCTION = 7f; //disabled for now. todo: test
 
 	public void OnSetPause(bool pIsPaused)
 	{
@@ -202,7 +202,8 @@ public class AudioManager : BrainiacsBehaviour
 	public void UpdateAudioVolume(AudioSource pSource, float pVolume)
 	{
 		pSource.volume = pVolume;
-		pSource.volume /= VOLUME_REDUCTION;
+		//Debug.Log($"UpdateAudioVolume {pSource.gameObject.name} = {pVolume}");
+		//pSource.volume /= VOLUME_REDUCTION;
 	}
 }
 

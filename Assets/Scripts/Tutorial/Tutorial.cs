@@ -27,9 +27,12 @@ public abstract class Tutorial : BrainiacsBehaviour
 
 	[SerializeField] EPlatform targetPlatform;
 
+	UiCopyPosition uiCopyPosition;
 
 	protected override void Awake()
 	{
+		uiCopyPosition = GetComponent<UiCopyPosition>();
+
 		if(focused != null)
 			additionalFocused.Add(focused);
 
@@ -52,6 +55,9 @@ public abstract class Tutorial : BrainiacsBehaviour
 			next?.Activate();
 			return;
 		}
+
+		//update the position (if it has the script) or there is a 1 frame lag
+		uiCopyPosition?.Update();
 
 		//Debug.Log($"Activate {gameObject.name}");
 		gameObject.SetActive(true);
