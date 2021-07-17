@@ -26,12 +26,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 		PhotonNetwork.AutomaticallySyncScene = true;
 
-		string suffix = PlatformManager.IsMobile() ? "mobile" : "pc";
-#if UNITY_EDITOR
-		suffix = "editor";
-#endif
+		//replaced - see PlayerNameManager
+//		string suffix = PlatformManager.IsMobile() ? "mobile" : "pc";
+//#if UNITY_EDITOR
+//		suffix = "editor";
+//#endif
 
-		PhotonNetwork.LocalPlayer.NickName = "ADAM_" + suffix;
+//		PhotonNetwork.LocalPlayer.NickName = "ADAM_" + suffix;
 
 		//Debug.Log("Connecting..");
 		PhotonNetwork.ConnectUsingSettings();

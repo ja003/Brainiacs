@@ -158,15 +158,15 @@ public class PlayerManager : GameController
 		bool debug_spawn = false;
 		if(debug_spawn)
 		{
-			if(pPlayerInfo.GetName() == debug.GetPlayerName(1))
+			if(pPlayerInfo.GetName() == PlayerNameManager.GetPlayerName(1))
 				spawnPosition = new Vector2(-3.3f, 3);
 			//spawnPosition = Vector2.down;
 
-			if(pPlayerInfo.GetName() == debug.GetPlayerName(2))
+			if(pPlayerInfo.GetName() == PlayerNameManager.GetPlayerName(2))
 				spawnPosition = new Vector2(-1.8f, 2.3f);
 			//spawnPosition = Vector2.zero;
 
-			if(pPlayerInfo.GetName() == debug.GetPlayerName(3))
+			if(pPlayerInfo.GetName() == PlayerNameManager.GetPlayerName(3))
 				spawnPosition = Vector2.down;
 		}
 

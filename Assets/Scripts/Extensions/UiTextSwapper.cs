@@ -23,8 +23,8 @@ public class UiTextSwapper : MonoBehaviour
 
 	private void Awake()
 	{
-		btnNext.onClick.AddListener(OnBtnNext);
-		btnPrevious.onClick.AddListener(OnBtnPrevious);
+		btnNext?.onClick.AddListener(OnBtnNext);
+		btnPrevious?.onClick.AddListener(OnBtnPrevious);
 	}
 
 	int min;
@@ -60,8 +60,10 @@ public class UiTextSwapper : MonoBehaviour
 
 	internal void SetInteractable(bool pValue)
 	{
-		btnNext.interactable = pValue;
-		btnPrevious.interactable = pValue;
+		if(btnNext != null)
+			btnNext.interactable = pValue;
+		if(btnPrevious != null)
+			btnPrevious.interactable = pValue;
 	}
 
 	int skippedIndex = -1;

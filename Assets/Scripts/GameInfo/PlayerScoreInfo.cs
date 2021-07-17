@@ -37,7 +37,7 @@ public class PlayerScoreInfo
 		StringOffset nameOff = fbb.CreateString(Name);
 
 		Offset<PlayerResultInfoS> result = PlayerResultInfoS.CreatePlayerResultInfoS(fbb,
-			PlayerNumber, nameOff, (int)Hero, Kills, Deaths);
+			PlayerNumber, nameOff, (int)Color, (int)Hero, Kills, Deaths);
 		return result;
 	}
 

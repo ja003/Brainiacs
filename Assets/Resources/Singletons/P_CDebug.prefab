@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   release: 0
   releaseWithExceptions: 0
-  _Result: 1
+  _Result: 0
   _PlatformMobile: 0
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
@@ -76,5 +76,5 @@ MonoBehaviour:
   _SkipTutorial: 1
   _ForceTutorial: 0
   _InstaAnimation: 1
-  _OpenMenu: 0
+  _OpenMenu: 1
   pushForce: 15

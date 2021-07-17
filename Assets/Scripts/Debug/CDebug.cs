@@ -182,25 +182,25 @@ public class CDebug : CSingleton<CDebug>
 					hero = EHero.Tesla;
 				}
 				player = new PlayerInitInfo(pPlayerNumber,
-					hero, GetPlayerName(pPlayerNumber),
+					hero, PlayerNameManager.GetPlayerName(pPlayerNumber),
 					EPlayerColor.Green, EPlayerType.LocalPlayer,
 					EKeyset.A);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Tesla, GetPlayerName(pPlayerNumber),
+					EHero.Tesla, PlayerNameManager.GetPlayerName(pPlayerNumber),
 					EPlayerColor.Pink, EPlayerType.LocalPlayer);
 
 				break;
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EHero.Currie, PlayerNameManager.GetPlayerName(pPlayerNumber),
 					EPlayerColor.Yellow, EPlayerType.LocalPlayer);
 				break;
 
 			default:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, GetPlayerName(pPlayerNumber),
+					EHero.Currie, PlayerNameManager.GetPlayerName(pPlayerNumber),
 					EPlayerColor.Blue, EPlayerType.LocalPlayer);
 				break;
 		}
@@ -281,20 +281,6 @@ public class CDebug : CSingleton<CDebug>
 		{
 			Debug.LogError("testing data is ON - turn off in build");
 		}
-	}
-
-	public string GetPlayerName(int pIndex)
-	{
-		switch(pIndex)
-		{
-			case 1:
-				return "Player1name";
-			case 2:
-				return "Player2name";
-			case 3:
-				return "Player3name";
-		}
-		return "DEBUG_NAME";
 	}
 
 

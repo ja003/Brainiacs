@@ -14,13 +14,15 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	[SerializeField] Image state = null; //ready = green, waiting = red
 	[SerializeField] Animator portraitAnimator = null;
 	[SerializeField] Image portrait = null;
-	[SerializeField] Text playerNameText = null;
+	//[SerializeField] Text playerNameText = null;
+	[SerializeField] InputField playerNameInput = null;
 	//[SerializeField] UiTextSwapper playerTypeSwapper;
 	[SerializeField] public UiTextSwapper heroSwapper = null;
 	[SerializeField] UiTextSwapper keySetSwapper = null;
 	[SerializeField] Text playerTypeText = null;
 	//[SerializeField] Button btnRemove = null; //replaced by click-hold on 
-	[SerializeField] ButtonObject elementButton = null; //clickable area of this element
+	//[SerializeField] ButtonObject elementButton = null; //clickable area of this element
+	[SerializeField] ButtonObject btnRemove = null;
 
 	public PlayerInitInfo Info;
 	public bool IsItMe =>
@@ -45,8 +47,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//remove player (only master)
 		if(IsMaster())
 		{
-			elementButton.OnPointerUpAction += OnElementButtonPointerUp;
-			elementButton.OnPointerHoldUpdate += OnElementButtonHoldUpdate;
+			btnRemove.OnPointerUpAction += OnElementButtonPointerUp;
+			btnRemove.OnPointerHoldUpdate += OnElementButtonHoldUpdate;
 		}
 
 		Info = new PlayerInitInfo();
@@ -58,6 +60,15 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		List<string> keySets = Utils.GetStrings(typeof(EKeyset));
 		keySetSwapper.Init(keySets, OnKeySetChanged, 0);
+
+		//playerNameInput.onValueChanged.AddListener(OnPlayerNameChanged);
+		playerNameInput.onEndEdit.AddListener(OnPlayerNameChanged);
+	}
+
+	private void OnPlayerNameChanged(string pName)
+	{
+		Debug.Log($"OnPlayerNameChanged {pName}");
+		SetName(pName, true);
 	}
 
 	/// <summary>
@@ -66,7 +77,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	private void Update()
 	{
 		//gradually scale element up until the original scale (only if it is not being clicked)
-		if(transform.localScale.x >= 1 || elementButton.IsClicked())
+		if(transform.localScale.x >= 1 || btnRemove.IsClicked())
 			return;
 
 		const float scale_up_speed = 1f;
@@ -137,8 +148,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		PreInit();
 		gameObject.SetActive(true);
+
 		//master can remove every player (even himself - he wont be able to start game)
-		//btnRemove.gameObject.SetActive(true);
+		btnRemove.gameObject.SetActive(IsMaster());
+
 
 		//reset remove animation
 		transform.localScale = Vector3.one;
@@ -150,15 +163,16 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		AssignColor((EPlayerColor)pPlayerNumber);
 
 		Info.PhotonPlayer = pPhotonPlayer;
-		//LocalPlayer.NickName is always set
-		string name = pPhotonPlayer == null ?
-			$"{PhotonNetwork.LocalPlayer.NickName}_{pPlayerNumber}" : pPhotonPlayer.NickName;
-		SetName($"{PhotonNetwork.LocalPlayer.NickName}_{pPlayerNumber}");
+
+		//SetName($"{PhotonNetwork.LocalPlayer.NickName}_{pPlayerNumber}");
 
 		if(pPhotonPlayer == null)
 			SetReady(false);
 
 		SetType(pPlayerType);
+
+		if(IsItMe)
+			SetName(PlayerNameManager.GetPlayerName(pPlayerNumber), false);
 
 		//refresh keyset (needed when element is removed and added again)
 		OnKeySetChanged();
@@ -198,7 +212,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//}
 
 		//this Init need to be called before any other changes
-		Init(pPlayer.Number, pPlayer.PlayerType, pPlayer.PhotonPlayer);
+		Init(pPlayer.Number, pPlayer.PlayerType, pPlayer.PhotonPlayer, pPlayer.Hero);
 		//IsItMe = Info.PlayerType == EPlayerType.RemotePlayer &&
 		//	pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
@@ -214,31 +228,46 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			Debug.LogError("Assigned color doesnt match");
 		}
 		AssignColor(pPlayer.Color);
-		SetName(pPlayer.GetName());
+
 		heroSwapper.SetValue((int)pPlayer.Hero);
 
-		if(IsItMe)
-		{
-			//Debug.Log("this is me");
-			OnRemoteConnected(Info.PhotonPlayer);
-		}
+		SetName(pPlayer.GetName(), false);
+
+		//if(IsItMe)
+		//{
+		//	Debug.Log("this is me");
+		//	//this is only for remote player => always use the 1st player name 
+		//	SetName(PlayerNameManager.GetPlayerName(1), false);
+		//	OnRemoteConnected(Info.PhotonPlayer);
+		//}
 		heroSwapper.SetInteractable(IsItMe);
 		//only master can kick out player
 		//btnRemove.gameObject.SetActive(PhotonNetwork.IsMasterClient);
 
 		isClientInitializing = false;
+
+		if(IsItMe)
+		{
+			Debug.Log("this is me");
+			//this is only for remote player => always use the 1st player name 
+			SetName(PlayerNameManager.GetPlayerName(1), false);
+			OnRemoteConnected(Info.PhotonPlayer);
+		}
 	}
 
 	public void UpdateInfo(PlayerInitInfo pPlayerInfo)
 	{
+		//Debug.Log("UpdateInfo name " + Info.Name);
 		Info = pPlayerInfo;
 		Init(pPlayerInfo);
 	}
 
-	private void SetName(string pName)
+	private void SetName(string pName, bool pSave)
 	{
 		Info.Name = pName;
-		playerNameText.text = pName;
+		playerNameInput.text = pName;
+		if(pSave)
+			PlayerNameManager.SaveName(Info.Number, pName);
 	}
 
 	private void SetType(EPlayerType pPlayerType)
@@ -249,7 +278,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		if(isRemote)
 		{
 			if(Info.PhotonPlayer == null)
-				SetName("WAITING...");
+			{
+				playerNameInput.text = "WAITING...";
+				//SetName("WAITING...", false);
+			}
 		}
 		//todo: even AI needs to have assigned photon player?
 		else if(pPlayerType == EPlayerType.LocalPlayer ||
@@ -267,7 +299,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		}
 
 		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
-
+		playerNameInput.interactable = IsItMe;
 
 		playerTypeText.text = pPlayerType.ToString();
 
@@ -354,7 +386,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//remoteConnected = true;
 		//remoteReady = true;
 		//Debug.Log($"Remote player {pPlayer.UserId} connected");
-		SetName(pPlayer.NickName);
+		//SetName(pPlayer.NickName);
 		portraitAnimator.enabled = false;
 		portrait.rectTransform.rotation = Quaternion.identity;
 
@@ -378,7 +410,9 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 	private void OnHeroChanged()
 	{
-		Info.Hero = (EHero)heroSwapper.CurrentIndex;
+		Info.Hero = (EHero)(heroSwapper.CurrentIndex);
+		//UnityEngine.Debug.Log($"OnHeroChanged {heroSwapper.CurrentIndex} => {Info.Hero}");
+
 		portrait.sprite = brainiacs.HeroManager.GetHeroConfig(Info.Hero).Portrait;
 		SyncInfo();
 	}
@@ -443,6 +477,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		byte[] infoS = Info.Serialize();
 		mainMenu.Photon.Send(EPhotonMsg.MainMenu_SyncPlayerInfo, infoS);
 		//Debug.Log("sync hero" + Info.Hero);
+		//Debug.Log("sync name " + Info.GetName());
 	}
 
 }

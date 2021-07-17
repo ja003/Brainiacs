@@ -6,7 +6,7 @@ using PhotonPlayer = Photon.Realtime.Player;
 
 public class PlayerInitInfo
 {
-	public string Name { set; private get; }
+	public string Name = "";
 	public int Number;
 	public EHero Hero;
 	public EPlayerColor Color;
@@ -62,6 +62,7 @@ public class PlayerInitInfo
 		PlayerInitInfoS.StartPlayerInitInfoS(fbb);
 		PlayerInitInfoS.AddName(fbb, nameOff);
 		PlayerInitInfoS.AddNumber(fbb, Number);
+		//UnityEngine.Debug.Log($"Serialize {Hero} => {(int)Hero}");
 		PlayerInitInfoS.AddHero(fbb, (int)Hero);
 		PlayerInitInfoS.AddColor(fbb, (int)Color);
 		PlayerInitInfoS.AddPlayerType(fbb, (int)PlayerType);
@@ -80,6 +81,7 @@ public class PlayerInitInfo
 		PlayerInitInfo playerInfo = new PlayerInitInfo();
 		playerInfo.Number = pPlayerS.Number;
 		playerInfo.Hero = (EHero)pPlayerS.Hero;
+		//UnityEngine.Debug.Log($"Deserialize {pPlayerS.Hero} => {playerInfo.Hero}");
 		playerInfo.Name = pPlayerS.Name;
 		playerInfo.Color = (EPlayerColor)pPlayerS.Color;
 		playerInfo.PlayerType = (EPlayerType)pPlayerS.PlayerType;
