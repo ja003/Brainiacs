@@ -236,7 +236,8 @@ public class CDebug : CSingleton<CDebug>
 		if(playerCount >= 1)
 		{
 			result.Hero = Hero;
-			result.Name = $" {result.Hero} player";
+			result.Name = $"{result.Hero} player";
+			result.Color = EPlayerColor.Blue;
 			result.Kills = 2;
 			result.Deaths = 5;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -245,7 +246,8 @@ public class CDebug : CSingleton<CDebug>
 		{
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
 			result.Hero = EHero.Tesla;
-			result.Name = $" {result.Hero} player";
+			result.Color = EPlayerColor.Red;
+			result.Name = $"{result.Hero} player long name";
 			result.Kills = 0;
 			result.Deaths = 0;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -254,9 +256,20 @@ public class CDebug : CSingleton<CDebug>
 		{
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
 			result.Name = "t Nobel";
+			result.Color = EPlayerColor.Yellow;
 			result.Hero = EHero.Nobel;
 			result.Kills = 0;
 			result.Deaths = 0;
+			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
+		}
+		if(playerCount >= 4)
+		{
+			result = PlayerScoreInfo.debug_PlayerResultInfo();
+			result.Name = "Mrs Curie";
+			result.Color = EPlayerColor.Green;
+			result.Hero = EHero.Currie;
+			result.Kills = 3;
+			result.Deaths = 3;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
 		}
 	}

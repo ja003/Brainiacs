@@ -129,7 +129,9 @@ public class PlayerInitInfo
 
 	public string GetName(bool pFormatted = false)
 	{
-		return !pFormatted ? Name : $"<b><color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(Brainiacs.Instance.PlayerColorManager.GetColor(Color))}>{Name}</color></b>";
+		return !pFormatted ? Name : 
+			Utils.GetFormattedText(Name, Brainiacs.Instance.PlayerColorManager.GetColor(Color));
+		//$"<b><color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(Brainiacs.Instance.PlayerColorManager.GetColor(Color))}>{Name}</color></b>";
 	}
 
 }

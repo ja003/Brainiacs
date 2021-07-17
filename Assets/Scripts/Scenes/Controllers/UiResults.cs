@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class UiResults : ResultsController
 {
-	[SerializeField] private UiResultElement scoreFirst = null;
-	[SerializeField] private UiResultElement scoreSecond = null;
-	[SerializeField] private UiResultElement scoreThird = null;
+	[SerializeField] private UiResultElement resultsElPrefab;
 
 	protected override void OnMainControllerAwaken()
 	{
@@ -14,18 +12,21 @@ public class UiResults : ResultsController
 		{
 			debug.SetResults();
 		}
+		resultsElPrefab.gameObject.SetActive(false);
 
 		SetResults();
 	}
 
 	private void SetResults()
 	{
-		PlayerScoreInfo result1 = brainiacs.GameResultInfo.GetResultInfo(1);
-		scoreFirst.SetResult(result1);
-		PlayerScoreInfo result2 = brainiacs.GameResultInfo.GetResultInfo(2);
-		scoreSecond.SetResult(result2);
-		PlayerScoreInfo result3 = brainiacs.GameResultInfo.GetResultInfo(3);
-		scoreThird.SetResult(result3);
+		for(int i = 1; i <= brainiacs.GameResultInfo.PlayerResults.Count; i++)
+		{
+			PlayerScoreInfo scoreInfo = brainiacs.GameResultInfo.GetResultInfo(i);
+			UiResultElement newScoreEl = Instantiate(resultsElPrefab, transform);
+			newScoreEl.SetResult(i, scoreInfo);
+			newScoreEl.gameObject.SetActive(true);
+		}
+		
 	}
 
 

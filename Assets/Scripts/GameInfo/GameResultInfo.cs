@@ -19,7 +19,8 @@ public class GameResultInfo
 		if(pPosition > PlayerResults.Count)
 			return null;
 
-		//sort descending
+		//sort descending first by score and then by kills
+		PlayerResults.Sort((a, b) => b.Kills.CompareTo(a.Kills));
 		PlayerResults.Sort((a, b) => b.GetScore().CompareTo(a.GetScore()));
 		return PlayerResults[pPosition - 1];
 	}

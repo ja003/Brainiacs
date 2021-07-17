@@ -59,31 +59,35 @@ public struct PlayerResultInfoS : IFlatbufferObject
   public ArraySegment<byte>? GetNameBytes() { return __p.__vector_as_arraysegment(6); }
 #endif
   public byte[] GetNameArray() { return __p.__vector_as_array<byte>(6); }
-  public int Hero { get { int o = __p.__offset(8); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
-  public int Kills { get { int o = __p.__offset(10); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
-  public int LivesLeft { get { int o = __p.__offset(12); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public int Color { get { int o = __p.__offset(8); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public int Hero { get { int o = __p.__offset(10); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public int Kills { get { int o = __p.__offset(12); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public int Deaths { get { int o = __p.__offset(14); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
 
   public static Offset<PlayerResultInfoS> CreatePlayerResultInfoS(FlatBufferBuilder builder,
       int number = 0,
       StringOffset nameOffset = default(StringOffset),
+      int color = 0,
       int hero = 0,
       int kills = 0,
-      int livesLeft = 0) {
-    builder.StartTable(5);
-    PlayerResultInfoS.AddLivesLeft(builder, livesLeft);
+      int deaths = 0) {
+    builder.StartTable(6);
+    PlayerResultInfoS.AddDeaths(builder, deaths);
     PlayerResultInfoS.AddKills(builder, kills);
     PlayerResultInfoS.AddHero(builder, hero);
+    PlayerResultInfoS.AddColor(builder, color);
     PlayerResultInfoS.AddName(builder, nameOffset);
     PlayerResultInfoS.AddNumber(builder, number);
     return PlayerResultInfoS.EndPlayerResultInfoS(builder);
   }
 
-  public static void StartPlayerResultInfoS(FlatBufferBuilder builder) { builder.StartTable(5); }
+  public static void StartPlayerResultInfoS(FlatBufferBuilder builder) { builder.StartTable(6); }
   public static void AddNumber(FlatBufferBuilder builder, int number) { builder.AddInt(0, number, 0); }
   public static void AddName(FlatBufferBuilder builder, StringOffset nameOffset) { builder.AddOffset(1, nameOffset.Value, 0); }
-  public static void AddHero(FlatBufferBuilder builder, int hero) { builder.AddInt(2, hero, 0); }
-  public static void AddKills(FlatBufferBuilder builder, int kills) { builder.AddInt(3, kills, 0); }
-  public static void AddLivesLeft(FlatBufferBuilder builder, int livesLeft) { builder.AddInt(4, livesLeft, 0); }
+  public static void AddColor(FlatBufferBuilder builder, int color) { builder.AddInt(2, color, 0); }
+  public static void AddHero(FlatBufferBuilder builder, int hero) { builder.AddInt(3, hero, 0); }
+  public static void AddKills(FlatBufferBuilder builder, int kills) { builder.AddInt(4, kills, 0); }
+  public static void AddDeaths(FlatBufferBuilder builder, int deaths) { builder.AddInt(5, deaths, 0); }
   public static Offset<PlayerResultInfoS> EndPlayerResultInfoS(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<PlayerResultInfoS>(o);

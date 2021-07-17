@@ -7,7 +7,8 @@ table GameResultInfoS {
 table PlayerResultInfoS {
   number:int;
   name:string;  
+  color:int;
   hero:int;
   kills:int;
-  livesLeft:int;
+  deaths:int;
 }

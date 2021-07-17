@@ -270,4 +270,16 @@ public static class Utils
 	{
 		return (x % m + m) % m;
 	}
+
+	public static string GetFormattedText(string pText, EPlayerColor pColor, bool pBold = true)
+	{
+		return GetFormattedText(pText, Brainiacs.Instance.PlayerColorManager.GetColor(pColor), pBold);
+	}
+
+	public static string GetFormattedText(string pText, Color pColor, bool pBold = true)
+	{
+		string boldOpen = pBold ? "<b>" : "";
+		string boldClose = pBold ? "</b>" : "";
+		return  $"{boldOpen}<color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(pColor)}>{pText}</color>{boldClose}";
+	}
 }

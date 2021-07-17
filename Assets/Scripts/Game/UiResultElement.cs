@@ -7,19 +7,23 @@ using UnityEngine.UI;
 
 public class UiResultElement : BrainiacsBehaviour
 {
-	[SerializeField] private TextMeshProUGUI score = null;
+	[SerializeField] private Text rank;
 	[SerializeField] private Image heroPortrait = null;
-	[SerializeField] private TextMeshProUGUI playerName = null;
+	[SerializeField] private Text playerName;
+	[SerializeField] private Text kills;
+	[SerializeField] private Text deaths;
 
-	public void SetResult(PlayerScoreInfo pInfo)
+	public void SetResult(int pRank, PlayerScoreInfo pInfo)
 	{
+		rank.text = pRank + ".";
 		if(pInfo == null)
 		{
 			gameObject.SetActive(false);
 			return;
 		}
-		score.text = $"{pInfo.Kills} / {pInfo.Deaths}";
+		kills.text = pInfo.Kills.ToString();
+		deaths.text = pInfo.Deaths.ToString();
 		heroPortrait.sprite = brainiacs.HeroManager.GetHeroConfig(pInfo.Hero).Portrait;
-		playerName.text = pInfo.Name;
+		playerName.text = Utils.GetFormattedText(pInfo.Name, pInfo.Color);
 	}
 }

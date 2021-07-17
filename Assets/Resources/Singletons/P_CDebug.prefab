@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   release: 0
   releaseWithExceptions: 0
-  _Result: 0
+  _Result: 1
   _PlatformMobile: 0
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
@@ -54,11 +54,11 @@ MonoBehaviour:
   _ExtraPlayerWeapon: 50
   _Shield: 0
   _Invulnerability: 0
-  _Immortality: 1
+  _Immortality: 0
   _InstaKill: 0
   _InfiniteAmmo: 0
   _PlayerEffect: 0
-  playerCount: 2
+  playerCount: 4
   _Map: 1
   _gameValue: 5
   _GenerateItems: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   _NonAggressiveAi: 0
   _AiDebugMove: 0
   _PassiveAi: 1
-  _SkipTutorial: 0
+  _SkipTutorial: 1
   _ForceTutorial: 0
   _InstaAnimation: 1
   _OpenMenu: 0

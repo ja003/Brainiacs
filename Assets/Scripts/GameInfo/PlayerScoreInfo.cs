@@ -8,9 +8,10 @@ public class PlayerScoreInfo
 {
 	public int PlayerNumber;
 	public string Name;
+	public EPlayerColor Color;
 	public EHero Hero;
 	public int Kills;
-	public int Deaths; //todo: regenerate flatbuffer
+	public int Deaths;
 
 	private PlayerScoreInfo() { }
 
@@ -20,6 +21,7 @@ public class PlayerScoreInfo
 	{
 		PlayerNumber = pStats.Info.Number;
 		Name = pStats.Info.GetName();
+		Color = pStats.Info.Color;
 		Hero = pStats.Info.Hero;
 		Kills = pStats.Kills;
 		Deaths = pStats.Deaths;
@@ -57,10 +59,11 @@ public class PlayerScoreInfo
 	{
 		PlayerScoreInfo playerResultInfo = new PlayerScoreInfo();
 		playerResultInfo.PlayerNumber = pResultS.Number;
+		playerResultInfo.Color = (EPlayerColor)pResultS.Color;
 		playerResultInfo.Name = pResultS.Name;
 		playerResultInfo.Hero = (EHero)pResultS.Hero;
 		playerResultInfo.Kills = pResultS.Kills;
-		playerResultInfo.Deaths = pResultS.LivesLeft; //todo: regenerate flatbuffer
+		playerResultInfo.Deaths = pResultS.Deaths; 
 
 		return playerResultInfo;
 	}
