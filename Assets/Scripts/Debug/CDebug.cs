@@ -117,6 +117,9 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _OpenMenu;
 	public bool OpenMenu => GetDebugBool(_OpenMenu);
 
+	[SerializeField] EPlayerType _ExtraPlayerAtStart;
+	public EPlayerType ExtraPlayerAtStart => release ? EPlayerType.None : _ExtraPlayerAtStart;
+
 	internal void Reset()
 	{
 		Debug.Log("RESET");

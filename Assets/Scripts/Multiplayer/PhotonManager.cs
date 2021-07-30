@@ -18,7 +18,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public Action<PhotonPlayer> OnPlayerLeft;
 	public Action OnKickedOut; //called eg when client gets kicked out of room
 
-	// Start is called before the first frame update
 	void Start()
 	{
 		if(SceneManager.GetActiveScene().name == "S3_Game")
@@ -26,16 +25,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 		PhotonNetwork.AutomaticallySyncScene = true;
 
-		//replaced - see PlayerNameManager
-//		string suffix = PlatformManager.IsMobile() ? "mobile" : "pc";
-//#if UNITY_EDITOR
-//		suffix = "editor";
-//#endif
-
-//		PhotonNetwork.LocalPlayer.NickName = "ADAM_" + suffix;
-
-		//Debug.Log("Connecting..");
 		PhotonNetwork.ConnectUsingSettings();
+		//GameVersion has to be set after calling ConnectUsingSettings
+		//https://forum.photonengine.com/discussion/13341/restricting-joining-room-with-non-matching-game-version
+		PhotonNetwork.GameVersion = Application.version;
+		//Debug.Log($"Connecting. {PhotonNetwork.GameVersion}");
 	}
 
 	/// <summary>
@@ -67,9 +61,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered, Action<PhotonPlayer> pOnPlayerLeft)
 	{
 		string roomName = GenerateRoomName();
-
-		//Debug.Log("CreateRoom " + roomName);
-
+		//Debug.Log($"CreateRoom {roomName}");
 		PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
 		OnPlayerEntered = pOnPlayerEntered;
 		OnPlayerLeft = pOnPlayerLeft;
@@ -110,7 +102,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public override void OnConnectedToMaster()
 	{
 		base.OnConnectedToMaster();
-		//Debug.Log("Connected to master");
+		Debug.Log($"Connected to master {PhotonNetwork.AppVersion} | {PhotonNetwork.NetworkingClient.AppVersion}");
+
 
 		PhotonNetwork.JoinLobby();
 	}

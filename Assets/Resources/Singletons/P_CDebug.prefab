@@ -77,4 +77,5 @@ MonoBehaviour:
   _ForceTutorial: 0
   _InstaAnimation: 1
   _OpenMenu: 1
+  _ExtraPlayerAtStart: 2
   pushForce: 15

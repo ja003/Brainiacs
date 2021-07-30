@@ -173,6 +173,8 @@ public class UIGameSetupMain : MainMenuController
 				brainiacs.GameInitInfo = new GameInitInfo();
 
 				AddPlayer(EPlayerType.LocalPlayer);
+				if(debug.ExtraPlayerAtStart != EPlayerType.None)
+					AddPlayer(debug.ExtraPlayerAtStart);
 
 				//set default values
 				OnTimeToggled(true);
@@ -325,6 +327,12 @@ public class UIGameSetupMain : MainMenuController
 	/// </summary>
 	private void AddPlayer(EPlayerType pType)
 	{
+		if(pType == EPlayerType.None)
+		{
+			Debug.LogError("Cant add player of type None");
+			return;
+		}
+
 		btnGroupAddPlayer.transform.SetParent(null);
 
 		UIGameSetupPlayerEl addedElement = AddPlayerElement();
