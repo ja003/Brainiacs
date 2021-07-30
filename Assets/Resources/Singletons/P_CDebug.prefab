@@ -46,7 +46,7 @@ MonoBehaviour:
   release: 0
   releaseWithExceptions: 0
   _Result: 0
-  _PlatformMobile: 0
+  _PlatformMobile: 1
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
@@ -73,9 +73,9 @@ MonoBehaviour:
   _NonAggressiveAi: 0
   _AiDebugMove: 0
   _PassiveAi: 1
-  _SkipTutorial: 1
-  _ForceTutorial: 0
+  _SkipTutorial: 0
+  _ForceTutorial: 1
   _InstaAnimation: 1
-  _OpenMenu: 1
-  _ExtraPlayerAtStart: 2
+  _OpenMenu: 0
+  _ExtraPlayerAtStart: 0
   pushForce: 15

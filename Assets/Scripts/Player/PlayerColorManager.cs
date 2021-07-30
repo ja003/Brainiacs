@@ -19,7 +19,7 @@ public class PlayerColorManager : BrainiacsBehaviour
 	[SerializeField] private Color lightColor_Pink = Color.magenta;
 
 
-	public Color GetColor(EPlayerColor pColor)
+	public Color GetColor(EPlayerColor pColor, float pAlpha = 1)
 	{
 		Color color = Color.white;
 		switch(pColor)
@@ -50,7 +50,7 @@ public class PlayerColorManager : BrainiacsBehaviour
 				break;
 		}
 
-		return color;
+		return new Color(color.r, color.g, color.b, pAlpha);
 	}
 
 	public Color GetLightColor(EPlayerColor pColor)

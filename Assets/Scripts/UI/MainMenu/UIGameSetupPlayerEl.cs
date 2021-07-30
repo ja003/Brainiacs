@@ -24,7 +24,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	//[SerializeField] ButtonObject elementButton = null; //clickable area of this element
 	[SerializeField] ButtonObject btnRemove = null;
 
+	[SerializeField] UIPlayerTypeIndicator playerType = null;
+
 	public PlayerInitInfo Info;
+	//NOTE: IsItMe is valid after PhotonPlayer is assigned
 	public bool IsItMe =>
 		(Info.PlayerType == EPlayerType.RemotePlayer ||
 		Info.PlayerType == EPlayerType.LocalPlayer)
@@ -275,11 +278,16 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//btnRemove.gameObject.SetActive(true);
 		Info.PlayerType = pPlayerType;
 		bool isRemote = pPlayerType == EPlayerType.RemotePlayer;
+
+
+	
+
 		if(isRemote)
 		{
 			if(Info.PhotonPlayer == null)
 			{
 				playerNameInput.text = "WAITING...";
+				playerType.SetType(EPlayerType.RemotePlayer);
 				//SetName("WAITING...", false);
 			}
 		}
@@ -291,12 +299,18 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			if(PhotonNetwork.InRoom && !IsMaster())
 			{
 				//client doesnt change local player
+				playerType.SetType(EPlayerType.RemotePlayer);
 			}
 			else
 			{
 				Info.PhotonPlayer = PhotonNetwork.LocalPlayer;
 			}
 		}
+		//NOTE: IsItMe is valid after PhotonPlayer is assigned
+
+		playerType.gameObject.SetActive(!IsItMe);
+		if(pPlayerType == EPlayerType.AI)
+				playerType.SetType(EPlayerType.AI);
 
 		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
 		playerNameInput.interactable = IsItMe;
@@ -349,6 +363,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		Info.Color = pColor;
 		color.color = brainiacs.PlayerColorManager.GetColor(Info.Color);
+		playerType.SetColor(Info.Color);
 	}
 
 
