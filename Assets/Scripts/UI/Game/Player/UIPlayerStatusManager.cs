@@ -21,7 +21,7 @@ public class UIPlayerStatusManager : GameBehaviour
 	}
 
 	/// <summary>
-	/// Insantiates the status at given position and sets the info (sprite, text).
+	/// Instantiates the status at given position and sets the info (sprite, text).
 	/// For now only used for player.
 	/// </summary>
 	public void ShowMapItem(Vector2 pWorldPosition, MapItemInfo pInfo)
@@ -35,12 +35,14 @@ public class UIPlayerStatusManager : GameBehaviour
 		ShowStatus(pWorldPosition, pInfo.StatusText, pInfo.StatusSprite);
 	}
 
-	public void ShowHealth(Vector2 pWorldPosition, int pIncrement)
+	public void ShowHealth(Vector2 pWorldPosition, int pIncrement, bool pSendPhoton)
 	{
 		bool isAdd = pIncrement > 0;
 		string prefix = isAdd ? "+" : "-";
 		Color textColor = isAdd ? Color.green : Color.red;
 		ShowStatus(pWorldPosition, prefix + pIncrement, null, textColor);
+		if(pSendPhoton)
+			game.Photon.Send(EPhotonMsg.Game_PlayerStatus_Health, pWorldPosition, pIncrement);
 	}
 
 	public void ShowStatus(Vector2 pWorldPosition, string pText, Sprite pSprite, Color? pTextColor = null)

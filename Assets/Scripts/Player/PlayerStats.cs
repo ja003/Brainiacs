@@ -125,15 +125,15 @@ public class PlayerStats : PlayerBehaviour
 		{
 			if(IsShielded)
 			{
-				DoShieldHitEffect();
+				DoShieldHitEffect(); //synced
 			}
-			//Debug.Log($"{player.InitInfo.GetName()} is invurnelable");
+			//Debug.Log($"{player.InitInfo.GetName()} is invulnerable");
 			return 0;
 		}
 
 		SetStat(EPlayerStats.Health, Health + pIncrement);
 		if(!pRespawn)
-			game.PlayerStatusManager.ShowHealth(player.Stats.HealthUiPosition.position, pIncrement);
+			game.PlayerStatusManager.ShowHealth(player.Stats.HealthUiPosition.position, pIncrement, true);
 
 		return pIncrement;
 	}

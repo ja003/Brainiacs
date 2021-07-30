@@ -68,7 +68,9 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	private void OnPlayerNameChanged(string pName)
 	{
 		Debug.Log($"OnPlayerNameChanged {pName}");
-		SetName(pName, true);
+		SetName(pName);
+		PlayerNameManager.SaveName(Info.Number, pName);
+		SyncInfo();
 	}
 
 	/// <summary>
@@ -172,7 +174,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		SetType(pPlayerType);
 
 		if(IsItMe)
-			SetName(PlayerNameManager.GetPlayerName(pPlayerNumber), false);
+			SetName(PlayerNameManager.GetPlayerName(pPlayerNumber));
 
 		//refresh keyset (needed when element is removed and added again)
 		OnKeySetChanged();
@@ -231,7 +233,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 		heroSwapper.SetValue((int)pPlayer.Hero);
 
-		SetName(pPlayer.GetName(), false);
+		SetName(pPlayer.GetName());
 
 		//if(IsItMe)
 		//{
@@ -250,7 +252,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		{
 			Debug.Log("this is me");
 			//this is only for remote player => always use the 1st player name 
-			SetName(PlayerNameManager.GetPlayerName(1), false);
+			SetName(PlayerNameManager.GetPlayerName(1));
 			OnRemoteConnected(Info.PhotonPlayer);
 		}
 	}
@@ -262,12 +264,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		Init(pPlayerInfo);
 	}
 
-	private void SetName(string pName, bool pSave)
+	private void SetName(string pName)
 	{
 		Info.Name = pName;
 		playerNameInput.text = pName;
-		if(pSave)
-			PlayerNameManager.SaveName(Info.Number, pName);
 	}
 
 	private void SetType(EPlayerType pPlayerType)

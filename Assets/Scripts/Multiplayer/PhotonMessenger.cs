@@ -215,6 +215,8 @@ public enum EPhotonMsg
 
 	Game_HandleEffect,
 
+	Game_PlayerStatus_Health,
+
 	Game_Lighting_SetMode,
 
 	//Main menu

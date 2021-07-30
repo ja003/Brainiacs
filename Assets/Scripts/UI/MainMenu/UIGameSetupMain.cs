@@ -41,6 +41,7 @@ public class UIGameSetupMain : MainMenuController
 	[SerializeField] Button btnPlay = null; //master
 	[SerializeField] Button btnReady = null; //client
 	[SerializeField] TextMeshProUGUI btnReadyText = null;
+	[SerializeField] GameObject hintBtnReady = null;
 	[SerializeField] Button btnAllowJoin = null;
 
 	[SerializeField] Button btnCopyGameId;
@@ -59,26 +60,6 @@ public class UIGameSetupMain : MainMenuController
 	//there is at least 1 remote player defined
 	bool isSetAsMPGame;
 
-	internal void KickOtherPlayers()
-	{
-		if(!IsMaster)
-			return;
-
-		List<PhotonPlayer> players = GetActivatedPlayers().Select(i => i.Info.PhotonPlayer).ToList();
-		brainiacs.PhotonManager.KickPlayers(players, true);
-	}
-
-	internal void OnKickedOut()
-	{
-		bool wasMaster = Time.time - lastTimeWasMaster < 5;
-		Debug.Log("OnKickedOut " + (IsMaster || wasMaster));
-		if(IsMaster || wasMaster)
-			return;
-
-		mainMenu.InfoMessenger.Show("You were kicked out!");
-		DoInTime(OnBtnBack, 2);
-	}
-
 	protected override void Awake()
 	{
 		btnBack.onClick.AddListener(OnBtnBack);
@@ -86,6 +67,7 @@ public class UIGameSetupMain : MainMenuController
 		btnReady.onClick.AddListener(OnBtnReady);
 		btnAllowJoin.onClick.AddListener(OnBtnAllowJoin);
 		btnCopyGameId.onClick.AddListener(OnBtnCopyGameId);
+		brainiacs.PhotonManager.OnPlayerLeft += OnPlayerLeft;
 		base.Awake();
 	}
 
@@ -108,13 +90,21 @@ public class UIGameSetupMain : MainMenuController
 		btnPlay.interactable = isMultiplayer ? PhotonNetwork.IsConnectedAndReady : true;
 	}
 
+	//store last master player so we can detect if he disconnects (see OnPlayerLeft)
+	PhotonPlayer masterPlayer;
+
 	internal void SetGameInfo(GameInitInfo pGameInfo)
 	{
 		for(int i = 0; i < pGameInfo.Players.Count; i++)
 		{
 			PlayerInitInfo player = pGameInfo.Players[i];
 			AddPlayer(player);
+
+			if(player.PhotonPlayer.IsMasterClient)
+				masterPlayer = player.PhotonPlayer;
 		}
+		Debug.Log($"masterPlayer {masterPlayer}");
+
 		EGameMode mode = pGameInfo.Mode;
 		gameModeToggleTime.isOn = mode == EGameMode.Time;
 		gameModeToggleScore.isOn = mode == EGameMode.Score;
@@ -190,23 +180,9 @@ public class UIGameSetupMain : MainMenuController
 				OnMapChanged();
 				OnGameModeValueChanged();
 			}
-			//else
-			//{
-			//	for(int i = 0; i < gameInitInfo.Players.Count; i++)
-			//	{
-			//		PlayerInitInfo player = gameInitInfo.Players[i];
-			//		AddPlayer(player);
-			//	}
-			//	EGameMode mode = brainiacs.GameInitInfo.Mode;
-			//	gameModeToggleTime.isOn = mode == EGameMode.Time;
-			//	gameModeToggleScore.isOn = mode == EGameMode.Score;
-			//	gameModeToggleDeathmatch.isOn = mode == EGameMode.Deathmatch;
 
-			//	mapSwapper.SetValue((int)brainiacs.GameInitInfo.Map);
-
-			//	gameModeValueSwapper.SetNumberValue(
-			//		brainiacs.GameInitInfo.GameModeValue);
-			//}
+			//reset
+			SetBtnReadyState(false);
 
 			if(!IsActive())
 			{
@@ -290,39 +266,6 @@ public class UIGameSetupMain : MainMenuController
 		brainiacs.SyncGameInitInfo();
 	}
 
-	private void OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
-	{
-		List<UIGameSetupPlayerEl> availableRemotes = GetAvailableRemotePlayers();
-		if(availableRemotes.Count == 0)
-		{
-			Debug.LogError("No free remote element rdy. todo: kick out of room");
-			return;
-		}
-
-		mainMenu.InfoMessenger.Show($"Player {pPlayer} has joined");
-
-		availableRemotes[0].OnRemoteConnected(pPlayer);
-
-		brainiacs.SyncGameInitInfo();
-
-		//Debug.LogError("todo: sync data to " + pPlayer);
-		//data is auto synced in OnRemoteConnected
-		//todo: send data just to this player?
-	}
-
-	private void OnRemotePlayerLeftRoom(PhotonPlayer pPlayer)
-	{
-		foreach(UIGameSetupPlayerEl playerEl in GetActivatedPlayers())
-		{
-			if(playerEl.Info.PhotonPlayer == pPlayer)
-			{
-				playerEl.OnRemoteDisconnected(pPlayer);
-				mainMenu.InfoMessenger.Show($"Player {pPlayer} has left");
-				return;
-			}
-		}
-		Debug.LogError($"Player {pPlayer} left room but was not found in active players");
-	}
 
 	private void OnMapChanged()
 	{
@@ -478,7 +421,7 @@ public class UIGameSetupMain : MainMenuController
 				break;
 			}
 		}
-		Debug.Log("UpdateGameType " + isSetAsMPGame);
+		//Debug.Log("UpdateGameType " + isSetAsMPGame);
 		string gameTypeStr = isSetAsMPGame ? "NETWORK GAME" : "LOCAL GAME";
 		bool isChange = gameTypeStr != txtGameType.text;
 		txtGameType.text = gameTypeStr;
@@ -499,7 +442,13 @@ public class UIGameSetupMain : MainMenuController
 		UIGameSetupPlayerEl myPLayerEl = GetMyPlayer();
 		bool isReady = myPLayerEl.Info.IsReady;
 		myPLayerEl.SetReady(!isReady);
-		btnReadyText.text = myPLayerEl.Info.IsReady ? "NOT READY" : "READY";
+		SetBtnReadyState(!isReady);
+	}
+
+	private void SetBtnReadyState(bool pIsReady)
+	{
+		btnReadyText.text = pIsReady ? "NOT READY" : "READY";
+		hintBtnReady.SetActive(!pIsReady);
 	}
 
 	private void OnBtnPlay()
@@ -569,5 +518,75 @@ public class UIGameSetupMain : MainMenuController
 	private UIGameSetupPlayerEl GetLocalPlayer()
 	{
 		return GetActivatedPlayers().Find(a => a.Info.PlayerType == EPlayerType.LocalPlayer);
+	}
+
+	///-------------------- MULTIPLAYER --------------------///
+	///
+	internal void KickOtherPlayers()
+	{
+		if(!IsMaster)
+			return;
+
+		List<PhotonPlayer> players = GetActivatedPlayers().Select(i => i.Info.PhotonPlayer).ToList();
+		brainiacs.PhotonManager.KickPlayers(players, true);
+	}
+
+	internal void OnKickedOut()
+	{
+		bool wasMaster = Time.time - lastTimeWasMaster < 5;
+		Debug.Log("OnKickedOut " + (IsMaster || wasMaster));
+		if(IsMaster || wasMaster)
+			return;
+
+		mainMenu.InfoMessenger.Show("You were kicked out!");
+		DoInTime(OnBtnBack, 2);
+	}
+
+	private void OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
+	{
+		List<UIGameSetupPlayerEl> availableRemotes = GetAvailableRemotePlayers();
+		if(availableRemotes.Count == 0)
+		{
+			Debug.LogError("No free remote element rdy. todo: kick out of room");
+			return;
+		}
+
+		mainMenu.InfoMessenger.Show($"Player {pPlayer} has joined");
+
+		availableRemotes[0].OnRemoteConnected(pPlayer);
+
+		brainiacs.SyncGameInitInfo();
+
+		//Debug.LogError("todo: sync data to " + pPlayer);
+		//data is auto synced in OnRemoteConnected
+		//todo: send data just to this player?
+	}
+
+	private void OnRemotePlayerLeftRoom(PhotonPlayer pPlayer)
+	{
+		foreach(UIGameSetupPlayerEl playerEl in GetActivatedPlayers())
+		{
+			if(playerEl.Info.PhotonPlayer == pPlayer)
+			{
+				playerEl.OnRemoteDisconnected(pPlayer);
+				mainMenu.InfoMessenger.Show($"Player {pPlayer} has left");
+				return;
+			}
+		}
+		Debug.LogError($"Player {pPlayer} left room but was not found in active players");
+	}
+
+	/// <summary>
+	/// Used to detect if master client left.
+	/// It would be too complicated to handle change of master => kick player.
+	/// </summary>
+	private void OnPlayerLeft(PhotonPlayer pPlayer)
+	{
+		Debug.Log($"OnPlayerLeft {pPlayer} - {pPlayer.IsMasterClient}");
+		if(pPlayer == masterPlayer)
+		{
+			Debug.Log("it was master => KICK");
+			OnKickedOut();
+		}
 	}
 }

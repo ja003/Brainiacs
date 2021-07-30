@@ -156,7 +156,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnPlayerLeftRoom(PhotonPlayer otherPlayer)
 	{
-		//Debug.Log("OnPlayerLeftRoom " + otherPlayer);
+		Debug.Log("OnPlayerLeftRoom " + otherPlayer);
 		base.OnPlayerLeftRoom(otherPlayer);
 
 		OnPlayerLeft?.Invoke(otherPlayer);

@@ -61,6 +61,12 @@ public class GamePhoton : PhotonMessenger
 				game.GameEffect.HandleEffect(effect);
 				break;
 
+			case EPhotonMsg.Game_PlayerStatus_Health:
+				Vector2 worldPosition = (Vector2)pParams[0];
+				int pIncrement = (int)pParams[1];
+				game.PlayerStatusManager.ShowHealth(worldPosition, pIncrement, false);
+				break;
+
 			default:
 				Debug.LogError("Message not handled");
 				break;

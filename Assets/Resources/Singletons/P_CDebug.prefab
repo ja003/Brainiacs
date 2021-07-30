@@ -52,7 +52,7 @@ MonoBehaviour:
   _debugPlayerNumber: 1
   _Hero: 2
   _ExtraPlayerWeapon: 50
-  _Shield: 0
+  _Shield: 1
   _Invulnerability: 0
   _Immortality: 0
   _InstaKill: 0
