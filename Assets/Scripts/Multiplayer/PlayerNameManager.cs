@@ -5,6 +5,11 @@ using UnityEngine;
 
 public static class PlayerNameManager
 {
+
+	/// <summary>
+	/// Get saved name of n-th player.
+	/// pNumber: 1-4
+	/// </summary>
 	public static string GetPlayerName(int pNumber)
 	{
 		string player_name_key = GetPlayerNameKey(pNumber);

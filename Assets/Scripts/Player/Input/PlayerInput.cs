@@ -281,7 +281,7 @@ public class PlayerInput : PlayerBehaviour
 	}
 
 	/// <summary>
-	/// Input from physical joystick controller (not the virtal joystick)
+	/// Input from physical joystick controller (not the virtual joystick)
 	/// </summary>
 	private float GetJoystickInput(string pName)
 	{

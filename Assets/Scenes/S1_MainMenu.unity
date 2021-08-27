@@ -2258,7 +2258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 908708459}
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 908708462}
   txtInputGameId: {fileID: 1621910332}
   btnJoinRandomGame: {fileID: 2085904325}
   txtStatus: {fileID: 1927404728}
@@ -16439,7 +16439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 479368711}
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 479368713}
   btnGroupAddPlayer: {fileID: 319599668}
   btnAddPlayerAi: {fileID: 1088646201}
   btnAddPlayerLocal: {fileID: 1369924817}

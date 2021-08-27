@@ -1,5 +1,4 @@
-﻿using CompanyNamespaceWhatever;
-using FlatBuffers;
+﻿using FlatBuffers;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
@@ -11,6 +10,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using ExtensionMethods;
 
 using PhotonPlayer = Photon.Realtime.Player;
 
@@ -120,6 +120,15 @@ public class UIGameSetupMain : MainMenuController
 
 		//update needed on client who just joined
 		UpdateGameType();
+
+		if(debug.InstaReady)
+		{
+			Debug.Log("debug: insta ready");
+			UIGameSetupPlayerEl myPLayerEl = GetMyPlayer();
+			bool isReady = myPLayerEl.Info.IsReady;
+			if(!isReady)
+				OnBtnReady();
+		}
 	}
 
 	//if this mode was opened in master mode
@@ -183,14 +192,20 @@ public class UIGameSetupMain : MainMenuController
 				OnGameModeValueChanged();
 			}
 
-			//reset
-			SetBtnReadyState(false);
+			//this resets ready btn after every sync
+			////reset
+			//SetBtnReadyState(false);
 
 			if(!IsActive())
 			{
 				//show after open menu anim
 				DoInTime(() => mainMenu.InfoMessenger.Show("WELCOME!"), 1);
 			}
+		}
+		else
+		{
+			//reset
+			SetBtnReadyState(false);
 		}
 		base.SetActive(pValue);
 	}
@@ -257,10 +272,12 @@ public class UIGameSetupMain : MainMenuController
 		string gameId = txtGameId.text.Replace(game_id_prefix, "");
 		UniClipboard.SetText(gameId);
 		Debug.Log($"{gameId} copied to clipboard");
-		string message = $"Game ID {gameId} copied to clipboard" + Environment.NewLine
+		string message = $"Game ID {gameId.Colorify(Color.red)} copied to clipboard" + Environment.NewLine
 			+ "share it with your friend!";
 		mainMenu.InfoMessenger.Show(message);
 	}
+
+
 
 	private void debug_OnBtnSyncInfo()
 	{
@@ -412,6 +429,7 @@ public class UIGameSetupMain : MainMenuController
 		btnAddPlayerLocal.gameObject.SetActive(!alreadyHasLocalPlayer);
 
 		UpdateGameType();
+		brainiacs.SyncGameInitInfo();
 	}
 
 	/// <summary>
@@ -440,7 +458,7 @@ public class UIGameSetupMain : MainMenuController
 		//only master changes visibility of join-buttons
 		if(IsMaster)
 		{
-			btnAllowJoin.gameObject.SetActive(isSetAsMPGame);
+			btnAllowJoin.gameObject.SetActive(isSetAsMPGame && !isJoinAllowed);
 			btnCopyGameId.gameObject.SetActive(isSetAsMPGame && isJoinAllowed);
 		}
 	}
@@ -487,6 +505,7 @@ public class UIGameSetupMain : MainMenuController
 
 		Debug.Log(brainiacs.GameInitInfo);
 
+		brainiacs.SyncGameInitInfo();
 		//no need to send msg => use photon scene loading
 		//mainMenu.Photon.Send(EPhotonMsg_MainMenu.Play);
 		brainiacs.Scenes.LoadScene(EScene.Loading);
@@ -559,8 +578,6 @@ public class UIGameSetupMain : MainMenuController
 			return;
 		}
 
-		mainMenu.InfoMessenger.Show($"Player {pPlayer} has joined");
-
 		availableRemotes[0].OnRemoteConnected(pPlayer);
 
 		brainiacs.SyncGameInitInfo();
@@ -577,7 +594,7 @@ public class UIGameSetupMain : MainMenuController
 			if(playerEl.Info.PhotonPlayer == pPlayer)
 			{
 				playerEl.OnRemoteDisconnected(pPlayer);
-				mainMenu.InfoMessenger.Show($"Player {pPlayer} has left");
+				//mainMenu.InfoMessenger.Show($"Player {pPlayer} has left");
 				return;
 			}
 		}

@@ -136,4 +136,18 @@ public class PlayerInitInfo
 		//$"<b><color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(Brainiacs.Instance.PlayerColorManager.GetColor(Color))}>{Name}</color></b>";
 	}
 
+	public override bool Equals(object obj)
+	{
+		//Check for null and compare run-time types.
+		if((obj == null) || !this.GetType().Equals(obj.GetType()))
+		{
+			return false;
+		}
+		else
+		{
+			PlayerInitInfo info = (PlayerInitInfo)obj;
+			return Number == info.Number;
+		}
+	}
+
 }

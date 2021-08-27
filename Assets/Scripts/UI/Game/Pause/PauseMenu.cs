@@ -11,6 +11,7 @@ public class PauseMenu : GameMenuController
 	[SerializeField] Text header;
 
 	[SerializeField] Button btnClose;
+	[SerializeField] Button btnBackground;
 
 	[Header("Volume")]
 	[SerializeField] Slider sliderVolumeMusic;
@@ -36,7 +37,7 @@ public class PauseMenu : GameMenuController
 		base.SetActive(pValue);
 
 		game.GameTime.SetPause(pValue && !isMultiplayer);
-		header.text = $"Game {(game.GameTime.IsPaused ? "" : "not ")}paused";
+		header.text = $"Game {(game.GameTime.IsPaused ? "paused" : "running")}";
 		holderEndGameConfirm.SetActive(false);
 	}
 
@@ -46,6 +47,7 @@ public class PauseMenu : GameMenuController
 		SetVolumeMusic(brainiacs.PlayerPrefs.VolumeMusic);
 
 		btnClose.onClick.AddListener(() => SetActive(false));
+		btnBackground.onClick.AddListener(() => SetActive(false));		
 
 		toggleAllowAllDir.onValueChanged.AddListener(OnAllowAllDirChanged);
 		toggleAllowAllDir.isOn = brainiacs.PlayerPrefs.AllowMoveAllDir;

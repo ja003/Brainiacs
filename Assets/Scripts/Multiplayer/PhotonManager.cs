@@ -30,6 +30,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		//https://forum.photonengine.com/discussion/13341/restricting-joining-room-with-non-matching-game-version
 		PhotonNetwork.GameVersion = Application.version;
 		//Debug.Log($"Connecting. {PhotonNetwork.GameVersion}");
+		PhotonNetwork.LocalPlayer.NickName = PlayerNameManager.GetPlayerName(1);
 	}
 
 	/// <summary>

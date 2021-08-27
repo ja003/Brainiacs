@@ -43,6 +43,7 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] EWeaponId _ExtraPlayerWeapon;
 	public EWeaponId ExtraPlayerWeapon => _ExtraPlayerWeapon;
 
+	[Tooltip("Works only on local player. see PlayerStats::IsShielded")]
 	[SerializeField] bool _Shield;
 	public bool Shield => GetDebugBool(_Shield);
 	[SerializeField] bool _Invulnerability;
@@ -116,6 +117,9 @@ public class CDebug : CSingleton<CDebug>
 
 	[SerializeField] bool _OpenMenu;
 	public bool OpenMenu => GetDebugBool(_OpenMenu);
+
+	[SerializeField] bool _InstaReady;
+	public bool InstaReady => GetDebugBool(_InstaReady);
 
 	[SerializeField] EPlayerType _ExtraPlayerAtStart;
 	public EPlayerType ExtraPlayerAtStart => release ? EPlayerType.None : _ExtraPlayerAtStart;

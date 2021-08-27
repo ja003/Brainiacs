@@ -205,8 +205,9 @@ public class PlayerManager : GameController
 		}
 
 		Players.Add(pPlayer);
-		//Debug.Log("Add player " + pPlayer);
+		Debug.Log("Add player " + pPlayer);
 		int playersCount = Players.FindAll(a => !a.IsLocalImage).Count;
+		Debug.Log($"- {playersCount}/{Players.Count}");
 
 		if(playersCount == brainiacs.GameInitInfo.Players.Count)
 		{

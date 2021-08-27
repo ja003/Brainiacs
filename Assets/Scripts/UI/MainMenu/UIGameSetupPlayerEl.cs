@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using ExtensionMethods;
 using PhotonPlayer = Photon.Realtime.Player;
 
 public class UIGameSetupPlayerEl : MainMenuBehaviour
@@ -126,7 +127,11 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 			Debug.Log($"kick player {Info.PhotonPlayer}");
 		}
 		gameObject.SetActive(false);
+		int playerCountBefore = brainiacs.GameInitInfo.Players.Count;
 		brainiacs.GameInitInfo.Players.Remove(Info);
+		if(playerCountBefore == brainiacs.GameInitInfo.Players.Count)
+			Debug.LogError("Player wasnt removed");
+
 		mainMenu.SetupMain.OnPlayersChanged();
 	}
 
@@ -393,11 +398,19 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 
 	/// <summary>
-	/// Called only on master
+	/// Called on master and clients
 	/// </summary>
 	public void OnRemoteConnected(PhotonPlayer pPlayer)
 	{
 		Info.PhotonPlayer = pPlayer;
+
+		if(!IsItMe)
+		{
+			Color color = brainiacs.PlayerColorManager.GetColor(Info.Color);
+			string message = $"Player {pPlayer.NickName.Colorify(color)} has joined the game";
+			mainMenu.InfoMessenger.Show(message);
+		}
+
 		//remoteConnected = true;
 		//remoteReady = true;
 		//Debug.Log($"Remote player {pPlayer.UserId} connected");
@@ -416,6 +429,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		Info.PhotonPlayer = null;
 		Debug.Log($"Remote player {pPlayer.UserId} disconnected");
+		mainMenu.InfoMessenger.Show($"Player {Info.GetName(true)} has left");
 
 		//sets text and icon animation
 		SetType(EPlayerType.RemotePlayer);

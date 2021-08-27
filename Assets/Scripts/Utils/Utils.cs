@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using ExtensionMethods;
 
 public static class Utils
 {
@@ -280,6 +281,7 @@ public static class Utils
 	{
 		string boldOpen = pBold ? "<b>" : "";
 		string boldClose = pBold ? "</b>" : "";
-		return  $"{boldOpen}<color=#{UnityEngine.ColorUtility.ToHtmlStringRGB(pColor)}>{pText}</color>{boldClose}";
+		return  $"{boldOpen}{pText.Colorify(pColor)}{boldClose}";
 	}
 }
+
