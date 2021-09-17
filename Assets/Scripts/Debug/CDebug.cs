@@ -124,6 +124,9 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] EPlayerType _ExtraPlayerAtStart;
 	public EPlayerType ExtraPlayerAtStart => release ? EPlayerType.None : _ExtraPlayerAtStart;
 
+	[SerializeField] EPlayerType _ExtraPlayerAtStart2;
+	public EPlayerType ExtraPlayerAtStart2 => release ? EPlayerType.None : _ExtraPlayerAtStart2;
+
 	internal void Reset()
 	{
 		Debug.Log("RESET");

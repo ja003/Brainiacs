@@ -52,7 +52,7 @@ MonoBehaviour:
   _debugPlayerNumber: 1
   _Hero: 2
   _ExtraPlayerWeapon: 50
-  _Shield: 1
+  _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
   _InstaKill: 0
@@ -73,10 +73,11 @@ MonoBehaviour:
   _NonAggressiveAi: 0
   _AiDebugMove: 0
   _PassiveAi: 1
-  _SkipTutorial: 0
+  _SkipTutorial: 1
   _ForceTutorial: 0
   _InstaAnimation: 1
   _OpenMenu: 1
-  _InstaReady: 0
-  _ExtraPlayerAtStart: 2
+  _InstaReady: 1
+  _ExtraPlayerAtStart: 0
+  _ExtraPlayerAtStart2: 0
   pushForce: 15

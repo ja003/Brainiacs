@@ -9,7 +9,7 @@ public class MapPhoton : PhotonMessenger
 
 	protected override bool CanSend(EPhotonMsg pMsgType)
 	{
-		if(pMsgType == EPhotonMsg.Map_Obstackle_DoCollisionEffect)
+		if(pMsgType == EPhotonMsg.Map_Obstacle_DoCollisionEffect)
 			return true;
 
 		return false;
@@ -19,10 +19,10 @@ public class MapPhoton : PhotonMessenger
 	{
 		switch(pReceivedMsg)
 		{
-			case EPhotonMsg.Map_Obstackle_DoCollisionEffect:
-				int obstackleId = (int)pParams[0];
-				MapObstackle obstackle = game.Map.GetObstackle(obstackleId);
-				obstackle.DoCollisionEffect(true);
+			case EPhotonMsg.Map_Obstacle_DoCollisionEffect:
+				int obstacleId = (int)pParams[0];
+				MapObstacle obstacle = game.Map.GetObstacle(obstacleId);
+				obstacle.DoCollisionEffect(true);
 				break;
 
 			default:

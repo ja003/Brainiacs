@@ -17,7 +17,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 	//move is requested - move key is pressed
 	public bool IsMoving { get; private set; }
 	//did player physically moved since last update
-	// - move might be requested, but there might be obstackle in the way
+	// - move might be requested, but there might be obstacle in the way
 	private bool isActualyMoving;
 
 	const float SYNC_POS_INTERVAL = 0.1f;

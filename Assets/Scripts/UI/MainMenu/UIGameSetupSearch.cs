@@ -58,6 +58,11 @@ public class UIGameSetupSearch : MainMenuController
 
 	private void OnClickJoinRandomGame()
 	{
+		Debug.Log($"CountOfRooms = {PhotonNetwork.CountOfRooms}");
+		Debug.Log($"CountOfPlayersOnMaster = {PhotonNetwork.CountOfPlayersOnMaster}");
+		Debug.Log($"CountOfPlayers = {PhotonNetwork.CountOfPlayers}");
+
+		//Fail is handled in PhotonManager::OnJoinRandomFailed
 		DoInTime(() => brainiacs.PhotonManager.JoinRandomRoom(mainMenu.SetupMain.OnKickedOut), 0.5f);
 		//brainiacs.PhotonManager.JoinRandomRoom(mainMenu.SetupMain.OnKickedOut);
 		//txtStatus.text = "Joining random game";

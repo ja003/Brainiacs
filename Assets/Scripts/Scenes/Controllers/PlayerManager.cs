@@ -27,11 +27,6 @@ public class PlayerManager : GameController
 		brainiacs.PhotonManager.OnPlayerLeft += OnPlayerLeftRoom;
 	}
 
-	public void debug_OnPlayerLeftRoom()
-	{
-		Debug.Log("debug_OnPlayerLeftRoom");
-		OnPlayerLeftRoom(GetPlayer(1).InitInfo.PhotonPlayer);
-	}
 
 	/// <summary>
 	/// Player disconnected -> remove him.
@@ -74,7 +69,7 @@ public class PlayerManager : GameController
 				Debug.Log("Ending game, no other player!");
 				game.GameEnd.EndGame();
 			}
-		}		
+		}
 	}
 
 	protected override void OnMainControllerActivated()
@@ -91,20 +86,12 @@ public class PlayerManager : GameController
 			//game.Map.SetOnActivated(() =>
 			//		DoInTime(() => SpawnPlayers(brainiacs.GameInitInfo.Players), 2));
 		}
+
+		OnAllPlayersAdded.AddAction(() => { game.PlayerActivityChecker.Init(Players); });
 	}
 
-	public void btn_debugSpawnPlayer()
-	{
-		SpawnPlayer(brainiacs.GameInitInfo.Players[0], false);
-	}
 
-	public void btn_debugSyncPLayersInfo()
-	{
-		//foreach(var p in Players)
-		//{
-		//	p.debug_SendInitInfo();
-		//}
-	}
+	
 
 	private void SpawnPlayers(List<PlayerInitInfo> pPlayersInfo)
 	{
@@ -205,9 +192,9 @@ public class PlayerManager : GameController
 		}
 
 		Players.Add(pPlayer);
-		Debug.Log("Add player " + pPlayer);
+		//Debug.Log("Add player " + pPlayer);
 		int playersCount = Players.FindAll(a => !a.IsLocalImage).Count;
-		Debug.Log($"- {playersCount}/{Players.Count}");
+		//Debug.Log($"- {playersCount}/{Players.Count}");
 
 		if(playersCount == brainiacs.GameInitInfo.Players.Count)
 		{
@@ -272,7 +259,7 @@ public class PlayerManager : GameController
 	}
 
 	/// <summary>
-	/// Returns all players aother than the given player sorted by the distance to that player
+	/// Returns all players other than the given player sorted by the distance to that player
 	/// </summary>
 	public List<Player> GetOtherPlayers(Player pOtherThan, bool pHasToBeAlive, bool pSortByDistance = true)
 	{
@@ -309,4 +296,24 @@ public class PlayerManager : GameController
 	//	return otherPlayers;
 	//}
 
+
+	public void btn_debugSpawnPlayer()
+	{
+		SpawnPlayer(brainiacs.GameInitInfo.Players[0], false);
+	}
+
+	public void btn_debugSyncPLayersInfo()
+	{
+		//foreach(var p in Players)
+		//{
+		//	p.debug_SendInitInfo();
+		//}
+	}
+
+
+	public void debug_OnPlayerLeftRoom()
+	{
+		Debug.Log("debug_OnPlayerLeftRoom");
+		OnPlayerLeftRoom(GetPlayer(1).InitInfo.PhotonPlayer);
+	}
 }

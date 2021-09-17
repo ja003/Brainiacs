@@ -42,5 +42,5 @@
 	Player_Shield_Hit = 301,
 	Player_Eliminate = 302,
 
-	Map_Obstackle_Hit = 400,
+	Map_Obstacle_Hit = 400,
 }

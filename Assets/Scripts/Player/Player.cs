@@ -186,7 +186,7 @@ public class Player : PoolObjectNetwork, IOwner
 	public override string ToString()
 	{
 		int number = InitInfo == null ? -1 : InitInfo.Number;
-		return $"{number}_{gameObject.name} {Photon}";
+		return $"{number}_{gameObject.name}";// {Photon}";
 	}
 
 	public override bool Equals(object obj)

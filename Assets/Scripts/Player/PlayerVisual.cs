@@ -107,6 +107,16 @@ public class PlayerVisual : PlayerBehaviour
 	}
 
 	/// <summary>
+	/// Animation: fade in+out player's color.
+	/// note: alpha is not possible with Palette material.
+	/// </summary>
+	public void Blink()
+	{
+		LeanTween.color(gameObject, Color.black, 0.1f).setOnComplete(
+			() => LeanTween.color(gameObject, Color.white, 0.1f));
+	}
+
+	/// <summary>
 	/// Clones have darker color
 	/// </summary>
 	internal void SetCloneColor()

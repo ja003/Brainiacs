@@ -11,6 +11,7 @@ public class Game : CSingleton<Game>
 
 	[SerializeField] public MapController Map;
 	[SerializeField] public PlayerManager PlayerManager;
+	[SerializeField] public PlayerActivityChecker PlayerActivityChecker;
 	[SerializeField] public ProjectileManager ProjectileManager;
 	[SerializeField] public UIPlayerStatusManager PlayerStatusManager;
 	[SerializeField] public MobileInput MobileInput;
@@ -27,6 +28,7 @@ public class Game : CSingleton<Game>
 	[SerializeField] public TutorialGameController Tutorial;
 
 	[SerializeField] public GameAudioSource AudioSourcePrefab;
+	[SerializeField] public UIPrompt Prompt;
 
 
 	[SerializeField] public Canvas UiCanvas;

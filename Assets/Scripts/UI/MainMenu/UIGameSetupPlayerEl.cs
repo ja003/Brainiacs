@@ -158,6 +158,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 	{
 		PreInit();
 		gameObject.SetActive(true);
+		gameObject.name = $"Player[{pPlayerNumber}] | {pPlayerType}";
 
 		//master can remove every player (even himself - he wont be able to start game)
 		btnRemove.gameObject.SetActive(IsMaster());
@@ -227,7 +228,8 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		//	pPlayer.PhotonPlayer == PhotonNetwork.LocalPlayer;
 		SetReady(pPlayer.IsReady); //client has to confirm that he is ready
 
-		portraitAnimator.enabled = false;
+		//if PhotonPlayer is null => player is not connected yet => animate portrait
+		portraitAnimator.enabled = pPlayer.PhotonPlayer == null;
 
 		//if LocalPlayer (master) then at first is active for all clients, but disabled if it is not me
 		keySetSwapper.gameObject.SetActive(IsItMe && !PlatformManager.IsMobile());
@@ -398,7 +400,7 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 
 
 	/// <summary>
-	/// Called on master and clients
+	/// Called on master and clients (only for their player)
 	/// </summary>
 	public void OnRemoteConnected(PhotonPlayer pPlayer)
 	{

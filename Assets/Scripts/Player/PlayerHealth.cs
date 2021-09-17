@@ -52,8 +52,25 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		}
 	}
 
+	/// <summary>
+	/// Insta kill is used in multiplayer when user alt-tabs the app on phone.
+	/// reason: game cant run on background and player is not responsive.
+	/// When user opens game his player will be respawned.
+	/// </summary>
+	public bool IsInstaKilled;
+	public void InstaKill()
+	{
+		Debug.Log("InstaKill");
+		if(IsInstaKilled)
+			return;
+
+		IsInstaKilled = true;
+		Die();
+	}
+
 	private void Die()
 	{
+		//Debug.Log("Die");
 		if(IsDying)
 			return;
 
@@ -64,21 +81,38 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		visual.OnDie();
 		stats.OnDie();
 		weapon.OnDie();
-
-		//controlled by animation now
-		//if(stats.LivesLeft > 0)
-		//{
-		//	DoInTime(Respawn, 2);
-		//}
 	}
 
 	public void OnDeadAnimFinished()
 	{
+		//Debug.Log("OnDeadAnimFinished");
+		//if player was instakilled => show prompt
+		if(IsInstaKilled)
+		{
+			Debug.Log($"Player {player} was insta killed => prompt");
+			string warningPrompt = "You were killed because you closed the game during multiplayer." +
+				Environment.NewLine + Environment.NewLine + "<b>DON'T DO THAT!</b>";
+			game.Prompt.Show(warningPrompt, false, InstaRespawn);
+			return;
+		}
 		DoInTime(Respawn, 0.5f);
+	}
+
+	public void InstaRespawn()
+	{
+		Debug.Log("InstaRespawn " + Time.time);
+		if(!IsInstaKilled)
+		{
+			Debug.Log("no need to insta InstaRespawn");
+			return;
+		}
+		Respawn();
+		IsInstaKilled = false;
 	}
 
 	private void Respawn()
 	{
+		Debug.Log("Respawn");
 		if(player.ai.IsTmp)
 		{
 			Debug.Log("AI dont respawn");

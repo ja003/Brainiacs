@@ -44,11 +44,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		OnKickedOut = null;
 	}
 
+	/// <summary>
+	/// Try to join random room.
+	/// Fail is handled in PhotonManager::OnJoinRandomFailed
+	/// </summary>
 	public void JoinRandomRoom(Action pOnKickedOut)
 	{
 		OnKickedOut = pOnKickedOut;
-		//Debug.Log("JoinRandomRoom");
-		PhotonNetwork.JoinRandomRoom();
+		bool result = PhotonNetwork.JoinRandomRoom();
+		Debug.Log("JoinRandomRoom "+ result);
 	}
 
 
@@ -59,14 +63,18 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		return PhotonNetwork.JoinRoom(pName);
 	}
 
+	/// <summary>
+	/// Creates new room.
+	/// Returns a name of the created room. Empty = not created.
+	/// </summary>
 	public string CreateRoom(int pMaxPLayers, Action<PhotonPlayer> pOnPlayerEntered, Action<PhotonPlayer> pOnPlayerLeft)
 	{
 		string roomName = GenerateRoomName();
 		//Debug.Log($"CreateRoom {roomName}");
-		PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
+		bool wasRoomCreated = PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = (byte)pMaxPLayers }, TypedLobby.Default);
 		OnPlayerEntered = pOnPlayerEntered;
 		OnPlayerLeft = pOnPlayerLeft;
-		return roomName;
+		return wasRoomCreated ? roomName : "";
 	}
 
 	private string GenerateRoomName()
@@ -103,8 +111,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	public override void OnConnectedToMaster()
 	{
 		base.OnConnectedToMaster();
-		Debug.Log($"Connected to master {PhotonNetwork.AppVersion} | {PhotonNetwork.NetworkingClient.AppVersion}");
-
+		Debug.Log($"Connected to master {PhotonNetwork.AppVersion} | {PhotonNetwork.NetworkingClient.AppVersion} | {PhotonNetwork.CloudRegion}. " +
+			$"{Environment.NewLine}" +
+			$"CountOfRooms = {PhotonNetwork.CountOfRooms}");
 
 		PhotonNetwork.JoinLobby();
 	}
@@ -117,7 +126,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 	public override void OnCreatedRoom()
 	{
-		//Debug.Log("OnCreatedRoom");
+		Debug.Log($"OnCreatedRoom. CountOfRooms = {PhotonNetwork.CountOfRooms}");
 		base.OnCreatedRoom();
 	}
 

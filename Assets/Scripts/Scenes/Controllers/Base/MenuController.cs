@@ -20,21 +20,26 @@ public abstract class MenuController : ControllerBehaviour
 			canvasGroup = Holder.AddComponent<CanvasGroup>();
 			Debug.LogWarning($"Add CanvasGroup to {gameObject.name}");
 		}
+
+		//refresh active state (especially blocksRaycasts)
+		SetActive(canvasGroup.alpha > 0);
 	}
 
 	public override void SetActive(bool pValue)
 	{
+		canvasGroup.blocksRaycasts = pValue;
+		canvasGroup.interactable = pValue;
+		
 		if(animator)
-		{
-			canvasGroup.interactable = pValue;
-			canvasGroup.blocksRaycasts = pValue;
 			animator.SetBool("isActive", pValue);
-		}
 		else
-		{
 			canvasGroup.alpha = pValue ? 1 : 0;
-		}
 
+		if(!gameObject.activeSelf)
+		{
+			gameObject.SetActive(true);
+			Debug.LogError($"Menu {gameObject.name} was not active");
+		}
 	}
 
 	public override bool IsActive()

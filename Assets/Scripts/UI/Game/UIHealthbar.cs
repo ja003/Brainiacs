@@ -33,7 +33,7 @@ public class UIHealthbar : UiBehaviour
 
 	private void Update()
 	{
-		if(!isInited)
+		if(!isInited || Camera.main == null)
 			return;
 
 		if(!brainiacs.PlayerPrefs.ShowHealthbars || !IsVisible)

@@ -28,8 +28,6 @@ public abstract class ControllerBehaviour : BrainiacsBehaviour
 		//Debug.Log($"{gameObject.name} Awake");
 		base.Awake();
 
-
-
 		if(!Holder.activeSelf)
 		{
 			Holder.SetActive(true);

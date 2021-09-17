@@ -53,6 +53,8 @@ public class UIGameSetupMain : MainMenuController
 
 	GameInitInfo gameInitInfo => brainiacs.GameInitInfo;
 
+	[SerializeField] UIPrompt promt;
+
 
 	const int GAME_VALUE_MIN = 1;
 	const int GAME_VALUE_MAX = 10;
@@ -100,7 +102,8 @@ public class UIGameSetupMain : MainMenuController
 			PlayerInitInfo player = pGameInfo.Players[i];
 			AddPlayer(player);
 
-			if(player.PhotonPlayer.IsMasterClient)
+			//PhotonPlayer doesnt have to be assigned (another player hasnt connected yet)
+			if(player.PhotonPlayer != null && player.PhotonPlayer.IsMasterClient)
 				masterPlayer = player.PhotonPlayer;
 		}
 		Debug.Log($"masterPlayer {masterPlayer}");
@@ -184,6 +187,8 @@ public class UIGameSetupMain : MainMenuController
 				AddPlayer(EPlayerType.LocalPlayer);
 				if(debug.ExtraPlayerAtStart != EPlayerType.None)
 					AddPlayer(debug.ExtraPlayerAtStart);
+				if(debug.ExtraPlayerAtStart2 != EPlayerType.None)
+					AddPlayer(debug.ExtraPlayerAtStart2);
 
 				//set default values
 				OnTimeToggled(true);
@@ -259,6 +264,12 @@ public class UIGameSetupMain : MainMenuController
 		int playersCount = GetActivatedPlayers().Count;
 		string roomName = brainiacs.PhotonManager.CreateRoom(playersCount,
 			OnRemotePlayerEnteredRoom, OnRemotePlayerLeftRoom);
+
+		if(roomName.Length == 0)
+		{
+			mainMenu.InfoMessenger.Show("Game couldn't be created:(");
+			return;
+		}
 
 		btnGroupAddPlayer.SetActive(false);
 
@@ -499,6 +510,14 @@ public class UIGameSetupMain : MainMenuController
 			return;
 		}
 
+		//notify player that he is starting a solo game
+		if(gameInitInfo.Players.Count == 1)
+		{
+			promt.Show("Do you really want to play just with yourself?", true, 
+				() => brainiacs.Scenes.LoadScene(EScene.Loading));
+			return;
+		}
+
 		//todo: map info is not yet synced right after change. 
 		//sync it now, clients need map info
 		//brainiacs.SyncGameInitInfo(); //fixed?
@@ -569,6 +588,9 @@ public class UIGameSetupMain : MainMenuController
 		DoInTime(OnBtnBack, 2);
 	}
 
+	/// <summary>
+	/// Called on master
+	/// </summary>
 	private void OnRemotePlayerEnteredRoom(PhotonPlayer pPlayer)
 	{
 		List<UIGameSetupPlayerEl> availableRemotes = GetAvailableRemotePlayers();

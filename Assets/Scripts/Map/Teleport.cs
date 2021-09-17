@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MapObstackle
+public class Teleport : MapObstacle
 {
 	[SerializeField] Teleport linkedTeleport;
 	[SerializeField] Transform OutPosition;

@@ -8,15 +8,15 @@ using UnityEngine;
 /// </summary>
 public class UIInfoMessengerGame : UIInfoMessenger
 {
-    protected override bool CanShow()
-    {
-        return !Game.Instance.GameEnd.GameEnded;
-    }
+	protected override bool CanShow()
+	{
+		return !Game.Instance.GameEnd.GameEnded;
+	}
 
-    protected override UIInfoMessage InstantiateInfoMsg()
-    {
+	protected override UIInfoMessage InstantiateInfoMsg()
+	{
 		UIInfoMessage infoMessage = InstanceFactory.Instantiate(infoMessagePrefab.gameObject).GetComponent<UIInfoMessage>();
 		infoMessage.OnInstantiate(transform);
 		return infoMessage;
-    }
+	}
 }

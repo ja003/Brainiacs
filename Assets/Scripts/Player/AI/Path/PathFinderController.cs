@@ -145,7 +145,7 @@ public class PathFinderController : GameBehaviour
 	/// </summary>
 	public static bool OverlapsWithMapObject(Vector2 pPoint)
 	{
-		//add DIST_CHECK_TOLERANCE so the player doesnt get stack when close to some obstackle
+		//add DIST_CHECK_TOLERANCE so the player doesnt get stack when close to some obstacle
 		Vector2 playerOverlapSize = playerSize + Vector2.one * AiMovement.DIST_CHECK_TOLERANCE / 2;
 		Collider2D overlaps = Physics2D.OverlapBox(pPoint, playerOverlapSize, 0, Layers.UnwalkableObject);
 		if(overlaps)

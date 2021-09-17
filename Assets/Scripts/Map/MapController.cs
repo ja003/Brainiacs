@@ -10,8 +10,8 @@ public class MapController : GameController
 	[SerializeField] public MapItemManager Items;
 	[SerializeField] public MapPhoton Photon;
 
-	//all obstackles on map defined by their name-hash
-	Dictionary<int, MapObstackle> obstackles = new Dictionary<int, MapObstackle>();
+	//all obstacles on map defined by their name-hash
+	Dictionary<int, MapObstacle> obstacles = new Dictionary<int, MapObstacle>();
 
 	[SerializeField] public PathFinderController PathFinder;
 
@@ -89,32 +89,32 @@ public class MapController : GameController
 		SetActive(true);
 	}
 
-	/// OBSTACKLES
+	/// OBSTACLES
 
-	internal void RegisterObstackle(MapObstackle pObstackle)
+	internal void RegisterObstacle(MapObstacle pObstacle)
 	{
-		int id = pObstackle.gameObject.name.GetHashCode();// Utils.GenerateHash(pObstackle.gameObject.name);
-		if(obstackles.ContainsKey(id))
+		int id = pObstacle.gameObject.name.GetHashCode();// Utils.GenerateHash(pObstacle.gameObject.name);
+		if(obstacles.ContainsKey(id))
 		{
-			Debug.LogError($"Obstackle {pObstackle.gameObject.name} already registered. Name has to be unique");
+			Debug.LogError($"Obstacle {pObstacle.gameObject.name} already registered. Name has to be unique");
 			return;
 		}
-		//Debug.Log($"RegisterObstackle {pObstackle.gameObject.name} = {id}");
-		obstackles.Add(id, pObstackle);
+		//Debug.Log($"RegisterObstacle {pObstacle.gameObject.name} = {id}");
+		obstacles.Add(id, pObstacle);
 	}
 
 
-	internal void UnregisterObstackle(MapObstackle pObstackle)
+	internal void UnregisterObstacle(MapObstacle pObstacle)
 	{
-		obstackles.Remove(pObstackle.gameObject.name.GetHashCode());
+		obstacles.Remove(pObstacle.gameObject.name.GetHashCode());
 	}
 
-	internal MapObstackle GetObstackle(int pId)
+	internal MapObstacle GetObstacle(int pId)
 	{
-		MapObstackle result;
-		obstackles.TryGetValue(pId, out result);
+		MapObstacle result;
+		obstacles.TryGetValue(pId, out result);
 		if(!result)
-			Debug.LogError($"Obstackle {pId} not found");
+			Debug.LogError($"Obstacle {pId} not found");
 		return result;
 	}
 }

@@ -218,6 +218,7 @@ public enum EPhotonMsg
 	Game_PlayerStatus_Health,
 
 	Game_Lighting_SetMode,
+	Game_PlayerActivitySignal,
 
 	//Main menu
 	MainMenu_SyncGameInfo,
@@ -290,6 +291,6 @@ public enum EPhotonMsg
 	//MapItem_ReturnToPool,
 
 	//Map
-	Map_Obstackle_DoCollisionEffect,
+	Map_Obstacle_DoCollisionEffect,
 	
 }

@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapObstackle : MapObject
+public class MapObstacle : MapObject
 {
 	private void OnEnable()
 	{
-		game.Map.RegisterObstackle(this);
+		game.Map.RegisterObstacle(this);
 	}
 	private void OnDisable()
 	{
 		//we have to do unregister because of debug - when some map is already present in scene
 		if(Game.IsInstantiated)
-			game.Map.UnregisterObstackle(this);
+			game.Map.UnregisterObstacle(this);
 	}
 
 	protected override void OnDestroyed()
 	{
 		//todo: or should it be destroyable?
 		//if so => play destroy animation + implement health states visual
-		Debug.LogError("Obstackle shouldnt be destroyed");
+		Debug.LogError("Obstacle shouldnt be destroyed");
 	}
 
 	protected override void OnCollisionEffect(int pDamage, GameObject pOrigin)
@@ -37,9 +37,9 @@ public class MapObstackle : MapObject
 	/// </summary>
 	public void DoCollisionEffect(bool pIsRPC)
 	{
-		brainiacs.AudioManager.PlaySound(ESound.Map_Obstackle_Hit, audioSource);
+		brainiacs.AudioManager.PlaySound(ESound.Map_Obstacle_Hit, audioSource);
 		if(!pIsRPC)
-			game.Map.Photon.Send(EPhotonMsg.Map_Obstackle_DoCollisionEffect, name.GetHashCode());
+			game.Map.Photon.Send(EPhotonMsg.Map_Obstacle_DoCollisionEffect, name.GetHashCode());
 	}
 
 }

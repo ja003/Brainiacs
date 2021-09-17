@@ -9,6 +9,7 @@ public class UIPlayerInfoElement : UiBehaviour
 {
 	[SerializeField] private Image portrait = null;
 	[SerializeField] private Image portraitBg = null;
+	[SerializeField] private Image badConnection = null;
 	[SerializeField] public Image weapon = null;
 	[SerializeField] private Image frame = null;
 	[SerializeField] public Text health = null;
@@ -16,7 +17,7 @@ public class UIPlayerInfoElement : UiBehaviour
 
 	private void Update()
 	{
-		if(Time.time < 0.1f)
+		if(Time.timeSinceLevelLoad < 0.1f)
 			return;
 
 		if(activeWeapon == EWeaponId.None)
@@ -78,6 +79,20 @@ public class UIPlayerInfoElement : UiBehaviour
 		game.Lighting.RegisterForLighting(portrait);
 		game.Lighting.RegisterForLighting(frame);
 		//game.Lighting.RegisterForLighting(weapon); //controlled in Update
+
+		//we are interested only in remote players
+		bool isRemotePlayer = brainiacs.GameInitInfo.IsMultiplayer() && !pPlayer.InitInfo.PhotonPlayer.IsLocal;
+		if(game.PlayerActivityChecker.debug_includeLocalPlayers || isRemotePlayer)
+			DoInTime(() => UpdateConnection(pPlayer), 2);
+	}
+
+	/// <summary>
+	/// Refresh bad connection icon visibility
+	/// </summary>
+	private void UpdateConnection(Player pPlayer)
+	{
+		badConnection.enabled = game.PlayerActivityChecker.IsInactiveShortly(pPlayer);
+		DoInTime(() => UpdateConnection(pPlayer), 0.5f);
 	}
 
 	private void OnPlayerStatsChange(PlayerStats pStats)

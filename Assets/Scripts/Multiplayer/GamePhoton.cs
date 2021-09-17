@@ -67,6 +67,10 @@ public class GamePhoton : PhotonMessenger
 				game.PlayerStatusManager.ShowHealth(worldPosition, pIncrement, false);
 				break;
 
+			case EPhotonMsg.Game_PlayerActivitySignal:
+				PhotonPlayer sender = PhotonNetwork.CurrentRoom.GetPlayer((int)pParams[0]);
+				game.PlayerActivityChecker.OnReceiveSignal(sender);
+				break;
 			default:
 				Debug.LogError("Message not handled");
 				break;
