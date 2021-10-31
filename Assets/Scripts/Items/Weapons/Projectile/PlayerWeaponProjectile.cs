@@ -18,11 +18,11 @@ public class PlayerWeaponProjectile : PlayerWeapon
 	public PlayerWeaponProjectile(
 		Player pOwner,
 		HeroBasicWeaponConfig pConfig) :
-		base(pOwner, pConfig.Id, 
-			new InHandWeaponInfo(true),
+		base(pOwner, pConfig.Id,
+			pConfig.InHandWeaponInfo,
 			pConfig.VisualInfo)
 	{
-		ProjectileInfo = new ProjectileWeaponInfo(pConfig);
+		ProjectileInfo = pConfig.ProjectileWeaponInfo;
 	}
 
 	public override EWeaponUseResult Use()

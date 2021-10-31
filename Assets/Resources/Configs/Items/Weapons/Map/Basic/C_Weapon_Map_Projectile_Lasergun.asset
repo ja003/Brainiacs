@@ -32,9 +32,9 @@ MonoBehaviour:
     StatusSprite: {fileID: 21300000, guid: 58273261d5f79a44db07cf6cf24c7730, type: 3}
     StatusText: lasergun
   InHandWeaponInfo:
-    Ammo: 20
+    Ammo: 4
     Magazines: 3
-    Cooldown: 3
-    Cadency: 0.5
+    Cooldown: 5
+    Cadency: 0.7
   ProjectileInfo:
     Projectile: {fileID: 11400000, guid: eb0fb3becfdc4e04ca06957e72552e82, type: 2}

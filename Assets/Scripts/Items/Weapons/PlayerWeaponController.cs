@@ -24,7 +24,7 @@ public class PlayerWeaponController : PlayerBehaviour
 
 	public void OnDie()
 	{
-		StopUseWeapon();
+		StopUseWeapon(false);
 	}
 
 	public void OnPowerUpAmmo()
@@ -99,11 +99,11 @@ public class PlayerWeaponController : PlayerBehaviour
 		SetActiveWeapon(activeWeaponIndex + 1);
 	}
 
-	public void StopUseWeapon()
+	public void StopUseWeapon(bool pIsUserInput)
 	{
 		if(IsLogEnabled())
 			Debug.Log("StopUseWeapon");
-		ActiveWeapon?.StopUse();
+		ActiveWeapon?.StopUse(pIsUserInput);
 	}
 
 	internal PlayerWeapon GetWeapon(EWeaponId pWeaponId)
@@ -127,7 +127,7 @@ public class PlayerWeaponController : PlayerBehaviour
 		{
 			//Debug.Log($"{activeWeapon} cant be used");
 			//TODO: play CANT_USE sound
-			StopUseWeapon();
+			StopUseWeapon(false);
 			return;
 		}
 		//Debug.Log($"{activeWeapon} USE");
@@ -140,7 +140,7 @@ public class PlayerWeaponController : PlayerBehaviour
 	public void ShootProjectile(ProjectileWeaponInfo pProjectile)
 	{
 		game.ProjectileManager.SpawnProjectile(
-				GetProjectileStartPosition(movement.CurrentEDirection),
+				GetProjectileStartPosition(pProjectile),
 				player, pProjectile.Projectile);
 
 		player.LocalImage?.WeaponController.ShootProjectile(pProjectile);
@@ -151,11 +151,11 @@ public class PlayerWeaponController : PlayerBehaviour
 		switch(pUseResult)
 		{
 			case EWeaponUseResult.Reload:
-				StopUseWeapon();
+				StopUseWeapon(true);
 				StartReloadWeapon(ActiveWeapon);
 				break;
 			case EWeaponUseResult.Remove:
-				StopUseWeapon();
+				StopUseWeapon(true);
 				RemoveWeapon(ActiveWeapon);
 				break;
 		}
@@ -204,9 +204,10 @@ public class PlayerWeaponController : PlayerBehaviour
 		return projectileStartRight;
 	}
 
-	private Vector2 GetProjectileStartPosition(EDirection pDirection)
+	private Vector2 GetProjectileStartPosition(ProjectileWeaponInfo pProjectile)
 	{
-		return GetProjectileStart(pDirection).position;
+		Vector3 projectileStart = GetProjectileStart(movement.CurrentEDirection).position;
+		return Utils.GetVector2(projectileStart) + pProjectile.GetProjectileStartOffset(movement.CurrentEDirection);
 	}
 
 	public void SetDefaultWeaponActive()
@@ -251,8 +252,8 @@ public class PlayerWeaponController : PlayerBehaviour
 	private void SetActiveWeapon(int pIndex)
 	{
 		//stop using weapon before swap 
-		//needed eg. when ai is swaping from DaVinci tank, flamethrower
-		StopUseWeapon();
+		//needed eg. when ai is swapping from DaVinci tank, flamethrower
+		StopUseWeapon(false);
 
 		pIndex = pIndex % weapons.Count;
 

@@ -178,9 +178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendActivateMsg: 1
   sendDeactivateMsg: 0
-  pushForce: 8
+  pushForce: 15
   InstanceOnEveryUse: 1
-  damage: 50
+  damageNobel: 80
+  damageNormal: 60
+  activationDelay: 0.2
   mineSprite: {fileID: 1651846596320159259}
   explosionSprite: {fileID: 1248743382}
 --- !u!114 &1093813226932518741

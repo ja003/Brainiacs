@@ -46,9 +46,7 @@ public class SpecialEinsteinExplosion : BrainiacsBehaviour
 		bool isItOwner = collision.gameObject == owner.gameObject;
 		float damage = isItOwner ? 0 : Mathf.Lerp(bomb.MaxDamage / 10f, bomb.MaxDamage, factor);
 
-		Vector3 push = (collision.transform.position - transform.position).normalized
-			* bomb.PushForce
-			* (factor + 0.5f);
+		Vector3 push = bomb.GetPush(collision.transform) * (factor + 0.5f);
 		//Debug.Log($"push force {factor} = {push.magnitude}");
 		handler.OnCollision((int)damage, owner, gameObject,	push);
 

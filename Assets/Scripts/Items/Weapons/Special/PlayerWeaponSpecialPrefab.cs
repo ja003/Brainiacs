@@ -8,8 +8,8 @@ using UnityEngine.Serialization;
 
 public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 {
+	//some special weapon have push ability (bomb, mine, tank, ..)
 	[SerializeField] protected float pushForce;
-	public float PushForce => pushForce;
 
 	protected Player owner { get; private set; }
 	public void debug_AssignOwner(Player pOwner)
@@ -154,7 +154,7 @@ public abstract class PlayerWeaponSpecialPrefab : PoolObjectNetwork
 		return boxCollider2D;
 	}
 
-	protected Vector2 GetPush(Transform pTarget)
+	public Vector2 GetPush(Transform pTarget)
 	{
 		return (pTarget.position - transform.position).normalized * pushForce;
 	}

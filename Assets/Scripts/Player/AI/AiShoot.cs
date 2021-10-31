@@ -81,7 +81,7 @@ public class AiShoot : AiGoalController
 		if(brain.CurrentGoal != this)
 		{
 			//Debug.Log($"No shoot. {brain.CurrentGoal}");
-			player.WeaponController.StopUseWeapon();
+			player.WeaponController.StopUseWeapon(true);
 			return;
 		}
 		EvaluateWeaponUsage();
@@ -89,7 +89,7 @@ public class AiShoot : AiGoalController
 		if(isUseWeaponRequested)
 			player.WeaponController.UseWeapon();
 		else
-			player.WeaponController.StopUseWeapon();
+			player.WeaponController.StopUseWeapon(true);
 	}
 
 
@@ -98,7 +98,8 @@ public class AiShoot : AiGoalController
 		if(debug.NonAggressiveAi)
 			return null;
 
-		Player closestPlayer = game.PlayerManager.GetClosestPlayerTo(player);
+		//ignore brain.Owner (valid for Tesla clone)
+		Player closestPlayer = game.PlayerManager.GetClosestPlayerTo(player, brain.Owner);
 		return closestPlayer;
 		//return closestPlayer.Stats.IsShielded ? closestPlayer : null;
 	}
@@ -130,13 +131,13 @@ public class AiShoot : AiGoalController
 
 	private void EvaluateWeaponUsage()
 	{
-		//if player is stil targeted, request weapon usage
+		//if player is still targeted, request weapon usage
 		//but only if he is not shielded
 		isUseWeaponRequested = targetedPlayer != null && !targetedPlayer.Stats.IsShielded;
 
 		//dont use weapon immediately after weapon swap
 		if(Time.time - weaponPicker.LastTimeSwapWeapon < 0.2f)
-			isUseWeaponRequested = true;
+			isUseWeaponRequested = false;
 
 		if(!isUseWeaponRequested)
 			return;
@@ -195,7 +196,7 @@ public class AiShoot : AiGoalController
 	{
 		//Debug.Log("OnDirectionChange  + pDirection");
 		isUseWeaponRequested = false;
-		player.WeaponController.StopUseWeapon();
+		player.WeaponController.StopUseWeapon(false);
 	}
 
 	private Vector2 GetMoveTarget()

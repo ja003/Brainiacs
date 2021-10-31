@@ -786,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4073516073752642879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5104105597103764835}
@@ -1379,11 +1379,6 @@ MonoBehaviour:
   handsRight: {fileID: 1921905453}
   paletteSwap: {fileID: 1489477447}
   light: {fileID: 7303758672481910482}
-  lightColor_Red: {r: 1, g: 0, b: 0, a: 1}
-  lightColor_Green: {r: 0, g: 1, b: 0, a: 1}
-  lightColor_Blue: {r: 0, g: 0, b: 1, a: 1}
-  lightColor_Yellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  lightColor_Pink: {r: 1, g: 0, b: 1, a: 1}
   IsDying: 0
   PlayerInfo: {fileID: 0}
   Scoreboard: {fileID: 0}
@@ -1439,6 +1434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   Healthbar: {fileID: 0}
+  IsInstaKilled: 0
   MyTank: {fileID: 0}
   CloneHealth: 3
 --- !u!114 &8791258408710402016
@@ -1538,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  CloneCounter: 0
+  debug_CloneCounter: 0
   Owner: {fileID: 0}
 --- !u!114 &-4499410442952435621
 MonoBehaviour:

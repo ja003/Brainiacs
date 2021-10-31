@@ -21,10 +21,10 @@ public class SpecialFlamethrower : PlayerWeaponSpecial
 		base.OnUse();
 	}
 
-	public override void StopUse()
+	public override void StopUse(bool pIsUserInput)
 	{
 		flame.StopUse();
-		base.StopUse();
+		base.StopUse(pIsUserInput);
 	}
 
 	float lastTimeChangeDirection;

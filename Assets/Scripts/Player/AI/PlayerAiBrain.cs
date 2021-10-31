@@ -8,7 +8,13 @@ public class PlayerAiBrain : PlayerBehaviour
 	bool isInited;
 
 	//Tesla clone is temporary
+	//note: Clones ignore each other, because we dont keep any info about them
+	//		and it would be complicated to sync this.
+	//		They also ignore their Owner.
 	public bool IsTmp { get; internal set; }
+	public int debug_CloneCounter;
+	//owner of this AI (eg. of Tesla clone - the player who summoned it)
+	public Player Owner;
 
 	//currently active goal
 	public AiGoalController CurrentGoal { get; private set; }
@@ -22,11 +28,6 @@ public class PlayerAiBrain : PlayerBehaviour
 	//[SerializeField]
 	//[Range(0.1f, 1)]
 	float evaluation_frequency = .2f;
-
-	public int CloneCounter;
-
-	//owner of this AI (eg. of Tesla clone)
-	public Player Owner;
 
 	public void Init()
 	{

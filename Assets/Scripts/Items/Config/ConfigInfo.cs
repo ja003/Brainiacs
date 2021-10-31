@@ -12,16 +12,17 @@ public struct InHandWeaponInfo
 	public float Cooldown;
 	public float Cadency;
 
-	public InHandWeaponInfo(bool pHeroBasic) : this()
-	{
-		if(pHeroBasic)
-		{
-			Ammo = 15;
-			Magazines = 666;
-			Cooldown = 1;
-			Cadency = 0.2f;
-		}
-	}
+	//edit: InHandWeaponInfo added to HeroBasicWeaponConfig
+	//public InHandWeaponInfo(bool pHeroBasic) : this()
+	//{
+	//	if(pHeroBasic)
+	//	{
+	//		Ammo = 15;
+	//		Magazines = 666;
+	//		Cooldown = 1;
+	//		Cadency = 0.2f;
+	//	}
+	//}
 }
 
 [Serializable]
@@ -45,7 +46,7 @@ public struct InHandWeaponVisualInfo
 public struct MapItemInfo
 {
 	public Sprite MapSprite;
-	public Sprite StatusSprite; //icon that will apear after item is picked up
+	public Sprite StatusSprite; //icon that will appear after item is picked up
 	public string StatusText;
 }
 
@@ -63,12 +64,34 @@ public struct ProjectileWeaponInfo
 {
 	public ProjectileConfig Projectile;
 
+	[SerializeField] Vector2 ProjectileStartUpOffset;
+	[SerializeField] Vector2 ProjectileStartRightOffset;
+	[SerializeField] Vector2 ProjectileStartDownOffset;
+	[SerializeField] Vector2 ProjectileStartLeftOffset;
+
+	public Vector2 GetProjectileStartOffset(EDirection pDirection)
+	{
+		switch(pDirection)
+		{
+			case EDirection.Up:
+				return ProjectileStartUpOffset;
+			case EDirection.Right:
+				return ProjectileStartRightOffset;
+			case EDirection.Down:
+				return ProjectileStartDownOffset;
+			case EDirection.Left:
+				return ProjectileStartLeftOffset;
+		}
+		Debug.LogError("invalid direction");
+		return Vector2.zero;
+	}
+
 	/// <summary>
 	/// Hero basic projectile info is in hero weapon config
 	/// </summary>
 	public ProjectileWeaponInfo(HeroBasicWeaponConfig pConfig) : this()
 	{
-		Projectile = pConfig.Projectile;
+		Projectile = pConfig.ProjectileWeaponInfo.Projectile;
 
 		//CHANGE: hero projectiles may differ
 

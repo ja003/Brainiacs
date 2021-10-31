@@ -51,7 +51,8 @@ MonoBehaviour:
   InstanceOnEveryUse: 0
   playerPrefab: {fileID: 4342295620933284857, guid: f9b95b1eafc36194c839127ec1aecca6,
     type: 3}
-  CLONE_DURATION: 50
+  CLONE_DURATION: 12
+  CLONE_HEALTH: 5
 --- !u!114 &2889494709584842552
 MonoBehaviour:
   m_ObjectHideFlags: 0

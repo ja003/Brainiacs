@@ -22,6 +22,9 @@ public class PlayerItemController : PlayerBehaviour
 
 	private void AddWeapon(EWeaponId pWeapon)
 	{
+		if(pWeapon == EWeaponId.None)
+			return;
+
 		switch(brainiacs.ItemManager.GetWeaponCathegory(pWeapon))
 		{
 			case EWeaponCathegory.None:

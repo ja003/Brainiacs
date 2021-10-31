@@ -15,6 +15,6 @@ MonoBehaviour:
   WeaponId: 202
   Visual: {fileID: 4368598850437483052, guid: 3c0f218eee0dc154ea1b663a5df2b846, type: 3}
   Damage: 5
-  Speed: 2
-  Dispersion: 0.5
-  PushForce: 0.5
+  Speed: 3.5
+  Dispersion: 0.7
+  PushForce: 3

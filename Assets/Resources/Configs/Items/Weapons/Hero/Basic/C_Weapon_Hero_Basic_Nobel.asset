@@ -22,5 +22,19 @@ MonoBehaviour:
       type: 3}
     PlayerSpriteLeft: {fileID: 8704817214131591902, guid: e3614908febc5fc468cdb0a9de72c1cf,
       type: 3}
+    DisableHandsUp: 0
+    DisableHandsRight: 0
+    DisableHandsDown: 0
+    DisableHandsLeft: 0
     InfoSprite: {fileID: 21300000, guid: 8864959039f549d4fa39db2ea0bf5873, type: 3}
-  Projectile: {fileID: 11400000, guid: 202cf18ed82120c49966385cd92471b7, type: 2}
+  ProjectileWeaponInfo:
+    Projectile: {fileID: 11400000, guid: 202cf18ed82120c49966385cd92471b7, type: 2}
+    ProjectileStartUpOffset: {x: 0, y: 0}
+    ProjectileStartRightOffset: {x: -0.15, y: 0.1}
+    ProjectileStartDownOffset: {x: 0, y: 0}
+    ProjectileStartLeftOffset: {x: 0.15, y: 0.1}
+  InHandWeaponInfo:
+    Ammo: 10
+    Magazines: 666
+    Cooldown: 4
+    Cadency: 0.1

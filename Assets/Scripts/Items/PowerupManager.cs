@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
+using MysteryChance = WeightedChanceParam;
 
 public static class PowerupManager
 {
@@ -34,20 +32,25 @@ public static class PowerupManager
 				pPlayer.Stats.AddHealth(20);
 				sound = ESound.Item_Powerup_Heal;
 				break;
+
 			case EPowerUp.Ammo:
 				pPlayer.WeaponController.OnPowerUpAmmo();
 				sound = ESound.Item_Powerup_Ammo;
 				break;
+
 			case EPowerUp.Speed:
 				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, SPEED_DURATION);//, SPEED_VALUE);
 				sound = ESound.Item_Powerup_Speed;
 				break;
+
 			case EPowerUp.Mystery:
 				return HandleMystery(pPlayer);
+
 			case EPowerUp.Shield:
 				pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.Shield, SHIELD_DURATION);
 				sound = ESound.Item_Powerup_Shield;
 				break;
+
 			default:
 				Debug.LogError($"Powerup {pConfig.Type} not handled!");
 				break;
@@ -58,90 +61,74 @@ public static class PowerupManager
 	}
 
 	/// <summary>
-	/// Randomly applies some type of powerup
+	/// Randomly applies some type of powerup.
+	/// Returns the text with outcome description.
 	/// </summary>
 	private static string HandleMystery(Player pPlayer)
 	{
-		const int chance_ammo = 5;
-		const int chance_health = 10;
-		const int chance_speed = 20;
-		const int chance_shield = 30;
-		const int chance_receive_damage = 40;
+		//result of the mystery can be classic powerup, playerEffect or basically anything
+		//so the handle is not very general
 
-		//todo: general method for weighted random
-		const int chance_effect_half_speed = 50;
-		const int chance_effect_double_damage = 60;
-		const int chance_effect_half_damage = 70;
+		EPowerUp powerUp = EPowerUp.None;
+		string outcome = "";
+
+		const int small_chance = 1;
+		const int normal_chance = 2;
+		const int high_chance = 3;
+
+		MysteryChance resultAmmo = new MysteryChance(() => { powerUp = EPowerUp.Ammo; }, normal_chance);
+		MysteryChance resultHealth = new MysteryChance(() => { powerUp = EPowerUp.Health; }, normal_chance);
+		MysteryChance resultSpeed = new MysteryChance(() => { powerUp = EPowerUp.Speed; }, high_chance);
+		MysteryChance resultShield = new MysteryChance(() => { powerUp = EPowerUp.Shield; }, high_chance);
 
 
-		float random = Random.Range(0, chance_effect_half_damage);
-		//Debug.Log($"random = {random}");
-		if(CDebug.Instance.PlayerEffect != EPlayerEffect.None)
-		{
-			switch(CDebug.Instance.PlayerEffect)
-			{
-				case EPlayerEffect.None:
-					break;
-				case EPlayerEffect.DoubleSpeed:
-					break;
-				case EPlayerEffect.HalfSpeed:
-					break;
-				case EPlayerEffect.Shield:
-					break;
-				case EPlayerEffect.DoubleDamage:
-					random = chance_effect_double_damage;
-					break;
-				case EPlayerEffect.HalfDamage:
-					break;
-				default:
-					break;
-			}
-			random -= 1;
-		}
-
-		EPowerUp type = EPowerUp.None;
-
-		if(random < chance_ammo)
-		{
-			type = EPowerUp.Ammo;
-		}
-		else if(random < chance_health)
-		{
-			type = EPowerUp.Health;
-		}
-		else if(random < chance_speed)
-		{
-			type = EPowerUp.Speed;
-		}
-		else if(random < chance_shield)
-		{
-			type = EPowerUp.Shield;
-		}
-		else if(random < chance_receive_damage)
+		MysteryChance resultReceiveDamage = new MysteryChance(() =>
 		{
 			pPlayer.Stats.AddHealth(-20);
 			pPlayer.PlaySound(ESound.Item_Powerup_ReceiveDamage);
-			return "- health";
-		}
-		else if(random < chance_effect_half_speed)
-		{
-			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfSpeed, 5);
-			pPlayer.PlaySound(ESound.Item_Powerup_Slow);
-			return "- speed";
-		}
-		else if(random < chance_effect_double_damage)
+			outcome = "- health";
+		}, small_chance);
+
+		MysteryChance resultHalfSpeed = new MysteryChance(() =>
+		 {
+			 pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfSpeed, 5);
+			 pPlayer.PlaySound(ESound.Item_Powerup_Slow);
+			 outcome = "- speed";
+		 }, small_chance);
+
+		MysteryChance resultDoubleDamage = new MysteryChance(() =>
 		{
 			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleDamage, 5);
 			pPlayer.PlaySound(ESound.Item_Powerup_DoubleDamage);
-			return "+ damage";
-		}
-		else if(random < chance_effect_half_damage)
+			outcome = "+ damage";
+		}, normal_chance);
+
+		MysteryChance resultHalfDamage = new MysteryChance(() =>
 		{
 			pPlayer.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfDamage, 5);
 			pPlayer.PlaySound(ESound.Item_Powerup_HalfDamage);
-			return "- damage";
-		}
+			outcome = "- damage";
+		}, small_chance);
 
-		return ApplyPowerup(Brainiacs.Instance.ItemManager.GetPowerupConfig(type), pPlayer);
+
+		WeightedChanceExecutor weightedChanceExecutor =
+			new WeightedChanceExecutor(
+				resultAmmo,
+				resultHealth,
+				resultSpeed,
+				resultShield,
+				resultReceiveDamage,
+				resultHalfSpeed,
+				resultDoubleDamage,
+				resultHalfDamage
+			);
+
+		weightedChanceExecutor.Execute();
+		if(outcome.Length > 0)
+			return outcome;
+
+
+		return ApplyPowerup(Brainiacs.Instance.ItemManager.GetPowerupConfig(powerUp), pPlayer);
 	}
+
 }

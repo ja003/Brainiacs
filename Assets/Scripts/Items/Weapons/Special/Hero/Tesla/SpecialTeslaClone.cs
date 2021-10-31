@@ -52,7 +52,7 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 
 		cloneInstance.SetActive(true);
 		cloneInstance.ai.Owner = owner;
-		cloneInstance.gameObject.name += "_" + owner.ai.CloneCounter++;
+		cloneInstance.gameObject.name += "_" + owner.ai.debug_CloneCounter++;
 
 		//store reference and pass to Destroy function.
 		//reason: another clone might have been instanced before this one is destroyed

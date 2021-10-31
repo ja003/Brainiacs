@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapItemManager : GameBehaviour
 {
-    [SerializeField] MapItemGenerator generator = null;
+    [SerializeField] public MapItemGenerator generator = null;
 
     public List<MapItem> ActiveItems = new List<MapItem>();
 

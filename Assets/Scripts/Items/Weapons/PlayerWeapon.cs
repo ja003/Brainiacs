@@ -29,7 +29,7 @@ public abstract class PlayerWeapon
 		Id = pId;
 		Owner = pOwner;
 		AmmoLeft = pInHandInfo.Ammo;
-		MagazinesLeft = pInHandInfo.Magazines;
+		MagazinesLeft = pInHandInfo.Magazines - 1;
 		cadency = pInHandInfo.Cadency;
 
 		Info = pInHandInfo;
@@ -43,7 +43,7 @@ public abstract class PlayerWeapon
 
 	/// <summary>
 	/// Tries to use the weapon and reports about the result.
-	/// - CantUse: weapon is realoading or is disabled (?)
+	/// - CantUse: weapon is reloading or is disabled (?)
 	/// - Remove: after this use there are no magazines left => weapon should be removed
 	/// - Reload: after this use there is no ammo left => weapon should be reloaded
 	/// - OK: weapon can be used
@@ -78,42 +78,60 @@ public abstract class PlayerWeapon
 
 		return EWeaponUseResult.OK;
 	}
-
 	private void OnKeepUse()
 	{
+		if(!is0cadency)
+			return;
 		//if weapon is 0-cadency => reduce ammo every second
-		if(cadency < 0.01f && Time.time - lastAmmoReduceTime > 1)
+		if(Time.time - (wasAmmoReduced ? lastAmmoReduceTime : LastUseStartTime) + usageDuration > 1)
 		{
-			//Debug.Log("keep use - Reduce ammo");
+			//Debug.Log($"{Id} OnKeepUse - Reduce ammo. {usageDuration}, {LastUseStartTime}");
+			usageDuration = 0;
 			AmmoLeft--;
 			lastAmmoReduceTime = Time.time;
+			wasAmmoReduced = true;
 		}
 	}
 
 	//info for 0-cadency weapons
+	bool is0cadency => cadency < 0.01f;
 	float lastAmmoReduceTime;
+	bool wasAmmoReduced;
+	float usageDuration;
 
 	private void OnUseStart()
 	{
-		LastUseStartTime = Time.time;
 		//Debug.Log("OnUseStart");
-		AmmoLeft--;
-		lastAmmoReduceTime = Time.time;
+		LastUseStartTime = Time.time;
+		if(!is0cadency)
+			AmmoLeft--;
+
+		wasAmmoReduced = false;
 		Owner.WeaponController.PlayWeaponUseSound(Id);
+	}
+
+	public virtual void StopUse(bool pIsUserInput)
+	{
+		//if weapon wasnt stopped by player input => it wasnt being used
+		if(pIsUserInput)
+		{
+			//store usageDuration for next use
+			usageDuration += Time.time - (wasAmmoReduced ? lastAmmoReduceTime : LastUseStartTime);
+			//Debug.Log(Id + " usageDuration = " + usageDuration);
+		}
+		//Debug.Log("StopUse");
+		IsUsed = false;
 	}
 
 	public virtual bool CanUse()
 	{
 		bool isCadencyReady = Time.time > LastUseTime + Info.Cadency;
-		return !Owner.Stats.IsDead &&
+		bool isActiveLongEnough = Time.time - setActiveTime > 0.15f; 
+		return 
+			!Owner.Stats.IsDead &&
 			!IsRealoading &&
-			isCadencyReady;
-	}
-
-	public virtual void StopUse()
-	{
-		//Debug.Log("StopUse");
-		IsUsed = false;
+			isCadencyReady &&
+			isActiveLongEnough;
 	}
 
 	/// <summary>
@@ -146,7 +164,7 @@ public abstract class PlayerWeapon
 	/// <summary>
 	/// Instantly reloads the weapon.
 	/// It is expected to have enough magazines.
-	/// The proces is controlled by WeponController
+	/// The process is controlled by WeponController
 	/// </summary>
 	internal void Reload()
 	{
@@ -185,8 +203,11 @@ public abstract class PlayerWeapon
 
 	}
 
+	float setActiveTime;
+
 	public virtual void OnSetActive()
 	{
+		setActiveTime = Time.time;
 	}
 
 

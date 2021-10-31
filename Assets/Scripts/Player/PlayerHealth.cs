@@ -112,10 +112,10 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 	private void Respawn()
 	{
-		Debug.Log("Respawn");
+		//Debug.Log("Respawn");
 		if(player.ai.IsTmp)
 		{
-			Debug.Log("AI dont respawn");
+			//Debug.Log("AI dont respawn");
 			return;
 		}
 
@@ -125,12 +125,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			return;
 		}
 
-		Vector2? respawnPos = game.Map.ActiveMap.GetRandomPosition();
-		if(respawnPos == null)
-		{
-			Debug.Log("Couldnt find good spawn position => spawn at center");
-			respawnPos = Vector2.zero;
-		}
+		Vector2? respawnPos = game.Map.ActiveMap.GetRespawnPosition();
 
 		//todo: generate random position
 		IsDying = false;

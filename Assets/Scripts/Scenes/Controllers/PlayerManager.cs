@@ -278,10 +278,14 @@ public class PlayerManager : GameController
 		return otherPlayers;
 	}
 
-	public Player GetClosestPlayerTo(Player pPlayer, bool pHasToBeAlive = true)
+	public Player GetClosestPlayerTo(Player pPlayer, Player pIgnorePlayer = null, bool pHasToBeAlive = true)
 	{
 		var otherPlayers = GetOtherPlayers(pPlayer, pHasToBeAlive);
-		return otherPlayers.Count > 0 ? otherPlayers[0] : null;
+		if(otherPlayers.Count > 0 && otherPlayers[0] != pIgnorePlayer)
+			return otherPlayers[0];
+		else if(otherPlayers.Count > 1 && otherPlayers[1] != pIgnorePlayer)
+			return otherPlayers[1];
+		return null;
 	}
 
 	/// <summary>

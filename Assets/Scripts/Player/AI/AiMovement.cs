@@ -41,6 +41,16 @@ public class AiMovement : AiController
 
 	float idleDuration;
 
+	public Player TargetedPlayer;
+	Vector2 moveTarget;
+
+	Vector2 lastPathTarget;
+	MovePath path = new MovePath();
+	PathNode currentPathNode;
+
+	int pathCalcId;
+	Astar astar;
+
 	public void Update()
 	{
 		if(Vector2.Distance(lastPos, player.Position2D) < float.Epsilon)
@@ -57,44 +67,16 @@ public class AiMovement : AiController
 		//Utils.DebugDrawCross(playerPosition, Color.red);
 		//Utils.DebugDrawCross(player.transform.position, Color.blue);
 
-
 		if(Time.time < lastMovePauseTime + MOVE_PAUSE)
 			return;
 
-
 		CheckPathProgress();
-
-
-		//if(IsCloseToCurrentPathNode())
-		//{
-		//	//mark node as visited and select the next one
-		//	currentPathNode.visited = true;
-		//	if(path.IsNodeAtStraightPathToTarget(currentPathNode))
-		//	{
-		//		brain.shoot.OnReachedStraightPathToTargetNode();
-		//	}
-
-		//	currentPathNode = path.GetFirstUnvisitedNode();
-		//}
 
 		//try recalculate path
 		if(lastRecalculatePathTime + MIN_RECALCULATE_PATH_FREQUENCY < Time.time)
 		{
 			if(astar != null && player.isActiveAndEnabled)
 				brain.StartCoroutine(RecalculatePath());
-			//if(currentPathNode != null)
-			//{
-			//	EDirection directionToTarget = GetDirectionTo(currentPathNode.point);
-			//	if(directionToTarget != player.Movement.CurrentDirection && !CanChangeDirection())
-			//	{
-			//		Debug.Log("Cant change direction so soon after weapon use");
-			//		return;
-			//	}
-			//	else
-			//	{
-			//		player.Movement.SetMove(directionToTarget);
-			//	}
-			//}
 		}
 		else
 		{
@@ -133,7 +115,7 @@ public class AiMovement : AiController
 					{
 						player.Movement.Stop();
 						currentPathNode = null;
-						path.Clear(); //otherwise he gets stucked
+						path.Clear(); //otherwise he gets stuck
 						brain.Shoot.OnReachedTarget();
 						return;
 					}
@@ -161,9 +143,6 @@ public class AiMovement : AiController
 		if(currentPathNode == null) return false;
 		return IsCloseTo(moveTarget);
 	}
-
-	public Player TargetedPlayer;
-	Vector2 moveTarget;
 
 	public void SetTarget(Vector2 pTarget)
 	{
@@ -200,13 +179,6 @@ public class AiMovement : AiController
 
 		return IsCloseTo(currentPathNode.point);
 	}
-
-	Vector2 lastPathTarget;
-	MovePath path = new MovePath();
-	PathNode currentPathNode;
-
-	int pathCalcId;
-	Astar astar;
 
 	private IEnumerator RecalculatePath()
 	{

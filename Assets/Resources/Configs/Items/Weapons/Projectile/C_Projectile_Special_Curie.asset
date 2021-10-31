@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponId: 101
   Visual: {fileID: 5395878093968645310, guid: c520bd520262b90438928e2489e10b9b, type: 3}
-  Damage: 5
+  Damage: 10
   Speed: 7
   Dispersion: 0
+  PushForce: 0.5

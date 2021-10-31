@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Prefab shared by nobel special weapon and map weapon mine.
+/// Prefab shared by Nobel special weapon and map weapon mine.
 /// Explosion damage is extra if the owner is Nobel.
 /// </summary>
 public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 {
-	[SerializeField] int damage; //base damage. if owner is Nobel => 2 * damage
+	[SerializeField] [Tooltip("Damage if this is Nobel's special weapon")] int damageNobel;
+	[SerializeField] [Tooltip("Damage if this is normal mine")] int damageNormal;
+	[SerializeField] float activationDelay = 0.2f;
 
 	//[SerializeField] Animator mineAnimator = null;
 	[SerializeField] SpriteRenderer mineSprite = null;
@@ -19,8 +21,11 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 
 	bool isExploded;
 
+	float useTime;
+
 	protected override void OnUse()
 	{
+		useTime = Time.time;
 		//Debug.Log(gameObject.name + " OnUse");
 		//spriteRend.enabled = false; //this is just holder, anmator is in child
 		SetActive(true);
@@ -61,6 +66,12 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 		if(isExploded || !isInited)
 			return;
 
+		if(Time.time - useTime < activationDelay)
+		{
+			Debug.Log("Mine cant explode that fast");
+			return;
+		}
+
 		ICollisionHandler handler = collision.GetComponent<ICollisionHandler>();
 		if(handler == null)
 			return;
@@ -80,7 +91,7 @@ public class SpecialNobelMine : PlayerWeaponSpecialPrefab
 			return;
 		}
 
-		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damage * 2 : damage;
+		int finalDamage = owner.InitInfo.Hero == EHero.Nobel ? damageNobel : damageNormal;
 		Transform transform = triggerOrigin != null ? triggerOrigin.transform : collision.GetComponent<Transform>();
 		handler.OnCollision(finalDamage, owner, gameObject, GetPush(transform));
 

@@ -83,7 +83,7 @@ public class PlayerInput : PlayerBehaviour
 		{
 			MobileInput mobileInput = game.MobileInput;
 			mobileInput.btnShoot.OnPressedAction = () => weapon.UseWeapon();
-			mobileInput.btnShoot.OnPointerUpAction = () => weapon.StopUseWeapon();
+			mobileInput.btnShoot.OnPointerUpAction = () => weapon.StopUseWeapon(true);
 			mobileInput.btnSwap.OnPointerDownAction = () => weapon.SwapWeapon();
 
 			mobileInput.moveJoystick.OnUpdateDirection += CalculateMoveJoystick;
@@ -224,7 +224,7 @@ public class PlayerInput : PlayerBehaviour
 			weapon.SwapWeapon();
 
 		if(Input.GetKeyUp(keys.useWeapon) || Input.GetKeyUp(GetJoystickKeyCode(EActionKey.Use)))
-			weapon.StopUseWeapon();
+			weapon.StopUseWeapon(true);
 
 		if(Input.GetKey(keys.useWeapon) || Input.GetKey(GetJoystickKeyCode(EActionKey.Use)))
 			weapon.UseWeapon();
@@ -233,13 +233,13 @@ public class PlayerInput : PlayerBehaviour
 		else if(weapon.ActiveWeapon.IsUsed)
 		{
 			Debug.LogError("Active weapon is still used");
-			weapon.StopUseWeapon();
+			weapon.StopUseWeapon(true);
 		}
 
 	}
 
 	/// <summary>
-	/// Returns KeyCode for use or swap action of physical joystick controller (not the virtal joystick)
+	/// Returns KeyCode for use or swap action of physical joystick controller (not the virtual joystick)
 	/// </summary>
 	private KeyCode GetJoystickKeyCode(EActionKey pAction)
 	{

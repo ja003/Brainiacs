@@ -190,13 +190,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31e5f2e0cc28c04b8d59884ed64d2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendActivateMsg: 1
+  sendDeactivateMsg: 1
   pushForce: 0
   InstanceOnEveryUse: 0
   spriteRend: {fileID: 1217923435359725164}
   collisionDetector: {fileID: 1107499961995651341}
   maxDistance: {fileID: 1592433368}
   minDamage: 1
-  maxDamage: 5
+  maxDamage: 6
 --- !u!95 &720107102228530627
 Animator:
   serializedVersion: 3
@@ -307,7 +309,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 874242211
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 110
   m_Sprite: {fileID: 4974655320942412201, guid: 5eca2ffd12711604284cfdf2737f8e3d,
     type: 3}

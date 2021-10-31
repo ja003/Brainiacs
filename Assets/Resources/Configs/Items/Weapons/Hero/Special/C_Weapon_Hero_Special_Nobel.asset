@@ -31,6 +31,6 @@ MonoBehaviour:
     InHandInfo:
       Ammo: 5
       Magazines: 666
-      Cooldown: 10
+      Cooldown: 20
       Cadency: 1
     Prefab: {fileID: 954417216629635064, guid: 00b3b3353e41d1a4c98db900152f6887, type: 3}

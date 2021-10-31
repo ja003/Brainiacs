@@ -9,7 +9,7 @@ public class Map : GameBehaviour, IPositionValidator
 {
 	[SerializeField] Transform spawnPointsHolder = null;
 	[SerializeField] Transform mapItemGenPosHolder = null;
-	[SerializeField] Transform debug_ItemGenPos = null;
+
 
 	private List<Transform> spawnPoints = new List<Transform>();
 	//positions where map items can be generated
@@ -22,6 +22,8 @@ public class Map : GameBehaviour, IPositionValidator
 
 
 	[SerializeField] bool debug_DrawGrid;
+	[SerializeField] Transform debug_ItemGenPos = null;
+	[SerializeField] Transform debug_Respawnpoint = null;
 
 	protected override void Awake()
 	{
@@ -98,6 +100,20 @@ public class Map : GameBehaviour, IPositionValidator
 	//	lastUsedPos = randIndex;
 	//	return mapItemGenPos[randIndex];
 	//}
+
+	public Vector2 GetRespawnPosition()
+	{
+		if(debug.Respawnpoint)
+			return debug_Respawnpoint.position;
+
+		Vector2? respawnPos = GetRandomPosition();
+		if(respawnPos == null)
+		{
+			Debug.Log("Couldnt find good spawn position => spawn at center");
+			respawnPos = Vector2.zero;
+		}
+		return (Vector2)respawnPos;
+	}
 
 	/// <summary>
 	/// Finds random position on map and returns it if the pCondition is met

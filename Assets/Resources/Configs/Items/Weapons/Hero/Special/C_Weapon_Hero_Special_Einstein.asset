@@ -29,9 +29,9 @@ MonoBehaviour:
     InfoSprite: {fileID: 21300000, guid: 9a625047b0fca2a4b8005472bcef3f9d, type: 3}
   SpecialWeaponInfo:
     InHandInfo:
-      Ammo: 1
+      Ammo: 2
       Magazines: 666
-      Cooldown: 5
-      Cadency: 1
+      Cooldown: 20
+      Cadency: 3
     Prefab: {fileID: 5437132089663561377, guid: e1c56ad4f975f0843acb6446f05f251b,
       type: 3}

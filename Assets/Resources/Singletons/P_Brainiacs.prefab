@@ -616,9 +616,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba41421845ba28d46893bf4b6efd6a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerColor_Red: {r: 1, g: 0, b: 0, a: 1}
+  playerColor_Green: {r: 0.24154504, g: 0.8679245, b: 0.24154504, a: 1}
+  playerColor_Blue: {r: 0.3794055, g: 0.3794055, b: 0.9245283, a: 1}
+  playerColor_Yellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  playerColor_Pink: {r: 0.7924528, g: 0.2953008, b: 0.7924528, a: 1}
+  playerColor_Gray: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   lightColor_Red: {r: 1, g: 0, b: 0, a: 1}
   lightColor_Green: {r: 0, g: 1, b: 0, a: 1}
-  lightColor_Blue: {r: 0, g: 0, b: 1, a: 1}
+  lightColor_Blue: {r: 0.27058825, g: 0.27058825, b: 0.78431374, a: 1}
   lightColor_Yellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   lightColor_Pink: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1001 &206920695312409725

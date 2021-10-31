@@ -11,7 +11,7 @@ using UnityEngine;
 public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, IOwner
 {
 	[SerializeField] int damage;
-	[SerializeField] int maxHealth;
+	[SerializeField] int health;
 
 	int currentHealth;
 
@@ -26,7 +26,7 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 		transform.localPosition = Vector2.zero;
 
 		owner.Visual.OnSortOrderChanged += UpdateSortOrder;
-		currentHealth = maxHealth;
+		currentHealth = health;
 
 		healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
 		healthbar.Init(this, .85f * Vector2.up, false, brainiacs.PlayerColorManager.GetColor(EPlayerColor.Gray));
@@ -54,6 +54,10 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 		healthbar.SetVisibility(pValue);
 		owner.Health.Healthbar?.SetVisibility(!pValue);
 
+		if(pValue)
+			owner.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DaVinciTank, -1);
+		else
+			owner.Stats.StatsEffect.RemoveEffect(EPlayerEffect.DaVinciTank, false);
 	}
 	private void UpdateSortOrder()
 	{
@@ -126,13 +130,13 @@ public class SpecialDaVinciTank : PlayerWeaponSpecialPrefab, ICollisionHandler, 
 
 	public void UpdateHealtbar(int pHealth)
 	{
-		healthbar.SetHealth(pHealth, maxHealth);
+		healthbar.SetHealth(pHealth, health);
 		Photon.Send(EPhotonMsg.Special_DaVinci_UpdateHealthbar, pHealth);
 	}
 
 	public override void OnStartReloadWeapon()
 	{
-		SetHealth(maxHealth);
+		SetHealth(health);
 	}
 
 	Dictionary<ICollisionHandler, float> collisionTimes = new Dictionary<ICollisionHandler, float>();

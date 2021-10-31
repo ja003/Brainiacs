@@ -16,11 +16,15 @@ public class PlayerStats : PlayerBehaviour
 
 	private const float DEFAULT_SPEED = 1;
 	public const int MAX_HEALTH = 100;
-	public float Speed { 
-		get {
-			return DEFAULT_SPEED 
-				+ StatsEffect.GetEffectValue(EPlayerEffect.DoubleSpeed)
-				- StatsEffect.GetEffectValue(EPlayerEffect.HalfSpeed);
+	public float Speed
+	{
+		get
+		{
+			return (DEFAULT_SPEED
+				+ StatsEffect.GetEffectValue(EPlayerEffect.DaVinciTank))
+				* StatsEffect.GetEffectValue(EPlayerEffect.DoubleSpeed)
+				* StatsEffect.GetEffectValue(EPlayerEffect.HalfSpeed)
+				;
 		}
 	}
 	public int Health { get; private set; } = 90;
@@ -28,7 +32,7 @@ public class PlayerStats : PlayerBehaviour
 	public int Kills { get; private set; }
 
 	public bool IsShielded => StatsEffect.GetEffectValue(EPlayerEffect.Shield) > 0
-		|| (debug.Shield 
+		|| (debug.Shield
 		&& player.InitInfo.PlayerType == EPlayerType.LocalPlayer); //test only on me
 
 	public PlayerInitInfo Info => player.InitInfo;

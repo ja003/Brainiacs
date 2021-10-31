@@ -45,6 +45,11 @@ public class MapItemGenerator : GameBehaviour
 		StartGenerating();
 	}
 
+	public void debug_GenerateItem()
+	{
+		GenerateRandomItem();
+	}
+
 	private void GenerateRandomItem()
 	{
 		EMapItem nextItemType = GetNextMapItemType();

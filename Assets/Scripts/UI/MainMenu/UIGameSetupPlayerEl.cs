@@ -198,10 +198,10 @@ public class UIGameSetupPlayerEl : MainMenuBehaviour
 		heroSwapper.SetValue((int)pHero);
 
 		//apply debug hero only in SP
-		if(pPhotonPlayer == null && debug.Hero != EHero.None)
+		if(pPhotonPlayer == null && debug.GetHero(pPlayerNumber) != EHero.None)
 		{
 			Debug.Log("Setting debug hero");
-			heroSwapper.SetValue((int)debug.Hero);
+			heroSwapper.SetValue((int)debug.GetHero(pPlayerNumber));
 		}
 
 		brainiacs.GameInitInfo.UpdatePlayer(Info);

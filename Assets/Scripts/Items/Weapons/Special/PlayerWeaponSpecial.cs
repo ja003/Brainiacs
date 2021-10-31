@@ -75,11 +75,11 @@ public class PlayerWeaponSpecial : PlayerWeapon
 
 	protected virtual void OnUse() { }
 
-	public override void StopUse()
+	public override void StopUse(bool pIsUserInput)
 	{
 		prefabInstance.StopUse();
 		//specialController.StopUse();
-		base.StopUse();
+		base.StopUse(pIsUserInput);
 	}
 
 	internal override void OnStartReloadWeapon()

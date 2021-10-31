@@ -36,7 +36,7 @@ public static class Utils
 		return new Vector2(vec.x, vec.y);
 	}
 
-	internal static Vector3 GetVector2(Vector3 pVector)
+	internal static Vector2 GetVector2(Vector3 pVector)
 	{
 		return new Vector2(pVector.x, pVector.y);
 	}

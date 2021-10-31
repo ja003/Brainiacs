@@ -50,8 +50,7 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
-  _Hero: 2
-  _ExtraPlayerWeapon: 50
+  _ExtraPlayerWeapon: 0
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
@@ -59,20 +58,23 @@ MonoBehaviour:
   _InfiniteAmmo: 0
   _PlayerEffect: 0
   playerCount: 4
-  _Map: 1
+  playerTypes: 01000000010000000100000001000000
+  heroes: 02000000
+  _Map: 2
   _gameValue: 5
   _GenerateItems: 0
-  _StopGenerateItems: 1
-  _DontEndGame: 0
+  _Respawnpoint: 1
+  _StopGenerateItems: 0
+  _DontEndGame: 1
   _GameEffect: 0
-  _PowerUp: 0
+  _PowerUp: 4
   _GenerateMapWeapon: 0
   _GenerateMapSpecialWeapon: 0
   _MuteMusic: 0
   _AiWeapon: 0
   _NonAggressiveAi: 0
   _AiDebugMove: 0
-  _PassiveAi: 1
+  _PassiveAi: 0
   _SkipTutorial: 1
   _ForceTutorial: 0
   _InstaAnimation: 1

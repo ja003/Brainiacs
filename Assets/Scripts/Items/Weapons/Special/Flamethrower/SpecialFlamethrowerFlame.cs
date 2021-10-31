@@ -76,7 +76,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		isUsed = pValue;
 		if(pValue)
 			SetActive(pValue);
-		
+
 		if(animator.enabled)
 			animator.SetBool("isUsed", pValue);
 		collisionDetector.SetEnabled(pValue);
@@ -91,9 +91,14 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		SetActive(false);
 	}
 
+	//limit cadency of applied damage
+	//copied from SpecialDaVinciTank - todo: refactor to common system
+	Dictionary<Player, float> collisionTimes = new Dictionary<Player, float>();
+	const float MIN_COLLISION_DELAY = 0.05f;
+
 	/// <summary>
 	/// Called from collision detector.
-	/// Note: player rigidbody sleepmode has to be set to: Never sleep.
+	/// Note: player rigidbody sleep mode has to be set to: Never sleep.
 	/// Otherwise collision is sometimes ignored when other player is idle.
 	/// </summary>
 	public void Event_OnTriggerStay2D(Collider2D pCollision)
@@ -103,16 +108,27 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 			Debug.LogError("Flame should collide only on player side");
 			return;
 		}
-		//if(!isUsed)
-		//	return;
 
 		Player player = pCollision.gameObject.GetComponent<Player>();
-		if(player)
+		if(player == null)
+			return;
+
+		float lastCollisionTime;
+		if(collisionTimes.TryGetValue(player, out lastCollisionTime) &&
+			lastCollisionTime > Time.time - MIN_COLLISION_DELAY)
 		{
-			int damage = GetDamage(player.Position);
-			//Debug.Log($"Flamethrower  " + damage);
-			player.Health.ApplyDamage(damage, owner);
+			//Debug.Log("Collision too soon");
+			return;
 		}
+
+		if(collisionTimes.ContainsKey(player))
+			collisionTimes[player] = Time.time;
+		else
+			collisionTimes.Add(player, Time.time);
+
+		int damage = GetDamage(player.Position);
+		//Debug.Log($"Flamethrower  " + damage);
+		player.Health.ApplyDamage(damage, owner);
 	}
 
 	private int GetDamage(Vector2 pTargetPosition)
@@ -128,7 +144,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 
 	public void OnDirectionChange(EDirection pDirection)
 	{
-		Debug.Log("OnDirectionChange " + pDirection);
+		//Debug.Log("OnDirectionChange " + pDirection);
 		if(!isInited)
 			return;
 
@@ -138,7 +154,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		transform.localRotation = Quaternion.Euler(0, 0, 0);
 
 		Vector3 rot = Utils.GetRotation(pDirection, 90);
-		Debug.Log("rot = " + rot);
+		//Debug.Log("rot = " + rot);
 
 		transform.Rotate(rot);
 

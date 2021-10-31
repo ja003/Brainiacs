@@ -84,9 +84,13 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 	private const string AC_KEY_DIRECTION = "direction";
 	private const string AC_KEY_IS_DEAD = "isDead";
 
+	//todo: refactor - add activateTime for all weapons;
+	float startTruckTime;
 
 	public void StartTruck(EDirection pDirection, Vector2 pSpawnPosition)
 	{
+		startTruckTime = Time.time;
+
 		direction = pDirection;
 		rigidBody2D.bodyType = RigidbodyType2D.Dynamic;
 
@@ -189,6 +193,16 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 			|| pLayer == game.Layers.MapDecoration)
 		{
 			//Debug.Log("just projectile");
+			return;
+		}
+
+		//it would be too easy to hit someone from short distance
+		// => prevent collision for a short time.
+		//plus it makes nice effect - truck pushes player for a short time and then explodes
+		const float min_collision_delay = 0.5f;
+		if(Time.time - startTruckTime < min_collision_delay)
+		{
+			Debug.Log("Truck cant collide yet");
 			return;
 		}
 

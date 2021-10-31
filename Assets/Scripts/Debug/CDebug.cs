@@ -29,19 +29,17 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] bool _PlatformMobile;
 	public bool PlatformMobile => GetDebugBool(_PlatformMobile);
 
-	[Header("Multiplayer")]
+	[Header("Multiplayer")] //-----------------------------------------------//
 	[SerializeField] bool _AutoJoinRandomRoom;
 	public bool AutoJoinRandomGame => _AutoJoinRandomRoom;// GetDebugBool(_AutoJoinRandomRoom);
 	[SerializeField] bool _LocalImage;
 	public bool LocalImage => GetDebugBool(_LocalImage);
 
-	[Header("Player")]
+	[Header("Player")] //-----------------------------------------------//
 	[SerializeField] int _debugPlayerNumber = 1;
 
-	[SerializeField] EHero _Hero;
-	public EHero Hero => release ? EHero.None : _Hero;
 	[SerializeField] EWeaponId _ExtraPlayerWeapon;
-	public EWeaponId ExtraPlayerWeapon => _ExtraPlayerWeapon;
+	public EWeaponId ExtraPlayerWeapon => release ? EWeaponId.None : _ExtraPlayerWeapon;
 
 	[Tooltip("Works only on local player. see PlayerStats::IsShielded")]
 	[SerializeField] bool _Shield;
@@ -60,8 +58,22 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] EPlayerEffect _PlayerEffect;
 	public EPlayerEffect PlayerEffect => release ? EPlayerEffect.None : _PlayerEffect;
 
-	[Header("Game")]
+	[Header("Game")] //-----------------------------------------------//
 	[SerializeField] int playerCount = 1;
+	[SerializeField] List<EPlayerType> playerTypes;
+	[SerializeField] List<EHero> heroes;
+	public EHero GetHero(int pPlayerNumber)
+	{
+		if(pPlayerNumber <= 0)
+		{
+			Debug.LogWarning("GetHero " + pPlayerNumber);
+			return EHero.None;
+		}
+		if(heroes.Count < pPlayerNumber)
+			return GetHero(pPlayerNumber - 1);
+
+		return release ? EHero.None : heroes[pPlayerNumber - 1];
+	}
 	[SerializeField] EMap _Map;
 	public EMap Map => release ? EMap.None : _Map;
 
@@ -70,6 +82,8 @@ public class CDebug : CSingleton<CDebug>
 
 	[SerializeField] bool _GenerateItems;
 	public bool GenerateItems => GetDebugBool(_GenerateItems);
+	[SerializeField] bool _Respawnpoint;
+	public bool Respawnpoint => GetDebugBool(_Respawnpoint);
 	[SerializeField] bool _StopGenerateItems;
 	public bool StopGenerateItems => GetDebugBool(_StopGenerateItems);
 	[SerializeField] bool _DontEndGame;
@@ -88,12 +102,12 @@ public class CDebug : CSingleton<CDebug>
 	[SerializeField] EWeaponId _GenerateMapSpecialWeapon;
 	public EWeaponId GenerateMapSpecialWeapon => release ? EWeaponId.None : _GenerateMapSpecialWeapon;
 
-	[Header("Sound")]
+	[Header("Sound")] //-----------------------------------------------//
 	[SerializeField] bool _MuteMusic;
 	public bool MuteMusic => GetDebugBool(_MuteMusic);
 
 	// AI
-	[Header("AI")]
+	[Header("AI")] //-----------------------------------------------//
 	[SerializeField] EWeaponId _AiWeapon;
 	public EWeaponId AiWeapon => release ? EWeaponId.None : _AiWeapon;
 	[SerializeField] bool _NonAggressiveAi;
@@ -105,13 +119,13 @@ public class CDebug : CSingleton<CDebug>
 
 	public bool AiDebugMove => GetDebugBool(_AiDebugMove);
 
-	[Header("Tutorial")]
+	[Header("Tutorial")] //-----------------------------------------------//
 	[SerializeField] bool _SkipTutorial;
 	public bool SkipTutorial => GetDebugBool(_SkipTutorial);
 	[SerializeField] bool _ForceTutorial;
 	public bool ForceTutorial => GetDebugBool(_ForceTutorial);
 
-	[Header("Menu")]
+	[Header("Menu")] //-----------------------------------------------//
 	[SerializeField] bool _InstaAnimation;
 	public bool InstaAnimation => GetDebugBool(_InstaAnimation);
 
@@ -185,27 +199,26 @@ public class CDebug : CSingleton<CDebug>
 		switch(pPlayerNumber)
 		{
 			case 1:
-				EHero hero = Hero;
-				if(hero == EHero.None)
-				{
-					Debug.LogError("no debug hero is set");
-					hero = EHero.Tesla;
-				}
 				player = new PlayerInitInfo(pPlayerNumber,
-					hero, PlayerNameManager.GetPlayerName(pPlayerNumber),
-					EPlayerColor.Green, EPlayerType.LocalPlayer,
+					GetHero(1), PlayerNameManager.GetPlayerName(pPlayerNumber),
+					EPlayerColor.Blue, playerTypes[0],
 					EKeyset.A);
 				break;
 			case 2:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Tesla, PlayerNameManager.GetPlayerName(pPlayerNumber),
-					EPlayerColor.Pink, EPlayerType.LocalPlayer);
+					GetHero(2), PlayerNameManager.GetPlayerName(pPlayerNumber),
+					EPlayerColor.Pink, playerTypes[1]);
 
 				break;
 			case 3:
 				player = new PlayerInitInfo(pPlayerNumber,
-					EHero.Currie, PlayerNameManager.GetPlayerName(pPlayerNumber),
-					EPlayerColor.Yellow, EPlayerType.LocalPlayer);
+					GetHero(3), PlayerNameManager.GetPlayerName(pPlayerNumber),
+					EPlayerColor.Yellow, playerTypes[2]);
+				break;
+			case 4:
+				player = new PlayerInitInfo(pPlayerNumber,
+					GetHero(4), PlayerNameManager.GetPlayerName(pPlayerNumber),
+					EPlayerColor.Green, playerTypes[2]);
 				break;
 
 			default:
@@ -228,11 +241,11 @@ public class CDebug : CSingleton<CDebug>
 		if(release && !releaseWithExceptions)
 			return;
 
-		initInfo.debug_StartupWeapon.Add(EWeaponId.MP40);
+		//initInfo.debug_StartupWeapon.Add(EWeaponId.MP40);
 		//initInfo.debug_StartupWeapon.Add(EWeaponId.Special_Curie);
 
-		//initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
-		if(initInfo.PlayerType == EPlayerType.AI && AiWeapon != EWeaponId.None)
+		initInfo.debug_StartupWeapon.Add(ExtraPlayerWeapon);
+		if(initInfo.PlayerType == EPlayerType.AI)
 		{
 			initInfo.debug_StartupWeapon.Add(AiWeapon);
 		}
@@ -245,7 +258,7 @@ public class CDebug : CSingleton<CDebug>
 		PlayerScoreInfo result = PlayerScoreInfo.debug_PlayerResultInfo();
 		if(playerCount >= 1)
 		{
-			result.Hero = Hero;
+			result.Hero = GetHero(1);
 			result.Name = $"{result.Hero} player";
 			result.Color = EPlayerColor.Blue;
 			result.Kills = 2;
@@ -255,7 +268,7 @@ public class CDebug : CSingleton<CDebug>
 		if(playerCount >= 2)
 		{
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
-			result.Hero = EHero.Tesla;
+			result.Hero = GetHero(2);
 			result.Color = EPlayerColor.Red;
 			result.Name = $"{result.Hero} player long name";
 			result.Kills = 0;
@@ -267,7 +280,7 @@ public class CDebug : CSingleton<CDebug>
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
 			result.Name = "t Nobel";
 			result.Color = EPlayerColor.Yellow;
-			result.Hero = EHero.Nobel;
+			result.Hero = GetHero(3);
 			result.Kills = 0;
 			result.Deaths = 0;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -277,7 +290,7 @@ public class CDebug : CSingleton<CDebug>
 			result = PlayerScoreInfo.debug_PlayerResultInfo();
 			result.Name = "Mrs Curie";
 			result.Color = EPlayerColor.Green;
-			result.Hero = EHero.Currie;
+			result.Hero = GetHero(4);
 			result.Kills = 3;
 			result.Deaths = 3;
 			Brainiacs.Instance.GameResultInfo.PlayerResults.Add(result);
@@ -350,28 +363,33 @@ public class CDebug : CSingleton<CDebug>
 
 		//Player
 
-		else if(Input.GetKeyDown(KeyCode.L))
-		{
-			Game.Instance.PlayerManager.debug_OnPlayerLeftRoom();
-		}
+		//else if(Input.GetKeyDown(KeyCode.L))
+		//{
+		//	Game.Instance.PlayerManager.debug_OnPlayerLeftRoom();
+		//}
 
-		else if(Input.GetKeyDown(KeyCode.M))
-		{
-			player.Health.ApplyDamage(50, null);
-		}
-		else if(Input.GetKeyDown(KeyCode.P))
-		{
-			player.Push.Push(Vector2.up * pushForce);
-		}
-		else if(Input.GetKeyDown(KeyCode.O))
-		{
-			player.Push.Push(Vector2.left * pushForce);
-		}
+		//else if(Input.GetKeyDown(KeyCode.M))
+		//{
+		//	player.Health.ApplyDamage(50, null);
+		//}
+		//else if(Input.GetKeyDown(KeyCode.P))
+		//{
+		//	player.Push.Push(Vector2.up * pushForce);
+		//}
+		//else if(Input.GetKeyDown(KeyCode.O))
+		//{
+		//	player.Push.Push(Vector2.left * pushForce);
+		//}
 
 		//HACK
-		if(Input.GetKeyDown(KeyCode.Backslash))
+		if(Input.GetKeyDown(KeyCode.O))
 		{
-			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfDamage, 10);
+			player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.DoubleSpeed, 10);
+		}
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			Game.Instance.Map.Items.generator.debug_GenerateItem();
+			//player.Stats.StatsEffect.ApplyEffect(EPlayerEffect.HalfSpeed, 10);
 		}
 
 
