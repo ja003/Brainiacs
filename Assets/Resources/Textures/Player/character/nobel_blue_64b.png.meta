@@ -390,7 +390,7 @@ TextureImporter:
       213: -5449532548003540620
     second: nobel_blue_32b_128
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -410,6 +410,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -419,8 +421,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -441,9 +443,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3203,6 +3209,136 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      nobel_blue_32b_19: -2630887345853072574
+      nobel_blue_32b_63: -5729050911223604209
+      nobel_blue_32b_4: 5210177669551918134
+      nobel_blue_32b_8: -8043766708157017108
+      nobel_blue_32b_29: -3322982908846499250
+      nobel_blue_32b_28: 7032724852642884020
+      nobel_blue_32b_31: -3128157440408024012
+      nobel_blue_32b_86: -3861924822191808698
+      nobel_blue_32b_55: -445077114998480202
+      nobel_blue_32b_105: -2020744290334831040
+      nobel_blue_32b_107: -3102122181392777029
+      nobel_blue_32b_123: -5787581287677792142
+      nobel_blue_32b_124: -3650052647817754869
+      nobel_blue_32b_13: -2968577101356662866
+      nobel_blue_32b_30: -562951516492966170
+      nobel_blue_32b_37: 3053367215953040552
+      nobel_blue_32b_27: -7891032387779214662
+      nobel_blue_32b_98: -2583435463188829429
+      nobel_blue_32b_22: 1789598559738906601
+      nobel_blue_32b_83: 7160253022472371285
+      nobel_blue_32b_68: -1100955842475916832
+      nobel_blue_32b_97: 3326655984832399981
+      nobel_blue_32b_116: 3289436633515462277
+      nobel_blue_32b_44: -8867571285180436101
+      nobel_blue_32b_87: 1807455453561907288
+      nobel_blue_32b_70: -5964984975000894748
+      nobel_blue_32b_121: 6758473866586589202
+      nobel_blue_32b_50: -1320318145447228789
+      nobel_blue_32b_110: -635812511313648406
+      nobel_blue_32b_1: 1216505632762404324
+      nobel_blue_32b_64: -9016448700993698581
+      nobel_blue_32b_99: -3593397127734355364
+      nobel_blue_32b_113: 5789218746764314953
+      nobel_blue_32b_34: -880192775839734147
+      nobel_blue_32b_126: 4908826390718998918
+      nobel_blue_32b_118: -2620845149151888155
+      nobel_blue_32b_72: 4240700745381958021
+      nobel_blue_32b_15: 1975372831461714491
+      nobel_blue_32b_102: -8600004654244295514
+      nobel_blue_32b_128: -5449532548003540620
+      nobel_blue_32b_59: -7059759768028590402
+      nobel_blue_32b_57: -4380163337234364144
+      nobel_blue_32b_25: -951250372155627576
+      nobel_blue_32b_85: 3569541081410228787
+      nobel_blue_32b_6: 2893418832379375771
+      nobel_blue_32b_12: -7317570453341973300
+      nobel_blue_32b_2: 1589601747751542134
+      nobel_blue_32b_73: 631858332668620368
+      nobel_blue_32b_69: -2376165686030409353
+      nobel_blue_32b_112: -2710986061290979851
+      nobel_blue_32b_119: 651374327924671328
+      nobel_blue_32b_41: 4130540154728538317
+      nobel_blue_32b_62: -4718430498128167428
+      nobel_blue_32b_61: -4469595149287245331
+      nobel_blue_32b_0: -3349572480145364565
+      nobel_blue_32b_3: 8484663595719397793
+      nobel_blue_32b_40: 5490929097649434994
+      nobel_blue_32b_101: 2160293048909072302
+      nobel_blue_32b_56: 2064709351027562161
+      nobel_blue_32b_47: 4138771130291970293
+      nobel_blue_32b_76: 6852369268257599056
+      nobel_blue_32b_88: -7055513189416766140
+      nobel_blue_32b_78: 2961506160116465399
+      nobel_blue_32b_60: 233942289317002739
+      nobel_blue_32b_54: 2551051490431251656
+      nobel_blue_32b_84: 8676390344754908898
+      nobel_blue_32b_10: -6387125304356873705
+      nobel_blue_32b_38: 1952332533622494096
+      nobel_blue_32b_17: 3673297659030064355
+      nobel_blue_32b_42: -5577819784609611141
+      nobel_blue_32b_51: -2406560722767110297
+      nobel_blue_32b_24: 6487642248853485473
+      nobel_blue_32b_32: 1618824240507967389
+      nobel_blue_32b_36: -8566960045621154294
+      nobel_blue_32b_33: -1883608019912221852
+      nobel_blue_32b_89: 8102534682716491430
+      nobel_blue_32b_109: -349789239468395559
+      nobel_blue_32b_91: -7419233508959706494
+      nobel_blue_32b_81: 1456349083332263626
+      nobel_blue_32b_106: 963143624688907725
+      nobel_blue_32b_74: -3445853346051196936
+      nobel_blue_32b_125: 9194646047555253975
+      nobel_blue_32b_71: 7624408799842809691
+      nobel_blue_32b_108: 1898892247431780815
+      nobel_blue_32b_90: -7797926662023397993
+      nobel_blue_32b_122: 7893744314962010482
+      nobel_blue_32b_58: -862300697943071371
+      nobel_blue_32b_5: -2322588576763250925
+      nobel_blue_32b_67: -4101446108511866652
+      nobel_blue_32b_7: -9156427042657560205
+      nobel_blue_32b_117: -6566565923602598317
+      nobel_blue_32b_16: -775728508419682530
+      nobel_blue_32b_43: 452177232982881865
+      nobel_blue_32b_104: -7010090685142341193
+      nobel_blue_32b_80: 5162089533231220908
+      nobel_blue_32b_46: -1778182066208885262
+      nobel_blue_32b_45: -886340533007077279
+      nobel_blue_32b_77: 7806498466381963616
+      nobel_blue_32b_52: 3667538119521206819
+      nobel_blue_32b_111: 9181504945786770322
+      nobel_blue_32b_14: -4416856876883552844
+      nobel_blue_32b_23: -5885266276845710868
+      nobel_blue_32b_75: 8027480770511502191
+      nobel_blue_32b_79: -420283068370473640
+      nobel_blue_32b_103: -470155665855933223
+      nobel_blue_32b_18: 6014298655466149503
+      nobel_blue_32b_11: 2934346255668723559
+      nobel_blue_32b_120: -2710043816562608741
+      nobel_blue_32b_39: 6128410355477146471
+      nobel_blue_32b_53: 6590052271901020075
+      nobel_blue_32b_82: 2771091346378927523
+      nobel_blue_32b_66: -2012477679134107491
+      nobel_blue_32b_93: -2177590619504273153
+      nobel_blue_32b_21: 3755586834730604220
+      nobel_blue_32b_92: 9128615568769554092
+      nobel_blue_32b_26: -5295603665113679328
+      nobel_blue_32b_94: -2674552708158190258
+      nobel_blue_32b_48: -5772943262593773571
+      nobel_blue_32b_96: -4885713403397709041
+      nobel_blue_32b_35: -4802805731371960205
+      nobel_blue_32b_114: -3717437848742628833
+      nobel_blue_32b_127: 4085839358296082622
+      nobel_blue_32b_95: -1554836326121798788
+      nobel_blue_32b_49: -5943179952584193283
+      nobel_blue_32b_100: 1900389940967239535
+      nobel_blue_32b_20: 3207575599259680441
+      nobel_blue_32b_65: 3190012433429187694
+      nobel_blue_32b_9: -8578936188594887445
+      nobel_blue_32b_115: 145947253573878581
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

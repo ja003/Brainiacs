@@ -59,6 +59,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -67,9 +69,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -90,9 +92,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -396,6 +401,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_nobel_explosion_4: 9008988546539476559
+      special_nobel_explosion_5: 3776465631201024152
+      special_nobel_explosion_1: 328167271670225923
+      special_nobel_explosion_2: -2985414068471968165
+      special_nobel_explosion_9: 8557194167031214408
+      special_nobel_explosion_0: 7721469914247329224
+      special_nobel_explosion_7: 8506232957552944538
+      special_nobel_explosion_3: 1769407799537067435
+      special_nobel_explosion_8: 1331291025324640487
+      special_nobel_explosion_10: 5943927145672928502
+      special_nobel_explosion_6: -2334134600611949627
+      special_nobel_explosion_11: 4951891634257434777
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -390,7 +390,7 @@ TextureImporter:
       213: 4187388472141422711
     second: einstein_blue_32b_128
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -410,6 +410,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -419,8 +421,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -441,9 +443,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3203,6 +3209,136 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      einstein_blue_32b_40: 4569073198675047659
+      einstein_blue_32b_52: -2689920519663022779
+      einstein_blue_32b_128: 4187388472141422711
+      einstein_blue_32b_111: -2824362685735506179
+      einstein_blue_32b_55: 6285682109573740635
+      einstein_blue_32b_76: -1613009804294877454
+      einstein_blue_32b_83: 1152511063034425233
+      einstein_blue_32b_12: 7115890932430694354
+      einstein_blue_32b_58: -6960608640296526877
+      einstein_blue_32b_5: 6879861711236052288
+      einstein_blue_32b_24: -6012393672177381379
+      einstein_blue_32b_47: 5828554962917445267
+      einstein_blue_32b_84: 8798838464275752568
+      einstein_blue_32b_64: -8951675159506281847
+      einstein_blue_32b_105: -3223446633334252526
+      einstein_blue_32b_26: -5754610866063843803
+      einstein_blue_32b_49: 2310416028912821509
+      einstein_blue_32b_70: 4404081551726600087
+      einstein_blue_32b_68: -3775789837395735322
+      einstein_blue_32b_77: 7746890446819964557
+      einstein_blue_32b_15: 8533784483164723534
+      einstein_blue_32b_82: -4114221585255465756
+      einstein_blue_32b_63: -9020056603889019823
+      einstein_blue_32b_121: 1735966843509113094
+      einstein_blue_32b_19: -2686565652176650059
+      einstein_blue_32b_123: 8881598728476649161
+      einstein_blue_32b_74: 5990977854180462023
+      einstein_blue_32b_0: -2088514385063999341
+      einstein_blue_32b_93: 3566852449698590819
+      einstein_blue_32b_81: 5432918731230509439
+      einstein_blue_32b_13: 2755815262921339267
+      einstein_blue_32b_17: 8428292649741903517
+      einstein_blue_32b_117: -5932532534124416273
+      einstein_blue_32b_87: -1501118415033830727
+      einstein_blue_32b_94: -20936363325297308
+      einstein_blue_32b_54: 4833280882485354282
+      einstein_blue_32b_79: -1667707767851604845
+      einstein_blue_32b_35: -4929059793938079440
+      einstein_blue_32b_100: 8773108295191628845
+      einstein_blue_32b_28: 8485557313172426624
+      einstein_blue_32b_103: -4495724962126951306
+      einstein_blue_32b_112: -4237765525771524660
+      einstein_blue_32b_90: -3215927559341059522
+      einstein_blue_32b_39: -344149898770514168
+      einstein_blue_32b_48: 3606527798580969132
+      einstein_blue_32b_110: -6856232438851229407
+      einstein_blue_32b_122: -9068532778485967704
+      einstein_blue_32b_2: 220560743180539834
+      einstein_blue_32b_43: -2846651780957153442
+      einstein_blue_32b_113: -8467963987198786209
+      einstein_blue_32b_85: -9197414760921418943
+      einstein_blue_32b_34: 2446029523876356769
+      einstein_blue_32b_29: -1107850516851888341
+      einstein_blue_32b_80: 4901612454982373753
+      einstein_blue_32b_27: 5092837602670387521
+      einstein_blue_32b_37: 365612077216740902
+      einstein_blue_32b_109: -6830908020635097935
+      einstein_blue_32b_67: -7313307837007334710
+      einstein_blue_32b_9: 3039530361020648063
+      einstein_blue_32b_116: -2134041946815429636
+      einstein_blue_32b_16: -299238971479376873
+      einstein_blue_32b_11: 4214900222615219204
+      einstein_blue_32b_10: 6715994026759507138
+      einstein_blue_32b_69: 7377316031493014355
+      einstein_blue_32b_31: 1383811302175056785
+      einstein_blue_32b_1: -898492238399624960
+      einstein_blue_32b_75: -7039328190024631900
+      einstein_blue_32b_46: 8430332153665901342
+      einstein_blue_32b_6: -3493816680816615444
+      einstein_blue_32b_23: 8730999914007571696
+      einstein_blue_32b_124: 2858733410711450684
+      einstein_blue_32b_14: 6787277639268832371
+      einstein_blue_32b_4: -2501339587378744144
+      einstein_blue_32b_95: -7431066364678281687
+      einstein_blue_32b_62: 4428447975947250485
+      einstein_blue_32b_53: 4443085553503752701
+      einstein_blue_32b_125: 1537186320075503398
+      einstein_blue_32b_41: 654373403181549935
+      einstein_blue_32b_127: 1886655656836104573
+      einstein_blue_32b_50: 8279132243952357976
+      einstein_blue_32b_91: 87836836280264056
+      einstein_blue_32b_18: -5774741594331331174
+      einstein_blue_32b_51: -2682872165734440414
+      einstein_blue_32b_21: -1329841231800716229
+      einstein_blue_32b_44: -6439701027255915349
+      einstein_blue_32b_32: 8861449704759084119
+      einstein_blue_32b_33: 2956637977577769337
+      einstein_blue_32b_118: -8483674886329378182
+      einstein_blue_32b_107: -8362454948760189591
+      einstein_blue_32b_104: -5402838778005553744
+      einstein_blue_32b_98: -7758046619169296895
+      einstein_blue_32b_38: -7064812731106259281
+      einstein_blue_32b_42: -568806845547625216
+      einstein_blue_32b_97: -3849354324046346928
+      einstein_blue_32b_65: -3963979309804833971
+      einstein_blue_32b_59: 9069156446804823012
+      einstein_blue_32b_115: -651203830733384995
+      einstein_blue_32b_7: -7662196316795489573
+      einstein_blue_32b_96: -3287909227625927911
+      einstein_blue_32b_108: -8068196425695380629
+      einstein_blue_32b_89: -7238671281760511329
+      einstein_blue_32b_92: 2445175411790801081
+      einstein_blue_32b_78: 4348552536874914218
+      einstein_blue_32b_102: 4154793133502175084
+      einstein_blue_32b_88: 3320362491745177175
+      einstein_blue_32b_119: -3314606820740795903
+      einstein_blue_32b_106: -3240996083304037953
+      einstein_blue_32b_126: 5943014675612501770
+      einstein_blue_32b_30: 3294493961826635201
+      einstein_blue_32b_66: 3637196635028626304
+      einstein_blue_32b_71: 6117322705445913301
+      einstein_blue_32b_86: 5878162579401966209
+      einstein_blue_32b_22: -6071059177842585880
+      einstein_blue_32b_20: 1573029293527689125
+      einstein_blue_32b_45: -8225434146355594879
+      einstein_blue_32b_73: 5450682633184275572
+      einstein_blue_32b_99: -2524718359833634051
+      einstein_blue_32b_61: -6297733337638874580
+      einstein_blue_32b_57: 4489134829973058490
+      einstein_blue_32b_114: 7942498918916969045
+      einstein_blue_32b_25: 3478779781136155252
+      einstein_blue_32b_3: -6423429809763953986
+      einstein_blue_32b_56: -7307151827858006005
+      einstein_blue_32b_8: 7332440511633210941
+      einstein_blue_32b_101: 4012716928097125739
+      einstein_blue_32b_120: 4034817616308043090
+      einstein_blue_32b_60: 1506513809816560312
+      einstein_blue_32b_36: 2864557337507106436
+      einstein_blue_32b_72: -597565144565019229
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

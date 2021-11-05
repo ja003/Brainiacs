@@ -104,6 +104,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -112,9 +114,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -135,9 +137,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -756,6 +761,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      fire_flamethrower_11: -9108912212306461845
+      fire_flamethrower_16: -7125475560020405836
+      fire_flamethrower_13: -7020382115792041841
+      fire_flamethrower_7: -3215570577332544449
+      fire_flamethrower_3: -5768295208360643169
+      fire_flamethrower_23: -3960945533797467065
+      fire_flamethrower_1: 4672082620135644782
+      fire_flamethrower_0: -9142748351633538268
+      fire_flamethrower_2: -2384418110397709215
+      fire_flamethrower_8: -4927591251362747064
+      fire_flamethrower_18: -4184704497379599601
+      fire_flamethrower_24: -1664691582792593567
+      fire_flamethrower_22: -183524859882473120
+      fire_flamethrower_26: -3732395405470268446
+      fire_flamethrower_5: -3324650699788869539
+      fire_flamethrower_25: 6234890345118303418
+      fire_flamethrower_20: 8351913530324285814
+      fire_flamethrower_4: -6073579557108566247
+      fire_flamethrower_17: -5336179477002543468
+      fire_flamethrower_21: 2397432012766669778
+      fire_flamethrower_6: 4974655320942412201
+      fire_flamethrower_12: 2959665359602790444
+      fire_flamethrower_9: 8464461813939427757
+      fire_flamethrower_10: -2654947911392626629
+      fire_flamethrower_14: 6587735546992663889
+      fire_flamethrower_19: 9048236143337473833
+      fire_flamethrower_15: -4718865603943758770
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

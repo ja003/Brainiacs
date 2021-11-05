@@ -194,6 +194,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -202,9 +204,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -225,9 +227,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -1476,6 +1481,64 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_curie_left_crash_3: -2667704368343187295
+      special_curie_left_crash_19: 6213535449603916550
+      special_curie_left_crash_27: -8937516520802086288
+      special_curie_left_crash_7: -3792041715669182879
+      special_curie_left_crash_51: -1150094388556508027
+      special_curie_left_crash_34: 5767323309378003252
+      special_curie_left_crash_52: -6336688589597006402
+      special_curie_left_crash_40: -8107792927214268418
+      special_curie_left_crash_12: -9178213849398267835
+      special_curie_left_crash_28: -1457949671115838857
+      special_curie_left_crash_49: -1177645605667733713
+      special_curie_left_crash_22: 2514663869984501090
+      special_curie_left_crash_5: 9062476950823245730
+      special_curie_left_crash_53: -7404904202512776929
+      special_curie_left_crash_35: -723614280886086579
+      special_curie_left_crash_33: -5267410669416040258
+      special_curie_left_crash_10: 3920354436456130045
+      special_curie_left_crash_39: -7291997188653711349
+      special_curie_left_crash_44: 8045948124239052858
+      special_curie_left_crash_43: 5908985063637109092
+      special_curie_left_crash_36: -8043759815057780510
+      special_curie_left_crash_15: -3992762722548394725
+      special_curie_left_crash_56: 5922805273997200571
+      special_curie_left_crash_48: -1545520748111487964
+      special_curie_left_crash_30: -4732343394400227117
+      special_curie_left_crash_47: 6716274419248917696
+      special_curie_left_crash_24: 384453969460888587
+      special_curie_left_crash_31: -2749768852169177480
+      special_curie_left_crash_20: -6470534867436901463
+      special_curie_left_crash_4: -3790101162967184321
+      special_curie_left_crash_9: 4594137746755220266
+      special_curie_left_crash_11: 5909455336471440187
+      special_curie_left_crash_23: -6316883315499877230
+      special_curie_left_crash_54: 4428516187816142787
+      special_curie_left_crash_13: -1640632687888043003
+      special_curie_left_crash_16: -8741285563622259266
+      special_curie_left_crash_1: 1692158350367396358
+      special_curie_left_crash_29: -2264051869684594711
+      special_curie_left_crash_55: -1092588133097980074
+      special_curie_left_crash_42: -7693823435014045692
+      special_curie_left_crash_32: 3385947395497343356
+      special_curie_left_crash_2: 6054832524046052033
+      special_curie_left_crash_41: -1419339700062850653
+      special_curie_left_crash_25: 8756251071840147128
+      special_curie_left_crash_45: -4152886513922858290
+      special_curie_left_crash_37: 2367963382892819182
+      special_curie_left_crash_46: -8154551276350076370
+      special_curie_left_crash_17: -5185653578411589219
+      special_curie_left_crash_26: 8695768774458031584
+      special_curie_left_crash_50: -3502877399831771823
+      special_curie_left_crash_8: 5603510568538566000
+      special_curie_left_crash_6: 8183546881602055744
+      special_curie_left_crash_18: -5644199256587445084
+      special_curie_left_crash_0: 7877946332191633835
+      special_curie_left_crash_21: 5081705380317589353
+      special_curie_left_crash_38: -3999199943968149699
+      special_curie_left_crash_14: -4823296055241154420
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

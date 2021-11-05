@@ -195,7 +195,7 @@ TextureImporter:
       213: 21300126
     second: ss_tileset_63
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -215,6 +215,8 @@ TextureImporter:
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -224,8 +226,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -246,9 +248,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1651,6 +1657,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ss_tileset_9: 21300018
+      ss_tileset_36: 21300072
+      ss_tileset_8: 21300016
+      ss_tileset_factory-1: 21300014
+      ss_tileset_41: 21300082
+      ss_tileset_factory-9: 21300092
+      ss_tileset_factory-13: 21300124
+      ss_tileset_1: 21300002
+      ss_tileset_34: 21300068
+      ss_tileset_10: 21300020
+      ss_tileset_57: 21300114
+      ss_tileset_56: 21300112
+      ss_tileset_factory-6: 21300062
+      ss_tileset_42: 21300084
+      ss_tileset_factory-8: 21300078
+      ss_tileset_29: 21300058
+      ss_tileset_16: 21300032
+      ss_tileset_21: 21300042
+      ss_tileset_factory-12: 21300108
+      ss_tileset_4: 21300008
+      ss_tileset_19: 21300038
+      ss_tileset_58: 21300116
+      ss_tileset_37: 21300074
+      ss_tileset_12: 21300024
+      ss_tileset_factory-5: 21300060
+      ss_tileset_60: 21300120
+      ss_tileset_59: 21300118
+      ss_tileset_factory-7: 21300076
+      ss_tileset_51: 21300102
+      ss_tileset_43: 21300086
+      ss_tileset_52: 21300104
+      ss_tileset_factory-3: 21300046
+      ss_tileset_factory-11: 21300110
+      ss_tileset_33: 21300066
+      ss_tileset_40: 21300080
+      ss_tileset_3: 21300006
+      ss_tileset_17: 21300034
+      ss_tileset_14: 21300028
+      ss_tileset_factory-2: 21300030
+      ss_tileset_5: 21300010
+      ss_tileset_48: 21300096
+      ss_tileset_45: 21300090
+      ss_tileset_50: 21300100
+      ss_tileset_53: 21300106
+      ss_tileset_18: 21300036
+      ss_tileset_32: 21300064
+      ss_tileset_63: 21300126
+      ss_tileset_25: 21300050
+      ss_tileset_27: 21300054
+      ss_tileset_11: 21300022
+      ss_tileset_61: 21300122
+      ss_tileset_44: 21300088
+      ss_tileset_49: 21300098
+      ss_tileset_20: 21300040
+      ss_tileset_factory-4: 21300044
+      ss_tileset_2: 21300004
+      ss_tileset_35: 21300070
+      ss_tileset_26: 21300052
+      ss_tileset_factory-0: 21300012
+      ss_tileset_0: 21300000
+      ss_tileset_factory-10: 21300094
+      ss_tileset_13: 21300026
+      ss_tileset_24: 21300048
+      ss_tileset_28: 21300056
   spritePackingTag: 
   pSDRemoveMatte: 1
   pSDShowRemoveMatteOption: 1

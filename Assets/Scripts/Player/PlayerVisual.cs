@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class PlayerVisual : PlayerBehaviour
 {
@@ -22,7 +22,7 @@ public class PlayerVisual : PlayerBehaviour
 
 	[SerializeField] private PaletteSwapController paletteSwap = null;
 
-	[SerializeField] private new Light2D light = null;
+	[SerializeField] private new UnityEngine.Rendering.Universal.Light2D light = null;
 
 
 	List<SpriteRenderer> allSpriteRenderers;

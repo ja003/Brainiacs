@@ -78,7 +78,7 @@ TextureImporter:
       213: 54627470835743955
     second: projectiles_02_24
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -98,6 +98,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -106,9 +108,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -129,9 +131,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -707,6 +713,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      projectiles_02_23: 1024134033941261215
+      projectiles_02_3: 2251155238587255700
+      projectiles_02_15: -2583665279612324667
+      projectiles_02_21: 2371142044810234117
+      projectiles_02_6: -7196993510226030830
+      projectiles_02_5: 7208932033876531651
+      projectiles_02_9: -501406181946981857
+      projectiles_02_10: 2606299112226321204
+      projectiles_02_12: 5028107361052272987
+      projectiles_02_19: 3161190931517828520
+      projectiles_02_7: 8990418650637955827
+      projectiles_02_18: 7542937890056826340
+      projectiles_02_8: 2679935751868202958
+      projectiles_02_22: -1003709902184223264
+      projectiles_02_24: 54627470835743955
+      projectiles_02_2: -3837139612115587566
+      projectiles_02_20: 9182289326441775481
+      projectiles_02_14: -5508877482007804867
+      projectiles_02_11: 7059891335534309005
+      projectiles_02_4: -3748371575638291151
+      projectiles_02_13: 8452838496497770445
+      projectiles_02_16: -5646532715067980687
+      projectiles_02_17: -4731282491273300539
+      projectiles_02_0: 70974465536484778
+      projectiles_02_1: -8141391132725878090
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

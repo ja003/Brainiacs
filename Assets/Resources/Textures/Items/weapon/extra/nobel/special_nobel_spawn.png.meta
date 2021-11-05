@@ -134,6 +134,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -142,9 +144,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -165,9 +167,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -996,6 +1001,44 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_nobel_spawn_11: -2438693285284366790
+      special_nobel_spawn_32: 8341611388882867883
+      special_nobel_spawn_14: 8967402566659251168
+      special_nobel_spawn_19: -1799789565194523737
+      special_nobel_spawn_25: 4557468757950705796
+      special_nobel_spawn_6: -3985540005435678660
+      special_nobel_spawn_17: -1920641357058223463
+      special_nobel_spawn_21: -5786221853251526829
+      special_nobel_spawn_24: 227725522467707720
+      special_nobel_spawn_18: 1646775196919101889
+      special_nobel_spawn_30: 2761954174973420649
+      special_nobel_spawn_23: -1323244985529167818
+      special_nobel_spawn_34: -8073252900817448901
+      special_nobel_spawn_1: 3013435352381662057
+      special_nobel_spawn_3: -2824520885987706464
+      special_nobel_spawn_12: -8721540998756932650
+      special_nobel_spawn_2: -7930783672999068221
+      special_nobel_spawn_15: 1848437897696435477
+      special_nobel_spawn_9: 4818236460264291556
+      special_nobel_spawn_36: -5480268588659230642
+      special_nobel_spawn_29: 3117478341677606115
+      special_nobel_spawn_31: -1561913536650250181
+      special_nobel_spawn_4: -3047066587432305703
+      special_nobel_spawn_7: 4719458596779341331
+      special_nobel_spawn_10: 955976705612417062
+      special_nobel_spawn_27: -769937248358012025
+      special_nobel_spawn_33: -8837391881918927784
+      special_nobel_spawn_16: -8294367820485506048
+      special_nobel_spawn_22: -3877679442152596000
+      special_nobel_spawn_26: 4563953952784573953
+      special_nobel_spawn_20: 5507421820311778498
+      special_nobel_spawn_8: -1371069328427832466
+      special_nobel_spawn_35: 6740603207070256333
+      special_nobel_spawn_0: -5857071113741174442
+      special_nobel_spawn_13: -6130498141236687705
+      special_nobel_spawn_5: -7024681066392485618
+      special_nobel_spawn_28: -343048612469407955
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

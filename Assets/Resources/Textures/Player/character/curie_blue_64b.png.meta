@@ -387,7 +387,7 @@ TextureImporter:
       213: -1310493817763981804
     second: curie_anim_blue_32b_127
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -407,6 +407,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -416,8 +418,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -438,9 +440,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3179,6 +3185,135 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      curie_anim_blue_32b_5: 8383068970169077116
+      curie_anim_blue_32b_49: 4331212087043018095
+      curie_anim_blue_32b_68: -6620932086751423278
+      curie_anim_blue_32b_0: -6449675269073840430
+      curie_anim_blue_32b_28: 6417620512232512810
+      curie_anim_blue_32b_112: -7638245931859554158
+      curie_anim_blue_32b_61: 8666177103713477600
+      curie_anim_blue_32b_110: -2096466904011290945
+      curie_anim_blue_32b_15: -548866950496079053
+      curie_anim_blue_32b_31: 4635519708310492425
+      curie_anim_blue_32b_66: 404423338570518556
+      curie_anim_blue_32b_92: 5817748762632437033
+      curie_anim_blue_32b_13: 4529146739481415737
+      curie_anim_blue_32b_80: 652413869336305800
+      curie_anim_blue_32b_25: 5073480118691159891
+      curie_anim_blue_32b_72: 5759131992552704061
+      curie_anim_blue_32b_102: 5386317821232559107
+      curie_anim_blue_32b_69: 6686771263317915048
+      curie_anim_blue_32b_97: 848781399592963913
+      curie_anim_blue_32b_54: 4251014507358712348
+      curie_anim_blue_32b_36: -1519931988462710726
+      curie_anim_blue_32b_100: 3874728716173303687
+      curie_anim_blue_32b_123: -9058553320932117141
+      curie_anim_blue_32b_113: 3300764775666038916
+      curie_anim_blue_32b_47: -607082030231594521
+      curie_anim_blue_32b_78: -9137728516980278509
+      curie_anim_blue_32b_58: -7595043570328882800
+      curie_anim_blue_32b_50: 5657085977537870360
+      curie_anim_blue_32b_46: 904252329415859347
+      curie_anim_blue_32b_77: -4188396561619169467
+      curie_anim_blue_32b_125: 4381680613800906616
+      curie_anim_blue_32b_9: -2211859039482170763
+      curie_anim_blue_32b_33: 628727905894066169
+      curie_anim_blue_32b_29: 4824361502834329084
+      curie_anim_blue_32b_44: 4845916892390027403
+      curie_anim_blue_32b_70: 8431603322775364386
+      curie_anim_blue_32b_7: -8933312412415365152
+      curie_anim_blue_32b_94: -2346852877369283203
+      curie_anim_blue_32b_99: 5627797503806760210
+      curie_anim_blue_32b_111: -5150525637887917192
+      curie_anim_blue_32b_55: -7695124081310560336
+      curie_anim_blue_32b_126: 4170902806167379785
+      curie_anim_blue_32b_3: 8426197179944123833
+      curie_anim_blue_32b_121: 4704110834773736231
+      curie_anim_blue_32b_56: 5337702286581819278
+      curie_anim_blue_32b_60: 8712143984873599708
+      curie_anim_blue_32b_83: 1028003715253241480
+      curie_anim_blue_32b_57: 676935262857899936
+      curie_anim_blue_32b_73: -6927983638690997595
+      curie_anim_blue_32b_32: 7003872975071502557
+      curie_anim_blue_32b_71: -8254558620059449133
+      curie_anim_blue_32b_17: 7395274925994902730
+      curie_anim_blue_32b_30: 7051148528530192346
+      curie_anim_blue_32b_124: -2843481494338758160
+      curie_anim_blue_32b_42: 4221191523303679551
+      curie_anim_blue_32b_103: -1461798211971579260
+      curie_anim_blue_32b_4: -4595638924549403912
+      curie_anim_blue_32b_82: 8029295530922349683
+      curie_anim_blue_32b_109: 1501443685381017961
+      curie_anim_blue_32b_21: 4760367812201138207
+      curie_anim_blue_32b_23: -3642409668413362753
+      curie_anim_blue_32b_91: 5548057703858848747
+      curie_anim_blue_32b_93: 8548095743879506735
+      curie_anim_blue_32b_59: -792887989316877387
+      curie_anim_blue_32b_11: -8664888331699266340
+      curie_anim_blue_32b_39: -8832881789789784882
+      curie_anim_blue_32b_6: 2758185554104549307
+      curie_anim_blue_32b_38: -8826710303533519784
+      curie_anim_blue_32b_52: 866245608879166357
+      curie_anim_blue_32b_117: 397202039958520723
+      curie_anim_blue_32b_65: 5838296948305257695
+      curie_anim_blue_32b_34: -7829667575247689660
+      curie_anim_blue_32b_122: -4078464788684591912
+      curie_anim_blue_32b_18: -4889580253554250681
+      curie_anim_blue_32b_108: 7865843775241657548
+      curie_anim_blue_32b_127: -1310493817763981804
+      curie_anim_blue_32b_86: 5129252136891748008
+      curie_anim_blue_32b_96: 1843679573342843111
+      curie_anim_blue_32b_20: 8134577626117987649
+      curie_anim_blue_32b_67: 7762258689825295670
+      curie_anim_blue_32b_107: -3914428569257988586
+      curie_anim_blue_32b_62: 3197976747195922019
+      curie_anim_blue_32b_85: -2678140492324023709
+      curie_anim_blue_32b_116: 556043763434176668
+      curie_anim_blue_32b_27: -8714390215504797130
+      curie_anim_blue_32b_79: -8513993794957898370
+      curie_anim_blue_32b_1: -8786762391978900251
+      curie_anim_blue_32b_105: 3603713096345042729
+      curie_anim_blue_32b_90: 387540797551137302
+      curie_anim_blue_32b_37: 3164010940881765838
+      curie_anim_blue_32b_43: 8536727126625781932
+      curie_anim_blue_32b_119: -7204659025766869256
+      curie_anim_blue_32b_104: -4706290422426805717
+      curie_anim_blue_32b_87: 5998193762279182248
+      curie_anim_blue_32b_101: 8099461375094776889
+      curie_anim_blue_32b_76: -5431247515970031250
+      curie_anim_blue_32b_48: -5601952780809922405
+      curie_anim_blue_32b_64: 709240104989434764
+      curie_anim_blue_32b_84: 3826728678248944488
+      curie_anim_blue_32b_88: 3720758880292530152
+      curie_anim_blue_32b_24: -7158404447140592591
+      curie_anim_blue_32b_63: 7815240054750584832
+      curie_anim_blue_32b_40: -4990627093571555083
+      curie_anim_blue_32b_41: -6439664799627240315
+      curie_anim_blue_32b_19: -6529154161967564423
+      curie_anim_blue_32b_10: -8218358734932222051
+      curie_anim_blue_32b_75: 347175003370107641
+      curie_anim_blue_32b_89: -6082639881265831168
+      curie_anim_blue_32b_114: 3073974127064248522
+      curie_anim_blue_32b_35: 7156190088378593345
+      curie_anim_blue_32b_81: 2916470801623830741
+      curie_anim_blue_32b_95: -6433110310962127029
+      curie_anim_blue_32b_51: -2550572098268400645
+      curie_anim_blue_32b_53: 1755508640652418823
+      curie_anim_blue_32b_8: 2828942703368610743
+      curie_anim_blue_32b_74: -9200303985758475579
+      curie_anim_blue_32b_26: 5348387689988997890
+      curie_anim_blue_32b_106: -6667186022583941306
+      curie_anim_blue_32b_45: 381225247435247563
+      curie_anim_blue_32b_120: 8525773599256765442
+      curie_anim_blue_32b_12: 3568621079847785203
+      curie_anim_blue_32b_98: 7612554141692676282
+      curie_anim_blue_32b_2: -3477162973118095011
+      curie_anim_blue_32b_14: 7522639991200198925
+      curie_anim_blue_32b_115: 7053600991364621326
+      curie_anim_blue_32b_118: -7944142228361639646
+      curie_anim_blue_32b_22: -9142719254140725347
+      curie_anim_blue_32b_16: 5397436105926417607
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

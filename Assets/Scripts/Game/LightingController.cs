@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using UnityEngine.UI;
 
 public class LightingController : GameBehaviour
@@ -17,7 +17,7 @@ public class LightingController : GameBehaviour
 	private const float PLAYER_LIGHT_RADIUS_NIGHT = 2.5f;
 	private const float PLAYER_LIGHT_RADIUS_DAY = 1.5f;
 
-	[SerializeField] public Light2D GlobalLight;
+	[SerializeField] public UnityEngine.Rendering.Universal.Light2D GlobalLight;
 
 	public bool IsNight;
 

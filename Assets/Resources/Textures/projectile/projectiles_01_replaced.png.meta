@@ -156,7 +156,7 @@ TextureImporter:
       213: -3952000461930066632
     second: projectiles_01_50
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -176,6 +176,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -184,9 +186,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -207,9 +209,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1331,6 +1337,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      projectiles_01_22: 8975318083906597950
+      projectiles_01_0: -2106307180441500899
+      projectiles_01_24: -4601779978461259675
+      projectiles_01_3: -4033052962318845939
+      projectiles_01_6: 993147853717306361
+      projectiles_01_30: 4677815456683206858
+      projectiles_01_45: 992591270455889482
+      projectiles_01_34: -3339892772320732629
+      projectiles_01_20: 9099310500756984742
+      projectiles_01_10: 3923097110296788089
+      projectiles_01_23: 3769692356419213295
+      projectiles_01_2: -8227992647295567150
+      projectiles_01_35: 5913140596076618135
+      projectiles_01_27: -7656567445057125490
+      projectiles_01_47: -8154549634767269725
+      projectiles_01_25: -4970813985083551143
+      projectiles_01_50: -3952000461930066632
+      projectiles_01_49: -4638344182228917973
+      projectiles_01_48: -5046475368491229578
+      projectiles_01_1: -6593158869659337794
+      projectiles_01_33: 4046524614587382434
+      projectiles_01_17: 5896563589991433555
+      projectiles_01_16: 5407750893015838469
+      projectiles_01_26: -8436353816027126106
+      projectiles_01_44: -6411499638350587325
+      projectiles_01_11: 2929396666935100136
+      projectiles_01_39: -6521849439949434699
+      projectiles_01_4: -4564885522677081460
+      projectiles_01_8: -8687003756755234621
+      projectiles_01_42: 3293549386382960273
+      projectiles_01_13: 5492860252051948630
+      projectiles_01_15: -8038959882235934685
+      projectiles_01_7: 7779691084734996406
+      projectiles_01_19: -984270382975902066
+      projectiles_01_43: 3550469177940388515
+      projectiles_01_28: 981303521350599399
+      projectiles_01_29: -1083708910964840982
+      projectiles_01_38: 7424691324178676464
+      projectiles_01_18: 6404863252249222851
+      projectiles_01_41: 90154174478507724
+      projectiles_01_00: 174125318025261760
+      projectiles_01_21: 8653459993713309727
+      projectiles_01_40: -230224596222332403
+      projectiles_01_46: 3314493235340167338
+      projectiles_01_5: 3583034408527576185
+      projectiles_01_14: -4347796182716251560
+      projectiles_01_37: 5851701694042894549
+      projectiles_01_12: 4499840409290123562
+      projectiles_01_36: 5602386706724535845
+      projectiles_01_32: -8232497151976061123
+      projectiles_01_31: 3770824047984355784
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

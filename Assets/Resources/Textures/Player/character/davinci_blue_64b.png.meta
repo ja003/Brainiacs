@@ -390,7 +390,7 @@ TextureImporter:
       213: -7384184226282613521
     second: davinci_blue_32b_128
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -410,6 +410,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -419,8 +421,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -441,9 +443,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3203,6 +3209,136 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      davinci_blue_32b_51: -166642889313575065
+      davinci_blue_32b_121: -1288886740935605020
+      davinci_blue_32b_78: 3188892667037664373
+      davinci_blue_32b_13: -6054127773537829813
+      davinci_blue_32b_72: 4356759571459437311
+      davinci_blue_32b_102: -5845931538997164518
+      davinci_blue_32b_52: -7500927863867632797
+      davinci_blue_32b_14: -3988075190410043244
+      davinci_blue_32b_88: 3408254902380101442
+      davinci_blue_32b_15: -5235647284033704755
+      davinci_blue_32b_38: 7926249899677416528
+      davinci_blue_32b_64: 2065892127473325124
+      davinci_blue_32b_18: 388018168254862959
+      davinci_blue_32b_80: 4703424192838985227
+      davinci_blue_32b_106: -1597156874977420958
+      davinci_blue_32b_116: -8555283448541777762
+      davinci_blue_32b_58: 7713924446963171215
+      davinci_blue_32b_118: 579303878457954237
+      davinci_blue_32b_35: -7879791861787625471
+      davinci_blue_32b_120: 8279423866486805197
+      davinci_blue_32b_30: -3307941287873810106
+      davinci_blue_32b_68: -763128508506722431
+      davinci_blue_32b_65: 6236169490904017032
+      davinci_blue_32b_98: -7101600554664107176
+      davinci_blue_32b_32: -6001549414147279107
+      davinci_blue_32b_46: 2878141371388190010
+      davinci_blue_32b_22: 1279637706692306978
+      davinci_blue_32b_70: 3944271078621262884
+      davinci_blue_32b_47: -7184237262676991456
+      davinci_blue_32b_2: -928266777501591570
+      davinci_blue_32b_91: -778533925635996396
+      davinci_blue_32b_126: -4332898392534139555
+      davinci_blue_32b_34: -7935781389576203583
+      davinci_blue_32b_25: -5640598485407024962
+      davinci_blue_32b_97: 1926372769875882450
+      davinci_blue_32b_92: 3871167685170972124
+      davinci_blue_32b_31: -5483963135607098659
+      davinci_blue_32b_45: -5901187670834825999
+      davinci_blue_32b_113: 4055430235526541060
+      davinci_blue_32b_16: -5552349852902980179
+      davinci_blue_32b_95: -485707752666507331
+      davinci_blue_32b_87: 6616327801711623622
+      davinci_blue_32b_54: -3207003328942929476
+      davinci_blue_32b_125: -5192408847465255512
+      davinci_blue_32b_96: -5737186605669026464
+      davinci_blue_32b_24: 9208400036933097563
+      davinci_blue_32b_55: -5410226528495445605
+      davinci_blue_32b_28: 6469730828044658498
+      davinci_blue_32b_93: -601243291984348628
+      davinci_blue_32b_62: 5064292739127662706
+      davinci_blue_32b_11: -7803154522088337693
+      davinci_blue_32b_4: 7655465290509993689
+      davinci_blue_32b_44: 1397286015103715184
+      davinci_blue_32b_101: 5250151345861196548
+      davinci_blue_32b_76: -360071111282287352
+      davinci_blue_32b_82: 6755742550895653536
+      davinci_blue_32b_0: 3636354667662587365
+      davinci_blue_32b_100: -961671087993123077
+      davinci_blue_32b_110: -9024982454602785670
+      davinci_blue_32b_9: -6307352658238937717
+      davinci_blue_32b_63: -489268309284468518
+      davinci_blue_32b_39: 100800271560974828
+      davinci_blue_32b_37: -2617541634982998334
+      davinci_blue_32b_61: 3443030639147410296
+      davinci_blue_32b_23: 8320518771042465690
+      davinci_blue_32b_112: -3451467715479897644
+      davinci_blue_32b_8: 1196369466586394879
+      davinci_blue_32b_33: 3632620507979307737
+      davinci_blue_32b_74: -1583606849733646542
+      davinci_blue_32b_19: 6672367102866610959
+      davinci_blue_32b_7: -8264653837513711096
+      davinci_blue_32b_43: 7668252552641032553
+      davinci_blue_32b_40: -7592742722950207944
+      davinci_blue_32b_104: 2621241928425692930
+      davinci_blue_32b_27: 5180367626928978975
+      davinci_blue_32b_57: -8386056919594231483
+      davinci_blue_32b_10: -6493459403536442683
+      davinci_blue_32b_79: 1146147409387259415
+      davinci_blue_32b_114: 551487405797358645
+      davinci_blue_32b_84: 1290331147014132914
+      davinci_blue_32b_85: -305912524739302781
+      davinci_blue_32b_109: 6641610208753700381
+      davinci_blue_32b_48: -7363215760559131384
+      davinci_blue_32b_105: -5387912467043921687
+      davinci_blue_32b_103: -8019579817848601763
+      davinci_blue_32b_66: -8722444226321723078
+      davinci_blue_32b_6: -7949667489276590675
+      davinci_blue_32b_119: -9054322144111294591
+      davinci_blue_32b_17: 345679855909084140
+      davinci_blue_32b_20: -5213570284086803910
+      davinci_blue_32b_89: -2361512161477733555
+      davinci_blue_32b_26: -41465232610312018
+      davinci_blue_32b_12: 4771022544261166304
+      davinci_blue_32b_5: -1476782789164278522
+      davinci_blue_32b_29: -6111024928349907107
+      davinci_blue_32b_111: -8602804838176622128
+      davinci_blue_32b_77: 237738241003024071
+      davinci_blue_32b_1: 4618179144447505091
+      davinci_blue_32b_123: 2547747895701173768
+      davinci_blue_32b_99: -8650682997540955024
+      davinci_blue_32b_56: 7139048622382505573
+      davinci_blue_32b_86: -6750906802789122296
+      davinci_blue_32b_36: 1164156151225030481
+      davinci_blue_32b_107: 1357335725168114563
+      davinci_blue_32b_128: -7384184226282613521
+      davinci_blue_32b_127: 370895351641906375
+      davinci_blue_32b_71: -6800890575566776274
+      davinci_blue_32b_41: 5922458127879095878
+      davinci_blue_32b_49: 1008817872363455130
+      davinci_blue_32b_108: -6137222261915443320
+      davinci_blue_32b_83: -8047535970225159557
+      davinci_blue_32b_21: -1206904150163469910
+      davinci_blue_32b_94: -8479843087575675311
+      davinci_blue_32b_3: -241906172934298070
+      davinci_blue_32b_124: 4437826724214793657
+      davinci_blue_32b_90: -5154685609954575128
+      davinci_blue_32b_42: -762054024643300641
+      davinci_blue_32b_60: -3778767491435724937
+      davinci_blue_32b_115: 2399162555022456475
+      davinci_blue_32b_53: 6633000358410751193
+      davinci_blue_32b_75: 2704301706233629240
+      davinci_blue_32b_81: 4401740035065635793
+      davinci_blue_32b_69: -1057337839636671451
+      davinci_blue_32b_50: -5880446764640704583
+      davinci_blue_32b_73: -5525436438396358266
+      davinci_blue_32b_122: -9144620627164055100
+      davinci_blue_32b_59: -6062910340062675955
+      davinci_blue_32b_117: -8148410871554568275
+      davinci_blue_32b_67: 4469167083474010046
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

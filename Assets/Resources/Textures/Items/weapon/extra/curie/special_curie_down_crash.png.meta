@@ -1328,6 +1328,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1336,9 +1338,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1359,9 +1361,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -2610,6 +2615,64 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_curie_down_crash_2: -3933582855424058818
+      special_curie_down_crash_24: -3551959420767801195
+      special_curie_down_crash_54: 7047369263067622759
+      special_curie_down_crash_0: -6980380091937510506
+      special_curie_down_crash_15: -8028398731665808135
+      special_curie_down_crash_14: -979896554442305747
+      special_curie_down_crash_44: -4597674140832076695
+      special_curie_down_crash_47: 7217910258439307815
+      special_curie_down_crash_43: 1232486528342059079
+      special_curie_down_crash_56: -5448423012694140701
+      special_curie_down_crash_32: 6188549624279912582
+      special_curie_down_crash_41: -6887510957297291536
+      special_curie_down_crash_10: 6112423431520101218
+      special_curie_down_crash_18: -4746868072969978998
+      special_curie_down_crash_5: 6065385306014798046
+      special_curie_down_crash_4: 9207265401599388143
+      special_curie_down_crash_1: 533013175095483206
+      special_curie_down_crash_42: -4032855170366991828
+      special_curie_down_crash_3: -3845278638344776914
+      special_curie_down_crash_7: -3158168727092166190
+      special_curie_down_crash_6: 5758595741009389272
+      special_curie_down_crash_31: -4198516274365201880
+      special_curie_down_crash_36: -3789346323431419300
+      special_curie_down_crash_48: 333945428285400158
+      special_curie_down_crash_45: -1764445681749824275
+      special_curie_down_crash_52: 1674153617773686364
+      special_curie_down_crash_8: -1004674355594774229
+      special_curie_down_crash_50: -1019228071094630140
+      special_curie_down_crash_39: 1470621988990872319
+      special_curie_down_crash_17: 7454311803648130724
+      special_curie_down_crash_16: 1486479212234646682
+      special_curie_down_crash_12: 8079050365682020128
+      special_curie_down_crash_20: -5033487816679243570
+      special_curie_down_crash_55: -6563598790891360591
+      special_curie_down_crash_23: -7163267057169202092
+      special_curie_down_crash_37: 6216105801841081211
+      special_curie_down_crash_38: -4290454187567562314
+      special_curie_down_crash_29: -2422965755788141574
+      special_curie_down_crash_27: -810198013914947986
+      special_curie_down_crash_40: -4698565726806113726
+      special_curie_down_crash_35: -7829831689608234770
+      special_curie_down_crash_49: 156108219079583742
+      special_curie_down_crash_21: -7439577188480662901
+      special_curie_down_crash_33: 2061467504318497878
+      special_curie_down_crash_30: 8647805393359786886
+      special_curie_down_crash_9: -4181492338370329428
+      special_curie_down_crash_46: -6832881498124768588
+      special_curie_down_crash_22: 5316782135396369707
+      special_curie_down_crash_26: -1803753815290322312
+      special_curie_down_crash_28: -710126885660786092
+      special_curie_down_crash_19: -3556304184042622518
+      special_curie_down_crash_25: 8379171406704774024
+      special_curie_down_crash_11: 3846030657397820932
+      special_curie_down_crash_13: 152317454270434417
+      special_curie_down_crash_51: -2940351750002707957
+      special_curie_down_crash_34: 7791843060872206515
+      special_curie_down_crash_53: 8431021584875374405
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

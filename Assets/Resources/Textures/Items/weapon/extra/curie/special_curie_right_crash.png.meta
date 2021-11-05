@@ -194,6 +194,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -202,9 +204,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -225,9 +227,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -1476,6 +1481,64 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_curie_right_crash_51: -4042784660496058399
+      special_curie_right_crash_48: 8785398440678634412
+      special_curie_right_crash_8: -6124781424391027153
+      special_curie_right_crash_1: 5343451916356134392
+      special_curie_right_crash_17: -3825836550403626607
+      special_curie_right_crash_27: 7779999890570995338
+      special_curie_right_crash_34: 2345892511590997519
+      special_curie_right_crash_46: 4989487011703209280
+      special_curie_right_crash_6: -4950465730823599007
+      special_curie_right_crash_7: 5668367784109420897
+      special_curie_right_crash_31: 4824581295619863920
+      special_curie_right_crash_22: -3037059196616941205
+      special_curie_right_crash_25: -3563282993492014707
+      special_curie_right_crash_45: -9085827079756702474
+      special_curie_right_crash_11: 6344155545967533928
+      special_curie_right_crash_39: 3605911384185046280
+      special_curie_right_crash_43: -1224795779016203953
+      special_curie_right_crash_14: 6210291049301349376
+      special_curie_right_crash_15: -8122970257569638531
+      special_curie_right_crash_5: -2269677722306339687
+      special_curie_right_crash_23: 769908599397250404
+      special_curie_right_crash_0: -4037563464899782610
+      special_curie_right_crash_10: 2467989371567906530
+      special_curie_right_crash_9: -8687998589937088876
+      special_curie_right_crash_40: 7611387737073775265
+      special_curie_right_crash_3: -4999717884209379734
+      special_curie_right_crash_26: 1748222569668606700
+      special_curie_right_crash_21: 456905252366321883
+      special_curie_right_crash_41: -1819716529658980927
+      special_curie_right_crash_28: 7964308958862447901
+      special_curie_right_crash_24: -4167136152939602199
+      special_curie_right_crash_35: -6038472155236779663
+      special_curie_right_crash_47: 4054203824681469562
+      special_curie_right_crash_54: -4690095611371341863
+      special_curie_right_crash_53: -5833440046700605770
+      special_curie_right_crash_12: -6017225458258921171
+      special_curie_right_crash_49: 1939685049070159322
+      special_curie_right_crash_55: -6942454466952963043
+      special_curie_right_crash_42: -1995285889454924423
+      special_curie_right_crash_4: 823527357237471238
+      special_curie_right_crash_2: -4470330160028169172
+      special_curie_right_crash_16: 2683478488937168255
+      special_curie_right_crash_44: 7022005057223170059
+      special_curie_right_crash_36: -7506721195644714953
+      special_curie_right_crash_56: -3736854854802132295
+      special_curie_right_crash_52: -6679685011999354578
+      special_curie_right_crash_50: 523754500808050916
+      special_curie_right_crash_37: 3210324099039168094
+      special_curie_right_crash_33: 8975406014648415737
+      special_curie_right_crash_18: -138095609787395577
+      special_curie_right_crash_20: -1369529989888624645
+      special_curie_right_crash_13: 4885038322284594945
+      special_curie_right_crash_29: -7444473069160464869
+      special_curie_right_crash_30: 5133869202770178145
+      special_curie_right_crash_32: 352967177273611854
+      special_curie_right_crash_38: 1054360204829441794
+      special_curie_right_crash_19: -1908965210822867048
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

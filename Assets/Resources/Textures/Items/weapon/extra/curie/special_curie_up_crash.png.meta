@@ -194,6 +194,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -202,9 +204,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -225,9 +227,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -1476,6 +1481,64 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      special_curie_up_crash_25: 1084852555451649621
+      special_curie_up_crash_18: 3318819863615945042
+      special_curie_up_crash_26: -5395071472655975186
+      special_curie_up_crash_32: 3723582561642873267
+      special_curie_up_crash_12: 7362136390181725990
+      special_curie_up_crash_34: 3586566918106680963
+      special_curie_up_crash_48: -7905124168265336010
+      special_curie_up_crash_2: 3823208623443719543
+      special_curie_up_crash_0: -5502175202562247860
+      special_curie_up_crash_40: 8700220137207458792
+      special_curie_up_crash_17: -9151155320115234435
+      special_curie_up_crash_56: 8968471937493814561
+      special_curie_up_crash_24: 9123903451166869761
+      special_curie_up_crash_22: -6573134506948869565
+      special_curie_up_crash_5: -4559268581188233978
+      special_curie_up_crash_28: 431599076317575470
+      special_curie_up_crash_35: -5978705298351174221
+      special_curie_up_crash_19: 8507881199882698003
+      special_curie_up_crash_8: 842002791181079563
+      special_curie_up_crash_38: -5345833605840773634
+      special_curie_up_crash_39: 7498208913755005198
+      special_curie_up_crash_46: -3310566689530566364
+      special_curie_up_crash_3: -5427772952630365554
+      special_curie_up_crash_6: 3536679914871703169
+      special_curie_up_crash_9: -3517247457841808288
+      special_curie_up_crash_47: 9050870470732098546
+      special_curie_up_crash_1: -1618846031195622396
+      special_curie_up_crash_50: -6401854809855999899
+      special_curie_up_crash_52: 2176971051714174022
+      special_curie_up_crash_33: 9028515715527636359
+      special_curie_up_crash_30: -7587858022226932049
+      special_curie_up_crash_45: 2592455621852584346
+      special_curie_up_crash_13: 2285901094224997517
+      special_curie_up_crash_36: 1503511250289503864
+      special_curie_up_crash_15: 7505503645380012227
+      special_curie_up_crash_27: 7024617848469648848
+      special_curie_up_crash_43: -2004149397042346716
+      special_curie_up_crash_49: -5388570589105847225
+      special_curie_up_crash_11: 3882678393485954555
+      special_curie_up_crash_37: -4221300508262273570
+      special_curie_up_crash_42: -8872902561504112854
+      special_curie_up_crash_41: 5635998311341408425
+      special_curie_up_crash_53: -3198605832386451950
+      special_curie_up_crash_44: -713535037614382894
+      special_curie_up_crash_10: 1061108186019383851
+      special_curie_up_crash_16: -8954375565292044399
+      special_curie_up_crash_21: -3239079215852502628
+      special_curie_up_crash_54: -4897967425280121295
+      special_curie_up_crash_7: -8033305466439534102
+      special_curie_up_crash_31: 4924836483648777248
+      special_curie_up_crash_20: -5493197362895423437
+      special_curie_up_crash_51: 5751007685369315624
+      special_curie_up_crash_55: 2952610380609895921
+      special_curie_up_crash_4: 104988565585701427
+      special_curie_up_crash_23: 91169724519426359
+      special_curie_up_crash_14: -2778042112811042104
+      special_curie_up_crash_29: 4147366430888242743
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

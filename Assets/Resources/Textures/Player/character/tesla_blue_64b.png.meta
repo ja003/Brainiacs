@@ -384,7 +384,7 @@ TextureImporter:
       213: 1640515493340417407
     second: tesla_blue_126
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -404,6 +404,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -413,8 +415,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -435,9 +437,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -3155,6 +3161,134 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tesla_blue_32: 7300873088783393591
+      tesla_blue_102: -8382174121123208753
+      tesla_blue_41: 5058220847620458801
+      tesla_blue_12: -8569376636425824824
+      tesla_blue_35: 7651065391240111064
+      tesla_blue_69: -5657830752720188603
+      tesla_blue_118: -2568075375622133356
+      tesla_blue_74: -1261764904093250362
+      tesla_blue_64: 6382057768589055709
+      tesla_blue_30: 7696212872526442842
+      tesla_blue_117: -8586655913452826506
+      tesla_blue_70: -9146932491588512163
+      tesla_blue_24: -3526649037737788912
+      tesla_blue_16: 8908015627627757553
+      tesla_blue_108: -6856263265078206913
+      tesla_blue_20: -4312882089346372431
+      tesla_blue_119: 5350135969547331406
+      tesla_blue_37: 4150992782118261164
+      tesla_blue_111: 1704322586674531314
+      tesla_blue_96: 8056831010861343018
+      tesla_blue_26: 4499730933232580403
+      tesla_blue_39: -6925770027695426586
+      tesla_blue_101: 1775610069535621078
+      tesla_blue_89: 3337637915696961966
+      tesla_blue_126: 1640515493340417407
+      tesla_blue_0: -3209719824035278376
+      tesla_blue_71: 6338997278722943349
+      tesla_blue_85: 7840221355855645667
+      tesla_blue_13: 3140341787988398999
+      tesla_blue_72: -4693391464450343381
+      tesla_blue_68: -2797474159913220746
+      tesla_blue_106: 1389306074581282439
+      tesla_blue_25: 40702814899501662
+      tesla_blue_34: 2137037294494088996
+      tesla_blue_33: 7789335033127295707
+      tesla_blue_54: 4645619393643066420
+      tesla_blue_51: 8559189987799554010
+      tesla_blue_27: 4733785941240382589
+      tesla_blue_66: 7017258581020588133
+      tesla_blue_73: -6414773085860431114
+      tesla_blue_2: 7695397696016348843
+      tesla_blue_84: -458958633119580882
+      tesla_blue_99: 2462567676645594122
+      tesla_blue_104: -5004148096374869287
+      tesla_blue_78: -5016229867386627728
+      tesla_blue_103: 4090791111752766353
+      tesla_blue_53: 7347610683810823279
+      tesla_blue_94: 5404928240595462898
+      tesla_blue_10: -2307113884510534927
+      tesla_blue_63: -3520363502900237315
+      tesla_blue_52: -7311906469675179223
+      tesla_blue_46: 8812849261305180454
+      tesla_blue_83: 7175541776456097097
+      tesla_blue_105: 632409784881456373
+      tesla_blue_90: 3305169265529696580
+      tesla_blue_122: 7685830410486388757
+      tesla_blue_5: 8667698074110805811
+      tesla_blue_86: -6152292333994467877
+      tesla_blue_15: -7216051295912642104
+      tesla_blue_36: 8146502396949164379
+      tesla_blue_109: 5563227297199046918
+      tesla_blue_4: -6935086948627930246
+      tesla_blue_6: 205653039561246679
+      tesla_blue_21: -5452728594323605935
+      tesla_blue_28: 4539956621308578334
+      tesla_blue_23: 4727377903813008150
+      tesla_blue_95: 2970808507943364289
+      tesla_blue_81: 1064995866533249887
+      tesla_blue_77: -6540104069902127071
+      tesla_blue_55: 4815106460850905719
+      tesla_blue_110: -8260530925549038833
+      tesla_blue_65: -6850700579799259244
+      tesla_blue_47: -4674122881544826429
+      tesla_blue_82: -7219920041657167129
+      tesla_blue_120: -7072070026862938516
+      tesla_blue_113: -8376911350867403555
+      tesla_blue_43: -4438691923648923007
+      tesla_blue_14: -4947093091850980932
+      tesla_blue_17: 8806271140374834375
+      tesla_blue_45: -3972535840133054170
+      tesla_blue_22: 7575232174812246017
+      tesla_blue_61: -9223324453821615376
+      tesla_blue_3: 2560900532086617165
+      tesla_blue_115: 8877322399755013670
+      tesla_blue_121: -1176042962477575556
+      tesla_blue_87: -8921264703922866333
+      tesla_blue_29: 1689367982165348324
+      tesla_blue_40: 2467380264196263356
+      tesla_blue_19: -8164589263207687235
+      tesla_blue_75: 3969277579934689255
+      tesla_blue_60: -3765394509516217339
+      tesla_blue_97: 1036381318621802511
+      tesla_blue_38: -330093047872595247
+      tesla_blue_42: -823085757313607296
+      tesla_blue_56: -5051980311256043846
+      tesla_blue_92: -7107122546186422563
+      tesla_blue_100: -1586920968822974573
+      tesla_blue_31: -5036097753603133298
+      tesla_blue_91: 2323170277632887784
+      tesla_blue_7: -5536990028083733107
+      tesla_blue_80: 9210066738812637561
+      tesla_blue_88: -5679628501697877758
+      tesla_blue_50: -3378518142287044333
+      tesla_blue_9: 1569841165419950084
+      tesla_blue_8: 4743129465365520318
+      tesla_blue_57: -2609994660237338450
+      tesla_blue_79: 1311888714282424994
+      tesla_blue_62: -7398907828487424130
+      tesla_blue_93: 7608939103232803624
+      tesla_blue_44: -6879510379172148524
+      tesla_blue_114: -1332313379189190762
+      tesla_blue_116: -4053018915101281121
+      tesla_blue_48: 8053294174134070351
+      tesla_blue_98: 5253889509970383225
+      tesla_blue_1: -5260279725752303815
+      tesla_blue_59: 6412742863403364276
+      tesla_blue_76: -283422576227804563
+      tesla_blue_124: -6924285794935348850
+      tesla_blue_112: 1200628216025649083
+      tesla_blue_18: 4401091941634996485
+      tesla_blue_58: -314769309269501248
+      tesla_blue_125: 294804203015315057
+      tesla_blue_123: -4083025818921812268
+      tesla_blue_67: 7695263382607852344
+      tesla_blue_49: -7032277859749511925
+      tesla_blue_11: -5447922538073527006
+      tesla_blue_107: -8920609646559735336
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
