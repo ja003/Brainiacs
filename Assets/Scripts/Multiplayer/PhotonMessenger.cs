@@ -248,6 +248,7 @@ public enum EPhotonMsg
 	Player_UI_PlayerInfo_SetReloading,
 	Player_UI_PlayerInfo_SetAmmo,
 	Player_UI_PlayerInfo_SetActiveWeapon,
+	Player_UI_PlayerInfo_SetMagazines,
 
 	Player_UI_Scoreboard_SetScore,
 

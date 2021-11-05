@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIPrompt : MenuController
 {
     [SerializeField] Text message;
+	[SerializeField] Text note;
 	[SerializeField] Button btnOk;
 	[SerializeField] Button btnCancel;
 
@@ -23,13 +24,16 @@ public class UIPrompt : MenuController
 			Hide();
 	}
 
-	public void Show(string pText, bool pEnableCancel, UnityAction pOnOk)
+
+	public void Show(string pText, string pNote, bool pEnableCancel, UnityAction pOnOk)
 	{
 		SetActive(true);
 
 		btnCancel.gameObject.SetActive(pEnableCancel);
 
 		message.text = pText;
+		note.text = pNote;
+		note.gameObject.SetActive(pNote.Length > 0);
 		btnOk.onClick.RemoveAllListeners();
 		btnOk.onClick.AddListener(pOnOk);
 		btnOk.onClick.AddListener(Hide);

@@ -50,20 +50,20 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
-  _ExtraPlayerWeapon: 0
+  _ExtraPlayerWeapon: 10
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 0
-  _InstaKill: 0
+  _InstaKill: 1
   _InfiniteAmmo: 0
   _PlayerEffect: 0
   playerCount: 4
   playerTypes: 01000000010000000100000001000000
   heroes: 02000000
-  _Map: 2
+  _Map: 1
   _gameValue: 5
   _GenerateItems: 0
-  _Respawnpoint: 1
+  _Respawnpoint: 0
   _StopGenerateItems: 0
   _DontEndGame: 1
   _GameEffect: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   _ForceTutorial: 0
   _InstaAnimation: 1
   _OpenMenu: 1
-  _InstaReady: 1
+  _InstaReady: 0
   _ExtraPlayerAtStart: 0
   _ExtraPlayerAtStart2: 0
   pushForce: 15

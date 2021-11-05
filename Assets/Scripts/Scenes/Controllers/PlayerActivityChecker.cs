@@ -17,7 +17,7 @@ public class PlayerActivityChecker : GameController
 	//records of times of last received signal from players
 	Dictionary<Player, float> lastPlayersActivity = new Dictionary<Player, float>();
 
-	[SerializeField] bool debug_instaKill;
+	[SerializeField] bool debug_punishKill; //to test in editor just click away from game window
 	[SerializeField] bool debug_shortInactivity;
 	[SerializeField] public bool debug_includeLocalPlayers;
 
@@ -61,8 +61,8 @@ public class PlayerActivityChecker : GameController
 			bool isInactiveShortly = IsInactiveShortly(playerActivity.Key);
 			bool isInactiveLong = inactivityDuration > LONG_INACTIVITY;
 
-			if(PhotonNetwork.IsMasterClient)
-				Debug.Log($"Player {playerActivity.Key} inactive for {inactivityDuration} seconds.");
+			//if(PhotonNetwork.IsMasterClient)
+			//	Debug.Log($"Player {playerActivity.Key} inactive for {inactivityDuration} seconds.");
 
 			if(!isInactiveShortly)
 			{
@@ -112,8 +112,8 @@ public class PlayerActivityChecker : GameController
 			if(player.InitInfo.PhotonPlayer == pSender)
 			{
 				playersMatch.Add(player);
-				if(PhotonNetwork.IsMasterClient)
-					Debug.Log($"Received singnal from {player} at {Time.time}");
+				//if(PhotonNetwork.IsMasterClient)
+				//	Debug.Log($"Received singnal from {player} at {Time.time}");
 			}
 		}
 
@@ -126,15 +126,15 @@ public class PlayerActivityChecker : GameController
 
 	private void OnApplicationFocus(bool focus)
 	{
-		//to prevent insta death in editor
+		//to prevent punish death in editor
 		if(Time.time < 2)
 			return;
 
-		if(!PlatformManager.IsMobile() && !debug_instaKill)
+		if(!PlatformManager.IsMobile() && !debug_punishKill)
 			return;
 
-		if(debug_instaKill)
-			Debug.Log("debug_instaKill");
+		if(debug_punishKill)
+			Debug.Log("debug_punishKill");
 
 		OnApplicationActive(focus);
 	}
@@ -142,25 +142,25 @@ public class PlayerActivityChecker : GameController
 	/// <summary>
 	/// When user activates the app on phone, it means that he was alt-tabbed and wasn't
 	/// active in multiplayer game.
-	/// He gets punished => instakill + warning.
+	/// He gets punished => punish-kill + warning.
 	/// </summary>
 	private void OnApplicationActive(bool pActive)
 	{
-		//player gets instakilled only when activating the app
+		//player gets punish-killed only when activating the app
 		//no reason to do it when he deactivates it because he wouldnt see it anyway
-		bool shouldBeInstaKilled = pActive && isMultiplayer && PlatformManager.IsMobile();
-		Debug.Log("shouldBeInstaKilled " + shouldBeInstaKilled);
+		bool shouldBePunishKilled = pActive && isMultiplayer && PlatformManager.IsMobile();
+		Debug.Log("shouldBePunishKilled " + shouldBePunishKilled);
 
-		if(!shouldBeInstaKilled && !debug_instaKill)
+		if(!shouldBePunishKilled && !debug_punishKill)
 			return;
 
 		Player myPlayer = game.PlayerManager.GetPlayer(PhotonNetwork.LocalPlayer);
 #if UNITY_EDITOR
-		if(debug_instaKill)
+		if(debug_punishKill)
 			myPlayer = game.PlayerManager.GetPlayer(1);
 #endif
 
 		//respawn handled in Health::OnDeadAnimFinished
-		myPlayer.Health.InstaKill();
+		myPlayer.Health.ForceKill(true);
 	}
 }

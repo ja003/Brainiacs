@@ -14,6 +14,7 @@ public class UIPlayerInfoElement : UiBehaviour
 	[SerializeField] private Image frame = null;
 	[SerializeField] public Text health = null;
 	[SerializeField] public Text ammo = null;
+	[SerializeField] private List<Image> magazines;
 
 	private void Update()
 	{
@@ -119,6 +120,8 @@ public class UIPlayerInfoElement : UiBehaviour
 
 		SetReloading(pWeapon.IsRealoading, pWeapon.RealoadTimeLeft);
 
+		SetMagazines(pWeapon.MagazinesLeft);
+
 		if(!pWeapon.IsRealoading)
 		{
 			//we cant simply set the time when weapon was used, because 
@@ -127,6 +130,14 @@ public class UIPlayerInfoElement : UiBehaviour
 			bool weaponUsed = Time.time - pWeapon.LastUseTime < 0.1f;
 			SetAmmo(pWeapon.AmmoLeft, weaponUsed);
 		}
+	}
+
+	public void SetMagazines(int pMagazinesLeft)
+	{
+		for(int i = magazines.Count - 1; i >= 0; i--)
+			magazines[i].color = new Color(1, 1, 1, pMagazinesLeft > i ? 1 : 0);
+	
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetMagazines, pMagazinesLeft);
 	}
 
 

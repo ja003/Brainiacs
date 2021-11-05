@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PauseMenu : GameMenuController
@@ -19,6 +20,7 @@ public class PauseMenu : GameMenuController
 
 
 	[SerializeField] Button btnResetSettings;
+	[SerializeField] Button btnRespawn;
 
 	[Header("End game")]
 	[SerializeField] Button btnEndGame;
@@ -47,7 +49,7 @@ public class PauseMenu : GameMenuController
 		SetVolumeMusic(brainiacs.PlayerPrefs.VolumeMusic);
 
 		btnClose.onClick.AddListener(() => SetActive(false));
-		btnBackground.onClick.AddListener(() => SetActive(false));		
+		btnBackground.onClick.AddListener(() => SetActive(false));
 
 		toggleAllowAllDir.onValueChanged.AddListener(OnAllowAllDirChanged);
 		toggleAllowAllDir.isOn = brainiacs.PlayerPrefs.AllowMoveAllDir;
@@ -59,7 +61,8 @@ public class PauseMenu : GameMenuController
 		sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
 		sliderVolumeSounds.onValueChanged.AddListener(SetVolumeSounds);
 
-		btnResetSettings.onClick.AddListener(ResetSettings);
+		btnResetSettings.onClick.AddListener(OnResetClick);
+		btnRespawn.onClick.AddListener(OnRespawnClick);
 
 		//end game
 		holderEndGameConfirm.SetActive(false);
@@ -80,6 +83,7 @@ public class PauseMenu : GameMenuController
 
 	}
 
+
 	private void OnAllowAllDirChanged(bool pValue)
 	{
 		brainiacs.PlayerPrefs.AllowMoveAllDir = pValue;
@@ -88,7 +92,7 @@ public class PauseMenu : GameMenuController
 	private void OnShowHealthbarsChanged(bool pValue)
 	{
 		brainiacs.PlayerPrefs.ShowHealthbars = pValue;
-	}	
+	}
 
 	/// <summary>
 	/// Leave room and loads the result scene.
@@ -160,10 +164,35 @@ public class PauseMenu : GameMenuController
 	}
 
 
-	private void ResetSettings()
+	private void OnResetClick()
 	{
 		SetVolumeMusic(1);
 		SetVolumeSounds(1);
+		toggleAllowAllDir.isOn = true;
+		toggleShowHealthbars.isOn = true;
+
 		game.MobileInput.OnResetSettings();
+	}
+
+
+	private void OnRespawnClick()
+	{
+		string message = "Are you sure you want to respawn? You will lose 1 life.";
+		string note = "use this when you get stuck or otherwise f*cked";
+		UnityAction forceKillAction = () =>
+		{
+			//pause menu can be meanwhile closed via ESC
+			bool isPauseMenuActive = IsActive();
+			if(isPauseMenuActive)
+				SetActive(false);
+
+			DoInTime(() =>
+			{
+				Player player = game.PlayerManager.GetLocalPlayer();
+				player.Health.ForceKill(false);
+			}, isPauseMenuActive ? 0.5f : 0.1f, true);
+			
+		};
+		game.Prompt.Show(message, note, true, forceKillAction);
 	}
 }

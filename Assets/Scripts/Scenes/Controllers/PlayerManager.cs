@@ -248,6 +248,14 @@ public class PlayerManager : GameController
 				SpawnPlayers(brainiacs.GameInitInfo.Players));
 	}
 
+	/// <summary>
+	/// Returns the first local player
+	/// </summary>
+	public Player GetLocalPlayer()
+	{
+		return Players.Find(a => a.InitInfo.PlayerType == EPlayerType.LocalPlayer);
+	}
+
 	public Player GetPlayer(PhotonPlayer pPhotonPlayer)
 	{
 		return Players.Find(a => ((PlayerPhotonController)a.Photon).PhotonPlayer == pPhotonPlayer);

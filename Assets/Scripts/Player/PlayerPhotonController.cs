@@ -240,7 +240,11 @@ public class PlayerPhotonController : PoolObjectPhoton
 				float cadency = (float)pParams[1];
 				player.Visual.PlayerInfo.SetActiveWeapon(weapon, cadency);
 				return;
-
+			case EPhotonMsg.Player_UI_PlayerInfo_SetMagazines:
+				int magazines = (int)pParams[0];
+				player.Visual.PlayerInfo.SetMagazines(magazines);
+				return;
+				
 
 			case EPhotonMsg.Player_UI_Scoreboard_SetScore:
 				int kills = (int)pParams[0];

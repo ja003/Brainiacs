@@ -9,8 +9,8 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	{
 		stats.SetOnStatsChange(OnStatsChange);
 
-		//InstantiateHealthbar();
-		//Healthbar = InstanceFactory.Instantiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
+		//PunishntiateHealthbar();
+		//Healthbar = PunishnceFactory.Punishntiate("p_Healthbar", Vector2.zero, false).GetComponent<UIHealthbar>();
 		//Healthbar.Init(this, Vector2.up, true);
 
 
@@ -29,7 +29,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 
 		Color healthbarColor =
 			brainiacs.PlayerColorManager.GetColor(player.InitInfo.Color);
-			//player.InitInfo.PlayerType == EPlayerType.AI ? Color.blue : Color.green;
+		//player.InitInfo.PlayerType == EPlayerType.AI ? Color.blue : Color.green;
 		Healthbar.Init(this, .75f * Vector2.up, true, healthbarColor);
 	}
 
@@ -53,18 +53,22 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	}
 
 	/// <summary>
-	/// Insta kill is used in multiplayer when user alt-tabs the app on phone.
+	/// Punish kill is used in multiplayer when user alt-tabs the app on phone.
 	/// reason: game cant run on background and player is not responsive.
 	/// When user opens game his player will be respawned.
 	/// </summary>
-	public bool IsInstaKilled;
-	public void InstaKill()
-	{
-		Debug.Log("InstaKill");
-		if(IsInstaKilled)
-			return;
+	public bool IsPunishKilled;
 
-		IsInstaKilled = true;
+	public void ForceKill(bool pIsPunish)
+	{
+		Debug.Log("ForceKill " + pIsPunish);
+		if(pIsPunish)
+		{
+			if(IsPunishKilled)
+				return;
+
+			IsPunishKilled = true;
+		}
 		Die();
 	}
 
@@ -86,28 +90,28 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	public void OnDeadAnimFinished()
 	{
 		//Debug.Log("OnDeadAnimFinished");
-		//if player was instakilled => show prompt
-		if(IsInstaKilled)
+		//if player was punish-killed => show prompt
+		if(IsPunishKilled)
 		{
-			Debug.Log($"Player {player} was insta killed => prompt");
-			string warningPrompt = "You were killed because you closed the game during multiplayer." +
-				Environment.NewLine + Environment.NewLine + "<b>DON'T DO THAT!</b>";
-			game.Prompt.Show(warningPrompt, false, InstaRespawn);
+			Debug.Log($"Player {player} was punish killed => prompt");
+			string warningMessage = "You were killed because you closed the game during multiplayer";
+			string warningNote = "DON'T DO THAT!";
+			game.Prompt.Show(warningMessage, warningNote, false, PunishRespawn);
 			return;
 		}
 		DoInTime(Respawn, 0.5f);
 	}
 
-	public void InstaRespawn()
+	public void PunishRespawn()
 	{
-		Debug.Log("InstaRespawn " + Time.time);
-		if(!IsInstaKilled)
+		Debug.Log("PunishRespawn " + Time.time);
+		if(!IsPunishKilled)
 		{
-			Debug.Log("no need to insta InstaRespawn");
+			Debug.Log("no need to punish PunishRespawn");
 			return;
 		}
 		Respawn();
-		IsInstaKilled = false;
+		IsPunishKilled = false;
 	}
 
 	private void Respawn()
@@ -194,7 +198,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	}
 
 	//Tesla clone has special health. he will be killed in 'CloneHealth' hits
-	public int CloneHealth = 3; 
+	public int CloneHealth = 3;
 
 	/// <summary>
 	/// Apply damage caused by pOrigin player.
@@ -217,7 +221,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			return;
 		}
 
-		
+
 
 		//owner doesnt have to be set (item explosion, ..)
 		if(pOrigin != null && !player.IsLocalImage) //effect would be applied 2* if local image

@@ -113,9 +113,13 @@ public class UIGameSetupMain : MainMenuController
 		gameModeToggleScore.isOn = mode == EGameMode.Score;
 		gameModeToggleDeathmatch.isOn = mode == EGameMode.Deathmatch;
 
-		mapSwapper.SetValue((int)pGameInfo.Map);
+		//if value is changed => play animation
+		//all values are synced together so we have to detect it this way
+		if(mapSwapper.SetValue((int)pGameInfo.Map))
+			mapSwapper.PlayAnimation(true);
 
-		gameModeValueSwapper.SetNumberValue(pGameInfo.GameModeValue);
+		if(gameModeValueSwapper.SetNumberValue(pGameInfo.GameModeValue))
+			gameModeValueSwapper.PlayAnimation(true);
 
 		//set just game values. 
 		//player info is determined from UI elements.
@@ -513,8 +517,9 @@ public class UIGameSetupMain : MainMenuController
 		//notify player that he is starting a solo game
 		if(gameInitInfo.Players.Count == 1)
 		{
-			promt.Show("Do you really want to play just with yourself?", true, 
-				() => brainiacs.Scenes.LoadScene(EScene.Loading));
+			const string message = "Do you really want to play just with yourself?";
+			const string note = "you can explore your hero ability and other game mechanics";
+			promt.Show(message, note, true,	() => brainiacs.Scenes.LoadScene(EScene.Loading));
 			return;
 		}
 

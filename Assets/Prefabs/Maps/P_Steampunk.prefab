@@ -1467,6 +1467,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5396976, y: 1.1474705}
   m_EdgeRadius: 0
+--- !u!1 &7668221930240151136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8762377404753527938}
+  m_Layer: 0
+  m_Name: debug_respawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8762377404753527938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668221930240151136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.66, y: -0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8826602046664065911}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8826602045979233349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1739,7 @@ Transform:
   - {fileID: 6615239962705529478}
   - {fileID: 1854118192}
   - {fileID: 5929105871859381114}
+  - {fileID: 8762377404753527938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1726,10 +1757,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointsHolder: {fileID: 8826602047118180701}
   mapItemGenPosHolder: {fileID: 1854118192}
-  debug_ItemGenPos: {fileID: 5929105871859381114}
   TopLeftCorner: {fileID: 1095738951700416685}
   BotRightCorner: {fileID: 6615239962705529478}
   debug_DrawGrid: 0
+  debug_ItemGenPos: {fileID: 5929105871859381114}
+  debug_Respawnpoint: {fileID: 8762377404753527938}
 --- !u!1 &8826602046772695581
 GameObject:
   m_ObjectHideFlags: 0

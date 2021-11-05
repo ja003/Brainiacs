@@ -8,6 +8,7 @@ public class ButtonObject : UiBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
 	public Action<float> OnPointerUpAction; //arg = hold duration
 	public Action<float> OnPointerHoldUpdate; //arg = hold duration
+	[SerializeField] bool disableClickAnimation;
 
 	protected override void Awake()
 	{
@@ -31,6 +32,12 @@ public class ButtonObject : UiBehaviour, IPointerEnterHandler, IPointerExitHandl
 	private void OnClick()
 	{
 		brainiacs.AudioManager.PlaySound(ESound.Ui_Button_Click, null);
+		
+		if(!disableClickAnimation)
+			LeanTween.scale(gameObject, Vector3.one * 1.2f, 0.1f).setIgnoreTimeScale(true)
+				.setOnComplete(() => LeanTween.scale(gameObject, Vector3.one * 1f, 0.1f)
+					.setIgnoreTimeScale(true));
+
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)

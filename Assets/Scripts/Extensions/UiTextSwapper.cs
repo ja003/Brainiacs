@@ -68,21 +68,21 @@ public class UiTextSwapper : MonoBehaviour
 
 	int skippedIndex = -1;
 
-	public void SetNumberValue(int pValue)
+	public bool SetNumberValue(int pValue)
 	{
 		if(!isNumber)
 		{
 			Debug.LogError("Setting number value to non-number swapper");
-			return;
+			return false;
 		}
 		pValue = Mathf.Clamp(pValue, min, max);
 
 		int index = pValue - min;
-		SetValue(index);
+		return SetValue(index);
 	}
 
 
-	public void SetValue(int pIndex, bool pIsIncrement = true)
+	public bool SetValue(int pIndex, bool pIsIncrement = true)
 	{
 		pIndex = Mathf.Clamp(pIndex, 0, pIndex %= values.Count);
 
@@ -91,8 +91,7 @@ public class UiTextSwapper : MonoBehaviour
 			//Debug.Log("Skipping index " + pIndex);
 			int newIndex = pIndex + (pIsIncrement ? 1 : -1);
 			newIndex = Utils.PositiveModulo(newIndex, values.Count);
-			SetValue(newIndex);
-			return;
+			return SetValue(newIndex);
 		}
 
 		bool isChange = CurrentIndex != pIndex;
@@ -100,6 +99,8 @@ public class UiTextSwapper : MonoBehaviour
 		text.text = values[pIndex];
 		if(isChange)
 			OnValueChanged?.Invoke();
+
+		return isChange;
 	}
 
 	public void SetNextValue()
@@ -120,7 +121,7 @@ public class UiTextSwapper : MonoBehaviour
 		PlayAnimation(true);
 	}
 
-	private void PlayAnimation(bool pNext)
+	public void PlayAnimation(bool pNext)
 	{
 		if(animator == null)
 			return;

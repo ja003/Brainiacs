@@ -202,7 +202,7 @@ public class SpecialCurieTruck : PlayerWeaponSpecialPrefab
 		const float min_collision_delay = 0.5f;
 		if(Time.time - startTruckTime < min_collision_delay)
 		{
-			Debug.Log("Truck cant collide yet");
+			//Debug.Log("Truck cant collide yet");
 			return;
 		}
 
