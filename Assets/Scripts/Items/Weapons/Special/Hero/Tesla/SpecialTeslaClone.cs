@@ -34,7 +34,7 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 		info.PlayerType = EPlayerType.AI;
 		info.Number = -1; //-1 = clone
 
-		cloneInstance.ai.IsTmp = true;
+		cloneInstance.IsTmp = true;
 		cloneInstance.SetInfo(info, false);
 		cloneInstance.Stats.OnRespawn();
 
@@ -45,8 +45,12 @@ public class SpecialTeslaClone : PlayerWeaponSpecialPrefab
 		//set clone health
 		cloneInstance.Health.CloneHealth = CLONE_HEALTH;
 
-		//stop ai brain for 1 sec
-		cloneInstance.ai.StopBrain(1);
+		//disable ai for 1 sec
+		//cloneInstance.ai.StopUpdateFor(1); //bad: clone gets in the way, doesnt look good =>
+		//disable shoot and item logic, let him move away
+		cloneInstance.ai.Shoot.DisableFor(1);
+		cloneInstance.ai.Item.DisableFor(1);
+
 		//send clone in player's direction so they dont get each other in the way that much
 		cloneInstance.ai.Movement.SetTarget(spawnPos + Utils.GetVector2(playerDirection) * 2);
 

@@ -117,7 +117,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 	private void Respawn()
 	{
 		//Debug.Log("Respawn");
-		if(player.ai.IsTmp)
+		if(player.IsTmp)
 		{
 			//Debug.Log("AI dont respawn");
 			return;
@@ -210,7 +210,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 			pDamage = PlayerStats.MAX_HEALTH;
 
 		//clone has special damage system
-		if(player.ai.IsTmp)
+		if(player.IsTmp)
 		{
 			pDamage = (int)Mathf.Ceil(PlayerStats.MAX_HEALTH / (float)CloneHealth);
 		}
@@ -263,7 +263,7 @@ public class PlayerHealth : PlayerBehaviour, ICollisionHandler
 		bool forceAddKill = wasGameEnded != gameEndedAfterThis;
 
 		//no kill point for killing AI
-		if(stats.IsDead && !player.ai.IsTmp)
+		if(stats.IsDead && !player.IsTmp)
 		{
 			//Debug.Log("Add kill to " + pOrigin);
 			pOrigin?.Stats.AddKill(forceAddKill);

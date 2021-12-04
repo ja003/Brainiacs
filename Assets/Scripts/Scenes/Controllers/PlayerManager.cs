@@ -175,7 +175,7 @@ public class PlayerManager : GameController
 	{
 		//Debug.Log($"AddPlayer {pPlayer}");
 
-		if(pPlayer.ai.IsTmp)
+		if(pPlayer.IsTmp)
 		{
 			//Debug.Log("Skip tmp ai");
 			//tmp AIs (Tesla clone) are not registered as active players

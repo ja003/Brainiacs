@@ -10,18 +10,22 @@ public class AiShoot : AiGoalController
 	private const int INVALID_TARGET_DISTANCE = 100;
 
 	public Player targetedPlayer;
-
 	Vector2 moveTarget;
 	Vector2 idealMoveTarget;
 	bool moveTargetReached;
 	AiWeaponPicker weaponPicker;
 	static bool debug_log = false;
 
+	//positions where the weapon should be used
+	// First = position closest to the player
+	// Second = position closer to the target
+	private Tuple<Vector2, Vector2> usePositions;
+
 	private Tuple<Vector2, Vector2> playerPositions => new Tuple<Vector2, Vector2>(playerPosition, playerPosition);
 
-	public AiShoot(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.Shoot)
+	public AiShoot(Player pPlayer) : base(pPlayer, EAiGoal.Shoot)
 	{
-		weaponPicker = new AiWeaponPicker(pBrain, pPlayer);
+		weaponPicker = new AiWeaponPicker(pPlayer);
 	}
 
 	public override int GetPriority()
@@ -32,11 +36,12 @@ public class AiShoot : AiGoalController
 			|| targetedPlayer == null
 			//target is shielded
 			|| (targetedPlayer != null && targetedPlayer.Stats.IsShielded)
-			|| debug.NonAggressiveAi)
+			|| debug.NonAggressiveAi
+			|| !isActive)
 		{
 			return 0;
 		}
-		float distToTarget = Vector2.Distance(playerPosition, targetedPlayer.Position);
+		float distToTarget = Vector2.Distance(playerPosition, targetedPlayer.ColliderCenter);
 		const int max_prio = 10;
 		const int min_measure_dist = 3;
 		const int max_measure_dist = 10;
@@ -65,7 +70,7 @@ public class AiShoot : AiGoalController
 		targetedPlayer = GetPlayerToTarget(weaponPicker.PickedWeapon);
 
 		//set move target
-		Tuple<Vector2, Vector2> usePositions = GetUseWeaponPosition(weaponPicker.PickedWeapon);
+		usePositions = GetUseWeaponPosition(weaponPicker.PickedWeapon);
 		SetMoveTarget(usePositions);
 	}
 
@@ -78,12 +83,14 @@ public class AiShoot : AiGoalController
 
 	internal void Update()
 	{
-		if(brain.CurrentGoal != this)
-		{
-			//Debug.Log($"No shoot. {brain.CurrentGoal}");
-			player.WeaponController.StopUseWeapon(true);
+		if(!isActive)
 			return;
-		}
+		//if(brain.CurrentGoal != this)
+		//{
+		//	//Debug.Log($"No shoot. {brain.CurrentGoal}");
+		//	player.WeaponController.StopUseWeapon(true);
+		//	return;
+		//}
 		EvaluateWeaponUsage();
 
 		if(isUseWeaponRequested)
@@ -99,7 +106,7 @@ public class AiShoot : AiGoalController
 			return null;
 
 		//ignore brain.Owner (valid for Tesla clone)
-		Player closestPlayer = game.PlayerManager.GetClosestPlayerTo(player, brain.Owner);
+		Player closestPlayer = game.PlayerManager.GetClosestPlayerTo(player, player.ai.Owner);
 		return closestPlayer;
 		//return closestPlayer.Stats.IsShielded ? closestPlayer : null;
 	}
@@ -111,7 +118,7 @@ public class AiShoot : AiGoalController
 	{
 		//turn to targeted player (required to shoot)
 		if(targetedPlayer)
-			player.Movement.SetDirection(targetedPlayer.Position - player.Position);
+			player.Movement.SetDirection(targetedPlayer.ColliderCenter - player.ColliderCenter);
 		//Debug.Log("OnReachedTarget");
 		EvaluateWeaponUsage();
 
@@ -142,10 +149,12 @@ public class AiShoot : AiGoalController
 		if(!isUseWeaponRequested)
 			return;
 
+		EWeaponId activeWeapon = player.WeaponController.ActiveWeapon.Id;
+
 		//dont use weapon if 
 		// - targeted player is dead or too far
-		float distanceToTarget = Vector2.Distance(playerPosition, targetedPlayer.Position);
-		float maxUseDistance = GetWeaponMaxUseDistance(player.WeaponController.ActiveWeapon.Id);
+		float distanceToTarget = Vector2.Distance(playerPosition, targetedPlayer.ColliderCenter);
+		float maxUseDistance = GetWeaponMaxUseDistance(activeWeapon);
 		// - or is looking in wrong direction
 		bool isLookingAtTarget = IsLookingAtTarget();
 		if(targetedPlayer.Visual.IsDying
@@ -155,16 +164,53 @@ public class AiShoot : AiGoalController
 		{
 			isUseWeaponRequested = false;
 		}
-		else //do Raycast only if other checks dont prevent weapon usage (performance)
+		else if(!IsPlayerOnUseWeaponPosition())
+		{
+			isUseWeaponRequested = false;
+			//Debug.Log("not on use pos");
+			//todo: not enough..still behaves bad when debug.InfiniteAmmo
+		}
+		//do raycast only if other checks dont prevent weapon usage (performance)
+		//and if the active even requires raycast (eg. Mine, bomb, ..)
+		else if(RequiresRaycastCheck(activeWeapon))
 		{
 			//dont use weapon if - there is a map object between player and target
-			Vector2 dirToTarget = targetedPlayer.Position - playerPosition;
+			Vector2 dirToTarget = targetedPlayer.ColliderCenter - playerPosition;
 			bool hitMapObject = Physics2D.Raycast(
-				playerPosition, dirToTarget, dirToTarget.magnitude, 
-				GetDontHitLayer(player.WeaponController.ActiveWeapon.Id));
+				playerPosition, dirToTarget, dirToTarget.magnitude,
+				GetDontHitLayer(activeWeapon));
 			if(hitMapObject)
 				isUseWeaponRequested = false;
 		}
+	}
+
+	private bool IsPlayerOnUseWeaponPosition()
+	{
+		float distFromUsePositions = Utils.GetDistanceFromLine(player.ColliderCenter, usePositions.Item2, usePositions.Item1);
+		bool result = distFromUsePositions < Player.COLLIDER_SIZE;
+		if(!result)
+		{
+			//Debug.Log("IsPlayerOnUseWeaponPosition dist = " + distFromUsePositions);
+			//Debug.DrawLine(player.ColliderCenter, usePositions.Item1, Color.red);
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// Returns if weapon requires raycast check for its usage.
+	/// Should be true for all projectile like weapons.
+	/// </summary>
+	private bool RequiresRaycastCheck(EWeaponId pWeapon)
+	{
+		switch(pWeapon)
+		{
+			case EWeaponId.Mine:
+			case EWeaponId.Special_Einstein:
+			case EWeaponId.Flamethrower:
+				return false;
+		}
+
+		return true;
 	}
 
 	private LayerMask GetDontHitLayer(EWeaponId pWeapon)
@@ -186,7 +232,7 @@ public class AiShoot : AiGoalController
 				return true;
 		}
 
-		Vector2 dirToTarget = targetedPlayer.Position - player.Position;
+		Vector2 dirToTarget = targetedPlayer.ColliderCenter - player.ColliderCenter;
 		EDirection dir = Utils.GetDirection(dirToTarget);
 		return player.Movement.CurrentEDirection == dir;
 	}
@@ -203,8 +249,15 @@ public class AiShoot : AiGoalController
 	{
 		if(!moveTargetReached)
 		{
-			moveTargetReached = brain.Movement.IsCloseTo(moveTarget);
+			moveTargetReached = aiBT.Movement.IsCloseTo(moveTarget);
 		}
+		//if(!moveTargetReached)
+		//{
+		//	moveTarget = aiBT.Movement.is
+		//}
+
+		//todo: test current scenario
+		//when target is near unwalkable, AI keeps switching moveTarget between shootPos and idealPos
 
 		return moveTargetReached ? idealMoveTarget : moveTarget;
 	}
@@ -215,9 +268,21 @@ public class AiShoot : AiGoalController
 	private void SetMoveTarget(Tuple<Vector2, Vector2> pTargetPositions)
 	{
 		//Debug.Log("SetMoveTarget " + pTargetPositions);
-		if(Vector2.Distance(moveTarget, pTargetPositions.Item1) > 0.1f &&
-			Vector2.Distance(idealMoveTarget, pTargetPositions.Item2) > 0.1f)
-			moveTargetReached = false;
+		//if(Vector2.Distance(moveTarget, pTargetPositions.Item1) > 0.1f &&
+		//	Vector2.Distance(idealMoveTarget, pTargetPositions.Item2) > 0.1f)
+		//	moveTargetReached = false;
+
+		if(moveTargetReached)
+		{
+			if(Vector2.Distance(moveTarget, pTargetPositions.Item1) > 0.1f &&
+				Vector2.Distance(idealMoveTarget, pTargetPositions.Item2) > 0.1f &&				
+				!aiBT.Movement.IsCloseTo(pTargetPositions.Item1) &&
+				!aiBT.Movement.IsCloseTo(pTargetPositions.Item2)
+				)
+			{
+				moveTargetReached = false;
+			}
+		}
 
 		moveTarget = pTargetPositions.Item1;
 		idealMoveTarget = pTargetPositions.Item2;
@@ -229,6 +294,8 @@ public class AiShoot : AiGoalController
 	/// For projectile weapons => distant position vertical/horizontal to targeted player
 	/// Mine => power up or some interesting place
 	/// ...
+	/// First = position closest to the player
+	/// Second = position closer to the target
 	/// </summary>
 	private Tuple<Vector2, Vector2> GetUseWeaponPosition(EWeaponId pPickedWeapon)
 	{
@@ -241,7 +308,7 @@ public class AiShoot : AiGoalController
 		if(targetedPlayer == null)
 			return playerPositions;
 
-		if(Vector2.Distance(playerPosition, targetedPlayer.Position) > INVALID_TARGET_DISTANCE)
+		if(Vector2.Distance(playerPosition, targetedPlayer.ColliderCenter) > INVALID_TARGET_DISTANCE)
 		{
 			//Debug.Log("Target is too far - either teleporting or dead");
 			return playerPositions;
@@ -250,11 +317,11 @@ public class AiShoot : AiGoalController
 		//todo: maybe dont recalculate when targetedPlayer.Position doesnt change but
 		//that is expected to happen quite fast
 		Tuple<Vector2, Vector2> shootPositions
-			= GetShootPositionTo(targetedPlayer.Position, pPickedWeapon);
-			//= new Tuple<Vector2, Vector2>(Vector2.zero, Vector2.zero);
+			= GetShootPositionTo(targetedPlayer.ColliderCenter, pPickedWeapon);
+		//= new Tuple<Vector2, Vector2>(Vector2.zero, Vector2.zero);
 
-		Utils.DebugDrawCross(shootPositions.Item1, Color.red);
-		Utils.DebugDrawCross(shootPositions.Item2, Color.blue);
+		Utils.DebugDrawCross(shootPositions.Item1, Color.green, 1);
+		Utils.DebugDrawCross(shootPositions.Item2, Color.blue, 1);
 
 		//Debug.Log($"shootPositions = {shootPositions.Item1} | {shootPositions.Item1}");
 
@@ -274,10 +341,10 @@ public class AiShoot : AiGoalController
 		if(idealDist > maxDist)
 			idealDist = maxDist;
 
-		Tuple<Vector2, Vector2> posHorizontal = 
-			GetShootPositions(pShootTarget, maxDist, idealDist, true, 
+		Tuple<Vector2, Vector2> posHorizontal =
+			GetShootPositions(pShootTarget, maxDist, idealDist, true,
 			GetDontHitLayer(pWeapon));
-		Tuple<Vector2, Vector2> posVertical = 
+		Tuple<Vector2, Vector2> posVertical =
 			GetShootPositions(pShootTarget, maxDist, idealDist, false,
 			GetDontHitLayer(pWeapon));
 
@@ -329,16 +396,60 @@ public class AiShoot : AiGoalController
 
 		const float pos_step = Player.COLLIDER_SIZE;
 
+		//find the closest position orthogonal to player and target
 		Vector2 closestPos = pHorizontal ?
 			new Vector2(playerPosition.x, pShootTarget.y) :
 			new Vector2(pShootTarget.x, playerPosition.y);
 		//float targetDistance = Vector2.Distance(idealPos, pShootTarget);
 
 		Vector2 dir = closestPos - pShootTarget;
+		Vector2 closestPos1 = closestPos;
+		Vector2 closestPos2 = closestPos;
+
+		//if the position is not walkable, move it up/down or right/left
+		EDirection dir1 = pHorizontal ? EDirection.Left : EDirection.Up;
+		EDirection dir2 = pHorizontal ? EDirection.Right : EDirection.Down;
+		bool res1 = pathFinder.MoveToWalkablePos(ref closestPos1, pShootTarget, aiBT.Movement.astar, dir1);
+		bool res2 = pathFinder.MoveToWalkablePos(ref closestPos2, pShootTarget, aiBT.Movement.astar, dir2);
+
+		//Debug.Log($"{closestPos} moved to {closestPos1} + {closestPos2}");
+		//Utils.DebugDrawCross(closestPos, Color.magenta, 1);
+		//Utils.DebugDrawCross(closestPos1, Color.magenta, 1);
+		//Utils.DebugDrawCross(closestPos2, Color.magenta, 1);
+
+		if(!res1 && !res2)
+		{
+			Debug.LogError("No walkable shoot position found");
+			//Debug.DrawLine(closestPos, closestPos + dir, Color.red, 1);
+			//Debug.DrawLine(closestPos, closestPos - dir, Color.blue, 1);
+			return new Tuple<Vector2, Vector2>(moveTarget, idealMoveTarget);
+		}
+
+		//select the closer position but only if it was moved to walkable
+		bool isPos1Closer =
+			Vector2.Distance(player.ColliderCenter, closestPos1) <
+			Vector2.Distance(player.ColliderCenter, closestPos2);
+		Vector2 closestWalkablePos = isPos1Closer ? closestPos1 : closestPos2;
+		if(!res1 && res2)
+			closestWalkablePos = closestPos2;
+		if(!res1 && !res2)
+			closestWalkablePos = closestPos;
+
+		dir = closestWalkablePos - pShootTarget;
+
+		//raycast from shoot target to check if there is an unwanted hit in
+		//direction to the closestWalkablePos.
+		//if yes, set the shoot position to that hit
+		//<closestWalkablePos>   [OBSTACKLE?](hit?)   <--ray-- <pShootTarget>
+		//					if hit =>
+		//<closestWalkablePos>   [OBSTACKLE!](shootPos)        <pShootTarget>
+		//					no hit =>
+		//(shootPos)                                           <pShootTarget>
 		float maxDist = Mathf.Min(dir.magnitude, pMaxDistance);
 		RaycastHit2D hit = Physics2D.Raycast(pShootTarget, dir, maxDist, pDontHitLayer);
+		//Debug.DrawLine(pShootTarget, pShootTarget + dir, Color.green, 1);
 
-		Vector2 shootPos = closestPos;
+		Vector2 shootPos = closestWalkablePos;
 		if(hit)
 		{
 			shootPos = hit.point;
@@ -347,19 +458,6 @@ public class AiShoot : AiGoalController
 			Utils.DebugDrawCross(shootPos, Color.magenta);
 			Debug.DrawLine(pShootTarget, shootPos, Color.red, 1);
 		}
-
-
-		//int iter = 0;
-		//while(Vector2.Distance(closestPos, pShootTarget) > pMaxDistance)
-		//{
-		//	closestPos += (pShootTarget - closestPos).normalized * pos_step;
-		//	iter++;
-		//	if(iter > 100)
-		//	{
-		//		Debug.LogError("Too many closestPos iterations");
-		//		break;
-		//	}
-		//}
 
 		Vector2 idealPos = shootPos;
 		int iter = 0;
@@ -426,7 +524,7 @@ public class AiShoot : AiGoalController
 			//projectile
 			case EWeaponId.MP40:
 				return 8;
-			
+
 		}
 		return 10;
 	}

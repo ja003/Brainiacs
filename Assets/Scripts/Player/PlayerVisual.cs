@@ -178,7 +178,10 @@ public class PlayerVisual : PlayerBehaviour
 	/// </summary>
 	public void OnDamage()
 	{
-		StartCoroutine(FlickColor());
+		//player object can be deactivated (teleport, ..)
+		if(gameObject.activeSelf)
+			StartCoroutine(FlickColor());
+
 		//removed: handled in PlayerHealth
 		//player.Photon.Send(EPhotonMsg.Player_OnReceiveDamageEffect); //only owner sends this
 	}

@@ -19,7 +19,6 @@ public class UIPaletteManager : EditorWindow
 
 	private void Awake()
 	{
-		Debug.Log("Awake");
 		Init();
 	}
 

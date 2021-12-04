@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AiEvade : AiGoalController
 {
-	public AiEvade(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.Evade)
+	public AiEvade(Player pPlayer) : base(pPlayer, EAiGoal.Evade)
 	{
 	}
 

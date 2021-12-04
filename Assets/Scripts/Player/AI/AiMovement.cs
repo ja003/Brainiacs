@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class AiMovement : AiController
 {
-	public AiMovement(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer)
+	public AiMovement(Player pPlayer) : base(pPlayer)
 	{
 		//seems to assign player.transform.position instead of playerPosition?
 		//seems better without it
@@ -18,12 +18,19 @@ public class AiMovement : AiController
 		if(AstarAdapter.isInited)
 		{
 			astar = new Astar(AstarAdapter.grid);
+			IsInited = true;
 		}
 		else
 		{
-			AstarAdapter.OnInited += () => astar = new Astar(AstarAdapter.grid);
+			AstarAdapter.OnInited += () =>
+			{
+				astar = new Astar(AstarAdapter.grid);
+				IsInited = true;
+			};
 		}
 	}
+
+	public bool IsInited;
 
 	public const float DIST_CHECK_TOLERANCE = 0.1f;
 
@@ -49,10 +56,13 @@ public class AiMovement : AiController
 	PathNode currentPathNode;
 
 	int pathCalcId;
-	Astar astar;
+	public Astar astar;
 
 	public void Update()
 	{
+		if(!isActive)
+			return;
+
 		if(Vector2.Distance(lastPos, player.Position2D) < float.Epsilon)
 			idleDuration += Time.deltaTime;
 		else
@@ -76,7 +86,7 @@ public class AiMovement : AiController
 		if(lastRecalculatePathTime + MIN_RECALCULATE_PATH_FREQUENCY < Time.time)
 		{
 			if(astar != null && player.isActiveAndEnabled)
-				brain.StartCoroutine(RecalculatePath());
+				player.StartCoroutine(RecalculatePath());
 		}
 		else
 		{
@@ -93,14 +103,16 @@ public class AiMovement : AiController
 			currentPathNode.visited = true;
 			if(path.IsNodeAtStraightPathToTarget(currentPathNode))
 			{
-				brain.Shoot.OnReachedStraightPathToTargetNode();
+				player.ai.Shoot.OnReachedStraightPathToTargetNode();
 			}
 
 			//check if is close to final target
 			if(IsCloseToMoveTarget())
 			{
 				//if is close, try re-evaluate, target might have changed
-				brain.EvaluateGoals();
+				//brain.EvaluateGoals();
+				//Debug.LogError("TODO: implement");//probably not needed
+
 
 				//if is close even after re-evaluation, dont move
 				if(IsCloseToMoveTarget())
@@ -108,7 +120,7 @@ public class AiMovement : AiController
 					//if player is targeted, look at him
 					if(TargetedPlayer != null)
 					{
-						EDirection dirToPlayer = GetDirectionTo(TargetedPlayer.Position);
+						EDirection dirToPlayer = GetDirectionTo(TargetedPlayer.ColliderCenter);
 						player.Movement.SetDirection(dirToPlayer);
 					}
 					if(path.IsCompleted())
@@ -116,7 +128,7 @@ public class AiMovement : AiController
 						player.Movement.Stop();
 						currentPathNode = null;
 						path.Clear(); //otherwise he gets stuck
-						brain.Shoot.OnReachedTarget();
+						player.ai.Shoot.OnReachedTarget();
 						return;
 					}
 
@@ -144,10 +156,24 @@ public class AiMovement : AiController
 		return IsCloseTo(moveTarget);
 	}
 
+	public void Stop()
+	{
+		player.Movement.Stop();
+
+		if(playerPosition.x > 600)
+			Debug.LogError("invalid position");
+
+		if(player.isActiveAndEnabled)
+			SetTarget(playerPosition);
+	}
+
 	public void SetTarget(Vector2 pTarget)
 	{
 		if(isLogEnabled)
 			Debug.Log("SetTarget " + pTarget);
+
+		if(astar == null)
+			return;
 
 		//pTarget might be on unwalkable position.
 		//try to move it
@@ -156,8 +182,8 @@ public class AiMovement : AiController
 			Debug.LogError($"SetTarget {pTarget} is unreachable");
 
 		moveTarget = pTarget;
-		if(astar != null && player.isActiveAndEnabled)
-			brain.StartCoroutine(RecalculatePath());
+		if(astar != null && player.isActiveAndEnabled && !IsCloseTo(moveTarget) && aiBT.IsActive)
+			player.StartCoroutine(RecalculatePath());
 	}
 
 	/// <summary>
@@ -203,7 +229,7 @@ public class AiMovement : AiController
 		if(currentPathNode?.Previous != null)
 		{
 			Vector2 previousToCurrentDirection = currentPathNode.point - currentPathNode.Previous.point;
-			float playerDistFromLine = Utils.GetDistanceFromLine(
+			float playerDistFromLine = Utils.GetDistanceFromLineInDirection(
 				playerPosition, currentPathNode.Previous.point, previousToCurrentDirection);
 			isPlayerOffPath = playerDistFromLine > 2 * DIST_CHECK_TOLERANCE;
 		}
@@ -229,7 +255,7 @@ public class AiMovement : AiController
 				idleDuration = 0;
 
 			astar.StopCalculation();
-			brain.StartCoroutine(pathFinder.GetPathAsync(playerPosition, moveTarget, astar));
+			player.StartCoroutine(pathFinder.GetPathAsync(playerPosition, moveTarget, astar));
 			while(pathFinder.IsSearching)
 				yield return new WaitForEndOfFrame();
 
@@ -245,7 +271,7 @@ public class AiMovement : AiController
 			//player.Movement.Stop(); //lagging
 		}
 
-		end: UpdateMove();
+	end: UpdateMove();
 	}
 
 	/// <summary>

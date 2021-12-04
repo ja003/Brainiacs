@@ -90,7 +90,7 @@ public class PlayerStats : PlayerBehaviour
 		}
 
 		//if is Tesla clone => add kill to owner of the clone
-		if(player.ai.IsTmp)
+		if(player.IsTmp)
 		{
 			player.ai.Owner.Stats.AddKill(pForce);
 			return;

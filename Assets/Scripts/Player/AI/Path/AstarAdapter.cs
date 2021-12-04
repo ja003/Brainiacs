@@ -19,7 +19,10 @@ public static class AstarAdapter
 
 	static Vector2 playerSize;
 
+	//[0,0] = botLeft
 	public static List<List<Node>> grid;
+	static int columns;
+	static int rows;
 
 	public static bool isInited;
 
@@ -46,7 +49,7 @@ public static class AstarAdapter
 		for(float x = botLeft.x; x < topRight.x; x += pStepSize)
 		{
 			grid.Add(new List<Node>());
-
+			columns++;
 			for(float y = botLeft.y; y < topRight.y; y += pStepSize)
 			{
 				Vector2 nodePos = new Vector2(x, y);
@@ -60,6 +63,9 @@ public static class AstarAdapter
 				Node node = new Node(nodePosScaled, isWalkable);
 				grid.Last().Add(node);
 
+				if(columns == 1)
+					rows++;
+
 				//do only X steps per frame to avoid big lag
 				steps++;
 				if(steps % max_steps_per_frame == 0)
@@ -70,11 +76,74 @@ public static class AstarAdapter
 			}
 		}
 
+		//set neighbors
+		for(int c = 0; c < columns; c++)
+		{
+			for(int r = 0; r < rows; r++)
+			{
+				if(r < rows - 2)
+					grid[c][r].Neighbors.Up = grid[c][r + 1];
+				if(r > 0)
+					grid[c][r].Neighbors.Down = grid[c][r - 1];
+				if(c < columns - 2)
+					grid[c][r].Neighbors.Right = grid[c + 1][r];
+				if(c > 0)
+					grid[c][r].Neighbors.Left = grid[c - 1][r];
+			}
+		}
+
+		yield return CalculateDistances();
+
 		//astar = new Astar(grid);
-		Debug_DrawGrid();
+		//Debug_DrawGrid();
 		isInited = true;
 		OnInited?.Invoke();
 		//Debug.Log($"Astar init");
+	}
+
+	/// <summary>
+	/// Calculates the closest distances to walkable from each node
+	/// </summary>
+	private static IEnumerator CalculateDistances()
+	{
+		const int max_steps_per_frame = 100;
+		int steps = 0;
+
+		//1st pass
+		for(int col = 0; col < grid.Count; col++)
+		{
+			List<Node> column = grid[col];
+			for(int row = 0; row < column.Count; row++)
+			{
+				Node node = column[row];
+				node.CalculateDistance();
+				//do only X steps per frame to avoid big lag
+				steps++;
+				if(steps % max_steps_per_frame == 0)
+				{
+					//Debug.Log($"Steps: {steps}");
+					yield return new WaitForEndOfFrame();
+				}
+			}
+		}
+
+		//2nd pass
+		for(int col = grid.Count - 1; col >= 0; col--)
+		{
+			List<Node> column = grid[col];
+			for(int row = column.Count - 1; row >= 0; row--)
+			{
+				Node node = column[row];
+				node.CalculateDistance();
+				//do only X steps per frame to avoid big lag
+				steps++;
+				if(steps % max_steps_per_frame == 0)
+				{
+					//Debug.Log($"Steps: {steps}");
+					yield return new WaitForEndOfFrame();
+				}
+			}
+		}
 	}
 
 	public static void Debug_DrawGrid()

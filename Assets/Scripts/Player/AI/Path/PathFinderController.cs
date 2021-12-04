@@ -1,4 +1,5 @@
 ﻿using AStarSharp;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -112,10 +113,10 @@ public class PathFinderController : GameBehaviour
 	/// Scales the input param positions and executes MoveToWalkablePos.
 	/// Suited for external call.
 	/// </summary>
-	public bool MoveToWalkablePos(ref Vector2 pPos, Vector2 pRefPos, Astar pAstar)
+	public bool MoveToWalkablePos(ref Vector2 pPos, Vector2 pRefPos, Astar pAstar, EDirection pOnlyInDirection = EDirection.None)
 	{
 		SVector2 scaledPos = AstarAdapter.GetScaledVector(pPos);
-		bool res = MoveToWalkablePos(ref scaledPos, AstarAdapter.GetScaledVector(pRefPos), pAstar);
+		bool res = MoveToWalkablePos(ref scaledPos, AstarAdapter.GetScaledVector(pRefPos), pAstar, pOnlyInDirection);
 		pPos = AstarAdapter.GetScaledVector(scaledPos);
 		return res;
 	}
@@ -124,12 +125,12 @@ public class PathFinderController : GameBehaviour
 	/// Moves pPos to walkable position closest to the pRefPos.
 	/// </summary>
 	/// <returns>True if any walkable position is found</returns>
-	private bool MoveToWalkablePos(ref SVector2 pPos, SVector2 pRefPos, Astar pAstar)
+	private bool MoveToWalkablePos(ref SVector2 pPos, SVector2 pRefPos, Astar pAstar, EDirection pOnlyInDirection = EDirection.None)
 	{
 		if(!pAstar.IsWalkable(pPos))
 		{
 			//Debug.Log($"End {end} is unreachable");
-			SVector2? closest = pAstar.GetClosestWalkable(pPos, pRefPos);
+			SVector2? closest = pAstar.GetClosestWalkable(pPos, pRefPos, pOnlyInDirection);
 			//Debug.Log($"closest  = {closest }");
 			if(closest == null)
 				return false;
@@ -182,6 +183,7 @@ public class PathFinderController : GameBehaviour
 	{
 		throw new System.NotImplementedException();
 	}
+
 
 	//public void StopCalculation()
 	//{

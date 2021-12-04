@@ -20,7 +20,7 @@ public class Player : PoolObjectNetwork, IOwner
 	[SerializeField] public PlayerStats Stats;
 	//[SerializeField] public PlayerPhotonController Photon;
 	[SerializeField] public PlayerMovement Movement;
-	[SerializeField] public PlayerAiBrain ai;
+	[SerializeField] public PlayerAiBTController ai;
 	[SerializeField] public PlayerPush Push;
 
 	[SerializeField] public AudioSource AudioSource;
@@ -30,11 +30,13 @@ public class Player : PoolObjectNetwork, IOwner
 	//should be called only after player is inited
 	public bool IsItMe => InitInfo.IsItMe() && !IsLocalImage;
 	public bool IsInited; //initialized only once (see OnReturnToPool2)
+	public bool IsSpawned;
 
 	//should be called only on update checks, not during an initializing method.
 	public bool IsInitedAndMe => IsInited && IsItMe;
 
-
+	//Tesla clone is temporary
+	public bool IsTmp;
 
 	//DEBUG
 	[NonSerialized] public Player LocalImage;
@@ -43,10 +45,12 @@ public class Player : PoolObjectNetwork, IOwner
 	[SerializeField] public bool debug_DrawPath;
 
 
-	public Vector2 Position => Collider.bounds.center;
-	public Vector3 Position3D => Collider.bounds.center;
+	public Vector2 ColliderCenter => Collider.bounds.center;
+	public Vector3 ColliderCenter3D => Collider.bounds.center;
 
 	public BoxCollider2D Collider => boxCollider2D;
+
+
 	//this is just "estimated size", not actual collider size (which is rectangle)
 	public const float COLLIDER_SIZE = 0.5f;
 	//actual collider size - just static getter (used in PathFinder)
@@ -92,7 +96,7 @@ public class Player : PoolObjectNetwork, IOwner
 		//}
 		string suffix_LI = IsLocalImage ? "_LI" : "";
 		string suffix_type = "_" + pPlayerInfo.PlayerType;
-		string suffix_clone = ai.IsTmp ? "_clone" : "";
+		string suffix_clone = IsTmp ? "_clone" : "";
 		gameObject.name = "Player_" + pPlayerInfo.GetName() + suffix_type + suffix_LI + suffix_clone;
 
 
@@ -102,7 +106,7 @@ public class Player : PoolObjectNetwork, IOwner
 		Init();
 
 		//if spawn pos is null, player is already spawned, but Movement should be still initialized
-		Vector2 spawnPosition = pSpawnPosition != null ? (Vector2)pSpawnPosition : Position;
+		Vector2 spawnPosition = pSpawnPosition != null ? (Vector2)pSpawnPosition : ColliderCenter;
 		Movement.SpawnAt(spawnPosition);
 
 		((PlayerPhotonController)Photon).Init2(pPlayerInfo);
@@ -203,7 +207,7 @@ public class Player : PoolObjectNetwork, IOwner
 				return false;
 			return InitInfo.Number == p.InitInfo.Number &&
 				InitInfo.PlayerType == p.InitInfo.PlayerType &&
-				ai.IsTmp == p.ai.IsTmp; //for tesla clone
+				IsTmp == p.IsTmp; //for Tesla clone
 		}
 	}
 
@@ -222,6 +226,7 @@ public class Player : PoolObjectNetwork, IOwner
 		Stats.OnReturnToPool();
 		Health.OnReturnToPool();
 		game.PlayerManager.playerSorter.UnregisterPlayer(this);
+		IsSpawned = false;
 	}
 
 	public Player GetOwner()

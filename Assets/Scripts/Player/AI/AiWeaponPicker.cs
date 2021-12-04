@@ -10,7 +10,6 @@ public class AiWeaponPicker
 {
 	public EWeaponId PickedWeapon;
 
-	private PlayerAiBrain brain;
 	Player player;
 	protected CDebug debug => CDebug.Instance;
 	protected Brainiacs brainiacs => Brainiacs.Instance;
@@ -19,9 +18,8 @@ public class AiWeaponPicker
 	EWeaponId mySpecialWeapon;
 
 
-	public AiWeaponPicker(PlayerAiBrain pBrain, Player pPlayer)
+	public AiWeaponPicker(Player pPlayer)
 	{
-		brain = pBrain;
 		player = pPlayer;
 		myBasicWeapon = brainiacs.ItemManager.GetHeroBasicWeaponConfig(player.InitInfo.Hero).Id;
 		mySpecialWeapon = brainiacs.ItemManager.GetHeroSpecialWeaponConfig(player.InitInfo.Hero).Id;
@@ -32,7 +30,7 @@ public class AiWeaponPicker
 	{
 		PickedWeapon = PickWeapon();
 
-		if(brain.IsTmp && PickedWeapon == EWeaponId.Special_Tesla)
+		if(player.IsTmp && PickedWeapon == EWeaponId.Special_Tesla)
 		{
 			Debug.LogError("Tesla clone cant clone itself");
 			return;
@@ -57,7 +55,17 @@ public class AiWeaponPicker
 		//	return mySpecialWeapon;
 		//}
 		if(debug.AiWeapon != EWeaponId.None)
+		{
+			if(!player.WeaponController.HasWeapon(debug.AiWeapon))
+			{
+				Debug.Log("debug add weapon");
+				player.ItemController.AddWeapon(debug.AiWeapon);
+			}
 			return debug.AiWeapon;
+		}
+
+		if(debug.NonAggressiveAi)
+			return player.WeaponController.ActiveWeapon.Id;
 
 		if(!CanSwapWeapon())
 		{
@@ -111,7 +119,7 @@ public class AiWeaponPicker
 						priority = 3;
 						break;
 					case EWeaponCathegory.HeroSpecial:
-						//todo: da vinci => based on target distance + if is under fire
+						//todo: DaVinci => based on target distance + if is under fire
 						priority = 10;
 						break;
 					case EWeaponCathegory.MapBasic:
@@ -124,7 +132,7 @@ public class AiWeaponPicker
 			}
 
 			//prevent Tesla clone from cloning itself
-			if(weaponId == EWeaponId.Special_Tesla && brain.IsTmp)
+			if(weaponId == EWeaponId.Special_Tesla && player.IsTmp)
 				continue;
 
 			weaponsPriority.Add(new Tuple<EWeaponId, int>(weaponId, priority));

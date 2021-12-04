@@ -6,7 +6,7 @@ public abstract class AiGoalController : AiController
 {
     EAiGoal goal;
 
-    public AiGoalController(PlayerAiBrain pBrain, Player pPlayer, EAiGoal pGoal) : base(pBrain, pPlayer)
+    public AiGoalController(Player pPlayer, EAiGoal pGoal) : base(pPlayer)
     {
         goal = pGoal;
     }

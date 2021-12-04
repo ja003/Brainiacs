@@ -90,6 +90,7 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 		SetMove(CurrentDirection); //refresh visual
 		SetMove(Vector2.zero); //stop
+		player.IsSpawned = true;
 	}
 
 	public void Stop()
@@ -165,7 +166,9 @@ public class PlayerMovement : PlayerBehaviour, ITeleportable
 
 			visual.OnDirectionChange(eDirection);
 			weapon.OnDirectionChange(eDirection);
-			aiBrain.OnDirectionChange(eDirection);
+			//aiBrain.OnDirectionChange(eDirection);
+			//Debug.LogError("TODO: implement"); //probably not needed
+
 		}
 	}
 

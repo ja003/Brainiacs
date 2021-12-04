@@ -20,7 +20,7 @@ public class PlayerItemController : PlayerBehaviour
 		}
 	}
 
-	private void AddWeapon(EWeaponId pWeapon)
+	public void AddWeapon(EWeaponId pWeapon)
 	{
 		if(pWeapon == EWeaponId.None)
 			return;

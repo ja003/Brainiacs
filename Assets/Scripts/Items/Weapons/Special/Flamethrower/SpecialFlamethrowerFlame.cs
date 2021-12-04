@@ -126,7 +126,7 @@ public class SpecialFlamethrowerFlame : PlayerWeaponSpecialPrefab, IOnCollision
 		else
 			collisionTimes.Add(player, Time.time);
 
-		int damage = GetDamage(player.Position);
+		int damage = GetDamage(player.ColliderCenter);
 		//Debug.Log($"Flamethrower  " + damage);
 		player.Health.ApplyDamage(damage, owner);
 	}

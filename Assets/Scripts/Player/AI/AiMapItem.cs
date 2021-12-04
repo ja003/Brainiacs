@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AiMapItem : AiGoalController
 {
-	public AiMapItem(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.PickupItem)
+	public AiMapItem(Player pPlayer) : base(pPlayer, EAiGoal.PickupItem)
 	{
 	}
 
@@ -28,19 +28,14 @@ public class AiMapItem : AiGoalController
 				Vector2.Distance(playerPosition, b.transform.position)));
 
 		isMapItemClose = false;
-		foreach(var item in activeItems)
-		{
-			float dist = Vector2.Distance(playerPosition, item.transform.position);
-			if(dist < 5)
-			{
-				isMapItemClose = true;
-				mapItemMoveTarget = item.transform.position;
-				Utils.DebugDrawCross(mapItemMoveTarget, Color.cyan);
-				break;
-			}
-		}
+		if(!isAnyMapItemOnMap)
+			return;
 
-
+		float dist = Vector2.Distance(playerPosition, activeItems[0].transform.position);
+		const int close_distance_to_item = 5;
+		isMapItemClose = dist < close_distance_to_item;
+		mapItemMoveTarget = activeItems[0].transform.position;
+		Utils.DebugDrawCross(mapItemMoveTarget, Color.cyan);
 	}
 
 	internal void Update()
@@ -49,7 +44,7 @@ public class AiMapItem : AiGoalController
 
 	public override int GetPriority()
 	{
-		if(!isAnyMapItemOnMap) return 0;
+		if(!isAnyMapItemOnMap || !isActive) return 0;
 
 		if(useDistBasedEval)
 		{

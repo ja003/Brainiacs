@@ -2,60 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Numerics;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
 //https://raw.githubusercontent.com/davecusatis/A-Star-Sharp/master/Astar.cs
 namespace AStarSharp
 {
-	public class Node
-	{
-		// Change this depending on what the desired size is for each element in the grid
-		public static int NODE_SIZE = 1;//32;
-		public Node Parent;
-		public Vector2 Position;
-		public Vector2 Center
-		{
-			get
-			{
-				return new Vector2(Position.X + NODE_SIZE / 2, Position.Y + NODE_SIZE / 2);
-			}
-		}
-		public float DistanceToTarget;
-		public float Cost;
-		public float Weight;
-		public float F
-		{
-			get
-			{
-				if(DistanceToTarget != -1 && Cost != -1)
-					return DistanceToTarget + Cost;
-				else
-					return -1;
-			}
-		}
-		public bool Walkable;
-
-		public Node(Vector2 pos, bool walkable, float weight = 1)
-		{
-			Parent = null;
-			Position = pos;
-			DistanceToTarget = -1;
-			Cost = 1;
-			Weight = weight;
-			Walkable = walkable;
-		}
-
-		public override string ToString()
-		{
-			return $"{Position} ({Walkable})";
-		}
-	}
-
 	public class Astar
 	{
 		List<List<Node>> Grid;
@@ -88,8 +40,8 @@ namespace AStarSharp
 			stopCalculation = false;
 			IsSearching = true;
 
-			Node start = GetNode(Start);
-			Node end = GetNode(End);
+			Node start = CreateNode(Start);
+			Node end = CreateNode(End);
 
 			//UnityEngine.Debug.Log("start = " + start);
 			//UnityEngine.Debug.Log("end = " + end);
@@ -112,7 +64,7 @@ namespace AStarSharp
 			{
 				if(stopCalculation)
 					break;
-					//return Path;
+				//return Path;
 
 				current = OpenList[0];
 				OpenList.Remove(current);
@@ -142,7 +94,7 @@ namespace AStarSharp
 						{
 							if(stopCalculation)
 								break;
-								//return Path;
+							//return Path;
 
 							n.Parent = current;
 							n.DistanceToTarget = Math.Abs(n.Position.X - end.Position.X) + Math.Abs(n.Position.Y - end.Position.Y);
@@ -193,9 +145,14 @@ namespace AStarSharp
 			stopCalculation = true;
 		}
 
-		private static Node GetNode(Vector2 pPoint)
+		/// <summary>
+		/// Just tmp structure, not a reference to the grid
+		/// </summary>
+		private static Node CreateNode(Vector2 pPoint)
 		{
-			return new Node(new Vector2((int)(pPoint.X / Node.NODE_SIZE), (int)(pPoint.Y / Node.NODE_SIZE)), true);
+			int posX = (int)(pPoint.X / Node.NODE_SIZE);
+			int posY = (int)(pPoint.Y / Node.NODE_SIZE);
+			return new Node(new Vector2(posX, posY), true);
 		}
 
 		//This is not correct!
@@ -209,27 +166,46 @@ namespace AStarSharp
 		public bool IsWalkable(Vector2 pPoint)
 		{
 			Node node = GetNode(pPoint);
-			int row = (int)node.Position.Y;
-			int col = (int)node.Position.X;
-			if(!IsWithinGrid(row, col))
+			if(node == null)
 				return false;
 
-			return Grid[col][row].Walkable;
+			return node.Walkable;
+		}
+
+		private Node GetNode(Vector2 pPoint)
+		{
+			Node tmpNode = CreateNode(pPoint);
+			return GetNode(tmpNode.Row, tmpNode.Column);
+		}
+
+		private Node GetNode(int pRow, int pCol)
+		{
+			if(!IsWithinGrid(pRow, pCol))
+				return null;
+
+			return Grid[pCol][pRow];
 		}
 
 		/// <summary>
 		/// Returns the first walkable adjacent node that is closest to pRefPoint.
 		/// </summary>
-		public Vector2? GetClosestWalkable(Vector2 pPoint, Vector2 pRefPoint)
+		public Vector2? GetClosestWalkable(Vector2 pPoint, Vector2 pRefPoint, EDirection pOnlyInDirection)
 		{
 			if(IsWalkable(pPoint))
 				return pPoint;
 
+			if(pOnlyInDirection != EDirection.None)
+			{
+				Node nodeInDir = GetWalkableInDirection(GetNode(pPoint), pOnlyInDirection);
+				return nodeInDir?.Center;
+			}
+
 			List<Node> neighbours = new List<Node>();
-			const int max_steps = 4; //todo: make dependent on input parameter?
+			//todo: make dependent on pRefPoint?
+			int max_steps = pOnlyInDirection == EDirection.None ? 6 : 10;
 			for(int dist = 1; dist < max_steps; dist++)
 			{
-				neighbours = GetNodesInDistance(GetNode(pPoint), dist, true);
+				neighbours = GetNodesInDistance(GetNode(pPoint), dist, true, pOnlyInDirection);
 				if(IsAnyWalkable(neighbours))
 					break;
 				else
@@ -243,9 +219,31 @@ namespace AStarSharp
 			foreach(var n in neighbours)
 			{
 				if(n.Walkable)
+				{
 					return n.Center;
+				}
 			}
 			return null;
+		}
+
+		private Node GetWalkableInDirection(Node pOrigin, EDirection pDirection)
+		{
+			int distanceToWalkable = pOrigin.GetDistanceToWalkableInDirection(pDirection);
+			int xOffset = 0;
+			int yOffset = 0;
+			if(pDirection == EDirection.Up)
+				yOffset = distanceToWalkable;
+			if(pDirection == EDirection.Right)
+				xOffset = distanceToWalkable;
+			if(pDirection == EDirection.Down)
+				yOffset = -distanceToWalkable;
+			if(pDirection == EDirection.Left)
+				xOffset = -distanceToWalkable;
+			int column = pOrigin.Column + xOffset;
+			int row = pOrigin.Row + yOffset;
+			if(!IsWithinGrid(row, column))
+				return null;
+			return Grid[column][row];
 		}
 
 		private static bool IsAnyWalkable(List<Node> pNodes)
@@ -253,19 +251,30 @@ namespace AStarSharp
 			return pNodes.Any(x => x.Walkable);
 		}
 
-		private List<Node> GetNodesInDistance(Node pOrigin, int pSteps, bool pOnlyWalkable)
+		private List<Node> GetNodesInDistance(Node pOrigin, int pSteps, bool pOnlyWalkable, EDirection pOnlyInDirection)
 		{
 			List<Node> nodes = new List<Node>();
-			for(int x = -pSteps; x <= pSteps; x++)
+			int xStart = pOnlyInDirection == EDirection.Left ? -pSteps : 0;
+			int xEnd = pOnlyInDirection == EDirection.Right ? pSteps : 0;
+			int yStart = pOnlyInDirection == EDirection.Up ? pSteps : 0;
+			int yEnd = pOnlyInDirection == EDirection.Down ? -pSteps : 0;
+			if(pOnlyInDirection == EDirection.None)
 			{
-				for(int y = -pSteps; y <= pSteps; y++)
+				xStart = -pSteps;
+				xEnd = pSteps;
+				yStart = -pSteps;
+				yEnd = pSteps;
+			}
+			for(int x = Math.Min(xStart, xEnd); x <= Math.Max(xStart, xEnd); x++)
+			{
+				for(int y = Math.Min(yStart, yEnd); y <= Math.Max(yStart, yEnd); y++)
 				{
 					int row = (int)pOrigin.Position.Y + y;
 					int col = (int)pOrigin.Position.X + x;
-					if(!IsWithinGrid(row, col))
+					Node node = GetNode(row, col);
+					if(node == null)
 						continue;
 
-					Node node = Grid[col][row];
 					if(pOnlyWalkable && !node.Walkable)
 						continue;
 

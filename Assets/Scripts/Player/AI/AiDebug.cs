@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AiDebug : AiGoalController
 {
-	public AiDebug(PlayerAiBrain pBrain, Player pPlayer) : base(pBrain, pPlayer, EAiGoal.Debug)
+	public AiDebug(Player pPlayer) : base(pPlayer, EAiGoal.Debug)
 	{
 		
 	}

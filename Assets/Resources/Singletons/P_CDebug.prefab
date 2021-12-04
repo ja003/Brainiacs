@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,28 +51,28 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
-  _ExtraPlayerWeapon: 10
+  _ExtraPlayerWeapon: 0
   _Shield: 0
   _Invulnerability: 0
-  _Immortality: 0
-  _InstaKill: 1
-  _InfiniteAmmo: 0
+  _Immortality: 1
+  _InstaKill: 0
+  _InfiniteAmmo: 1
   _PlayerEffect: 0
-  playerCount: 4
-  playerTypes: 01000000010000000100000001000000
-  heroes: 02000000
-  _Map: 1
+  playerCount: 2
+  playerTypes: 01000000030000000100000001000000
+  heroes: 05000000
+  _Map: 2
   _gameValue: 5
   _GenerateItems: 0
   _Respawnpoint: 0
-  _StopGenerateItems: 0
+  _StopGenerateItems: 1
   _DontEndGame: 1
   _GameEffect: 0
   _PowerUp: 4
   _GenerateMapWeapon: 0
   _GenerateMapSpecialWeapon: 0
   _MuteMusic: 0
-  _AiWeapon: 0
+  _AiWeapon: 11
   _NonAggressiveAi: 0
   _AiDebugMove: 0
   _PassiveAi: 0

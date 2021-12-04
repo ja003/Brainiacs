@@ -260,11 +260,15 @@ public static class Utils
 		return origin + direction * dotP;
 	}
 
-	public static float GetDistanceFromLine(Vector2 pPoint, Vector2 pLineStart, Vector2 pLineDirection)
+	public static float GetDistanceFromLineInDirection(Vector2 pPoint, Vector2 pLineStart, Vector2 pLineDirection)
 	{
 		Vector2 nearestPoint = FindNearestPointOnLine(pLineStart, pLineDirection, pPoint);
 		float dist = Vector2.Distance(pPoint, nearestPoint);
 		return dist;
+	}
+	public static float GetDistanceFromLine(Vector2 pPoint, Vector2 pLineStart, Vector2 pLineEnd)
+	{
+		return GetDistanceFromLineInDirection(pPoint, pLineStart, pLineEnd - pLineStart);
 	}
 
 	public static int PositiveModulo(int x, int m)

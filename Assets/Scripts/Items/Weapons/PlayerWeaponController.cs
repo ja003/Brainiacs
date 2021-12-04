@@ -244,7 +244,7 @@ public class PlayerWeaponController : PlayerBehaviour
 		return -1;
 	}
 
-	private bool HasWeapon(EWeaponId pWeapon)
+	public bool HasWeapon(EWeaponId pWeapon)
 	{
 		return GetWeapon(pWeapon) != null;
 	}
