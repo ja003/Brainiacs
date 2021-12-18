@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 2
   Prefab: {fileID: 1091170740151778672, guid: e3ab9e6dc200eb1479416aa1af2782cb, type: 3}
-  MapPreview: {fileID: 21300000, guid: 2229fabc3e095dd49b69cd238c36d93a, type: 3}
+  MapPreview: {fileID: 21300000, guid: 68415f1761cdb3a438a771768e36ee2f, type: 3}
   Loading1: {fileID: 21300000, guid: 46f2e34d9ed3636479e1619fc9fee00c, type: 3}
   Loading2: {fileID: 21300000, guid: 5641a7fed7c7e1e4d9de989e21ae7afc, type: 3}
   Loading3: {fileID: 21300000, guid: ec8a5cd91f578d0469ccc5258719afd2, type: 3}

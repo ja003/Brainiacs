@@ -51,14 +51,15 @@ MonoBehaviour:
   _AutoJoinRandomRoom: 0
   _LocalImage: 0
   _debugPlayerNumber: 1
-  _ExtraPlayerWeapon: 0
+  _ExtraPlayerWeapon: 101
   _Shield: 0
   _Invulnerability: 0
   _Immortality: 1
   _InstaKill: 0
-  _InfiniteAmmo: 1
+  _InfiniteAmmo: 0
+  _FastReaload: 1
   _PlayerEffect: 0
-  playerCount: 2
+  playerCount: 1
   playerTypes: 01000000030000000100000001000000
   heroes: 05000000
   _Map: 2

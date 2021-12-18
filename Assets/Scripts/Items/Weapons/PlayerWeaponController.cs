@@ -175,7 +175,8 @@ public class PlayerWeaponController : PlayerBehaviour
 		Action onReloaded = pWeapon.Reload;
 		Action<float> onReloadUpdate = pWeapon.ReportReloadProgress;
 
-		DoInTime(onReloaded, pWeapon.Info.Cooldown, false, onReloadUpdate);
+		float cooldown = debug.FastReaload ? 0.5f : pWeapon.Info.Cooldown;
+		DoInTime(onReloaded, (float)cooldown, false, onReloadUpdate);
 		InvokeWeaponChange(pWeapon);
 	}
 

@@ -16,6 +16,11 @@ public class UIPlayerInfoElement : UiBehaviour
 	[SerializeField] public Text ammo = null;
 	[SerializeField] private List<Image> magazines;
 
+	[SerializeField] private Image cadencyIndocator = null;
+	[SerializeField] private Animator cadencyIndocatorAnimator = null;
+
+	float debug_lastRdyPercentage;
+
 	private void Update()
 	{
 		if(Time.timeSinceLevelLoad < 0.1f)
@@ -33,17 +38,35 @@ public class UIPlayerInfoElement : UiBehaviour
 		{
 			float reloadTimeLeft = (reloadTimeStarted + reloadTimeTotal) - Time.time;
 			ammo.text = reloadTimeLeft.ToString("0.0");
-			return;
+			//return;
 		}
 
 		// Cadency
-		if(activeWeaponCadency < 0.1f)
+		bool showCadency = activeWeaponCadency > 0.1f;
+		cadencyIndocator.enabled = showCadency;
+		if(!showCadency)
 			return;
 
 		//set weapon alpha based on cadency ready state
 		float rdyPercentage = GetCadencyReadyPercentage();
-		//Debug.Log($"{activeWeapon} rdy: {rdyPercentage*100}%");
+		if(debug_lastRdyPercentage != rdyPercentage)
+		{
+			debug_lastRdyPercentage = rdyPercentage;
+			//Debug.Log($"{activeWeapon} rdy: {rdyPercentage * 100}%");
+		}
 		Utils.SetAlpha(weapon, rdyPercentage);
+
+		//cadency indicator for better visibility
+		bool showCadencyIndicator = activeWeaponCadency > 0.3f;
+		cadencyIndocator.enabled = showCadencyIndicator;
+		if(!showCadencyIndicator)
+			return;
+
+		if(rdyPercentage >= 1f)
+			cadencyIndocator.enabled = false;
+		else
+			cadencyIndocatorAnimator.SetFloat("time", rdyPercentage);
+
 	}
 
 	private float GetCadencyReadyPercentage()
@@ -116,7 +139,7 @@ public class UIPlayerInfoElement : UiBehaviour
 	/// </summary>
 	private void SetWeaponInfo(PlayerWeapon pWeapon)
 	{
-		SetActiveWeapon(pWeapon.Id, pWeapon.Info.Cadency);
+		SetActiveWeapon(pWeapon.Id, pWeapon.Info.Cadency, pWeapon.LastUseStartTime);
 
 		SetReloading(pWeapon.IsRealoading, pWeapon.RealoadTimeLeft);
 
@@ -146,18 +169,19 @@ public class UIPlayerInfoElement : UiBehaviour
 	EWeaponId activeWeapon;
 	float activeWeaponCadency;
 	float activeWeaponLastUsedTime = int.MinValue;
-	public void SetActiveWeapon(EWeaponId pId, float pCadency)
+	public void SetActiveWeapon(EWeaponId pId, float pCadency, float pLastUsedTime)
 	{
 		if(activeWeapon == pId)
 			return;
 		activeWeapon = pId;
 		activeWeaponCadency = pCadency;
+		activeWeaponLastUsedTime = pLastUsedTime;
 
 		//weapon sprite
 		InHandWeaponVisualInfo info = brainiacs.ItemManager.GetWeaponConfig(pId).VisualInfo;
 		weapon.sprite = info.InfoSprite;
 
-		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency);
+		player.Photon.Send(EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon, pId, pCadency, pLastUsedTime);
 	}
 
 	public void SetAmmo(int pAmmoLeft, bool pWeaponUsed)

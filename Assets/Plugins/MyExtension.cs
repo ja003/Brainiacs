@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 
+#if UNITY_EDITOR
 //https://answers.unity.com/questions/960413/editor-window-how-to-center-a-window.html
 public static class Extensions
 {
@@ -56,3 +57,4 @@ public static class Extensions
 		aWin.position = pos;
 	}
 }
+#endif

@@ -238,7 +238,8 @@ public class PlayerPhotonController : PoolObjectPhoton
 			case EPhotonMsg.Player_UI_PlayerInfo_SetActiveWeapon:
 				weapon = (EWeaponId)pParams[0];
 				float cadency = (float)pParams[1];
-				player.Visual.PlayerInfo.SetActiveWeapon(weapon, cadency);
+				float lastUsedTime = (float)pParams[2];
+				player.Visual.PlayerInfo.SetActiveWeapon(weapon, cadency, lastUsedTime);
 				return;
 			case EPhotonMsg.Player_UI_PlayerInfo_SetMagazines:
 				int magazines = (int)pParams[0];

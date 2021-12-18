@@ -55,6 +55,10 @@ public class CDebug : CSingleton<CDebug>
 
 	[SerializeField] bool _InfiniteAmmo;
 	public bool InfiniteAmmo => GetDebugBool(_InfiniteAmmo);
+
+	[SerializeField] bool _FastReaload;
+	public bool FastReaload => GetDebugBool(_FastReaload);
+
 	[SerializeField] EPlayerEffect _PlayerEffect;
 	public EPlayerEffect PlayerEffect => release ? EPlayerEffect.None : _PlayerEffect;
 
